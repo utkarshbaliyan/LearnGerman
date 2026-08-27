@@ -151,9 +151,14 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       setActiveChar(-1);
       setAudioError("Natural narration is temporarily unavailable. Please try again in a moment.");
     };
-    void audio.play().catch(() => {
+    void audio.play().catch((error: unknown) => {
       setLoadingAudio(false);
-      setAudioError("Tap Play once more to start the narration.");
+      const blocked = error instanceof DOMException && error.name === "NotAllowedError";
+      setAudioError(
+        blocked
+          ? "Your browser blocked audio playback. Tap Play to allow narration."
+          : "Narration could not be loaded. Please try again in a moment.",
+      );
     });
   }
 
