@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -28,6 +28,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -44,6 +51,33 @@ const STOP_WORDS = new Set([
   "noch", "nur", "oder", "sein", "sie", "sind", "und", "um", "von", "vor", "war",
   "wie", "wir", "zu", "zur",
 ]);
+
+type RhythmMode = "study" | "natural" | "flowing";
+
+const RHYTHMS: Record<RhythmMode, { label: string; pause: number; pitch: number }> = {
+  study: { label: "Clear & patient", pause: 360, pitch: 1 },
+  natural: { label: "Natural storyteller", pause: 190, pitch: 1.02 },
+  flowing: { label: "Smooth & flowing", pause: 90, pitch: 1.01 },
+};
+
+function voiceScore(voice: SpeechSynthesisVoice) {
+  const name = voice.name.toLocaleLowerCase("en");
+  let score = voice.lang.toLocaleLowerCase("en") === "de-de" ? 80 : 50;
+  if (name.includes("natural") || name.includes("neural") || name.includes("premium")) score += 100;
+  if (name.includes("google") || name.includes("microsoft")) score += 55;
+  if (name.includes("katja") || name.includes("conrad") || name.includes("anna")) score += 35;
+  if (voice.localService) score += 5;
+  return score;
+}
+
+function narrationSegments(text: string) {
+  const matches = [...text.matchAll(/[^.!?…]+[.!?…]+[”\"»]?|[^.!?…]+$/g)];
+  return matches.map((match) => {
+    const raw = match[0];
+    const leadingSpace = raw.length - raw.trimStart().length;
+    return { text: raw.trim(), start: (match.index ?? 0) + leadingSpace };
+  }).filter((segment) => segment.text.length > 0);
+}
 
 function StoryWord({ token, active }: { token: string; active: boolean }) {
   const word = cleanWord(token);
@@ -70,12 +104,23 @@ function StoryWord({ token, active }: { token: string; active: boolean }) {
 }
 
 function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (story: A1Story) => void }) {
-  const [rate, setRate] = useState([0.82]);
+  const [rate, setRate] = useState([0.9]);
+  const [rhythm, setRhythm] = useState<RhythmMode>("natural");
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [voiceURI, setVoiceURI] = useState("");
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
   const [activeChar, setActiveChar] = useState(-1);
+  const narrationSession = useRef(0);
+  const pauseTimer = useRef<number | null>(null);
+  const continueNarration = useRef<(() => void) | null>(null);
   const unit = A1_UNITS[story.unitId - 1];
   const wordCount = story.text.split(/\s+/).length;
+  const segments = useMemo(() => narrationSegments(story.text), [story.text]);
+  const germanVoices = useMemo(
+    () => voices.filter((voice) => voice.lang.toLocaleLowerCase("en").startsWith("de")).sort((a, b) => voiceScore(b) - voiceScore(a)),
+    [voices],
+  );
   const keyWords = useMemo(() => {
     const seen = new Set<string>();
     return story.text
@@ -91,46 +136,96 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   }, [story]);
 
   useEffect(() => {
+    if (!("speechSynthesis" in window)) return;
+    const loadVoices = () => {
+      const available = window.speechSynthesis.getVoices();
+      setVoices(available);
+      const savedVoice = window.localStorage.getItem("leselaut-voice");
+      const german = available.filter((voice) => voice.lang.toLocaleLowerCase("en").startsWith("de")).sort((a, b) => voiceScore(b) - voiceScore(a));
+      const selected = german.find((voice) => voice.voiceURI === savedVoice) ?? german[0];
+      if (selected) setVoiceURI(selected.voiceURI);
+    };
+    loadVoices();
+    window.speechSynthesis.addEventListener?.("voiceschanged", loadVoices);
+    return () => window.speechSynthesis.removeEventListener?.("voiceschanged", loadVoices);
+  }, []);
+
+  useEffect(() => {
+    narrationSession.current += 1;
+    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
     window.speechSynthesis?.cancel();
     setSpeaking(false);
     setPaused(false);
     setActiveChar(-1);
   }, [story]);
 
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  useEffect(() => () => {
+    narrationSession.current += 1;
+    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
+    window.speechSynthesis?.cancel();
+  }, []);
 
   function startAudio() {
     if (!("speechSynthesis" in window)) return;
+    narrationSession.current += 1;
+    const session = narrationSession.current;
+    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(story.text);
-    utterance.lang = "de-DE";
-    utterance.rate = rate[0];
-    utterance.pitch = 1;
-    utterance.onboundary = (event) => {
-      if (event.name === "word") setActiveChar(event.charIndex);
-    };
-    utterance.onend = () => {
+    const selectedVoice = germanVoices.find((voice) => voice.voiceURI === voiceURI) ?? germanVoices[0];
+    let segmentIndex = 0;
+
+    const finish = () => {
+      if (session !== narrationSession.current) return;
+      continueNarration.current = null;
       setSpeaking(false);
       setPaused(false);
       setActiveChar(-1);
     };
-    utterance.onerror = () => {
-      setSpeaking(false);
-      setPaused(false);
+
+    const speakNext = () => {
+      if (session !== narrationSession.current) return;
+      if (segmentIndex >= segments.length) {
+        finish();
+        return;
+      }
+      const segment = segments[segmentIndex];
+      segmentIndex += 1;
+      const utterance = new SpeechSynthesisUtterance(segment.text);
+      utterance.lang = selectedVoice?.lang || "de-DE";
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = rate[0];
+      utterance.pitch = RHYTHMS[rhythm].pitch;
+      utterance.volume = 1;
+      utterance.onboundary = (event) => {
+        if (event.name === "word" && session === narrationSession.current) {
+          setActiveChar(segment.start + event.charIndex);
+        }
+      };
+      utterance.onend = () => {
+        if (session !== narrationSession.current) return;
+        continueNarration.current = speakNext;
+        pauseTimer.current = window.setTimeout(speakNext, RHYTHMS[rhythm].pause);
+      };
+      utterance.onerror = finish;
+      window.speechSynthesis.speak(utterance);
     };
+
     setSpeaking(true);
     setPaused(false);
-    window.speechSynthesis.speak(utterance);
+    continueNarration.current = speakNext;
+    speakNext();
   }
 
   function toggleAudio() {
     if (speaking && !paused) {
-      window.speechSynthesis.pause();
+      if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
+      if (window.speechSynthesis.speaking) window.speechSynthesis.pause();
       setPaused(true);
       return;
     }
     if (speaking && paused) {
-      window.speechSynthesis.resume();
+      if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+      else continueNarration.current?.();
       setPaused(false);
       return;
     }
@@ -138,9 +233,29 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   }
 
   function restartAudio() {
-    window.speechSynthesis.cancel();
     setActiveChar(-1);
     startAudio();
+  }
+
+  function changeVoice(nextVoiceURI: string) {
+    narrationSession.current += 1;
+    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
+    window.speechSynthesis?.cancel();
+    setSpeaking(false);
+    setPaused(false);
+    setActiveChar(-1);
+    setVoiceURI(nextVoiceURI);
+    window.localStorage.setItem("leselaut-voice", nextVoiceURI);
+  }
+
+  function changeRhythm(nextRhythm: RhythmMode) {
+    narrationSession.current += 1;
+    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
+    window.speechSynthesis?.cancel();
+    setSpeaking(false);
+    setPaused(false);
+    setActiveChar(-1);
+    setRhythm(nextRhythm);
   }
 
   function renderText() {
@@ -186,6 +301,35 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
           <b>{rate[0].toFixed(2)}×</b>
         </div>
         <Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Restart audio"><RotateCcw /></Button>
+      </div>
+
+      <div className="narration-controls">
+        <label>
+          <span>German voice</span>
+          <Select value={voiceURI || "automatic"} onValueChange={changeVoice}>
+            <SelectTrigger aria-label="Choose German narration voice"><SelectValue placeholder="Best available voice" /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="automatic">Automatic · best available</SelectItem>
+              {germanVoices.map((voice, index) => (
+                <SelectItem key={voice.voiceURI} value={voice.voiceURI}>
+                  {index === 0 ? "Best available · " : ""}{voice.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </label>
+        <label>
+          <span>Speaking rhythm</span>
+          <Select value={rhythm} onValueChange={(value) => changeRhythm(value as RhythmMode)}>
+            <SelectTrigger aria-label="Choose narration rhythm"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {(Object.keys(RHYTHMS) as RhythmMode[]).map((mode) => (
+                <SelectItem key={mode} value={mode}>{RHYTHMS[mode].label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </label>
+        <p>Sentence-aware pauses make the narration easier to follow. Available voices depend on your device.</p>
       </div>
 
       <div className="word-help"><MousePointer2 /> Hover or tap a word for its English meaning</div>

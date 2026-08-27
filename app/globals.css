@@ -216,6 +216,11 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .rate-control [data-slot="slider-range"] { background: var(--orange); }
 .rate-control [data-slot="slider-thumb"] { width: 14px; height: 14px; border-color: var(--orange); }
 .audio-bar > button:last-child { color: white; opacity: .72; }
+.narration-controls { margin: 0 0 13px; padding: 12px 14px; display: grid; grid-template-columns: minmax(190px, 1fr) minmax(180px, .8fr) minmax(180px, 1fr); gap: 12px; align-items: end; border: 1px solid var(--line); border-radius: 13px; background: #f3efe7; }
+.narration-controls label { display: grid; gap: 5px; }
+.narration-controls label > span { color: var(--green); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .11em; }
+.narration-controls [data-slot="select-trigger"] { width: 100%; background: var(--white); font-size: 10px; }
+.narration-controls > p { margin: 0 0 3px; color: var(--ink-soft); font-size: 9px; line-height: 1.45; }
 .word-help { display: flex; align-items: center; justify-content: center; gap: 6px; color: #7d837e; font-size: 8px; }
 .word-help svg { width: 12px; }
 .reader-copy { max-width: 760px; margin: 23px auto 30px; white-space: pre-wrap; font: 400 clamp(20px, 2.4vw, 27px)/1.78 Georgia, serif; color: #29312c; }
@@ -286,6 +291,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .reader-heading [data-slot="dialog-title"] { font-size: 43px; }
   .audio-bar { grid-template-columns: auto 1fr auto; }
   .rate-control { grid-column: 1 / -1; }
+  .narration-controls { grid-template-columns: 1fr; }
   .reader-copy { font-size: 22px; }
   .reader-notes { grid-template-columns: 1fr; }
   .reader-nav button { font-size: 0; width: 38px; }
