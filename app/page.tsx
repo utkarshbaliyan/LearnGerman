@@ -17,7 +17,7 @@ import {
   Volume2,
 } from "lucide-react";
 
-import { A1_STORIES, A1_UNITS, type A1Story, cleanWord, meaningFor } from "@/app/a1-curriculum";
+import { A1_STATS, A1_STORIES, A1_UNITS, type A1Story, cleanWord, meaningFor } from "@/app/a1-curriculum";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -167,7 +167,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
         <DialogTitle>{story.title}</DialogTitle>
         <DialogDescription>
           <span><BookOpen /> {wordCount} words</span>
-          <span><Clock3 /> about 1 minute</span>
+          <span><Clock3 /> about {Math.max(3, Math.ceil(wordCount / 70))} minutes at a learning pace</span>
           <span><Languages /> {story.grammar}</span>
         </DialogDescription>
       </DialogHeader>
@@ -236,7 +236,7 @@ export default function Home() {
         <header className="topbar">
           <a href="#top" className="brand" aria-label="LeseLaut home">
             <span className="brand-mark" aria-hidden="true">ä</span>
-            <span><strong>LeseLaut</strong><small>100 German stories for A1</small></span>
+            <span><strong>LeseLaut</strong><small>100 immersive German stories for A1</small></span>
           </a>
           <nav className="topnav" aria-label="Primary navigation">
             <a href="#curriculum">Curriculum</a>
@@ -249,19 +249,19 @@ export default function Home() {
           <div className="hero-copy">
             <Badge className="eyebrow"><Sparkles /> CEFR-aligned A1 course</Badge>
             <h1>German starts<br />with a <em>story.</em></h1>
-            <p>One hundred short stories take a complete beginner through the everyday language, core vocabulary and grammar of A1 German.</p>
+            <p>One hundred longer, flowing stories help a complete beginner meet more than 800 useful words in context—not as an isolated vocabulary list.</p>
             <div className="hero-actions">
               <Button size="lg" onClick={() => openStory(A1_STORIES[0])}><Play /> Start story 001</Button>
               <a href="#stories">Browse all stories <ArrowRight /></a>
             </div>
           </div>
           <div className="story-stack" aria-label="Course overview">
-            <div className="stack-card stack-back"><span>100</span><small>short stories</small></div>
-            <div className="stack-card stack-middle"><span>10</span><small>learning units</small></div>
+            <div className="stack-card stack-back"><span>{Math.floor(A1_STATS.totalWords / 1000)}k+</span><small>words to read & hear</small></div>
+            <div className="stack-card stack-middle"><span>800+</span><small>words in context</small></div>
             <div className="stack-card stack-front">
               <div className="mini-cover"><span>001</span><Badge>A1</Badge></div>
               <h2>Guten Morgen, Mia!</h2>
-              <p>Listen · read · hover · speak</p>
+              <p>A complete 3-minute chapter · listen · read · hover · speak</p>
               <Button onClick={() => openStory(A1_STORIES[0])}>Read the first story <ArrowRight /></Button>
             </div>
           </div>
@@ -269,9 +269,9 @@ export default function Home() {
 
         <section className="curriculum" id="curriculum">
           <div className="section-intro">
-            <span>10 units · from zero to A1</span>
-            <h2>A complete beginner path, in small pieces.</h2>
-            <p>The sequence follows A1 can-do skills: personal details, familiar surroundings, everyday needs, simple messages, prices, times and directions.</p>
+            <span>10 units · 100 longer chapters</span>
+            <h2>Learn the flow, not just the words.</h2>
+            <p>Each chapter develops a situation through connected events and dialogue, while familiar vocabulary returns often enough to become natural.</p>
           </div>
           <div className="unit-track">
             {A1_UNITS.map((unit) => (
@@ -283,17 +283,17 @@ export default function Home() {
             ))}
           </div>
           <div className="coverage-strip">
-            <div><b>Reception</b><span>short texts & slow audio</span></div>
+            <div><b>Reading volume</b><span>{A1_STATS.totalWords.toLocaleString("en-US")} words across the course</span></div>
             <div><b>Interaction</b><span>questions & everyday needs</span></div>
             <div><b>Production</b><span>simple speaking & writing</span></div>
-            <div><b>Vocabulary</b><span>private, public, work & study</span></div>
+            <div><b>Vocabulary</b><span>800+ useful words in context</span></div>
           </div>
         </section>
 
         <section className="library" id="stories">
           <div className="library-heading">
             <div><span>The A1 library</span><h2>{activeUnit === "all" ? "All 100 stories" : `Unit ${activeUnit}: ${A1_UNITS[Number(activeUnit) - 1].title}`}</h2></div>
-            <p>{activeUnit === "all" ? "Choose a unit or begin at story one. Every story has slow audio and instant word help." : A1_UNITS[Number(activeUnit) - 1].description}</p>
+            <p>{activeUnit === "all" ? `Choose a unit or begin at story one. Stories average ${A1_STATS.averageStoryWords} words, with slow audio and instant word help.` : A1_UNITS[Number(activeUnit) - 1].description}</p>
           </div>
 
           <Tabs value={activeUnit} onValueChange={setActiveUnit} className="unit-tabs">

@@ -236,6 +236,101 @@ const UNIT_SEEDS: UnitSeed[] = [
   },
 ];
 
+const UNIT_FLOW: string[][] = [
+  [
+    `{name} bleibt noch eine Weile im Café und hört den Menschen am Nachbartisch zu. Zwei Personen begrüßen sich, nennen ihre Namen und sprechen über ihre Länder. Die Sätze sind kurz, aber {name} versteht immer mehr. Dann kommt eine junge Frau und fragt, ob der Platz frei ist. {name} antwortet freundlich und stellt sich noch einmal vor. Beide schreiben ihre Telefonnummern in ein kleines Heft. Bevor sie gehen, bestellen sie Tee und üben zusammen: „Wie heißt du? Wo wohnst du? Welche Sprachen sprichst du?“ Am Anfang spricht {name} langsam. Nach einigen Minuten klingt das Gespräch schon leichter.`,
+    `Später geht {name} zum Deutschkurs. Heute sitzen Menschen aus vielen Ländern im Raum. Die Lehrerin zeichnet eine Weltkarte an die Tafel und jede Person zeigt ihr Land. Danach arbeiten immer zwei Personen zusammen. Sie fragen nach Name, Alter, Adresse, Beruf und Sprache. {name} macht zuerst einen kleinen Fehler, verbessert den Satz und versucht es noch einmal. Der Partner hört geduldig zu und antwortet deutlich. In der Pause sprechen alle weiter. Niemand benutzt lange Sätze, trotzdem lernen sie viel voneinander. Als der Kurs endet, kann {name} drei neue Personen mit Namen begrüßen und ihnen eine einfache Frage stellen.`,
+    `{name} möchte die neuen deutschen Wörter nicht vergessen. Zu Hause nimmt {name} zehn kleine Karten. Auf die Vorderseite kommt eine Frage, auf die Rückseite eine passende Antwort. Eine Karte sagt: „Woher kommst du?“ Eine andere fragt: „Wie ist deine Telefonnummer?“ Dann spricht {name} alle Fragen laut und antwortet ohne Hilfe. Manchmal fehlt ein Wort. Dann schaut {name} kurz ins Buch und beginnt den ganzen Satz neu. Am Abend ruft ein Freund an. {name} erzählt von den Menschen im Kurs und stellt auch dem Freund einige Fragen. So wird aus einer Übung ein richtiges Gespräch.`,
+  ],
+  [
+    `{name} nimmt später das Familienfoto noch einmal in die Hand. Hinter jedem Gesicht steht eine kleine Geschichte. Die Mutter arbeitet am Vormittag, der Vater kocht am Wochenende, und die Kinder helfen im Garten. {name} beschreibt die Personen langsam: ihre Haare, ihre Augen, ihre Kleidung und ihren Charakter. Dann fragt ein Freund: „Wer ist die Frau neben deinem Bruder?“ {name} kennt die Antwort und erklärt die Beziehung. Gemeinsam vergleichen sie ihre Familien. Eine Familie ist groß, die andere klein, aber beide treffen sich gern zum Essen. Am Ende kennt der Freund nicht nur die Namen, sondern auch die wichtigsten Personen im Leben von {name}.`,
+    `Am Sonntag kommt die ganze Familie zusammen. Schon am Morgen deckt {name} den Tisch und stellt Teller, Gläser und Blumen bereit. Ein Onkel bringt Brot, eine Tante bringt Salat, und die Cousinen haben einen Kuchen dabei. Beim Essen sprechen alle über Arbeit, Schule und Freizeit. Die Großeltern erzählen eine alte Geschichte, und die Kinder hören aufmerksam zu. Später machen sie ein neues Gruppenfoto. Es ist nicht leicht, denn ein Kind lacht, jemand schaut zur Seite und der Hund läuft vor die Kamera. Nach drei Versuchen gelingt das Bild. {name} sieht es an und denkt: Jede Person ist anders, aber zusammen sind wir eine Familie.`,
+    `{name} schreibt für den Sprachkurs einen kurzen Text über wichtige Menschen. Zuerst entsteht eine Liste mit Namen, Alter und Beruf. Danach werden daraus ganze Sätze: „Meine Schwester heißt … Sie ist … Sie hat …“ {name} achtet auf mein, dein, sein und ihr. Diese kleinen Wörter sind manchmal schwierig. Ein Freund liest den Text und stellt zusätzliche Fragen. So ergänzt {name} Informationen über Hobbys, Wohnorte und gemeinsame Aktivitäten. Am Abend liest {name} den fertigen Text der Familie vor. Alle hören gern zu. Nur der Bruder sagt lachend, dass seine Haare nicht kurz, sondern sehr kurz sind. {name} verbessert das Wort sofort.`,
+  ],
+  [
+    `{name} geht langsam durch alle Zimmer und macht eine Liste. Im Flur steht eine kleine Kommode, im Wohnzimmer liegen Bücher auf dem Tisch, und in der Küche fehlen noch zwei Stühle. {name} zeichnet einen einfachen Plan der Wohnung. Neben jedes Zimmer schreibt {name} die Möbel und die Farben. Danach hilft ein Freund beim Aufräumen. Sie stellen die Lampe neben das Sofa, hängen ein Bild an die Wand und legen den Teppich vor das Bett. Nicht alles passt sofort. Der Schrank ist zu breit und der Tisch steht im Weg. Gemeinsam finden sie für jeden Gegenstand einen guten Platz. Am Abend wirkt die Wohnung hell, ruhig und wirklich gemütlich.`,
+    `Heute besucht {name} eine Nachbarin im Haus. Ihre Wohnung sieht ganz anders aus. Es gibt viele Pflanzen, bunte Kissen und alte Fotos. In der Küche steht ein großer Holztisch, an dem sechs Personen sitzen können. Die Nachbarin zeigt den Balkon und erklärt, welche Blumen Sonne brauchen. Danach trinken beide Tee im Wohnzimmer. {name} fragt: „Woher ist diese schöne Lampe?“ Die Nachbarin erzählt von einem Markt in Wien. Während des Gesprächs hört {name} viele Ortsangaben: auf dem Regal, unter dem Fenster, zwischen den Stühlen und hinter der Tür. Auf dem Heimweg wiederholt {name} die Ausdrücke leise und schaut dabei auf die Dinge im Treppenhaus.`,
+    `{name} erwartet am Nachmittag Besuch und möchte alles vorbereiten. Zuerst öffnet {name} die Fenster, dann räumt {name} das Wohnzimmer auf. Die Tassen kommen in den Schrank, die Zeitung liegt auf dem Regal, und frische Blumen stehen jetzt auf dem Tisch. Plötzlich ist der Wohnungsschlüssel weg. {name} sucht in der Jacke, unter dem Sofa und neben der Haustür. Dort ist er nicht. Schließlich klingelt das Telefon. Beim Suchen findet {name} den Schlüssel direkt neben dem Telefonbuch. Kurz danach kommen die Gäste. Sie bringen Kuchen mit und fragen nach der neuen Wohnung. {name} zeigt ihnen jedes Zimmer und kann genau sagen, wo alles steht.`,
+  ],
+  [
+    `{name} plant den nächsten Tag schon am Abend. Auf einem Blatt stehen Uhrzeiten und Aufgaben: um sieben aufstehen, um acht den Bus nehmen, am Vormittag arbeiten und um halb eins Mittagspause machen. Nach der Arbeit möchte {name} einkaufen und einen Freund treffen. Der Kalender ist voll, deshalb muss alles gut passen. Am Morgen läuft zunächst alles nach Plan. Dann kommt der Bus zehn Minuten später. {name} schreibt eine kurze Nachricht und erklärt die Verspätung. Niemand ist böse. In der Pause prüft {name} noch einmal den Kalender und verschiebt einen Termin. So bleibt am Abend sogar eine freie Stunde für Musik und ein ruhiges Essen.`,
+    `Unter der Woche hat {name} einen festen Rhythmus. Montags und donnerstags ist Sprachkurs, dienstags wird Sport gemacht, und freitags endet die Arbeit früher. Heute fragt eine Freundin nach einem Treffen. Gemeinsam suchen sie einen passenden Tag. Mittwoch geht nicht, denn {name} hat einen Termin beim Arzt. Samstagvormittag ist auch voll, aber am Nachmittag haben beide Zeit. Sie verabreden sich um Viertel nach vier vor dem Kino. {name} schreibt Ort und Uhrzeit sofort ins Handy. Später erzählt {name} den Tagesplan laut auf Deutsch. Die Verben stehen an der richtigen Stelle, und bei aufstehen, anrufen und einkaufen hört man deutlich die zwei Teile.`,
+    `Am Wochenende möchte {name} nicht jede Minute planen. Trotzdem gibt es einige Dinge zu tun. Nach einem langen Frühstück wird die Wäsche gemacht und die Küche aufgeräumt. Danach ruft {name} die Eltern an. Das Gespräch dauert fast eine Stunde, weil es viele Neuigkeiten gibt. Am Nachmittag scheint die Sonne. {name} fährt mit dem Fahrrad in den Park und trifft dort zufällig zwei Freunde. Sie kaufen Kaffee, sitzen am See und überlegen, was sie am Abend machen können. Schließlich kochen sie gemeinsam. Als {name} spät nach Hause kommt, zeigt die Uhr kurz vor Mitternacht. Der Tag war ungeplant, aber schön und voller kleiner Gespräche.`,
+  ],
+  [
+    `{name} möchte heute nicht nur schnell essen, sondern das Gericht selbst vorbereiten. Auf dem Küchentisch liegen Gemüse, Brot, Käse und frische Kräuter. Zuerst wird alles gewaschen und geschnitten. Dann kommt etwas Öl in die Pfanne. Ein Freund liest das Rezept vor und {name} arbeitet Schritt für Schritt. Einmal fehlt Salz, ein anderes Mal ist der Herd zu heiß. Trotzdem riecht die Küche bald wunderbar. Während das Essen kocht, decken beide den Tisch und sprechen über ihre Lieblingsgerichte. Der Freund isst kein Fleisch, deshalb gibt es eine vegetarische Mahlzeit. Am Ende probieren sie gemeinsam. Es schmeckt besser als erwartet, und für morgen bleibt sogar eine kleine Portion übrig.`,
+    `Am Samstag geht {name} früh auf den Markt. Vor den Ständen liegen rote Äpfel, gelbe Birnen, Kartoffeln, Tomaten und viele andere Lebensmittel. {name} fragt nach Preisen und kauft genau die Menge auf der Liste. Bei einem Stand darf {name} eine Erdbeere probieren. Sie ist süß, also kommt auch eine Schale in den Korb. Danach geht es zur Bäckerei. Dort duftet es nach warmem Brot. Die Verkäuferin empfiehlt ein dunkles Brot und erklärt die Zutaten. {name} hört aufmerksam zu und bestellt außerdem zwei Brötchen. Zu Hause werden alle Einkäufe sortiert. Kalte Produkte kommen in den Kühlschrank, Obst bleibt in einer Schüssel auf dem Tisch.`,
+    `Am Abend kommen drei Freunde zum Essen. {name} fragt vorher, was alle gern mögen und ob jemand etwas nicht essen kann. Eine Person mag keine Zwiebeln, eine andere trinkt keinen Kaffee. Deshalb gibt es mehrere kleine Speisen und Wasser mit Zitrone. Beim Essen reichen sie Schüsseln weiter und sagen höflich: „Möchtest du noch etwas?“ oder „Kannst du mir bitte das Brot geben?“ Danach bewertet jeder das beste Gericht. Die Suppe gewinnt, aber auch der Salat ist fast leer. Gemeinsam räumen sie den Tisch ab. {name} schreibt später die neuen Wörter aus dem Rezept in ein Heft und erinnert sich dabei an jedes Gespräch.`,
+  ],
+  [
+    `{name} geht mit einer klaren Einkaufsliste in die Stadt. Zuerst wird ein Geschenk gesucht, danach Kleidung für den Winter. Im ersten Laden ist die Auswahl groß, aber die Preise sind zu hoch. {name} fragt eine Verkäuferin nach einem günstigeren Modell. Sie zeigt eine andere Farbe und erklärt, dass es heute zwanzig Prozent Rabatt gibt. In der Umkleidekabine probiert {name} zwei Größen an. Eine ist zu eng, die andere passt gut. An der Kasse wird mit Karte bezahlt und der Kassenbon sicher in die Tasche gelegt. Vor dem Geschäft prüft {name} die Liste. Das Geschenk fehlt noch, also geht die Suche weiter.`,
+    `Auf dem Flohmarkt entdeckt {name} viele alte und besondere Dinge. Zwischen Büchern, Tassen und Bildern steht eine kleine blaue Lampe. Der Verkäufer möchte fünfundzwanzig Euro, aber {name} hat nur zwanzig dabei. Beide sprechen freundlich über den Preis und einigen sich schließlich auf achtzehn Euro. Der Verkäufer packt die Lampe vorsichtig in Papier. Am nächsten Stand findet {name} ein fast neues Wörterbuch und eine warme Jacke. Vor dem Kauf werden alle Seiten und Taschen geprüft. Zu Hause zeigt {name} die Sachen einem Freund. Er findet den Einkauf gut, fragt aber lachend: „Wo willst du jetzt noch eine Lampe hinstellen?“`,
+    `Ein Paket bringt {name} zuerst große Freude und dann ein kleines Problem. Das bestellte Produkt sieht anders aus als auf dem Foto und hat außerdem die falsche Größe. {name} liest die Rechnung und die Information zur Rückgabe. Am nächsten Morgen geht es mit Paket und Kassenbon zur Post. Die Mitarbeiterin wiegt den Karton, druckt ein Etikett und erklärt den weiteren Weg. {name} stellt einige Fragen, damit nichts falsch läuft. Danach wird im Geschäft ein passender Ersatz gesucht. Dieses Mal prüft {name} Farbe, Größe und Preis ganz genau. Am Ende kostet das neue Produkt etwas weniger, und der Unterschied kommt zurück auf die Karte.`,
+  ],
+  [
+    `{name} hat heute mehrere Wege in der Stadt. Zuerst muss ein Brief zur Post, dann ein Buch zurück in die Bibliothek, und zuletzt fehlt noch etwas aus der Apotheke. Auf dem Stadtplan markiert {name} alle Orte. Der kürzeste Weg führt über den Marktplatz und durch einen kleinen Park. An einer Kreuzung ist die Straße gesperrt. {name} fragt einen Polizisten nach einer anderen Route. Er erklärt: „Gehen Sie bis zur Kirche, dort rechts und dann an der Bank vorbei.“ {name} wiederholt die Richtung, damit alles richtig ist. Nach einer Stunde sind alle Aufgaben erledigt, und sogar Zeit für einen Kaffee bleibt.`,
+    `Eine Freundin besucht die Stadt zum ersten Mal. {name} wartet am Bahnhof und zeigt ihr die wichtigsten Orte. Gemeinsam nehmen sie die Straßenbahn bis zum Zentrum. Dort sehen sie das Rathaus, die alte Kirche und einen großen Platz mit vielen Cafés. Die Freundin möchte ein Museum besuchen, aber zuerst braucht sie Geld. {name} erklärt den Weg zum nächsten Automaten. Später verlieren sie kurz die Orientierung. Sie schauen auf den Plan und fragen einen Mann an der Haltestelle. Seine Erklärung ist langsam und deutlich. Am Nachmittag können beide den Weg schon ohne Karte finden. Sie merken: Eine Stadt wird schnell vertraut, wenn man zu Fuß geht und Fragen stellt.`,
+    `Am Abend fährt {name} mit öffentlichen Verkehrsmitteln nach Hause. Auf der Anzeige steht eine Verspätung von fünfzehn Minuten. Viele Menschen warten und lesen die neuen Informationen. Plötzlich wechselt das Gleis. {name} hört die Durchsage nicht ganz und fragt eine andere Person: „Fährt der Zug jetzt von Gleis vier?“ Die Person bestätigt es und zeigt zur Treppe. Beide gehen schnell hinüber. Im Zug sitzen sie zufällig nebeneinander und sprechen über ihren Tag. {name} erzählt von Post, Bibliothek und Markt. Als der Zug ankommt, kennt {name} nicht nur den richtigen Weg, sondern auch einen neuen freundlichen Menschen aus der Nachbarschaft.`,
+  ],
+  [
+    `{name} bekommt am Morgen eine neue Aufgabe. Zuerst erklärt die Kollegin jeden Schritt langsam. {name} hört zu, macht kurze Notizen und fragt bei einem schwierigen Wort noch einmal nach. Danach beginnt die Arbeit. Eine Datei muss geöffnet, ein Formular ausgefüllt und eine Nachricht geschrieben werden. Fast alles klappt. Nur der Drucker zeigt plötzlich eine rote Lampe. {name} bleibt ruhig und bittet um Hilfe. Gemeinsam finden beide das Problem. In der Pause sprechen die Kollegen über ihre Aufgaben und Termine. {name} kann schon erklären, was heute fertig ist und was morgen noch gemacht werden muss. Das gibt Sicherheit für den nächsten Arbeitstag.`,
+    `Im Sprachkurs arbeitet {name} heute mit einer Partnerin. Beide lesen zuerst einen längeren Text und markieren unbekannte Wörter. Dann vergleichen sie ihre Ideen. Einige Bedeutungen verstehen sie aus dem Satz, andere finden sie im Wörterbuch. Die Lehrerin gibt anschließend eine praktische Aufgabe: Sie sollen eine kurze E-Mail schreiben, um einen Termin zu verschieben. {name} achtet auf Anrede, Grund und Gruß. Die Partnerin prüft den Text und entdeckt zwei kleine Fehler. Nach der Verbesserung liest {name} die Nachricht laut vor. Sie klingt höflich und klar. Am Ende des Kurses kann jeder die Aufgabe ohne Muster noch einmal selbst schreiben.`,
+    `Heute muss {name} mehrere Menschen um etwas bitten. Ein Kunde braucht Information, eine Kollegin sucht ein Dokument, und der Chef möchte bis Mittag eine Antwort. {name} ordnet zuerst die Aufgaben nach Zeit. Dann folgen kurze, freundliche Gespräche: „Können Sie bitte warten?“, „Kannst du mir helfen?“ und „Ich schicke die Datei gleich.“ Nicht jede Antwort kommt sofort. Deshalb notiert {name}, wer später zurückrufen will. Kurz vor Feierabend ist fast alles erledigt. {name} räumt den Arbeitsplatz auf und schreibt eine Liste für morgen. Der Tag war anstrengend, aber {name} hat viele echte Sätze benutzt und jede Situation selbst gelöst.`,
+  ],
+  [
+    `{name} möchte nach einer vollen Woche etwas für Körper und Kopf tun. Am Morgen wird das Wetter geprüft: Es ist kühl, aber trocken. Deshalb zieht {name} eine warme Jacke an und geht in den Park. Dort laufen Menschen, fahren Fahrrad oder spielen mit ihren Kindern. {name} beginnt langsam und macht nach zwanzig Minuten eine Pause am See. Ein Freund kommt vorbei und schlägt ein gemeinsames Spiel vor. Später trinken beide Wasser und sprechen über Sportarten, die sie gern oder nicht gern machen. {name} merkt, dass Bewegung mit Gesellschaft leichter ist. Am Abend ist der Körper müde, aber der Kopf fühlt sich ruhig und frei an.`,
+    `Draußen regnet es den ganzen Nachmittag. {name} ändert deshalb den Plan und bleibt zu Hause. Zuerst wird Musik gehört, dann liest {name} einige Seiten in einem leichten deutschen Buch. Neue Wörter werden markiert, aber nicht jedes Wort muss sofort gesucht werden. Viele Bedeutungen werden durch die Geschichte klar. Später ruft eine Freundin an und schlägt einen Filmabend vor. Sie bringt Popcorn mit, {name} macht Tee. Vor dem Film beschreiben beide das Wetter und erzählen von der Woche. Der Abend ist anders als geplant, aber nicht langweilig. Bevor die Freundin geht, verabreden sie sich für einen Spaziergang, sobald wieder die Sonne scheint.`,
+    `Seit dem Morgen fühlt sich {name} nicht ganz gut. Der Kopf tut weh, der Hals ist trocken und die Arbeit fällt schwer. {name} trinkt viel Wasser und misst die Temperatur. Weil es nicht besser wird, folgt ein Anruf beim Arzt. Die Mitarbeiterin fragt nach den Beschwerden und bietet einen Termin am Nachmittag an. Im Wartezimmer sitzt {name} mit Abstand zu den anderen Personen. Der Arzt hört aufmerksam zu und empfiehlt Ruhe, warme Suppe und zwei Tage zu Hause. Auf dem Rückweg holt {name} alles Nötige aus der Apotheke. Am Abend geht es schon etwas besser, und eine Freundin bringt ein Buch vorbei.`,
+  ],
+  [
+    `{name} bereitet die Reise mehrere Tage vorher vor. Auf dem Bett liegen Kleidung, Schuhe, ein Buch und wichtige Dokumente. Nicht alles passt in den Koffer, deshalb muss {name} auswählen. Die Fahrkarte und der Ausweis kommen in eine kleine Tasche, die immer erreichbar bleibt. Danach wird die Verbindung geprüft: Abfahrt, Gleis, Umstieg und Ankunft. {name} schreibt die wichtigsten Informationen auf Papier, falls das Handy keinen Strom mehr hat. Am Reisetag geht {name} früh zum Bahnhof. Dort zeigt die Anzeige eine kleine Verspätung. Das ist kein Problem, denn genug Zeit ist eingeplant. Mit Kaffee und Koffer beginnt schließlich die Fahrt.`,
+    `Im Hotel begrüßt {name} die Person an der Rezeption und nennt den reservierten Namen. Für die Anmeldung werden Ausweis und Adresse gebraucht. Die Rezeptionistin erklärt Frühstückszeit, Internet und den Weg zum Zimmer. {name} hört genau zu und fragt wegen eines ruhigen Zimmers noch einmal nach. Oben funktioniert die Zimmerkarte zuerst nicht. Ein Mitarbeiter kommt mit und hilft. Danach stellt {name} den Koffer ab, öffnet das Fenster und schaut auf die fremde Stadt. Auf dem Tisch liegt ein Plan. {name} markiert ein Museum, einen Park und ein Restaurant. So entsteht ein einfacher Plan für den ersten Urlaubstag.`,
+    `Am letzten Reisetag denkt {name} an viele kleine Erlebnisse zurück. Es gab eine verspätete Bahn, einen schweren Koffer und einmal den falschen Weg. Es gab aber auch freundliche Menschen, gutes Essen und interessante Gespräche. {name} kauft Postkarten und ein kleines Geschenk für die Familie. Im Café schreibt {name} einige Sätze über Wetter, Unterkunft und Ausflüge. Danach geht es zum Bahnhof. Dieses Mal findet {name} das Gleis sofort und versteht die Durchsage. Im Zug wird noch einmal im deutschen Buch gelesen. Viele Wörter wirken jetzt bekannt. Die Reise war nicht immer einfach, aber {name} konnte jede wichtige Situation mit einfachem Deutsch bewältigen.`,
+  ],
+];
+
+const STORY_ENDINGS = [
+  `{name} schreibt am Abend fünf neue Wörter mit Beispielsätzen auf. Danach erzählt {name} die Geschichte noch einmal laut, zuerst mit dem Text und dann ohne ihn. Einige Details fehlen, aber Anfang, Problem und Ende sind klar. Genau das ist heute der wichtigste Erfolg.`,
+  `Bevor der Tag endet, sendet {name} einem Freund eine kurze Nachricht darüber. Der Freund antwortet mit zwei Fragen. {name} liest sie langsam, versteht beide und schreibt ganze Sätze zurück. Aus einer kleinen Alltagssituation ist so eine echte Sprachübung geworden.`,
+  `{name} denkt noch einmal an das Gespräch. Welche Frage war wichtig, welche Antwort hat geholfen, und welches Wort war neu? Im Heft entsteht eine kleine Zusammenfassung. Am nächsten Morgen liest {name} sie beim Frühstück laut und versteht den Ablauf sofort wieder.`,
+  `Zu Hause erzählt {name} alles in der richtigen Reihenfolge: zuerst, dann, danach und am Ende. Diese Wörter verbinden die einzelnen Momente. Die Geschichte klingt dadurch nicht mehr wie eine Liste, sondern wie ein zusammenhängendes Erlebnis mit einem klaren Ergebnis.`,
+  `Später übt {name} die wichtigsten Sätze vor dem Spiegel. Beim zweiten Versuch wird die Stimme sicherer, beim dritten kommt die Antwort ohne lange Pause. {name} merkt: Die Wörter bleiben besser im Kopf, wenn sie zu einer Situation und zu einem Gefühl gehören.`,
+  `{name} markiert im Text bekannte Wörter grün und neue Wörter orange. Die grüne Gruppe ist größer als erwartet. Von den neuen Wörtern wählt {name} nur sechs für heute. Mit jedem Wort entsteht ein eigener kurzer Satz aus dem Alltag.`,
+  `Am nächsten Tag begegnet {name} einer ähnlichen Situation. Dieses Mal kommen die passenden Wörter schneller. Nicht jeder Satz ist perfekt, doch die andere Person versteht alles. {name} fragt nach, antwortet ruhig und beendet das Gespräch mit einem Lächeln.`,
+  `Für den Kurs nimmt {name} eine kleine Sprachnachricht auf. Darin dauert die Erzählung fast zwei Minuten. Nach dem ersten Hören verbessert {name} drei Stellen und nimmt sie noch einmal auf. Die zweite Version ist klarer und natürlicher.`,
+  `{name} stellt sich danach drei einfache Fragen zum Text: Wer war dabei? Was ist passiert? Warum war das wichtig? Die Antworten werden etwas länger als früher. So wächst aus kurzen A1-Sätzen Schritt für Schritt eine flüssige Erzählung.`,
+  `Zum Schluss liest {name} die ganze Geschichte noch einmal langsam. Jetzt sind die Verbindungen zwischen den Sätzen deutlich. Bekannte Wörter geben Sicherheit, neue Wörter bringen mehr Details. {name} schließt das Heft und freut sich schon auf die nächste Geschichte.`,
+];
+
+const LEARNING_BRIDGES = [
+  `Währenddessen achtet {name} auf kleine Verbindungswörter. Mit und, aber, dann und deshalb wird klar, wie eine Handlung zur nächsten führt.`,
+  `Im Gespräch hört {name} einige Wörter mehrmals. Durch diese Wiederholung werden sie vertraut, und der Sinn des ganzen Satzes wird schneller verständlich.`,
+  `{name} versucht nicht, jeden Satz sofort zu übersetzen. Zuerst helfen Situation und bekannte Wörter, danach werden nur die wirklich wichtigen Lücken geprüft.`,
+  `Ein kurzer Dialog bringt neue Bewegung in den Tag. Frage und Antwort passen zusammen, und {name} kann dem Gespräch ohne lange Pause folgen.`,
+  `Dabei verändert sich auch die Stimmung. Erst ist {name} unsicher, später neugierig und am Ende zufrieden, weil die Aufgabe mit Deutsch gelingt.`,
+  `{name} bemerkt, dass dieselben Wörter in verschiedenen Sätzen anders wirken. Der Zusammenhang zeigt, welche Bedeutung in diesem Moment am besten passt.`,
+  `Ein kleines Problem macht die Geschichte interessanter. {name} sucht eine Lösung, bittet um Hilfe und versteht die Antwort durch den gemeinsamen Zusammenhang.`,
+  `Zwischendurch wiederholt {name} einen wichtigen Satz leise. Beim nächsten Mal kommt die gleiche Struktur schon leichter und klingt ein wenig natürlicher.`,
+  `Die einzelnen Ereignisse bilden jetzt eine klare Kette. {name} kann erklären, was vorher war, was gerade passiert und was danach kommen soll.`,
+  `So bleibt nicht nur eine Liste von Wörtern im Kopf. {name} erinnert sich an Menschen, Orte, Gefühle und an den Weg durch die ganze Situation.`,
+];
+
+const KNOWN_LEADS = [
+  "Mia", "Leo", "Eva", "Nora", "Ben", "Lina", "Omar", "Ana", "Ken", "Max", "Sofia", "Klara", "David", "Rania", "Mara", "Ella", "Bruno", "Nina", "Tim", "Emma", "Laura", "Jan", "Mila", "Anna", "Paula", "Ela", "Can", "Emil", "Ida", "Tom", "Leni", "Karim", "Julia", "Paul", "Mina", "Alex", "Nila", "Tarek", "Ravi", "Sara", "Elif", "Lea", "Jonas", "Luis", "Ava", "Lena", "Tara", "Niko",
+];
+
+function storyLead(text: string) {
+  return KNOWN_LEADS.find((name) => text.includes(name)) ?? "Die Hauptperson";
+}
+
+function longStoryText(base: string, unitIndex: number, storyIndex: number) {
+  const name = storyLead(base);
+  const middle = UNIT_FLOW[unitIndex][storyIndex % UNIT_FLOW[unitIndex].length];
+  const bridge = LEARNING_BRIDGES[storyIndex];
+  const ending = STORY_ENDINGS[storyIndex];
+  return [base, middle, bridge, ending].map((part) => part.replaceAll("{name}", name)).join("\n\n");
+}
+
 let storyNumber = 0;
 
 export const A1_UNITS: A1Unit[] = UNIT_SEEDS.map((unit, unitIndex) => ({
@@ -246,14 +341,14 @@ export const A1_UNITS: A1Unit[] = UNIT_SEEDS.map((unit, unitIndex) => ({
   grammar: unit.grammar,
   canDo: unit.canDo,
   color: unit.color,
-  stories: unit.stories.map(([title, text]) => {
+  stories: unit.stories.map(([title, text], storyIndex) => {
     storyNumber += 1;
     return {
       id: `a1-${String(storyNumber).padStart(3, "0")}`,
       number: storyNumber,
       unitId: unitIndex + 1,
       title,
-      text,
+      text: longStoryText(text, unitIndex, storyIndex),
       grammar: unit.grammar,
       canDo: unit.canDo,
       theme: unit.shortTitle,
@@ -409,14 +504,161 @@ export const GLOSSARY: Record<string, string> = {
   zum: "to the / for the", zweites: "second", zwölf: "twelve", älter: "older", öffnen: "to open", über: "about / over",
 };
 
+Object.assign(GLOSSARY, {
+  ab: "from / off", abfahrt: "departure", ablauf: "sequence / course", abstand: "distance",
+  achten: "to pay attention", aktivitäten: "activities", alltag: "everyday life",
+  alltagssituation: "everyday situation", alter: "age", ändert: "changes", anfang: "beginning",
+  ankommen: "to arrive", ankunft: "arrival", anmeldung: "registration", anrede: "salutation",
+  anruf: "phone call", anrufen: "to call", anschließend: "afterwards", anstrengend: "tiring",
+  antwort: "answer", anzeige: "display / notice", apotheke: "pharmacy", arbeitsplatz: "workplace",
+  arbeitstag: "working day", aufgabe: "task", aufgeräumt: "tidied", aufräumen: "to tidy up",
+  aufmerksamkeit: "attention", aufmerksam: "attentive", augen: "eyes", ausdrücke: "expressions",
+  ausflüge: "excursions", ausgefüllt: "filled out", außerdem: "in addition", auswahl: "selection",
+  auswählen: "to choose", bahn: "train / railway", bedeutung: "meaning", bedeutungen: "meanings",
+  beendet: "finishes / ended", begegnet: "encounters", begrüßen: "to greet", begrüßt: "greets",
+  beispielsatz: "example sentence", beispielsätzen: "example sentences", bekannt: "known / familiar",
+  benutzt: "uses", bereit: "ready", bereiten: "to prepare", beschreiben: "to describe",
+  beschwerden: "symptoms / complaints", besondere: "special", bestätigt: "confirms", beste: "best",
+  bestellt: "ordered", besuch: "visit", besuchen: "to visit", bevor: "before", bewältigen: "to manage",
+  bewegung: "movement / exercise", bewertet: "rates / evaluates", beziehung: "relationship",
+  bibliothek: "library", bietet: "offers", bild: "picture", bilder: "pictures", birne: "pear",
+  birnen: "pears", bitten: "to ask / request", blatt: "sheet / leaf", blumen: "flowers",
+  böse: "angry", brauchen: "to need", breit: "wide", bringen: "to bring", büchern: "books",
+  bunte: "colorful", charakter: "character / personality", cousinen: "female cousins",
+  dadurch: "through that", damit: "so that / with it", daraus: "from it", darüber: "about it",
+  dass: "that", datei: "file", dauert: "lasts", decken: "to set / cover", denken: "to think",
+  details: "details", deutlich: "clear / clearly", dienstags: "on Tuesdays", dinge: "things",
+  doch: "however / after all", dokument: "document", dokumente: "documents", donnerstags: "on Thursdays",
+  drucker: "printer", druckt: "prints", duftet: "smells fragrant", dunkles: "dark",
+  echte: "real / genuine", eigener: "own", einfachem: "simple", einfacher: "simpler",
+  eingeplant: "planned in", einige: "some", einkauf: "shopping / purchase", einkäufe: "purchases",
+  eins: "one", einzelnen: "individual", eng: "tight / narrow", entdeckt: "discovers",
+  entsteht: "is created", erfolg: "success", ergänzt: "adds / completes", ergebnis: "result",
+  erinnert: "remembers", erklärung: "explanation", erlebnis: "experience", erlebnisse: "experiences",
+  erledigt: "completed", erreichbar: "reachable", ersatz: "replacement", erwartet: "expects",
+  erzählung: "narrative", etikett: "label", fahren: "to travel / drive", falls: "in case",
+  fällt: "falls / is difficult", falsch: "wrong", familienfoto: "family photo", farbe: "color",
+  farben: "colors", fehler: "mistake", feierabend: "end of the working day", fertigen: "finished",
+  filmabend: "movie night", finden: "to find", flur: "hallway", flüssig: "fluent / flowing",
+  folgen: "to follow", formular: "form", freie: "free", freitags: "on Fridays", freizeit: "free time",
+  fremde: "foreign / unfamiliar", freude: "joy", freundliche: "friendly", frische: "fresh",
+  friseur: "hairdresser", frühstückszeit: "breakfast time", fühlt: "feels", führt: "leads",
+  fünfundzwanzig: "twenty-five", fuß: "foot", fußball: "football / soccer", gab: "there was / gave",
+  ganz: "whole / quite", ganze: "whole", garten: "garden", gäste: "guests", geben: "to give",
+  gebraucht: "needed / used", geburtstag: "birthday", geduldig: "patiently", gefühl: "feeling",
+  gegenstand: "object", geholfen: "helped", gehören: "to belong", gehört: "belongs / heard",
+  gelegt: "laid / put", gelesen: "read", gelingt: "succeeds", gelöst: "solved", gemacht: "done / made",
+  gemeinsam: "together", gemeinsame: "shared", gesellschaft: "company / society", gesicht: "face",
+  gesperrt: "closed / blocked", gespräch: "conversation", gespräche: "conversations",
+  gewaschen: "washed", geworden: "become", gläser: "glasses", glück: "luck", großeltern: "grandparents",
+  größen: "sizes", grund: "reason", gruppe: "group", gruppenfoto: "group photo", gruß: "greeting",
+  günstig: "inexpensive", haare: "hair", hals: "throat / neck", hand: "hand", hauptperson: "main character",
+  haustür: "front door", heft: "notebook", heimweg: "way home", hinstellen: "to put / place",
+  hinüber: "across / over", hobbys: "hobbies", höflich: "polite", holt: "gets / fetches",
+  holztisch: "wooden table", ideen: "ideas", information: "information", informationen: "information",
+  interessante: "interesting", internet: "internet", jede: "each / every", jedem: "each / everyone",
+  jeder: "everyone / each", jemand: "someone", kalte: "cold", kamera: "camera", karten: "cards",
+  karton: "cardboard box", kauf: "purchase", kissen: "cushions", klappt: "works out", klar: "clear",
+  kleidung: "clothing", klingt: "sounds", kommode: "chest of drawers", konzert: "concert",
+  korb: "basket", körper: "body", kreuzung: "intersection", kunde: "customer", kunden: "customers",
+  kurses: "of the course", kürzeste: "shortest", land: "country", länder: "countries",
+  lebensmittel: "groceries / food", leer: "empty", legen: "to lay / put", leichter: "easier",
+  leise: "quietly", letzten: "last", lieblingsgericht: "favorite dish", liste: "list",
+  mahlzeit: "meal", manchmal: "sometimes", markieren: "to mark", mehr: "more", mehrere: "several",
+  menge: "amount", merken: "to notice / remember", misst: "measures", mittag: "midday",
+  modell: "model", momente: "moments", möchtest: "would like", muster: "template / example",
+  nachbarschaft: "neighborhood", nachbartisch: "next table", nächste: "next", namen: "names",
+  natürlich: "of course / naturally", natürlicher: "more natural", nebeneinander: "next to each other",
+  nennen: "to name", nennt: "names", neuigkeiten: "news", niemand: "nobody", notiert: "notes down",
+  nötige: "necessary things", notizen: "notes", ob: "whether / if", öffentlich: "public",
+  öl: "oil", orange: "orange", ordnet: "organizes", orientierung: "orientation", ort: "place",
+  orte: "places", ortsangaben: "location phrases", packt: "packs", paket: "parcel",
+  partner: "partner", partnerin: "female partner", passende: "suitable", passiert: "happens",
+  perfekt: "perfect", pfanne: "pan", pflanzen: "plants", plan: "plan / map", planen: "to plan",
+  platz: "place / seat", plötzlich: "suddenly", polizisten: "police officer", popcorn: "popcorn",
+  portion: "portion", postkarten: "postcards", praktische: "practical", preise: "prices",
+  probieren: "to try / taste", problem: "problem", produkt: "product", produkte: "products",
+  prozent: "percent", prüft: "checks", rabatt: "discount", rathaus: "town hall", raum: "room",
+  rechnung: "bill / invoice", reihenfolge: "order / sequence", reisetag: "travel day",
+  rezept: "recipe", rezeption: "reception", rezeptionistin: "receptionist", rhythmus: "rhythm",
+  richtung: "direction", riecht: "smells", route: "route", rückgabe: "return", rückseite: "back side",
+  rückweg: "return journey", ruhe: "rest / quiet", sachen: "things", samstagvormittag: "Saturday morning",
+  satz: "sentence", sätze: "sentences", schale: "bowl / punnet", schauen: "to look",
+  schlägt: "suggests / hits", schließlich: "finally", schluss: "end", schmeckt: "tastes",
+  schritt: "step", schule: "school", schüssel: "bowl", schüsseln: "bowls", schwierig: "difficult",
+  see: "lake", selbst: "oneself / even", sendet: "sends", sicher: "safe / certainly", sicherheit: "confidence / safety",
+  situation: "situation", sobald: "as soon as", sogar: "even", sollen: "should", sondern: "but rather",
+  sortiert: "sorts", spaziergang: "walk", speisen: "dishes / foods", spiegel: "mirror", spiel: "game",
+  sportarten: "sports", sprache: "language", sprachen: "languages", sprachkurs: "language course",
+  sprachnachricht: "voice message", sprachübung: "language exercise", sprichst: "speak",
+  stadtplan: "city map", stand: "stall / stood", ständen: "stalls", stimme: "voice", strom: "electricity",
+  suche: "search", suchen: "to search", tafel: "board", tagesplan: "daily schedule", tasche: "bag",
+  taschen: "pockets / bags", tassen: "cups", telefon: "telephone", telefonbuch: "phone book",
+  telefonnummern: "phone numbers", teller: "plates", temperatur: "temperature", teppich: "carpet",
+  text: "text", texte: "texts", treppe: "stairs", tun: "to do", üben: "to practice",
+  überlegen: "to consider", übrig: "left over", übt: "practices", übung: "exercise",
+  uhrzeit: "time of day", umkleidekabine: "changing room", umstieg: "transfer",
+  unbekannte: "unknown", ungeplant: "unplanned", unterkunft: "accommodation", unterschied: "difference",
+  urlaubstag: "vacation day", vegetarische: "vegetarian", verabreden: "to arrange to meet",
+  verben: "verbs", verbessert: "improves", verbesserung: "improvement", verbinden: "to connect",
+  verbindung: "connection", vergessen: "to forget", vergleichen: "to compare", verkehrsmittel: "public transport",
+  verlieren: "to lose", verschieben: "to postpone", version: "version", versuch: "attempt",
+  versuchen: "to try", vertraut: "familiar", viertel: "quarter", vögel: "birds", voll: "full",
+  voller: "full of", voneinander: "from each other", vorbereiten: "to prepare", vorderseite: "front side",
+  vorher: "beforehand", vorsichtig: "carefully", wächst: "grows", wartezimmer: "waiting room",
+  wäsche: "laundry", wechselt: "changes", wege: "ways / routes", wegen: "because of",
+  weile: "while", weiter: "further / on", weltkarte: "world map", weniger: "less", werden: "to become / will",
+  wichtig: "important", wiederholt: "repeats", wiegt: "weighs", wirken: "to seem", wirklich: "really",
+  wohnorte: "places of residence", wohnungsschlüssel: "apartment key", wörtern: "words",
+  wunderbar: "wonderful", zeichnet: "draws", zeitung: "newspaper", zentrum: "center",
+  zimmerkarte: "room key card", zimmers: "of the room", zufällig: "by chance", zuletzt: "lastly",
+  zunächst: "at first", zurückrufen: "to call back", zusammenfassung: "summary",
+  zusammenhängend: "connected / coherent", zusätzliche: "additional", zutaten: "ingredients",
+  zweite: "second", zwischen: "between",
+  ähnlichen: "similar", anders: "different / differently", bemerkt: "notices", des: "of the",
+  diese: "this / these", dieselben: "the same", diesem: "this", endet: "ends",
+  erklären: "to explain", fehlen: "to be missing", fragen: "to ask / questions", genug: "enough",
+  geöffnet: "opened", geplant: "planned", geprüft: "checked", geschnitten: "cut",
+  geschrieben: "written", günstigeren: "less expensive", hoch: "high", ihn: "him",
+  interessanter: "more interesting", lachend: "laughing", liegen: "to lie / be located",
+  mehrmals: "several times", neugierig: "curious", passen: "to fit", passender: "more suitable",
+  räumen: "to clear / tidy", reichen: "to pass / be enough", schicke: "send",
+  soll: "should / is supposed to", übersetzen: "to translate", unsicher: "unsure",
+  verändert: "changes", verspätete: "delayed", verständlich: "understandable", weg: "way / gone",
+  weil: "because", wichtigste: "most important", wichtigsten: "most important",
+  willst: "want", wohnst: "live", zuerst: "first / first of all", zufrieden: "satisfied",
+});
+
 export function cleanWord(token: string) {
   return token.toLocaleLowerCase("de-DE").replace(/[^a-zäöüßé]/gi, "");
 }
+
+const ALL_READING_WORDS = A1_STORIES.flatMap((story) =>
+  story.text.split(/\s+/).map(cleanWord).filter(Boolean),
+);
+
+export const A1_STATS = {
+  totalWords: ALL_READING_WORDS.length,
+  uniqueWordForms: new Set(ALL_READING_WORDS).size,
+  averageStoryWords: Math.round(ALL_READING_WORDS.length / A1_STORIES.length),
+};
 
 export function meaningFor(token: string) {
   const word = cleanWord(token);
   if (!word) return "";
   if (GLOSSARY[word]) return GLOSSARY[word];
+  const candidates = [
+    word.endsWith("ern") ? word.slice(0, -3) : "",
+    word.endsWith("en") ? word.slice(0, -2) : "",
+    word.endsWith("er") ? word.slice(0, -2) : "",
+    word.endsWith("es") || word.endsWith("em") ? word.slice(0, -2) : "",
+    word.endsWith("e") || word.endsWith("n") || word.endsWith("s") ? word.slice(0, -1) : "",
+    word.endsWith("et") ? `${word.slice(0, -2)}en` : "",
+    word.endsWith("t") ? `${word.slice(0, -1)}en` : "",
+  ];
+  for (const candidate of candidates) {
+    if (candidate && GLOSSARY[candidate]) return GLOSSARY[candidate];
+  }
   if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";
-  return "A1 word";
+  return "German word used in this story";
 }

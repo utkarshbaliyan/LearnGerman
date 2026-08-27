@@ -218,7 +218,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .audio-bar > button:last-child { color: white; opacity: .72; }
 .word-help { display: flex; align-items: center; justify-content: center; gap: 6px; color: #7d837e; font-size: 8px; }
 .word-help svg { width: 12px; }
-.reader-copy { max-width: 760px; margin: 23px auto 30px; font: 400 clamp(22px, 2.8vw, 29px)/1.76 Georgia, serif; color: #29312c; }
+.reader-copy { max-width: 760px; margin: 23px auto 30px; white-space: pre-wrap; font: 400 clamp(20px, 2.4vw, 27px)/1.78 Georgia, serif; color: #29312c; }
 .reader-copy::first-letter { float: left; margin: 10px 8px 0 0; color: var(--orange); font: 700 66px/.7 Georgia, serif; }
 .story-word { display: inline; border: 0; padding: 0; margin: 0; background: transparent; font: inherit; line-height: inherit; cursor: help; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(229,95,69,.35); text-underline-offset: 4px; border-radius: 3px; }
 .story-word:hover { background: #f6ddd6; color: #9f2d1f; }
