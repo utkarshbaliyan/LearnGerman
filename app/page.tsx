@@ -28,13 +28,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -51,33 +44,6 @@ const STOP_WORDS = new Set([
   "noch", "nur", "oder", "sein", "sie", "sind", "und", "um", "von", "vor", "war",
   "wie", "wir", "zu", "zur",
 ]);
-
-type RhythmMode = "study" | "natural" | "flowing";
-
-const RHYTHMS: Record<RhythmMode, { label: string; pause: number; pitch: number }> = {
-  study: { label: "Clear & patient", pause: 360, pitch: 1 },
-  natural: { label: "Natural storyteller", pause: 190, pitch: 1.02 },
-  flowing: { label: "Smooth & flowing", pause: 90, pitch: 1.01 },
-};
-
-function voiceScore(voice: SpeechSynthesisVoice) {
-  const name = voice.name.toLocaleLowerCase("en");
-  let score = voice.lang.toLocaleLowerCase("en") === "de-de" ? 80 : 50;
-  if (name.includes("natural") || name.includes("neural") || name.includes("premium")) score += 100;
-  if (name.includes("google") || name.includes("microsoft")) score += 55;
-  if (name.includes("katja") || name.includes("conrad") || name.includes("anna")) score += 35;
-  if (voice.localService) score += 5;
-  return score;
-}
-
-function narrationSegments(text: string) {
-  const matches = [...text.matchAll(/[^.!?…]+[.!?…]+[”\"»]?|[^.!?…]+$/g)];
-  return matches.map((match) => {
-    const raw = match[0];
-    const leadingSpace = raw.length - raw.trimStart().length;
-    return { text: raw.trim(), start: (match.index ?? 0) + leadingSpace };
-  }).filter((segment) => segment.text.length > 0);
-}
 
 function StoryWord({ token, active }: { token: string; active: boolean }) {
   const word = cleanWord(token);
@@ -104,23 +70,15 @@ function StoryWord({ token, active }: { token: string; active: boolean }) {
 }
 
 function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (story: A1Story) => void }) {
-  const [rate, setRate] = useState([0.9]);
-  const [rhythm, setRhythm] = useState<RhythmMode>("natural");
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [voiceURI, setVoiceURI] = useState("");
+  const [rate, setRate] = useState([0.92]);
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [loadingAudio, setLoadingAudio] = useState(false);
+  const [audioError, setAudioError] = useState("");
   const [activeChar, setActiveChar] = useState(-1);
-  const narrationSession = useRef(0);
-  const pauseTimer = useRef<number | null>(null);
-  const continueNarration = useRef<(() => void) | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const unit = A1_UNITS[story.unitId - 1];
   const wordCount = story.text.split(/\s+/).length;
-  const segments = useMemo(() => narrationSegments(story.text), [story.text]);
-  const germanVoices = useMemo(
-    () => voices.filter((voice) => voice.lang.toLocaleLowerCase("en").startsWith("de")).sort((a, b) => voiceScore(b) - voiceScore(a)),
-    [voices],
-  );
   const keyWords = useMemo(() => {
     const seen = new Set<string>();
     return story.text
@@ -136,126 +94,92 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   }, [story]);
 
   useEffect(() => {
-    if (!("speechSynthesis" in window)) return;
-    const loadVoices = () => {
-      const available = window.speechSynthesis.getVoices();
-      setVoices(available);
-      const savedVoice = window.localStorage.getItem("leselaut-voice");
-      const german = available.filter((voice) => voice.lang.toLocaleLowerCase("en").startsWith("de")).sort((a, b) => voiceScore(b) - voiceScore(a));
-      const selected = german.find((voice) => voice.voiceURI === savedVoice) ?? german[0];
-      if (selected) setVoiceURI(selected.voiceURI);
-    };
-    loadVoices();
-    window.speechSynthesis.addEventListener?.("voiceschanged", loadVoices);
-    return () => window.speechSynthesis.removeEventListener?.("voiceschanged", loadVoices);
-  }, []);
-
-  useEffect(() => {
-    narrationSession.current += 1;
-    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-    window.speechSynthesis?.cancel();
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.src = "";
+      audioRef.current = null;
+    }
     setSpeaking(false);
     setPaused(false);
+    setLoadingAudio(false);
+    setAudioError("");
     setActiveChar(-1);
   }, [story]);
 
   useEffect(() => () => {
-    narrationSession.current += 1;
-    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-    window.speechSynthesis?.cancel();
+    audioRef.current?.pause();
+    if (audioRef.current) audioRef.current.src = "";
   }, []);
 
-  function startAudio() {
-    if (!("speechSynthesis" in window)) return;
-    narrationSession.current += 1;
-    const session = narrationSession.current;
-    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-    window.speechSynthesis.cancel();
-    const selectedVoice = germanVoices.find((voice) => voice.voiceURI === voiceURI) ?? germanVoices[0];
-    let segmentIndex = 0;
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.playbackRate = rate[0];
+  }, [rate]);
 
-    const finish = () => {
-      if (session !== narrationSession.current) return;
-      continueNarration.current = null;
+  function startAudio() {
+    audioRef.current?.pause();
+    const audio = new Audio(`/api/narrate?story=${story.number}`);
+    audio.preload = "auto";
+    audio.playbackRate = rate[0];
+    audioRef.current = audio;
+    setAudioError("");
+    setLoadingAudio(true);
+    setPaused(false);
+
+    audio.onplaying = () => {
+      setLoadingAudio(false);
+      setSpeaking(true);
+      setPaused(false);
+    };
+    audio.onwaiting = () => setLoadingAudio(true);
+    audio.oncanplay = () => setLoadingAudio(false);
+    audio.ontimeupdate = () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        setActiveChar(Math.min(story.text.length - 1, Math.floor((audio.currentTime / audio.duration) * story.text.length)));
+      }
+    };
+    audio.onended = () => {
+      setSpeaking(false);
+      setPaused(false);
+      setLoadingAudio(false);
+      setActiveChar(-1);
+    };
+    audio.onerror = () => {
+      setLoadingAudio(false);
       setSpeaking(false);
       setPaused(false);
       setActiveChar(-1);
+      setAudioError("Natural narration is temporarily unavailable. Please try again in a moment.");
     };
-
-    const speakNext = () => {
-      if (session !== narrationSession.current) return;
-      if (segmentIndex >= segments.length) {
-        finish();
-        return;
-      }
-      const segment = segments[segmentIndex];
-      segmentIndex += 1;
-      const utterance = new SpeechSynthesisUtterance(segment.text);
-      utterance.lang = selectedVoice?.lang || "de-DE";
-      if (selectedVoice) utterance.voice = selectedVoice;
-      utterance.rate = rate[0];
-      utterance.pitch = RHYTHMS[rhythm].pitch;
-      utterance.volume = 1;
-      utterance.onboundary = (event) => {
-        if (event.name === "word" && session === narrationSession.current) {
-          setActiveChar(segment.start + event.charIndex);
-        }
-      };
-      utterance.onend = () => {
-        if (session !== narrationSession.current) return;
-        continueNarration.current = speakNext;
-        pauseTimer.current = window.setTimeout(speakNext, RHYTHMS[rhythm].pause);
-      };
-      utterance.onerror = finish;
-      window.speechSynthesis.speak(utterance);
-    };
-
-    setSpeaking(true);
-    setPaused(false);
-    continueNarration.current = speakNext;
-    speakNext();
+    void audio.play().catch(() => {
+      setLoadingAudio(false);
+      setAudioError("Tap Play once more to start the narration.");
+    });
   }
 
   function toggleAudio() {
     if (speaking && !paused) {
-      if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-      if (window.speechSynthesis.speaking) window.speechSynthesis.pause();
+      audioRef.current?.pause();
       setPaused(true);
+      setSpeaking(false);
       return;
     }
-    if (speaking && paused) {
-      if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-      else continueNarration.current?.();
-      setPaused(false);
+    if (paused && audioRef.current) {
+      void audioRef.current.play();
       return;
     }
+    if (loadingAudio) return;
     startAudio();
   }
 
   function restartAudio() {
-    setActiveChar(-1);
-    startAudio();
-  }
-
-  function changeVoice(nextVoiceURI: string) {
-    narrationSession.current += 1;
-    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-    window.speechSynthesis?.cancel();
-    setSpeaking(false);
-    setPaused(false);
-    setActiveChar(-1);
-    setVoiceURI(nextVoiceURI);
-    window.localStorage.setItem("leselaut-voice", nextVoiceURI);
-  }
-
-  function changeRhythm(nextRhythm: RhythmMode) {
-    narrationSession.current += 1;
-    if (pauseTimer.current !== null) window.clearTimeout(pauseTimer.current);
-    window.speechSynthesis?.cancel();
-    setSpeaking(false);
-    setPaused(false);
-    setActiveChar(-1);
-    setRhythm(nextRhythm);
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.playbackRate = rate[0];
+      void audioRef.current.play();
+    } else {
+      startAudio();
+    }
   }
 
   function renderText() {
@@ -288,12 +212,12 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       </DialogHeader>
 
       <div className="audio-bar">
-        <Button className="audio-play" size="icon-lg" onClick={toggleAudio} aria-label={speaking && !paused ? "Pause story" : "Play story"}>
-          {speaking && !paused ? <Pause /> : <Play className="play-nudge" />}
+        <Button className="audio-play" size="icon-lg" onClick={toggleAudio} aria-label={speaking ? "Pause story" : "Play story"} disabled={loadingAudio}>
+          {speaking ? <Pause /> : <Play className="play-nudge" />}
         </Button>
         <div className="audio-label">
-          <strong>{speaking ? (paused ? "Paused" : "Listening in German") : "Listen slowly"}</strong>
-          <span>{speaking ? "Follow the highlighted word" : "Play the full story"}</span>
+          <strong>{loadingAudio ? "Preparing natural narration…" : speaking ? "Listening in German" : paused ? "Paused" : "Listen naturally"}</strong>
+          <span>{loadingAudio ? "The first play may take a few seconds" : speaking ? "Follow the highlighted word" : "Warm, expressive Hochdeutsch"}</span>
         </div>
         <div className="rate-control">
           <Gauge />
@@ -304,33 +228,10 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       </div>
 
       <div className="narration-controls">
-        <label>
-          <span>German voice</span>
-          <Select value={voiceURI || "automatic"} onValueChange={changeVoice}>
-            <SelectTrigger aria-label="Choose German narration voice"><SelectValue placeholder="Best available voice" /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="automatic">Automatic · best available</SelectItem>
-              {germanVoices.map((voice, index) => (
-                <SelectItem key={voice.voiceURI} value={voice.voiceURI}>
-                  {index === 0 ? "Best available · " : ""}{voice.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </label>
-        <label>
-          <span>Speaking rhythm</span>
-          <Select value={rhythm} onValueChange={(value) => changeRhythm(value as RhythmMode)}>
-            <SelectTrigger aria-label="Choose narration rhythm"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              {(Object.keys(RHYTHMS) as RhythmMode[]).map((mode) => (
-                <SelectItem key={mode} value={mode}>{RHYTHMS[mode].label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </label>
-        <p>Sentence-aware pauses make the narration easier to follow. Available voices depend on your device.</p>
+        <div className="ai-narrator"><span className="ai-pulse" /><div><b>Marin · natural German narrator</b><small>Warm tone · clear pronunciation · conversational rhythm</small></div></div>
+        <p><strong>AI-generated voice</strong> · This narration is created with OpenAI and is not a human recording.</p>
       </div>
+      {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 
       <div className="word-help"><MousePointer2 /> Hover or tap a word for its English meaning</div>
       <article className="reader-copy" lang="de">{renderText()}</article>
@@ -370,7 +271,6 @@ export default function Home() {
   const visibleStories = activeUnit === "all" ? A1_STORIES : A1_UNITS[Number(activeUnit) - 1].stories;
 
   function openStory(story: A1Story) {
-    window.speechSynthesis?.cancel();
     setSelectedStory(story);
   }
 
@@ -467,7 +367,7 @@ export default function Home() {
           <div><a href="https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions" target="_blank" rel="noreferrer">CEFR framework</a><a href="https://www.goethe.de/en/spr/prf/ueb/pa1.html" target="_blank" rel="noreferrer">Goethe A1</a></div>
         </footer>
 
-        <Dialog open={Boolean(selectedStory)} onOpenChange={(open) => { if (!open) { window.speechSynthesis?.cancel(); setSelectedStory(null); } }}>
+        <Dialog open={Boolean(selectedStory)} onOpenChange={(open) => { if (!open) setSelectedStory(null); }}>
           {selectedStory && (
             <DialogContent className="reader-dialog" showCloseButton>
               <Reader story={selectedStory} onStoryChange={setSelectedStory} />
