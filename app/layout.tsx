@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LeseLaut German",
+  title: "LeseLaut — 100 German Stories for A1",
   description:
-    "Turn a German lesson into an A2 story you can read, hear, hover, and practise.",
+    "Learn A1 German through 100 short, CEFR-aligned stories with slow audio and instant English word meanings.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

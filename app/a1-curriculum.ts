@@ -1,0 +1,422 @@
+export type A1Story = {
+  id: string;
+  number: number;
+  unitId: number;
+  title: string;
+  text: string;
+  grammar: string;
+  canDo: string;
+  theme: string;
+  color: string;
+};
+
+export type A1Unit = {
+  id: number;
+  title: string;
+  shortTitle: string;
+  description: string;
+  grammar: string;
+  canDo: string;
+  color: string;
+  stories: A1Story[];
+};
+
+type Seed = [title: string, text: string];
+
+type UnitSeed = {
+  title: string;
+  shortTitle: string;
+  description: string;
+  grammar: string;
+  canDo: string;
+  color: string;
+  stories: Seed[];
+};
+
+const UNIT_SEEDS: UnitSeed[] = [
+  {
+    title: "Hallo! Ich bin …",
+    shortTitle: "Ich & Hallo",
+    description: "Meet people, share personal details and ask simple questions.",
+    grammar: "sein · Personalpronomen · W-Fragen",
+    canDo: "I can introduce myself and ask basic personal questions.",
+    color: "#e55f45",
+    stories: [
+      ["Guten Morgen, Mia!", "Mia ist neu in Berlin. Am Morgen geht sie in ein Café. Der Kellner sagt: „Guten Morgen! Wie heißen Sie?“ Mia antwortet: „Ich heiße Mia. Und Sie?“ Der Kellner heißt Paul. Jetzt kennt Mia ihre erste Person in Berlin."],
+      ["Der Name auf dem Becher", "Im Sprachkurs steht ein Becher auf dem Tisch. Auf dem Becher steht „Leo“. Ein Mann kommt und fragt: „Ist das mein Becher?“ Sara sagt: „Ja. Bist du Leo?“ Der Mann lacht. „Ja, ich bin Leo. Danke!“"],
+      ["Meine neue Nachbarin", "An der Tür steht eine Frau. Sie sagt: „Hallo, ich bin Eva. Ich wohne nebenan.“ Tom antwortet: „Ich heiße Tom. Woher kommst du?“ Eva kommt aus Wien. Tom kommt aus Köln. Beide sprechen Deutsch und ein bisschen Englisch."],
+      ["Eine Nummer zu viel", "Nora schreibt ihre Telefonnummer auf einen Zettel. Die Nummer ist 0176 458 320. Ben liest die Nummer, aber er sagt 0176 485 320. Nora lächelt und sagt: „Nein, vier-fünf-acht.“ Jetzt ist die Nummer richtig."],
+      ["Heute ist mein Geburtstag", "Lina hat heute Geburtstag. Sie ist neunzehn Jahre alt. Im Kurs fragt der Lehrer: „Wann ist dein Geburtstag?“ Lina sagt: „Heute!“ Alle sagen: „Alles Gute!“ Lina ist überrascht und sehr froh."],
+      ["Im Deutschkurs", "Im Kurs sitzen acht Personen. Frau Sommer ist die Lehrerin. Sie fragt: „Wie heißen Sie und woher kommen Sie?“ Omar kommt aus Ägypten, Ana aus Spanien und Ken aus Japan. Alle lernen zusammen Deutsch."],
+      ["Drei Länder, drei Sprachen", "Mila kommt aus Polen und spricht Polnisch. Ihr Freund Luca kommt aus Italien und spricht Italienisch. Zu Hause sprechen sie oft Englisch. Jetzt lernen beide Deutsch, denn sie leben in Hamburg."],
+      ["Das Foto", "Auf dem Foto sind drei Personen. Links ist Amira, rechts ist Jonas und in der Mitte ist Ben. „Wer ist Ben?“, fragt Lea. Jonas zeigt auf den Jungen mit der roten Jacke. „Das ist Ben.“"],
+      ["An der Rezeption", "Herr Kim ist im Hotel. Die Frau an der Rezeption fragt nach seinem Namen und seiner Adresse. Er sagt: „Kim, Minho Kim. Ich wohne in Bonn.“ Sein Zimmer ist Nummer zwölf. Herr Kim sagt: „Danke und gute Nacht.“"],
+      ["Ein kurzes Gespräch", "Im Bus sitzt eine neue Studentin. Max fragt: „Hallo, wie heißt du?“ Sie heißt Aylin und studiert Musik. Max studiert auch Musik. Die beiden haben heute denselben Kurs. Der Bus kommt, und sie gehen zusammen zur Universität."],
+    ],
+  },
+  {
+    title: "Familie & Menschen",
+    shortTitle: "Familie",
+    description: "Talk about family, age, jobs, appearance and relationships.",
+    grammar: "haben · Possessivartikel · Singular & Plural",
+    canDo: "I can describe my family and people I know.",
+    color: "#8d6bd1",
+    stories: [
+      ["Das Familienfoto", "Sofia zeigt ihrem Freund ein Foto. „Das ist meine Mutter, und das ist mein Vater. Hier sind meine zwei Brüder.“ Ihr Freund fragt: „Hast du auch eine Schwester?“ Sofia sagt: „Ja, aber sie ist heute nicht auf dem Foto.“"],
+      ["Oma wird siebzig", "Am Sonntag hat Oma Klara Geburtstag. Sie wird siebzig Jahre alt. Ihre drei Kinder und fünf Enkel kommen. Klara hat einen großen Kuchen. Auf dem Kuchen stehen sieben Kerzen, denn siebzig Kerzen sind zu viele."],
+      ["Mein Bruder ist Koch", "Davids Bruder heißt Leon. Er ist Koch in einem kleinen Restaurant. Er arbeitet am Abend und schläft am Morgen. David ist Student und arbeitet nur am Samstag. Die Brüder haben sehr verschiedene Tage."],
+      ["Die neue Kollegin", "Im Büro arbeitet eine neue Kollegin. Ihr Name ist Rania. Sie ist klein, hat dunkle Haare und trägt eine grüne Brille. Rania ist freundlich und spricht drei Sprachen. Alle Kollegen mögen sie."],
+      ["Ein Baby in der Familie", "Mara hat eine neue Nichte. Das Baby heißt Ella und ist drei Wochen alt. Ella schläft viel und trinkt Milch. Ihr Bruder ist jetzt Vater. Mara ist sehr glücklich: Sie ist zum ersten Mal Tante."],
+      ["Unser Hund Bruno", "Die Familie Wolf hat einen Hund. Sein Name ist Bruno. Er ist braun, groß und sehr lieb. Am Morgen geht Herr Wolf mit Bruno spazieren. Am Abend spielen die Kinder mit ihm im Garten."],
+      ["Wer ist älter?", "Nina ist zwanzig und ihr Bruder Tim ist achtzehn. Tim sagt: „Ich bin größer, also bin ich älter!“ Nina lacht. „Nein, du bist nur größer. Ich bin zwei Jahre älter als du.“"],
+      ["Zwei Schwestern", "Emma und Laura sind Schwestern. Emma hat blonde Haare und Laura hat schwarze Haare. Emma liest gern, Laura macht gern Sport. Beide lieben Musik und gehen am Freitag zusammen auf ein Konzert."],
+      ["Der Arzt aus dem dritten Stock", "Herr Weber wohnt im dritten Stock. Er ist Arzt und arbeitet im Krankenhaus. Seine Frau ist Lehrerin. Ihre Tochter geht in die Schule. Die Familie grüßt jeden Morgen freundlich im Treppenhaus."],
+      ["Viele Namen", "Bei Familie Nguyen ist heute ein Fest. Minh stellt alle vor: „Das sind meine Eltern, das ist mein Onkel und das sind meine Cousinen.“ Paul hört viele Namen. Am Ende weiß er nur noch: Alle sind sehr nett."],
+    ],
+  },
+  {
+    title: "Zuhause & Wohnen",
+    shortTitle: "Zuhause",
+    description: "Name rooms and furniture and say where things are.",
+    grammar: "der/die/das · ein/eine · es gibt · Akkusativ",
+    canDo: "I can describe a home and everyday objects.",
+    color: "#278071",
+    stories: [
+      ["Mein kleines Zimmer", "Jans Zimmer ist klein, aber hell. Es gibt ein Bett, einen Tisch und einen Stuhl. Das Bett steht links. Der Tisch steht am Fenster. Auf dem Tisch liegt ein Buch. Jan mag sein Zimmer."],
+      ["Wo ist der Schlüssel?", "Mila sucht ihren Schlüssel. Er ist nicht in der Tasche und nicht auf dem Tisch. Sie schaut unter das Sofa. Dort liegt nur eine Socke. Dann sieht sie den Schlüssel in der Tür. Mila lacht."],
+      ["Die rote Küche", "Annas Küche ist rot und weiß. Der Kühlschrank ist weiß, aber die Schränke sind rot. Auf dem Herd steht eine Suppe. Anna kocht gern, und ihre Freunde essen gern bei ihr."],
+      ["Ein Tisch für vier", "Leo kauft einen neuen Tisch. Der Tisch ist rund und hat vier Stühle. In seiner Küche ist aber wenig Platz. Leo stellt den Tisch ins Wohnzimmer. Dort passt er gut neben das Fenster."],
+      ["Das Fenster ist offen", "Es ist Winter und das Fenster im Schlafzimmer ist offen. Paula fragt: „Warum ist es hier so kalt?“ Ihr Bruder schließt das Fenster. Dann macht er die Heizung an. Bald ist das Zimmer wieder warm."],
+      ["Im neuen Haus", "Familie Acar zieht heute um. Das neue Haus hat fünf Zimmer und einen Garten. Die Kinder wählen ihre Zimmer. Ela nimmt das Zimmer oben, denn es hat einen Balkon. Can nimmt das Zimmer neben dem Bad."],
+      ["Ein Paket vor der Tür", "Vor der Wohnungstür steht ein großes Paket. Auf dem Paket steht der Name „Frau Klein“. Aber Frau Klein wohnt im zweiten Stock. Ben trägt das Paket nach oben. Frau Klein bedankt sich."],
+      ["Der Schrank ist zu groß", "Nora hat einen schönen alten Schrank. Der Schrank ist aber zu groß für die Tür. Zwei Freunde helfen. Sie tragen den Schrank durch den Garten und durch die Balkontür. Jetzt steht er im Wohnzimmer."],
+      ["Blumen auf dem Balkon", "Auf Emils Balkon stehen viele Pflanzen. Es gibt rote Blumen, grüne Kräuter und eine kleine Tomatenpflanze. Emil gibt ihnen jeden Morgen Wasser. Im Sommer isst er Tomaten vom eigenen Balkon."],
+      ["Bei meiner Nachbarin", "Frau Kurz lädt Mia zum Tee ein. Ihre Wohnung ist gemütlich. An der Wand hängen viele Fotos. Im Regal stehen Bücher und kleine Figuren. Mia sieht ein Foto von Frau Kurz als junge Frau in Paris."],
+    ],
+  },
+  {
+    title: "Mein Tag & die Zeit",
+    shortTitle: "Mein Tag",
+    description: "Tell the time, make plans and describe daily routines.",
+    grammar: "Präsens · Verbzweit · trennbare Verben · Zeit",
+    canDo: "I can talk about my routine, dates and simple plans.",
+    color: "#d28a25",
+    stories: [
+      ["Der Wecker klingelt", "Um sieben Uhr klingelt der Wecker. Ida steht auf, öffnet das Fenster und macht Kaffee. Um halb acht frühstückt sie. Um acht Uhr fährt sie mit dem Fahrrad zur Arbeit."],
+      ["Ein langer Montag", "Montags beginnt Toms Arbeit um neun Uhr. Am Vormittag schreibt er E-Mails. Um zwölf macht er Mittagspause. Am Nachmittag hat er drei Termine. Um sechs Uhr geht er müde nach Hause."],
+      ["Der Bus um 8:15", "Leni muss um acht Uhr fünfzehn den Bus nehmen. Heute steht sie spät auf. Sie zieht sich schnell an und läuft zur Haltestelle. Der Bus kommt gerade. Leni steigt ein und findet noch einen Platz."],
+      ["Mittwoch ist Kurstag", "Jeden Mittwoch lernt Karim Deutsch. Der Kurs fängt um achtzehn Uhr an und hört um neunzehn Uhr dreißig auf. Danach geht Karim mit zwei Freunden etwas trinken. Um zehn ist er zu Hause."],
+      ["Am Wochenende", "Samstags schläft Julia lange. Dann kauft sie auf dem Markt ein. Am Nachmittag ruft sie ihre Eltern an. Sonntags macht sie Sport und liest. Am Sonntagabend plant sie die neue Woche."],
+      ["Ein Termin beim Friseur", "Paul ruft beim Friseur an. „Haben Sie am Freitag Zeit?“ Die Frau sagt: „Ja, um Viertel nach drei.“ Paul schreibt den Termin in seinen Kalender. Am Freitag kommt er fünf Minuten früher."],
+      ["Heute oder morgen?", "Mina möchte ihren Freund treffen. Er hat heute keine Zeit, aber morgen ist er frei. Sie treffen sich morgen um fünf im Park. Mina bringt Kaffee mit, und ihr Freund bringt Kuchen mit."],
+      ["Der erste Mai", "Heute ist der erste Mai. In der Stadt ist ein Fest. Viele Geschäfte sind geschlossen. Familie Roth fährt nicht zur Arbeit. Sie geht in den Park und macht dort ein Picknick."],
+      ["Zu spät im Kino", "Der Film beginnt um zwanzig Uhr. Alex kommt um fünf nach acht. Seine Freunde warten schon vor dem Kino. Sie kaufen schnell Popcorn und gehen hinein. Der Film hat gerade angefangen."],
+      ["Gute Nacht, Stadt", "Um Mitternacht ist die Straße ruhig. Nur ein Taxi fährt vorbei. In der Bäckerei beginnt schon die Arbeit für den Morgen. Der Bäcker macht Brot, während die meisten Menschen noch schlafen."],
+    ],
+  },
+  {
+    title: "Essen & Trinken",
+    shortTitle: "Essen",
+    description: "Order food, shop for groceries and talk about preferences.",
+    grammar: "mögen/möchten · Akkusativ · kein/nicht · Mengen",
+    canDo: "I can order simple food and say what I like.",
+    color: "#d55369",
+    stories: [
+      ["Frühstück für zwei", "Mara macht Frühstück. Sie kocht zwei Eier und schneidet Brot. Tom möchte Kaffee, aber Mara trinkt lieber Tee. Es gibt auch Käse und Marmelade. Beide sitzen lange am Küchentisch."],
+      ["Auf dem Markt", "Ben kauft ein Kilo Äpfel, zwei Tomaten und einen Salat. Die Verkäuferin sagt: „Das macht sechs Euro.“ Ben bezahlt und bekommt eine kleine Birne gratis. Die Birne isst er sofort."],
+      ["Im Café", "Lea bestellt einen Cappuccino und ein Stück Kuchen. Ihr Freund möchte nur ein Wasser. Der Kellner fragt: „Mit oder ohne Eis?“ Der Freund sagt: „Ohne Eis, bitte.“"],
+      ["Eine Suppe ohne Salz", "Nico kocht Gemüsesuppe. Er nimmt Kartoffeln, Karotten und Zwiebeln. Beim Essen sagt seine Schwester: „Die Suppe ist gut, aber es fehlt Salz.“ Nico bringt das Salz und beide lachen."],
+      ["Pizza am Freitag", "Am Freitag bestellen drei Freunde Pizza. Jana möchte eine Pizza mit Käse. Luis nimmt eine Pizza mit Schinken. Eli möchte keine Pizza. Er bestellt einen Salat und Orangensaft."],
+      ["Der leere Kühlschrank", "Im Kühlschrank ist fast nichts: eine Flasche Milch, ein Ei und eine Zitrone. Kim schreibt eine Einkaufsliste. Sie braucht Brot, Butter, Obst, Gemüse und Reis. Dann geht sie zum Supermarkt."],
+      ["Ein Geburtstagskuchen", "Omar backt einen Kuchen für seine Mutter. Er braucht Mehl, Zucker, Eier und Schokolade. Der Kuchen ist klein, aber sehr süß. Seine Mutter freut sich und nimmt gleich ein zweites Stück."],
+      ["Vegetarisch, bitte", "Im Restaurant fragt die Kellnerin: „Was möchten Sie essen?“ Nila sagt: „Ich esse kein Fleisch. Haben Sie etwas Vegetarisches?“ Die Kellnerin empfiehlt Nudeln mit Gemüse. Nila bestellt die Nudeln."],
+      ["Drei Kugeln Eis", "Es ist heiß. Vor der Eisdiele wartet eine lange Reihe. Felix möchte drei Kugeln: Schokolade, Vanille und Erdbeere. Seine Freundin nimmt nur eine Kugel Zitrone. Sie setzen sich in den Schatten."],
+      ["Das gemeinsame Abendessen", "Heute kochen alle zusammen. Ana macht Reis, Ben schneidet Gemüse und Salim deckt den Tisch. Um sieben ist das Essen fertig. Sie sagen „Guten Appetit“ und erzählen von ihrem Tag."],
+    ],
+  },
+  {
+    title: "Einkaufen & Kleidung",
+    shortTitle: "Einkaufen",
+    description: "Ask about prices, sizes and colours and buy everyday things.",
+    grammar: "dieser/diese · Adjektive · Zahlen & Preise · Fragen",
+    canDo: "I can buy simple items and understand prices.",
+    color: "#3977c4",
+    stories: [
+      ["Die blaue Jacke", "Mira sucht eine Jacke. Die schwarze Jacke ist schön, aber zu teuer. Die blaue Jacke kostet nur vierzig Euro. Sie passt gut. Mira kauft die blaue Jacke und trägt sie sofort."],
+      ["Welche Größe?", "Im Geschäft fragt der Verkäufer: „Welche Größe haben Sie?“ Sam weiß es nicht. Er probiert Größe M. Das Hemd ist zu klein. Größe L passt. Sam nimmt das weiße Hemd."],
+      ["Ein Geschenk für Papa", "Lia sucht ein Geschenk für ihren Vater. Eine Uhr kostet hundert Euro. Das ist zu teuer. Sie findet ein Buch über Musik für zwanzig Euro. Ihr Vater liest und hört gern Musik."],
+      ["Auf dem Flohmarkt", "Auf dem Flohmarkt sieht Noah eine alte Lampe. Die Frau möchte fünfzehn Euro. Noah fragt: „Geht auch zehn Euro?“ Die Frau sagt: „Zwölf.“ Noah bezahlt zwölf Euro und nimmt die Lampe."],
+      ["Bargeld oder Karte?", "An der Kasse kostet alles dreiundzwanzig Euro achtzig. Elena möchte mit Karte bezahlen. Das Gerät funktioniert nicht. Zum Glück hat sie dreißig Euro bar. Sie bekommt sechs Euro zwanzig zurück."],
+      ["Die falschen Schuhe", "Ein Paket kommt für Alex. Darin sind rote Schuhe in Größe 38. Alex hat aber Größe 43 und bestellt schwarze Schuhe. Er bringt das Paket zur Post und schickt es zurück."],
+      ["Ein Regenschirm", "Draußen regnet es stark. Vor dem Bahnhof gibt es einen kleinen Laden. Tarek kauft dort einen gelben Regenschirm. Er kostet acht Euro. Jetzt bleibt Tarek trocken und findet die Farbe lustig."],
+      ["Nur noch ein T-Shirt", "Im Laden ist heute Schlussverkauf. Viele T-Shirts kosten fünf Euro. Es gibt nur noch ein grünes T-Shirt in Annas Größe. Grün ist nicht ihre Lieblingsfarbe, aber das T-Shirt passt sehr gut."],
+      ["Die lange Einkaufsliste", "Frau Berg braucht Papier, Seife, Batterien und eine Zahnbürste. Im ersten Geschäft gibt es kein Papier. Im zweiten gibt es keine Batterien. Am Ende findet sie alles in einem großen Kaufhaus."],
+      ["Kann ich das umtauschen?", "Jonas hat eine Hose gekauft. Zu Hause merkt er: Die Hose ist zu kurz. Am nächsten Tag geht er zurück. Er hat den Kassenbon dabei. Die Verkäuferin gibt ihm eine längere Hose."],
+    ],
+  },
+  {
+    title: "In der Stadt",
+    shortTitle: "Stadt & Wege",
+    description: "Find places, follow directions and use public services.",
+    grammar: "lokale Präpositionen · Imperativ · Dativ · wo/wohin",
+    canDo: "I can ask for and follow short, simple directions.",
+    color: "#2f8d9b",
+    stories: [
+      ["Wo ist der Bahnhof?", "Ein Tourist fragt: „Entschuldigung, wo ist der Bahnhof?“ Mia erklärt: „Gehen Sie geradeaus und dann links. Der Bahnhof ist neben der Post.“ Der Tourist bedankt sich und geht los."],
+      ["Mit dem Bus zur Arbeit", "Ravi fährt jeden Morgen mit Bus 12. Er steigt am Marktplatz ein und am Krankenhaus aus. Heute fährt der Bus eine andere Straße. Ravi fragt den Fahrer und kommt trotzdem pünktlich an."],
+      ["Die Apotheke", "Lena braucht eine Apotheke. Sie sieht eine Bank und einen Supermarkt, aber keine Apotheke. Eine Frau sagt: „Die Apotheke ist hinter der Kirche.“ Lena geht um die Kirche und findet sie."],
+      ["Ein Brief nach Wien", "Paul schreibt einen Brief an seine Tante in Wien. Auf der Post kauft er eine Briefmarke. Er schreibt die Adresse auf den Umschlag und wirft den Brief in den gelben Briefkasten."],
+      ["Geld am Automaten", "Nora braucht zwanzig Euro. Vor der Bank steht ein Geldautomat. Sie steckt ihre Karte ein, gibt ihre Nummer ein und wählt zwanzig Euro. Dann nimmt sie Geld und Karte."],
+      ["Links, rechts, geradeaus", "Im Park sucht Emil den See. Ein Mann sagt: „Gehen Sie am Café vorbei. Dann rechts und immer geradeaus.“ Emil folgt dem Weg. Nach fünf Minuten sieht er den See und viele Enten."],
+      ["Die Bibliothek", "Sara möchte ein deutsches Buch lesen. Die Bibliothek ist gegenüber der Schule. Dort zeigt sie ihren Ausweis und bekommt eine Karte. Sie leiht ein leichtes Buch mit kurzen Geschichten aus."],
+      ["Hilfe bei der Polizei", "Ein Kind findet seine Mutter nicht. Es geht mit einer Frau zur Polizei. Der Polizist fragt nach dem Namen der Mutter. Kurz danach kommt die Mutter. Sie ist sehr froh und dankt allen."],
+      ["An der Haltestelle", "An der Haltestelle steht: „Bus 6 kommt heute nicht.“ Zwei Personen warten dort. Eine Studentin liest die Information und sagt: „Wir können die Straßenbahn nehmen. Sie hält dort vorne.“"],
+      ["Ein Plan der Stadt", "Im Hotel bekommt Ken einen Stadtplan. Er markiert das Museum, den Park und ein Restaurant. Zuerst geht er zum Museum, dann durch den Park und am Abend ins Restaurant. Der Plan hilft ihm sehr."],
+    ],
+  },
+  {
+    title: "Arbeit, Schule & Alltag",
+    shortTitle: "Arbeit & Schule",
+    description: "Handle simple tasks at work, school and common services.",
+    grammar: "können/müssen/wollen · Sie-Form · Satzklammer",
+    canDo: "I can manage simple routine tasks and requests.",
+    color: "#6c7388",
+    stories: [
+      ["Mein erster Arbeitstag", "Heute arbeitet Elif zum ersten Mal im Hotel. Sie muss um sieben Uhr da sein. Ihre Kollegin zeigt ihr die Rezeption und die Zimmer. Elif kann gut Englisch sprechen. Das hilft bei vielen Gästen."],
+      ["Eine Aufgabe im Kurs", "Herr Klein sagt: „Öffnen Sie bitte das Buch auf Seite zehn.“ Die Lernenden lesen einen kurzen Text. Danach müssen sie drei Fragen beantworten. Lea versteht eine Frage nicht und bittet um Hilfe."],
+      ["Der Drucker geht nicht", "Im Büro möchte Ben ein Dokument drucken. Der Drucker funktioniert nicht. Er fragt seine Kollegin: „Kannst du mir helfen?“ Sie öffnet eine kleine Tür am Drucker und nimmt das Papier heraus. Jetzt geht er wieder."],
+      ["Pause um zehn", "In der Bäckerei beginnt die Arbeit sehr früh. Um zehn Uhr machen alle Pause. Sie trinken Kaffee und essen ein Brötchen. Nach fünfzehn Minuten müssen sie wieder arbeiten, denn viele Kunden kommen."],
+      ["Eine E-Mail an die Lehrerin", "Mina ist krank und kann heute nicht zum Kurs kommen. Sie schreibt: „Guten Morgen Frau Stein, ich bin leider krank. Kann ich die Hausaufgabe per E-Mail bekommen? Viele Grüße, Mina.“"],
+      ["Das neue Wörterbuch", "Im Deutschkurs darf jedes Team ein Wörterbuch benutzen. Tim sucht das Wort „pünktlich“. Er findet die Bedeutung und erklärt sie seinem Partner. Dann schreiben beide einen einfachen Satz mit dem Wort."],
+      ["Im Kindergarten", "Lea arbeitet im Kindergarten. Sie spielt mit Kindern, liest Geschichten und hilft beim Essen. Heute wollen die Kinder draußen spielen. Es regnet aber. Deshalb malen sie zusammen ein großes Bild."],
+      ["Termin bei der Bank", "Herr Ali möchte ein Konto öffnen. Er hat um elf Uhr einen Termin. Die Mitarbeiterin braucht seinen Ausweis und seine Adresse. Herr Ali muss zwei Formulare unterschreiben. Dann ist das Konto fertig."],
+      ["Eine Stelle im Café", "Nora sucht Arbeit. Im Fenster eines Cafés liest sie: „Hilfe gesucht.“ Sie geht hinein und spricht mit dem Chef. Nora kann am Wochenende arbeiten und spricht Deutsch und Spanisch. Am Samstag beginnt sie."],
+      ["Feierabend", "Um siebzehn Uhr macht Jonas seinen Computer aus. Er räumt den Tisch auf und sagt den Kollegen „Tschüss“. Heute will er nicht direkt nach Hause. Er trifft einen Freund vor dem Kino."],
+    ],
+  },
+  {
+    title: "Freizeit, Wetter & Gesundheit",
+    shortTitle: "Freizeit",
+    description: "Talk about hobbies, weather, seasons and basic health needs.",
+    grammar: "gern/lieber · war/hatte · Körper · deshalb",
+    canDo: "I can describe hobbies, weather and simple health problems.",
+    color: "#4f9b52",
+    stories: [
+      ["Fußball im Park", "Am Samstag spielt eine Gruppe im Park Fußball. Luis spielt gern im Tor. Heute fehlt ein Spieler. Eine Frau fragt: „Kann ich mitspielen?“ Natürlich kann sie. Ihr Team gewinnt drei zu zwei."],
+      ["Regen am Sonntag", "Mia will am Sonntag wandern. Am Morgen regnet es und der Himmel ist grau. Sie bleibt zu Hause, macht Tee und liest. Am Nachmittag kommt die Sonne. Mia geht noch eine Stunde spazieren."],
+      ["Mein Lieblingsbuch", "Karim liest jeden Abend zehn Seiten. Sein Lieblingsbuch ist eine kurze Geschichte über einen Hund. Das Deutsch ist leicht. Neue Wörter schreibt Karim in ein Heft und liest sie laut."],
+      ["Im Schwimmbad", "Es ist Sommer und sehr heiß. Nila und ihre Freunde gehen ins Schwimmbad. Nila kann gut schwimmen, aber Tom lernt noch. Er bleibt im kleinen Becken. Danach essen alle ein Eis."],
+      ["Der Kopf tut weh", "Seit dem Morgen hat Ben Kopfschmerzen. Er trinkt Wasser und macht eine Pause. Am Nachmittag tut der Kopf noch weh. Ben ruft beim Arzt an und bekommt einen Termin für sechzehn Uhr."],
+      ["Ein kalter Wintertag", "Draußen sind minus fünf Grad. Ava trägt einen Mantel, eine Mütze und warme Schuhe. Ihr Hund möchte trotzdem in den Park. Nach zehn Minuten wollen beide schnell wieder nach Hause."],
+      ["Musik am Fenster", "Jeden Abend spielt Herr Costa Gitarre am Fenster. Die Nachbarn hören gern zu. Heute spielt er ein bekanntes Lied. Ein Kind singt im Hof mit. Am Ende klatschen alle an ihren Fenstern."],
+      ["Gestern war ich krank", "Lena war gestern krank. Sie hatte Fieber und war sehr müde. Heute geht es ihr besser. Sie isst eine Suppe und bleibt noch zu Hause. Morgen möchte sie wieder arbeiten."],
+      ["Ein Ausflug im Frühling", "Im April fährt Familie Kim an einen See. Die Sonne scheint, aber der Wind ist kühl. Sie machen ein Picknick und sehen viele Vögel. Die Kinder sammeln kleine Steine am Wasser."],
+      ["Lieber tanzen", "Tara macht nicht gern Fitness. Sie findet das Training langweilig. Ihre Freundin lädt sie zum Tanzen ein. Die Musik ist toll, und Tara bewegt sich gern. Jetzt tanzt sie jeden Donnerstag."],
+    ],
+  },
+  {
+    title: "Reisen & A1 im echten Leben",
+    shortTitle: "Reisen & Review",
+    description: "Travel, stay in a hotel and combine everything from A1.",
+    grammar: "und/aber/deshalb/dann · Wiederholung · Alltagssprache",
+    canDo: "I can handle simple travel and everyday situations.",
+    color: "#b7683b",
+    stories: [
+      ["Eine Fahrkarte nach Bonn", "Am Bahnhof sagt Eva: „Eine Fahrkarte nach Bonn, bitte.“ Der Mitarbeiter fragt: „Einfach oder hin und zurück?“ Eva braucht nur eine einfache Fahrt. Der Zug fährt um vierzehn Uhr von Gleis fünf."],
+      ["Der schwere Koffer", "Omars Koffer ist sehr schwer. Er hat zu viele Schuhe und Bücher dabei. Am Bahnhof hilft ihm eine Frau. Zusammen tragen sie den Koffer in den Zug. Omar bedankt sich und findet seinen Platz."],
+      ["Zimmer Nummer 24", "Im Hotel hat Niko ein Zimmer reserviert. Die Rezeptionistin fragt nach seinem Namen und Ausweis. Sein Zimmer ist Nummer vierundzwanzig im zweiten Stock. Das Frühstück gibt es von sieben bis zehn."],
+      ["Der Zug hat Verspätung", "Der Zug nach Köln hat zwanzig Minuten Verspätung. Lea schreibt ihrem Freund eine Nachricht: „Ich komme später. Bitte warte im Café.“ Sie kauft Wasser und wartet am Gleis."],
+      ["Eine Postkarte", "Mina schreibt aus München eine Postkarte: „Liebe Oma, die Stadt ist schön und das Wetter ist warm. Heute besuche ich ein Museum. Morgen fahre ich nach Hause. Viele Grüße, Mina.“"],
+      ["Im Ferienhaus", "Vier Freunde mieten ein kleines Ferienhaus am Meer. Es hat zwei Schlafzimmer und eine Küche. Am Morgen schwimmen sie, am Nachmittag kochen sie. Abends sitzen sie vor dem Haus und hören das Meer."],
+      ["Das falsche Gleis", "Ben wartet auf Gleis drei. Sein Zug fährt aber von Gleis acht. Er hört die Durchsage und läuft schnell. Eine Mitarbeiterin zeigt ihm den Weg. Ben erreicht den Zug in letzter Minute."],
+      ["Ein Anruf von unterwegs", "Sofia ruft ihre Mutter an. „Hallo Mama, ich bin jetzt in Zürich. Die Reise war gut. Mein Hotel liegt direkt am See.“ Die Mutter fragt nach dem Wetter. Sofia sagt: „Kalt, aber sonnig.“"],
+      ["Einladung zum Abendessen", "Luca schreibt an seine neuen Freunde: „Hallo! Ich koche am Freitag um sieben bei mir. Habt ihr Zeit? Bitte bringt Getränke mit.“ Alle antworten ja. Am Freitag sitzen sechs Personen an Lucas Tisch."],
+      ["Hundert kleine Schritte", "Ana liest heute Geschichte Nummer hundert. Am Anfang konnte sie nur „Hallo“ sagen. Jetzt versteht sie kurze Texte über Familie, Arbeit, Essen und Reisen. Sie spricht langsam, aber sie spricht. Ana lächelt und beginnt die Geschichte noch einmal."],
+    ],
+  },
+];
+
+let storyNumber = 0;
+
+export const A1_UNITS: A1Unit[] = UNIT_SEEDS.map((unit, unitIndex) => ({
+  id: unitIndex + 1,
+  title: unit.title,
+  shortTitle: unit.shortTitle,
+  description: unit.description,
+  grammar: unit.grammar,
+  canDo: unit.canDo,
+  color: unit.color,
+  stories: unit.stories.map(([title, text]) => {
+    storyNumber += 1;
+    return {
+      id: `a1-${String(storyNumber).padStart(3, "0")}`,
+      number: storyNumber,
+      unitId: unitIndex + 1,
+      title,
+      text,
+      grammar: unit.grammar,
+      canDo: unit.canDo,
+      theme: unit.shortTitle,
+      color: unit.color,
+    };
+  }),
+}));
+
+export const A1_STORIES = A1_UNITS.flatMap((unit) => unit.stories);
+
+export const GLOSSARY: Record<string, string> = {
+  aber: "but", abend: "evening", acht: "eight", adresse: "address", alle: "all / everyone",
+  als: "as / than", alt: "old", am: "on the / at the", an: "at / on", andere: "other",
+  antwortet: "answers", antworten: "to answer", april: "April", arbeit: "work",
+  arbeitet: "works", arbeiten: "to work", arzt: "doctor", auch: "also", auf: "on / onto",
+  aufstehen: "to get up", aufsteht: "gets up", aus: "from / out of", ausweis: "ID card",
+  automat: "machine", bahnhof: "station", balkon: "balcony", bald: "soon", bank: "bank",
+  bar: "cash", bäckerei: "bakery", bäcker: "baker", bad: "bathroom", beantworten: "to answer",
+  bekommt: "gets / receives", ben: "Ben", berlin: "Berlin", beruf: "profession", besser: "better",
+  bett: "bed", bezahlen: "to pay", bezahlt: "pays", beide: "both", beim: "at the / with the",
+  bleiben: "to stay", bleibt: "stays", blau: "blue", blaue: "blue", blonde: "blonde",
+  bonn: "Bonn", braun: "brown", brief: "letter", briefkasten: "mailbox", briefmarke: "stamp",
+  brille: "glasses", bringt: "brings", brot: "bread", brötchen: "bread roll", bruder: "brother",
+  brüder: "brothers", buch: "book", bücher: "books", büro: "office", bus: "bus",
+  café: "café", chef: "boss", computer: "computer", da: "there", dabei: "with them",
+  danach: "after that", danke: "thank you", dankt: "thanks", das: "the / that", dein: "your",
+  deine: "your", dem: "the", den: "the", denn: "because", der: "the", deshalb: "therefore",
+  deutsch: "German", die: "the", dich: "you", direkt: "directly", drei: "three", dritten: "third",
+  durch: "through", durchsage: "announcement", dunkel: "dark", du: "you", ein: "a / one",
+  eine: "a / one", einem: "a / one", einen: "a / one", einer: "a / one", einkaufen: "to shop",
+  einladung: "invitation", einsteigen: "to get on", einfach: "simple / one-way", einfache: "simple / one-way",
+  eier: "eggs", eis: "ice / ice cream", elf: "eleven", eltern: "parents", englisch: "English",
+  er: "he", erste: "first", ersten: "first", es: "it / there", essen: "to eat / food",
+  euro: "euro", fährt: "travels / drives", fahrer: "driver", fahrkarte: "ticket", familie: "family",
+  fast: "almost", fehlt: "is missing", fenster: "window", ferienhaus: "holiday house",
+  fertig: "finished / ready", fest: "party / festival", fieber: "fever", film: "film", findet: "finds",
+  flasche: "bottle", fleisch: "meat", flohmarkt: "flea market", form: "form", formulare: "forms",
+  foto: "photo", frei: "free", freitag: "Friday", freund: "male friend", freunde: "friends",
+  freundin: "female friend", freundlich: "friendly", freut: "is happy", früh: "early",
+  früher: "earlier", frühstück: "breakfast", für: "for", fünf: "five", funktioniert: "works",
+  geht: "goes / is", gelb: "yellow", geld: "money", geldautomat: "cash machine", gemütlich: "cosy",
+  gemüse: "vegetables", genau: "exactly", gerade: "just / straight", geradeaus: "straight ahead",
+  gern: "gladly / like to", geschäft: "shop", geschäfte: "shops", geschichte: "story",
+  geschichten: "stories", geschlossen: "closed", geschenk: "gift", gestern: "yesterday",
+  getränke: "drinks", gewinnt: "wins", gibt: "gives / there is", gitarre: "guitar", glas: "glass",
+  gleich: "right away", gleis: "track / platform", glücklich: "happy", grad: "degrees",
+  grau: "grey", groß: "big / tall", große: "big", grüße: "greetings", grün: "green",
+  gut: "good / well", gute: "good", guten: "good", hallo: "hello", halb: "half",
+  haltestelle: "stop", hamburg: "Hamburg", handy: "mobile phone", hat: "has", hatten: "had",
+  haus: "house / home", hause: "home", hausaufgabe: "homework", heißen: "to be called",
+  heißt: "is called", helfen: "to help", hilft: "helps", hell: "bright", hemd: "shirt",
+  herd: "stove", herr: "Mr.", heute: "today", hier: "here", himmel: "sky", hin: "there",
+  hinter: "behind", hört: "hears / listens", hotel: "hotel", hund: "dog", ich: "I",
+  ihr: "her / their / you", ihre: "her / their", im: "in the", in: "in / into", ist: "is",
+  italien: "Italy", italienisch: "Italian", ja: "yes", jacke: "jacket", japan: "Japan",
+  jahre: "years", jetzt: "now", junge: "boy", kalendar: "calendar", kalt: "cold",
+  kann: "can", karte: "card / map", karotten: "carrots", kasse: "checkout", kassenbon: "receipt",
+  kauft: "buys", kaufen: "to buy", kaufhaus: "department store", kein: "no / not a",
+  keine: "no / not any", keinen: "no / not any", kellner: "waiter", kellnerin: "waitress",
+  kennt: "knows", kind: "child", kinder: "children", kindergarten: "kindergarten",
+  kirche: "church", klein: "small", kleine: "small", kleinen: "small", kleiner: "smaller",
+  kocht: "cooks", kochen: "to cook", kollegen: "colleagues", kollegin: "female colleague",
+  kommt: "comes", kommen: "to come", konnte: "could", kopf: "head", kopfschmerzen: "headache",
+  kostet: "costs", kurs: "course", kuchen: "cake", küche: "kitchen", kühlschrank: "fridge",
+  kurz: "short", kurze: "short", langen: "long", lange: "long", länger: "longer",
+  langsam: "slowly", laden: "shop", lampe: "lamp", lacht: "laughs", lachen: "to laugh",
+  laufen: "to run / walk", lebt: "lives", leicht: "easy / light", leider: "unfortunately",
+  lehrer: "teacher", lehrerin: "female teacher", lernt: "learns", lernen: "to learn",
+  lesen: "to read", liest: "reads", liebe: "dear / love", lieber: "preferably", liegt: "lies / is located",
+  links: "left", man: "one / you", macht: "does / makes", machen: "to do / make",
+  mal: "time / times", markt: "market", marktplatz: "market square", mantel: "coat",
+  meer: "sea", mein: "my", meine: "my", meinem: "my", menschen: "people", mitte: "middle",
+  mit: "with", mitarbeiter: "employee", milch: "milk", minuten: "minutes", möbel: "furniture",
+  morgen: "morning / tomorrow", möchte: "would like", möchten: "would like", muss: "must / has to",
+  müssen: "must / have to", müde: "tired", musik: "music", museum: "museum", mutter: "mother",
+  mütze: "hat", nach: "to / after", nachbarin: "female neighbor", nachmittag: "afternoon",
+  nachricht: "message", name: "name", neben: "next to", nein: "no", neu: "new", neue: "new",
+  neuen: "new", neunzehn: "nineteen", nicht: "not", nichts: "nothing", noch: "still / yet",
+  nummer: "number", nur: "only", oben: "upstairs / above", oder: "or", öffnet: "opens",
+  oma: "grandmother", orangensaft: "orange juice", papier: "paper", park: "park", passt: "fits",
+  pause: "break", per: "by / via", person: "person", personen: "people", polizei: "police",
+  polizist: "police officer", polen: "Poland", polnisch: "Polish", post: "post office",
+  postkarte: "postcard", preis: "price", probiert: "tries", pünktlich: "on time", rechts: "right",
+  regal: "shelf", regen: "rain", regenschirm: "umbrella", regnet: "it rains", reise: "journey",
+  restaurant: "restaurant", richtig: "correct", rot: "red", rote: "red", ruft: "calls",
+  rund: "round", sagt: "says", salat: "salad", samstag: "Saturday", samstags: "on Saturdays",
+  schinken: "ham", schließt: "closes", schlüssel: "key", schnell: "quickly", schön: "beautiful",
+  schöne: "beautiful", schwarz: "black", schwarze: "black", schwester: "sister", schwimmen: "to swim",
+  sechs: "six", seine: "his", sein: "to be / his", seife: "soap", seiten: "pages", sehr: "very",
+  seit: "since", setzt: "sits / places", sich: "oneself", sieben: "seven", sie: "she / they / you",
+  sind: "are", sitzt: "sits", socke: "sock", sofa: "sofa", sofort: "immediately", sommer: "summer",
+  sonne: "sun", sonntag: "Sunday", sonntags: "on Sundays", sonnig: "sunny", spanien: "Spain",
+  spanisch: "Spanish", später: "later", spazieren: "to walk", spricht: "speaks", sprechen: "to speak",
+  spielt: "plays", spielen: "to play", sport: "sport", stadt: "city", steht: "stands / says",
+  steine: "stones", stellen: "to put / place", straße: "street", straßenbahn: "tram", stuhl: "chair",
+  stühle: "chairs", student: "student", studentin: "female student", studiert: "studies",
+  sucht: "searches", suppe: "soup", tag: "day", tante: "aunt", tanzen: "to dance",
+  tee: "tea", telefonnummer: "phone number", termin: "appointment", termine: "appointments",
+  tisch: "table", tochter: "daughter", tomaten: "tomatoes", tor: "goal", tourist: "tourist",
+  tragen: "to carry / wear", trägt: "carries / wears", treffen: "to meet", treppenhaus: "stairwell",
+  trinken: "to drink", trinkt: "drinks", trocken: "dry", tschüss: "bye", tür: "door",
+  uhr: "o'clock / clock", um: "at / around", umschlag: "envelope", und: "and", universität: "university",
+  unser: "our", unsere: "our", unter: "under", unterschreiben: "to sign", unterwegs: "on the way",
+  überrascht: "surprised", vater: "father", Verkäufer: "salesperson", verkäuferin: "saleswoman",
+  verschiedene: "different", versteht: "understands", verstehen: "to understand", verspätung: "delay",
+  vier: "four", viele: "many", von: "from / of", vor: "before / in front of", vorbei: "past",
+  wartet: "waits", warten: "to wait", warm: "warm", war: "was", warum: "why", wasser: "water",
+  weiß: "white / knows", welche: "which", wenn: "if / when", wer: "who", wie: "how / like",
+  wieder: "again", wien: "Vienna", will: "wants", wind: "wind", winter: "winter", wir: "we",
+  wo: "where", woche: "week", wochenende: "weekend", woher: "where from", wohnen: "to live",
+  wohnt: "lives", wohnung: "apartment", wohnzimmer: "living room", wollen: "want", wort: "word",
+  wörter: "words", wörterbuch: "dictionary", zehn: "ten", zeit: "time", zettel: "note",
+  zwanzig: "twenty", zwei: "two", zweiten: "second", zur: "to the", zurück: "back", zusammen: "together",
+  achtzehn: "eighteen", achtzig: "eighty", allen: "everyone / all", alles: "everything",
+  also: "so / therefore", alte: "old", alten: "old", angefangen: "started", backt: "bakes",
+  bedankt: "thanks", beginnt: "begins", bei: "at / with", beiden: "both", bekanntes: "well-known",
+  bekommen: "to receive", benutzen: "to use", bestellen: "to order", bestellt: "orders",
+  besuche: "visit", bewegt: "moves", bin: "am", bis: "until", bisschen: "a little",
+  bist: "are", bitte: "please", bittet: "asks", braucht: "needs", dann: "then", darf: "may / is allowed",
+  deckt: "sets / covers", denselben: "the same", deutsches: "German", dort: "there", draußen: "outside",
+  dreiundzwanzig: "twenty-three", dreißig: "thirty", drucken: "to print", dunkle: "dark",
+  eigenen: "own", eines: "of a / one", einfachen: "simple", einmal: "once", empfiehlt: "recommends",
+  entschuldigung: "excuse me", erklärt: "explains", erreicht: "reaches", erzählen: "to tell",
+  esse: "eat", etwas: "something", fahre: "travel / drive", folgt: "follows", fragt: "asks",
+  frau: "Ms. / woman", froh: "glad", frühstückt: "eats breakfast", fängt: "starts",
+  fünfzehn: "fifteen", gegenüber: "opposite", gehen: "to go", gekauft: "bought", gelben: "yellow",
+  gesucht: "wanted / searched for", gratis: "free", großen: "large", großes: "large", größer: "bigger / taller",
+  grüne: "green", grünes: "green", grüßt: "greets", haben: "to have", hast: "have", hatte: "had",
+  heiß: "hot", heiße: "am called", heraus: "out", hilfe: "help", hinein: "inside", hundert: "hundred",
+  hält: "stops / holds", hängen: "hang", hören: "to hear / listen", ihm: "him", ihnen: "them / you",
+  ihrem: "her / their", ihren: "her / their", immer: "always", ins: "into the", isst: "eats",
+  jeden: "every", jedes: "every", kannst: "can", kim: "Kim", klatschen: "to clap", kleines: "small",
+  klingelt: "rings", koche: "cook", komme: "come", kommst: "come", kosten: "to cost", krank: "ill",
+  kurzen: "short", können: "can / to be able", kühl: "cool", langweilig: "boring", laut: "aloud / loud",
+  leben: "to live", leichtes: "easy", leiht: "borrows", leo: "Leo", letzter: "last", lieb: "dear / kind",
+  lieben: "to love", los: "off / going", lustig: "funny", lächelt: "smiles", lädt: "invites",
+  längere: "longer", läuft: "runs", mag: "likes", malen: "to paint", markiert: "marks",
+  meisten: "most", merkt: "notices", mieten: "to rent", minus: "minus", mir: "me", mitspielen: "to join the game",
+  mögen: "to like", nebenan: "next door", nehmen: "to take", nett: "nice", neun: "nine", nimmt: "takes",
+  nächsten: "next", offen: "open", oft: "often", ohne: "without", plant: "plans", reserviert: "reserved",
+  roten: "red", ruhig: "quiet", räumt: "tidies", sagen: "to say", sammeln: "to collect", schaut: "looks",
+  scheint: "shines", schickt: "sends", schlafen: "to sleep", schläft: "sleeps", schneidet: "cuts",
+  schon: "already", schreiben: "to write", schreibt: "writes", schwer: "heavy / difficult", schönen: "beautiful",
+  sechzehn: "sixteen", sehen: "to see", seinem: "his", seinen: "his", seiner: "his", setzen: "to sit / set",
+  siebzehn: "seventeen", siebzig: "seventy", sieht: "sees", singt: "sings", sitzen: "to sit", so: "so / like this",
+  spät: "late", stark: "strong / heavily", steckt: "inserts", stehen: "to stand", steigt: "gets on",
+  stellt: "puts / places", süß: "sweet", tanzt: "dances", teuer: "expensive", toll: "great", trifft: "meets",
+  trotzdem: "nevertheless", tut: "does / hurts", viel: "much / a lot", vielen: "many", vierfünfacht: "four-five-eight",
+  vierundzwanzig: "twenty-four", vierzehn: "fourteen", vierzig: "forty", vom: "from the", vorne: "ahead / in front",
+  wandern: "to hike", wann: "when", warme: "warm", warte: "wait", was: "what", weh: "sore / painful",
+  weiße: "white", wenig: "little", wird: "becomes", wirft: "throws / puts", wohne: "live", wählen: "to choose",
+  wählt: "chooses", während: "while", zeigt: "shows", zieht: "moves / pulls", zu: "to / too / closed",
+  zum: "to the / for the", zweites: "second", zwölf: "twelve", älter: "older", öffnen: "to open", über: "about / over",
+};
+
+export function cleanWord(token: string) {
+  return token.toLocaleLowerCase("de-DE").replace(/[^a-zäöüßé]/gi, "");
+}
+
+export function meaningFor(token: string) {
+  const word = cleanWord(token);
+  if (!word) return "";
+  if (GLOSSARY[word]) return GLOSSARY[word];
+  if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";
+  return "A1 word";
+}
