@@ -51,6 +51,7 @@ export default function Home() {
           <nav className="topnav" aria-label="Hauptnavigation">
             <a href="#kurs">Kurs</a>
             <a href="#geschichten">Geschichten</a>
+            <a href="/vocabulary">Wortschatz</a>
           </nav>
         </header>
 

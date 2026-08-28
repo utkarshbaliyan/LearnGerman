@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de">
+      <head><meta name="codex-preview" content="development" /></head>
       <body>{children}</body>
     </html>
   );

@@ -119,12 +119,14 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
       audioRef.current = null;
     }
 
-    setSpeaking(false);
-    setPaused(false);
-    setLoadingAudio(false);
-    setAudioError("");
-    activeWordRef.current = -1;
-    setActiveWord(-1);
+    const resetFrame = requestAnimationFrame(() => {
+      setSpeaking(false);
+      setPaused(false);
+      setLoadingAudio(false);
+      setAudioError("");
+      activeWordRef.current = -1;
+      setActiveWord(-1);
+    });
 
     const cacheKey = `${curriculum.id}:${story.id}`;
     const cachedTimings = timingCache.get(cacheKey);
@@ -153,7 +155,10 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
         });
     }
 
-    return () => controller.abort();
+    return () => {
+      cancelAnimationFrame(resetFrame);
+      controller.abort();
+    };
   }, [curriculum, story]);
 
   useEffect(() => () => {
