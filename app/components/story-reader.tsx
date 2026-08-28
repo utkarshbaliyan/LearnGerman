@@ -95,6 +95,7 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
   const wordCount = story.text
     .split(/\s+/)
     .filter((token) => cleanWord(token) || /\d/.test(token)).length;
+  const hasAudio = story.audioReady !== false;
 
   const keyWords = useMemo(() => {
     const seen = new Set<string>();
@@ -128,6 +129,13 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
       setActiveWord(-1);
     });
 
+    if (!hasAudio) {
+      return () => {
+        cancelAnimationFrame(resetFrame);
+        controller.abort();
+      };
+    }
+
     const cacheKey = `${curriculum.id}:${story.id}`;
     const cachedTimings = timingCache.get(cacheKey);
     if (cachedTimings) {
@@ -159,7 +167,7 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
       cancelAnimationFrame(resetFrame);
       controller.abort();
     };
-  }, [curriculum, story]);
+  }, [curriculum, story, hasAudio]);
 
   useEffect(() => () => {
     audioRef.current?.pause();
@@ -319,7 +327,7 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
         </DialogDescription>
       </DialogHeader>
 
-      <div className="audio-bar">
+      {hasAudio ? <div className="audio-bar">
         <Button
           className="audio-play"
           size="icon-lg"
@@ -339,7 +347,10 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
           <b>{rate[0].toFixed(2)}×</b>
         </div>
         <Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Audio von vorn abspielen"><RotateCcw /></Button>
-      </div>
+      </div> : <div className="audio-pending" role="status">
+        <strong>Diese A2-Geschichte ist jetzt zum Lesen und Üben bereit.</strong>
+        <span>Die passende Hörfassung folgt mit der nächsten A2-Einheit.</span>
+      </div>}
       {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 
       <div className="word-help"><MousePointer2 /> Wort antippen oder mit der Maus berühren: englische Bedeutung</div>
@@ -350,6 +361,11 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
           <span className="note-label">Lernziel</span>
           <p>{story.canDo}</p>
         </div>
+        {story.pronunciation && <div>
+          <span className="note-label">Aussprache</span>
+          <p>{story.pronunciation}</p>
+          {story.referenceFocus && <small className="reference-note">Bezug im Text: {story.referenceFocus}</small>}
+        </div>}
         <div>
           <span className="note-label">Schlüsselwörter</span>
           <div className="key-words">
@@ -362,7 +378,7 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
 
       <section className="speak-prompt">
         <Volume2 />
-        <div><span>Sprechen & schreiben</span><p>Lies die Geschichte einmal laut. Schreibe danach drei kurze Sätze zum Thema {unit.shortTitle}.</p></div>
+        <div><span>Sprechen & schreiben</span><p>{story.speakingPrompt ?? `Lies die Geschichte einmal laut. Schreibe danach drei kurze Sätze zum Thema ${unit.shortTitle}.`}</p>{story.writingPrompt && <p className="writing-prompt"><b>Schreiben:</b> {story.writingPrompt}</p>}</div>
       </section>
 
       <nav className="reader-nav" aria-label="Geschichtennavigation">

@@ -1,4 +1,4 @@
-export type CefrLevel = "A1" | "A2" | "B1";
+export type CefrLevel = "A1" | "A2" | "B1" | "B2";
 
 export type Story = {
   id: string;
@@ -10,6 +10,11 @@ export type Story = {
   canDo: string;
   theme: string;
   color: string;
+  pronunciation?: string;
+  referenceFocus?: string;
+  speakingPrompt?: string;
+  writingPrompt?: string;
+  audioReady?: boolean;
 };
 
 export type Unit = {
