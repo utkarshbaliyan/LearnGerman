@@ -105,8 +105,15 @@ button { color: inherit; }
 .topnav { display: flex; align-items: center; gap: 24px; }
 .topnav > a { color: var(--ink-soft); text-decoration: none; font-size: 11px; font-weight: 700; }
 .topnav > a:hover { color: var(--orange-dark); }
-.public-badge { padding: 6px 10px; background: rgba(255,255,255,.65); color: var(--green); border: 1px solid var(--line); }
-.public-badge span { width: 6px; height: 6px; border-radius: 50%; background: #3e9d68; }
+
+.level-switcher { width: fit-content; margin-bottom: 18px; padding: 4px; display: flex; gap: 4px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,253,248,.72); }
+.level-switcher button { min-width: 92px; padding: 8px 10px; display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 7px; border: 0; border-radius: 9px; background: transparent; color: var(--ink-soft); text-align: left; cursor: pointer; }
+.level-switcher button b { color: var(--green); font: 700 14px/1 Georgia, serif; }
+.level-switcher button span { font-size: 9px; font-weight: 700; }
+.level-switcher button small { grid-column: 2; margin-top: 2px; color: var(--orange-dark); font-size: 7px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.level-switcher button.is-active { background: var(--green); color: white; box-shadow: 0 5px 12px rgba(35,77,62,.16); }
+.level-switcher button.is-active b { color: white; }
+.level-switcher button:disabled { opacity: .48; cursor: default; }
 
 .hero {
   max-width: 1500px;
@@ -216,14 +223,6 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .rate-control [data-slot="slider-range"] { background: var(--orange); }
 .rate-control [data-slot="slider-thumb"] { width: 14px; height: 14px; border-color: var(--orange); }
 .audio-bar > button:last-child { color: white; opacity: .72; }
-.narration-controls { margin: 0 0 13px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; border: 1px solid #bfd6c7; border-radius: 13px; background: #e5efe8; }
-.ai-narrator { display: flex; align-items: center; gap: 10px; }
-.ai-narrator > div { display: grid; gap: 2px; }
-.ai-narrator b { color: var(--green); font-size: 10px; }
-.ai-narrator small { color: var(--ink-soft); font-size: 8px; }
-.ai-pulse { width: 10px; height: 10px; border: 3px solid #b8d8c3; border-radius: 50%; background: #3c9462; box-shadow: 0 0 0 4px rgba(60,148,98,.1); }
-.narration-controls > p { max-width: 260px; margin: 0; color: var(--ink-soft); font-size: 8px; line-height: 1.45; text-align: right; }
-.narration-controls > p strong { color: var(--green); }
 .audio-error { margin: -4px 0 13px; padding: 9px 12px; border-radius: 9px; background: #f7ddd6; color: #9f2d1f; font-size: 9px; }
 .word-help { display: flex; align-items: center; justify-content: center; gap: 6px; color: #7d837e; font-size: 8px; }
 .word-help svg { width: 12px; }
@@ -231,7 +230,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .reader-copy::first-letter { float: left; margin: 10px 8px 0 0; color: var(--orange); font: 700 66px/.7 Georgia, serif; }
 .story-word { display: inline; border: 0; padding: 0; margin: 0; background: transparent; font: inherit; line-height: inherit; cursor: help; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(229,95,69,.35); text-underline-offset: 4px; border-radius: 3px; }
 .story-word:hover { background: #f6ddd6; color: #9f2d1f; }
-.story-word.is-number { cursor: default; text-decoration: none; }
+.story-word.no-gloss { cursor: default; text-decoration: none; }
 .story-word.is-active { background: var(--orange); color: white; text-decoration: none; box-shadow: 2px 0 0 var(--orange), -2px 0 0 var(--orange); }
 .word-tooltip { display: grid; gap: 2px; padding: 8px 11px; border-radius: 8px; background: var(--ink); color: white; }
 .word-tooltip span { opacity: .6; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
@@ -296,8 +295,8 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .reader-heading [data-slot="dialog-title"] { font-size: 43px; }
   .audio-bar { grid-template-columns: auto 1fr auto; }
   .rate-control { grid-column: 1 / -1; }
-  .narration-controls { grid-template-columns: 1fr; }
-  .narration-controls > p { max-width: none; text-align: left; }
+  .level-switcher { width: 100%; }
+  .level-switcher button { min-width: 0; flex: 1; }
   .reader-copy { font-size: 22px; }
   .reader-notes { grid-template-columns: 1fr; }
   .reader-nav button { font-size: 0; width: 38px; }

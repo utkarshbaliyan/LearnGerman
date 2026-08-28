@@ -2,10 +2,10 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import path from "node:path";
 
-import { A1_STORIES } from "../app/a1-curriculum";
+import { A1_STORIES } from "../app/curriculum/a1";
 
 const projectRoot = path.resolve(import.meta.dirname, "..");
-const audioDir = path.join(projectRoot, "public", "audio");
+const audioDir = path.join(projectRoot, "public", "audio", "a1");
 const workDir = path.resolve(process.env.LESELAUT_AUDIO_WORK_DIR ?? path.join(projectRoot, ".audio-work"));
 const piperPython = process.env.PIPER_PYTHON;
 const piperModel = process.env.PIPER_MODEL;

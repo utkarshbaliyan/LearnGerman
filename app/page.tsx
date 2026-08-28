@@ -1,468 +1,182 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BookOpen,
-  Clock3,
-  Gauge,
-  Headphones,
-  Languages,
-  MousePointer2,
-  Pause,
-  Play,
-  RotateCcw,
-  Sparkles,
-  Volume2,
-} from "lucide-react";
+import { useState, type CSSProperties } from "react";
+import { ArrowRight, BookOpen, Headphones, Play, Sparkles } from "lucide-react";
 
-import { A1_STATS, A1_STORIES, A1_UNITS, type A1Story, cleanWord, meaningFor } from "@/app/a1-curriculum";
+import { StoryReader } from "@/app/components/story-reader";
+import {
+  getCurriculum,
+  LEVELS,
+  type CefrLevel,
+  type Story,
+} from "@/app/curriculum";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Slider } from "@/components/ui/slider";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
-const STOP_WORDS = new Set([
-  "aber", "alle", "als", "am", "an", "auch", "auf", "aus", "bei", "das", "dem",
-  "den", "der", "deshalb", "die", "du", "ein", "eine", "einem", "einen", "einer",
-  "er", "es", "für", "hat", "heute", "hier", "ich", "ihr", "ihre", "im", "in",
-  "ist", "jetzt", "kann", "kein", "keine", "mit", "möchte", "muss", "nach", "nicht",
-  "noch", "nur", "oder", "sein", "sie", "sind", "und", "um", "von", "vor", "war",
-  "wie", "wir", "zu", "zur",
-]);
-
-const timingCache = new Map<number, number[]>();
-const AUDIO_ASSET_VERSION = "aligned-1";
-
-function StoryWord({ token, active }: { token: string; active: boolean }) {
-  const word = cleanWord(token);
-  const isNumber = /\d/.test(token);
-  if (!word && !isNumber) return <>{token}</>;
-  if (!word) return <span className={`story-word is-number ${active ? "is-active" : ""}`}>{token}</span>;
-  const meaning = meaningFor(token);
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <button
-          type="button"
-          className={`story-word ${active ? "is-active" : ""}`}
-          aria-label={`${word}: ${meaning}`}
-        >
-          {token}
-        </button>
-      </TooltipTrigger>
-      <TooltipContent className="word-tooltip" side="top" sideOffset={8}>
-        <span>{word}</span>
-        <strong>{meaning}</strong>
-      </TooltipContent>
-    </Tooltip>
-  );
-}
-
-function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (story: A1Story) => void }) {
-  const [rate, setRate] = useState([0.92]);
-  const [speaking, setSpeaking] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const [loadingAudio, setLoadingAudio] = useState(false);
-  const [audioError, setAudioError] = useState("");
-  const [activeWord, setActiveWord] = useState(-1);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const wordStartsRef = useRef<number[]>([]);
-  const activeWordRef = useRef(-1);
-  const animationFrameRef = useRef<number | null>(null);
-  const unit = A1_UNITS[story.unitId - 1];
-  const wordCount = story.text.split(/\s+/).filter((token) => cleanWord(token) || /\d/.test(token)).length;
-  const keyWords = useMemo(() => {
-    const seen = new Set<string>();
-    return story.text
-      .split(/\s+/)
-      .map((token) => ({ token, word: cleanWord(token), meaning: meaningFor(token) }))
-      .filter(({ word, meaning }) => word.length > 3 && meaning !== "A1 word" && !STOP_WORDS.has(word))
-      .filter(({ word }) => {
-        if (seen.has(word)) return false;
-        seen.add(word);
-        return true;
-      })
-      .slice(0, 8);
-  }, [story]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const audio = audioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.src = "";
-      audioRef.current = null;
-    }
-    setSpeaking(false);
-    setPaused(false);
-    setLoadingAudio(false);
-    setAudioError("");
-    activeWordRef.current = -1;
-    setActiveWord(-1);
-
-    const cachedTimings = timingCache.get(story.number);
-    if (cachedTimings) {
-      wordStartsRef.current = cachedTimings;
-    } else {
-      wordStartsRef.current = [];
-      const id = String(story.number).padStart(3, "0");
-      void fetch(`/audio/story-${id}.json?v=${AUDIO_ASSET_VERSION}`, { signal: controller.signal })
-        .then((response) => {
-          if (!response.ok) throw new Error(`Timing request failed: ${response.status}`);
-          return response.json() as Promise<{ starts?: unknown }>;
-        })
-        .then((data) => {
-          if (!Array.isArray(data.starts) || !data.starts.every((value) => typeof value === "number")) {
-            throw new Error("Invalid timing data");
-          }
-          timingCache.set(story.number, data.starts);
-          wordStartsRef.current = data.starts;
-        })
-        .catch((error: unknown) => {
-          if (!(error instanceof DOMException && error.name === "AbortError")) {
-            console.error("Story timing could not be loaded", error);
-          }
-        });
-    }
-
-    return () => controller.abort();
-  }, [story]);
-
-  useEffect(() => () => {
-    audioRef.current?.pause();
-    if (audioRef.current) audioRef.current.src = "";
-    if (animationFrameRef.current !== null) cancelAnimationFrame(animationFrameRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (audioRef.current) audioRef.current.playbackRate = rate[0];
-  }, [rate]);
-
-  function stopHighlightLoop() {
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
-  }
-
-  function highlightWordAt(time: number) {
-    const starts = wordStartsRef.current;
-    let nextWord = -1;
-    let low = 0;
-    let high = starts.length - 1;
-
-    while (low <= high) {
-      const middle = Math.floor((low + high) / 2);
-      if (starts[middle] <= time) {
-        nextWord = middle;
-        low = middle + 1;
-      } else {
-        high = middle - 1;
-      }
-    }
-
-    if (nextWord !== activeWordRef.current) {
-      activeWordRef.current = nextWord;
-      setActiveWord(nextWord);
-    }
-  }
-
-  function startHighlightLoop(audio: HTMLAudioElement) {
-    stopHighlightLoop();
-    const update = () => {
-      highlightWordAt(audio.currentTime);
-      if (!audio.paused && !audio.ended) {
-        animationFrameRef.current = requestAnimationFrame(update);
-      } else {
-        animationFrameRef.current = null;
-      }
-    };
-    update();
-  }
-
-  function startAudio() {
-    audioRef.current?.pause();
-    setAudioError("");
-    setLoadingAudio(true);
-    setPaused(false);
-
-    const filename = `story-${String(story.number).padStart(3, "0")}.webm`;
-    const audio = new Audio(`/audio/${filename}?v=${AUDIO_ASSET_VERSION}`);
-    audio.preload = "auto";
-    audio.playbackRate = rate[0];
-    audioRef.current = audio;
-
-    audio.onplaying = () => {
-      setLoadingAudio(false);
-      setSpeaking(true);
-      setPaused(false);
-      startHighlightLoop(audio);
-    };
-    audio.onwaiting = () => setLoadingAudio(true);
-    audio.oncanplay = () => setLoadingAudio(false);
-    audio.onended = () => {
-      stopHighlightLoop();
-      setSpeaking(false);
-      setPaused(false);
-      setLoadingAudio(false);
-      activeWordRef.current = -1;
-      setActiveWord(-1);
-    };
-    audio.onerror = () => {
-      stopHighlightLoop();
-      setLoadingAudio(false);
-      setSpeaking(false);
-      setPaused(false);
-      activeWordRef.current = -1;
-      setActiveWord(-1);
-      setAudioError("This story's audio could not be loaded. Please refresh and try again.");
-    };
-    void audio.play().catch((error: unknown) => {
-      stopHighlightLoop();
-      setLoadingAudio(false);
-      const blocked = error instanceof DOMException && error.name === "NotAllowedError";
-      setAudioError(
-        blocked
-          ? "Your browser blocked audio playback. Tap Play to allow narration."
-          : "This story's audio could not start. Tap Play once more.",
-      );
-    });
-  }
-
-  function toggleAudio() {
-    if (speaking && !paused) {
-      audioRef.current?.pause();
-      stopHighlightLoop();
-      setPaused(true);
-      setSpeaking(false);
-      return;
-    }
-    if (paused && audioRef.current) {
-      void audioRef.current.play();
-      return;
-    }
-    if (loadingAudio) return;
-    startAudio();
-  }
-
-  function restartAudio() {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.playbackRate = rate[0];
-      activeWordRef.current = -1;
-      setActiveWord(-1);
-      void audioRef.current.play();
-    } else {
-      startAudio();
-    }
-  }
-
-  function renderText() {
-    let wordIndex = 0;
-    return story.text.split(/(\s+)/).map((token, index) => {
-      if (/^\s+$/.test(token)) return <span key={index}>{token}</span>;
-      if (!cleanWord(token) && !/\d/.test(token)) return <span key={index}>{token}</span>;
-      const currentWord = wordIndex;
-      wordIndex += 1;
-      return <StoryWord key={index} token={token} active={activeWord === currentWord} />;
-    });
-  }
-
-  const previous = A1_STORIES[story.number - 2];
-  const next = A1_STORIES[story.number];
-
-  return (
-    <div className="reader">
-      <DialogHeader className="reader-heading">
-        <div className="reader-kicker">
-          <span className="reader-number" style={{ background: story.color }}>{String(story.number).padStart(3, "0")}</span>
-          <span>Unit {story.unitId} · {story.theme}</span>
-          <Badge>A1</Badge>
-        </div>
-        <DialogTitle>{story.title}</DialogTitle>
-        <DialogDescription>
-          <span><BookOpen /> {wordCount} words</span>
-          <span><Clock3 /> about {Math.max(3, Math.ceil(wordCount / 70))} minutes at a learning pace</span>
-          <span><Languages /> {story.grammar}</span>
-        </DialogDescription>
-      </DialogHeader>
-
-      <div className="audio-bar">
-        <Button className="audio-play" size="icon-lg" onClick={toggleAudio} aria-label={speaking ? "Pause story" : "Play story"} disabled={loadingAudio}>
-          {speaking ? <Pause /> : <Play className="play-nudge" />}
-        </Button>
-        <div className="audio-label">
-          <strong>{loadingAudio ? "Loading story audio…" : speaking ? "Listening in German" : paused ? "Paused" : "Listen to this story"}</strong>
-          <span>{loadingAudio ? "The narration is built into the website" : speaking ? "Follow the highlighted word" : "Ready to play · no voice download"}</span>
-        </div>
-        <div className="rate-control">
-          <Gauge />
-          <Slider min={0.6} max={1.05} step={0.05} value={rate} onValueChange={setRate} aria-label="Playback speed" />
-          <b>{rate[0].toFixed(2)}×</b>
-        </div>
-        <Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Restart audio"><RotateCcw /></Button>
-      </div>
-
-      <div className="narration-controls">
-        <div className="ai-narrator"><span className="ai-pulse" /><div><b>Thorsten · open-source German narrator</b><small>Piper neural voice · clear Standard German</small></div></div>
-        <p><strong>Bundled story audio</strong> · No API key, model download, or per-play charge.</p>
-      </div>
-      {audioError && <p className="audio-error" role="alert">{audioError}</p>}
-
-      <div className="word-help"><MousePointer2 /> Hover or tap a word for its English meaning</div>
-      <article className="reader-copy" lang="de">{renderText()}</article>
-
-      <section className="reader-notes">
-        <div>
-          <span className="note-label">Can-do goal</span>
-          <p>{story.canDo}</p>
-        </div>
-        <div>
-          <span className="note-label">Key words</span>
-          <div className="key-words">
-            {keyWords.map(({ word, meaning }) => (
-              <span key={word}><b>{word}</b>{meaning}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="speak-prompt">
-        <Volume2 />
-        <div><span>Speak & write</span><p>Read the story aloud once. Then write three short sentences about {unit.shortTitle.toLocaleLowerCase("en")}.</p></div>
-      </section>
-
-      <nav className="reader-nav" aria-label="Story navigation">
-        <Button variant="outline" disabled={!previous} onClick={() => previous && onStoryChange(previous)}><ArrowLeft /> Previous</Button>
-        <span>{story.number} / 100</span>
-        <Button variant="outline" disabled={!next} onClick={() => next && onStoryChange(next)}>Next <ArrowRight /></Button>
-      </nav>
-    </div>
-  );
-}
+const DEFAULT_LEVEL: CefrLevel = "A1";
 
 export default function Home() {
+  const [activeLevel, setActiveLevel] = useState<CefrLevel>(DEFAULT_LEVEL);
   const [activeUnit, setActiveUnit] = useState("all");
-  const [selectedStory, setSelectedStory] = useState<A1Story | null>(null);
-  const visibleStories = activeUnit === "all" ? A1_STORIES : A1_UNITS[Number(activeUnit) - 1].stories;
+  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+  const curriculum = getCurriculum(activeLevel) ?? getCurriculum(DEFAULT_LEVEL)!;
+  const selectedUnit = activeUnit === "all"
+    ? undefined
+    : curriculum.units.find((unit) => unit.id === Number(activeUnit));
+  const visibleStories = selectedUnit?.stories ?? curriculum.stories;
 
-  function openStory(story: A1Story) {
-    setSelectedStory(story);
+  function selectLevel(level: CefrLevel) {
+    if (!getCurriculum(level)) return;
+    setActiveLevel(level);
+    setActiveUnit("all");
+    setSelectedStory(null);
+  }
+
+  function selectUnit(unitId: number) {
+    setActiveUnit(String(unitId));
+    document.getElementById("geschichten")?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
     <TooltipProvider delayDuration={70}>
       <main className="site-shell">
         <header className="topbar">
-          <a href="#top" className="brand" aria-label="LeseLaut home">
+          <a href="#start" className="brand" aria-label="LeseLaut Startseite">
             <span className="brand-mark" aria-hidden="true">ä</span>
-            <span><strong>LeseLaut</strong><small>100 immersive German stories for A1</small></span>
+            <span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span>
           </a>
-          <nav className="topnav" aria-label="Primary navigation">
-            <a href="#curriculum">Curriculum</a>
-            <a href="#stories">Stories</a>
-            <Badge className="public-badge"><span /> Free · Public</Badge>
+          <nav className="topnav" aria-label="Hauptnavigation">
+            <a href="#kurs">Kurs</a>
+            <a href="#geschichten">Geschichten</a>
           </nav>
         </header>
 
-        <section className="hero" id="top">
+        <section className="hero" id="start">
           <div className="hero-copy">
-            <Badge className="eyebrow"><Sparkles /> CEFR-aligned A1 course</Badge>
-            <h1>German starts<br />with a <em>story.</em></h1>
-            <p>One hundred longer, flowing stories help a complete beginner meet more than 800 useful words in context—not as an isolated vocabulary list.</p>
+            <div className="level-switcher" aria-label="Sprachniveau">
+              {LEVELS.map((level) => (
+                <button
+                  key={level.id}
+                  type="button"
+                  className={level.id === activeLevel ? "is-active" : ""}
+                  disabled={!level.available}
+                  onClick={() => selectLevel(level.id)}
+                >
+                  <b>{level.id}</b>
+                  <span>{level.label}</span>
+                  {!level.available && <small>bald</small>}
+                </button>
+              ))}
+            </div>
+            <Badge className="eyebrow"><Sparkles /> Deutsch · Niveau {curriculum.id}</Badge>
+            <h1>Deutsch beginnt<br />mit einer <em>Geschichte.</em></h1>
+            <p>Hundert längere Geschichten vermitteln mehr als 800 wichtige Wörter im Zusammenhang. Du liest, hörst und erkennst, wie die Sprache im Alltag fließt.</p>
             <div className="hero-actions">
-              <Button size="lg" onClick={() => openStory(A1_STORIES[0])}><Play /> Start story 001</Button>
-              <a href="#stories">Browse all stories <ArrowRight /></a>
+              <Button size="lg" onClick={() => setSelectedStory(curriculum.stories[0])}><Play /> Geschichte 001 starten</Button>
+              <a href="#geschichten">Alle Geschichten <ArrowRight /></a>
             </div>
           </div>
-          <div className="story-stack" aria-label="Course overview">
-            <div className="stack-card stack-back"><span>{Math.floor(A1_STATS.totalWords / 1000)}k+</span><small>words to read & hear</small></div>
-            <div className="stack-card stack-middle"><span>800+</span><small>words in context</small></div>
+
+          <div className="story-stack" aria-label="Kursüberblick">
+            <div className="stack-card stack-back"><span>{Math.floor(curriculum.stats.totalWords / 1000)}k+</span><small>Wörter zum Lesen und Hören</small></div>
+            <div className="stack-card stack-middle"><span>800+</span><small>Wörter im Zusammenhang</small></div>
             <div className="stack-card stack-front">
-              <div className="mini-cover"><span>001</span><Badge>A1</Badge></div>
-              <h2>Guten Morgen, Mia!</h2>
-              <p>A complete 3-minute chapter · listen · read · hover · speak</p>
-              <Button onClick={() => openStory(A1_STORIES[0])}>Read the first story <ArrowRight /></Button>
+              <div className="mini-cover"><span>001</span><Badge>{curriculum.id}</Badge></div>
+              <h2>{curriculum.stories[0].title}</h2>
+              <p>Hören · lesen · verstehen · sprechen</p>
+              <Button onClick={() => setSelectedStory(curriculum.stories[0])}>Erste Geschichte lesen <ArrowRight /></Button>
             </div>
           </div>
         </section>
 
-        <section className="curriculum" id="curriculum">
+        <section className="curriculum" id="kurs">
           <div className="section-intro">
-            <span>10 units · 100 longer chapters</span>
-            <h2>Learn the flow, not just the words.</h2>
-            <p>Each chapter develops a situation through connected events and dialogue, while familiar vocabulary returns often enough to become natural.</p>
+            <span>{curriculum.units.length} Einheiten · {curriculum.stories.length} Geschichten</span>
+            <h2>Sprachgefühl entsteht im Zusammenhang.</h2>
+            <p>Jede Geschichte verbindet Alltag, Dialog und Grammatik. Bekannte Wörter kehren regelmäßig zurück und werden Schritt für Schritt vertraut.</p>
           </div>
+
           <div className="unit-track">
-            {A1_UNITS.map((unit) => (
-              <button key={unit.id} type="button" onClick={() => { setActiveUnit(String(unit.id)); document.getElementById("stories")?.scrollIntoView({ behavior: "smooth" }); }} style={{ "--unit-color": unit.color } as React.CSSProperties}>
+            {curriculum.units.map((unit) => (
+              <button
+                key={unit.id}
+                type="button"
+                onClick={() => selectUnit(unit.id)}
+                style={{ "--unit-color": unit.color } as CSSProperties}
+              >
                 <span>{String(unit.id).padStart(2, "0")}</span>
                 <strong>{unit.shortTitle}</strong>
-                <small>10 stories</small>
+                <small>{unit.stories.length} Geschichten</small>
               </button>
             ))}
           </div>
+
           <div className="coverage-strip">
-            <div><b>Reading volume</b><span>{A1_STATS.totalWords.toLocaleString("en-US")} words across the course</span></div>
-            <div><b>Interaction</b><span>questions & everyday needs</span></div>
-            <div><b>Production</b><span>simple speaking & writing</span></div>
-            <div><b>Vocabulary</b><span>800+ useful words in context</span></div>
+            <div><b>Leseumfang</b><span>{curriculum.stats.totalWords.toLocaleString("de-DE")} Wörter im Kurs</span></div>
+            <div><b>Alltag</b><span>Fragen und typische Situationen</span></div>
+            <div><b>Ausdruck</b><span>einfach sprechen und schreiben</span></div>
+            <div><b>Wortschatz</b><span>800+ Wörter im Zusammenhang</span></div>
           </div>
         </section>
 
-        <section className="library" id="stories">
+        <section className="library" id="geschichten">
           <div className="library-heading">
-            <div><span>The A1 library</span><h2>{activeUnit === "all" ? "All 100 stories" : `Unit ${activeUnit}: ${A1_UNITS[Number(activeUnit) - 1].title}`}</h2></div>
-            <p>{activeUnit === "all" ? `Choose a unit or begin at story one. Stories average ${A1_STATS.averageStoryWords} words, with slow audio and instant word help.` : A1_UNITS[Number(activeUnit) - 1].description}</p>
+            <div>
+              <span>Bibliothek · {curriculum.id}</span>
+              <h2>{selectedUnit ? `Einheit ${selectedUnit.id}: ${selectedUnit.title}` : `Alle ${curriculum.stories.length} Geschichten`}</h2>
+            </div>
+            <p>{selectedUnit?.description ?? `Wähle eine Einheit oder beginne mit Geschichte 001. Eine Geschichte hat durchschnittlich ${curriculum.stats.averageStoryWords} Wörter, Audio und direkte Worthilfe.`}</p>
           </div>
 
           <Tabs value={activeUnit} onValueChange={setActiveUnit} className="unit-tabs">
             <TabsList variant="line" className="unit-tabs-list">
-              <TabsTrigger value="all">All</TabsTrigger>
-              {A1_UNITS.map((unit) => <TabsTrigger key={unit.id} value={String(unit.id)}>{String(unit.id).padStart(2, "0")}</TabsTrigger>)}
+              <TabsTrigger value="all">Alle</TabsTrigger>
+              {curriculum.units.map((unit) => (
+                <TabsTrigger key={unit.id} value={String(unit.id)}>{String(unit.id).padStart(2, "0")}</TabsTrigger>
+              ))}
             </TabsList>
           </Tabs>
 
           <div className="story-grid">
             {visibleStories.map((story) => (
-              <button key={story.id} type="button" className="story-card" onClick={() => openStory(story)} style={{ "--story-color": story.color } as React.CSSProperties}>
-                <div className="card-top"><span>{String(story.number).padStart(3, "0")}</span><Badge variant="outline">A1</Badge></div>
+              <button
+                key={story.id}
+                type="button"
+                className="story-card"
+                onClick={() => setSelectedStory(story)}
+                style={{ "--story-color": story.color } as CSSProperties}
+              >
+                <div className="card-top"><span>{String(story.number).padStart(3, "0")}</span><Badge variant="outline">{curriculum.id}</Badge></div>
                 <div className="card-rule" />
-                <small>Unit {story.unitId} · {story.theme}</small>
+                <small>Einheit {story.unitId} · {story.theme}</small>
                 <h3>{story.title}</h3>
                 <p>{story.text.split(" ").slice(0, 14).join(" ")}…</p>
-                <div className="card-meta"><span><Headphones /> audio</span><span><BookOpen /> {story.text.split(/\s+/).length} words</span><ArrowRight /></div>
+                <div className="card-meta">
+                  <span><Headphones /> Audio</span>
+                  <span><BookOpen /> {story.text.split(/\s+/).length} Wörter</span>
+                  <ArrowRight />
+                </div>
               </button>
             ))}
           </div>
         </section>
 
         <footer>
-          <a href="#top" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></a>
-          <p>Curriculum grounded in the Council of Europe CEFR A1 descriptors and the Goethe-Institut A1 vocabulary and grammar inventories.</p>
-          <div><a href="https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions" target="_blank" rel="noreferrer">CEFR framework</a><a href="https://www.goethe.de/en/spr/prf/ueb/pa1.html" target="_blank" rel="noreferrer">Goethe A1</a></div>
+          <a href="#start" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span></a>
+          <p>Der A1-Kurs orientiert sich am GER des Europarats sowie an Wortschatz und Grammatik des Goethe-Instituts.</p>
+          <div>
+            <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions" target="_blank" rel="noreferrer">GER-Referenzrahmen</a>
+            <a href="https://www.goethe.de/en/spr/prf/ueb/pa1.html" target="_blank" rel="noreferrer">Goethe A1</a>
+          </div>
         </footer>
 
         <Dialog open={Boolean(selectedStory)} onOpenChange={(open) => { if (!open) setSelectedStory(null); }}>
           {selectedStory && (
             <DialogContent className="reader-dialog" showCloseButton>
-              <Reader story={selectedStory} onStoryChange={setSelectedStory} />
+              <StoryReader curriculum={curriculum} story={selectedStory} onStoryChange={setSelectedStory} />
             </DialogContent>
           )}
         </Dialog>

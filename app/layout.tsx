@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LeseLaut — 100 German Stories for A1",
+  title: "LeseLaut — Deutsch durch Geschichten",
   description:
-    "Learn A1 German through 100 longer, CEFR-aligned stories with 800+ useful words, slow audio and instant English word meanings.",
+    "Deutsch lernen mit längeren Geschichten, Audio, Worterklärungen und Übungen für A1 – später auch A2 und B1.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body>{children}</body>
     </html>
   );

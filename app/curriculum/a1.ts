@@ -1,25 +1,7 @@
-export type A1Story = {
-  id: string;
-  number: number;
-  unitId: number;
-  title: string;
-  text: string;
-  grammar: string;
-  canDo: string;
-  theme: string;
-  color: string;
-};
+import type { Story, Unit } from "@/app/curriculum/types";
 
-export type A1Unit = {
-  id: number;
-  title: string;
-  shortTitle: string;
-  description: string;
-  grammar: string;
-  canDo: string;
-  color: string;
-  stories: A1Story[];
-};
+export type A1Story = Story;
+export type A1Unit = Unit;
 
 type Seed = [title: string, text: string];
 
@@ -37,9 +19,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Hallo! Ich bin …",
     shortTitle: "Ich & Hallo",
-    description: "Meet people, share personal details and ask simple questions.",
+    description: "Menschen begrüßen, persönliche Angaben machen und einfache Fragen stellen.",
     grammar: "sein · Personalpronomen · W-Fragen",
-    canDo: "I can introduce myself and ask basic personal questions.",
+    canDo: "Ich kann mich vorstellen und einfache persönliche Fragen stellen.",
     color: "#e55f45",
     stories: [
       ["Guten Morgen, Mia!", "Mia ist neu in Berlin. Am Morgen geht sie in ein Café. Der Kellner sagt: „Guten Morgen! Wie heißen Sie?“ Mia antwortet: „Ich heiße Mia. Und Sie?“ Der Kellner heißt Paul. Jetzt kennt Mia ihre erste Person in Berlin."],
@@ -57,9 +39,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Familie & Menschen",
     shortTitle: "Familie",
-    description: "Talk about family, age, jobs, appearance and relationships.",
+    description: "Über Familie, Alter, Berufe, Aussehen und Beziehungen sprechen.",
     grammar: "haben · Possessivartikel · Singular & Plural",
-    canDo: "I can describe my family and people I know.",
+    canDo: "Ich kann meine Familie und bekannte Personen beschreiben.",
     color: "#8d6bd1",
     stories: [
       ["Das Familienfoto", "Sofia zeigt ihrem Freund ein Foto. „Das ist meine Mutter, und das ist mein Vater. Hier sind meine zwei Brüder.“ Ihr Freund fragt: „Hast du auch eine Schwester?“ Sofia sagt: „Ja, aber sie ist heute nicht auf dem Foto.“"],
@@ -77,9 +59,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Zuhause & Wohnen",
     shortTitle: "Zuhause",
-    description: "Name rooms and furniture and say where things are.",
+    description: "Räume und Möbel benennen und sagen, wo sich Dinge befinden.",
     grammar: "der/die/das · ein/eine · es gibt · Akkusativ",
-    canDo: "I can describe a home and everyday objects.",
+    canDo: "Ich kann eine Wohnung und Alltagsgegenstände beschreiben.",
     color: "#278071",
     stories: [
       ["Mein kleines Zimmer", "Jans Zimmer ist klein, aber hell. Es gibt ein Bett, einen Tisch und einen Stuhl. Das Bett steht links. Der Tisch steht am Fenster. Auf dem Tisch liegt ein Buch. Jan mag sein Zimmer."],
@@ -97,9 +79,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Mein Tag & die Zeit",
     shortTitle: "Mein Tag",
-    description: "Tell the time, make plans and describe daily routines.",
+    description: "Uhrzeiten nennen, Pläne machen und den Tagesablauf beschreiben.",
     grammar: "Präsens · Verbzweit · trennbare Verben · Zeit",
-    canDo: "I can talk about my routine, dates and simple plans.",
+    canDo: "Ich kann über meinen Alltag, Termine und einfache Pläne sprechen.",
     color: "#d28a25",
     stories: [
       ["Der Wecker klingelt", "Um sieben Uhr klingelt der Wecker. Ida steht auf, öffnet das Fenster und macht Kaffee. Um halb acht frühstückt sie. Um acht Uhr fährt sie mit dem Fahrrad zur Arbeit."],
@@ -117,9 +99,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Essen & Trinken",
     shortTitle: "Essen",
-    description: "Order food, shop for groceries and talk about preferences.",
+    description: "Essen bestellen, Lebensmittel einkaufen und Vorlieben ausdrücken.",
     grammar: "mögen/möchten · Akkusativ · kein/nicht · Mengen",
-    canDo: "I can order simple food and say what I like.",
+    canDo: "Ich kann einfache Speisen bestellen und sagen, was ich mag.",
     color: "#d55369",
     stories: [
       ["Frühstück für zwei", "Mara macht Frühstück. Sie kocht zwei Eier und schneidet Brot. Tom möchte Kaffee, aber Mara trinkt lieber Tee. Es gibt auch Käse und Marmelade. Beide sitzen lange am Küchentisch."],
@@ -137,9 +119,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Einkaufen & Kleidung",
     shortTitle: "Einkaufen",
-    description: "Ask about prices, sizes and colours and buy everyday things.",
+    description: "Nach Preisen, Größen und Farben fragen und Alltagsdinge kaufen.",
     grammar: "dieser/diese · Adjektive · Zahlen & Preise · Fragen",
-    canDo: "I can buy simple items and understand prices.",
+    canDo: "Ich kann einfache Dinge kaufen und Preise verstehen.",
     color: "#3977c4",
     stories: [
       ["Die blaue Jacke", "Mira sucht eine Jacke. Die schwarze Jacke ist schön, aber zu teuer. Die blaue Jacke kostet nur vierzig Euro. Sie passt gut. Mira kauft die blaue Jacke und trägt sie sofort."],
@@ -157,9 +139,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "In der Stadt",
     shortTitle: "Stadt & Wege",
-    description: "Find places, follow directions and use public services.",
+    description: "Orte finden, Wegbeschreibungen verstehen und öffentliche Angebote nutzen.",
     grammar: "lokale Präpositionen · Imperativ · Dativ · wo/wohin",
-    canDo: "I can ask for and follow short, simple directions.",
+    canDo: "Ich kann nach dem Weg fragen und kurze Wegbeschreibungen verstehen.",
     color: "#2f8d9b",
     stories: [
       ["Wo ist der Bahnhof?", "Ein Tourist fragt: „Entschuldigung, wo ist der Bahnhof?“ Mia erklärt: „Gehen Sie geradeaus und dann links. Der Bahnhof ist neben der Post.“ Der Tourist bedankt sich und geht los."],
@@ -177,9 +159,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Arbeit, Schule & Alltag",
     shortTitle: "Arbeit & Schule",
-    description: "Handle simple tasks at work, school and common services.",
+    description: "Einfache Aufgaben bei der Arbeit, in der Schule und bei Dienstleistungen bewältigen.",
     grammar: "können/müssen/wollen · Sie-Form · Satzklammer",
-    canDo: "I can manage simple routine tasks and requests.",
+    canDo: "Ich kann einfache Aufgaben und Bitten im Alltag bewältigen.",
     color: "#6c7388",
     stories: [
       ["Mein erster Arbeitstag", "Heute arbeitet Elif zum ersten Mal im Hotel. Sie muss um sieben Uhr da sein. Ihre Kollegin zeigt ihr die Rezeption und die Zimmer. Elif kann gut Englisch sprechen. Das hilft bei vielen Gästen."],
@@ -197,9 +179,9 @@ const UNIT_SEEDS: UnitSeed[] = [
   {
     title: "Freizeit, Wetter & Gesundheit",
     shortTitle: "Freizeit",
-    description: "Talk about hobbies, weather, seasons and basic health needs.",
+    description: "Über Hobbys, Wetter, Jahreszeiten und einfache Beschwerden sprechen.",
     grammar: "gern/lieber · war/hatte · Körper · deshalb",
-    canDo: "I can describe hobbies, weather and simple health problems.",
+    canDo: "Ich kann Hobbys, Wetter und einfache Beschwerden beschreiben.",
     color: "#4f9b52",
     stories: [
       ["Fußball im Park", "Am Samstag spielt eine Gruppe im Park Fußball. Luis spielt gern im Tor. Heute fehlt ein Spieler. Eine Frau fragt: „Kann ich mitspielen?“ Natürlich kann sie. Ihr Team gewinnt drei zu zwei."],
@@ -216,10 +198,10 @@ const UNIT_SEEDS: UnitSeed[] = [
   },
   {
     title: "Reisen & A1 im echten Leben",
-    shortTitle: "Reisen & Review",
-    description: "Travel, stay in a hotel and combine everything from A1.",
+    shortTitle: "Reisen & Rückblick",
+    description: "Reisen, im Hotel übernachten und alles aus A1 miteinander verbinden.",
     grammar: "und/aber/deshalb/dann · Wiederholung · Alltagssprache",
-    canDo: "I can handle simple travel and everyday situations.",
+    canDo: "Ich kann einfache Reise- und Alltagssituationen bewältigen.",
     color: "#b7683b",
     stories: [
       ["Eine Fahrkarte nach Bonn", "Am Bahnhof sagt Eva: „Eine Fahrkarte nach Bonn, bitte.“ Der Mitarbeiter fragt: „Einfach oder hin und zurück?“ Eva braucht nur eine einfache Fahrt. Der Zug fährt um vierzehn Uhr von Gleis fünf."],
@@ -660,5 +642,5 @@ export function meaningFor(token: string) {
     if (candidate && GLOSSARY[candidate]) return GLOSSARY[candidate];
   }
   if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";
-  return "German word used in this story";
+  return "";
 }
