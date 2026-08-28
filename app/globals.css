@@ -281,6 +281,16 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .vocabulary-progress-card p { margin: 14px 0 0; color: rgba(255,255,255,.64); font-size: 9px; }
 .vocabulary-workspace { padding: 38px clamp(18px,4vw,62px) 110px; border-top: 1px solid var(--line); background: rgba(255,253,248,.38); }
 .vocabulary-workspace > * { max-width: 1385px; margin-left: auto; margin-right: auto; }
+.vocabulary-levels { margin-bottom: 18px; padding: 12px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid var(--line); border-radius: 17px; background: var(--white); }
+.vocabulary-levels > div:first-child { padding-left: 7px; display: grid; gap: 2px; }
+.vocabulary-levels > div:first-child span { color: var(--ink-soft); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
+.vocabulary-levels > div:first-child strong { font: 700 21px/1 Georgia,serif; }
+.vocabulary-levels > div:last-child { display: flex; gap: 7px; }
+.vocabulary-levels button { min-width: 132px; padding: 10px 14px; display: grid; gap: 2px; border: 1px solid var(--line); border-radius: 11px; background: #f8f5ee; color: var(--ink); text-align: left; cursor: pointer; }
+.vocabulary-levels button span { font: 700 14px/1 Georgia,serif; }
+.vocabulary-levels button small { color: var(--ink-soft); font-size: 7px; font-weight: 800; }
+.vocabulary-levels button.is-active { border-color: var(--orange); background: var(--green); color: white; }
+.vocabulary-levels button.is-active small { color: rgba(255,255,255,.68); }
 .vocabulary-toolbar { display: grid; grid-template-columns: minmax(240px,1fr) auto; gap: 16px; align-items: center; }
 .vocabulary-search { position: relative; display: block; }
 .vocabulary-search > svg { width: 17px; position: absolute; left: 15px; top: 50%; z-index: 1; color: #858b85; transform: translateY(-50%); pointer-events: none; }
@@ -357,6 +367,8 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .footer-brand { justify-self: center; }
   .vocabulary-hero { grid-template-columns: 1fr; padding-top: 55px; }
   .vocabulary-progress-card { max-width: 480px; }
+  .vocabulary-levels { align-items: stretch; flex-direction: column; }
+  .vocabulary-levels > div:first-child { padding: 3px 4px; }
   .vocabulary-toolbar { grid-template-columns: 1fr; }
 }
 @media (max-width: 650px) {
@@ -395,6 +407,8 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .vocabulary-back { margin-bottom: 26px; }
   .vocabulary-hero h1 { font-size: 54px; }
   .vocabulary-workspace { padding: 25px 12px 75px; }
+  .vocabulary-levels > div:last-child { overflow-x: auto; }
+  .vocabulary-levels button { min-width: 122px; }
   .progress-filters { width: 100%; overflow-x: auto; }
   .progress-filters button { flex: 1 0 auto; }
   .category-scroller { grid-auto-columns: 126px; }

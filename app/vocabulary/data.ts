@@ -1,16 +1,22 @@
-import { A1_STORIES, GLOSSARY } from "@/app/curriculum/a1";
+import { GLOSSARY } from "@/app/curriculum/a1";
+import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 
 export const VOCABULARY_CATEGORIES = [
-  "Grundlagen",
+  "Grundlagen & Kommunikation",
   "Familie & Menschen",
-  "Zuhause & Zimmer",
+  "Zuhause & Wohnen",
   "Essen & Trinken",
   "Einkaufen & Kleidung",
-  "Schule & Arbeit",
+  "Schule & Lernen",
+  "Arbeit & Beruf",
   "Stadt & Verkehr",
+  "Reisen & Unterkunft",
   "Gesundheit & Körper",
-  "Freizeit & Natur",
-  "Zeit & Zahlen",
+  "Freizeit, Kultur & Sport",
+  "Natur, Wetter & Umwelt",
+  "Zeit, Zahlen & Mengen",
+  "Medien & Digitales",
+  "Dienstleistungen & Behörden",
   "Verben",
   "Adjektive & Adverbien",
 ] as const;
@@ -22,6 +28,7 @@ export type VocabularyWord = {
   english: string;
   german: string;
   category: VocabularyCategory;
+  level: "A1" | "A2";
 };
 
 const FUNCTION_WORDS = new Set([
@@ -32,7 +39,7 @@ const FUNCTION_WORDS = new Set([
   "jetzt", "kein", "keine", "keinen", "man", "mein", "meine", "mit", "nach", "neben", "nein", "nicht", "nichts",
   "noch", "nur", "oben", "oder", "oft", "ohne", "per", "seit", "sich", "sie", "so", "über", "um", "und",
   "unser", "unsere", "unter", "viel", "viele", "von", "vor", "was", "welche", "wenn", "wer", "wie", "wieder",
-  "wir", "wo", "woher", "zu", "zum", "zur", "zurück", "zusammen",
+  "während", "wir", "wo", "woher", "zu", "zum", "zur", "zurück", "zusammen",
 ]);
 
 const PROPER_WORDS = new Set([
@@ -75,11 +82,11 @@ const VERB_FIRST_WORDS = new Set([
 ]);
 
 const ARTICLE_OVERRIDES: Record<string, "der" | "die" | "das"> = {
-  abend: "der", adresse: "die", arbeit: "die", arzt: "der", ausweis: "der", bahnhof: "der", balkon: "der", bank: "die",
+  abend: "der", abfahrt: "die", adresse: "die", anfang: "der", ankunft: "die", arbeit: "die", arbeitsplatz: "der", arzt: "der", ausweis: "der", bahnhof: "der", balkon: "der", bank: "die",
   bäckerei: "die", bäcker: "der", bad: "das", bett: "das", brief: "der", briefkasten: "der", briefmarke: "die",
   brille: "die", brot: "das", brötchen: "das", bruder: "der", buch: "das", büro: "das", bus: "der", café: "das",
   chef: "der", computer: "der", fenster: "das", film: "der", flasche: "die", fleisch: "das", foto: "das", freund: "der",
-  freundin: "die", frühstück: "das", geld: "das", gemüse: "das", geschäft: "das", geschenk: "das", glas: "das",
+  fieber: "das", form: "die", freundin: "die", frühstück: "das", geld: "das", geldautomat: "der", gemüse: "das", geschäft: "das", geschenk: "das", gitarre: "die", glas: "das",
   haltestelle: "die", handy: "das", haus: "das", hemd: "das", herd: "der", hotel: "das", hund: "der", jacke: "die",
   jahr: "das", junge: "der", karte: "die", kasse: "die", kellner: "der", kellnerin: "die", kind: "das", kirche: "die",
   kopf: "der", kurs: "der", kuchen: "der", küche: "die", kühlschrank: "der", laden: "der", lampe: "die", lehrer: "der",
@@ -93,56 +100,60 @@ const ARTICLE_OVERRIDES: Record<string, "der" | "die" | "das"> = {
   wohnung: "die", wohnzimmer: "das", wort: "das", zeit: "die", zettel: "der", zimmer: "das",
 };
 
+const ADDITIONAL_NOUN_ARTICLES: Record<string, "der" | "die" | "das"> = {
+  ablauf: "der", abstand: "der", aktivitäten: "die", alltag: "der", alltagssituation: "die", alter: "das",
+  anmeldung: "die", anrede: "die", anruf: "der", antwort: "die", anzeige: "die", apotheke: "die",
+  arbeitsplatz: "der", arbeitstag: "der", aufgabe: "die", augen: "die", ausdrücke: "die", ausflüge: "die",
+  auswahl: "die", bahn: "die", bedeutung: "die", bedeutungen: "die", beispielsätzen: "die", beruf: "der",
+  beschwerden: "die", bewegung: "die", beziehung: "die", bibliothek: "die", bild: "das", birne: "die",
+  birnen: "die", blatt: "das", blumen: "die", brüder: "die", bücher: "die", charakter: "der",
+  cousinen: "die", datei: "die", details: "die", dinge: "die", dokument: "das", dokumente: "die",
+  drucker: "der", durchsage: "die", eier: "die", einkauf: "der", einkäufe: "die", eltern: "die",
+  entschuldigung: "die", erfolg: "der", ergebnis: "das", erklärung: "die", erlebnis: "das", erlebnisse: "die",
+  ersatz: "der", erzählung: "die", etikett: "das", euro: "der", fahrer: "der", fahrkarte: "die",
+  familie: "die", familienfoto: "das", farbe: "die", farben: "die", fehler: "der", feierabend: "der",
+  ferienhaus: "das", fest: "das", filmabend: "der", flohmarkt: "der", flur: "der", form: "die",
+  formulare: "die", foto: "das", frau: "die", freizeit: "die", freude: "die", freunde: "die",
+  friseur: "der", frühstückszeit: "die", fuß: "der", fußball: "der", garten: "der", geburtstag: "der",
+  gefühl: "das", gegenstand: "der", geschäfte: "die", geschichte: "die", geschichten: "die",
+  gesellschaft: "die", gesicht: "das", gespräch: "das", gespräche: "die", gitarre: "die", gleis: "das",
+  grad: "der", grüße: "die", gäste: "die", hausaufgabe: "die", hilfe: "die", himmel: "der",
+  jahre: "die", karotten: "die", kinder: "die", kindergarten: "der", kollegen: "die", kollegin: "die",
+  kopfschmerzen: "die", liebe: "die", mal: "das", marktplatz: "der", menschen: "die", mitarbeiter: "der",
+  mitte: "die", minuten: "die", musik: "die", oma: "die", orangensaft: "der", polizist: "der",
+  postkarte: "die", regal: "das", regenschirm: "der", reise: "die", socke: "die", steine: "die",
+  student: "der", studentin: "die", telefonnummer: "die", termine: "die", tomaten: "die", tourist: "der",
+  treppenhaus: "das", tor: "das", umschlag: "der", verkäufer: "der", verkäuferin: "die", wörter: "die",
+};
+
+const NOUN_ARTICLES = { ...ARTICLE_OVERRIDES, ...ADDITIONAL_NOUN_ARTICLES };
+const NOUN_DISPLAY_OVERRIDES: Record<string, string> = {
+  beispielsätzen: "Beispielsätze",
+};
+
 const THEME_HINTS: Array<[VocabularyCategory, string[]]> = [
   ["Familie & Menschen", ["family", "friend", "mother", "father", "brother", "sister", "daughter", "son", "child", "parent", "person", "people", "neighbor", "aunt", "birthday", "name", "relationship"]],
-  ["Zuhause & Zimmer", ["room", "house", "home", "apartment", "furniture", "kitchen", "bathroom", "bed", "chair", "table", "door", "window", "shelf", "stove", "fridge", "balcony", "rent"]],
+  ["Zuhause & Wohnen", ["room", "house", "home", "apartment", "furniture", "kitchen", "bathroom", "bed", "chair", "table", "door", "window", "shelf", "stove", "fridge", "balcony", "rent"]],
   ["Essen & Trinken", ["food", "drink", "breakfast", "bread", "fruit", "vegetable", "milk", "coffee", "tea", "water", "restaurant", "café", "cake", "soup", "salad", "meat", "egg", "cheese", "juice", "waiter"]],
   ["Einkaufen & Kleidung", ["shop", "market", "money", "price", "cash", "receipt", "checkout", "clothes", "shirt", "jacket", "coat", "shoe", "dress", "sales", "gift", "label"]],
-  ["Schule & Arbeit", ["school", "work", "office", "course", "teacher", "student", "book", "paper", "form", "homework", "university", "language", "word", "text", "profession", "employee", "colleague", "computer", "document"]],
-  ["Stadt & Verkehr", ["station", "bus", "train", "tram", "street", "city", "ticket", "journey", "travel", "hotel", "museum", "police", "post", "bank", "map", "airport", "platform", "departure", "arrival", "traffic"]],
+  ["Schule & Lernen", ["school", "course", "teacher", "student", "book", "paper", "form", "homework", "university", "language", "word", "text", "lesson", "class"]],
+  ["Arbeit & Beruf", ["work", "office", "profession", "employee", "colleague", "job", "company", "boss"]],
+  ["Reisen & Unterkunft", ["journey", "travel", "hotel", "airport", "holiday", "suitcase", "luggage"]],
+  ["Stadt & Verkehr", ["station", "bus", "train", "tram", "street", "city", "ticket", "museum", "police", "post", "bank", "map", "platform", "departure", "arrival", "traffic"]],
   ["Gesundheit & Körper", ["doctor", "hospital", "health", "head", "arm", "hand", "foot", "eye", "ear", "nose", "mouth", "fever", "pain", "headache", "medicine", "symptom", "glasses"]],
-  ["Freizeit & Natur", ["sport", "music", "film", "concert", "photo", "game", "football", "park", "flower", "plant", "tree", "animal", "dog", "rain", "sun", "wind", "weather", "sea", "holiday", "party"]],
-  ["Zeit & Zahlen", ["time", "day", "week", "month", "year", "morning", "afternoon", "evening", "night", "minute", "hour", "calendar", "number", "date", "summer", "winter", "spring", "monday", "tuesday", "friday", "saturday", "sunday"]],
+  ["Freizeit, Kultur & Sport", ["sport", "music", "film", "concert", "photo", "game", "football", "party", "museum", "theater"]],
+  ["Natur, Wetter & Umwelt", ["park", "flower", "plant", "tree", "animal", "dog", "rain", "sun", "wind", "weather", "sea", "forest"]],
+  ["Zeit, Zahlen & Mengen", ["time", "day", "week", "month", "year", "morning", "afternoon", "evening", "night", "minute", "hour", "calendar", "number", "date", "summer", "winter", "spring", "monday", "tuesday", "friday", "saturday", "sunday"]],
+  ["Medien & Digitales", ["computer", "internet", "phone", "message", "email", "website"]],
+  ["Dienstleistungen & Behörden", ["authority", "insurance", "service", "official", "passport"]],
 ];
-
-const tokenPattern = /[A-Za-zÄÖÜäöüß]+/gu;
-const articleVotes = new Map<string, Record<string, number>>();
-const capitalizedWords = new Set<string>();
-
-for (const story of A1_STORIES) {
-  const tokens = story.text.match(tokenPattern) ?? [];
-  tokens.forEach((token, index) => {
-    const word = token.toLocaleLowerCase("de");
-    if (/^[A-ZÄÖÜ]/.test(token)) capitalizedWords.add(word);
-    const previous = tokens[index - 1]?.toLocaleLowerCase("de");
-    const article = previous === "der" || previous === "die" || previous === "das"
-      ? previous
-      : previous === "eine" || previous === "einer" ? "die"
-        : previous === "einen" ? "der" : undefined;
-    if (!article) return;
-    const votes = articleVotes.get(word) ?? { der: 0, die: 0, das: 0 };
-    votes[article] += 1;
-    articleVotes.set(word, votes);
-  });
-}
-
-function articleFor(word: string, english: string) {
-  if (ARTICLE_OVERRIDES[word]) return ARTICLE_OVERRIDES[word];
-  if (/s(?:\s|$)/.test(english) && /(e|en|er)$/.test(word)) return "die";
-  if (/(ung|heit|keit|schaft|ion|tät|ei|ik|ur)$/.test(word)) return "die";
-  if (/(chen|lein|ment|um)$/.test(word)) return "das";
-  const votes = articleVotes.get(word);
-  if (votes) return Object.entries(votes).sort(([, a], [, b]) => b - a)[0][0] as "der" | "die" | "das";
-  if (/(er|ling|ismus)$/.test(word)) return "der";
-  return "das";
-}
 
 function categoryFor(word: string, english: string, isVerb: boolean, isAdjective: boolean): VocabularyCategory {
   if (isVerb) return "Verben";
   if (isAdjective) return "Adjektive & Adverbien";
-  if (NUMBER_AND_TIME.has(word)) return "Zeit & Zahlen";
+  if (NUMBER_AND_TIME.has(word)) return "Zeit, Zahlen & Mengen";
   const normalized = english.toLocaleLowerCase("en");
-  return THEME_HINTS.find(([, hints]) => hints.some((hint) => normalized.includes(hint)))?.[0] ?? "Grundlagen";
+  return THEME_HINTS.find(([, hints]) => hints.some((hint) => normalized.includes(hint)))?.[0] ?? "Grundlagen & Kommunikation";
 }
 
 function titleCase(word: string) {
@@ -151,7 +162,7 @@ function titleCase(word: string) {
 
 function buildVocabulary(): VocabularyWord[] {
   const seenEnglish = new Set<string>();
-  const words: Omit<VocabularyWord, "id">[] = [];
+  const words: Omit<VocabularyWord, "id" | "level">[] = [];
 
   for (const [rawWord, english] of Object.entries(GLOSSARY)) {
     const word = rawWord.toLocaleLowerCase("de");
@@ -161,8 +172,8 @@ function buildVocabulary(): VocabularyWord[] {
     const firstEnglish = normalizedEnglish.split(/\s+/)[0].replace(/[^a-z]/g, "");
     const isVerb = normalizedEnglish.startsWith("to ") || VERB_FIRST_WORDS.has(firstEnglish);
     const isAdjective = ADJECTIVES.has(word) || /^(old|new|good|bad|big|small|long|short|beautiful|friendly|happy|tired|cold|warm|red|blue|green|black|white|yellow|easy|difficult|fast|slow|late|early|correct|different)(?:\s|\/|$)/.test(normalizedEnglish);
-    const isNoun = !isVerb && !isAdjective && !FUNCTION_WORDS.has(word) && !NUMBER_AND_TIME.has(word) && capitalizedWords.has(word);
-    const german = isNoun ? `${articleFor(word, normalizedEnglish)} ${titleCase(word)}` : word;
+    const isNoun = !isVerb && !isAdjective && !FUNCTION_WORDS.has(word) && !NUMBER_AND_TIME.has(word) && word in NOUN_ARTICLES;
+    const german = isNoun ? `${NOUN_ARTICLES[word]} ${NOUN_DISPLAY_OVERRIDES[word] ?? titleCase(word)}` : word;
 
     seenEnglish.add(normalizedEnglish);
     words.push({ german, english, category: categoryFor(word, normalizedEnglish, isVerb, isAdjective) });
@@ -170,7 +181,23 @@ function buildVocabulary(): VocabularyWord[] {
   }
 
   if (words.length !== 800) throw new Error(`A1-Wortschatz: ${words.length} statt 800 Einträge.`);
-  return words.map((word, index) => ({ ...word, id: `a1-${String(index + 1).padStart(3, "0")}` }));
+  return words.map((word, index) => ({ ...word, id: `a1-${String(index + 1).padStart(3, "0")}`, level: "A1" }));
 }
 
 export const A1_VOCABULARY = buildVocabulary();
+export { A2_VOCABULARY };
+export const ALL_VOCABULARY = [...A1_VOCABULARY, ...A2_VOCABULARY];
+
+const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
+const germanEntries = new Set(ALL_VOCABULARY.map((word) => word.german.toLocaleLowerCase("de")));
+const englishEntries = new Set(ALL_VOCABULARY.map((word) => word.english.toLocaleLowerCase("en")));
+
+if (ALL_VOCABULARY.length !== 1300 || vocabularyIds.size !== 1300 || germanEntries.size !== 1300 || englishEntries.size !== 1300) {
+  throw new Error("Der A1–A2-Wortschatz muss 1.300 eindeutige Lernkarten enthalten.");
+}
+
+for (const category of VOCABULARY_CATEGORIES) {
+  if (!ALL_VOCABULARY.some((word) => word.category === category)) {
+    throw new Error(`Die Wortschatzkategorie ${category} ist leer.`);
+  }
+}
