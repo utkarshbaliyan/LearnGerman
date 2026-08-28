@@ -45,9 +45,14 @@ const STOP_WORDS = new Set([
   "wie", "wir", "zu", "zur",
 ]);
 
+const timingCache = new Map<number, number[]>();
+const AUDIO_ASSET_VERSION = "aligned-1";
+
 function StoryWord({ token, active }: { token: string; active: boolean }) {
   const word = cleanWord(token);
-  if (!word) return <>{token}</>;
+  const isNumber = /\d/.test(token);
+  if (!word && !isNumber) return <>{token}</>;
+  if (!word) return <span className={`story-word is-number ${active ? "is-active" : ""}`}>{token}</span>;
   const meaning = meaningFor(token);
 
   return (
@@ -75,10 +80,13 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   const [paused, setPaused] = useState(false);
   const [loadingAudio, setLoadingAudio] = useState(false);
   const [audioError, setAudioError] = useState("");
-  const [activeChar, setActiveChar] = useState(-1);
+  const [activeWord, setActiveWord] = useState(-1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const wordStartsRef = useRef<number[]>([]);
+  const activeWordRef = useRef(-1);
+  const animationFrameRef = useRef<number | null>(null);
   const unit = A1_UNITS[story.unitId - 1];
-  const wordCount = story.text.split(/\s+/).length;
+  const wordCount = story.text.split(/\s+/).filter((token) => cleanWord(token) || /\d/.test(token)).length;
   const keyWords = useMemo(() => {
     const seen = new Set<string>();
     return story.text
@@ -94,6 +102,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   }, [story]);
 
   useEffect(() => {
+    const controller = new AbortController();
     const audio = audioRef.current;
     if (audio) {
       audio.pause();
@@ -104,17 +113,88 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
     setPaused(false);
     setLoadingAudio(false);
     setAudioError("");
-    setActiveChar(-1);
+    activeWordRef.current = -1;
+    setActiveWord(-1);
+
+    const cachedTimings = timingCache.get(story.number);
+    if (cachedTimings) {
+      wordStartsRef.current = cachedTimings;
+    } else {
+      wordStartsRef.current = [];
+      const id = String(story.number).padStart(3, "0");
+      void fetch(`/audio/story-${id}.json?v=${AUDIO_ASSET_VERSION}`, { signal: controller.signal })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Timing request failed: ${response.status}`);
+          return response.json() as Promise<{ starts?: unknown }>;
+        })
+        .then((data) => {
+          if (!Array.isArray(data.starts) || !data.starts.every((value) => typeof value === "number")) {
+            throw new Error("Invalid timing data");
+          }
+          timingCache.set(story.number, data.starts);
+          wordStartsRef.current = data.starts;
+        })
+        .catch((error: unknown) => {
+          if (!(error instanceof DOMException && error.name === "AbortError")) {
+            console.error("Story timing could not be loaded", error);
+          }
+        });
+    }
+
+    return () => controller.abort();
   }, [story]);
 
   useEffect(() => () => {
     audioRef.current?.pause();
     if (audioRef.current) audioRef.current.src = "";
+    if (animationFrameRef.current !== null) cancelAnimationFrame(animationFrameRef.current);
   }, []);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.playbackRate = rate[0];
   }, [rate]);
+
+  function stopHighlightLoop() {
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
+    }
+  }
+
+  function highlightWordAt(time: number) {
+    const starts = wordStartsRef.current;
+    let nextWord = -1;
+    let low = 0;
+    let high = starts.length - 1;
+
+    while (low <= high) {
+      const middle = Math.floor((low + high) / 2);
+      if (starts[middle] <= time) {
+        nextWord = middle;
+        low = middle + 1;
+      } else {
+        high = middle - 1;
+      }
+    }
+
+    if (nextWord !== activeWordRef.current) {
+      activeWordRef.current = nextWord;
+      setActiveWord(nextWord);
+    }
+  }
+
+  function startHighlightLoop(audio: HTMLAudioElement) {
+    stopHighlightLoop();
+    const update = () => {
+      highlightWordAt(audio.currentTime);
+      if (!audio.paused && !audio.ended) {
+        animationFrameRef.current = requestAnimationFrame(update);
+      } else {
+        animationFrameRef.current = null;
+      }
+    };
+    update();
+  }
 
   function startAudio() {
     audioRef.current?.pause();
@@ -123,7 +203,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
     setPaused(false);
 
     const filename = `story-${String(story.number).padStart(3, "0")}.webm`;
-    const audio = new Audio(`/audio/${filename}`);
+    const audio = new Audio(`/audio/${filename}?v=${AUDIO_ASSET_VERSION}`);
     audio.preload = "auto";
     audio.playbackRate = rate[0];
     audioRef.current = audio;
@@ -132,28 +212,29 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       setLoadingAudio(false);
       setSpeaking(true);
       setPaused(false);
+      startHighlightLoop(audio);
     };
     audio.onwaiting = () => setLoadingAudio(true);
     audio.oncanplay = () => setLoadingAudio(false);
-    audio.ontimeupdate = () => {
-      if (Number.isFinite(audio.duration) && audio.duration > 0) {
-        setActiveChar(Math.min(story.text.length - 1, Math.floor((audio.currentTime / audio.duration) * story.text.length)));
-      }
-    };
     audio.onended = () => {
+      stopHighlightLoop();
       setSpeaking(false);
       setPaused(false);
       setLoadingAudio(false);
-      setActiveChar(-1);
+      activeWordRef.current = -1;
+      setActiveWord(-1);
     };
     audio.onerror = () => {
+      stopHighlightLoop();
       setLoadingAudio(false);
       setSpeaking(false);
       setPaused(false);
-      setActiveChar(-1);
+      activeWordRef.current = -1;
+      setActiveWord(-1);
       setAudioError("This story's audio could not be loaded. Please refresh and try again.");
     };
     void audio.play().catch((error: unknown) => {
+      stopHighlightLoop();
       setLoadingAudio(false);
       const blocked = error instanceof DOMException && error.name === "NotAllowedError";
       setAudioError(
@@ -167,6 +248,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   function toggleAudio() {
     if (speaking && !paused) {
       audioRef.current?.pause();
+      stopHighlightLoop();
       setPaused(true);
       setSpeaking(false);
       return;
@@ -183,6 +265,8 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.playbackRate = rate[0];
+      activeWordRef.current = -1;
+      setActiveWord(-1);
       void audioRef.current.play();
     } else {
       startAudio();
@@ -190,12 +274,13 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   }
 
   function renderText() {
-    let cursor = 0;
+    let wordIndex = 0;
     return story.text.split(/(\s+)/).map((token, index) => {
-      const start = cursor;
-      cursor += token.length;
       if (/^\s+$/.test(token)) return <span key={index}>{token}</span>;
-      return <StoryWord key={index} token={token} active={activeChar >= start && activeChar < start + token.length} />;
+      if (!cleanWord(token) && !/\d/.test(token)) return <span key={index}>{token}</span>;
+      const currentWord = wordIndex;
+      wordIndex += 1;
+      return <StoryWord key={index} token={token} active={activeWord === currentWord} />;
     });
   }
 

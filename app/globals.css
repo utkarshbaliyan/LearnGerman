@@ -231,6 +231,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .reader-copy::first-letter { float: left; margin: 10px 8px 0 0; color: var(--orange); font: 700 66px/.7 Georgia, serif; }
 .story-word { display: inline; border: 0; padding: 0; margin: 0; background: transparent; font: inherit; line-height: inherit; cursor: help; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(229,95,69,.35); text-underline-offset: 4px; border-radius: 3px; }
 .story-word:hover { background: #f6ddd6; color: #9f2d1f; }
+.story-word.is-number { cursor: default; text-decoration: none; }
 .story-word.is-active { background: var(--orange); color: white; text-decoration: none; box-shadow: 2px 0 0 var(--orange), -2px 0 0 var(--orange); }
 .word-tooltip { display: grid; gap: 2px; padding: 8px 11px; border-radius: 8px; background: var(--ink); color: white; }
 .word-tooltip span { opacity: .6; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
