@@ -5,8 +5,6 @@ export const runtime = "edge";
 
 const AUDIO_VERSION = "marin-hochdeutsch-v1";
 
-type CacheStorageWithDefault = CacheStorage & { default?: Cache };
-
 function errorResponse(message: string, status: number) {
   return Response.json(
     { error: message },
@@ -27,13 +25,6 @@ export async function GET(request: Request) {
   if (!apiKey) {
     return errorResponse("Narration is not configured.", 503);
   }
-
-  const cacheUrl = new URL(request.url);
-  cacheUrl.searchParams.set("voice_version", AUDIO_VERSION);
-  const cacheKey = new Request(cacheUrl.toString(), { method: "GET" });
-  const edgeCache = (globalThis.caches as CacheStorageWithDefault | undefined)?.default;
-  const cached = await edgeCache?.match(cacheKey);
-  if (cached) return cached;
 
   let openAIResponse: Response;
   try {
@@ -62,8 +53,22 @@ export async function GET(request: Request) {
 
   if (!openAIResponse.ok || !openAIResponse.body) {
     const requestId = openAIResponse.headers.get("x-request-id");
-    console.error("OpenAI narration failed", { status: openAIResponse.status, requestId, story: story.number });
-    return errorResponse("Narration could not be generated.", 502);
+    const details = await openAIResponse.clone().json().catch(() => null) as {
+      error?: { code?: string; type?: string };
+    } | null;
+    console.error("OpenAI narration failed", {
+      status: openAIResponse.status,
+      code: details?.error?.code,
+      type: details?.error?.type,
+      requestId,
+      story: story.number,
+    });
+    return errorResponse(
+      openAIResponse.status === 429
+        ? "Narration needs an active OpenAI API balance."
+        : "Narration could not be generated.",
+      openAIResponse.status === 429 ? 429 : 502,
+    );
   }
 
   const audioResponse = new Response(openAIResponse.body, {
@@ -72,13 +77,9 @@ export async function GET(request: Request) {
       "Content-Type": "audio/mpeg",
       "Cache-Control": "public, max-age=31536000, immutable",
       "X-Content-Type-Options": "nosniff",
-      "X-LeseLaut-Voice": "marin",
+      "X-LeseLaut-Voice": `${AUDIO_VERSION}`,
     },
   });
-
-  if (edgeCache) {
-    await edgeCache.put(cacheKey, audioResponse.clone());
-  }
 
   return audioResponse;
 }
