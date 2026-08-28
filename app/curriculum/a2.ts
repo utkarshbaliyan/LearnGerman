@@ -172,7 +172,7 @@ Am Ende des Tages war Sofia müde, aber zufrieden. Sie hatte nicht alles perfekt
 
 const UNIT_ONE_STORIES: Story[] = seeds.map((story, index) => ({
   ...story, id: `a2-story-${String(index + 1).padStart(3, "0")}`,
-  number: index + 1, unitId: 1, color: COLOR,
+  number: index + 1, unitId: 1, color: COLOR, audioReady: true,
 }));
 
 const FIRST_UNIT: Unit = {
@@ -237,7 +237,7 @@ const GENERATED_UNITS: Unit[] = PLANNED_UNITS.map((unit, unitIndex) => {
       referenceFocus: "Achte auf Pronomen und Verweiswörter, die sich auf Personen, Dinge und vorherige Sätze beziehen.",
       speakingPrompt: `Sprich über ${situation} und begründe, welche Lösung du wählen würdest.`,
       writingPrompt: `Schreibe 70–100 Wörter zu ${situation}. Nenne ein Problem, eine Lösung und deine Meinung.`,
-      audioReady: false,
+      audioReady: true,
     };
   });
   return { ...unit, id, stories };

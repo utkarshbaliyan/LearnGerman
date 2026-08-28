@@ -74,6 +74,7 @@ def visual_word_starts(
 def main() -> None:
     args = parse_args()
     stories = json.loads(args.manifest.read_text(encoding="utf-8"))
+    story_total = len(stories)
     args.audio_dir.mkdir(parents=True, exist_ok=True)
     args.work_dir.mkdir(parents=True, exist_ok=True)
 
@@ -89,7 +90,7 @@ def main() -> None:
         wav_path = args.work_dir / f"story-{story_id}.wav"
 
         if audio_path.exists() and timing_path.exists():
-            print(f"Kept {story_id}/100 · {story['title']}", flush=True)
+            print(f"Kept {story_id}/{story_total} · {story['title']}", flush=True)
             continue
 
         phonemes: list[tuple[str, int]] = []
@@ -164,7 +165,7 @@ def main() -> None:
             encoding="utf-8",
         )
         wav_path.unlink()
-        print(f"Generated {story_id}/100 · {story['title']}", flush=True)
+        print(f"Generated {story_id}/{story_total} · {story['title']}", flush=True)
 
 
 if __name__ == "__main__":
