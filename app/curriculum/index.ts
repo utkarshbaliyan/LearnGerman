@@ -6,12 +6,13 @@ import {
   GLOSSARY,
 } from "@/app/curriculum/a1";
 import { A2_GLOSSARY, A2_STATS, A2_STORIES, A2_UNITS } from "@/app/curriculum/a2";
+import { B1_GLOSSARY, B1_STATS, B1_STORIES, B1_UNITS } from "@/app/curriculum/b1";
 import type { CefrLevel, Curriculum, LevelOption } from "@/app/curriculum/types";
 
 export const LEVELS: LevelOption[] = [
   { id: "A1", label: "Grundlagen", available: true },
   { id: "A2", label: "Alltag", available: true },
-  { id: "B1", label: "Selbstständig", available: false },
+  { id: "B1", label: "Selbstständig", available: true },
   { id: "B2", label: "Sicher", available: false },
 ];
 
@@ -37,9 +38,21 @@ const A2_CURRICULUM: Curriculum = {
   stats: A2_STATS,
 };
 
+const B1_CURRICULUM: Curriculum = {
+  id: "B1",
+  title: "Deutsch B1",
+  shortTitle: "Selbstständig",
+  audioBasePath: "/audio/b1",
+  audioVersion: "b1-text-1",
+  stories: B1_STORIES,
+  units: B1_UNITS,
+  stats: B1_STATS,
+};
+
 const CURRICULA: Partial<Record<CefrLevel, Curriculum>> = {
   A1: A1_CURRICULUM,
   A2: A2_CURRICULUM,
+  B1: B1_CURRICULUM,
 };
 
 export function getCurriculum(level: CefrLevel) {
@@ -51,6 +64,7 @@ export { cleanWord };
 export function meaningFor(token: string) {
   const word = cleanWord(token);
   if (!word) return "";
+  if (B1_GLOSSARY[word]) return B1_GLOSSARY[word];
   if (A2_GLOSSARY[word]) return A2_GLOSSARY[word];
   if (GLOSSARY[word]) return GLOSSARY[word];
   const candidates = [
@@ -63,8 +77,8 @@ export function meaningFor(token: string) {
     word.endsWith("t") ? `${word.slice(0, -1)}en` : "",
   ];
   for (const candidate of candidates) {
-    if (candidate && (A2_GLOSSARY[candidate] || GLOSSARY[candidate])) {
-      return A2_GLOSSARY[candidate] || GLOSSARY[candidate];
+    if (candidate && (B1_GLOSSARY[candidate] || A2_GLOSSARY[candidate] || GLOSSARY[candidate])) {
+      return B1_GLOSSARY[candidate] || A2_GLOSSARY[candidate] || GLOSSARY[candidate];
     }
   }
   if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";

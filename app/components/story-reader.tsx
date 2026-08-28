@@ -348,8 +348,8 @@ export function StoryReader({ curriculum, story, onStoryChange }: StoryReaderPro
         </div>
         <Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Audio von vorn abspielen"><RotateCcw /></Button>
       </div> : <div className="audio-pending" role="status">
-        <strong>Diese A2-Geschichte ist jetzt zum Lesen und Üben bereit.</strong>
-        <span>Die passende Hörfassung folgt mit der nächsten A2-Einheit.</span>
+        <strong>Diese {curriculum.id}-Geschichte ist zum Lesen und Üben bereit.</strong>
+        <span>In dieser Textausgabe steht die Geschichte ohne Hörfassung zur Verfügung.</span>
       </div>}
       {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 

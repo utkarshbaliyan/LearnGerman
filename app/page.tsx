@@ -27,10 +27,13 @@ export default function Home() {
     ? undefined
     : curriculum.units.find((unit) => unit.id === Number(activeUnit));
   const visibleStories = selectedUnit?.stories ?? curriculum.stories;
-  const isA2 = curriculum.id === "A2";
-  const courseCopy = isA2
-    ? "Zehn A2-Einstiegsgeschichten führen dich durch Veränderungen, Beziehungen und typische Situationen. Du liest längere Sätze und übst, Gedanken zu verbinden und zu begründen."
-    : "Hundert längere Geschichten vermitteln mehr als 800 wichtige Wörter im Zusammenhang. Du liest, hörst und erkennst, wie die Sprache im Alltag fließt.";
+  const hasAudio = curriculum.stories.every((story) => story.audioReady !== false);
+  const courseCopy: Record<CefrLevel, string> = {
+    A1: "Hundert längere Geschichten vermitteln mehr als 800 wichtige Wörter im Zusammenhang. Du liest, hörst und erkennst, wie die Sprache im Alltag fließt.",
+    A2: "160 Alltagsgeschichten führen durch Veränderungen, Beziehungen und typische Situationen. Du verbindest Gedanken, begründest Entscheidungen und handelst immer selbstständiger.",
+    B1: "180 Geschichten führen von persönlichen Erlebnissen zu Arbeit, Gesellschaft, Medien, Kultur und B1-Prüfungssituationen. Du erzählst zusammenhängend, vertrittst Standpunkte und löst komplexere Alltagsprobleme.",
+    B2: "",
+  };
 
   function selectLevel(level: CefrLevel) {
     if (!getCurriculum(level)) return;
@@ -78,20 +81,20 @@ export default function Home() {
             </div>
             <Badge className="eyebrow"><Sparkles /> Deutsch · Niveau {curriculum.id}</Badge>
             <h1>Deutsch beginnt<br />mit einer <em>Geschichte.</em></h1>
-            <p>{courseCopy}</p>
+            <p>{courseCopy[curriculum.id]}</p>
             <div className="hero-actions">
-              <Button size="lg" onClick={() => setSelectedStory(curriculum.stories[0])}>{isA2 ? <BookOpen /> : <Play />} Geschichte 001 starten</Button>
+              <Button size="lg" onClick={() => setSelectedStory(curriculum.stories[0])}>{hasAudio ? <Play /> : <BookOpen />} Geschichte 001 starten</Button>
               <a href="#geschichten">Alle Geschichten <ArrowRight /></a>
             </div>
           </div>
 
           <div className="story-stack" aria-label="Kursüberblick">
-            <div className="stack-card stack-back"><span>{curriculum.stats.totalWords.toLocaleString("de-DE")}</span><small>Wörter zum Lesen{isA2 ? " und Üben" : " und Hören"}</small></div>
+            <div className="stack-card stack-back"><span>{curriculum.stats.totalWords.toLocaleString("de-DE")}</span><small>Wörter zum Lesen{hasAudio ? " und Hören" : " und Üben"}</small></div>
             <div className="stack-card stack-middle"><span>{curriculum.stats.uniqueWordForms.toLocaleString("de-DE")}</span><small>Wortformen im Zusammenhang</small></div>
             <div className="stack-card stack-front">
               <div className="mini-cover"><span>001</span><Badge>{curriculum.id}</Badge></div>
               <h2>{curriculum.stories[0].title}</h2>
-              <p>{isA2 ? "lesen · verstehen · sprechen · schreiben" : "hören · lesen · verstehen · sprechen"}</p>
+              <p>{hasAudio ? "hören · lesen · verstehen · sprechen" : "lesen · verstehen · sprechen · schreiben"}</p>
               <Button onClick={() => setSelectedStory(curriculum.stories[0])}>Erste Geschichte lesen <ArrowRight /></Button>
             </div>
           </div>
@@ -123,7 +126,7 @@ export default function Home() {
             <div><b>Leseumfang</b><span>{curriculum.stats.totalWords.toLocaleString("de-DE")} Wörter im Kurs</span></div>
             <div><b>Alltag</b><span>Fragen und typische Situationen</span></div>
             <div><b>Ausdruck</b><span>einfach sprechen und schreiben</span></div>
-            <div><b>Wortschatz</b><span>{isA2 ? "neue Ausdrücke im Zusammenhang" : "800+ Wörter im Zusammenhang"}</span></div>
+            <div><b>Wortschatz</b><span>{curriculum.id === "A1" ? "800+ Wörter im Zusammenhang" : "neue Ausdrücke im Zusammenhang"}</span></div>
           </div>
         </section>
 
@@ -133,7 +136,7 @@ export default function Home() {
               <span>Bibliothek · {curriculum.id}</span>
               <h2>{selectedUnit ? `Einheit ${selectedUnit.id}: ${selectedUnit.title}` : `Alle ${curriculum.stories.length} Geschichten`}</h2>
             </div>
-            <p>{selectedUnit?.description ?? `Wähle eine Einheit oder beginne mit Geschichte 001. Eine Geschichte hat durchschnittlich ${curriculum.stats.averageStoryWords} Wörter${isA2 ? ", direkte Worthilfe und Ausspracheübungen." : ", Audio und direkte Worthilfe."}`}</p>
+            <p>{selectedUnit?.description ?? `Wähle eine Einheit oder beginne mit Geschichte 001. Eine Geschichte hat durchschnittlich ${curriculum.stats.averageStoryWords} Wörter, direkte Worthilfe und Ausspracheübungen${hasAudio ? " sowie Audio." : "."}`}</p>
           </div>
 
           <Tabs value={activeUnit} onValueChange={setActiveUnit} className="unit-tabs">
@@ -175,6 +178,7 @@ export default function Home() {
           <div>
             <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions" target="_blank" rel="noreferrer">GER-Referenzrahmen</a>
             <a href="https://www.goethe.de/en/spr/prf/ueb/pa1.html" target="_blank" rel="noreferrer">Goethe A1</a>
+            <a href="https://www.goethe.de/en/spr/prf/ueb/pb1.html" target="_blank" rel="noreferrer">Goethe B1</a>
           </div>
         </footer>
 
