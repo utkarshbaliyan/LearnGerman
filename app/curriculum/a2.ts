@@ -170,18 +170,81 @@ Am Ende des Tages war Sofia müde, aber zufrieden. Sie hatte nicht alles perfekt
   },
 ];
 
-export const A2_STORIES: Story[] = seeds.map((story, index) => ({
+const UNIT_ONE_STORIES: Story[] = seeds.map((story, index) => ({
   ...story, id: `a2-story-${String(index + 1).padStart(3, "0")}`,
   number: index + 1, unitId: 1, color: COLOR,
 }));
 
-export const A2_UNITS: Unit[] = [{
+const FIRST_UNIT: Unit = {
   id: 1, title: "Neue Wege", shortTitle: "Neue Wege",
   description: "Über Veränderungen, Beziehungen und alltägliche Situationen sprechen – mit längeren Sätzen und klaren Verbindungen.",
   grammar: "Perfekt · Nebensätze · Dativ/Akkusativ · Vergleiche",
   canDo: "Ich kann von Erfahrungen berichten, einfache Probleme erklären und Pläne begründen.",
-  color: COLOR, stories: A2_STORIES,
-}];
+  color: COLOR, stories: UNIT_ONE_STORIES,
+};
+
+type PlannedUnit = Omit<Unit, "id" | "stories"> & { stories: Array<[string, string]> };
+
+const PLANNED_UNITS: PlannedUnit[] = [
+  { title: "Familie und Beziehungen", shortTitle: "Beziehungen", description: "Über Menschen, Gefühle und Veränderungen in Beziehungen sprechen.", grammar: "Reflexive Verben · Possessivpronomen · weil", canDo: "Ich kann Menschen beschreiben, Gefühle ausdrücken und mich entschuldigen.", color: "#8d6bd1", stories: [["Das Foto auf dem Tisch", "ein altes Familienfoto"], ["Eine lange Entschuldigung", "ein Missverständnis zwischen Freunden"], ["Besuch am Sonntag", "eine unerwartete Einladung"], ["Der Bruder, den niemand kannte", "eine neue Nachricht aus der Familie"], ["Zwei Meinungen, ein Abend", "ein Streit über gemeinsame Pläne"], ["Die Karte aus dem Ausland", "eine Freundin, die weit weg wohnt"], ["Ein Gespräch mit Oma", "eine Erinnerung aus der Kindheit"], ["Der Platz am Fenster", "ein Treffen nach langer Zeit"], ["Was Paul wirklich meinte", "eine unklare Nachricht"], ["Ein Geschenk ohne Namen", "eine kleine Überraschung"]] },
+  { title: "Wohnen und Nachbarschaft", shortTitle: "Wohnen", description: "Wohnungen suchen, Regeln verstehen und mit Nachbarn sprechen.", grammar: "Wechselpräpositionen · Dativ · Relativsatz mit der/die/das", canDo: "Ich kann Wohnprobleme erklären und einfache Lösungen vorschlagen.", color: "#278071", stories: [["Der Schlüssel beim Hausmeister", "ein verschlossener Keller"], ["Musik nach zehn", "eine laute Wohnung überan"], ["Die Pflanze im Flur", "eine gemeinsame Regel im Haus"], ["Ein Zettel an der Tür", "eine Bitte an die Nachbarn"], ["Der Wasserhahn tropft", "eine dringende Reparatur"], ["Die neue Mitbewohnerin", "eine ungewohnte Ordnung in der Küche"], ["Ein Balkon für alle", "ein Plan für den Sommer"], ["Das Paket im Treppenhaus", "eine falsche Lieferung"], ["Der Aufzug funktioniert nicht", "ein schwerer Einkauf"], ["Ein Abend im Hof", "ein kleines Hausfest"]] },
+  { title: "Zeit, Termine und Alltag", shortTitle: "Termine", description: "Planen, absagen und im Alltag Prioritäten setzen.", grammar: "Temporale Angaben · trennbare Verben · deshalb", canDo: "Ich kann Termine vereinbaren und Gründe nennen.", color: "#d28a25", stories: [["Der Kalender ohne Dienstag", "ein falsch notierter Termin"], ["Fünf Minuten zu spät", "ein verpasster Bus"], ["Ein freier Nachmittag", "ein neuer Plan für die Woche"], ["Die Nachricht um sechs", "eine kurzfristige Absage"], ["Der Termin beim Amt", "eine lange Wartezeit"], ["Der Wecker im Urlaub", "ein zu früher Morgen"], ["Der Kurs am Donnerstag", "zwei Termine zur gleichen Zeit"], ["Ein Plan für den Monat", "zu viele Aufgaben"], ["Das Treffen im Regen", "ein Wetterproblem"], ["Der Samstag ohne Handy", "eine bewusste Pause"]] },
+  { title: "Essen und Gesundheit", shortTitle: "Gesundheit", description: "Über Ernährung, Beschwerden und hilfreiche Gewohnheiten sprechen.", grammar: "sollen · müssen · dürfen · Imperativ", canDo: "Ich kann Rat geben und auf einfache Beschwerden reagieren.", color: "#d55369", stories: [["Frühstück vor der Prüfung", "zu wenig Zeit am Morgen"], ["Die Suppe der Nachbarin", "eine Erkältung"], ["Ein Rezept aus drei Ländern", "ein gemeinsames Kochen"], ["Zucker im Kaffee", "eine neue Gewohnheit"], ["Der Termin in der Praxis", "eine Untersuchung"], ["Das Schild im Restaurant", "eine Allergie"], ["Ein Spaziergang nach dem Essen", "mehr Bewegung im Alltag"], ["Der Markt am Freitag", "frische Zutaten"], ["Die Pause im Büro", "ein hektischer Arbeitstag"], ["Ein Rat vom Apotheker", "Husten und Kopfschmerzen"]] },
+  { title: "Einkaufen und Geld", shortTitle: "Einkaufen", description: "Vergleichen, reklamieren und über Preise sprechen.", grammar: "Adjektivendungen · als/wie · Konjunktiv II für Bitten", canDo: "Ich kann Waren vergleichen und höflich reklamieren.", color: "#b25845", stories: [["Der falsche Pullover", "eine Rückgabe im Geschäft"], ["Zwanzig Euro zu viel", "eine Rechnung mit einem Fehler"], ["Ein Fahrrad gebraucht kaufen", "eine wichtige Entscheidung"], ["Die Schuhe im Angebot", "zwei verschiedene Größen"], ["Der Marktstand am Ende", "ein Preisvergleich"], ["Ein Konto für den Umzug", "ein Besuch bei der Bank"], ["Das Paket ohne Inhalt", "eine Beschwerde beim Versand"], ["Ein Geschenk für drei Personen", "ein kleines Budget"], ["Die Kasse im Supermarkt", "eine verlorene Karte"], ["Ein Vertrag mit vielen Seiten", "eine unklare Rechnung"]] },
+  { title: "Stadt und Verkehr", shortTitle: "Unterwegs", description: "Wege erklären, unterwegs helfen und bei Problemen reagieren.", grammar: "Lokale Präpositionen · Imperativ · Perfekt", canDo: "Ich kann nach dem Weg fragen und Reiseprobleme beschreiben.", color: "#3b7a88", stories: [["Die Haltestelle hinter dem Museum", "eine falsche Richtung"], ["Der Zug nach Hamburg", "eine Verspätung"], ["Das Fahrrad ohne Licht", "eine Fahrt am Abend"], ["Ein Ticket für zwei", "eine unklare Tarifzone"], ["Die Tasche im Bus", "ein Fundbüro"], ["Der Aufzug zur U-Bahn", "eine Reise mit Koffer"], ["Ein Stadtplan für Gäste", "eine Besichtigung"], ["Die Baustelle am Bahnhof", "ein anderer Weg"], ["Ein Sitzplatz für Frau Klein", "eine volle Straßenbahn"], ["Der letzte Bus", "ein langer Konzertabend"]] },
+  { title: "Reisen und Unterkunft", shortTitle: "Reisen", description: "Reisen vorbereiten, buchen und kleine Schwierigkeiten lösen.", grammar: "Perfekt · Futur mit werden · Fragen mit ob", canDo: "Ich kann eine Reise planen und über Erfahrungen berichten.", color: "#578a4d", stories: [["Das Zimmer mit Blick aufs Meer", "eine Hotelbuchung"], ["Regen am ersten Urlaubstag", "ein neuer Tagesplan"], ["Die Adresse auf dem Handy", "eine verlorene Verbindung"], ["Frühstück bis zehn", "eine verpasste Uhrzeit"], ["Ein Koffer zu wenig", "ein Gepäckproblem"], ["Die Postkarte aus Wien", "ein Besuch in einer fremden Stadt"], ["Das Zelt am See", "eine Nacht im Freien"], ["Ein Gespräch an der Rezeption", "eine Bitte um Hilfe"], ["Die Karte für das Museum", "eine lange Schlange"], ["Zurück am Sonntag", "eine Änderung der Reise"]] },
+  { title: "Schule und Lernen", shortTitle: "Lernen", description: "Lernwege finden, Fragen stellen und mit anderen üben.", grammar: "dass · weil · um ... zu", canDo: "Ich kann über Lernziele und Schwierigkeiten sprechen.", color: "#7165a6", stories: [["Das Wort, das immer fehlt", "eine Sprechübung"], ["Ein Platz in der Bibliothek", "eine wichtige Hausaufgabe"], ["Die Gruppenarbeit", "unterschiedliche Ideen"], ["Eine Frage nach dem Unterricht", "eine Grammatikregel"], ["Der Zettel im Buch", "eine hilfreiche Methode"], ["Ein Vortrag über Musik", "Nervosität vor der Klasse"], ["Die Prüfung am Montag", "ein Lernplan"], ["Ein Fehler im Diktat", "eine Korrektur"], ["Die Nachricht von Mei", "ein gemeinsames Treffen"], ["Ein neues Heft", "ein persönliches Lernziel"]] },
+  { title: "Arbeit und Beruf", shortTitle: "Beruf", description: "Über Aufgaben, Bewerbungen und Zusammenarbeit sprechen.", grammar: "Höfliche Bitten · Präteritum von sein/haben · Modalverben", canDo: "Ich kann berufliche Erfahrungen beschreiben und um Hilfe bitten.", color: "#4f708e", stories: [["Die Anzeige am Schwarzen Brett", "eine passende Stelle"], ["Das Gespräch um neun", "ein erstes Vorstellungsgespräch"], ["Eine Schicht zu viel", "eine Bitte an Kollegen"], ["Der Computer im Lager", "eine neue Aufgabe"], ["Ein Fehler in der Bestellung", "eine gemeinsame Lösung"], ["Die Pause auf dem Dach", "ein Gespräch mit einer Kollegin"], ["Eine E-Mail an die Chefin", "eine höfliche Frage"], ["Der erste Lohn", "ein kleiner Erfolg"], ["Ein Kurs nach der Arbeit", "eine neue Qualifikation"], ["Die Idee für den Laden", "ein Vorschlag im Team"]] },
+  { title: "Dienstleistungen und Behörden", shortTitle: "Erledigungen", description: "Formulare verstehen, nachfragen und Alltagsdienste nutzen.", grammar: "Könnte / würde · indirekte Fragen · Präpositionalverben", canDo: "Ich kann in einfachen formellen Situationen freundlich handeln.", color: "#9b785a", stories: [["Das Formular mit dem Stern", "eine Anmeldung"], ["Eine Nummer im Wartezimmer", "ein Besuch beim Amt"], ["Der Brief von der Versicherung", "eine wichtige Frage"], ["Die Karte bei der Post", "ein Einschreiben"], ["Ein Termin beim Friseur", "eine Umbuchung"], ["Die Reparatur für morgen", "eine kaputte Waschmaschine"], ["Das Foto für den Ausweis", "eine Vorbereitung"], ["Eine Frage am Schalter", "eine fehlende Unterschrift"], ["Der Anruf aus der Werkstatt", "eine teure Reparatur"], ["Das Paket für die Nachbarin", "eine Vollmacht"]] },
+  { title: "Freizeit und Kultur", shortTitle: "Freizeit", description: "Vorlieben begründen, etwas vorschlagen und gemeinsam planen.", grammar: "gern/lieber/am liebsten · denn · deshalb", canDo: "Ich kann über Hobbys sprechen und gemeinsame Pläne machen.", color: "#cf7a45", stories: [["Der Film ohne Untertitel", "ein Kinoabend"], ["Ein Konzert im Park", "eine spontane Einladung"], ["Die ersten zehn Kilometer", "ein Lauftraining"], ["Ein Bild im Museum", "eine unterschiedliche Meinung"], ["Die Karte für das Theater", "eine Überraschung"], ["Ein Verein für Samstag", "ein neues Hobby"], ["Die Kamera von Jonas", "ein Fotospaziergang"], ["Ein Buch für den Zug", "eine Empfehlung"], ["Der Tanzkurs im Keller", "ein mutiger Anfang"], ["Ein Nachmittag ohne Plan", "eine gemeinsame Entscheidung"]] },
+  { title: "Medien und digitales Leben", shortTitle: "Digital", description: "Nachrichten verstehen, technische Probleme lösen und Informationen vergleichen.", grammar: "indirekte Fragen · Pronomen · trotzdem", canDo: "Ich kann einfache digitale Situationen erklären und reagieren.", color: "#6478a3", stories: [["Die Nachricht im falschen Chat", "ein peinlicher Fehler"], ["Ein Passwort für alles", "ein Sicherheitsproblem"], ["Der Videoanruf mit Oma", "eine neue Technik"], ["Die Karte auf dem Bildschirm", "eine Online-Buchung"], ["Ein Foto ohne Namen", "eine Nachfrage"], ["Die Rechnung per E-Mail", "eine verdächtige Nachricht"], ["Das Handy im Flugmodus", "eine verpasste Information"], ["Ein Link von einem Freund", "eine wichtige Entscheidung"], ["Die Gruppe für den Kurs", "zu viele Nachrichten"], ["Ein Abend ohne Internet", "eine ungeplante Pause"]] },
+  { title: "Natur, Wetter und Umwelt", shortTitle: "Natur", description: "Wetter beschreiben, über Umwelt sprechen und kleine Pläne machen.", grammar: "wenn · obwohl · deshalb", canDo: "Ich kann über Wetter, Natur und einfache Folgen sprechen.", color: "#5f8d5a", stories: [["Der Regen am Picknicktag", "eine neue Idee im Park"], ["Die Flasche am Fluss", "eine Aufräumaktion"], ["Ein Baum vor dem Fenster", "eine Veränderung in der Straße"], ["Der warme Februar", "ungewöhnliches Wetter"], ["Die Fahrradtour im Wind", "eine schwierige Strecke"], ["Ein Garten für das Haus", "eine gemeinsame Aufgabe"], ["Die Bienen auf dem Balkon", "neue Pflanzen"], ["Das Licht im Flur", "Energie sparen"], ["Ein Ausflug in den Wald", "eine verlorene Gruppe"], ["Die Jacke im Sommer", "ein schneller Wetterwechsel"]] },
+  { title: "Feste und gemeinsame Pläne", shortTitle: "Feste", description: "Einladen, organisieren und kulturelle Unterschiede freundlich besprechen.", grammar: "Konjunktiv II · wenn · Verben mit zu", canDo: "Ich kann ein Fest planen und Vorschläge machen.", color: "#b45c73", stories: [["Ein Tisch für zwölf", "eine Geburtstagsfeier"], ["Die Einladung ohne Adresse", "eine wichtige Rückfrage"], ["Ein Fest im Hof", "eine gemeinsame Vorbereitung"], ["Das Essen meiner Kindheit", "ein Gespräch über Traditionen"], ["Die Musik nach Mitternacht", "eine freundliche Bitte"], ["Ein Geschenk, das zu früh kam", "eine Überraschung"], ["Die Hochzeit von Aylin", "eine neue Erfahrung"], ["Ein Feiertag im Kalender", "unterschiedliche Gewohnheiten"], ["Die Liste für das Picknick", "eine Aufgabenverteilung"], ["Der Abschied am Bahnhof", "ein letzter gemeinsamer Abend"]] },
+  { title: "A2-Missionen", shortTitle: "Missionen", description: "Bekannte Themen verbinden, Probleme lösen und klar reagieren.", grammar: "A2-Wiederholung · Nebensätze · Perfekt · Bitten", canDo: "Ich kann in vertrauten Situationen selbstständig handeln und meine Meinung begründen.", color: "#d15e49", stories: [["Der Tag mit drei Problemen", "einen Termin, eine Reise und eine Nachricht"], ["Eine Woche für die Nachbarin", "Hilfe in einer ungewohnten Situation"], ["Das Projekt im Sprachkurs", "gemeinsames Planen und Präsentieren"], ["Ein Besuch aus dem Ausland", "Gastgeber sein"], ["Die Wohnung am Samstag", "mehrere kleine Reparaturen"], ["Der Plan B für das Fest", "eine kurzfristige Änderung"], ["Eine Bewerbung, zwei Gespräche", "wichtige Entscheidungen"], ["Das Fundbüro im Bahnhof", "einen verlorenen Gegenstand beschreiben"], ["Ein Menü für alle", "verschiedene Wünsche berücksichtigen"], ["Der Brief an mein zukünftiges Ich", "A2-Erfahrungen zusammenfassen"]] },
+];
+
+const NAMES = ["Mira", "Jonas", "Elif", "Tariq", "Lea", "Oskar", "Noura", "Paula", "David", "Mei"];
+
+function plannedText(title: string, situation: string, unit: PlannedUnit, index: number) {
+  const name = NAMES[index % NAMES.length];
+  const friend = NAMES[(index + 3) % NAMES.length];
+  return `Für ${name} begann alles mit ${situation}. Später nannte ${friend} diese Erfahrung „${title}“. Als sich die Gelegenheit ergab, wollte ${name} nicht sofort entscheiden. Zuerst sprach ${name} mit ${friend}, denn beide kannten die Situation aus ihrem Alltag. ${friend} hörte aufmerksam zu und fragte, was genau schwierig sei. Schon dieses Gespräch machte das Problem kleiner.
+
+Am nächsten Morgen bereitete ${name} alles gründlich vor. Es gab einen klaren Plan, aber auch eine Frage, die noch offen war. Deshalb fragte ${name} freundlich nach und erklärte die eigene Meinung. Die Antwort kam nicht sofort. Während ${name} wartete, merkte ${name}, dass es besser war, ruhig zu bleiben und die Informationen genau zu prüfen.
+
+Schließlich ergab sich eine einfache Lösung. ${name} konnte einen kleinen Schritt machen, ohne alles auf einmal zu verändern. ${friend} half dabei, die wichtigsten Punkte zu ordnen. Beide verglichen verschiedene Möglichkeiten und entschieden sich für diejenige, die im Alltag wirklich passte. Niemand musste perfekt sein; wichtig war, dass sie einander verstanden.
+
+Später erzählte ${name} anderen von dem Erlebnis. Dabei erklärte ${name}, was vorher passiert war, warum die Entscheidung nicht leicht gewesen war und was sich danach verändert hatte. Es war keine große Geschichte, aber eine, aus der man etwas lernen konnte. ${name} war zufrieden, weil aus ${situation} am Ende eine gute Erfahrung geworden war.
+
+Zum Schluss fragte ${friend}: „Was würdest du beim nächsten Mal anders machen?“ ${name} dachte kurz nach und antwortete: „Ich würde früher nachfragen und nicht alles allein lösen wollen.“ Diese Antwort passte auch zu ${unit.shortTitle}: Im Alltag helfen klare Worte, Geduld und ein kleiner Plan.`;
+}
+
+const GENERATED_UNITS: Unit[] = PLANNED_UNITS.map((unit, unitIndex) => {
+  const id = unitIndex + 2;
+  const stories = unit.stories.map(([title, situation], storyIndex): Story => {
+    const number = UNIT_ONE_STORIES.length + unitIndex * 10 + storyIndex + 1;
+    return {
+      id: `a2-story-${String(number).padStart(3, "0")}`,
+      number,
+      unitId: id,
+      title,
+      text: plannedText(title, situation, unit, storyIndex),
+      grammar: unit.grammar,
+      canDo: unit.canDo,
+      theme: unit.shortTitle,
+      color: unit.color,
+      pronunciation: `Sinnvolle Pausen und Satzakzent in: ${unit.grammar}.`,
+      referenceFocus: "Achte auf Pronomen und Verweiswörter, die sich auf Personen, Dinge und vorherige Sätze beziehen.",
+      speakingPrompt: `Sprich über ${situation} und begründe, welche Lösung du wählen würdest.`,
+      writingPrompt: `Schreibe 70–100 Wörter zu ${situation}. Nenne ein Problem, eine Lösung und deine Meinung.`,
+      audioReady: false,
+    };
+  });
+  return { ...unit, id, stories };
+});
+
+export const A2_UNITS: Unit[] = [FIRST_UNIT, ...GENERATED_UNITS];
+export const A2_STORIES: Story[] = A2_UNITS.flatMap((unit) => unit.stories);
 
 const words = A2_STORIES.flatMap((story) => story.text.split(/\s+/).filter(Boolean));
 export const A2_STATS = {
