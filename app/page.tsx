@@ -74,11 +74,9 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
   const [loadingAudio, setLoadingAudio] = useState(false);
-  const [voiceProgress, setVoiceProgress] = useState<number | null>(null);
   const [audioError, setAudioError] = useState("");
   const [activeChar, setActiveChar] = useState(-1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioUrlRef = useRef<string | null>(null);
   const unit = A1_UNITS[story.unitId - 1];
   const wordCount = story.text.split(/\s+/).length;
   const keyWords = useMemo(() => {
@@ -102,14 +100,9 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       audio.src = "";
       audioRef.current = null;
     }
-    if (audioUrlRef.current) {
-      URL.revokeObjectURL(audioUrlRef.current);
-      audioUrlRef.current = null;
-    }
     setSpeaking(false);
     setPaused(false);
     setLoadingAudio(false);
-    setVoiceProgress(null);
     setAudioError("");
     setActiveChar(-1);
   }, [story]);
@@ -117,58 +110,26 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
   useEffect(() => () => {
     audioRef.current?.pause();
     if (audioRef.current) audioRef.current.src = "";
-    if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current);
   }, []);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.playbackRate = rate[0];
   }, [rate]);
 
-  async function startAudio() {
+  function startAudio() {
     audioRef.current?.pause();
-    if (audioUrlRef.current) {
-      URL.revokeObjectURL(audioUrlRef.current);
-      audioUrlRef.current = null;
-    }
     setAudioError("");
     setLoadingAudio(true);
-    setVoiceProgress(0);
     setPaused(false);
 
-    let wav: Blob;
-    try {
-      const tts = await import("@mintplex-labs/piper-tts-web");
-      wav = await tts.predict(
-        {
-          text: story.text,
-          voiceId: "de_DE-thorsten-medium",
-        },
-        ({ url, loaded, total }) => {
-          if (url === "tts://inference-progress") {
-            setVoiceProgress(total > 0 ? Math.round((loaded / total) * 100) : 100);
-            return;
-          }
-          if (total > 0) setVoiceProgress(Math.min(99, Math.round((loaded / total) * 100)));
-        },
-      );
-    } catch (error) {
-      console.error("Local Piper narration failed", error);
-      setLoadingAudio(false);
-      setVoiceProgress(null);
-      setAudioError("The free German voice could not load. Check your connection and try again.");
-      return;
-    }
-
-    const audioUrl = URL.createObjectURL(wav);
-    audioUrlRef.current = audioUrl;
-    const audio = new Audio(audioUrl);
+    const filename = `story-${String(story.number).padStart(3, "0")}.webm`;
+    const audio = new Audio(`/audio/${filename}`);
     audio.preload = "auto";
     audio.playbackRate = rate[0];
     audioRef.current = audio;
 
     audio.onplaying = () => {
       setLoadingAudio(false);
-      setVoiceProgress(null);
       setSpeaking(true);
       setPaused(false);
     };
@@ -183,16 +144,14 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       setSpeaking(false);
       setPaused(false);
       setLoadingAudio(false);
-      setVoiceProgress(null);
       setActiveChar(-1);
     };
     audio.onerror = () => {
       setLoadingAudio(false);
-      setVoiceProgress(null);
       setSpeaking(false);
       setPaused(false);
       setActiveChar(-1);
-      setAudioError("The generated German audio could not be played. Please try again.");
+      setAudioError("This story's audio could not be loaded. Please refresh and try again.");
     };
     void audio.play().catch((error: unknown) => {
       setLoadingAudio(false);
@@ -200,7 +159,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       setAudioError(
         blocked
           ? "Your browser blocked audio playback. Tap Play to allow narration."
-          : "The German voice is ready but could not start. Tap Play once more.",
+          : "This story's audio could not start. Tap Play once more.",
       );
     });
   }
@@ -217,7 +176,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       return;
     }
     if (loadingAudio) return;
-    void startAudio();
+    startAudio();
   }
 
   function restartAudio() {
@@ -226,7 +185,7 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       audioRef.current.playbackRate = rate[0];
       void audioRef.current.play();
     } else {
-      void startAudio();
+      startAudio();
     }
   }
 
@@ -264,8 +223,8 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
           {speaking ? <Pause /> : <Play className="play-nudge" />}
         </Button>
         <div className="audio-label">
-          <strong>{loadingAudio ? (voiceProgress !== null && voiceProgress < 100 ? `Loading free German voice · ${voiceProgress}%` : "Creating narration on your device…") : speaking ? "Listening in German" : paused ? "Paused" : "Listen with free local narration"}</strong>
-          <span>{loadingAudio ? "First use downloads the voice once; later stories are faster" : speaking ? "Follow the highlighted word" : "No API key · no per-play charge"}</span>
+          <strong>{loadingAudio ? "Loading story audio…" : speaking ? "Listening in German" : paused ? "Paused" : "Listen to this story"}</strong>
+          <span>{loadingAudio ? "The narration is built into the website" : speaking ? "Follow the highlighted word" : "Ready to play · no voice download"}</span>
         </div>
         <div className="rate-control">
           <Gauge />
@@ -276,8 +235,8 @@ function Reader({ story, onStoryChange }: { story: A1Story; onStoryChange: (stor
       </div>
 
       <div className="narration-controls">
-        <div className="ai-narrator"><span className="ai-pulse" /><div><b>Thorsten · open-source German narrator</b><small>Piper neural voice · clear Standard German · runs locally</small></div></div>
-        <p><strong>Free synthetic voice</strong> · The first use downloads about 63 MB and stores it on your device. No OpenAI billing.</p>
+        <div className="ai-narrator"><span className="ai-pulse" /><div><b>Thorsten · open-source German narrator</b><small>Piper neural voice · clear Standard German</small></div></div>
+        <p><strong>Bundled story audio</strong> · No API key, model download, or per-play charge.</p>
       </div>
       {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 
