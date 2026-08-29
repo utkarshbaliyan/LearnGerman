@@ -42,10 +42,11 @@ def count_phonemes(voice: PiperVoice, text: str) -> int:
     return sum(len(sentence) for sentence in voice.phonemize(text))
 
 
-def visual_word_starts(
+def prefix_word_starts(
     voice: PiperVoice, text: str, phonemes: list[tuple[str, int]]
 ) -> list[int]:
-    """Map exact phoneme positions back to each visible text token."""
+    """Handle tokens that Piper expands into multiple spoken groups."""
+    phonemes = [item for item in phonemes if item[0] != "\0"]
     starts: list[int] = []
     previous_sample = -1
     for match in re.finditer(r"\S+", text):
@@ -54,21 +55,35 @@ def visual_word_starts(
         phoneme_index = count_phonemes(voice, text[: match.start()])
         while phoneme_index < len(phonemes) and phonemes[phoneme_index][0] == " ":
             phoneme_index += 1
-
         if phoneme_index >= len(phonemes):
-            raise RuntimeError(
-                f"Could not map visible word {match.group()!r} at phoneme "
-                f"{phoneme_index} of {len(phonemes)}"
-            )
-
+            raise RuntimeError(f"Could not map visible word {match.group()!r}")
         sample = phonemes[phoneme_index][1]
         if sample <= previous_sample:
-            raise RuntimeError(
-                f"Non-increasing timing for visible word {match.group()!r}"
-            )
+            raise RuntimeError(f"Non-increasing timing for {match.group()!r}")
         starts.append(sample)
         previous_sample = sample
     return starts
+
+
+def visual_word_starts(
+    voice: PiperVoice, text: str, phonemes: list[tuple[str, int]]
+) -> list[int]:
+    """Use a fast forward pass, with exact-prefix fallback for expansions."""
+    starts: list[int] = []
+    word_start = True
+    for phoneme, sample in phonemes:
+        if phoneme in {" ", "\0"}:
+            word_start = True
+        elif word_start:
+            starts.append(sample)
+            word_start = False
+    expected_words = sum(
+        1 for token in text.split()
+        if re.search(r"[A-Za-zÄÖÜäöüßÉé0-9]", token)
+    )
+    if len(starts) == expected_words:
+        return starts
+    return prefix_word_starts(voice, text, phonemes)
 
 
 def main() -> None:
@@ -110,6 +125,7 @@ def main() -> None:
                 if chunk_index > 0:
                     wav_file.writeframes(silence_bytes)
                     written_samples += silence_frames
+                    phonemes.append(("\0", written_samples))
 
                 phonemes.extend(
                     aligned_phonemes(chunk.phoneme_alignments, written_samples)

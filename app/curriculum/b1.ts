@@ -251,7 +251,7 @@ export const B1_UNITS: Unit[] = UNIT_PLANS.map((unit, unitIndex) => {
       referenceFocus: "Verfolge Pronomen, Relativpronomen und Verweiswörter über mehrere Sätze. Prüfe, auf welche Person, Aussage oder Möglichkeit sie sich beziehen.",
       speakingPrompt: "Fasse „" + title + "“ zusammen, nenne zwei Perspektiven und begründe, wie du entschieden hättest.",
       writingPrompt: "Schreibe 120–150 Wörter zu „" + title + "“. Ordne die Ereignisse, erkläre einen Standpunkt und schließe mit einer begründeten Lösung.",
-      audioReady: false,
+      audioReady: true,
     };
   });
   return { ...unit, id, stories };

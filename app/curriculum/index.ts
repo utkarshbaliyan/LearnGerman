@@ -43,7 +43,7 @@ const B1_CURRICULUM: Curriculum = {
   title: "Deutsch B1",
   shortTitle: "Selbstständig",
   audioBasePath: "/audio/b1",
-  audioVersion: "b1-text-1",
+  audioVersion: "b1-audio-1",
   stories: B1_STORIES,
   units: B1_UNITS,
   stats: B1_STATS,

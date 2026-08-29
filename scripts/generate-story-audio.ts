@@ -4,19 +4,25 @@ import path from "node:path";
 
 import { A1_STORIES } from "../app/curriculum/a1";
 import { A2_STORIES } from "../app/curriculum/a2";
+import { B1_STORIES } from "../app/curriculum/b1";
 
 const projectRoot = path.resolve(import.meta.dirname, "..");
 const level = process.env.LESELAUT_LEVEL ?? "a1";
-const allStories = level === "a2" ? A2_STORIES : A1_STORIES;
+const storiesByLevel = {
+  a1: A1_STORIES,
+  a2: A2_STORIES,
+  b1: B1_STORIES,
+} as const;
+if (!(level in storiesByLevel)) {
+  throw new Error(`Unsupported level: ${level}`);
+}
+const allStories = storiesByLevel[level as keyof typeof storiesByLevel];
 const limit = Number(process.env.LESELAUT_AUDIO_LIMIT ?? "0");
 const start = Number(process.env.LESELAUT_AUDIO_START ?? "0");
 const from = Number.isInteger(start) && start >= 0 ? start : 0;
 const stories = Number.isInteger(limit) && limit > 0
   ? allStories.slice(from, from + limit)
   : allStories.slice(from);
-if (level !== "a1" && level !== "a2") {
-  throw new Error(`Unsupported level: ${level}`);
-}
 const audioDir = path.join(projectRoot, "public", "audio", level);
 const workDir = path.resolve(process.env.LESELAUT_AUDIO_WORK_DIR ?? path.join(projectRoot, ".audio-work"));
 const piperPython = process.env.PIPER_PYTHON;
