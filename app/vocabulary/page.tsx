@@ -16,8 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 
 type ProgressFilter = "all" | "completed" | "review";
-type LevelFilter = "all" | "A1" | "A2";
-const STORAGE_KEY = "leselaut:vocabulary:a1-a2";
+type LevelFilter = "all" | "A1" | "A2" | "B1";
+const STORAGE_KEY = "leselaut:vocabulary:a1-b1";
+const PREVIOUS_STORAGE_KEY = "leselaut:vocabulary:a1-a2";
 const LEGACY_STORAGE_KEY = "leselaut:vocabulary:a1";
 
 const CATEGORY_META: Record<VocabularyCategory, { icon: LucideIcon; color: string }> = {
@@ -66,7 +67,7 @@ function VocabularyCard({ word, revealed, completed, review, onReveal, onComplet
       style={{ "--vocabulary-color": CATEGORY_META[word.category].color } as CSSProperties}
     >
       <button type="button" className="vocabulary-reveal" aria-expanded={revealed} onClick={onReveal}>
-        <span className="vocabulary-card-top"><small>{word.level} · {word.id.slice(-3)}</small><ChevronDown /></span>
+        <span className="vocabulary-card-top"><small>{word.level} · {word.id.split("-")[1]}</small><ChevronDown /></span>
         <span className="vocabulary-prompt" lang="en">{word.english}</span>
         {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Deutsch anzeigen</span>}
       </button>
@@ -91,7 +92,7 @@ export default function VocabularyPage() {
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY) ?? "{}") as { completed?: string[]; review?: string[] };
+        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(PREVIOUS_STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY) ?? "{}") as { completed?: string[]; review?: string[] };
         setCompleted(new Set(stored.completed ?? []));
         setReview(new Set(stored.review ?? []));
       } catch { /* Ein beschädigter lokaler Stand wird ignoriert. */ }
@@ -140,7 +141,7 @@ export default function VocabularyPage() {
   }
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
-  const levelLabel = level === "all" ? "A1 + A2" : level;
+  const levelLabel = level === "all" ? "A1–B1" : level;
 
   return (
     <main className="site-shell vocabulary-page" id="top">
@@ -152,9 +153,9 @@ export default function VocabularyPage() {
       <section className="vocabulary-hero">
         <div>
           <Link href="/" className="vocabulary-back"><ArrowLeft /> Zu den Geschichten</Link>
-          <Badge className="eyebrow"><Sparkles /> A1 + A2 · Wortschatz</Badge>
-          <h1>1.300 Wörter.<br /><em>Bis A2.</em></h1>
-          <p>800 A1-Wörter bilden die Grundlage, 500 weitere Wörter führen durch A2. Tippe auf ein englisches Wort, lerne deutsche Nomen mit Artikel und sammle schwierige Wörter zum Wiederholen.</p>
+          <Badge className="eyebrow"><Sparkles /> A1–B1 · Wortschatz</Badge>
+          <h1>2.400 Wörter.<br /><em>Bis B1.</em></h1>
+          <p>800 A1-Karten bilden die Grundlage, 500 neue Karten führen durch A2 und 1.100 weitere durch B1. Der Wortschatz deckt häufige Sprache aus Alltag, Beziehungen, Wohnen, Arbeit, Bildung, Reisen, Gesundheit, Medien, Umwelt und öffentlichem Leben ab.</p>
         </div>
         <aside className="vocabulary-progress-card">
           <span>Dein Fortschritt · {levelLabel}</span>
@@ -168,9 +169,10 @@ export default function VocabularyPage() {
         <div className="vocabulary-levels" aria-label="Sprachniveau auswählen">
           <div><span>Lernbereich</span><strong>{levelLabel}</strong></div>
           <div>
-            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => setLevel("all")}><span>A1 + A2</span><small>1.300 Wörter</small></button>
+            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => setLevel("all")}><span>A1–B1</span><small>2.400 Wörter</small></button>
             <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => setLevel("A1")}><span>A1</span><small>800 Wörter</small></button>
             <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => setLevel("A2")}><span>A2</span><small>500 neue Wörter</small></button>
+            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => setLevel("B1")}><span>B1</span><small>1.100 neue Wörter</small></button>
           </div>
         </div>
         <div className="vocabulary-toolbar">
@@ -202,7 +204,7 @@ export default function VocabularyPage() {
         )}
       </section>
 
-      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span></Link><p>1.300 wichtige Wörter für den vollständigen A1–A2-Lernweg.</p><div><Link href="/">Geschichten</Link><a href="#top">Nach oben</a></div></footer>
+      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span></Link><p>2.400 wichtige Wortschatzkarten für den vollständigen A1–B1-Lernweg.</p><div><Link href="/">Geschichten</Link><a href="#top">Nach oben</a></div></footer>
     </main>
   );
 }

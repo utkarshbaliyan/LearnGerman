@@ -1,5 +1,6 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
+import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
 
 export const VOCABULARY_CATEGORIES = [
   "Grundlagen & Kommunikation",
@@ -28,7 +29,7 @@ export type VocabularyWord = {
   english: string;
   german: string;
   category: VocabularyCategory;
-  level: "A1" | "A2";
+  level: "A1" | "A2" | "B1";
 };
 
 const FUNCTION_WORDS = new Set([
@@ -186,14 +187,15 @@ function buildVocabulary(): VocabularyWord[] {
 
 export const A1_VOCABULARY = buildVocabulary();
 export { A2_VOCABULARY };
-export const ALL_VOCABULARY = [...A1_VOCABULARY, ...A2_VOCABULARY];
+export const B1_VOCABULARY = buildB1Vocabulary([...A1_VOCABULARY, ...A2_VOCABULARY]);
+export const ALL_VOCABULARY = [...A1_VOCABULARY, ...A2_VOCABULARY, ...B1_VOCABULARY];
 
 const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 const germanEntries = new Set(ALL_VOCABULARY.map((word) => word.german.toLocaleLowerCase("de")));
 const englishEntries = new Set(ALL_VOCABULARY.map((word) => word.english.toLocaleLowerCase("en")));
 
-if (ALL_VOCABULARY.length !== 1300 || vocabularyIds.size !== 1300 || germanEntries.size !== 1300 || englishEntries.size !== 1300) {
-  throw new Error("Der A1–A2-Wortschatz muss 1.300 eindeutige Lernkarten enthalten.");
+if (ALL_VOCABULARY.length !== 2400 || vocabularyIds.size !== 2400 || germanEntries.size !== 2400 || englishEntries.size !== 2400) {
+  throw new Error("Der A1–B1-Wortschatz muss 2.400 eindeutige Lernkarten enthalten.");
 }
 
 for (const category of VOCABULARY_CATEGORIES) {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "A1–A2-Wortschatz — LeseLaut",
-  description: "1.300 wichtige Wörter für A1 und A2 nach Themen lernen, aufdecken und zum Wiederholen markieren.",
+  title: "A1–B1-Wortschatz — LeseLaut",
+  description: "2.400 häufige Wörter und Ausdrücke für A1 bis B1 nach Themen lernen, aufdecken und zum Wiederholen markieren.",
 };
 
 export default function VocabularyLayout({ children }: Readonly<{ children: React.ReactNode }>) {
