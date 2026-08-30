@@ -8,6 +8,7 @@ import { A1_LESSON_SEVEN_EXERCISES } from "@/app/grammar/a1-lesson-seven-exercis
 import { A1_LESSON_EIGHT_EXERCISES } from "@/app/grammar/a1-lesson-eight-exercises";
 import { A1_LESSON_NINE_EXERCISES, A1_LESSON_TEN_EXERCISES } from "@/app/grammar/a1-lessons-nine-ten-exercises";
 import { A1_LESSON_ELEVEN_EXERCISES, A1_LESSON_TWELVE_EXERCISES } from "@/app/grammar/a1-lessons-eleven-twelve-exercises";
+import { A1_MODULE_THREE_LESSONS } from "@/app/grammar/a1-module-three-lessons";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -62,7 +63,7 @@ const createModule = (level: GrammarLevel, number: number, title: string, descri
     number: (number - 1) * 6 + index + 1,
     title: lessonTitle,
     outcome,
-    released: level === "A1" && number <= 2,
+    released: level === "A1" && number <= 3,
   })),
 });
 
@@ -1397,6 +1398,7 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
     memoryTip: "Solve possession in two moves: the owner chooses the stem; the possessed noun chooses the ending. Say both decisions aloud until the method becomes automatic.",
     exercises: A1_LESSON_TWELVE_EXERCISES,
   },
+  ...A1_MODULE_THREE_LESSONS,
 };
 
 export const ALL_GRAMMAR_LESSONS = GRAMMAR_MODULES.flatMap((item) => item.lessons);
