@@ -1,4 +1,5 @@
 import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
+import { A1_LESSON_TWO_EXERCISES } from "@/app/grammar/a1-lesson-two-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -34,7 +35,6 @@ export type GrammarLessonContent = {
   lead: string;
   pattern: string;
   explanation: string[];
-  objectives?: string[];
   sections?: { title: string; paragraphs: string[]; examples?: { german: string; english: string }[] }[];
   tables?: { title: string; caption?: string; headers: string[]; rows: string[][] }[];
   examples: { german: string; english: string; note?: string }[];
@@ -164,13 +164,6 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
     id: "a1-1-1",
     lead: "Personal pronouns let you refer to people and things without repeating their names. The verb sein—German for to be—is the most important irregular verb in the language and appears in introductions, descriptions, locations, professions, identities, and hundreds of everyday expressions.",
     pattern: "ich bin · du bist · er/sie/es ist · wir sind · ihr seid · sie/Sie sind",
-    objectives: [
-      "Choose the correct subject pronoun for a person, group, or noun.",
-      "Conjugate sein correctly with all nine written pronoun forms.",
-      "Distinguish informal du/ihr from formal Sie.",
-      "Build statements, yes/no questions, and W-questions with sein.",
-      "Translate basic identity and description sentences between English and German.",
-    ],
     explanation: [
       "A subject pronoun tells us who or what the sentence is about. German normally states the subject explicitly: Ich bin müde. The form of the verb must agree with that subject.",
       "Use ich for the speaker. Use du for one familiar person and ihr for two or more familiar people. Use formal Sie for one or several people when politeness, distance, or a professional situation requires it. Formal Sie is always capitalized.",
@@ -279,31 +272,111 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-1-2": {
     id: "a1-1-2",
-    lead: "Most German verbs follow a dependable present-tense pattern. Remove -en from the infinitive and add an ending that matches the subject.",
+    lead: "Most German verbs follow a stable present-tense pattern. Once you can identify the stem and choose the correct personal ending, you can describe routines, actions happening now, general facts, and even planned future events with hundreds of verbs.",
     pattern: "machen → ich mache · du machst · er/sie/es macht · wir machen · ihr macht · sie/Sie machen",
     explanation: [
-      "The dictionary form usually ends in -en: lernen, wohnen, arbeiten. The part before -en is the stem.",
-      "Use -e with ich, -st with du, -t with er/sie/es and ihr, and -en with wir, sie, and Sie.",
-      "If a stem ends in -t or -d, add an extra e where pronunciation needs it: du arbeitest, er arbeitet, ihr arbeitet.",
+      "The infinitive is the dictionary form of a verb. Most regular infinitives end in -en, for example lernen, wohnen, and machen. Remove -en to find the stem: lern-, wohn-, mach-. The stem carries the meaning; the ending identifies the subject.",
+      "Add -e for ich, -st for du, -t for er/sie/es, -en for wir, -t for ihr, and -en for sie/Sie. The plural forms wir and sie/Sie therefore look exactly like the infinitive.",
+      "A name or noun phrase uses the same form as its matching pronoun. Maria equals sie, das Kind equals es, and meine Freunde equals sie plural. This lets you conjugate without memorising a separate rule for every possible subject.",
+      "When a stem ends in -d or -t, an extra e makes the ending pronounceable: arbeiten → du arbeitest, er arbeitet, ihr arbeitet; warten → du wartest, er wartet. The same pattern appears with several stems ending in consonant + n, such as rechnen → du rechnest.",
+      "When a stem already ends in an s sound—s, ß, z, or x—the du form does not add another s. Use only -t: reisen → du reist, heißen → du heißt, tanzen → du tanzt.",
+      "German has one present tense where English often uses several forms. Ich arbeite can mean I work or I am working. With a future time expression, Morgen arbeite ich can also mean I am working tomorrow. Context supplies the exact time meaning.",
+    ],
+    tables: [
+      {
+        title: "Regular present-tense endings",
+        caption: "Build each form from the stem lern-. The same six endings work with most regular verbs.",
+        headers: ["Subject", "Ending", "lernen", "English"],
+        rows: [
+          ["ich", "-e", "ich lerne", "I learn / I am learning"],
+          ["du", "-st", "du lernst", "you learn / are learning"],
+          ["er / sie / es", "-t", "er lernt", "he learns / is learning"],
+          ["wir", "-en", "wir lernen", "we learn / are learning"],
+          ["ihr", "-t", "ihr lernt", "you all learn / are learning"],
+          ["sie / Sie", "-en", "sie lernen / Sie lernen", "they learn / you learn"],
+        ],
+      },
+      {
+        title: "Spelling adjustments that protect pronunciation",
+        caption: "The endings stay systematic; only the spelling is adjusted so that the form is easy to say.",
+        headers: ["Stem type", "Rule", "Infinitive", "Example"],
+        rows: [
+          ["ends in -d or -t", "insert e before -st or -t", "arbeiten", "du arbeitest · er arbeitet"],
+          ["ends in an s sound", "du adds only -t", "tanzen", "du tanzt"],
+          ["ends in -eln", "ich often drops the stem e", "sammeln", "ich sammle"],
+          ["consonant + n", "often insert e", "rechnen", "du rechnest · er rechnet"],
+        ],
+      },
+      {
+        title: "What the German present tense can express",
+        headers: ["Meaning", "German", "Natural English"],
+        rows: [
+          ["habit or routine", "Ich lerne jeden Abend.", "I study every evening."],
+          ["action happening now", "Ich lerne gerade.", "I am studying right now."],
+          ["general fact", "Der Kurs beginnt um neun.", "The course begins at nine."],
+          ["planned future", "Morgen arbeite ich zu Hause.", "I am working at home tomorrow."],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "A reliable three-step method",
+        paragraphs: [
+          "First find the infinitive and remove -en. Second identify the subject and match it to ich, du, er/sie/es, wir, ihr, or sie/Sie. Third attach the correct ending and check whether the stem needs a spelling adjustment.",
+          "For Meine Schwester arbeitet, the infinitive is arbeiten, the stem is arbeit-, and meine Schwester equals sie. The normal third-person ending is -t, but a stem ending in -t needs an extra e: arbeit + e + t = arbeitet.",
+        ],
+        examples: [
+          { german: "lernen → lern- → du lernst", english: "to learn → stem → you learn" },
+          { german: "arbeiten → arbeit- → er arbeitet", english: "to work → stem → he works" },
+          { german: "tanzen → tanz- → du tanzt", english: "to dance → stem → you dance" },
+        ],
+      },
+      {
+        title: "Matching real subjects to pronoun forms",
+        paragraphs: [
+          "Conjugation depends on grammatical person and number, not on how long the subject is. A single name, person, animal, or thing normally takes the er/sie/es form. Two or more people or things take the plural sie form.",
+          "The phrase du und ich includes the speaker and therefore equals wir. A direct address with a title and capitalised Sie uses the formal -en form, even when only one person is being addressed.",
+        ],
+        examples: [
+          { german: "Meine Mutter kocht heute.", english: "My mother is cooking today." },
+          { german: "Lena und Amir wohnen in Bonn.", english: "Lena and Amir live in Bonn." },
+          { german: "Du und ich lernen zusammen.", english: "You and I are studying together." },
+          { german: "Herr Klein, arbeiten Sie hier?", english: "Mr Klein, do you work here?" },
+        ],
+      },
+      {
+        title: "Statements and direct questions",
+        paragraphs: [
+          "In a statement, the conjugated verb occupies position two: Ich lerne heute. A time or place phrase may take position one, but the verb remains second: Heute lerne ich; In Berlin arbeitet Sara.",
+          "A yes/no question begins with the conjugated verb: Lernst du Deutsch? A W-question begins with the question word and places the verb second: Wo wohnst du? The subject follows the verb in both question patterns.",
+        ],
+        examples: [
+          { german: "Wir arbeiten heute zu Hause.", english: "We are working at home today." },
+          { german: "Morgen arbeitet meine Schwester zu Hause.", english: "Tomorrow my sister is working at home." },
+          { german: "Spielt ihr Fußball?", english: "Do you all play football?" },
+          { german: "Wo wohnen Sie?", english: "Where do you live?" },
+        ],
+      },
     ],
     examples: [
-      { german: "Ich lerne Deutsch.", english: "I learn German." },
-      { german: "Wo wohnst du?", english: "Where do you live?" },
-      { german: "Wir arbeiten heute zu Hause.", english: "We are working at home today." },
-      { german: "Ihr wartet vor dem Kino.", english: "You are waiting in front of the cinema." },
+      { german: "Ich lerne jeden Tag Deutsch.", english: "I study German every day.", note: "ich → -e" },
+      { german: "Wo wohnst du?", english: "Where do you live?", note: "du → -st" },
+      { german: "Wir arbeiten heute zu Hause.", english: "We are working at home today.", note: "wir → -en" },
+      { german: "Ihr wartet vor dem Kino.", english: "You are waiting in front of the cinema.", note: "wart- inserts e before -t" },
+      { german: "Meine Mutter kocht am Sonntag.", english: "My mother cooks on Sunday.", note: "Meine Mutter → sie → -t" },
+      { german: "Die Kinder spielen im Garten.", english: "The children are playing in the garden.", note: "plural subject → -en" },
+      { german: "Morgen lernen wir in der Bibliothek.", english: "Tomorrow we are studying in the library.", note: "present tense with future time" },
+      { german: "Arbeiten Sie in Berlin?", english: "Do you work in Berlin?", note: "formal Sie → -en" },
     ],
     mistakes: [
       { wrong: "Du lernen Deutsch.", right: "Du lernst Deutsch.", why: "du needs the ending -st." },
       { wrong: "Er arbeitst heute.", right: "Er arbeitet heute.", why: "A stem ending in -t takes -et for er/sie/es." },
+      { wrong: "Sie arbeite in Köln. (they)", right: "Sie arbeiten in Köln.", why: "Plural sie uses the -en form." },
+      { wrong: "Du tanzst sehr gut.", right: "Du tanzt sehr gut.", why: "After a stem ending in z, the du form adds only -t." },
+      { wrong: "Wo du wohnst?", right: "Wo wohnst du?", why: "In a direct W-question, the conjugated verb follows the question word." },
     ],
     memoryTip: "Think of the endings as a six-beat chant: -e, -st, -t, -en, -t, -en.",
-    exercises: [
-      { id: "a112-1", type: "choice", prompt: "Du ___ in Berlin.", options: ["wohne", "wohnst", "wohnt", "wohnen"], answer: "wohnst", explanation: "du takes the ending -st: wohnst." },
-      { id: "a112-2", type: "fill", prompt: "Meine Freunde ___ heute Fußball. (spielen)", answer: "spielen", explanation: "Meine Freunde is plural and can be replaced by sie: spielen." },
-      { id: "a112-3", type: "order", prompt: "Build a statement.", tokens: ["jeden", "Deutsch", "Wir", "Tag", "lernen", "."], answer: "Wir lernen jeden Tag Deutsch.", explanation: "The subject can come first and the conjugated verb stays in position two." },
-      { id: "a112-4", type: "correction", prompt: "Correct the sentence: Er wohnst in Bonn.", answer: "Er wohnt in Bonn.", explanation: "er takes the ending -t, not -st." },
-      { id: "a112-5", type: "production", prompt: "Write three short sentences about activities you do every week.", model: "Ich lerne Deutsch. Ich spiele Tennis. Ich koche am Sonntag.", explanation: "Use the ich ending -e in each sentence." },
-    ],
+    exercises: A1_LESSON_TWO_EXERCISES,
   },
   "a1-1-3": {
     id: "a1-1-3",

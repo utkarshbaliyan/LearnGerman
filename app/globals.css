@@ -564,10 +564,6 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .grammar-pattern strong { font: 700 clamp(17px,2vw,24px)/1.35 Georgia,serif; }
 .grammar-explanation { padding: 6px 0 29px; }
 .grammar-explanation p { max-width: 790px; margin: 12px 0 0; color: #3d463f; font-size: 12px; line-height: 1.72; }
-.grammar-objectives { padding: 5px 0 28px; }
-.grammar-objectives > div { margin-top: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-.grammar-objectives p { min-height: 48px; margin: 0; padding: 11px 12px; display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 7px; border: 1px solid #cfded5; border-radius: 9px; background: #eff6f2; color: var(--green); font-size: 9px; line-height: 1.45; }
-.grammar-objectives svg { width: 13px; color: #3d846c; }
 .grammar-reference-table { padding: 28px 0; border-top: 1px solid var(--line); }
 .grammar-reference-table h3, .grammar-deep-dive h3 { margin: 8px 0 6px; font: 700 clamp(25px,3vw,35px)/1.05 Georgia,serif; letter-spacing: -.025em; }
 .grammar-reference-table > p { max-width: 720px; margin: 0 0 14px; color: var(--ink-soft); font-size: 9px; line-height: 1.55; }
@@ -686,7 +682,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .grammar-lesson { padding: 27px 17px; border-radius: 18px; }
   .grammar-lesson-heading h2 { font-size: 43px; }
   .grammar-examples > div { grid-template-columns: 1fr; }
-  .grammar-objectives > div, .grammar-deep-dive > div, .practice-set-grid { grid-template-columns: 1fr; }
+  .grammar-deep-dive > div, .practice-set-grid { grid-template-columns: 1fr; }
   .grammar-mistakes > article { grid-template-columns: 1fr; }
   .grammar-mistakes article > svg { transform: rotate(90deg); }
   .practice-heading { grid-template-columns: 1fr; }

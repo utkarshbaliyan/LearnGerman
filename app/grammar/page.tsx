@@ -327,8 +327,6 @@ export default function GrammarPage() {
 
             <div className="grammar-pattern"><span>The pattern</span><strong lang="de">{content.pattern}</strong></div>
 
-            {content.objectives && <section className="grammar-objectives"><span className="grammar-section-label">By the end of this chapter</span><div>{content.objectives.map((objective) => <p key={objective}><CheckCircle2 />{objective}</p>)}</div></section>}
-
             <section className="grammar-explanation">
               <span className="grammar-section-label">How it works</span>
               {content.explanation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
