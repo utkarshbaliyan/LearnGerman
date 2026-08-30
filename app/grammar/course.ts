@@ -1,5 +1,6 @@
 import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
 import { A1_LESSON_TWO_EXERCISES } from "@/app/grammar/a1-lesson-two-exercises";
+import { A1_LESSON_THREE_EXERCISES } from "@/app/grammar/a1-lesson-three-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -380,31 +381,113 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-1-3": {
     id: "a1-1-3",
-    lead: "Some frequent verbs change their stem vowel with du and er/sie/es. Their endings remain regular.",
+    lead: "Many of the most useful German verbs change their stem vowel in the present tense. The change is limited and predictable: it normally appears only with du and er/sie/es, while the personal endings and the other forms remain familiar.",
     pattern: "fahren → du fährst · er fährt | lesen → du liest · sie liest | sprechen → du sprichst · er spricht",
     explanation: [
-      "The common changes are a → ä and e → i/ie. They occur only with du and er/sie/es in the present tense.",
-      "The plural forms return to the normal stem: wir fahren, ihr fahrt, sie fahren.",
-      "Learn a changing verb with its third-person form: fahren – er fährt; lesen – er liest. This makes the change easier to retrieve.",
+      "The most common changes are a → ä, e → i, and e → ie. A smaller group changes au → äu. These changes appear with du and er/sie/es: du fährst, er spricht, sie liest, das Kind läuft.",
+      "The endings are still the regular endings. After changing the vowel, add -st for du and -t for er/sie/es: fahr- → fähr- + st = fährst; sprech- → sprich- + t = spricht.",
+      "The change disappears with ich and all plural persons: ich fahre, wir fahren, ihr fahrt, sie/Sie fahren. This is why memorising only one changed form is enough to predict the other changed form.",
+      "Names and noun phrases follow the same rule as pronouns. Paul and mein Bruder use the er-form; die Lehrerin uses the sie-form; das Kind uses the es-form. Plural noun phrases use the unchanged plural form.",
+      "A few high-frequency verbs have additional spelling changes. nehmen becomes du nimmst and er nimmt; essen becomes du isst and er isst. Learn these complete forms aloud instead of trying to construct them letter by letter.",
+      "Not every irregular German verb changes its vowel in this pattern, and the infinitive alone does not always predict the change. Learn new verbs as a pair: fahren – er fährt, helfen – er hilft, lesen – er liest.",
+    ],
+    tables: [
+      {
+        title: "The main stem-change families",
+        caption: "The er/sie/es form is the most efficient dictionary companion because it clearly displays the change.",
+        headers: ["Change", "Infinitive", "du", "er / sie / es"],
+        rows: [
+          ["a → ä", "fahren", "du fährst", "er fährt"],
+          ["a → ä", "schlafen", "du schläfst", "sie schläft"],
+          ["e → i", "sprechen", "du sprichst", "er spricht"],
+          ["e → i", "nehmen", "du nimmst", "sie nimmt"],
+          ["e → ie", "lesen", "du liest", "er liest"],
+          ["e → ie", "sehen", "du siehst", "sie sieht"],
+          ["au → äu", "laufen", "du läufst", "es läuft"],
+        ],
+      },
+      {
+        title: "Where the change appears—and where it does not",
+        headers: ["Subject", "fahren", "sprechen", "lesen"],
+        rows: [
+          ["ich", "fahre", "spreche", "lese"],
+          ["du", "fährst", "sprichst", "liest"],
+          ["er / sie / es", "fährt", "spricht", "liest"],
+          ["wir", "fahren", "sprechen", "lesen"],
+          ["ihr", "fahrt", "sprecht", "lest"],
+          ["sie / Sie", "fahren", "sprechen", "lesen"],
+        ],
+      },
+      {
+        title: "High-frequency verbs worth learning as pairs",
+        headers: ["Infinitive + er-form", "Meaning", "Example", "English"],
+        rows: [
+          ["essen – er isst", "to eat", "Was isst du?", "What are you eating?"],
+          ["geben – er gibt", "to give", "Sie gibt mir das Buch.", "She gives me the book."],
+          ["helfen – er hilft", "to help", "Hilfst du mir?", "Are you helping me?"],
+          ["treffen – er trifft", "to meet", "Er trifft seine Freunde.", "He meets his friends."],
+          ["tragen – er trägt", "to wear / carry", "Sie trägt eine Jacke.", "She is wearing a jacket."],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "The two change zones",
+        paragraphs: [
+          "Imagine the conjugation table with two highlighted cells: du and er/sie/es. Change the stem vowel only inside those cells. The other cells use the ordinary stem, including ihr even though it also has a -t ending.",
+          "This prevents a common overgeneralisation such as wir fähren or ihr schläft. The correct forms are wir fahren and ihr schlaft because plural subjects remain outside the change zones.",
+        ],
+        examples: [
+          { german: "du fährst · er fährt", english: "change zone: a becomes ä" },
+          { german: "ich fahre · wir fahren · ihr fahrt", english: "ordinary stem outside the change zone" },
+          { german: "du liest · sie liest", english: "change zone: e becomes ie" },
+        ],
+      },
+      {
+        title: "Choosing the form from a real subject",
+        paragraphs: [
+          "Replace the subject mentally with a pronoun before conjugating. Meine Schwester equals sie, so Meine Schwester liest. Paul und Sara equals sie plural, so Paul und Sara lesen. Herr Klein addressed directly equals formal Sie, so Lesen Sie gern?",
+          "The question word wer normally takes a singular er/sie/es form when the person is unknown: Wer fährt heute? The answer may later name one person or several people.",
+        ],
+        examples: [
+          { german: "Der Bus fährt um acht.", english: "The bus leaves at eight." },
+          { german: "Meine Eltern fahren morgen.", english: "My parents are travelling tomorrow." },
+          { german: "Wer hilft heute?", english: "Who is helping today?" },
+          { german: "Lesen Sie gern?", english: "Do you like reading?" },
+        ],
+      },
+      {
+        title: "Learning irregular verbs efficiently",
+        paragraphs: [
+          "Store each new verb with its meaning, er-form, and one short phrase: nehmen – er nimmt – den Bus nehmen. This compact bundle gives you the changed vowel, pronunciation, and a natural object at the same time.",
+          "Contrast the changed singular with an unchanged plural aloud: Er spricht, aber wir sprechen. Sie liest, aber ihre Freunde lesen. Alternating the forms makes the boundary of the rule memorable.",
+        ],
+        examples: [
+          { german: "nehmen – er nimmt – den Bus nehmen", english: "to take – he takes – to take the bus" },
+          { german: "helfen – sie hilft – einem Freund helfen", english: "to help – she helps – to help a friend" },
+          { german: "Er schläft, aber die Kinder schlafen nicht.", english: "He is sleeping, but the children are not." },
+        ],
+      },
     ],
     examples: [
-      { german: "Du fährst mit dem Bus.", english: "You travel by bus." },
-      { german: "Lea liest jeden Abend.", english: "Lea reads every evening." },
-      { german: "Wir sprechen im Kurs Deutsch.", english: "We speak German in the course.", note: "No vowel change with wir" },
-      { german: "Was isst du zum Frühstück?", english: "What do you eat for breakfast?" },
+      { german: "Du fährst mit dem Bus.", english: "You travel by bus.", note: "fahren: a → ä" },
+      { german: "Lea liest jeden Abend.", english: "Lea reads every evening.", note: "lesen: e → ie" },
+      { german: "Wir sprechen im Kurs Deutsch.", english: "We speak German in class.", note: "No vowel change with wir" },
+      { german: "Was isst du zum Frühstück?", english: "What do you eat for breakfast?", note: "essen → du isst" },
+      { german: "Mein Vater schläft noch.", english: "My father is still sleeping.", note: "schlafen: a → ä" },
+      { german: "Nimmst du den Zug?", english: "Are you taking the train?", note: "nehmen → du nimmst" },
+      { german: "Die Ärztin hilft dem Kind.", english: "The doctor helps the child.", note: "helfen: e → i" },
+      { german: "Sehen Sie das Gebäude?", english: "Do you see the building?", note: "Formal Sie has no stem change" },
     ],
     mistakes: [
       { wrong: "Er fahrt nach Hause.", right: "Er fährt nach Hause.", why: "fahren changes a to ä with er." },
-      { wrong: "Wir ließen die Zeitung.", right: "Wir lesen die Zeitung.", why: "The stem change does not occur with wir." },
+      { wrong: "Wir fähren nach Hause.", right: "Wir fahren nach Hause.", why: "The stem change does not occur with wir." },
+      { wrong: "Ihr schläft lange.", right: "Ihr schlaft lange.", why: "ihr uses the unchanged stem schlaf-." },
+      { wrong: "Du lesst die Zeitung.", right: "Du liest die Zeitung.", why: "The du form of lesen changes e to ie: liest." },
+      { wrong: "Sie nehmt den Bus. (she)", right: "Sie nimmt den Bus.", why: "nehmen has the singular form nimmt." },
     ],
-    memoryTip: "Mark du and er/sie/es as the two 'change zones'. Outside those zones, use the ordinary stem.",
-    exercises: [
-      { id: "a113-1", type: "choice", prompt: "Jonas ___ gern Krimis. (lesen)", options: ["lese", "lest", "liest", "lesen"], answer: "liest", explanation: "lesen changes e to ie with er: Jonas liest." },
-      { id: "a113-2", type: "fill", prompt: "Du ___ sehr gut Deutsch. (sprechen)", answer: "sprichst", explanation: "sprechen changes e to i with du, then takes -st." },
-      { id: "a113-3", type: "order", prompt: "Build a question.", tokens: ["du", "Was", "gern", "isst", "?"], answer: "Was isst du gern?", explanation: "The W-word comes first, the conjugated verb second, then the subject." },
-      { id: "a113-4", type: "correction", prompt: "Correct the sentence: Wir fährt am Montag nach Hamburg.", answer: "Wir fahren am Montag nach Hamburg.", explanation: "wir uses the unchanged plural form fahren." },
-      { id: "a113-5", type: "production", prompt: "Write one sentence each with fahren, lesen, and sprechen. Use du or er/sie at least once.", model: "Ich fahre mit dem Zug. Meine Schwester liest viel. Sprichst du Englisch?", explanation: "Check whether the stem changes only with du or er/sie/es." },
-    ],
+    memoryTip: "Mark du and er/sie/es as the two change zones. Learn every new verb as infinitive + er-form: fahren–fährt, sprechen–spricht, lesen–liest.",
+    exercises: A1_LESSON_THREE_EXERCISES,
   },
   "a1-1-4": {
     id: "a1-1-4",
