@@ -4,6 +4,8 @@ import { A1_LESSON_THREE_EXERCISES } from "@/app/grammar/a1-lesson-three-exercis
 import { A1_LESSON_FOUR_EXERCISES } from "@/app/grammar/a1-lesson-four-exercises";
 import { A1_LESSON_FIVE_EXERCISES } from "@/app/grammar/a1-lesson-five-exercises";
 import { A1_LESSON_SIX_EXERCISES } from "@/app/grammar/a1-lesson-six-exercises";
+import { A1_LESSON_SEVEN_EXERCISES } from "@/app/grammar/a1-lesson-seven-exercises";
+import { A1_LESSON_EIGHT_EXERCISES } from "@/app/grammar/a1-lesson-eight-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -811,12 +813,86 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-2-1": {
     id: "a1-2-1",
-    lead: "Every German noun has a grammatical gender. The definite article—der, die, or das—shows that gender and means the in English.",
+    lead: "Every German noun belongs to a grammatical gender, and its article is part of the word's identity. Learning article, noun, and plural together creates the foundation for cases, pronouns, adjective endings, and accurate vocabulary recall.",
     pattern: "masculine: der · feminine: die · neuter: das · plural: die",
     explanation: [
-      "German nouns begin with a capital letter. Learn a noun as one unit with its article: not Tisch, but der Tisch; not Wohnung, but die Wohnung.",
-      "Gender is not always logical, so the article belongs in your memory of the word. Some endings help: nouns ending in -ung, -heit, -keit, -schaft, and -ion are usually feminine; -chen and -lein are neuter.",
-      "The article changes later when a noun has a different job in the sentence. The dictionary form shown here is the nominative, which is the starting point for the case system.",
+      "German nouns always begin with a capital letter. Store each noun as a complete unit: der Tisch, die Wohnung, das Fenster—not as an English meaning with the article added later.",
+      "Grammatical gender is not the same as biological sex. Objects and abstract ideas also have gender, and nouns for people can follow word-form rules: das Mädchen is neuter because the suffix -chen always creates a neuter noun.",
+      "Some suffixes are reliable. -ung, -heit, -keit, -schaft, -ion, and -tät strongly signal feminine gender; -chen and -lein are neuter. Days, months, seasons, and many male-person nouns are masculine.",
+      "Patterns reduce memorisation, but they do not replace a dictionary. When a word has no reliable clue, verify its gender and practise the article and noun aloud as one rhythmic chunk.",
+      "The forms der, die, and das shown here are nominative. Articles later change with case, but the noun's underlying gender does not: der Tisch can become den Tisch, while Tisch remains masculine.",
+      "Gender also determines the pronoun that replaces a singular noun: der Tisch → er, die Lampe → sie, das Buch → es. Plural nouns use sie regardless of their singular genders.",
+    ],
+    tables: [
+      {
+        title: "The four article categories",
+        headers: ["Category", "Article", "Example", "Pronoun"],
+        rows: [
+          ["masculine", "der", "der Tisch", "er"],
+          ["feminine", "die", "die Lampe", "sie"],
+          ["neuter", "das", "das Fenster", "es"],
+          ["plural", "die", "die Fenster", "sie"],
+        ],
+      },
+      {
+        title: "Reliable gender suffixes",
+        headers: ["Gender", "Common suffixes", "Examples"],
+        rows: [
+          ["feminine", "-ung, -heit, -keit", "die Wohnung · die Freiheit · die Möglichkeit"],
+          ["feminine", "-schaft, -ion, -tät", "die Freundschaft · die Information · die Universität"],
+          ["neuter", "-chen, -lein", "das Mädchen · das Brötchen · das Büchlein"],
+          ["masculine", "days, months, seasons", "der Montag · der Januar · der Sommer"],
+          ["neuter", "nominalised infinitives", "das Essen · das Lesen · das Lernen"],
+        ],
+      },
+      {
+        title: "Article–noun–plural learning cards",
+        headers: ["Article + noun", "Plural", "English", "Pattern"],
+        rows: [
+          ["der Tisch", "die Tische", "table", "masculine"],
+          ["die Wohnung", "die Wohnungen", "apartment", "-ung feminine"],
+          ["das Buch", "die Bücher", "book", "neuter; umlaut plural"],
+          ["das Mädchen", "die Mädchen", "girl", "-chen neuter"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Why the article belongs to the noun",
+        paragraphs: [
+          "Gender cannot always be recovered from meaning, so a bare noun is incomplete learning data. If you memorise Tisch alone, every later article, pronoun, and adjective requires a guess. If you memorise der Tisch, the masculine category is available immediately.",
+          "Add the plural at the same time because plural formation is also partly unpredictable: der Tisch – die Tische; das Buch – die Bücher. One compact card solves two future problems.",
+        ],
+        examples: [
+          { german: "der Tisch – die Tische", english: "the table – the tables" },
+          { german: "die Hand – die Hände", english: "the hand – the hands" },
+          { german: "das Kind – die Kinder", english: "the child – the children" },
+        ],
+      },
+      {
+        title: "Using patterns without overguessing",
+        paragraphs: [
+          "A strong suffix is more useful than a vague meaning rule. -ung is dependable in die Rechnung and die Übung, while an object's size, shape, or material tells you nothing reliable about its gender.",
+          "Treat weaker patterns as memory support rather than laws. When uncertain, check a dictionary that shows the article and plural, then record the complete noun phrase.",
+        ],
+        examples: [
+          { german: "die Zeitung · die Rechnung · die Übung", english: "-ung nouns are feminine" },
+          { german: "das Häuschen · das Kätzchen", english: "-chen nouns are neuter" },
+          { german: "der Sommer · der Winter", english: "seasons are masculine" },
+        ],
+      },
+      {
+        title: "From noun gender to pronoun reference",
+        paragraphs: [
+          "German pronouns follow grammatical gender when they replace things. A lamp becomes sie because Lampe is feminine; a phone becomes es because Handy is neuter. This is grammar, not personification.",
+          "Plural reference is simpler: all plural nouns use sie. Read article–noun–pronoun chains aloud to connect vocabulary and sentence building.",
+        ],
+        examples: [
+          { german: "Der Computer ist neu. Er ist schnell.", english: "The computer is new. It is fast." },
+          { german: "Die Tasche ist groß. Sie ist schwer.", english: "The bag is large. It is heavy." },
+          { german: "Das Handy ist hier. Es ist alt.", english: "The phone is here. It is old." },
+        ],
+      },
     ],
     examples: [
       { german: "der Tisch", english: "the table", note: "masculine" },
@@ -828,23 +904,90 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { wrong: "Tisch ist neu.", right: "Der Tisch ist neu.", why: "A specific singular noun normally needs its article." },
       { wrong: "die Mädchen", right: "das Mädchen", why: "Grammatical gender follows the word form; -chen nouns are neuter." },
     ],
-    memoryTip: "Store each new noun as a three-part card: article + noun + plural—der Tisch, die Tische. Color can help, but saying the complete chunk is what builds recall.",
-    exercises: [
-      { id: "a121-1", type: "choice", prompt: "Choose the article: ___ Zeitung", options: ["der", "die", "das"], answer: "die", explanation: "Zeitung ends in -ung, a strongly feminine ending: die Zeitung." },
-      { id: "a121-2", type: "fill", prompt: "___ Brötchen ist frisch.", answer: "Das", explanation: "The diminutive ending -chen is always neuter: das Brötchen." },
-      { id: "a121-3", type: "order", prompt: "Build the sentence.", tokens: ["ist", "neu", "Der", "Computer", "."], answer: "Der Computer ist neu.", explanation: "Computer is masculine, so its nominative definite article is der." },
-      { id: "a121-4", type: "correction", prompt: "Correct the sentence: Der Lampe ist alt.", answer: "Die Lampe ist alt.", explanation: "Lampe is feminine: die Lampe." },
-      { id: "a121-5", type: "production", prompt: "Choose five objects near you and write each noun with its definite article.", model: "der Tisch · die Tür · das Fenster · der Stuhl · die Lampe", explanation: "Check every noun in a dictionary, then practise the article and noun as one spoken unit." },
-    ],
+    memoryTip: "Store every noun as article + noun + plural: der Tisch – die Tische. Say the complete chunk aloud so gender is recalled automatically, not calculated later.",
+    exercises: A1_LESSON_SEVEN_EXERCISES,
   },
   "a1-2-2": {
     id: "a1-2-2",
-    lead: "Use an indefinite article when you mention one person or thing without identifying a specific one. English uses a or an; German uses ein or eine.",
+    lead: "The indefinite article introduces one person or thing without assuming the listener already knows which one. German marks its gender with ein or eine, then normally switches to a definite article when that same noun becomes known in the conversation.",
     pattern: "der → ein · die → eine · das → ein | no indefinite plural article",
     explanation: [
-      "In the nominative, masculine and neuter nouns use ein; feminine nouns use eine: ein Mann, eine Frau, ein Kind.",
-      "German has no plural of ein. Use the plural noun without an article when the meaning is general or indefinite: Dort sind Kinder.",
-      "After the first mention, switch naturally from an indefinite article to a definite one: Dort ist ein Hund. Der Hund heißt Max.",
+      "In the nominative, masculine and neuter nouns use ein, while feminine nouns use eine: ein Mann, eine Frau, ein Kind. The article inherits the noun's gender.",
+      "German has no plural form of ein. Indefinite plural nouns appear without an article: Dort sind Kinder; Auf dem Tisch liegen Bücher. The plural verb remains essential.",
+      "Use ein/eine for a new or non-specific singular noun. Use der/die/das when the listener can identify the noun from previous mention, shared context, or uniqueness.",
+      "A common information pattern is indefinite first mention followed by definite reference: Dort ist ein Hund. Der Hund heißt Max. The article change tracks what has become known.",
+      "An unmodified profession, nationality, or role after sein often has no article: Sie ist Ärztin; Er ist Lehrer. Add an article when the noun is described or evaluated: Er ist ein guter Lehrer.",
+      "The negative counterpart of ein/eine is kein/keine: ein Auto → kein Auto; eine Wohnung → keine Wohnung. This shared pattern becomes important throughout the case system.",
+    ],
+    tables: [
+      {
+        title: "Nominative indefinite articles",
+        headers: ["Gender / number", "Definite", "Indefinite", "Example"],
+        rows: [
+          ["masculine", "der", "ein", "ein Mann"],
+          ["feminine", "die", "eine", "eine Frau"],
+          ["neuter", "das", "ein", "ein Kind"],
+          ["plural", "die", "—", "Kinder"],
+        ],
+      },
+      {
+        title: "New information becomes known information",
+        headers: ["Stage", "Article", "German", "Why"],
+        rows: [
+          ["first mention", "indefinite", "Dort ist ein Hund.", "new to the listener"],
+          ["second mention", "definite", "Der Hund heißt Max.", "now identifiable"],
+          ["new feminine noun", "indefinite", "Hier ist eine Tasche.", "first mention"],
+          ["reference", "definite", "Die Tasche ist schwer.", "same known bag"],
+        ],
+      },
+      {
+        title: "Professions after sein",
+        headers: ["Meaning", "German", "Article use"],
+        rows: [
+          ["neutral profession", "Mia ist Ärztin.", "no article"],
+          ["described profession", "Mia ist eine gute Ärztin.", "article + adjective"],
+          ["identified person", "Mia ist die Ärztin aus Bonn.", "definite article"],
+          ["plural profession", "Mia und Tom sind Ärzte.", "no indefinite plural"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Choosing by gender",
+        paragraphs: [
+          "First retrieve the noun with its definite article: der Bahnhof, die Küche, das Hotel. Then map der and das to ein, and die to eine. This avoids memorising the indefinite form separately.",
+          "Only feminine visibly stands out in the nominative with -e. Masculine and neuter share ein, while plural leaves the indefinite article slot empty.",
+        ],
+        examples: [
+          { german: "der Bahnhof → ein Bahnhof", english: "the station → a station" },
+          { german: "die Küche → eine Küche", english: "the kitchen → a kitchen" },
+          { german: "das Hotel → ein Hotel", english: "the hotel → a hotel" },
+        ],
+      },
+      {
+        title: "Tracking first and second mention",
+        paragraphs: [
+          "Articles help manage information, not just gender. ein/eine signals that the listener cannot yet identify the exact referent. der/die/das signals that both speaker and listener can now locate it mentally.",
+          "Practise in pairs rather than isolated sentences. Introduce something, then say one more thing about it with the definite article or a pronoun.",
+        ],
+        examples: [
+          { german: "Ich sehe ein Café. Das Café ist voll.", english: "I see a café. The café is full." },
+          { german: "Eine Frau wartet. Die Frau telefoniert.", english: "A woman is waiting. The woman is on the phone." },
+          { german: "Ein Kind spielt. Es lacht.", english: "A child is playing. It is laughing." },
+        ],
+      },
+      {
+        title: "The missing plural form",
+        paragraphs: [
+          "English uses some or no article for indefinite plurals. German normally uses the bare plural noun: Hier stehen Autos; Im Park spielen Kinder. Do not invent eine or einen before a plural.",
+          "Other determiners can fill that slot when needed: viele Bücher, keine Autos, meine Freunde. The absence applies specifically to the indefinite article ein.",
+        ],
+        examples: [
+          { german: "Auf dem Tisch liegen Bücher.", english: "There are books on the table." },
+          { german: "Vor dem Haus stehen Autos.", english: "There are cars in front of the house." },
+          { german: "Hier arbeiten Ärztinnen.", english: "Female doctors work here." },
+        ],
+      },
     ],
     examples: [
       { german: "Das ist ein Bahnhof.", english: "That is a train station." },
@@ -856,14 +999,8 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { wrong: "Das ist eine Hotel.", right: "Das ist ein Hotel.", why: "Hotel is neuter, so use ein." },
       { wrong: "Hier sind eine Bücher.", right: "Hier sind Bücher.", why: "There is no indefinite article in the plural." },
     ],
-    memoryTip: "Only feminine stands out in the nominative: eine. Masculine and neuter share ein; plural leaves the article space empty.",
-    exercises: [
-      { id: "a122-1", type: "choice", prompt: "Das ist ___ Küche.", options: ["ein", "eine", "einen", "—"], answer: "eine", explanation: "Küche is feminine, so the nominative form is eine Küche." },
-      { id: "a122-2", type: "choice", prompt: "Im Park spielen ___ Kinder.", options: ["ein", "eine", "die", "no article"], answer: "no article", explanation: "German has no indefinite plural article. The sentence is Im Park spielen Kinder." },
-      { id: "a122-3", type: "order", prompt: "Introduce a new object.", tokens: ["Das", "Regenschirm", "ein", "ist", "."], answer: "Das ist ein Regenschirm.", explanation: "Regenschirm is masculine, and after sein it appears here with nominative ein." },
-      { id: "a122-4", type: "correction", prompt: "Correct the sentence: Ein Verkäuferin hilft mir.", answer: "Eine Verkäuferin hilft mir.", explanation: "Verkäuferin is feminine, so use eine." },
-      { id: "a122-5", type: "production", prompt: "Describe three new things in a room with Das ist … or Dort ist … . Use ein and eine.", model: "Das ist ein Schrank. Dort ist eine Pflanze. Das ist ein Bild.", explanation: "Use the noun's gender to choose ein or eine." },
-    ],
+    memoryTip: "Map der/das → ein, die → eine, plural → no indefinite article. Then track the conversation: introduce with ein/eine and refer back with der/die/das.",
+    exercises: A1_LESSON_EIGHT_EXERCISES,
   },
   "a1-2-3": {
     id: "a1-2-3",
