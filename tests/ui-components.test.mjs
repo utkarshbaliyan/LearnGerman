@@ -83,3 +83,22 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.equal(first, second);
   assert.match(first, /--skeleton-width:70%/);
 });
+
+test("keeps the grammar roadmap and released lessons complete", async () => {
+  const { ALL_GRAMMAR_LESSONS, GRAMMAR_MODULES, LIVE_GRAMMAR_LESSONS } = await vite.ssrLoadModule(
+    "/app/grammar/course.ts",
+  );
+  const released = ALL_GRAMMAR_LESSONS.filter((lesson) => lesson.released);
+  const exercises = Object.values(LIVE_GRAMMAR_LESSONS).flatMap((lesson) => lesson.exercises);
+
+  assert.equal(GRAMMAR_MODULES.length, 12);
+  assert.equal(ALL_GRAMMAR_LESSONS.length, 72);
+  assert.equal(released.length, 12);
+  assert.equal(Object.keys(LIVE_GRAMMAR_LESSONS).length, 12);
+  assert.equal(exercises.length, 60);
+  assert.equal(new Set(exercises.map((exercise) => exercise.id)).size, exercises.length);
+  assert.deepEqual(
+    [...new Set(exercises.map((exercise) => exercise.type))].sort(),
+    ["choice", "correction", "fill", "order", "production"],
+  );
+});
