@@ -6,6 +6,8 @@ import { A1_LESSON_FIVE_EXERCISES } from "@/app/grammar/a1-lesson-five-exercises
 import { A1_LESSON_SIX_EXERCISES } from "@/app/grammar/a1-lesson-six-exercises";
 import { A1_LESSON_SEVEN_EXERCISES } from "@/app/grammar/a1-lesson-seven-exercises";
 import { A1_LESSON_EIGHT_EXERCISES } from "@/app/grammar/a1-lesson-eight-exercises";
+import { A1_LESSON_NINE_EXERCISES, A1_LESSON_TEN_EXERCISES } from "@/app/grammar/a1-lessons-nine-ten-exercises";
+import { A1_LESSON_ELEVEN_EXERCISES, A1_LESSON_TWELVE_EXERCISES } from "@/app/grammar/a1-lessons-eleven-twelve-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -1004,12 +1006,87 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-2-3": {
     id: "a1-2-3",
-    lead: "German forms plurals in several ways. There is no single ending that works for every noun, so the plural must be learned together with the singular.",
+    lead: "German plural formation uses several recurring patterns rather than one universal ending. A reliable learner stores every noun as article + singular + plural, then uses pattern families and sound changes to organise recall.",
     pattern: "-e · -(e)n · -er · -s · no ending | sometimes add an umlaut",
     explanation: [
-      "Common patterns include der Tag → die Tage, die Frau → die Frauen, das Kind → die Kinder, das Auto → die Autos, and der Lehrer → die Lehrer.",
-      "Some vowels change to an umlaut in the plural: der Apfel → die Äpfel, die Mutter → die Mütter, das Buch → die Bücher. The umlaut can appear with or without another ending.",
-      "All nominative and accusative plurals use the definite article die. The verb is plural too: Das Buch ist neu; die Bücher sind neu.",
+      "The major endings are -e, -(e)n, -er, -s, and no visible ending. Examples include der Tag → die Tage, die Frau → die Frauen, das Kind → die Kinder, das Auto → die Autos, and der Lehrer → die Lehrer.",
+      "An umlaut can accompany an ending or stand alone: der Stuhl → die Stühle, das Buch → die Bücher, der Apfel → die Äpfel, die Mutter → die Mütter. Treat the vowel change as part of the plural form.",
+      "Feminine nouns very often take -(e)n, especially those ending in -e, -ung, and -in: die Blume → die Blumen, die Wohnung → die Wohnungen, die Freundin → die Freundinnen.",
+      "Many modern international words take -s: das Auto → die Autos, das Hotel → die Hotels, das Café → die Cafés. But origin alone is not a perfect rule, so verify unfamiliar forms.",
+      "All nominative and accusative plurals use die, regardless of the singular gender. Indefinite plurals have no form of ein: ein Buch, but Bücher—not eine Bücher.",
+      "Plural subjects require plural verbs and pronouns: Das Kind spielt; die Kinder spielen. Das Buch ist neu; die Bücher sind neu; sie sind interessant.",
+    ],
+    tables: [
+      {
+        title: "The five main plural patterns",
+        headers: ["Pattern", "Singular", "Plural", "Typical examples"],
+        rows: [
+          ["-e", "der Tag", "die Tage", "many masculine/neuter nouns"],
+          ["-(e)n", "die Frau", "die Frauen", "many feminine nouns"],
+          ["-er", "das Kind", "die Kinder", "some neuter nouns"],
+          ["-s", "das Auto", "die Autos", "many international words"],
+          ["no ending", "der Lehrer", "die Lehrer", "many -er/-el/-en nouns"],
+        ],
+      },
+      {
+        title: "Where the umlaut appears",
+        headers: ["Change", "Singular", "Plural"],
+        rows: [
+          ["umlaut + -e", "der Stuhl", "die Stühle"],
+          ["umlaut + -er", "das Buch", "die Bücher"],
+          ["umlaut only", "der Apfel", "die Äpfel"],
+          ["umlaut only", "die Mutter", "die Mütter"],
+          ["no umlaut possible", "die Wohnung", "die Wohnungen"],
+        ],
+      },
+      {
+        title: "Singular and plural agreement",
+        headers: ["Feature", "Singular", "Plural"],
+        rows: [
+          ["definite article", "das Buch", "die Bücher"],
+          ["indefinite article", "ein Buch", "Bücher"],
+          ["verb", "Das Buch ist neu.", "Die Bücher sind neu."],
+          ["pronoun", "Es ist neu.", "Sie sind neu."],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Learn the pair, then notice the family",
+        paragraphs: [
+          "A plural pattern helps organise memory, but the singular form rarely predicts the plural with complete certainty. Record the exact pair first, then group it with similar nouns.",
+          "For example, die Wohnung – die Wohnungen joins a strong feminine -(e)n family, while das Buch – die Bücher requires both an umlaut and -er. Recalling the family supports—but does not replace—the stored pair.",
+        ],
+        examples: [
+          { german: "die Zeitung – die Zeitungen", english: "newspaper – newspapers" },
+          { german: "das Bild – die Bilder", english: "picture – pictures" },
+          { german: "der Computer – die Computer", english: "computer – computers" },
+        ],
+      },
+      {
+        title: "Plural signals work together",
+        paragraphs: [
+          "A plural is not only a noun ending. Article, number words, verb agreement, and pronouns all carry number information. Even when Lehrer has no visible change, drei Lehrer arbeiten clearly marks a plural.",
+          "When proofreading, check the whole agreement chain: die + plural noun + plural verb + sie. This catches errors such as Die Kinder ist draußen.",
+        ],
+        examples: [
+          { german: "Ein Lehrer arbeitet. Drei Lehrer arbeiten.", english: "One teacher works. Three teachers work." },
+          { german: "Das Kind spielt. Die Kinder spielen.", english: "The child plays. The children play." },
+          { german: "Die Bücher sind neu. Sie sind teuer.", english: "The books are new. They are expensive." },
+        ],
+      },
+      {
+        title: "High-value memory practice",
+        paragraphs: [
+          "Say singular and plural in contrast, not in isolation: der Mann – die Männer; die Hand – die Hände. The article gives gender in the singular and flags plurality in the second form.",
+          "Use spaced retrieval with productive prompts: one book, three ___; one woman, two ___. This trains the form under the same pressure as real speech.",
+        ],
+        examples: [
+          { german: "ein Buch – drei Bücher", english: "one book – three books" },
+          { german: "eine Frau – zwei Frauen", english: "one woman – two women" },
+          { german: "ein Café – viele Cafés", english: "one café – many cafés" },
+        ],
+      },
     ],
     examples: [
       { german: "der Stuhl → die Stühle", english: "the chair → the chairs", note: "umlaut + -e" },
@@ -1018,26 +1095,94 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { german: "das Café → die Cafés", english: "the café → the cafés", note: "-s" },
     ],
     mistakes: [
-      { wrong: "zwei Buchs", right: "zwei Bücher", why: "Buch has the irregular plural Bücher." },
+      { wrong: "zwei Buchs", right: "zwei Bücher", why: "Buch forms its plural with umlaut + -er." },
       { wrong: "Die Kinder ist draußen.", right: "Die Kinder sind draußen.", why: "A plural subject needs a plural verb." },
+      { wrong: "eine Bücher", right: "Bücher", why: "German has no indefinite plural article." },
+      { wrong: "die Apfeln", right: "die Äpfel", why: "Apfel forms its plural with an umlaut and no ending." },
     ],
-    memoryTip: "Never record a bare noun. Write der Apfel, die Äpfel—even when the plural looks easy. Retrieval needs both forms as one pair.",
-    exercises: [
-      { id: "a123-1", type: "choice", prompt: "Choose the plural of die Freundin.", options: ["die Freundin", "die Freundins", "die Freundinnen", "die Freunde"], answer: "die Freundinnen", explanation: "Feminine person nouns ending in -in normally form the plural with -innen." },
-      { id: "a123-2", type: "fill", prompt: "ein Buch, drei ___", answer: "Bücher", explanation: "The plural of das Buch is die Bücher." },
-      { id: "a123-3", type: "order", prompt: "Build a plural sentence.", tokens: ["sind", "Die", "teuer", "Hotels", "."], answer: "Die Hotels sind teuer.", explanation: "Hotel forms its plural with -s, and the plural verb is sind." },
-      { id: "a123-4", type: "correction", prompt: "Correct the sentence: Zwei Frau warten draußen.", answer: "Zwei Frauen warten draußen.", explanation: "The plural of Frau is Frauen." },
-      { id: "a123-5", type: "production", prompt: "Write five singular–plural pairs from one category such as food, home, or school.", model: "der Apfel – die Äpfel · die Banane – die Bananen · das Brot – die Brote · das Ei – die Eier · der Saft – die Säfte", explanation: "Include both articles so your list trains gender and plural together." },
-    ],
+    memoryTip: "Never store a bare singular. Learn article + noun + plural as one card: der Apfel – die Äpfel. Then say the pair in contrast until the sound change is automatic.",
+    exercises: A1_LESSON_NINE_EXERCISES,
   },
   "a1-2-4": {
     id: "a1-2-4",
-    lead: "The nominative marks the subject: the person or thing that performs the action or is being described. Finding the subject is the first step in understanding German cases.",
+    lead: "The nominative marks the grammatical subject—the person or thing that controls the conjugated verb. It is a sentence role, not a fixed position, so the subject remains nominative even when time or place comes first.",
     pattern: "Who or what does it? → der/ein · die/eine · das/ein · die/—",
     explanation: [
-      "Ask Wer? for a person or Was? for a thing. In Der Mann öffnet die Tür, der Mann answers Wer öffnet? and is therefore nominative.",
-      "The subject controls the verb: Das Kind spielt; die Kinder spielen. A subject can come after the verb without losing the nominative: Heute arbeitet der Mann.",
-      "After sein, werden, and bleiben, German normally uses a nominative description rather than a direct object: Das ist mein Bruder. Lena wird Ärztin.",
+      "Find the subject by asking who or what performs the action or controls the verb. In Der Mann öffnet die Tür, der Mann answers Wer öffnet? and is nominative.",
+      "The subject determines person and number on the verb: Das Kind spielt; die Kinder spielen. This agreement is often the strongest clue to the subject.",
+      "Word order does not determine case. In Heute arbeitet der Mann and Im Park spielen die Kinder, the subjects follow the verb but remain nominative.",
+      "The nominative article forms are der/ein, die/eine, das/ein, and plural die/no indefinite article. Possessive determiners follow the ein pattern: mein Bruder, meine Schwester, mein Kind, meine Freunde.",
+      "After linking verbs such as sein, werden, and bleiben, an identifying or classifying noun is also nominative: Das ist mein Bruder; Lena wird Ärztin; Er bleibt mein Freund.",
+      "The question words wer and was can themselves be nominative subjects: Wer kommt? Was passiert? A separate subject is unnecessary because the question word fills that role.",
+    ],
+    tables: [
+      {
+        title: "Nominative article forms",
+        headers: ["Gender / number", "Definite", "Indefinite", "Possessive example"],
+        rows: [
+          ["masculine", "der", "ein", "mein Bruder"],
+          ["feminine", "die", "eine", "meine Schwester"],
+          ["neuter", "das", "ein", "mein Kind"],
+          ["plural", "die", "—", "meine Freunde"],
+        ],
+      },
+      {
+        title: "Finding the subject reliably",
+        headers: ["Sentence", "Question", "Nominative subject"],
+        rows: [
+          ["Der Mann öffnet die Tür.", "Wer öffnet?", "der Mann"],
+          ["Heute kommt der Bus.", "Was kommt?", "der Bus"],
+          ["Im Park spielen die Kinder.", "Wer spielt?", "die Kinder"],
+          ["Das Buch liegt hier.", "Was liegt hier?", "das Buch"],
+        ],
+      },
+      {
+        title: "Nominative after linking verbs",
+        headers: ["Verb", "German", "English"],
+        rows: [
+          ["sein", "Das ist mein Bruder.", "That is my brother."],
+          ["werden", "Lena wird Ärztin.", "Lena is becoming a doctor."],
+          ["bleiben", "Er bleibt mein Freund.", "He remains my friend."],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Role before position",
+        paragraphs: [
+          "German word order is flexible enough to place time, place, or another element before the subject. Case identifies the role while verb agreement confirms it.",
+          "In Heute repariert der Mechaniker das Auto, Heute is position one, but der Mechaniker performs the action and controls repariert. It therefore remains nominative.",
+        ],
+        examples: [
+          { german: "Heute kommt der Zug.", english: "The train is coming today." },
+          { german: "In Bonn arbeitet meine Schwester.", english: "My sister works in Bonn." },
+          { german: "Am Abend spielen die Kinder.", english: "The children play in the evening." },
+        ],
+      },
+      {
+        title: "Subject–verb agreement as evidence",
+        paragraphs: [
+          "When several nouns appear, look at the verb form. singular kommt points toward a singular controller; plural kommen points toward a plural controller. Meaning and the wer/was question confirm the analysis.",
+          "This becomes especially useful when the subject follows the verb or contains several words: Heute kommen meine beiden Freunde.",
+        ],
+        examples: [
+          { german: "Das Kind spielt.", english: "The child is playing." },
+          { german: "Die Kinder spielen.", english: "The children are playing." },
+          { german: "Meine neue Nachbarin arbeitet hier.", english: "My new neighbour works here." },
+        ],
+      },
+      {
+        title: "Nominative complements are not objects",
+        paragraphs: [
+          "sein, werden, and bleiben link the subject to another identity or description; they do not transfer an action to a direct object. Both sides therefore use nominative forms.",
+          "Compare Das ist mein Bruder, not meinen Bruder. Profession nouns normally omit the article after sein or werden when used neutrally.",
+        ],
+        examples: [
+          { german: "Das ist ein Lehrer.", english: "That is a teacher." },
+          { german: "Tom wird Lehrer.", english: "Tom is becoming a teacher." },
+          { german: "Mia bleibt meine beste Freundin.", english: "Mia remains my best friend." },
+        ],
+      },
     ],
     examples: [
       { german: "Die Nachbarin kocht.", english: "The neighbour is cooking.", note: "Who cooks? die Nachbarin" },
@@ -1046,26 +1191,96 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { german: "Ein Problem bleibt.", english: "A problem remains." },
     ],
     mistakes: [
-      { wrong: "Heute arbeitet den Mann.", right: "Heute arbeitet der Mann.", why: "The man performs the action, so he is the nominative subject." },
+      { wrong: "Heute arbeitet den Mann.", right: "Heute arbeitet der Mann.", why: "The man performs the action, so he is nominative." },
       { wrong: "Das ist meinen Bruder.", right: "Das ist mein Bruder.", why: "After sein, the identifying noun remains nominative." },
+      { wrong: "Im Park spielt die Kinder.", right: "Im Park spielen die Kinder.", why: "The plural subject controls the plural verb." },
+      { wrong: "Wer arbeiten heute?", right: "Wer arbeitet heute?", why: "Nominative wer normally takes a third-person singular verb." },
     ],
-    memoryTip: "Do not ask which noun comes first. Ask who or what controls the verb. That answer is the nominative subject.",
-    exercises: [
-      { id: "a124-1", type: "choice", prompt: "Which phrase is the subject? Heute repariert der Mechaniker das Auto.", options: ["Heute", "der Mechaniker", "das Auto", "repariert"], answer: "der Mechaniker", explanation: "Who repairs? Der Mechaniker. It controls the singular verb repariert." },
-      { id: "a124-2", type: "fill", prompt: "___ Hund schläft im Flur. (the)", answer: "Der", explanation: "Hund is the masculine subject, so its nominative article is der." },
-      { id: "a124-3", type: "order", prompt: "Build a sentence with the subject after the verb.", tokens: ["meine", "Heute", "kommt", "Schwester", "."], answer: "Heute kommt meine Schwester.", explanation: "Meine Schwester remains the nominative subject even after the verb." },
-      { id: "a124-4", type: "correction", prompt: "Correct the sentence: Das ist einen Lehrer.", answer: "Das ist ein Lehrer.", explanation: "After ist, the identifying noun is nominative: ein Lehrer." },
-      { id: "a124-5", type: "production", prompt: "Write three sentences with different subjects. Start one sentence with a time expression.", model: "Der Kurs beginnt. Meine Freunde lernen Deutsch. Am Montag arbeitet meine Mutter.", explanation: "Identify who or what controls each verb, regardless of position." },
-    ],
+    memoryTip: "Ignore position first. Ask who or what controls the conjugated verb. That controller is the nominative subject, wherever it appears.",
+    exercises: A1_LESSON_TEN_EXERCISES,
   },
   "a1-2-5": {
     id: "a1-2-5",
-    lead: "The accusative usually marks the direct object: the person or thing directly affected by the action. At A1, the visible change is mainly masculine.",
+    lead: "The accusative usually marks the direct object—the person or thing that directly receives an action. The system is learner-friendly at A1 because the main visible article change occurs only in masculine forms.",
     pattern: "der → den · ein → einen | die/eine, das/ein, plural die stay unchanged",
     explanation: [
-      "First find the subject with Wer oder was tut etwas? Then ask Wen? for a person or Was? for a thing directly receiving the action.",
-      "Only masculine articles show a new accusative form at this stage: Ich sehe den Mann; ich brauche einen Termin. Feminine, neuter, and plural articles look the same as in the nominative.",
-      "Frequent verbs that take a direct object include haben, brauchen, kaufen, sehen, besuchen, lesen, essen, trinken, and suchen.",
+      "First identify the nominative subject: who or what performs the action? Then ask Wen? for a person or Was? for a thing directly receiving that action. The answer is usually the accusative object.",
+      "Masculine articles show the key change: der → den and ein → einen. The same -n marker appears in kein → keinen and possessives such as mein → meinen.",
+      "Feminine, neuter, and plural article forms look the same in nominative and accusative at this level: die/eine, das/ein, and plural die/no indefinite article.",
+      "Frequent accusative verbs include haben, brauchen, kaufen, sehen, besuchen, lesen, essen, trinken, suchen, nehmen, and finden. Learn a verb with a natural object phrase.",
+      "Word order does not itself create the accusative. In Den Mantel kauft die Frau heute, den Mantel remains accusative because it receives kaufen, even though it occupies position one.",
+      "The question word wen is accusative and asks about people; was can ask about things: Wen besuchst du? Was kaufst du? Wer, by contrast, normally asks for the nominative subject.",
+    ],
+    tables: [
+      {
+        title: "Nominative and accusative article forms",
+        headers: ["Gender / number", "Nominative", "Accusative", "Example object"],
+        rows: [
+          ["masculine", "der / ein", "den / einen", "Ich sehe den Mann."],
+          ["feminine", "die / eine", "die / eine", "Ich sehe die Frau."],
+          ["neuter", "das / ein", "das / ein", "Ich sehe das Kind."],
+          ["plural", "die / —", "die / —", "Ich sehe die Kinder."],
+        ],
+      },
+      {
+        title: "The masculine -n family",
+        headers: ["Determiner type", "Nominative", "Accusative"],
+        rows: [
+          ["definite", "der Mann", "den Mann"],
+          ["indefinite", "ein Mann", "einen Mann"],
+          ["negative", "kein Mann", "keinen Mann"],
+          ["possessive", "mein Mann", "meinen Mann"],
+        ],
+      },
+      {
+        title: "Common verbs with direct objects",
+        headers: ["Verb", "German chunk", "English"],
+        rows: [
+          ["haben", "ein Auto haben", "to have a car"],
+          ["brauchen", "einen Termin brauchen", "to need an appointment"],
+          ["sehen", "den Mann sehen", "to see the man"],
+          ["lesen", "die Zeitung lesen", "to read the newspaper"],
+          ["suchen", "den Schlüssel suchen", "to look for the key"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "A two-question case method",
+        paragraphs: [
+          "Ask two questions in order. First: who or what performs the action? That answer is nominative. Second: whom or what does the action directly affect? That answer is accusative.",
+          "In Die Frau kauft den Mantel, Die Frau answers Wer kauft? and den Mantel answers Was kauft die Frau? The roles—not the noun order alone—determine the case.",
+        ],
+        examples: [
+          { german: "Der Schüler liest den Text.", english: "subject: der Schüler · object: den Text" },
+          { german: "Das Kind isst einen Apfel.", english: "subject: das Kind · object: einen Apfel" },
+          { german: "Mia besucht ihre Freunde.", english: "subject: Mia · object: ihre Freunde" },
+        ],
+      },
+      {
+        title: "The visible masculine signal",
+        paragraphs: [
+          "When the direct object is masculine, add the accusative -n signal to the determiner: den, einen, keinen, meinen, deinen, seinen, ihren, unseren, euren, Ihren.",
+          "Do not add this ending to the noun itself. The difference appears on the article or possessive: ein Termin → einen Termin; mein Bruder → meinen Bruder.",
+        ],
+        examples: [
+          { german: "Ich brauche einen Termin.", english: "I need an appointment." },
+          { german: "Sie trinkt keinen Kaffee.", english: "She does not drink coffee." },
+          { german: "Wir besuchen unseren Freund.", english: "We visit our friend." },
+        ],
+      },
+      {
+        title: "Case is independent of emphasis",
+        paragraphs: [
+          "German can move an object to position one to highlight it. The conjugated verb stays second, and the subject follows, but case roles remain unchanged.",
+          "Compare Die Frau kauft den Mantel and Den Mantel kauft die Frau heute. The -n in den continues to mark the coat as the direct object.",
+        ],
+        examples: [
+          { german: "Den Bus nehme ich heute nicht.", english: "I am not taking the bus today." },
+          { german: "Die Zeitung liest mein Vater.", english: "My father reads the newspaper." },
+          { german: "Das Hotel suchen wir noch.", english: "We are still looking for the hotel." },
+        ],
+      },
     ],
     examples: [
       { german: "Die Frau kauft den Mantel.", english: "The woman buys the coat.", note: "Mantel is masculine accusative" },
@@ -1074,26 +1289,98 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { german: "Wir suchen das Hotel.", english: "We are looking for the hotel." },
     ],
     mistakes: [
-      { wrong: "Ich sehe der Mann.", right: "Ich sehe den Mann.", why: "The man is the direct object, so masculine der changes to den." },
-      { wrong: "Sie braucht ein Termin.", right: "Sie braucht einen Termin.", why: "Masculine ein changes to einen in the accusative." },
+      { wrong: "Ich sehe der Mann.", right: "Ich sehe den Mann.", why: "The masculine direct object requires den." },
+      { wrong: "Sie braucht ein Termin.", right: "Sie braucht einen Termin.", why: "Masculine accusative ein becomes einen." },
+      { wrong: "Ich besuche mein Bruder.", right: "Ich besuche meinen Bruder.", why: "Masculine accusative possessives take -en." },
+      { wrong: "Den Mann kauft das Brot.", right: "Der Mann kauft das Brot.", why: "The man performs the action and must be nominative." },
     ],
-    memoryTip: "Think 'masculine takes an extra n': den, einen, keinen, meinen. The other article forms stay visually calm at A1.",
-    exercises: [
-      { id: "a125-1", type: "choice", prompt: "Mila besucht ___ Onkel.", options: ["der", "den", "dem", "die"], answer: "den", explanation: "Onkel is masculine and receives the action besuchen, so use accusative den." },
-      { id: "a125-2", type: "fill", prompt: "Wir kaufen ___ neuen Computer. (a)", answer: "einen", explanation: "Computer is a masculine direct object: einen Computer." },
-      { id: "a125-3", type: "order", prompt: "Build the sentence.", tokens: ["einen", "Sie", "Kaffee", "bestellt", "."], answer: "Sie bestellt einen Kaffee.", explanation: "Sie is the subject; einen Kaffee is the masculine accusative object." },
-      { id: "a125-4", type: "correction", prompt: "Correct the sentence: Der Schüler liest der Text.", answer: "Der Schüler liest den Text.", explanation: "Text is the masculine direct object of liest, so der becomes den." },
-      { id: "a125-5", type: "production", prompt: "Write four things you have, need, buy, or see. Include two masculine nouns.", model: "Ich habe einen Bruder. Ich brauche einen Stift. Ich kaufe eine Zeitung. Ich sehe das Rathaus.", explanation: "Check masculine objects for -n in einen or den." },
-    ],
+    memoryTip: "Find subject and object by meaning, then mark masculine objects with the -n family: den, einen, keinen, meinen. Other A1 article forms stay unchanged.",
+    exercises: A1_LESSON_ELEVEN_EXERCISES,
   },
   "a1-2-6": {
     id: "a1-2-6",
-    lead: "Possessive determiners show who something belongs to. They stand before a noun and take endings like the indefinite article ein.",
+    lead: "Possessive determiners combine two decisions: the owner chooses the stem, while the possessed noun chooses the ending through its gender, number, and case. Separating those decisions makes the whole system predictable.",
     pattern: "ich → mein · du → dein · er/es → sein · sie → ihr · wir → unser · ihr → euer · sie/Sie → ihr/Ihr",
     explanation: [
-      "Choose the stem from the owner, then choose the ending from the noun. Mein Bruder and meine Schwester both belong to me; the noun gender decides whether -e appears.",
+      "Choose the stem from the owner: ich → mein-, du → dein-, er/es → sein-, sie → ihr-, wir → unser-, ihr → euer-, sie → ihr-, and formal Sie → Ihr-.",
+      "Then choose the ending from the possessed noun. The owner does not decide the ending: mein Bruder and meine Schwester both belong to ich, but Bruder is masculine and Schwester is feminine.",
       "In the nominative, masculine and neuter have no ending: mein Vater, mein Kind. Feminine and plural take -e: meine Mutter, meine Freunde.",
-      "In the accusative, masculine adds -en: meinen Vater. Feminine, neuter, and plural keep the familiar forms: meine Mutter, mein Kind, meine Freunde. Formal Ihr is capitalized.",
+      "In the accusative, masculine adds -en: meinen Vater. Feminine, neuter, and plural keep their nominative-looking forms: meine Mutter, mein Kind, meine Freunde.",
+      "euer changes shape before endings: euer Vater, eure Mutter, euer Kind, eure Freunde, euren Vater. The unstressed second e normally disappears.",
+      "Formal Ihr/Ihre/Ihren is capitalised, while lowercase ihr- can mean her or their. Context identifies the owner: ihre Tasche may be her bag or their bag.",
+    ],
+    tables: [
+      {
+        title: "Possessive stems by owner",
+        headers: ["Owner", "Stem", "Meaning", "Example"],
+        rows: [
+          ["ich", "mein-", "my", "mein Bruder"],
+          ["du", "dein-", "your", "deine Schwester"],
+          ["er / es", "sein-", "his / its", "sein Auto"],
+          ["sie", "ihr-", "her", "ihre Tasche"],
+          ["wir", "unser-", "our", "unser Haus"],
+          ["ihr", "euer-", "your", "eure Freunde"],
+          ["sie / Sie", "ihr- / Ihr-", "their / your", "ihre Kinder / Ihr Pass"],
+        ],
+      },
+      {
+        title: "Endings in nominative and accusative",
+        headers: ["Gender / number", "Nominative", "Accusative"],
+        rows: [
+          ["masculine", "mein Bruder", "meinen Bruder"],
+          ["feminine", "meine Schwester", "meine Schwester"],
+          ["neuter", "mein Kind", "mein Kind"],
+          ["plural", "meine Freunde", "meine Freunde"],
+        ],
+      },
+      {
+        title: "The two-step decision",
+        headers: ["Sentence", "Owner → stem", "Noun → ending", "Result"],
+        rows: [
+          ["I visit my brother.", "ich → mein-", "Bruder, masc. acc. → -en", "meinen Bruder"],
+          ["Her bag is here.", "sie → ihr-", "Tasche, fem. nom. → -e", "ihre Tasche"],
+          ["Our child is sleeping.", "wir → unser-", "Kind, neut. nom. → —", "unser Kind"],
+          ["Is that your passport?", "Sie → Ihr-", "Pass, masc. nom. → —", "Ihr Pass"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Owner first, noun second",
+        paragraphs: [
+          "Do not translate my, her, or their as one finished German word. First identify the owner's pronoun and select the stem. Then analyse the possessed noun just as you would after ein.",
+          "For Anna besucht ihren Bruder: Anna equals sie, giving ihr-. Bruder is masculine accusative, giving -en. The two decisions combine as ihren Bruder.",
+        ],
+        examples: [
+          { german: "ich + Bruder → mein Bruder", english: "my brother" },
+          { german: "sie + Bruder (acc.) → ihren Bruder", english: "her brother" },
+          { german: "wir + Freunde → unsere Freunde", english: "our friends" },
+        ],
+      },
+      {
+        title: "Distinguishing sein and ihr",
+        paragraphs: [
+          "Use sein- for an owner represented by er or es, and ihr- for an owner represented by sie. The possessed noun does not influence this stem choice.",
+          "Paul sucht seinen Schlüssel; Mia sucht ihren Schlüssel. Schlüssel is the same masculine accusative noun in both sentences, so only the owner's stem changes.",
+        ],
+        examples: [
+          { german: "Paul liebt seine Familie.", english: "Paul loves his family." },
+          { german: "Mia liebt ihre Familie.", english: "Mia loves her family." },
+          { german: "Das Kind sucht sein Spielzeug.", english: "The child is looking for its toy." },
+        ],
+      },
+      {
+        title: "Capitalisation and ambiguous ihr",
+        paragraphs: [
+          "Formal Ihr behaves like other possessives but is always capitalised: Ist das Ihr Pass, Frau Klein? Lowercase ihr can mean her or their, and its surrounding subject or context resolves the meaning.",
+          "Compare Mia öffnet ihre Tasche and Die Kinder öffnen ihre Taschen. The form begins the same, but the owners differ in number.",
+        ],
+        examples: [
+          { german: "Ist das Ihre Tasche?", english: "Is that your bag? (formal)" },
+          { german: "Mia sucht ihre Tasche.", english: "Mia is looking for her bag." },
+          { german: "Die Gäste suchen ihre Taschen.", english: "The guests are looking for their bags." },
+        ],
+      },
     ],
     examples: [
       { german: "Das ist meine Schwester.", english: "That is my sister." },
@@ -1102,17 +1389,13 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
       { german: "Ist das Ihr Pass, Frau Roth?", english: "Is that your passport, Ms Roth?", note: "formal Ihr is capitalized" },
     ],
     mistakes: [
-      { wrong: "Anna besucht sein Bruder.", right: "Anna besucht ihren Bruder.", why: "The owner is Anna (sie), so choose ihr; Bruder is masculine accusative, so add -en." },
-      { wrong: "Ich sehe mein Mutter.", right: "Ich sehe meine Mutter.", why: "Mutter is feminine, so mein takes -e." },
+      { wrong: "Anna besucht sein Bruder.", right: "Anna besucht ihren Bruder.", why: "Anna maps to ihr-, and masculine accusative takes -en." },
+      { wrong: "Ich sehe mein Mutter.", right: "Ich sehe meine Mutter.", why: "Mutter is feminine, so add -e." },
+      { wrong: "Wir besuchen unser Freunde.", right: "Wir besuchen unsere Freunde.", why: "Plural accusative takes -e." },
+      { wrong: "Ist das ihr Pass, Herr Klein?", right: "Ist das Ihr Pass, Herr Klein?", why: "Formal possessive Ihr is capitalised." },
     ],
-    memoryTip: "Solve possession in two moves: owner chooses the stem; noun chooses the ending. Never try to decide both at once.",
-    exercises: [
-      { id: "a126-1", type: "choice", prompt: "Tom liebt ___ Familie.", options: ["seine", "ihre", "seinen", "deine"], answer: "seine", explanation: "Tom is er, so the stem is sein-. Familie is feminine, so add -e." },
-      { id: "a126-2", type: "fill", prompt: "Ich suche ___ Schlüssel. (my)", answer: "meinen", explanation: "Schlüssel is a masculine accusative object, so mein becomes meinen." },
-      { id: "a126-3", type: "order", prompt: "Build the formal question.", tokens: ["das", "Ist", "Ihre", "Tasche", "?"], answer: "Ist das Ihre Tasche?", explanation: "Formal Ihre is capitalized and takes -e before the feminine noun Tasche." },
-      { id: "a126-4", type: "correction", prompt: "Correct the sentence: Maria besucht sein Eltern.", answer: "Maria besucht ihre Eltern.", explanation: "Maria is sie, so use ihr-; the plural noun Eltern takes -e." },
-      { id: "a126-5", type: "production", prompt: "Describe four people or belongings in your life using four different possessive forms.", model: "Das ist mein Bruder. Seine Frau heißt Mia. Ihre Kinder sind klein. Unser Haus ist in Köln.", explanation: "For each phrase, identify the owner first and the noun's gender, number, and case second." },
-    ],
+    memoryTip: "Solve possession in two moves: the owner chooses the stem; the possessed noun chooses the ending. Say both decisions aloud until the method becomes automatic.",
+    exercises: A1_LESSON_TWELVE_EXERCISES,
   },
 };
 
