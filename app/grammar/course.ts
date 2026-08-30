@@ -2,6 +2,8 @@ import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
 import { A1_LESSON_TWO_EXERCISES } from "@/app/grammar/a1-lesson-two-exercises";
 import { A1_LESSON_THREE_EXERCISES } from "@/app/grammar/a1-lesson-three-exercises";
 import { A1_LESSON_FOUR_EXERCISES } from "@/app/grammar/a1-lesson-four-exercises";
+import { A1_LESSON_FIVE_EXERCISES } from "@/app/grammar/a1-lesson-five-exercises";
+import { A1_LESSON_SIX_EXERCISES } from "@/app/grammar/a1-lesson-six-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -597,59 +599,215 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-1-5": {
     id: "a1-1-5",
-    lead: "German uses two basic question patterns: verb-first questions for yes/no answers and W-word questions for specific information.",
+    lead: "German questions use two compact and reliable frames. Verb-first questions confirm a complete idea, while W-questions request one missing piece of information. Mastering both frames turns statements into real conversations.",
     pattern: "Kommst du heute? | Wann kommst du?",
     explanation: [
-      "In a yes/no question, put the conjugated verb first and the subject second: Arbeitest du heute?",
-      "In a W-question, the question word is first, the verb second, and the subject usually third: Wo wohnst du?",
-      "Useful question words include wer, was, wo, wohin, woher, wann, wie, warum, and wie viel. Wer can itself be the subject: Wer kommt?",
+      "A yes/no question begins with the conjugated verb, followed by the subject: Arbeitest du heute? It asks whether the whole proposition is true and can normally be answered with ja, nein, or doch.",
+      "A W-question begins with a question word. The conjugated verb occupies position two and the subject usually follows: Wo wohnst du? Warum lernt ihr Deutsch?",
+      "Choose the question word by the missing information: wer for a person, was for a thing or action, wo for location, wohin for destination, woher for origin, wann for time, warum for reason, and wie for manner or condition.",
+      "Question phrases can contain more than one word: wie viel asks an amount or price, wie viele asks a countable number, wie lange asks duration, and wie oft asks frequency. The whole phrase occupies position one.",
+      "When wer is the subject, no separate subject follows: Wer kommt heute? When was is the object, the normal subject remains: Was kaufst du? This difference explains two structures that initially look similar.",
+      "Formal Sie follows the same frames and remains capitalised: Arbeiten Sie hier? Woher kommen Sie? Informal plural ihr uses its own verb ending: Kommt ihr heute?",
+    ],
+    tables: [
+      {
+        title: "The two direct-question frames",
+        caption: "The conjugated verb is the anchor in both patterns.",
+        headers: ["Question type", "Position 1", "Position 2", "Next", "Example"],
+        rows: [
+          ["yes/no", "verb", "subject", "rest", "Arbeitest du heute?"],
+          ["W-question", "W-word", "verb", "subject", "Wo arbeitest du?"],
+          ["subject question", "wer / was", "verb", "rest", "Wer arbeitet heute?"],
+        ],
+      },
+      {
+        title: "Core question words",
+        headers: ["Question word", "Asks about", "Example", "Typical answer"],
+        rows: [
+          ["wer", "person", "Wer kommt?", "Mara."],
+          ["was", "thing / action", "Was liest du?", "Ein Buch."],
+          ["wo", "location", "Wo wohnst du?", "In Köln."],
+          ["wohin", "destination", "Wohin fährst du?", "Nach Berlin."],
+          ["woher", "origin", "Woher kommen Sie?", "Aus Indien."],
+          ["wann", "time", "Wann beginnt es?", "Um acht."],
+          ["warum", "reason", "Warum lernst du?", "Für meine Arbeit."],
+          ["wie", "manner / condition", "Wie geht es dir?", "Gut, danke."],
+        ],
+      },
+      {
+        title: "Useful question phrases with wie",
+        headers: ["Phrase", "Meaning", "Example", "English"],
+        rows: [
+          ["wie viel", "amount / price", "Wie viel kostet das?", "How much does that cost?"],
+          ["wie viele", "countable number", "Wie viele Gäste kommen?", "How many guests are coming?"],
+          ["wie lange", "duration", "Wie lange bleibst du?", "How long are you staying?"],
+          ["wie oft", "frequency", "Wie oft lernst du?", "How often do you study?"],
+          ["wie spät", "clock time", "Wie spät ist es?", "What time is it?"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Turning a statement into a yes/no question",
+        paragraphs: [
+          "Find the conjugated verb and move it before the subject. Du arbeitest heute becomes Arbeitest du heute? The remaining information keeps its natural order.",
+          "With multi-part verbs, only the conjugated part moves. Du kaufst heute ein becomes Kaufst du heute ein? Du musst heute arbeiten becomes Musst du heute arbeiten?",
+        ],
+        examples: [
+          { german: "Du hast Zeit. → Hast du Zeit?", english: "You have time. → Do you have time?" },
+          { german: "Ihr kommt morgen. → Kommt ihr morgen?", english: "You are coming tomorrow. → Are you coming tomorrow?" },
+          { german: "Sie kaufen hier ein. → Kaufen Sie hier ein?", english: "You shop here. → Do you shop here?" },
+        ],
+      },
+      {
+        title: "Choosing wo, wohin, or woher",
+        paragraphs: [
+          "Use wo for a fixed location, wohin for movement toward a destination, and woher for movement or origin from somewhere. The verbs and prepositions in the answer reinforce the distinction.",
+          "Compare Wo bist du? — In Berlin. Wohin fährst du? — Nach Berlin. Woher kommst du? — Aus Berlin. English often uses where for all three, so learn the German direction contrast explicitly.",
+        ],
+        examples: [
+          { german: "Wo ist der Bahnhof?", english: "Where is the station?" },
+          { german: "Wohin gehst du?", english: "Where are you going?" },
+          { german: "Woher kommt der Zug?", english: "Where does the train come from?" },
+        ],
+      },
+      {
+        title: "Questions that keep a conversation moving",
+        paragraphs: [
+          "A natural conversation mixes yes/no questions with open W-questions. A yes/no question establishes a topic; a W-question invites detail: Lernst du Deutsch? Warum lernst du Deutsch?",
+          "Short follow-up questions such as Und du?, Wirklich?, Warum?, and Wie oft? can sound natural, but full question frames are essential when the context is not already clear.",
+        ],
+        examples: [
+          { german: "Arbeiten Sie hier? Was machen Sie genau?", english: "Do you work here? What exactly do you do?" },
+          { german: "Fährst du gern Rad? Wie oft fährst du?", english: "Do you like cycling? How often do you cycle?" },
+          { german: "Kommst du morgen? Um wie viel Uhr?", english: "Are you coming tomorrow? At what time?" },
+        ],
+      },
     ],
     examples: [
-      { german: "Hast du Zeit?", english: "Do you have time?" },
-      { german: "Woher kommen Sie?", english: "Where do you come from?" },
-      { german: "Warum lernst du Deutsch?", english: "Why are you learning German?" },
+      { german: "Hast du Zeit?", english: "Do you have time?", note: "verb-first question" },
+      { german: "Woher kommen Sie?", english: "Where do you come from?", note: "formal address" },
+      { german: "Warum lernst du Deutsch?", english: "Why are you learning German?", note: "reason" },
       { german: "Wer arbeitet heute?", english: "Who is working today?", note: "Wer is the subject" },
+      { german: "Was liest du?", english: "What are you reading?", note: "Was is the object" },
+      { german: "Wohin fährt der Bus?", english: "Where is the bus going?", note: "destination" },
+      { german: "Wie lange bleibt ihr?", english: "How long are you staying?", note: "duration" },
+      { german: "Wie viel kostet das Zimmer?", english: "How much does the room cost?", note: "price" },
     ],
     mistakes: [
       { wrong: "Wo du wohnst?", right: "Wo wohnst du?", why: "In a direct W-question, the verb is second." },
       { wrong: "Du hast Zeit?", right: "Hast du Zeit?", why: "Neutral yes/no questions begin with the verb." },
+      { wrong: "Wann der Kurs beginnt?", right: "Wann beginnt der Kurs?", why: "The conjugated verb follows the question word." },
+      { wrong: "Woher Sie kommen?", right: "Woher kommen Sie?", why: "Formal Sie follows the conjugated verb." },
+      { wrong: "Wer er kommt heute?", right: "Wer kommt heute?", why: "Wer already functions as the subject, so do not add er." },
     ],
-    memoryTip: "Yes/no: VERB–person. W-question: W–VERB–person. Keep those two small frames ready.",
-    exercises: [
-      { id: "a115-1", type: "choice", prompt: "___ kostet das Ticket?", options: ["Wer", "Wie viel", "Woher", "Wohin"], answer: "Wie viel", explanation: "Wie viel asks about a price or quantity." },
-      { id: "a115-2", type: "fill", prompt: "___ du heute Abend Zeit? (haben)", answer: "Hast", explanation: "A yes/no question begins with the conjugated verb: Hast du …?" },
-      { id: "a115-3", type: "order", prompt: "Ask about the reason.", tokens: ["du", "Warum", "Deutsch", "lernst", "?"], answer: "Warum lernst du Deutsch?", explanation: "Use W-word + verb + subject + rest." },
-      { id: "a115-4", type: "correction", prompt: "Correct the question: Wann der Kurs beginnt?", answer: "Wann beginnt der Kurs?", explanation: "The verb begins must be in position two after Wann." },
-      { id: "a115-5", type: "production", prompt: "Write one yes/no question and two different W-questions for a new classmate.", model: "Kommst du aus Berlin? Wo wohnst du? Was machst du gern?", explanation: "Check verb-first order in the first question and W–verb–subject order in the others." },
-    ],
+    memoryTip: "Keep two spoken frames ready: VERB–person? and W–VERB–person? Then choose the question word by the exact information you need.",
+    exercises: A1_LESSON_FIVE_EXERCISES,
   },
   "a1-1-6": {
     id: "a1-1-6",
-    lead: "Use kein to negate a noun with an indefinite or no article. Use nicht to negate verbs, adjectives, specific nouns, or another part of the sentence.",
+    lead: "German divides negation between kein and nicht. kein rejects or removes an indefinite noun, while nicht negates actions, qualities, specific phrases, and contrasts. The choice and position together show exactly what the speaker denies.",
     pattern: "kein + noun | nicht + verb/adjective/specific element",
     explanation: [
-      "kein behaves like ein and changes for gender and case: kein Kaffee, keine Milch, keinen Termin.",
-      "nicht often stands near the end when it negates the whole action: Ich arbeite heute nicht. Put it directly before an adjective or the specific element being contrasted: Das ist nicht teuer; nicht heute, sondern morgen.",
-      "A noun with a definite article is normally negated with nicht: Das ist nicht der Bus nach Bonn.",
+      "Use kein when an affirmative sentence contains ein/eine or a noun with no article: Ich habe ein Auto → Ich habe kein Auto; Ich trinke Kaffee → Ich trinke keinen Kaffee.",
+      "kein behaves like the indefinite article and carries gender, number, and case endings. At this stage, note kein Mann, keine Frau, kein Kind, keine Kinder, and the masculine accusative form keinen Mann.",
+      "Use nicht to negate a verb or the whole action: Ich arbeite heute nicht. It often stands near the end, but before a separated prefix: Ich kaufe heute nicht ein.",
+      "Place nicht directly before an adjective, adverb, prepositional phrase, or other element being specifically denied: nicht teuer, nicht heute, nicht in Berlin, nicht mit dem Bus.",
+      "A noun with a definite article, demonstrative, name, or possessive normally uses nicht: nicht der Bus, nicht dieses Hotel, nicht Paul, nicht mein Schlüssel. kein cannot stand beside another determiner.",
+      "Use nicht … sondern … to correct one detail explicitly: Wir kommen nicht heute, sondern morgen. The position of nicht identifies the incorrect element; sondern introduces the replacement.",
+    ],
+    tables: [
+      {
+        title: "Decision guide: kein or nicht?",
+        headers: ["What is negated?", "Use", "Affirmative", "Negative"],
+        rows: [
+          ["noun with ein/eine", "kein", "Ich habe ein Auto.", "Ich habe kein Auto."],
+          ["noun with no article", "kein", "Ich trinke Kaffee.", "Ich trinke keinen Kaffee."],
+          ["adjective", "nicht", "Das ist teuer.", "Das ist nicht teuer."],
+          ["whole action", "nicht", "Wir kommen heute.", "Wir kommen heute nicht."],
+          ["specific/possessive noun", "nicht", "Das ist mein Bus.", "Das ist nicht mein Bus."],
+        ],
+      },
+      {
+        title: "Core forms of kein",
+        caption: "Masculine accusative is the visible A1 case change: kein becomes keinen.",
+        headers: ["Gender / number", "Nominative", "Accusative", "Example"],
+        rows: [
+          ["masculine", "kein", "keinen", "kein Mann · keinen Mann"],
+          ["feminine", "keine", "keine", "keine Zeit"],
+          ["neuter", "kein", "kein", "kein Auto"],
+          ["plural", "keine", "keine", "keine Tickets"],
+        ],
+      },
+      {
+        title: "Position changes the focus of nicht",
+        headers: ["Meaning", "German", "What is denied?"],
+        rows: [
+          ["whole action", "Ich arbeite heute nicht.", "working today as a whole"],
+          ["time contrast", "Ich arbeite nicht heute, sondern morgen.", "today"],
+          ["place contrast", "Ich arbeite nicht in Bonn.", "in Bonn"],
+          ["quality", "Die Arbeit ist nicht schwer.", "difficult"],
+          ["specific noun", "Das ist nicht der Chef.", "the identified person"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "The article replacement test",
+        paragraphs: [
+          "Ask whether the affirmative noun would use ein/eine or no article. If yes, replace that article slot with a form of kein: ein Termin → kein Termin; einen Termin → keinen Termin; Milch → keine Milch.",
+          "If another determiner is already present—der, dieser, mein, dein—or the noun is a name, use nicht instead. German does not combine kein with these words.",
+        ],
+        examples: [
+          { german: "Sie hat eine Frage. → Sie hat keine Frage.", english: "She has a question. → She has no question." },
+          { german: "Das ist mein Fahrrad. → Das ist nicht mein Fahrrad.", english: "That is my bicycle. → That is not my bicycle." },
+          { german: "Dort wartet Paul. → Dort wartet nicht Paul.", english: "Paul is waiting there. → It is not Paul waiting there." },
+        ],
+      },
+      {
+        title: "Placing nicht by meaning",
+        paragraphs: [
+          "For broad sentence negation, nicht tends toward the right side of the middle field: Ich kenne ihn nicht; Ich arbeite heute nicht. With a separable verb, it comes before the separated prefix: Ich rufe heute nicht an.",
+          "For focused negation, place nicht immediately before the element you reject. Compare Ich fahre heute nicht (I am not going today) with Ich fahre nicht heute, sondern morgen (not today specifically, but tomorrow).",
+        ],
+        examples: [
+          { german: "Wir sehen den Film nicht.", english: "We are not watching the film." },
+          { german: "Wir sehen den Film nicht heute.", english: "We are not watching the film today." },
+          { german: "Wir sehen nicht den Film, sondern die Serie.", english: "We are watching not the film but the series." },
+        ],
+      },
+      {
+        title: "Answering negative questions with doch",
+        paragraphs: [
+          "German has a useful answer word that English lacks. When a negative question or statement is wrong, use doch to contradict it positively: Kommst du nicht? — Doch, ich komme.",
+          "Use nein when the negative assumption is correct: Kommst du nicht? — Nein, ich komme nicht. This three-way system—ja, nein, doch—makes answers precise.",
+        ],
+        examples: [
+          { german: "Hast du kein Auto? — Doch, ich habe ein Auto.", english: "Don't you have a car? — Yes, actually I do." },
+          { german: "Arbeitest du heute nicht? — Nein, heute nicht.", english: "Aren't you working today? — No, not today." },
+          { german: "Ist das nicht teuer? — Doch, sehr teuer.", english: "Isn't that expensive? — Yes, it is very expensive." },
+        ],
+      },
     ],
     examples: [
-      { german: "Ich habe kein Auto.", english: "I do not have a car." },
+      { german: "Ich habe kein Auto.", english: "I do not have a car.", note: "neuter noun" },
       { german: "Mara trinkt keinen Kaffee.", english: "Mara does not drink coffee.", note: "masculine accusative → keinen" },
-      { german: "Der Film ist nicht langweilig.", english: "The film is not boring." },
-      { german: "Wir kommen heute nicht.", english: "We are not coming today." },
+      { german: "Der Film ist nicht langweilig.", english: "The film is not boring.", note: "adjective" },
+      { german: "Wir kommen heute nicht.", english: "We are not coming today.", note: "whole action" },
+      { german: "Das ist nicht meine Tasche.", english: "That is not my bag.", note: "possessive noun phrase" },
+      { german: "Sie wohnt nicht in Berlin.", english: "She does not live in Berlin.", note: "place phrase" },
+      { german: "Ich kaufe heute nicht ein.", english: "I am not shopping today.", note: "before separated prefix" },
+      { german: "Nicht heute, sondern morgen.", english: "Not today, but tomorrow.", note: "explicit contrast" },
     ],
     mistakes: [
       { wrong: "Ich habe nicht Hund.", right: "Ich habe keinen Hund.", why: "An indefinite noun is negated with kein; Hund is masculine accusative." },
       { wrong: "Das ist kein mein Fahrrad.", right: "Das ist nicht mein Fahrrad.", why: "A noun with a possessive determiner is negated with nicht." },
+      { wrong: "Der Kaffee ist kein heiß.", right: "Der Kaffee ist nicht heiß.", why: "An adjective is negated with nicht." },
+      { wrong: "Wir nicht wohnen in Köln.", right: "Wir wohnen nicht in Köln.", why: "The conjugated verb remains in position two." },
+      { wrong: "Ich brauche kein Termin.", right: "Ich brauche keinen Termin.", why: "Termin is a masculine accusative object, so use keinen." },
     ],
-    memoryTip: "No noun? Think nicht. An unnamed or zero-article noun? Test kein first.",
-    exercises: [
-      { id: "a116-1", type: "choice", prompt: "Wir haben ___ Zeit.", options: ["nicht", "kein", "keine", "keinen"], answer: "keine", explanation: "Zeit is feminine and has no article here, so use keine." },
-      { id: "a116-2", type: "fill", prompt: "Das Essen ist ___ teuer.", answer: "nicht", explanation: "An adjective such as teuer is negated with nicht." },
-      { id: "a116-3", type: "order", prompt: "Build the negative sentence.", tokens: ["heute", "arbeitet", "nicht", "Er", "."], answer: "Er arbeitet heute nicht.", explanation: "Here nicht negates the whole action and stands near the end." },
-      { id: "a116-4", type: "correction", prompt: "Correct the sentence: Sie kauft nicht Brot.", answer: ["Sie kauft kein Brot.", "Sie kauft kein Brot"], explanation: "Brot is a neuter noun without an article, so kein is required." },
-      { id: "a116-5", type: "production", prompt: "Write three true negative sentences: one with kein, one with keine, and one with nicht.", model: "Ich habe kein Auto. Ich trinke keine Cola. Ich arbeite heute nicht.", explanation: "Check that kein/keine directly introduces a noun and nicht negates another idea." },
-    ],
+    memoryTip: "Use the article test: ein/eine or no article becomes kein-. Everything else uses nicht, placed directly before the idea you want to deny.",
+    exercises: A1_LESSON_SIX_EXERCISES,
   },
   "a1-2-1": {
     id: "a1-2-1",
