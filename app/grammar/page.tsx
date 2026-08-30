@@ -205,7 +205,7 @@ export default function GrammarPage() {
   function selectLevel(next: GrammarLevel) {
     setLevel(next);
     const firstLive = GRAMMAR_MODULES.filter((item) => item.level === next).flatMap((item) => item.lessons).find((lesson) => lesson.released);
-    if (firstLive) setSelectedLessonId(firstLive.id);
+    setSelectedLessonId(firstLive?.id ?? "");
   }
 
   function selectLesson(id: string) {
