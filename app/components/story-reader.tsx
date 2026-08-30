@@ -14,6 +14,7 @@ import {
   Play,
   RotateCcw,
   Volume2,
+  X,
 } from "lucide-react";
 
 import { cleanWord, meaningFor, type Curriculum, type Story } from "@/app/curriculum";
@@ -26,11 +27,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const STOP_WORDS = new Set([
   "aber", "alle", "als", "am", "an", "auch", "auf", "aus", "bei", "das", "dem",
@@ -43,7 +39,14 @@ const STOP_WORDS = new Set([
 
 const timingCache = new Map<string, number[]>();
 
-function StoryWord({ token, active }: { token: string; active: boolean }) {
+type SelectedGloss = { word: string; meaning: string };
+
+function StoryWord({ token, active, selected, onSelect }: {
+  token: string;
+  active: boolean;
+  selected: boolean;
+  onSelect: (gloss: SelectedGloss) => void;
+}) {
   const word = cleanWord(token);
   const isNumber = /\d/.test(token);
   if (!word && !isNumber) return <>{token}</>;
@@ -54,21 +57,15 @@ function StoryWord({ token, active }: { token: string; active: boolean }) {
   }
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <button
-          type="button"
-          className={`story-word ${active ? "is-active" : ""}`}
-          aria-label={`${word}: ${meaning}`}
-        >
-          {token}
-        </button>
-      </TooltipTrigger>
-      <TooltipContent className="word-tooltip" side="top" sideOffset={8}>
-        <span>{word}</span>
-        <strong>{meaning}</strong>
-      </TooltipContent>
-    </Tooltip>
+    <button
+      type="button"
+      className={`story-word${active ? " is-active" : ""}${selected ? " is-selected" : ""}`}
+      aria-label={`${word}: ${meaning}`}
+      aria-pressed={selected}
+      onClick={() => onSelect({ word, meaning })}
+    >
+      {token}
+    </button>
   );
 }
 
@@ -88,6 +85,7 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
   const [loadingAudio, setLoadingAudio] = useState(false);
   const [audioError, setAudioError] = useState("");
   const [activeWord, setActiveWord] = useState(-1);
+  const [selectedGloss, setSelectedGloss] = useState<SelectedGloss | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const wordStartsRef = useRef<number[]>([]);
   const activeWordRef = useRef(-1);
@@ -131,6 +129,7 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
       setPaused(false);
       setLoadingAudio(false);
       setAudioError("");
+      setSelectedGloss(null);
       activeWordRef.current = -1;
       setActiveWord(-1);
     });
@@ -312,7 +311,8 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
       if (!cleanWord(token) && !/\d/.test(token)) return <span key={index}>{token}</span>;
       const currentWord = wordIndex;
       wordIndex += 1;
-      return <StoryWord key={index} token={token} active={activeWord === currentWord} />;
+      const word = cleanWord(token);
+      return <StoryWord key={index} token={token} active={activeWord === currentWord} selected={selectedGloss?.word === word} onSelect={setSelectedGloss} />;
     });
   }
 
@@ -360,7 +360,12 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
       </div>}
       {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 
-      <div className="word-help"><MousePointer2 /> Tap or hover over a word to see its English meaning</div>
+      <div className="word-help"><MousePointer2 /> Tap an underlined word to see its English meaning</div>
+      <div className={`word-translation${selectedGloss ? " is-visible" : ""}`} role="status" aria-live="polite">
+        <Languages aria-hidden="true" />
+        {selectedGloss ? <div><span lang="de">{selectedGloss.word}</span><strong lang="en">{selectedGloss.meaning}</strong></div> : <p>Select a word in the story</p>}
+        {selectedGloss && <button type="button" onClick={() => setSelectedGloss(null)} aria-label="Close translation"><X /></button>}
+      </div>
       <article className="reader-copy" lang="de">{renderText()}</article>
 
       <section className="reader-notes">

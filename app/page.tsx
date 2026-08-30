@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 const DEFAULT_LEVEL: CefrLevel = "A1";
 const INITIAL_STORY_LIMIT = 30;
@@ -69,7 +68,6 @@ export default function Home() {
   }
 
   return (
-    <TooltipProvider delayDuration={70}>
       <main className="site-shell">
         <SiteHeader active="stories" />
 
@@ -194,6 +192,5 @@ export default function Home() {
           {selectedStory && <DialogContent className="reader-dialog" showCloseButton><StoryReader curriculum={curriculum} story={selectedStory} completed={completedIds.has(selectedStory.id)} onComplete={(completed) => setStoryCompleted(selectedStory.id, completed)} onStoryChange={setSelectedStory} onToggleComplete={() => toggleStoryCompleted(selectedStory.id)} /></DialogContent>}
         </Dialog>
       </main>
-    </TooltipProvider>
   );
 }

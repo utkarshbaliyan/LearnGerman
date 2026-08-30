@@ -1,3 +1,4 @@
+import { BookOpen, GraduationCap, Languages } from "lucide-react";
 import Link from "next/link";
 
 import { ThemeToggle } from "@/app/components/theme-toggle";
@@ -14,9 +15,9 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         <span><strong>LeseLaut</strong><small>German through stories</small></span>
       </Link>
       <nav className="topnav" aria-label="Main navigation">
-        <Link href="/" prefetch aria-current={active === "stories" ? "page" : undefined}>Stories</Link>
-        <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}>Vocabulary</Link>
-        <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}>Grammar</Link>
+        <Link href="/" prefetch aria-current={active === "stories" ? "page" : undefined}><BookOpen aria-hidden="true" /><span>Stories</span></Link>
+        <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}><Languages aria-hidden="true" /><span>Vocabulary</span></Link>
+        <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Grammar</span></Link>
       </nav>
       <ThemeToggle />
     </header>

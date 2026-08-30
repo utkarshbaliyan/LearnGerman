@@ -55,6 +55,53 @@ const CURRICULA: Partial<Record<CefrLevel, Curriculum>> = {
   B1: B1_CURRICULUM,
 };
 
+const FORM_GLOSSES: Record<string, string> = {
+  abzutun: "to dismiss", achtete: "paid attention", allein: "alone", allgemeine: "general",
+  anderswo: "elsewhere", anderer: "another / other", angenehm: "pleasant", angepasst: "adapted",
+  ausdrücklich: "explicitly", begann: "began", bekam: "received", belegten: "proved / documented",
+  baten: "asked / requested", berechtigt: "justified / entitled", beruhte: "was based on", besonders: "especially",
+  begründen: "to justify / give reasons", beurteilten: "evaluated", darin: "in it / in there",
+  besprach: "discussed", bestand: "consisted / existed", bestätigen: "to confirm",
+  blieb: "remained", brachte: "brought", daran: "on it / about it", darum: "therefore / about that", darauf: "on that / afterwards",
+  dasselbe: "the same thing", dachte: "thought", diejenige: "the one", dorthin: "to there",
+  dritte: "third", dürfe: "may / is permitted", eigene: "own", einander: "one another",
+  einschätzen: "to assess", entscheiden: "to decide", entscheidenden: "decisive", entschieden: "decided",
+  endlosem: "endless", erkennen: "to recognise", entstand: "arose / was created", ergab: "resulted in",
+  erlebt: "experienced", erleichtert: "relieved",
+  erzählte: "told", fasste: "summarised / grasped", fand: "found", gäbe: "there would be",
+  formulierten: "formulated", gegangen: "gone", geklärt: "clarified", gelernt: "learned", genannt: "named / mentioned",
+  genug: "enough", genügten: "were sufficient", gesprochen: "spoken", gestiegen: "risen",
+  gewesen: "been", glaubte: "believed", glaubwürdiger: "more credible", ging: "went",
+  gründlich: "thoroughly", gründliche: "thorough", habe: "have", hätte: "would have / had", half: "helped",
+  informieren: "to inform", je: "each / ever", jedoch: "however", kaum: "hardly", kam: "came",
+  kannte: "knew", kannten: "knew", kennen: "to know", konkret: "concrete / specific",
+  konkrete: "specific", konkreten: "specific", kurzfristig: "at short notice",
+  lasen: "read", ließen: "let / allowed", lösen: "to solve", miteinander: "with one another",
+  musste: "had to", mussten: "had to", müsse: "must / had to", musst: "must", nachfragen: "to ask again",
+  nannte: "named / called", nun: "now", ordnen: "to organise", prüfen: "to check",
+  redeten: "talked", rief: "called", sachlich: "objective / factual", sah: "saw",
+  sammelte: "collected", sparen: "to save", scheiterten: "failed", schienen: "seemed",
+  schrieb: "wrote", sei: "is / may be", selten: "rarely", sollte: "should / was supposed to",
+  sinnvoll: "sensible / useful", sorgfältiges: "careful", sprach: "spoke", statt: "instead / taking place", stimmt: "is correct",
+  stimmte: "agreed / was correct", tat: "did", teilten: "shared / divided", trennte: "separated",
+  übergehen: "to overlook / skip", übereinander: "about one another / on top of one another",
+  übernommen: "taken over", überprüft: "checked", überprüfen: "to check", umständlich: "cumbersome",
+  umzusetzen: "to implement", unbeabsichtigten: "unintended", unvollständigen: "incomplete", uns: "us",
+  unspektakulär: "unremarkable", unterscheiden: "to distinguish", unterschiedliche: "different",
+  unterschiedlich: "different", unterstützte: "supported", verdeckt: "hidden", verschieden: "different",
+  verglich: "compared", vergleichbaren: "comparable", verglichen: "compared", verlangte: "demanded",
+  vermeiden: "to avoid", vermiedenen: "avoided", verändert: "changed", verband: "connected",
+  verbessern: "to improve", verhinderte: "prevented", vernünftig: "reasonable", vernünftige: "reasonable",
+  verstand: "understood", verstanden: "understood", versprach: "promised", vielmehr: "rather / instead",
+  vielleicht: "perhaps", weit: "far", werde: "will / become", worden: "been", wurde: "became / was",
+  wurden: "became / were", wäre: "would be", warnte: "warned", wirkte: "seemed / had an effect",
+  wofür: "what for / for which",
+  wollte: "wanted", wollten: "wanted", woran: "what ... about / on which", worüber: "what ... about",
+  würde: "would", würden: "would", würdest: "would", wusste: "knew", zwar: "indeed / although",
+  überzeugen: "to convince", überzeugend: "convincing", ähnliche: "similar", auszuhalten: "to endure",
+  desto: "the ... (in comparisons)", teilen: "to share / divide", tragfähige: "viable", zuhören: "to listen",
+};
+
 export function getCurriculum(level: CefrLevel) {
   return CURRICULA[level];
 }
@@ -64,10 +111,16 @@ export { cleanWord };
 export function meaningFor(token: string) {
   const word = cleanWord(token);
   if (!word) return "";
+  if (FORM_GLOSSES[word]) return FORM_GLOSSES[word];
   if (B1_GLOSSARY[word]) return B1_GLOSSARY[word];
   if (A2_GLOSSARY[word]) return A2_GLOSSARY[word];
   if (GLOSSARY[word]) return GLOSSARY[word];
   const candidates = [
+    word.endsWith("test") ? `${word.slice(0, -4)}en` : "",
+    word.endsWith("tet") ? `${word.slice(0, -3)}en` : "",
+    word.endsWith("ten") ? `${word.slice(0, -3)}en` : "",
+    word.endsWith("te") ? `${word.slice(0, -2)}en` : "",
+    word.startsWith("ge") && word.endsWith("t") ? `${word.slice(2, -1)}en` : "",
     word.endsWith("ern") ? word.slice(0, -3) : "",
     word.endsWith("en") ? word.slice(0, -2) : "",
     word.endsWith("er") ? word.slice(0, -2) : "",
