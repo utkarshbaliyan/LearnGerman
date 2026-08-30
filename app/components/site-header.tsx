@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type SiteHeaderProps = {
-  active: "stories" | "vocabulary";
+  active: "stories" | "vocabulary" | "grammar";
 };
 
 export function SiteHeader({ active }: SiteHeaderProps) {
@@ -15,6 +15,7 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         {active === "stories" && <a href="#course">Course</a>}
         <Link href="/" prefetch aria-current={active === "stories" ? "page" : undefined}>Stories</Link>
         <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}>Vocabulary</Link>
+        <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}>Grammar</Link>
       </nav>
     </header>
   );
