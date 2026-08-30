@@ -1,14 +1,15 @@
 "use client";
 
 import {
-  ArrowLeft, Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
+  Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
   ChevronDown, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
   Laptop2, Leaf, MapPinned, Search, ShoppingBag, Sparkles, TrainFront, Utensils, X,
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from "react";
+import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from "react";
 
+import { SiteHeader } from "@/app/components/site-header";
 import { ALL_VOCABULARY, VOCABULARY_CATEGORIES, type VocabularyCategory, type VocabularyWord } from "@/app/vocabulary/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ type LevelFilter = "all" | "A1" | "A2" | "B1";
 const STORAGE_KEY = "leselaut:vocabulary:a1-b1";
 const PREVIOUS_STORAGE_KEY = "leselaut:vocabulary:a1-a2";
 const LEGACY_STORAGE_KEY = "leselaut:vocabulary:a1";
+const VISIBLE_BATCH = 120;
 
 const CATEGORY_META: Record<VocabularyCategory, { icon: LucideIcon; color: string }> = {
   "Grundlagen & Kommunikation": { icon: Sparkles, color: "#d66a48" },
@@ -69,11 +71,11 @@ function VocabularyCard({ word, revealed, completed, review, onReveal, onComplet
       <button type="button" className="vocabulary-reveal" aria-expanded={revealed} onClick={onReveal}>
         <span className="vocabulary-card-top"><small>{word.level} · {word.id.split("-")[1]}</small><ChevronDown /></span>
         <span className="vocabulary-prompt" lang="en">{word.english}</span>
-        {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Deutsch anzeigen</span>}
+        {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Show German</span>}
       </button>
       <div className="vocabulary-card-actions">
-        <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Gelernt</button>
-        <button type="button" className={review ? "is-active" : ""} aria-pressed={review} onClick={onReview}><Bookmark /> Wiederholen</button>
+        <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Learned</button>
+        <button type="button" className={review ? "is-active" : ""} aria-pressed={review} onClick={onReview}><Bookmark /> Review</button>
       </div>
     </article>
   );
@@ -88,6 +90,8 @@ export default function VocabularyPage() {
   const [completed, setCompleted] = useState<Set<string>>(new Set());
   const [review, setReview] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
+  const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
+  const deferredQuery = useDeferredValue(query);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -95,7 +99,7 @@ export default function VocabularyPage() {
         const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(PREVIOUS_STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY) ?? "{}") as { completed?: string[]; review?: string[] };
         setCompleted(new Set(stored.completed ?? []));
         setReview(new Set(stored.review ?? []));
-      } catch { /* Ein beschädigter lokaler Stand wird ignoriert. */ }
+      } catch { /* Ignore a damaged device-local value. */ }
       setHydrated(true);
     });
     return () => cancelAnimationFrame(frame);
@@ -113,14 +117,36 @@ export default function VocabularyPage() {
   ) as Record<VocabularyCategory, number>, [levelWords]);
 
   const visibleWords = useMemo(() => {
-    const needle = query.trim().toLocaleLowerCase("de");
+    const needle = deferredQuery.trim().toLocaleLowerCase("de");
     return levelWords.filter((word) => {
       if (category !== "all" && word.category !== category) return false;
       if (progressFilter === "completed" && !completed.has(word.id)) return false;
       if (progressFilter === "review" && !review.has(word.id)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     });
-  }, [category, completed, levelWords, progressFilter, query, review]);
+  }, [category, completed, deferredQuery, levelWords, progressFilter, review]);
+
+  const renderedWords = visibleWords.slice(0, visibleLimit);
+
+  function chooseLevel(next: LevelFilter) {
+    setLevel(next);
+    setVisibleLimit(VISIBLE_BATCH);
+  }
+
+  function chooseCategory(next: VocabularyCategory | "all") {
+    setCategory(next);
+    setVisibleLimit(VISIBLE_BATCH);
+  }
+
+  function chooseProgressFilter(next: ProgressFilter) {
+    setProgressFilter(next);
+    setVisibleLimit(VISIBLE_BATCH);
+  }
+
+  function changeQuery(next: string) {
+    setQuery(next);
+    setVisibleLimit(VISIBLE_BATCH);
+  }
 
   function toggle(setter: Dispatch<SetStateAction<Set<string>>>, id: string) {
     setter((current) => {
@@ -145,66 +171,65 @@ export default function VocabularyPage() {
 
   return (
     <main className="site-shell vocabulary-page" id="top">
-      <header className="topbar">
-        <Link href="/" className="brand" aria-label="LeseLaut Startseite"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span></Link>
-        <nav className="topnav" aria-label="Hauptnavigation"><Link href="/">Geschichten</Link><Link href="/vocabulary" aria-current="page">Wortschatz</Link></nav>
-      </header>
+      <SiteHeader active="vocabulary" />
 
       <section className="vocabulary-hero">
         <div>
-          <Link href="/" className="vocabulary-back"><ArrowLeft /> Zu den Geschichten</Link>
-          <Badge className="eyebrow"><Sparkles /> A1–B1 · Wortschatz</Badge>
-          <h1>2.400 Wörter.<br /><em>Bis B1.</em></h1>
-          <p>800 A1-Karten bilden die Grundlage, 500 neue Karten führen durch A2 und 1.100 weitere durch B1. Der Wortschatz deckt häufige Sprache aus Alltag, Beziehungen, Wohnen, Arbeit, Bildung, Reisen, Gesundheit, Medien, Umwelt und öffentlichem Leben ab.</p>
+          <Badge className="eyebrow"><Sparkles /> A1–B1 · Vocabulary</Badge>
+          <h1>2,400 words.<br /><em>One clear path to B1.</em></h1>
+          <p>Build from 800 A1 foundations through 500 new A2 words and 1,100 new B1 words. Study frequent language from daily life, relationships, housing, work, education, travel, health, media, the environment, and public life.</p>
         </div>
         <aside className="vocabulary-progress-card">
-          <span>Dein Fortschritt · {levelLabel}</span>
-          <div><strong>{selectedCompleted}</strong><small>von {levelWords.length} gelernt</small></div>
-          <Progress value={progress} aria-label={`${Math.round(progress)} Prozent gelernt`} />
-          <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "Wort wartet" : "Wörter warten"} auf eine Wiederholung.` : "Noch keine Wörter zur Wiederholung markiert."}</p>
+          <span>Your progress · {levelLabel}</span>
+          <div><strong>{selectedCompleted}</strong><small>of {levelWords.length} learned</small></div>
+          <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
+          <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} ready for review.` : "No words are marked for review yet."}</p>
         </aside>
       </section>
 
       <section className="vocabulary-workspace">
-        <div className="vocabulary-levels" aria-label="Sprachniveau auswählen">
-          <div><span>Lernbereich</span><strong>{levelLabel}</strong></div>
+        <div className="vocabulary-levels" aria-label="Choose a vocabulary level">
+          <div><span>Study range</span><strong>{levelLabel}</strong></div>
           <div>
-            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => setLevel("all")}><span>A1–B1</span><small>2.400 Wörter</small></button>
-            <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => setLevel("A1")}><span>A1</span><small>800 Wörter</small></button>
-            <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => setLevel("A2")}><span>A2</span><small>500 neue Wörter</small></button>
-            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => setLevel("B1")}><span>B1</span><small>1.100 neue Wörter</small></button>
+            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>2,400 words</small></button>
+            <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>800 words</small></button>
+            <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>500 new words</small></button>
+            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>1,100 new words</small></button>
           </div>
         </div>
         <div className="vocabulary-toolbar">
-          <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Englisch oder Deutsch suchen" />{query && <button type="button" onClick={() => setQuery("")} aria-label="Suche löschen"><X /></button>}</label>
+          <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
-            <button type="button" className={progressFilter === "all" ? "is-active" : ""} onClick={() => setProgressFilter("all")}>Alle <b>{levelWords.length}</b></button>
-            <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => setProgressFilter("completed")}><CheckCircle2 /> Gelernt <b>{selectedCompleted}</b></button>
-            <button type="button" className={progressFilter === "review" ? "is-active" : ""} onClick={() => setProgressFilter("review")}><Bookmark /> Wiederholen <b>{selectedReview}</b></button>
+            <button type="button" className={progressFilter === "all" ? "is-active" : ""} onClick={() => chooseProgressFilter("all")}>All <b>{levelWords.length}</b></button>
+            <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => chooseProgressFilter("completed")}><CheckCircle2 /> Learned <b>{selectedCompleted}</b></button>
+            <button type="button" className={progressFilter === "review" ? "is-active" : ""} onClick={() => chooseProgressFilter("review")}><Bookmark /> Review <b>{selectedReview}</b></button>
           </div>
         </div>
 
-        <div className="category-scroller" aria-label="Wortkategorien">
-          <button type="button" className={category === "all" ? "is-active" : ""} onClick={() => setCategory("all")}><span><Sparkles /></span><strong>Alle Kategorien</strong><small>{levelWords.length}</small></button>
+        <div className="category-scroller" aria-label="Vocabulary categories">
+          <button type="button" className={category === "all" ? "is-active" : ""} onClick={() => chooseCategory("all")}><span><Sparkles /></span><strong>All categories</strong><small>{levelWords.length}</small></button>
           {VOCABULARY_CATEGORIES.map((name) => {
             const Icon = CATEGORY_META[name].icon;
-            return <button key={name} type="button" className={category === name ? "is-active" : ""} style={{ "--category-color": CATEGORY_META[name].color } as CSSProperties} onClick={() => setCategory(name)}><span><Icon /></span><strong>{name}</strong><small>{categoryCounts[name]}</small></button>;
+            return <button key={name} type="button" className={category === name ? "is-active" : ""} style={{ "--category-color": CATEGORY_META[name].color } as CSSProperties} onClick={() => chooseCategory(name)}><span><Icon /></span><strong lang="de">{name}</strong><small>{categoryCounts[name]}</small></button>;
           })}
         </div>
 
         <div className="vocabulary-list-heading">
-          <div><span>{category === "all" ? `${levelLabel} · alle Kategorien` : `${levelLabel} · ${category}`}</span><h2>{progressFilter === "completed" ? "Gelernte Wörter" : progressFilter === "review" ? "Deine Wiederholung" : "Wörter entdecken"}</h2></div>
-          <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "Wort" : "Wörter"}</p>
+          <div><span>{category === "all" ? `${levelLabel} · all categories` : `${levelLabel} · ${category}`}</span><h2>{progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
+          <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 
         {visibleWords.length ? (
-          <div className="vocabulary-grid">{visibleWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={completed.has(word.id)} review={review.has(word.id)} onReveal={() => toggle(setRevealed, word.id)} onComplete={() => markCompleted(word.id)} onReview={() => markReview(word.id)} />)}</div>
+          <>
+            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={completed.has(word.id)} review={review.has(word.id)} onReveal={() => toggle(setRevealed, word.id)} onComplete={() => markCompleted(word.id)} onReview={() => markReview(word.id)} />)}</div>
+            {renderedWords.length < visibleWords.length && <Button className="show-more-vocabulary" variant="outline" onClick={() => setVisibleLimit((current) => current + VISIBLE_BATCH)}>Show {Math.min(VISIBLE_BATCH, visibleWords.length - renderedWords.length)} more words</Button>}
+          </>
         ) : (
-          <div className="vocabulary-empty"><BookOpen /><h3>Hier ist noch nichts.</h3><p>Wähle einen anderen Filter oder ändere deine Suche.</p><Button variant="outline" onClick={() => { setQuery(""); setLevel("all"); setCategory("all"); setProgressFilter("all"); }}>Alle Wörter zeigen</Button></div>
+          <div className="vocabulary-empty"><BookOpen /><h3>No words here yet.</h3><p>Choose another filter or change your search.</p><Button variant="outline" onClick={() => { changeQuery(""); chooseLevel("all"); chooseCategory("all"); chooseProgressFilter("all"); }}>Show all words</Button></div>
         )}
       </section>
 
-      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>Deutsch durch Geschichten</small></span></Link><p>2.400 wichtige Wortschatzkarten für den vollständigen A1–B1-Lernweg.</p><div><Link href="/">Geschichten</Link><a href="#top">Nach oben</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>2,400 essential vocabulary cards for the complete A1–B1 learning path.</p><div><Link href="/" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

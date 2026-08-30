@@ -10,10 +10,10 @@ import { B1_GLOSSARY, B1_STATS, B1_STORIES, B1_UNITS } from "@/app/curriculum/b1
 import type { CefrLevel, Curriculum, LevelOption } from "@/app/curriculum/types";
 
 export const LEVELS: LevelOption[] = [
-  { id: "A1", label: "Grundlagen", available: true },
-  { id: "A2", label: "Alltag", available: true },
-  { id: "B1", label: "Selbstständig", available: true },
-  { id: "B2", label: "Sicher", available: false },
+  { id: "A1", label: "Fundamentals", available: true },
+  { id: "A2", label: "Everyday Life", available: true },
+  { id: "B1", label: "Independent", available: true },
+  { id: "B2", label: "Confident", available: false },
 ];
 
 const A1_CURRICULUM: Curriculum = {

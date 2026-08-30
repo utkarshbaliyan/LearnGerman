@@ -61,6 +61,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+@view-transition { navigation: auto; }
 html { scrollbar-width: thin; scrollbar-gutter: stable; }
 .scrollbar-none { scrollbar-width: none; }
 .scroll-fade { mask-image: linear-gradient(to bottom, transparent, black 18px, black calc(100% - 18px), transparent); }
@@ -111,6 +112,7 @@ button { color: inherit; }
 .topnav { display: flex; align-items: center; gap: 24px; }
 .topnav > a { color: var(--ink-soft); text-decoration: none; font-size: 11px; font-weight: 700; }
 .topnav > a:hover { color: var(--orange-dark); }
+.topnav > a[aria-current="page"] { color: var(--orange-dark); }
 
 .level-switcher { width: fit-content; margin-bottom: 18px; padding: 4px; display: flex; gap: 4px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,253,248,.72); }
 .level-switcher button { min-width: 92px; padding: 8px 10px; display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 7px; border: 0; border-radius: 9px; background: transparent; color: var(--ink-soft); text-align: left; cursor: pointer; }
@@ -142,6 +144,47 @@ button { color: inherit; }
 .hero-actions > a { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: 12px; font-weight: 800; text-decoration: none; }
 .hero-actions > a svg { width: 15px; transition: transform 160ms ease; }
 .hero-actions > a:hover svg { transform: translateX(3px); }
+
+.course-progress-panel {
+  width: min(100%, 500px);
+  justify-self: end;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(32,40,34,.12);
+  border-radius: 28px;
+  background: var(--white);
+  box-shadow: 0 30px 70px rgba(49,39,28,.14);
+  opacity: .86;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.course-progress-panel.is-ready { opacity: 1; }
+.progress-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.progress-panel-heading span { color: var(--orange-dark); font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: .14em; }
+.progress-panel-heading h2 { margin: 7px 0 0; font: 700 clamp(32px,4vw,47px)/.95 Georgia,serif; letter-spacing: -.04em; }
+.progress-ring { flex: 0 0 auto; width: 92px; height: 92px; display: grid; place-items: center; position: relative; border-radius: 50%; background: conic-gradient(var(--orange) var(--course-progress), #e8e3da 0); }
+.progress-ring::after { content: ""; width: 70px; height: 70px; position: absolute; border-radius: 50%; background: var(--white); }
+.progress-ring strong { z-index: 1; color: var(--green); font: 700 20px/1 Georgia,serif; }
+.course-progress-panel > p { margin: 18px 0 22px; color: var(--ink-soft); font-size: 11px; }
+.level-progress-list { display: grid; gap: 7px; }
+.level-progress-list button { min-height: 54px; padding: 8px 11px; display: grid; grid-template-columns: 105px 1fr 44px; align-items: center; gap: 11px; border: 1px solid var(--line); border-radius: 12px; background: #f8f5ef; text-align: left; cursor: pointer; }
+.level-progress-list button:hover, .level-progress-list button.is-active { border-color: #7da08f; background: #edf5f0; }
+.level-progress-list button > span { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 7px; }
+.level-progress-list button b { color: var(--green); font: 700 15px/1 Georgia,serif; }
+.level-progress-list button small { color: var(--ink-soft); font-size: 8px; font-weight: 800; }
+.level-progress-list [data-slot="progress"] { height: 6px; background: #ded9cf; }
+.level-progress-list [data-slot="progress-indicator"] { background: var(--orange); }
+.level-progress-list button > strong { color: var(--ink-soft); font-size: 9px; text-align: right; }
+.next-story-card { width: 100%; margin-top: 18px; padding: 16px 45px 16px 16px; display: grid; gap: 4px; position: relative; border: 0; border-radius: 14px; background: var(--green); color: white; text-align: left; cursor: pointer; }
+.next-story-card span { color: #eab3a5; font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .11em; }
+.next-story-card strong { font: 700 20px/1.05 Georgia,serif; }
+.next-story-card svg { width: 18px; position: absolute; right: 17px; top: 50%; color: var(--orange); transform: translateY(-50%); }
+
+.current-level-progress { max-width: 1380px; margin: 34px auto 0; padding: 14px 16px; display: grid; grid-template-columns: 190px 1fr 45px; align-items: center; gap: 16px; border: 1px solid rgba(255,255,255,.13); border-radius: 13px; background: rgba(255,255,255,.055); }
+.current-level-progress > div { display: grid; gap: 2px; }
+.current-level-progress span { color: #eab3a5; font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .11em; }
+.current-level-progress strong, .current-level-progress > b { font-size: 10px; }
+.current-level-progress [data-slot="progress"] { height: 7px; background: rgba(255,255,255,.14); }
+.current-level-progress [data-slot="progress-indicator"] { background: var(--orange); }
+.show-more-stories, .show-more-vocabulary { margin: 28px auto 0; display: flex; }
 
 .story-stack { position: relative; min-height: 440px; }
 .stack-card { position: absolute; width: min(100%, 410px); border: 1px solid rgba(32,40,34,.13); box-shadow: 0 28px 60px rgba(49, 39, 28, .14); }
@@ -187,9 +230,13 @@ button { color: inherit; }
 .story-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
 .story-card { min-height: 275px; padding: 18px; display: flex; flex-direction: column; align-items: stretch; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,253,248,.74); text-align: left; cursor: pointer; transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
 .story-card:hover { transform: translateY(-4px); border-color: var(--story-color); box-shadow: 0 16px 35px rgba(50,42,30,.09); }
+.story-card.is-completed { border-color: #8db5a3; background: #f3faf6; }
 .card-top { display: flex; align-items: center; justify-content: space-between; }
 .card-top > span { font-size: 10px; font-weight: 900; letter-spacing: .13em; color: var(--story-color); }
 .card-top [data-slot="badge"] { font-size: 8px; color: var(--green); }
+.card-top [data-slot="badge"] { display: inline-flex; align-items: center; gap: 3px; }
+.card-top [data-slot="badge"] svg { width: 9px; height: 9px; }
+.story-card.is-completed .card-top [data-slot="badge"] { border-color: #3d846c; background: #3d846c; color: white; }
 .card-rule { width: 36px; height: 4px; margin: 15px 0 18px; border-radius: 99px; background: var(--story-color); }
 .story-card > small { color: var(--ink-soft); font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .story-card h3 { margin: 8px 0 10px; font: 700 23px/1.06 Georgia, serif; letter-spacing: -.025em; }
@@ -256,6 +303,8 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .speak-prompt > svg { width: 18px; color: var(--orange); }
 .speak-prompt p { margin: 4px 0 0; color: var(--green); font-size: 10px; line-height: 1.45; }
 .speak-prompt .writing-prompt { margin-top: 8px; color: var(--ink-soft); }
+.complete-story-button { width: 100%; margin-top: 10px; min-height: 48px; border-radius: 13px; }
+.complete-story-button.is-completed { color: var(--green); background: #dcece4; }
 .reader-nav { margin-top: 24px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
 .reader-nav button:first-child { justify-self: start; }
 .reader-nav button:last-child { justify-self: end; }
@@ -346,6 +395,14 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .vocabulary-empty h3 { margin: 14px 0 5px; font: 700 25px/1 Georgia,serif; }
 .vocabulary-empty p { margin: 0 0 18px; color: var(--ink-soft); font-size: 10px; }
 
+.route-loading { min-height: 100vh; padding: 72px clamp(24px,8vw,120px); background: var(--paper); }
+.route-loading-brand { display: flex; align-items: center; gap: 10px; }
+.route-loading-brand span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px 12px 12px 4px; background: var(--orange); color: white; font: 700 27px/1 Georgia,serif; }
+.route-loading-brand strong { font: 700 20px/1 Georgia,serif; }
+.route-loading-line { width: min(720px,80vw); height: 54px; margin-top: 88px; border-radius: 12px; background: linear-gradient(90deg,#e8e2d8,#f7f3ec,#e8e2d8); background-size: 200% 100%; animation: tw-shimmer 1.3s linear infinite; }
+.route-loading-line.is-short { width: min(480px,60vw); height: 20px; margin-top: 18px; }
+.route-loading p { color: var(--ink-soft); font-size: 11px; }
+
 @media (max-width: 1180px) {
   .story-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
   .unit-track { grid-template-columns: repeat(5, 1fr); }
@@ -355,6 +412,7 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding-top: 55px; }
+  .course-progress-panel { width: min(100%,620px); justify-self: start; }
   .story-stack { width: min(100%, 520px); margin: 0 auto; }
   .section-intro { grid-template-columns: 1fr; gap: 14px; }
   .coverage-strip { grid-template-columns: 1fr 1fr; }
@@ -377,6 +435,12 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .topnav { gap: 0; }
   .hero { min-height: auto; padding: 44px 18px 60px; }
   .hero h1 { font-size: 57px; }
+  .course-progress-panel { padding: 20px; border-radius: 20px; }
+  .progress-ring { width: 76px; height: 76px; }
+  .progress-ring::after { width: 58px; height: 58px; }
+  .progress-ring strong { font-size: 17px; }
+  .level-progress-list button { grid-template-columns: 78px 1fr 40px; }
+  .level-progress-list button small { display: none; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 15px; }
   .story-stack { min-height: 390px; }
   .stack-card { width: 300px; }
@@ -384,6 +448,8 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
   .stack-middle { left: 2px; }
   .stack-front { left: 20px; }
   .curriculum { padding: 60px 18px; }
+  .current-level-progress { grid-template-columns: 1fr auto; }
+  .current-level-progress [data-slot="progress"] { grid-column: 1 / -1; grid-row: 2; }
   .unit-track { grid-template-columns: 1fr 1fr; }
   .unit-track button { min-height: 105px; }
   .coverage-strip { grid-template-columns: 1fr; }
