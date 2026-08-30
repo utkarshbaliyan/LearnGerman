@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { ThemeToggle } from "@/app/components/theme-toggle";
+
 type SiteHeaderProps = {
   active: "stories" | "vocabulary" | "grammar";
 };
@@ -12,11 +14,11 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         <span><strong>LeseLaut</strong><small>German through stories</small></span>
       </Link>
       <nav className="topnav" aria-label="Main navigation">
-        {active === "stories" && <a href="#course">Course</a>}
         <Link href="/" prefetch aria-current={active === "stories" ? "page" : undefined}>Stories</Link>
         <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}>Vocabulary</Link>
         <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}>Grammar</Link>
       </nav>
+      <ThemeToggle />
     </header>
   );
 }

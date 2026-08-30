@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  ArrowLeft, ArrowRight, BookOpenCheck, Check, CheckCircle2, ChevronRight,
+  ArrowLeft, ArrowRight, BookOpenCheck, CheckCircle2, ChevronRight,
   Circle, GraduationCap, Lightbulb, LockKeyhole, RefreshCcw, Sparkles,
-  Target, TriangleAlert, X,
+  Target, TriangleAlert,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -283,7 +283,6 @@ export default function GrammarPage() {
       <section className="grammar-method">
         <div><Target /><strong>Understand</strong><span>Plain-English rules and visual patterns</span></div>
         <div><BookOpenCheck /><strong>Notice</strong><span>German examples with useful contrasts</span></div>
-        <div><TriangleAlert /><strong>Correct</strong><span>Common mistakes explained clearly</span></div>
         <div><GraduationCap /><strong>Produce</strong><span>Guided output and cumulative review</span></div>
       </section>
 
@@ -341,11 +340,6 @@ export default function GrammarPage() {
               <div>{content.examples.map((example) => <article key={example.german}><strong lang="de">{example.german}</strong><p>{example.english}</p>{example.note && <small>{example.note}</small>}</article>)}</div>
             </section>
 
-            <section className="grammar-mistakes">
-              <span className="grammar-section-label">Common mistakes</span>
-              {content.mistakes.map((mistake) => <article key={mistake.wrong}><div><span><X /> Not this</span><del lang="de">{mistake.wrong}</del></div><ArrowRight /><div><span><Check /> Use this</span><strong lang="de">{mistake.right}</strong></div><p>{mistake.why}</p></article>)}
-            </section>
-
             <aside className="grammar-memory-tip"><Lightbulb /><div><span>Memory hook</span><p>{content.memoryTip}</p></div></aside>
 
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
@@ -353,7 +347,7 @@ export default function GrammarPage() {
             {nextLesson && <button type="button" className="next-grammar-lesson" onClick={() => selectLesson(nextLesson.id)}><span>Next lesson</span><strong>{nextLesson.title}</strong><ArrowRight /></button>}
           </article>
         ) : (
-          <aside className="grammar-release-note"><LockKeyhole /><h2>{level} lessons are in the roadmap.</h2><p>This level is being released module by module after its explanations, examples, mistakes, and exercise sets pass review.</p><Button variant="outline" onClick={() => selectLevel("A1")}><ArrowLeft /> Open the current module</Button></aside>
+          <aside className="grammar-release-note"><LockKeyhole /><h2>{level} lessons are in the roadmap.</h2><p>This level is released module by module after its explanations, examples, and exercise sets pass review.</p><Button variant="outline" onClick={() => selectLevel("A1")}><ArrowLeft /> Open the current module</Button></aside>
         )}
       </section>
 
