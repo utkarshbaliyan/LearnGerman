@@ -1,11 +1,16 @@
+import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
+
 export type GrammarLevel = "A1" | "A2" | "B1";
 
+type ExerciseMeta = { id: string; group?: string; explanation: string };
+
 export type GrammarExercise =
-  | { id: string; type: "choice"; prompt: string; options: string[]; answer: string; explanation: string }
-  | { id: string; type: "fill"; prompt: string; answer: string | string[]; explanation: string }
-  | { id: string; type: "order"; prompt: string; tokens: string[]; answer: string; explanation: string }
-  | { id: string; type: "correction"; prompt: string; answer: string | string[]; explanation: string }
-  | { id: string; type: "production"; prompt: string; model: string; explanation: string };
+  | (ExerciseMeta & { type: "choice"; prompt: string; options: string[]; answer: string })
+  | (ExerciseMeta & { type: "fill"; prompt: string; answer: string | string[] })
+  | (ExerciseMeta & { type: "order"; prompt: string; tokens: string[]; answer: string })
+  | (ExerciseMeta & { type: "correction"; prompt: string; answer: string | string[] })
+  | (ExerciseMeta & { type: "translation"; prompt: string; direction: "en-de" | "de-en"; answer: string | string[] })
+  | (ExerciseMeta & { type: "production"; prompt: string; model: string });
 
 export type GrammarLesson = {
   id: string;
@@ -29,6 +34,9 @@ export type GrammarLessonContent = {
   lead: string;
   pattern: string;
   explanation: string[];
+  objectives?: string[];
+  sections?: { title: string; paragraphs: string[]; examples?: { german: string; english: string }[] }[];
+  tables?: { title: string; caption?: string; headers: string[]; rows: string[][] }[];
   examples: { german: string; english: string; note?: string }[];
   mistakes: { wrong: string; right: string; why: string }[];
   memoryTip: string;
@@ -154,31 +162,120 @@ export const GRAMMAR_LEVELS: GrammarLevel[] = ["A1", "A2", "B1"];
 export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   "a1-1-1": {
     id: "a1-1-1",
-    lead: "Personal pronouns replace names. The verb sein (to be) is irregular, so its forms must be learned as a complete pattern.",
+    lead: "Personal pronouns let you refer to people and things without repeating their names. The verb sein—German for to be—is the most important irregular verb in the language and appears in introductions, descriptions, locations, professions, identities, and hundreds of everyday expressions.",
     pattern: "ich bin · du bist · er/sie/es ist · wir sind · ihr seid · sie/Sie sind",
+    objectives: [
+      "Choose the correct subject pronoun for a person, group, or noun.",
+      "Conjugate sein correctly with all nine written pronoun forms.",
+      "Distinguish informal du/ihr from formal Sie.",
+      "Build statements, yes/no questions, and W-questions with sein.",
+      "Translate basic identity and description sentences between English and German.",
+    ],
     explanation: [
-      "Use ich for yourself, du for one familiar person, and Sie for polite or formal address. Sie is always capitalized.",
-      "er refers to masculine nouns, sie to feminine nouns, and es to neuter nouns. Grammatical gender—not biological gender—controls the pronoun used for things.",
-      "German normally states the subject: Ich bin müde. Unlike some languages, the verb ending does not usually replace the pronoun.",
+      "A subject pronoun tells us who or what the sentence is about. German normally states the subject explicitly: Ich bin müde. The form of the verb must agree with that subject.",
+      "Use ich for the speaker. Use du for one familiar person and ihr for two or more familiar people. Use formal Sie for one or several people when politeness, distance, or a professional situation requires it. Formal Sie is always capitalized.",
+      "The third-person pronouns er, sie, and es can refer to people, but they also replace nouns according to grammatical gender: der Tisch → er, die Lampe → sie, das Buch → es. This does not mean the object has a biological sex.",
+      "Lowercase sie can mean she or they. The verb resolves the meaning: sie ist means she is, while sie sind means they are. Capitalized Sie means formal you and also takes sind.",
+      "sein is irregular: its forms do not come from one predictable stem. Learn the whole conjugation as a spoken sequence, then practise the forms inside complete sentences.",
+      "In a statement, the conjugated verb is normally the second sentence element: Ich bin heute müde. In a yes/no question, it moves to the front: Bist du müde? In a W-question, it follows the question word: Wo bist du?",
+    ],
+    tables: [
+      {
+        title: "Personal pronouns at a glance",
+        caption: "The English word you has three common German equivalents. Choose by number, familiarity, and formality.",
+        headers: ["Person", "German", "English", "Typical use"],
+        rows: [
+          ["1st singular", "ich", "I", "the speaker"],
+          ["2nd singular informal", "du", "you", "one friend, child, family member"],
+          ["3rd singular masculine", "er", "he / it", "male person or masculine noun"],
+          ["3rd singular feminine", "sie", "she / it", "female person or feminine noun"],
+          ["3rd singular neuter", "es", "it", "neuter noun, child, situation"],
+          ["1st plural", "wir", "we", "speaker plus another person"],
+          ["2nd plural informal", "ihr", "you", "two or more familiar people"],
+          ["3rd plural", "sie", "they", "people or things already mentioned"],
+          ["formal singular/plural", "Sie", "you", "polite or professional address"],
+        ],
+      },
+      {
+        title: "Complete present-tense conjugation of sein",
+        caption: "Notice the singular group bin–bist–ist and the plural group sind–seid–sind.",
+        headers: ["Subject", "sein", "English", "Example"],
+        rows: [
+          ["ich", "bin", "I am", "Ich bin bereit."],
+          ["du", "bist", "you are", "Du bist pünktlich."],
+          ["er / sie / es", "ist", "he / she / it is", "Sie ist Ärztin."],
+          ["wir", "sind", "we are", "Wir sind hier."],
+          ["ihr", "seid", "you are", "Ihr seid nett."],
+          ["sie / Sie", "sind", "they / you are", "Sind Sie neu hier?"],
+        ],
+      },
+      {
+        title: "How sentence type changes the position of sein",
+        headers: ["Sentence type", "Structure", "German", "English"],
+        rows: [
+          ["Statement", "subject + sein + rest", "Du bist müde.", "You are tired."],
+          ["Yes/no question", "sein + subject + rest", "Bist du müde?", "Are you tired?"],
+          ["W-question", "W-word + sein + subject", "Warum bist du müde?", "Why are you tired?"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Choosing between du, ihr, and Sie",
+        paragraphs: [
+          "Use du with one person you address informally. Use ihr when you address several people informally. Use Sie in formal or polite situations, regardless of whether you address one person or a group.",
+          "German speakers may explicitly offer the informal form with Wollen wir uns duzen? Until that happens, Sie is the safer choice in many professional or service situations.",
+        ],
+        examples: [
+          { german: "Mia, bist du fertig?", english: "Mia, are you ready?" },
+          { german: "Kinder, seid ihr fertig?", english: "Children, are you ready?" },
+          { german: "Frau Klein, sind Sie fertig?", english: "Ms Klein, are you ready?" },
+        ],
+      },
+      {
+        title: "Why sie can mean three different things",
+        paragraphs: [
+          "Lowercase sie means she with ist and they with sind. Capitalized Sie means formal you and also uses sind. At the beginning of a sentence, capitalization alone cannot distinguish they from formal you, so context does the work.",
+          "Read the subject and verb together as one unit: sie ist, sie sind, Sie sind. This prevents translation word by word.",
+        ],
+        examples: [
+          { german: "Nora ist neu. Sie ist aus Bonn.", english: "Nora is new. She is from Bonn." },
+          { german: "Nora und Tim sind neu. Sie sind aus Bonn.", english: "Nora and Tim are new. They are from Bonn." },
+          { german: "Sind Sie Frau Brandt?", english: "Are you Ms Brandt?" },
+        ],
+      },
+      {
+        title: "Using sein for identity, description, origin, and location",
+        paragraphs: [
+          "sein links the subject to information about identity or description. It does not express an action. German often omits the article before a profession after sein: Er ist Lehrer; Sie ist Ärztin.",
+          "For origin, use sein + aus. For location, use sein with a place expression. These chunks are immediately useful in introductions and everyday conversations.",
+        ],
+        examples: [
+          { german: "Ich bin Studentin.", english: "I am a student." },
+          { german: "Wir sind aus Indien.", english: "We are from India." },
+          { german: "Das Handy ist in der Tasche.", english: "The phone is in the bag." },
+          { german: "Ihr seid sehr freundlich.", english: "You are very friendly." },
+        ],
+      },
     ],
     examples: [
       { german: "Ich bin neu hier.", english: "I am new here.", note: "ich → bin" },
       { german: "Bist du müde?", english: "Are you tired?", note: "du → bist" },
       { german: "Frau Keller ist Lehrerin. Sie ist sehr freundlich.", english: "Ms Keller is a teacher. She is very friendly." },
       { german: "Sind Sie Herr Weber?", english: "Are you Mr Weber?", note: "formal Sie → sind" },
+      { german: "Das Wetter ist schön. Es ist warm.", english: "The weather is nice. It is warm.", note: "das Wetter → es" },
+      { german: "Wir sind heute in Berlin.", english: "We are in Berlin today.", note: "wir → sind" },
+      { german: "Seid ihr schon fertig?", english: "Are you all finished already?", note: "informal plural" },
+      { german: "Meine Freunde sind im Café. Sie sind müde.", english: "My friends are in the café. They are tired.", note: "plural sie → sind" },
     ],
     mistakes: [
       { wrong: "Ich ist müde.", right: "Ich bin müde.", why: "The sein form for ich is bin." },
       { wrong: "sie sind nett. (formal)", right: "Sie sind nett.", why: "Formal Sie is capitalized." },
+      { wrong: "Wir seid bereit.", right: "Wir sind bereit.", why: "wir pairs with sind; seid belongs only to ihr." },
+      { wrong: "Wo du bist?", right: "Wo bist du?", why: "In a direct W-question, the conjugated verb comes immediately after the W-word." },
     ],
     memoryTip: "Learn sein as three sound groups: bin/bist/ist, sind/seid/sind. Say the full chain aloud until it feels rhythmic.",
-    exercises: [
-      { id: "a111-1", type: "choice", prompt: "Mara ___ Studentin.", options: ["bin", "bist", "ist", "seid"], answer: "ist", explanation: "Mara can be replaced by sie, so the correct form is ist." },
-      { id: "a111-2", type: "fill", prompt: "Wir ___ aus Köln.", answer: "sind", explanation: "The sein form for wir is sind." },
-      { id: "a111-3", type: "order", prompt: "Build a polite question.", tokens: ["Sie", "Frau", "Sind", "Neumann", "?"], answer: "Sind Sie Frau Neumann?", explanation: "In a yes/no question, the conjugated verb comes first: Sind Sie …?" },
-      { id: "a111-4", type: "correction", prompt: "Correct the sentence: Ihr sind sehr pünktlich.", answer: "Ihr seid sehr pünktlich.", explanation: "The sein form for ihr is seid." },
-      { id: "a111-5", type: "production", prompt: "Introduce yourself in two sentences with ich bin and say where you are from.", model: "Ich bin Samira. Ich bin aus Indien.", explanation: "Your details can be different; check that both sentences use ich bin." },
-    ],
+    exercises: A1_LESSON_ONE_EXERCISES,
   },
   "a1-1-2": {
     id: "a1-1-2",

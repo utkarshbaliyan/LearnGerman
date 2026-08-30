@@ -23,6 +23,7 @@ const STORAGE_KEY = "leselaut:grammar-progress:v1";
 type GrammarProgress = {
   completed: string[];
   scores: Record<string, number>;
+  sets: Record<string, Record<string, number>>;
 };
 
 function normalize(value: string) {
@@ -40,13 +41,16 @@ function ExerciseType({ exercise }: { exercise: GrammarExercise }) {
     fill: "Complete",
     order: "Build",
     correction: "Correct",
+    translation: "Translate",
     production: "Produce",
   };
   return <Badge variant="outline">{labels[exercise.type]}</Badge>;
 }
 
-function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (score: number) => void }) {
-  const exercises = LIVE_GRAMMAR_LESSONS[lessonId].exercises;
+function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string; completedSets: Record<string, number>; onFinish: (setName: string, score: number) => void }) {
+  const allExercises = LIVE_GRAMMAR_LESSONS[lessonId].exercises;
+  const groups = useMemo(() => [...new Set(allExercises.map((item) => item.group ?? "Core practice"))], [allExercises]);
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const [value, setValue] = useState("");
   const [ordered, setOrdered] = useState<number[]>([]);
@@ -54,6 +58,7 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
   const [correct, setCorrect] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [finished, setFinished] = useState(false);
+  const exercises = allExercises.filter((item) => (item.group ?? "Core practice") === activeGroup);
   const exercise = exercises[index];
   const gradedTotal = exercises.filter((item) => item.type !== "production").length;
 
@@ -77,7 +82,7 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
     if (index === exercises.length - 1) {
       const score = Math.round((correctCount / gradedTotal) * 100);
       setFinished(true);
-      onFinish(score);
+      onFinish(activeGroup!, score);
       return;
     }
     setIndex((current) => current + 1);
@@ -97,16 +102,39 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
     setFinished(false);
   }
 
+  function chooseSet(group: string) {
+    setActiveGroup(group);
+    restart();
+  }
+
+  if (!activeGroup) {
+    return (
+      <section className="grammar-practice" aria-label="Lesson practice">
+        <div className="practice-heading">
+          <div><span>Chapter practice</span><h2>Choose a focused practice set.</h2></div>
+          <div><strong>{allExercises.length} tasks</strong><Progress value={(Object.keys(completedSets).length / groups.length) * 100} /></div>
+        </div>
+        <div className="practice-set-grid">
+          {groups.map((group, groupIndex) => {
+            const count = allExercises.filter((item) => (item.group ?? "Core practice") === group).length;
+            const score = completedSets[group];
+            return <button key={group} type="button" onClick={() => chooseSet(group)}><span>{String(groupIndex + 1).padStart(2, "0")}</span><div><strong>{group.replace(/^\d+ · /, "")}</strong><small>{count} exercises · {score === undefined ? "Not started" : `Best ${score}%`}</small></div>{score === undefined ? <ChevronRight /> : <CheckCircle2 />}</button>;
+          })}
+        </div>
+      </section>
+    );
+  }
+
   if (finished) {
     const score = Math.round((correctCount / gradedTotal) * 100);
     return (
       <div className="practice-finish">
         <span><CheckCircle2 /></span>
-        <p>Lesson complete</p>
+        <p>Practice set complete</p>
         <strong>{score}%</strong>
         <h3>{score >= 80 ? "You reached mastery." : "Good first pass—review once more."}</h3>
         <p>{correctCount} of {gradedTotal} graded tasks were correct. Your best score is saved on this device.</p>
-        <Button onClick={restart} variant="outline"><RefreshCcw /> Practice again</Button>
+        <div className="practice-finish-actions"><Button onClick={restart} variant="outline"><RefreshCcw /> Practice again</Button><Button onClick={() => setActiveGroup(null)}>All practice sets</Button></div>
       </div>
     );
   }
@@ -116,7 +144,7 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
   return (
     <section className="grammar-practice" aria-label="Lesson practice">
       <div className="practice-heading">
-        <div><span>Practice set</span><h2>Use the rule, don’t just recognize it.</h2></div>
+        <div><span>{activeGroup}</span><h2>Use the rule, don’t just recognize it.</h2></div>
         <div><strong>{index + 1}/{exercises.length}</strong><Progress value={(index / exercises.length) * 100} /></div>
       </div>
 
@@ -130,10 +158,10 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
           </div>
         )}
 
-        {(exercise.type === "fill" || exercise.type === "correction") && (
+        {(exercise.type === "fill" || exercise.type === "correction" || exercise.type === "translation") && (
           <label className="answer-field">
-            <span>{exercise.type === "fill" ? "Your answer" : "Correct sentence"}</span>
-            <Input lang="de" value={value} disabled={submitted} onChange={(event) => setValue(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && canSubmit && !submitted) checkAnswer(); }} placeholder={exercise.type === "fill" ? "Type the missing word" : "Rewrite the complete sentence"} />
+            <span>{exercise.type === "fill" ? "Your answer" : exercise.type === "correction" ? "Correct sentence" : exercise.direction === "en-de" ? "German translation" : "English translation"}</span>
+            <Input lang={exercise.type === "translation" && exercise.direction === "de-en" ? "en" : "de"} value={value} disabled={submitted} onChange={(event) => setValue(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && canSubmit && !submitted) checkAnswer(); }} placeholder={exercise.type === "fill" ? "Type the missing word" : exercise.type === "correction" ? "Rewrite the complete sentence" : "Type the complete translation"} />
           </label>
         )}
 
@@ -163,7 +191,7 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
         )}
 
         <div className="exercise-actions">
-          {!submitted ? <Button onClick={checkAnswer} disabled={!canSubmit}>{exercise.type === "production" ? "Show model answer" : "Check answer"}<ArrowRight /></Button> : <Button onClick={next}>{index === exercises.length - 1 ? "Finish lesson" : "Next exercise"}<ArrowRight /></Button>}
+          {!submitted ? <Button onClick={checkAnswer} disabled={!canSubmit}>{exercise.type === "production" ? "Show model answer" : "Check answer"}<ArrowRight /></Button> : <Button onClick={next}>{index === exercises.length - 1 ? "Finish set" : "Next exercise"}<ArrowRight /></Button>}
         </div>
       </article>
     </section>
@@ -173,14 +201,14 @@ function PracticePanel({ lessonId, onFinish }: { lessonId: string; onFinish: (sc
 export default function GrammarPage() {
   const [level, setLevel] = useState<GrammarLevel>("A1");
   const [selectedLessonId, setSelectedLessonId] = useState("a1-1-1");
-  const [progress, setProgress] = useState<GrammarProgress>({ completed: [], scores: {} });
+  const [progress, setProgress] = useState<GrammarProgress>({ completed: [], scores: {}, sets: {} });
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       try {
         const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Partial<GrammarProgress>;
-        setProgress({ completed: stored.completed ?? [], scores: stored.scores ?? {} });
+        setProgress({ completed: stored.completed ?? [], scores: stored.scores ?? {}, sets: stored.sets ?? {} });
       } catch { /* Ignore damaged local data. */ }
       setHydrated(true);
     });
@@ -214,11 +242,19 @@ export default function GrammarPage() {
     document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function finishLesson(score: number) {
-    setProgress((current) => ({
-      completed: current.completed.includes(selectedLessonId) ? current.completed : [...current.completed, selectedLessonId],
-      scores: { ...current.scores, [selectedLessonId]: Math.max(current.scores[selectedLessonId] ?? 0, score) },
-    }));
+  function finishSet(setName: string, score: number) {
+    setProgress((current) => {
+      const previousSets = current.sets[selectedLessonId] ?? {};
+      const lessonSets = { ...previousSets, [setName]: Math.max(previousSets[setName] ?? 0, score) };
+      const requiredSets = new Set(LIVE_GRAMMAR_LESSONS[selectedLessonId].exercises.map((exercise) => exercise.group ?? "Core practice"));
+      const chapterComplete = [...requiredSets].every((name) => lessonSets[name] !== undefined);
+      const average = Math.round(Object.values(lessonSets).reduce((sum, value) => sum + value, 0) / Object.values(lessonSets).length);
+      return {
+        completed: chapterComplete && !current.completed.includes(selectedLessonId) ? [...current.completed, selectedLessonId] : current.completed,
+        scores: { ...current.scores, [selectedLessonId]: average },
+        sets: { ...current.sets, [selectedLessonId]: lessonSets },
+      };
+    });
   }
 
   const overallRoadmap = Math.round((progress.completed.length / ALL_GRAMMAR_LESSONS.length) * 100);
@@ -291,10 +327,16 @@ export default function GrammarPage() {
 
             <div className="grammar-pattern"><span>The pattern</span><strong lang="de">{content.pattern}</strong></div>
 
+            {content.objectives && <section className="grammar-objectives"><span className="grammar-section-label">By the end of this chapter</span><div>{content.objectives.map((objective) => <p key={objective}><CheckCircle2 />{objective}</p>)}</div></section>}
+
             <section className="grammar-explanation">
               <span className="grammar-section-label">How it works</span>
               {content.explanation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </section>
+
+            {content.tables?.map((table) => <section className="grammar-reference-table" key={table.title}><span className="grammar-section-label">Reference table</span><h3>{table.title}</h3>{table.caption && <p>{table.caption}</p>}<div><table><thead><tr>{table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead><tbody>{table.rows.map((row) => <tr key={row.join("|")}>{row.map((cell, cellIndex) => <td key={`${cell}-${cellIndex}`} lang={cellIndex > 0 ? "de" : undefined}>{cell}</td>)}</tr>)}</tbody></table></div></section>)}
+
+            {content.sections?.map((section) => <section className="grammar-deep-dive" key={section.title}><span className="grammar-section-label">Deep explanation</span><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.examples && <div>{section.examples.map((example) => <article key={example.german}><strong lang="de">{example.german}</strong><span>{example.english}</span></article>)}</div>}</section>)}
 
             <section className="grammar-examples">
               <span className="grammar-section-label">Examples in context</span>
@@ -308,7 +350,7 @@ export default function GrammarPage() {
 
             <aside className="grammar-memory-tip"><Lightbulb /><div><span>Memory hook</span><p>{content.memoryTip}</p></div></aside>
 
-            <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} onFinish={finishLesson} />
+            <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 
             {nextLesson && <button type="button" className="next-grammar-lesson" onClick={() => selectLesson(nextLesson.id)}><span>Next lesson</span><strong>{nextLesson.title}</strong><ArrowRight /></button>}
           </article>
