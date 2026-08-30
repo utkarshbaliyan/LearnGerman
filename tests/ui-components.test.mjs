@@ -101,7 +101,9 @@ test("keeps the grammar roadmap and released lessons complete", async () => {
   assert.equal(new Set(LIVE_GRAMMAR_LESSONS["a1-1-2"].exercises.map((exercise) => exercise.group)).size, 5);
   assert.equal(LIVE_GRAMMAR_LESSONS["a1-1-3"].exercises.length, 50);
   assert.equal(new Set(LIVE_GRAMMAR_LESSONS["a1-1-3"].exercises.map((exercise) => exercise.group)).size, 5);
-  assert.equal(exercises.length, 195);
+  assert.equal(LIVE_GRAMMAR_LESSONS["a1-1-4"].exercises.length, 50);
+  assert.equal(new Set(LIVE_GRAMMAR_LESSONS["a1-1-4"].exercises.map((exercise) => exercise.group)).size, 5);
+  assert.equal(exercises.length, 240);
   assert.equal(new Set(exercises.map((exercise) => exercise.id)).size, exercises.length);
   assert.deepEqual(
     [...new Set(exercises.map((exercise) => exercise.type))].sort(),

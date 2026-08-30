@@ -1,6 +1,7 @@
 import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
 import { A1_LESSON_TWO_EXERCISES } from "@/app/grammar/a1-lesson-two-exercises";
 import { A1_LESSON_THREE_EXERCISES } from "@/app/grammar/a1-lesson-three-exercises";
+import { A1_LESSON_FOUR_EXERCISES } from "@/app/grammar/a1-lesson-four-exercises";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -491,31 +492,108 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   },
   "a1-1-4": {
     id: "a1-1-4",
-    lead: "The conjugated verb is the anchor of a German main clause. It occupies position two—even when another element starts the sentence.",
+    lead: "The conjugated verb is the structural anchor of a German main clause. It occupies position two—not necessarily the second written word—and stays there when time, place, an object, or another idea moves to the beginning for emphasis.",
     pattern: "Position 1 + VERB + subject + rest: Heute lerne ich Deutsch.",
     explanation: [
-      "A position can contain one word or a whole phrase. Am Montag is one time phrase and therefore fills position one.",
-      "When the subject starts the sentence, the order is subject–verb: Ich arbeite heute. When time or place starts, the subject moves after the verb: Heute arbeite ich.",
-      "Position two means the second sentence element, not necessarily the second written word.",
+      "A sentence position is a functional unit, not a single word. Heute is one element, but Am Montag, Nach dem Deutschkurs, and In meiner neuen Wohnung are also one element each. The conjugated verb follows that complete opening unit.",
+      "When the subject occupies position one, the familiar order is subject + verb: Ich arbeite heute. When another element moves to position one, the verb stays second and the subject moves behind it: Heute arbeite ich.",
+      "Time and place phrases commonly appear first because they connect a sentence to its context. Objects can also appear first for contrast or emphasis: Das Buch lese ich heute; den Film sehe ich morgen.",
+      "Only the conjugated part of the verb holds position two. With a separable verb, the prefix goes to the end: Nach der Arbeit kauft Tom ein. With a modal verb, the infinitive goes to the end: Heute muss ich arbeiten.",
+      "The verb-second rule applies to statements and main clauses. Direct yes/no questions use verb-first order, and subordinate clauses later in the course place the conjugated verb at the end.",
+      "Varying position one makes German sound connected and natural. It also lets you guide attention without changing the basic meaning: Ich lerne heute zu Hause; Heute lerne ich zu Hause; Zu Hause lerne ich heute.",
+    ],
+    tables: [
+      {
+        title: "The verb-second sentence frame",
+        caption: "Position one can grow, shrink, or change type. The conjugated verb keeps its reserved second position.",
+        headers: ["Position 1", "Position 2", "Subject", "Remaining information"],
+        rows: [
+          ["Ich", "arbeite", "—", "heute zu Hause."],
+          ["Heute", "arbeite", "ich", "zu Hause."],
+          ["Am Montag", "arbeite", "ich", "zu Hause."],
+          ["Nach dem Kurs", "trinke", "ich", "einen Kaffee."],
+          ["In Berlin", "wohnt", "meine Schwester", "seit zwei Jahren."],
+        ],
+      },
+      {
+        title: "What can occupy position one?",
+        headers: ["Opening type", "Example", "English", "Focus"],
+        rows: [
+          ["subject", "Mara kocht heute.", "Mara is cooking today.", "who"],
+          ["time", "Heute kocht Mara.", "Today Mara is cooking.", "when"],
+          ["place", "Zu Hause kocht Mara.", "Mara is cooking at home.", "where"],
+          ["object", "Die Suppe kocht Mara heute.", "Mara is cooking the soup today.", "what"],
+          ["adverb", "Danach isst die Familie.", "After that, the family eats.", "connection"],
+        ],
+      },
+      {
+        title: "The same anchor with more than one verb part",
+        headers: ["Verb structure", "Position two", "End", "Example"],
+        rows: [
+          ["simple verb", "lerne", "—", "Heute lerne ich Deutsch."],
+          ["separable verb", "kaufe", "ein", "Heute kaufe ich ein."],
+          ["modal + infinitive", "muss", "arbeiten", "Heute muss ich arbeiten."],
+          ["perfect tense", "habe", "gelernt", "Heute habe ich viel gelernt."],
+        ],
+      },
+    ],
+    sections: [
+      {
+        title: "Count elements, not words",
+        paragraphs: [
+          "Learners often count written words and incorrectly think the verb in Am Montag arbeite ich is third. Am Montag answers one question—when?—and functions as one time element, so arbeite is the second sentence element.",
+          "Use a bracket test: place brackets around everything that belongs to the opening phrase. [Nach dem langen Deutschkurs] trinke ich einen Kaffee. The verb begins immediately after the closing bracket.",
+        ],
+        examples: [
+          { german: "[Heute Morgen] lerne ich Deutsch.", english: "[This morning] I am studying German." },
+          { german: "[In meiner neuen Wohnung] arbeite ich gern.", english: "[In my new apartment] I like working." },
+          { german: "[Nach dem Essen] gehen wir spazieren.", english: "[After the meal] we go for a walk." },
+        ],
+      },
+      {
+        title: "The subject–verb inversion",
+        paragraphs: [
+          "When the subject leaves position one, it usually appears directly after the conjugated verb. This is sometimes called inversion, but the verb has not moved away from its rule: position two remains fixed while the subject changes position.",
+          "Compare Ich arbeite heute and Heute arbeite ich. English often keeps the subject before the verb after a time phrase, but German normally does not: Heute ich arbeite is incorrect.",
+        ],
+        examples: [
+          { german: "Meine Schwester wohnt in Bonn.", english: "My sister lives in Bonn." },
+          { german: "In Bonn wohnt meine Schwester.", english: "My sister lives in Bonn." },
+          { german: "Morgen besuchen wir unsere Oma.", english: "Tomorrow we are visiting our grandmother." },
+        ],
+      },
+      {
+        title: "Using position one to build coherent text",
+        paragraphs: [
+          "Position one can connect each new sentence to the previous one. Time words such as dann, danach, später, and am Abend create a clear sequence. Place phrases can maintain a scene, while an object can repeat or contrast a topic.",
+          "In a short narrative, avoid beginning every sentence with ich. Keep the verb second while varying the opening: Am Morgen stehe ich auf. Danach mache ich Kaffee. Im Büro beantworte ich E-Mails.",
+        ],
+        examples: [
+          { german: "Am Morgen mache ich Kaffee. Danach lese ich die Nachrichten.", english: "In the morning I make coffee. After that I read the news." },
+          { german: "Im Park treffe ich Lea. Dort trinken wir einen Kaffee.", english: "I meet Lea in the park. We have a coffee there." },
+          { german: "Den Kaffee trinke ich schwarz. Tee trinke ich mit Milch.", english: "I drink coffee black. I drink tea with milk." },
+        ],
+      },
     ],
     examples: [
-      { german: "Ich kaufe heute Brot.", english: "I am buying bread today." },
-      { german: "Heute kaufe ich Brot.", english: "Today I am buying bread.", note: "The verb remains second" },
-      { german: "Nach der Arbeit besucht Maria ihre Freundin.", english: "After work Maria visits her friend." },
-      { german: "In Berlin wohnt mein Bruder.", english: "My brother lives in Berlin." },
+      { german: "Ich kaufe heute Brot.", english: "I am buying bread today.", note: "subject in position one" },
+      { german: "Heute kaufe ich Brot.", english: "Today I am buying bread.", note: "time in position one" },
+      { german: "Nach der Arbeit besucht Maria ihre Freundin.", english: "After work Maria visits her friend.", note: "multiword opening = one element" },
+      { german: "In Berlin wohnt mein Bruder.", english: "My brother lives in Berlin.", note: "place + verb + subject" },
+      { german: "Das Buch lese ich morgen.", english: "I am reading the book tomorrow.", note: "object emphasised in position one" },
+      { german: "Danach trinken wir einen Kaffee.", english: "After that we have a coffee.", note: "connecting adverb first" },
+      { german: "Heute kauft Tom im Supermarkt ein.", english: "Tom is shopping at the supermarket today.", note: "conjugated part second, prefix last" },
+      { german: "Am Montag muss ich lange arbeiten.", english: "On Monday I have to work for a long time.", note: "modal verb second, infinitive last" },
     ],
     mistakes: [
       { wrong: "Heute ich lerne Deutsch.", right: "Heute lerne ich Deutsch.", why: "The conjugated verb must be the second element." },
       { wrong: "Am Wochenende meine Freunde kommen.", right: "Am Wochenende kommen meine Freunde.", why: "The opening phrase occupies position one, so the verb follows it." },
+      { wrong: "In Berlin mein Bruder wohnt.", right: "In Berlin wohnt mein Bruder.", why: "The place phrase is first, so the subject must follow the verb." },
+      { wrong: "Nach dem Kurs ich trinke Kaffee.", right: "Nach dem Kurs trinke ich Kaffee.", why: "The full opening phrase counts as one element and the verb must be next." },
+      { wrong: "Heute ich muss arbeiten.", right: "Heute muss ich arbeiten.", why: "The conjugated modal verb occupies position two; the infinitive remains at the end." },
     ],
-    memoryTip: "Imagine the conjugated verb sitting in a reserved chair marked 2. Whatever moves to chair 1, the verb keeps its seat.",
-    exercises: [
-      { id: "a114-1", type: "choice", prompt: "Choose the correct sentence.", options: ["Heute ich arbeite zu Hause.", "Heute arbeite ich zu Hause.", "Heute zu Hause ich arbeite."], answer: "Heute arbeite ich zu Hause.", explanation: "Heute fills position one, so arbeite must come next." },
-      { id: "a114-2", type: "fill", prompt: "Am Dienstag ___ wir unsere Großeltern. (besuchen)", answer: "besuchen", explanation: "Am Dienstag is position one; the conjugated verb besuchen is position two." },
-      { id: "a114-3", type: "order", prompt: "Start with the place.", tokens: ["meine", "Im", "arbeitet", "Stadtzentrum", "Mutter", "."], answer: "Im Stadtzentrum arbeitet meine Mutter.", explanation: "The place phrase comes first, then the verb, then the subject." },
-      { id: "a114-4", type: "correction", prompt: "Correct the sentence: Morgen wir fahren ans Meer.", answer: "Morgen fahren wir ans Meer.", explanation: "fahren must occupy position two after Morgen." },
-      { id: "a114-5", type: "production", prompt: "Write two sentences about the same action. Begin the first with ich and the second with heute.", model: "Ich lerne heute in der Bibliothek. Heute lerne ich in der Bibliothek.", explanation: "Compare the two versions: the conjugated verb is second in both." },
-    ],
+    memoryTip: "Imagine the conjugated verb in a reserved chair marked 2. Put one complete idea in chair 1; if it is not the subject, the subject waits behind the verb.",
+    exercises: A1_LESSON_FOUR_EXERCISES,
   },
   "a1-1-5": {
     id: "a1-1-5",
