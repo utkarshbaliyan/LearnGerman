@@ -9,6 +9,12 @@ import { A1_LESSON_EIGHT_EXERCISES } from "@/app/grammar/a1-lesson-eight-exercis
 import { A1_LESSON_NINE_EXERCISES, A1_LESSON_TEN_EXERCISES } from "@/app/grammar/a1-lessons-nine-ten-exercises";
 import { A1_LESSON_ELEVEN_EXERCISES, A1_LESSON_TWELVE_EXERCISES } from "@/app/grammar/a1-lessons-eleven-twelve-exercises";
 import { A1_MODULE_THREE_LESSONS } from "@/app/grammar/a1-module-three-lessons";
+import { A1_MODULE_FOUR_LESSONS } from "@/app/grammar/a1-module-four-lessons";
+import { A2_MODULE_ONE_LESSONS } from "@/app/grammar/a2-module-one-lessons";
+import { A2_MODULE_TWO_LESSONS } from "@/app/grammar/a2-module-two-lessons";
+import { A2_ADVANCED_LESSONS } from "@/app/grammar/a2-advanced-lessons";
+import { B1_FOUNDATION_LESSONS } from "@/app/grammar/b1-foundation-lessons";
+import { B1_ADVANCED_LESSONS } from "@/app/grammar/b1-advanced-lessons";
 
 export type GrammarLevel = "A1" | "A2" | "B1";
 
@@ -63,7 +69,7 @@ const createModule = (level: GrammarLevel, number: number, title: string, descri
     number: (number - 1) * 6 + index + 1,
     title: lessonTitle,
     outcome,
-    released: level === "A1" && number <= 3,
+    released: true,
   })),
 });
 
@@ -1399,6 +1405,12 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
     exercises: A1_LESSON_TWELVE_EXERCISES,
   },
   ...A1_MODULE_THREE_LESSONS,
+  ...A1_MODULE_FOUR_LESSONS,
+  ...A2_MODULE_ONE_LESSONS,
+  ...A2_MODULE_TWO_LESSONS,
+  ...A2_ADVANCED_LESSONS,
+  ...B1_FOUNDATION_LESSONS,
+  ...B1_ADVANCED_LESSONS,
 };
 
 export const ALL_GRAMMAR_LESSONS = GRAMMAR_MODULES.flatMap((item) => item.lessons);

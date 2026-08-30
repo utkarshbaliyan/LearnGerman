@@ -80,7 +80,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
 
   function next() {
     if (index === exercises.length - 1) {
-      const score = Math.round((correctCount / gradedTotal) * 100);
+      const score = gradedTotal === 0 ? 100 : Math.round((correctCount / gradedTotal) * 100);
       setFinished(true);
       onFinish(activeGroup!, score);
       return;
@@ -126,7 +126,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
   }
 
   if (finished) {
-    const score = Math.round((correctCount / gradedTotal) * 100);
+    const score = gradedTotal === 0 ? 100 : Math.round((correctCount / gradedTotal) * 100);
     return (
       <div className="practice-finish">
         <span><CheckCircle2 /></span>

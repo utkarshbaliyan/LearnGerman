@@ -93,8 +93,8 @@ test("keeps the grammar roadmap and released lessons complete", async () => {
 
   assert.equal(GRAMMAR_MODULES.length, 12);
   assert.equal(ALL_GRAMMAR_LESSONS.length, 72);
-  assert.equal(released.length, 18);
-  assert.equal(Object.keys(LIVE_GRAMMAR_LESSONS).length, 18);
+  assert.equal(released.length, 72);
+  assert.equal(Object.keys(LIVE_GRAMMAR_LESSONS).length, 72);
   for (const lesson of Object.values(LIVE_GRAMMAR_LESSONS)) {
     assert.equal(lesson.exercises.length, 50, `${lesson.id} should contain 50 exercises`);
     assert.equal(new Set(lesson.exercises.map((exercise) => exercise.group)).size, 5, `${lesson.id} should contain five practice sets`);
@@ -105,13 +105,13 @@ test("keeps the grammar roadmap and released lessons complete", async () => {
       assert.ok(exercise.options.includes(exercise.answer), `${exercise.id} should offer its correct answer`);
     }
   }
-  for (const lessonId of ["a1-3-1", "a1-3-2", "a1-3-3", "a1-3-4", "a1-3-5", "a1-3-6"]) {
-    const lesson = LIVE_GRAMMAR_LESSONS[lessonId];
+  for (const lesson of Object.values(LIVE_GRAMMAR_LESSONS)) {
+    const lessonId = lesson.id;
     assert.ok(lesson.explanation.length >= 6, `${lessonId} should provide a full explanation`);
     assert.ok(lesson.tables.length >= 3, `${lessonId} should provide reference tables`);
     assert.ok(lesson.sections.length >= 3, `${lessonId} should provide deep-dive sections`);
   }
-  assert.equal(exercises.length, 900);
+  assert.equal(exercises.length, 3600);
   assert.equal(new Set(exercises.map((exercise) => exercise.id)).size, exercises.length);
   assert.deepEqual(
     [...new Set(exercises.map((exercise) => exercise.type))].sort(),
