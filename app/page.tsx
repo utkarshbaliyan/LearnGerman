@@ -1,196 +1,447 @@
 "use client";
 
-import { useMemo, useState, type CSSProperties } from "react";
-import { ArrowRight, BookOpen, CheckCircle2, Circle, Headphones, Play, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Brain,
+  CalendarDays,
+  Check,
+  CheckCircle2,
+  Clock3,
+  Flame,
+  Headphones,
+  Languages,
+  Mic,
+  Pause,
+  Play,
+  RotateCcw,
+  Sparkles,
+  Square,
+  Volume2,
+} from "lucide-react";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
 import { StoryReader } from "@/app/components/story-reader";
-import { getUnitCopy, LEVEL_LABELS } from "@/app/course-copy";
-import { getCurriculum, LEVELS, type CefrLevel, type Story } from "@/app/curriculum";
+import { cleanWord, getCurriculum, meaningFor, type CefrLevel, type Story } from "@/app/curriculum";
 import { useStoryProgress } from "@/app/hooks/use-story-progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 
-const DEFAULT_LEVEL: CefrLevel = "A1";
-const INITIAL_STORY_LIMIT = 30;
+const STORAGE_KEY = "leselaut:today:v1";
+const DAILY_STEPS = ["listen", "recall", "grammar", "produce"] as const;
+type DailyStep = (typeof DAILY_STEPS)[number];
+type DailyMinutes = 5 | 10 | 20;
 
-const COURSE_COPY: Record<CefrLevel, string> = {
-  A1: "Build a strong foundation through 100 everyday stories. Read, listen, and meet essential words repeatedly in meaningful situations.",
-  A2: "Move through 160 connected everyday stories. Link ideas, explain decisions, and handle daily life with growing independence.",
-  B1: "Develop confident independent German through 180 stories about work, society, media, culture, and real B1 situations.",
-  B2: "",
+type DailyState = {
+  sessionDate: string;
+  minutes: DailyMinutes;
+  level: Exclude<CefrLevel, "B2">;
+  completedSteps: DailyStep[];
+  learningDays: string[];
+  draft: string;
 };
 
-export default function Home() {
-  const [activeLevel, setActiveLevel] = useState<CefrLevel>(DEFAULT_LEVEL);
-  const [activeUnit, setActiveUnit] = useState("all");
+const EMPTY_STATE: DailyState = {
+  sessionDate: "",
+  minutes: 10,
+  level: "A1",
+  completedSteps: [],
+  learningDays: [],
+  draft: "",
+};
+
+const PRACTICE_STOP_WORDS = new Set([
+  "aber", "alle", "als", "auch", "auf", "aus", "bei", "das", "dem", "den", "der", "die", "du",
+  "ein", "eine", "einem", "einen", "einer", "er", "es", "für", "hat", "heute", "hier", "ich", "ihr",
+  "im", "in", "ist", "kein", "keine", "mit", "nach", "nicht", "noch", "oder", "sein", "sie", "sind",
+  "und", "von", "war", "wie", "wir", "zu", "zur",
+]);
+
+function localDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getWeek(date: Date) {
+  const monday = new Date(date);
+  const weekday = monday.getDay() || 7;
+  monday.setDate(monday.getDate() - weekday + 1);
+  return Array.from({ length: 7 }, (_, index) => {
+    const item = new Date(monday);
+    item.setDate(monday.getDate() + index);
+    return {
+      key: localDateKey(item),
+      label: new Intl.DateTimeFormat("en", { weekday: "short" }).format(item).slice(0, 2),
+      date: item.getDate(),
+    };
+  });
+}
+
+function calculateStreak(days: string[], today: Date) {
+  const completed = new Set(days);
+  let streak = 0;
+  const cursor = new Date(today);
+  if (!completed.has(localDateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+  while (completed.has(localDateKey(cursor))) {
+    streak += 1;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return streak;
+}
+
+export default function TodayPage() {
+  const [daily, setDaily] = useState<DailyState>(EMPTY_STATE);
+  const [hydrated, setHydrated] = useState(false);
+  const [today, setToday] = useState<Date | null>(null);
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
-  const [storyLimit, setStoryLimit] = useState(INITIAL_STORY_LIMIT);
-  const { completedIds, hydrated, setStoryCompleted, toggleStoryCompleted } = useStoryProgress();
+  const [revealedWords, setRevealedWords] = useState<Set<string>>(new Set());
+  const [rememberedWords, setRememberedWords] = useState<Set<string>>(new Set());
+  const [isListening, setIsListening] = useState(false);
+  const [audioError, setAudioError] = useState("");
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingUrl, setRecordingUrl] = useState("");
+  const [recordingError, setRecordingError] = useState("");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const recordingStreamRef = useRef<MediaStream | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+  const { completedIds, setStoryCompleted, toggleStoryCompleted } = useStoryProgress();
 
-  const curriculum = getCurriculum(activeLevel) ?? getCurriculum(DEFAULT_LEVEL)!;
-  const selectedUnit = activeUnit === "all" ? undefined : curriculum.units.find((unit) => unit.id === Number(activeUnit));
-  const selectedUnitCopy = selectedUnit ? getUnitCopy(curriculum.id, selectedUnit) : undefined;
-  const allVisibleStories = selectedUnit?.stories ?? curriculum.stories;
-  const visibleStories = allVisibleStories.slice(0, storyLimit);
-  const hasAudio = curriculum.stories.every((story) => story.audioReady !== false);
-  const availableCurricula = useMemo(() => LEVELS.flatMap((level) => {
-    const item = getCurriculum(level.id);
-    return item ? [item] : [];
-  }), []);
-  const totalStories = availableCurricula.reduce((sum, item) => sum + item.stories.length, 0);
-  const completedTotal = availableCurricula.reduce((sum, item) => sum + item.stories.filter((story) => completedIds.has(story.id)).length, 0);
-  const overallPercent = totalStories ? Math.round((completedTotal / totalStories) * 100) : 0;
-  const completedInLevel = curriculum.stories.filter((story) => completedIds.has(story.id)).length;
-  const levelPercent = Math.round((completedInLevel / curriculum.stories.length) * 100);
+  const curriculum = getCurriculum(daily.level) ?? getCurriculum("A1")!;
   const nextStory = curriculum.stories.find((story) => !completedIds.has(story.id)) ?? curriculum.stories[0];
+  const todayKey = today ? localDateKey(today) : "";
+  const completedToday = Boolean(todayKey && daily.learningDays.includes(todayKey));
 
-  function selectLevel(level: CefrLevel) {
-    if (!getCurriculum(level)) return;
-    setActiveLevel(level);
-    setActiveUnit("all");
-    setStoryLimit(INITIAL_STORY_LIMIT);
-    setSelectedStory(null);
+  const practiceWords = useMemo(() => {
+    const seen = new Set<string>();
+    return nextStory.text
+      .split(/\s+/)
+      .map((token) => {
+        const word = cleanWord(token);
+        const display = token.replace(/^[^\p{L}]+|[^\p{L}]+$/gu, "");
+        return { word, display, meaning: meaningFor(token) };
+      })
+      .filter(({ word, meaning }) => word.length > 3 && meaning && meaning !== "name / place" && !PRACTICE_STOP_WORDS.has(word))
+      .filter(({ word }) => {
+        if (seen.has(word)) return false;
+        seen.add(word);
+        return true;
+      })
+      .slice(0, 4);
+  }, [nextStory]);
+
+  const sessionProgress = Math.round((daily.completedSteps.length / DAILY_STEPS.length) * 100);
+  const week = today ? getWeek(today) : [];
+  const weekCount = week.filter((day) => daily.learningDays.includes(day.key)).length;
+  const streak = today ? calculateStreak(daily.learningDays, today) : 0;
+  const audioUrl = `${curriculum.audioBasePath}/story-${String(nextStory.number).padStart(3, "0")}.webm?v=${curriculum.audioVersion}`;
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const currentDate = new Date();
+      const key = localDateKey(currentDate);
+      setToday(currentDate);
+      try {
+        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Partial<DailyState>;
+        const sameDay = stored.sessionDate === key;
+        setDaily({
+          sessionDate: key,
+          minutes: stored.minutes === 5 || stored.minutes === 20 ? stored.minutes : 10,
+          level: stored.level === "A2" || stored.level === "B1" ? stored.level : "A1",
+          completedSteps: sameDay && Array.isArray(stored.completedSteps)
+            ? stored.completedSteps.filter((step): step is DailyStep => DAILY_STEPS.includes(step as DailyStep))
+            : [],
+          learningDays: Array.isArray(stored.learningDays)
+            ? stored.learningDays.filter((day): day is string => typeof day === "string")
+            : [],
+          draft: sameDay && typeof stored.draft === "string" ? stored.draft : "",
+        });
+      } catch {
+        setDaily({ ...EMPTY_STATE, sessionDate: key });
+      }
+      setHydrated(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify(daily));
+  }, [daily, hydrated]);
+
+  useEffect(() => () => {
+    audioRef.current?.pause();
+    recordingStreamRef.current?.getTracks().forEach((track) => track.stop());
+    if (recordingUrl) URL.revokeObjectURL(recordingUrl);
+  }, [recordingUrl]);
+
+  function completeStep(step: DailyStep) {
+    setDaily((current) => current.completedSteps.includes(step)
+      ? current
+      : { ...current, completedSteps: [...current.completedSteps, step] });
   }
 
-  function selectUnit(unitId: number) {
-    setActiveUnit(String(unitId));
-    setStoryLimit(INITIAL_STORY_LIMIT);
-    document.getElementById("stories")?.scrollIntoView({ behavior: "smooth" });
+  function chooseLevel(level: DailyState["level"]) {
+    audioRef.current?.pause();
+    audioRef.current = null;
+    setIsListening(false);
+    setAudioError("");
+    setRevealedWords(new Set());
+    setRememberedWords(new Set());
+    setDaily((current) => ({ ...current, level, completedSteps: [], draft: "" }));
   }
 
-  function changeUnit(value: string) {
-    setActiveUnit(value);
-    setStoryLimit(INITIAL_STORY_LIMIT);
+  function togglePreviewAudio() {
+    if (audioRef.current) {
+      if (audioRef.current.paused) {
+        if (audioRef.current.ended) audioRef.current.currentTime = 0;
+        void audioRef.current.play().catch(() => setAudioError("Playback could not start. Please try again."));
+      } else {
+        audioRef.current.pause();
+        setIsListening(false);
+      }
+      return;
+    }
+    setAudioError("");
+    const audio = new Audio(audioUrl);
+    audio.preload = "auto";
+    audio.playbackRate = 0.92;
+    audioRef.current = audio;
+    audio.onplaying = () => setIsListening(true);
+    audio.onpause = () => setIsListening(false);
+    audio.onended = () => {
+      setIsListening(false);
+      completeStep("listen");
+    };
+    audio.onerror = () => {
+      setIsListening(false);
+      setAudioError("The story audio could not be loaded.");
+    };
+    void audio.play().catch(() => setAudioError("Playback could not start. Please try again."));
+  }
+
+  function restartPreviewAudio() {
+    if (!audioRef.current) {
+      togglePreviewAudio();
+      return;
+    }
+    audioRef.current.currentTime = 0;
+    void audioRef.current.play();
+  }
+
+  function rememberWord(word: string) {
+    setRememberedWords((current) => {
+      const next = new Set(current);
+      if (next.has(word)) next.delete(word);
+      else next.add(word);
+      if (next.size >= Math.min(3, practiceWords.length)) completeStep("recall");
+      return next;
+    });
+  }
+
+  async function startRecording() {
+    setRecordingError("");
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+      setRecordingError("Voice recording is not supported in this browser.");
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      recordingStreamRef.current = stream;
+      recorderRef.current = recorder;
+      chunksRef.current = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data.size) chunksRef.current.push(event.data);
+      };
+      recorder.onstop = () => {
+        const blob = new Blob(chunksRef.current, { type: recorder.mimeType || "audio/webm" });
+        setRecordingUrl((current) => {
+          if (current) URL.revokeObjectURL(current);
+          return URL.createObjectURL(blob);
+        });
+        recordingStreamRef.current?.getTracks().forEach((track) => track.stop());
+        recordingStreamRef.current = null;
+        setIsRecording(false);
+        completeStep("produce");
+      };
+      recorder.start();
+      setIsRecording(true);
+    } catch {
+      setRecordingError("Microphone access was not available. You can use the writing option instead.");
+    }
+  }
+
+  function stopRecording() {
+    if (recorderRef.current?.state === "recording") recorderRef.current.stop();
+  }
+
+  function finishToday() {
+    if (!todayKey || daily.completedSteps.length < DAILY_STEPS.length) return;
+    audioRef.current?.pause();
+    audioRef.current = null;
+    setIsListening(false);
+    setStoryCompleted(nextStory.id, true);
+    setDaily((current) => ({
+      ...current,
+      learningDays: current.learningDays.includes(todayKey)
+        ? current.learningDays
+        : [...current.learningDays, todayKey],
+    }));
+  }
+
+  function updateStoryCompletion(completed: boolean) {
+    if (!selectedStory) return;
+    setStoryCompleted(selectedStory.id, completed);
+    if (completed && selectedStory.id === nextStory.id) completeStep("listen");
   }
 
   return (
-      <main className="site-shell">
-        <SiteHeader active="stories" />
+    <main className="site-shell today-page" id="top">
+      <SiteHeader active="today" />
 
-        <section className="hero" id="start">
-          <div className="hero-copy">
-            <div className="level-switcher" aria-label="Choose a course level">
-              {LEVELS.map((level) => (
-                <button key={level.id} type="button" className={level.id === activeLevel ? "is-active" : ""} disabled={!level.available} onClick={() => selectLevel(level.id)}>
-                  <b>{level.id}</b><span>{LEVEL_LABELS[level.id]}</span>{!level.available && <small>Coming soon</small>}
-                </button>
-              ))}
+      <section className="today-hero">
+        <div className="today-greeting">
+          <Badge className="today-eyebrow"><Sparkles /> Your daily German</Badge>
+          <h1>{completedToday ? "Gut gemacht." : "A little German. Every day."}</h1>
+          <p>{completedToday
+            ? "Today’s session is complete. Enjoy the win—or stay for a light listening round."
+            : "One guided session connects listening, reading, memory, grammar, and your own voice."}</p>
+        </div>
+
+        <aside className="habit-card" aria-label="Weekly learning rhythm">
+          <div className="habit-card-heading">
+            <div><span>This week</span><strong>{weekCount} of 4 learning days</strong></div>
+            <div className="streak-pill"><Flame /> {streak} day{streak === 1 ? "" : "s"}</div>
+          </div>
+          <div className="week-rhythm" aria-label={`${weekCount} learning days completed this week`}>
+            {week.map((day) => {
+              const learned = daily.learningDays.includes(day.key);
+              const isToday = day.key === todayKey;
+              return <div key={day.key} className={`${learned ? "is-learned" : ""}${isToday ? " is-today" : ""}`}><span>{day.label}</span><b>{learned ? <Check /> : day.date}</b></div>;
+            })}
+          </div>
+          <p>Consistency beats intensity. Missing a day never erases your progress.</p>
+        </aside>
+      </section>
+
+      <section className="daily-workspace" aria-labelledby="daily-session-title">
+        <div className="daily-session-heading">
+          <div>
+            <span>Today’s guided session</span>
+            <h2 id="daily-session-title">{daily.minutes} minutes to keep German moving.</h2>
+          </div>
+          <div className="commitment-controls">
+            <div className="daily-level-control" aria-label="Daily course level">
+              {(["A1", "A2", "B1"] as const).map((level) => <button key={level} type="button" className={daily.level === level ? "is-active" : ""} onClick={() => chooseLevel(level)}>{level}</button>)}
             </div>
-            <Badge className="eyebrow"><Sparkles /> German · Level {curriculum.id}</Badge>
-            <h1>Learn German<br />one <em>story</em> at a time.</h1>
-            <p>{COURSE_COPY[curriculum.id]}</p>
-            <div className="hero-actions">
-              <Button size="lg" onClick={() => setSelectedStory(nextStory)}>
-                {hasAudio ? <Play /> : <BookOpen />}
-                {completedInLevel ? `Continue with Story ${String(nextStory.number).padStart(3, "0")}` : "Start Story 001"}
-              </Button>
-              <a href="#stories">Browse stories <ArrowRight /></a>
+            <div className="minutes-control" role="radiogroup" aria-label="Daily learning goal">
+              {([5, 10, 20] as const).map((minutes) => <button key={minutes} type="button" role="radio" aria-checked={daily.minutes === minutes} onClick={() => setDaily((current) => ({ ...current, minutes }))}>{minutes} min</button>)}
             </div>
           </div>
+        </div>
 
-          <aside className={`course-progress-panel${hydrated ? " is-ready" : ""}`} aria-label="Overall course progress">
-            <div className="progress-panel-heading">
-              <div><span>Your course</span><h2>Overall progress</h2></div>
-              <div className="progress-ring" style={{ "--course-progress": `${overallPercent * 3.6}deg` } as CSSProperties}><strong>{overallPercent}%</strong></div>
+        <div className="session-progress-row">
+          <div><span>{completedToday ? "Session complete" : `${daily.completedSteps.length} of ${DAILY_STEPS.length} steps`}</span><strong>{sessionProgress}%</strong></div>
+          <Progress value={sessionProgress} aria-label={`Today's session: ${sessionProgress}% complete`} />
+        </div>
+
+        <div className="playground-grid">
+          <article className={`daily-story-card${daily.completedSteps.includes("listen") ? " is-complete" : ""}`}>
+            <div className="daily-card-step"><span>01</span><b>Passive input</b>{daily.completedSteps.includes("listen") && <CheckCircle2 />}</div>
+            <div className="daily-story-meta"><Badge>{curriculum.id}</Badge><span>Story {String(nextStory.number).padStart(3, "0")}</span><span><Clock3 /> 3–4 min</span></div>
+            <h3 lang="de">{nextStory.title}</h3>
+            <p>Listen once for the situation. Then open the reader and follow the German with synchronized support.</p>
+            <div className="listen-player">
+              <Button size="icon-lg" onClick={togglePreviewAudio} aria-label={isListening ? "Pause story preview" : "Play story preview"}>{isListening ? <Pause /> : <Play />}</Button>
+              <div><strong>{isListening ? "Listening in German" : "Listen without the transcript"}</strong><span>Learning speed · 0.92×</span></div>
+              <Button variant="ghost" size="icon-sm" onClick={restartPreviewAudio} aria-label="Restart story preview"><RotateCcw /></Button>
             </div>
-            <p>{completedTotal} of {totalStories} stories completed across A1–B1.</p>
-            <div className="level-progress-list">
-              {availableCurricula.map((item) => {
-                const done = item.stories.filter((story) => completedIds.has(story.id)).length;
-                const percent = Math.round((done / item.stories.length) * 100);
+            {audioError && <p className="daily-inline-error" role="alert">{audioError}</p>}
+            <Button variant="outline" className="open-reader-button" onClick={() => setSelectedStory(nextStory)}><BookOpen /> Open focused reader <ArrowRight /></Button>
+          </article>
+
+          <article className={`recall-card${daily.completedSteps.includes("recall") ? " is-complete" : ""}`}>
+            <div className="daily-card-step"><span>02</span><b>Active recall</b>{daily.completedSteps.includes("recall") && <CheckCircle2 />}</div>
+            <h3>Can you remember these?</h3>
+            <p>Reveal the meaning, then mark at least three words you remembered.</p>
+            <div className="recall-word-grid">
+              {practiceWords.map(({ word, display, meaning }) => {
+                const revealed = revealedWords.has(word);
+                const remembered = rememberedWords.has(word);
                 return (
-                  <button key={item.id} type="button" onClick={() => selectLevel(item.id)} className={item.id === activeLevel ? "is-active" : ""}>
-                    <span><b>{item.id}</b><small>{LEVEL_LABELS[item.id]}</small></span>
-                    <Progress value={percent} aria-label={`${item.id}: ${percent}% complete`} />
-                    <strong>{done}/{item.stories.length}</strong>
-                  </button>
+                  <div key={word} className={remembered ? "is-remembered" : ""}>
+                    <button type="button" className="recall-reveal" aria-expanded={revealed} onClick={() => setRevealedWords((current) => { const next = new Set(current); if (next.has(word)) next.delete(word); else next.add(word); return next; })}>
+                      <strong lang="de">{display || word}</strong><span>{revealed ? meaning : "Reveal meaning"}</span>
+                    </button>
+                    <button type="button" className="remember-button" aria-pressed={remembered} onClick={() => rememberWord(word)}><Check /> {remembered ? "Remembered" : "I knew it"}</button>
+                  </div>
                 );
               })}
             </div>
-            <button type="button" className="next-story-card" onClick={() => setSelectedStory(nextStory)}>
-              <span>Up next · {curriculum.id} · {String(nextStory.number).padStart(3, "0")}</span>
-              <strong lang="de">{nextStory.title}</strong><ArrowRight />
-            </button>
-          </aside>
-        </section>
+          </article>
 
-        <section className="curriculum" id="course">
-          <div className="section-intro">
-            <span>{curriculum.units.length} units · {curriculum.stories.length} stories</span>
-            <h2>A clear path through every level.</h2>
-            <p>Each unit combines stories, audio, grammar, vocabulary, and repeated exposure. Your completed stories are saved on this device.</p>
-          </div>
+          <article className={`grammar-bridge-card${daily.completedSteps.includes("grammar") ? " is-complete" : ""}`}>
+            <div className="daily-card-step"><span>03</span><b>Notice the pattern</b>{daily.completedSteps.includes("grammar") && <CheckCircle2 />}</div>
+            <div className="grammar-bridge-icon"><Languages /></div>
+            <span>Grammar inside today’s story</span>
+            <h3>{nextStory.grammar}</h3>
+            <p lang="de">{nextStory.text.split(/(?<=[.!?])\s+/)[0]}</p>
+            <div className="grammar-bridge-actions">
+              <Button onClick={() => completeStep("grammar")}><Brain /> I noticed the pattern</Button>
+              <Button variant="outline" asChild><Link href="/grammar">Practise grammar</Link></Button>
+            </div>
+          </article>
 
-          <div className="current-level-progress">
-            <div><span>{curriculum.id} progress</span><strong>{completedInLevel} / {curriculum.stories.length} stories</strong></div>
-            <Progress value={levelPercent} aria-label={`${curriculum.id}: ${levelPercent}% complete`} /><b>{levelPercent}%</b>
-          </div>
+          <article className={`produce-card${daily.completedSteps.includes("produce") ? " is-complete" : ""}`}>
+            <div className="daily-card-step"><span>04</span><b>Use your German</b>{daily.completedSteps.includes("produce") && <CheckCircle2 />}</div>
+            <h3>Make the story yours.</h3>
+            <p>{nextStory.speakingPrompt ?? "Summarise the story in two or three simple German sentences. Then add one detail from your own life."}</p>
+            <Textarea value={daily.draft} onChange={(event) => setDaily((current) => ({ ...current, draft: event.target.value }))} placeholder="Schreib zwei oder drei Sätze auf Deutsch …" aria-label="Your German response" />
+            <div className="produce-actions">
+              <Button variant="outline" disabled={daily.draft.trim().length < 12} onClick={() => completeStep("produce")}><Check /> Save response</Button>
+              {!isRecording
+                ? <Button variant="secondary" onClick={startRecording}><Mic /> Record instead</Button>
+                : <Button className="recording-button" onClick={stopRecording}><Square /> Stop recording</Button>}
+            </div>
+            {recordingUrl && <div className="recording-review"><Volume2 /><div><strong>Your private practice</strong><span>Listen once and notice one thing to improve.</span></div><audio controls src={recordingUrl}>Your browser does not support audio playback.</audio></div>}
+            {recordingError && <p className="daily-inline-error" role="alert">{recordingError}</p>}
+          </article>
+        </div>
 
-          <div className="unit-track">
-            {curriculum.units.map((unit) => {
-              const copy = getUnitCopy(curriculum.id, unit);
-              const completedInUnit = unit.stories.filter((story) => completedIds.has(story.id)).length;
-              return (
-                <button key={unit.id} type="button" onClick={() => selectUnit(unit.id)} style={{ "--unit-color": unit.color } as CSSProperties}>
-                  <span>{String(unit.id).padStart(2, "0")}</span><strong>{copy.shortTitle}</strong><small>{completedInUnit}/{unit.stories.length} complete</small>
-                </button>
-              );
-            })}
-          </div>
+        <div className={`finish-session${completedToday ? " is-finished" : ""}`}>
+          <div className="finish-icon">{completedToday ? <CheckCircle2 /> : <CalendarDays />}</div>
+          <div><span>{completedToday ? "Learning day recorded" : "Finish gently"}</span><h2>{completedToday ? "You showed up for your German." : "Four small steps. One meaningful win."}</h2><p>{completedToday ? "Your progress is safe. Come back tomorrow for a fresh session." : "Complete the four activities to record today as a learning day."}</p></div>
+          {completedToday
+            ? <Button variant="outline" asChild><Link href="/stories">Explore more stories</Link></Button>
+            : <Button size="lg" disabled={daily.completedSteps.length < DAILY_STEPS.length} onClick={finishToday}>Finish today <ArrowRight /></Button>}
+        </div>
+      </section>
 
-          <div className="coverage-strip">
-            <div><b>Reading</b><span>{curriculum.stats.totalWords.toLocaleString("en-US")} words in this level</span></div>
-            <div><b>Listening</b><span>Built-in narration at adjustable speeds</span></div>
-            <div><b>Expression</b><span>Speaking and writing prompts</span></div>
-            <div><b>Vocabulary</b><span>Words repeated in meaningful context</span></div>
-          </div>
-        </section>
+      <section className="quick-practice" aria-labelledby="quick-practice-title">
+        <div><span>Low-energy day?</span><h2 id="quick-practice-title">Keep the habit with one small action.</h2><p>These options are intentionally short. Returning matters more than doing everything.</p></div>
+        <div className="quick-practice-grid">
+          <button type="button" onClick={togglePreviewAudio}><Headphones /><span><b>Listen only</b><small>One story · 3 min</small></span><ArrowRight /></button>
+          <Link href="/vocabulary"><Brain /><span><b>Review words</b><small>Your saved vocabulary</small></span><ArrowRight /></Link>
+          <Link href="/grammar"><Languages /><span><b>One grammar set</b><small>Ten focused questions</small></span><ArrowRight /></Link>
+        </div>
+      </section>
 
-        <section className="library" id="stories">
-          <div className="library-heading">
-            <div><span>Story library · {curriculum.id}</span><h2>{selectedUnitCopy ? `Unit ${selectedUnit!.id}: ${selectedUnitCopy.title}` : `All ${curriculum.stories.length} stories`}</h2></div>
-            <p>{selectedUnitCopy?.description ?? "Choose a unit or continue with your next unfinished story. Each story includes German text, built-in audio, word help, and practice prompts."}</p>
-          </div>
+      <footer>
+        <Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link>
+        <p>A calm daily practice that turns stories into German you can understand and use.</p>
+        <div><Link href="/stories">Stories</Link><Link href="/vocabulary">Vocabulary</Link><Link href="/grammar">Grammar</Link></div>
+      </footer>
 
-          <Tabs value={activeUnit} onValueChange={changeUnit} className="unit-tabs">
-            <TabsList variant="line" className="unit-tabs-list">
-              <TabsTrigger value="all">All</TabsTrigger>
-              {curriculum.units.map((unit) => <TabsTrigger key={unit.id} value={String(unit.id)}>{String(unit.id).padStart(2, "0")}</TabsTrigger>)}
-            </TabsList>
-          </Tabs>
-
-          <div className="story-grid">
-            {visibleStories.map((story) => {
-              const completed = completedIds.has(story.id);
-              const unit = curriculum.units.find((item) => item.id === story.unitId)!;
-              const unitCopy = getUnitCopy(curriculum.id, unit);
-              return (
-                <button key={story.id} type="button" className={`story-card${completed ? " is-completed" : ""}`} onClick={() => setSelectedStory(story)} style={{ "--story-color": story.color } as CSSProperties}>
-                  <div className="card-top"><span>{String(story.number).padStart(3, "0")}</span><Badge variant={completed ? "default" : "outline"}>{completed ? <><CheckCircle2 /> Completed</> : <><Circle /> Not completed</>}</Badge></div>
-                  <div className="card-rule" /><small>Unit {story.unitId} · {unitCopy.shortTitle}</small>
-                  <h3 lang="de">{story.title}</h3><p lang="de">{story.text.split(" ").slice(0, 14).join(" ")}…</p>
-                  <div className="card-meta"><span>{story.audioReady === false ? <BookOpen /> : <Headphones />}{story.audioReady === false ? " Read" : " Audio"}</span><span><BookOpen /> {story.text.split(/\s+/).length} words</span><ArrowRight /></div>
-                </button>
-              );
-            })}
-          </div>
-
-          {visibleStories.length < allVisibleStories.length && <Button className="show-more-stories" variant="outline" onClick={() => setStoryLimit((current) => current + INITIAL_STORY_LIMIT)}>Show more stories</Button>}
-        </section>
-
-        <footer>
-          <a href="#start" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></a>
-          <p>The course follows CEFR learning goals and draws on Goethe-Institut vocabulary and grammar coverage.</p>
-          <div><a href="https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions" target="_blank" rel="noreferrer">CEFR framework</a><a href="https://www.goethe.de/en/spr/prf/ueb.html" target="_blank" rel="noreferrer">Goethe practice</a></div>
-        </footer>
-
-        <Dialog open={Boolean(selectedStory)} onOpenChange={(open) => { if (!open) setSelectedStory(null); }}>
-          {selectedStory && <DialogContent className="reader-dialog" showCloseButton><StoryReader curriculum={curriculum} story={selectedStory} completed={completedIds.has(selectedStory.id)} onComplete={(completed) => setStoryCompleted(selectedStory.id, completed)} onStoryChange={setSelectedStory} onToggleComplete={() => toggleStoryCompleted(selectedStory.id)} /></DialogContent>}
-        </Dialog>
-      </main>
+      <Dialog open={Boolean(selectedStory)} onOpenChange={(open) => { if (!open) setSelectedStory(null); }}>
+        {selectedStory && <DialogContent className="reader-dialog" showCloseButton><StoryReader curriculum={curriculum} story={selectedStory} completed={completedIds.has(selectedStory.id)} onComplete={updateStoryCompletion} onStoryChange={setSelectedStory} onToggleComplete={() => { const willComplete = !completedIds.has(selectedStory.id); toggleStoryCompleted(selectedStory.id); if (willComplete && selectedStory.id === nextStory.id) completeStep("listen"); }} /></DialogContent>}
+      </Dialog>
+    </main>
   );
 }

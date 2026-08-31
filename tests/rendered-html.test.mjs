@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-test("renders the English course shell", async () => {
+async function renderRoute(pathname) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
 
-  const response = await worker.fetch(
-    new Request("http://localhost/", {
+  return worker.fetch(
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -20,6 +20,10 @@ test("renders the English course shell", async () => {
       passThroughOnException() {},
     },
   );
+}
+
+test("renders the daily learning playground as the English home", async () => {
+  const response = await renderRoute("/");
 
   assert.equal(response.status, 200);
   assert.match(
@@ -28,5 +32,19 @@ test("renders the English course shell", async () => {
   );
   const html = await response.text();
   assert.match(html, /<html[^>]*\blang=["']en["']/i);
-  assert.match(html, /Learn German through stories/i);
+  assert.match(html, /A little German\. Every day\./i);
+  assert.match(html, /Passive input/i);
+  assert.match(html, /Active recall/i);
+  assert.match(html, /Use your German/i);
+  assert.match(html, /href=["']\/stories["']/i);
+});
+
+test("preserves the complete story library at its dedicated route", async () => {
+  const response = await renderRoute("/stories");
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Learn German/i);
+  assert.match(html, /Browse stories/i);
+  assert.match(html, /Overall progress/i);
 });
