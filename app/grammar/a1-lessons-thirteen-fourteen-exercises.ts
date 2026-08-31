@@ -1,0 +1,138 @@
+import type { GrammarExercise } from "@/app/grammar/course";
+
+const withGroup = (group: string, items: GrammarExercise[]) => items.map((item) => ({ ...item, group }));
+const ex = (item: GrammarExercise) => item;
+
+const modalChoices = [
+  ["Which modal expresses ability?", "können", ["können", "müssen", "wollen", "sollen"], "können expresses ability or possibility."],
+  ["Which modal expresses necessity?", "müssen", ["dürfen", "müssen", "wollen", "mögen"], "müssen expresses something necessary."],
+  ["Which modal asks about permission?", "dürfen", ["können", "sollen", "dürfen", "haben"], "dürfen expresses permission."],
+  ["Which modal expresses an intention or strong wish?", "wollen", ["wollen", "müssen", "dürfen", "sein"], "wollen expresses intention."],
+  ["Which modal can express advice from another person?", "sollen", ["sollen", "können", "wollen", "möchten"], "sollen often reports advice, instructions, or expectations."],
+  ["Choose the correct form: Ich ___ heute arbeiten.", "muss", ["muss", "musst", "müssen", "müsst"], "The ich form of müssen is muss."],
+  ["Choose the correct form: Du ___ gut schwimmen.", "kannst", ["kann", "kannst", "könnt", "können"], "The du form of können is kannst."],
+  ["Choose the correct form: Ihr ___ hier warten.", "sollt", ["soll", "sollst", "sollt", "sollen"], "The ihr form of sollen is sollt."],
+  ["Which sentence has correct modal word order?", "Wir können heute kommen.", ["Wir können heute kommen.", "Wir können kommen heute.", "Wir heute kommen können.", "Wir kommen können heute."], "The conjugated modal is in position two and the infinitive closes the clause."],
+  ["What does Du darfst hier nicht rauchen mean?", "You may not smoke here.", ["You may not smoke here.", "You cannot smoke well here.", "You do not want to smoke here.", "You must smoke here."], "nicht dürfen expresses prohibition."],
+] as const;
+
+export const A1_LESSON_THIRTEEN_EXERCISES: GrammarExercise[] = [
+  ...withGroup("1 · Meaning and forms", modalChoices.map(([prompt, answer, options, explanation], index) => ex({
+    id: `a131-${String(index + 1).padStart(2, "0")}`, type: "choice", prompt, options: [...options], answer, explanation,
+  }))),
+  ...withGroup("2 · Conjugation in context", [
+    ex({ id: "a131-11", type: "fill", prompt: "Ich ___ Deutsch sprechen. (können)", answer: "kann", explanation: "können changes its vowel in the singular: ich kann." }),
+    ex({ id: "a131-12", type: "fill", prompt: "Du ___ morgen früh aufstehen. (müssen)", answer: "musst", explanation: "The du form is musst, without an umlaut." }),
+    ex({ id: "a131-13", type: "fill", prompt: "Er ___ Arzt werden. (wollen)", answer: "will", explanation: "The third-person singular form is will." }),
+    ex({ id: "a131-14", type: "fill", prompt: "Wir ___ heute länger bleiben. (können)", answer: "können", explanation: "The wir form matches the infinitive: können." }),
+    ex({ id: "a131-15", type: "fill", prompt: "Ihr ___ hier fotografieren. (dürfen)", answer: "dürft", explanation: "The ihr form of dürfen is dürft." }),
+    ex({ id: "a131-16", type: "fill", prompt: "Die Kinder ___ ihre Hausaufgaben machen. (sollen)", answer: "sollen", explanation: "A plural subject takes sollen." }),
+    ex({ id: "a131-17", type: "fill", prompt: "___ ich das Fenster öffnen? (dürfen)", answer: "Darf", explanation: "A yes/no question begins with the conjugated modal: Darf ich …?" }),
+    ex({ id: "a131-18", type: "fill", prompt: "Wann ___ du kommen? (können)", answer: "kannst", explanation: "In a W-question, the modal follows the question word." }),
+    ex({ id: "a131-19", type: "fill", prompt: "Wir müssen heute ___ . (arbeiten)", answer: "arbeiten", explanation: "The second verb remains an infinitive at the end." }),
+    ex({ id: "a131-20", type: "fill", prompt: "Sie will keinen Kaffee ___ . (trinken)", answer: "trinken", explanation: "The infinitive trinken closes the clause." }),
+  ]),
+  ...withGroup("3 · Sentence bracket", [
+    ex({ id: "a131-21", type: "order", prompt: "Build the sentence.", tokens: ["heute", "Ich", "arbeiten", "muss", "."], answer: "Ich muss heute arbeiten.", explanation: "The modal stands in position two; the infinitive goes to the end." }),
+    ex({ id: "a131-22", type: "order", prompt: "Build the question.", tokens: ["du", "Kannst", "helfen", "mir", "?"], answer: "Kannst du mir helfen?", explanation: "A yes/no question begins with the modal and ends with the infinitive." }),
+    ex({ id: "a131-23", type: "order", prompt: "Start with Morgen.", tokens: ["Morgen", "wir", "früh", "aufstehen", "müssen", "."], answer: "Morgen müssen wir früh aufstehen.", explanation: "Morgen fills position one, so müssen remains second." }),
+    ex({ id: "a131-24", type: "order", prompt: "Build the permission question.", tokens: ["hier", "Darf", "ich", "parken", "?"], answer: "Darf ich hier parken?", explanation: "Darf opens the question and parken closes it." }),
+    ex({ id: "a131-25", type: "order", prompt: "Build the negative sentence.", tokens: ["nicht", "Du", "rauchen", "darfst", "hier", "."], answer: "Du darfst hier nicht rauchen.", explanation: "nicht negates the infinitive action before the final infinitive." }),
+    ex({ id: "a131-26", type: "correction", prompt: "Correct: Ich kann spreche Deutsch.", answer: "Ich kann Deutsch sprechen.", explanation: "The second verb must be an infinitive at the end." }),
+    ex({ id: "a131-27", type: "correction", prompt: "Correct: Du musst arbeitest heute.", answer: "Du musst heute arbeiten.", explanation: "Only the modal is conjugated; arbeiten remains infinitive." }),
+    ex({ id: "a131-28", type: "correction", prompt: "Correct: Wir heute können kommen.", answer: "Wir können heute kommen.", explanation: "The conjugated modal occupies position two." }),
+    ex({ id: "a131-29", type: "correction", prompt: "Correct: Darfst du hier rauchst?", answer: "Darfst du hier rauchen?", explanation: "The final verb remains an infinitive in a modal question." }),
+    ex({ id: "a131-30", type: "correction", prompt: "Correct: Er wollt ein Auto kaufen.", answer: "Er will ein Auto kaufen.", explanation: "The third-person singular of wollen is will." }),
+  ]),
+  ...withGroup("4 · Translation", [
+    ex({ id: "a131-31", type: "translation", direction: "en-de", prompt: "Translate: I can speak German.", answer: ["Ich kann Deutsch sprechen.", "Ich kann Deutsch sprechen"], explanation: "Use kann in position two and sprechen at the end." }),
+    ex({ id: "a131-32", type: "translation", direction: "en-de", prompt: "Translate: We must leave now.", answer: ["Wir müssen jetzt gehen.", "Jetzt müssen wir gehen."], explanation: "müssen expresses necessity; gehen remains infinitive." }),
+    ex({ id: "a131-33", type: "translation", direction: "en-de", prompt: "Translate: May I open the window?", answer: ["Darf ich das Fenster öffnen?", "Darf ich das Fenster aufmachen?"], explanation: "Darf ich …? is the standard permission question." }),
+    ex({ id: "a131-34", type: "translation", direction: "en-de", prompt: "Translate: He wants to buy a bicycle.", answer: ["Er will ein Fahrrad kaufen.", "Er will ein Fahrrad kaufen"], explanation: "will is the singular form of wollen." }),
+    ex({ id: "a131-35", type: "translation", direction: "en-de", prompt: "Translate: You should call your mother. (informal singular)", answer: ["Du sollst deine Mutter anrufen.", "Du sollst deine Mutter anrufen"], explanation: "sollen can express advice; anrufen stays together as an infinitive." }),
+    ex({ id: "a131-36", type: "translation", direction: "de-en", prompt: "Translate: Ihr könnt heute länger bleiben.", answer: ["You can stay longer today.", "You are able to stay longer today."], explanation: "könnt agrees with informal plural ihr." }),
+    ex({ id: "a131-37", type: "translation", direction: "de-en", prompt: "Translate: Du darfst hier nicht parken.", answer: ["You may not park here.", "You are not allowed to park here."], explanation: "nicht dürfen expresses lack of permission." }),
+    ex({ id: "a131-38", type: "translation", direction: "de-en", prompt: "Translate: Wann müssen Sie arbeiten?", answer: ["When do you have to work?", "When must you work?"], explanation: "Formal Sie takes müssen." }),
+    ex({ id: "a131-39", type: "translation", direction: "de-en", prompt: "Translate: Die Kinder wollen draußen spielen.", answer: ["The children want to play outside."], explanation: "wollen expresses the children's wish or intention." }),
+    ex({ id: "a131-40", type: "translation", direction: "de-en", prompt: "Translate: Soll ich dir helfen?", answer: ["Shall I help you?", "Should I help you?"], explanation: "Soll ich …? offers help or asks what is expected." }),
+  ]),
+  ...withGroup("5 · Active modal use", [
+    ex({ id: "a131-41", type: "production", prompt: "Write five true sentences about abilities with können.", model: "Ich kann gut kochen. Ich kann ein bisschen Deutsch sprechen. Ich kann nicht Auto fahren. Meine Freundin kann schwimmen. Wir können zusammen lernen.", explanation: "Place each activity infinitive at the end." }),
+    ex({ id: "a131-42", type: "production", prompt: "Write five things you must do this week.", model: "Ich muss am Montag arbeiten. Ich muss Lebensmittel kaufen. Ich muss meine Mutter anrufen. Ich muss Deutsch lernen. Am Freitag muss ich früh schlafen.", explanation: "Vary the first element while keeping the modal second." }),
+    ex({ id: "a131-43", type: "production", prompt: "Create five permission questions with Darf ich …?", model: "Darf ich hier sitzen? Darf ich das Fenster öffnen? Darf ich mit Karte zahlen? Darf ich ein Foto machen? Darf ich früher gehen?", explanation: "Use the infinitive at the end of every question." }),
+    ex({ id: "a131-44", type: "production", prompt: "Write four pieces of friendly advice with sollen.", model: "Du sollst mehr Wasser trinken. Du sollst früher schlafen. Du sollst den Arzt anrufen. Du sollst langsam sprechen.", explanation: "sollen presents advice or an instruction from a source." }),
+    ex({ id: "a131-45", type: "production", prompt: "Describe six weekend intentions with wollen.", model: "Am Samstag will ich lange schlafen. Danach will ich Freunde treffen. Wir wollen im Park spazieren gehen. Am Abend wollen wir kochen.", explanation: "Put the intended action in infinitive form at the end." }),
+    ex({ id: "a131-46", type: "production", prompt: "Write a six-line dialogue that uses all five modal verbs.", model: "Kannst du heute kommen? – Nein, ich muss arbeiten. Darf ich morgen kommen? – Ja. Wir wollen zusammen kochen. Soll ich etwas mitbringen?", explanation: "Choose each modal for its own meaning, not as interchangeable helpers." }),
+    ex({ id: "a131-47", type: "production", prompt: "Turn five simple statements into modal sentences.", model: "Ich schwimme. → Ich kann schwimmen. · Wir gehen. → Wir müssen gehen. · Er kauft Brot. → Er will Brot kaufen.", explanation: "Conjugate the modal and move the original verb to the end as an infinitive." }),
+    ex({ id: "a131-48", type: "production", prompt: "Write five negative modal sentences and explain the changed meaning.", model: "Ich kann nicht kommen = I am unable to come. Ich darf nicht kommen = I am not allowed to come. Ich muss nicht kommen = I do not have to come.", explanation: "Pay special attention to the difference between nicht müssen and nicht dürfen." }),
+    ex({ id: "a131-49", type: "production", prompt: "Plan a class trip in eight sentences using at least four modal verbs.", model: "Wir wollen am Samstag fahren. Alle müssen um acht Uhr da sein. Wir können den Bus nehmen. Ihr dürft Essen mitbringen. Anna soll die Tickets kaufen.", explanation: "Use modals for plans, obligations, possibilities, permission, and assigned tasks." }),
+    ex({ id: "a131-50", type: "production", prompt: "Record a one-minute answer about what you can, must, want, may, and should do today.", model: "Heute kann ich zu Hause arbeiten. Ich muss zwei Aufgaben beenden. Danach will ich einkaufen. Ich darf das Auto meiner Schwester nehmen. Am Abend soll ich meinen Vater anrufen.", explanation: "A connected personal answer strengthens meaning, conjugation, and word order together." }),
+  ]),
+];
+
+const separableChoices = [
+  ["Which verb means to call someone?", "anrufen", ["anrufen", "einkaufen", "aufstehen", "mitkommen"], "anrufen means to call by telephone."],
+  ["Which prefix separates in Ich stehe um sieben auf?", "auf-", ["auf-", "be-", "ver-", "er-"], "aufstehen separates as stehe … auf."],
+  ["Choose the correct statement.", "Mia kauft heute ein.", ["Mia einkauft heute.", "Mia kauft heute ein.", "Mia ein heute kauft.", "Mia kauft ein heute."], "The conjugated stem is second and the prefix closes the clause."],
+  ["Choose the correct yes/no question.", "Rufst du mich an?", ["Anrufst du mich?", "Rufst du mich an?", "Du rufst mich an?", "Rufst an du mich?"], "The stem opens the question and the prefix goes to the end."],
+  ["What is the infinitive in Der Bus kommt um acht an?", "ankommen", ["kommen", "ankommen", "auskommen", "mitkommen"], "kommt … an comes from ankommen."],
+  ["Which sentence uses a separable verb with a modal correctly?", "Ich muss früh aufstehen.", ["Ich muss früh stehe auf.", "Ich muss früh aufstehen.", "Ich aufstehen muss früh.", "Ich muss auf früh stehen."], "After a modal, the separable verb stays joined as the final infinitive."],
+  ["Which verb means to bring along?", "mitbringen", ["mitbringen", "abholen", "zumachen", "fernsehen"], "mitbringen means to bring something or someone along."],
+  ["Choose the correct form: Er ___ das Licht ___. (ausmachen)", "macht … aus", ["macht … aus", "ausmacht", "machen … aus", "macht … an"], "The third-person stem is macht and aus closes the clause."],
+  ["Where does the separated prefix normally stand in a main clause?", "at the end", ["at the beginning", "directly after the subject", "at the end", "before the conjugated verb"], "The prefix forms the right side of the sentence bracket."],
+  ["Which common prefix is normally inseparable?", "be-", ["an-", "auf-", "mit-", "be-"], "be- is an inseparable prefix; besuchen does not split."],
+] as const;
+
+export const A1_LESSON_FOURTEEN_EXERCISES: GrammarExercise[] = [
+  ...withGroup("1 · Recognising the pattern", separableChoices.map(([prompt, answer, options, explanation], index) => ex({
+    id: `a132-${String(index + 1).padStart(2, "0")}`, type: "choice", prompt, options: [...options], answer, explanation,
+  }))),
+  ...withGroup("2 · Split the verb", [
+    ex({ id: "a132-11", type: "fill", prompt: "Ich ___ um sieben Uhr ___. (aufstehen)", answer: ["stehe auf", "stehe um sieben Uhr auf"], explanation: "aufstehen becomes stehe … auf with ich." }),
+    ex({ id: "a132-12", type: "fill", prompt: "Du ___ deine Mutter ___. (anrufen)", answer: "rufst an", explanation: "anrufen becomes rufst … an with du." }),
+    ex({ id: "a132-13", type: "fill", prompt: "Mia ___ heute im Supermarkt ___. (einkaufen)", answer: "kauft ein", explanation: "einkaufen becomes kauft … ein." }),
+    ex({ id: "a132-14", type: "fill", prompt: "Der Zug ___ um 18 Uhr ___. (ankommen)", answer: "kommt an", explanation: "ankommen becomes kommt … an." }),
+    ex({ id: "a132-15", type: "fill", prompt: "Wir ___ das Fenster ___. (aufmachen)", answer: "machen auf", explanation: "The plural form is machen and the prefix is auf." }),
+    ex({ id: "a132-16", type: "fill", prompt: "Ihr ___ eure Freunde ___. (mitbringen)", answer: "bringt mit", explanation: "mitbringen uses the irregular stem bringt and final mit." }),
+    ex({ id: "a132-17", type: "fill", prompt: "___ du heute Abend ___? (fernsehen)", answer: "Siehst fern", explanation: "The question starts with siehst and ends with fern." }),
+    ex({ id: "a132-18", type: "fill", prompt: "Wann ___ Sie das Kind ___? (abholen)", answer: "holen ab", explanation: "In a W-question, holen follows the subject and ab closes the clause." }),
+    ex({ id: "a132-19", type: "fill", prompt: "Ich muss morgen früh ___. (aufstehen)", answer: "aufstehen", explanation: "After a modal, the complete infinitive stays joined." }),
+    ex({ id: "a132-20", type: "fill", prompt: "Kannst du bitte das Licht ___? (ausmachen)", answer: "ausmachen", explanation: "The modal sends the complete separable infinitive to the end." }),
+  ]),
+  ...withGroup("3 · Word order and repair", [
+    ex({ id: "a132-21", type: "order", prompt: "Build the sentence.", tokens: ["um", "Ich", "auf", "stehe", "sieben", "."], answer: "Ich stehe um sieben auf.", explanation: "stehe is second and auf closes the clause." }),
+    ex({ id: "a132-22", type: "order", prompt: "Start with Heute.", tokens: ["Heute", "Mia", "ein", "kauft", "."], answer: "Heute kauft Mia ein.", explanation: "Heute is first, kauft remains second, and ein is final." }),
+    ex({ id: "a132-23", type: "order", prompt: "Build the question.", tokens: ["du", "mich", "Rufst", "an", "?"], answer: "Rufst du mich an?", explanation: "The finite stem opens the question and an closes it." }),
+    ex({ id: "a132-24", type: "order", prompt: "Build the modal sentence.", tokens: ["muss", "früh", "aufstehen", "Ich", "."], answer: "Ich muss früh aufstehen.", explanation: "The verb remains joined after a modal." }),
+    ex({ id: "a132-25", type: "order", prompt: "Build the sentence.", tokens: ["um", "Der", "an", "Zug", "kommt", "acht", "."], answer: "Der Zug kommt um acht an.", explanation: "kommt and an form the sentence bracket." }),
+    ex({ id: "a132-26", type: "correction", prompt: "Correct: Ich aufstehe um sieben.", answer: "Ich stehe um sieben auf.", explanation: "Split the verb around the middle of the clause." }),
+    ex({ id: "a132-27", type: "correction", prompt: "Correct: Sie anruft ihren Bruder.", answer: "Sie ruft ihren Bruder an.", explanation: "Conjugate rufen and move an to the end." }),
+    ex({ id: "a132-28", type: "correction", prompt: "Correct: Wann du holst das Kind ab?", answer: "Wann holst du das Kind ab?", explanation: "The conjugated stem follows the W-word." }),
+    ex({ id: "a132-29", type: "correction", prompt: "Correct: Wir müssen kaufen heute ein.", answer: "Wir müssen heute einkaufen.", explanation: "After müssen, einkaufen stays joined as the final infinitive." }),
+    ex({ id: "a132-30", type: "correction", prompt: "Correct: Er steht auf früh.", answer: "Er steht früh auf.", explanation: "The separated prefix goes after the other clause information." }),
+  ]),
+  ...withGroup("4 · Translation", [
+    ex({ id: "a132-31", type: "translation", direction: "en-de", prompt: "Translate: I get up at seven.", answer: ["Ich stehe um sieben auf.", "Um sieben stehe ich auf."], explanation: "aufstehen splits in a main clause." }),
+    ex({ id: "a132-32", type: "translation", direction: "en-de", prompt: "Translate: Are you calling me today?", answer: ["Rufst du mich heute an?", "Rufst du heute mich an?"], explanation: "The question begins with rufst and ends with an." }),
+    ex({ id: "a132-33", type: "translation", direction: "en-de", prompt: "Translate: The train arrives at nine.", answer: ["Der Zug kommt um neun an.", "Um neun kommt der Zug an."], explanation: "ankommen becomes kommt … an." }),
+    ex({ id: "a132-34", type: "translation", direction: "en-de", prompt: "Translate: We are shopping today.", answer: ["Wir kaufen heute ein.", "Heute kaufen wir ein."], explanation: "einkaufen splits as kaufen … ein." }),
+    ex({ id: "a132-35", type: "translation", direction: "en-de", prompt: "Translate: You must turn off the light.", answer: ["Du musst das Licht ausmachen.", "Sie müssen das Licht ausmachen."], explanation: "After müssen, ausmachen stays joined." }),
+    ex({ id: "a132-36", type: "translation", direction: "de-en", prompt: "Translate: Mia holt die Kinder ab.", answer: ["Mia is picking up the children.", "Mia picks up the children."], explanation: "holt … ab comes from abholen." }),
+    ex({ id: "a132-37", type: "translation", direction: "de-en", prompt: "Translate: Bringst du einen Salat mit?", answer: ["Are you bringing a salad along?", "Will you bring a salad?"], explanation: "bringst … mit comes from mitbringen." }),
+    ex({ id: "a132-38", type: "translation", direction: "de-en", prompt: "Translate: Am Abend sieht er fern.", answer: ["He watches television in the evening.", "In the evening, he watches TV."], explanation: "sieht … fern comes from fernsehen." }),
+    ex({ id: "a132-39", type: "translation", direction: "de-en", prompt: "Translate: Wann machen Sie das Geschäft auf?", answer: ["When do you open the shop?", "When are you opening the shop?"], explanation: "machen … auf means to open." }),
+    ex({ id: "a132-40", type: "translation", direction: "de-en", prompt: "Translate: Wir wollen morgen früh losfahren.", answer: ["We want to leave early tomorrow.", "We want to set off early tomorrow."], explanation: "losfahren stays joined after wollen." }),
+  ]),
+  ...withGroup("5 · Active separable verbs", [
+    ex({ id: "a132-41", type: "production", prompt: "Describe your morning with five separable verbs.", model: "Ich stehe um sieben auf. Dann mache ich das Fenster auf. Ich ziehe meine Jacke an. Um acht gehe ich los. Im Bus höre ich Musik an.", explanation: "Use the conjugated stem second and place each prefix at the end." }),
+    ex({ id: "a132-42", type: "production", prompt: "Write five questions with common separable verbs.", model: "Wann stehst du auf? Rufst du mich an? Wo kaufst du ein? Wann kommt der Zug an? Holst du Lena ab?", explanation: "Keep the prefix at the end in both yes/no and W-questions." }),
+    ex({ id: "a132-43", type: "production", prompt: "Write five paired sentences: one without and one with a modal.", model: "Ich stehe früh auf. Ich muss früh aufstehen. · Sie kauft heute ein. Sie will heute einkaufen.", explanation: "Contrast split main-clause forms with joined modal infinitives." }),
+    ex({ id: "a132-44", type: "production", prompt: "Create a six-line telephone dialogue using anrufen, zurückrufen, and aufschreiben.", model: "Rufst du Frau Klein an? – Ja, ich rufe sie jetzt an. – Sie ist nicht da. – Dann soll sie mich zurückrufen. Schreibst du meine Nummer auf? – Ja.", explanation: "Use each prefix as the right edge of a main clause or keep it joined after a modal." }),
+    ex({ id: "a132-45", type: "production", prompt: "Describe a shopping trip with six separable verbs.", model: "Ich gehe um zehn los. Meine Freundin kommt mit. Wir kaufen im Zentrum ein. Ich probiere eine Jacke an. Danach holen wir ein Paket ab. Um zwölf kommen wir zurück.", explanation: "Choose verbs that naturally organize the sequence." }),
+    ex({ id: "a132-46", type: "production", prompt: "Make a two-column list of ten infinitives and their split forms.", model: "aufstehen → ich stehe auf · anrufen → ich rufe an · einkaufen → ich kaufe ein · mitbringen → ich bringe mit · abholen → ich hole ab", explanation: "Store the infinitive, prefix, and one complete present-tense example together." }),
+    ex({ id: "a132-47", type: "production", prompt: "Write six time-first sentences with separable verbs.", model: "Um sieben stehe ich auf. Danach mache ich das Fenster auf. Um acht fahre ich los. Mittags kaufe ich ein. Am Abend rufe ich meine Mutter an.", explanation: "The time phrase occupies position one; the stem remains second." }),
+    ex({ id: "a132-48", type: "production", prompt: "Explain aloud why the verb splits in three sentences and stays joined in three others.", model: "Ich rufe an: anrufen is the main verb, so it splits. Ich muss anrufen: the modal is conjugated, so anrufen stays an infinitive at the end.", explanation: "Naming the finite verb makes the word-order decision repeatable." }),
+    ex({ id: "a132-49", type: "production", prompt: "Write an eight-sentence travel-day story using at least seven separable verbs.", model: "Ich stehe früh auf und packe meine Tasche ein. Um sechs fahre ich los. Der Zug kommt pünktlich an. Meine Freundin holt mich ab. Wir steigen in den Bus ein und kommen um zehn zurück.", explanation: "Use the prefixes to create a clear sequence of actions." }),
+    ex({ id: "a132-50", type: "production", prompt: "Record a one-minute routine and then check every right-edge prefix.", model: "Am Samstag schlafe ich lange aus. Danach räume ich die Küche auf. Ich kaufe ein und bringe Brot mit. Am Abend sehe ich fern und mache um elf das Licht aus.", explanation: "A final prefix check catches the most common separable-verb error." }),
+  ]),
+];
