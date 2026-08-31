@@ -1205,6 +1205,11 @@ html[data-theme="dark"] :where(
   background: #090a0d;
   color: #f7f7f8;
 }
+html[data-theme="dark"] .level-switcher button.is-active {
+  background: #090a0d;
+  color: #f7f7f8;
+}
+html[data-theme="dark"] .level-switcher button.is-active :where(b, span) { color: #f7f7f8; }
 html[data-theme="dark"] .grammar-reference-table th { background: #090a0d; color: #f7f7f8; }
 html[data-theme="dark"] :where(
   .hero-actions > a,

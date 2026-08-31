@@ -49,6 +49,16 @@ test("emits the catalog's animation and scrolling utilities", async () => {
   assert.match(css, /mask-image:/);
   assert.match(css, /tw-shimmer/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+
+  const globals = await readFile(path.join(root, "app/globals.css"), "utf8");
+  assert.match(
+    globals,
+    /html\[data-theme="dark"\] \.level-switcher button\.is-active\s*\{[^}]*background:\s*#090a0d;[^}]*color:\s*#f7f7f8;/s,
+  );
+  assert.match(
+    globals,
+    /html\[data-theme="dark"\] \.level-switcher button\.is-active :where\(b, span\)\s*\{\s*color:\s*#f7f7f8;/,
+  );
 });
 
 test("forwards progress semantics to the primitive", async () => {
