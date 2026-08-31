@@ -310,13 +310,15 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .word-help svg { width: 12px; }
 .reader-copy { max-width: 760px; margin: 23px auto 30px; white-space: pre-wrap; font: 400 clamp(20px, 2.4vw, 27px)/1.78 Georgia, serif; color: #29312c; }
 .reader-copy::first-letter { float: left; margin: 10px 8px 0 0; color: var(--orange); font: 700 66px/.7 Georgia, serif; }
-.story-word { display: inline; border: 0; padding: 0; margin: 0; background: transparent; font: inherit; line-height: inherit; cursor: help; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(229,95,69,.35); text-underline-offset: 4px; border-radius: 3px; }
-.story-word:hover { background: #f6ddd6; color: #9f2d1f; }
+.story-word { position: relative; display: inline; border: 0; padding: 0; margin: 0; background: transparent; font: inherit; line-height: inherit; cursor: help; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(229,95,69,.35); text-underline-offset: 4px; border-radius: 3px; }
+.story-word:hover, .story-word:focus-visible { background: #f6ddd6; color: #9f2d1f; outline: 2px solid rgba(229,95,69,.45); outline-offset: 3px; }
 .story-word.no-gloss { cursor: default; text-decoration: none; }
 .story-word.is-active { background: var(--orange); color: white; text-decoration: none; box-shadow: 2px 0 0 var(--orange), -2px 0 0 var(--orange); }
-.word-tooltip { display: grid; gap: 2px; padding: 8px 11px; border-radius: 8px; background: var(--ink); color: white; }
-.word-tooltip span { opacity: .6; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
-.word-tooltip strong { font-size: 11px; }
+.word-gloss { position: absolute; z-index: 60; bottom: calc(100% + 9px); left: 50%; display: grid; gap: 2px; min-width: max-content; max-width: min(260px, calc(100vw - 28px)); padding: 8px 11px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: var(--ink); color: white; box-shadow: 0 10px 24px rgba(25,31,27,.26); opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity 100ms ease, transform 100ms ease; white-space: normal; text-align: left; }
+.word-gloss::after { position: absolute; top: 100%; left: 50%; width: 8px; height: 8px; background: var(--ink); content: ""; transform: translate(-50%, -5px) rotate(45deg); }
+.story-word:hover .word-gloss, .story-word:focus-visible .word-gloss { opacity: 1; transform: translate(-50%, 0); }
+.word-gloss span { opacity: .6; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
+.word-gloss strong { font-size: 11px; }
 .reader-notes { display: grid; grid-template-columns: .8fr 1.2fr .9fr; gap: 10px; }
 .reader-notes > div { min-height: 120px; padding: 17px; border: 1px solid var(--line); border-radius: 13px; background: #f3efe7; }
 .note-label, .speak-prompt span { color: var(--orange-dark); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
