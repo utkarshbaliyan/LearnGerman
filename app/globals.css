@@ -50,13 +50,14 @@ html[data-theme="dark"] {
   --amber: #e4ad58;
   --orange: var(--blue);
   --orange-dark: #a9bcff;
-  --green: #f2f2f3;
+  --green: #090a0d;
   --mint: #202a42;
   --line: #303137;
   --muted: #24252a;
   --accent: #202a42;
   --destructive: #e4ad58;
   --popover: #1b1c20;
+  --secondary-foreground: #f2f2f3;
 }
 
 @theme inline {
@@ -1188,3 +1189,46 @@ html[data-theme="dark"] .vocabulary-empty { background: var(--white); border-col
   .reader-nav button { font-size: 0; }
   .reader-nav button svg { margin: 0; }
 }
+
+/* Dark-mode contrast: inverse panels always keep light foregrounds. */
+html[data-theme="dark"] :where(
+  .next-story-card,
+  .level-switcher button.is-active,
+  .vocabulary-progress-card,
+  .vocabulary-levels button.is-active,
+  .grammar-progress-card,
+  .grammar-level-switcher button.is-active,
+  .grammar-pattern,
+  .practice-finish
+) {
+  background: #090a0d;
+  color: #f7f7f8;
+}
+html[data-theme="dark"] .grammar-reference-table th { background: #090a0d; color: #f7f7f8; }
+html[data-theme="dark"] :where(
+  .hero-actions > a,
+  .progress-ring strong,
+  .level-progress-list button b,
+  .card-top [data-slot="badge"],
+  footer > div a,
+  .key-words b,
+  .progress-filters button b,
+  .vocabulary-list-heading > p strong,
+  .grammar-hero-actions > a,
+  .grammar-level-switcher b,
+  .practice-heading > div:last-child strong,
+  .next-grammar-lesson strong
+) { color: var(--ink); }
+html[data-theme="dark"] :where(.audio-pending, .reader-notes > div, .key-words span, .production-note) {
+  border-color: var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+html[data-theme="dark"] .speak-prompt { background: var(--accent); }
+html[data-theme="dark"] .speak-prompt p { color: var(--ink); }
+html[data-theme="dark"] :where(.complete-story-button.is-completed, .grammar-lesson-heading .mastery-badge) {
+  background: color-mix(in srgb, var(--green-accent) 18%, var(--white));
+  color: var(--green-accent);
+}
+html[data-theme="dark"] .audio-bar { background: #090a0d; color: #f7f7f8; }
+html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
