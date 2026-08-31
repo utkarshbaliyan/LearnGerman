@@ -22,7 +22,7 @@ async function renderRoute(pathname) {
   );
 }
 
-test("renders the daily learning playground as the English home", async () => {
+test("renders the mastery-based A1–C1 course as the English home", async () => {
   const response = await renderRoute("/");
 
   assert.equal(response.status, 200);
@@ -32,11 +32,26 @@ test("renders the daily learning playground as the English home", async () => {
   );
   const html = await response.text();
   assert.match(html, /<html[^>]*\blang=["']en["']/i);
-  assert.match(html, /A little German\. Every day\./i);
-  assert.match(html, /Passive input/i);
-  assert.match(html, /Active recall/i);
-  assert.match(html, /Use your German/i);
+  assert.match(html, /Learn every skill/i);
+  assert.match(html, /Master every level/i);
+  assert.match(html, /A1 · 24 chapters/i);
+  assert.match(html, /Begin A1 Chapter 1/i);
   assert.match(html, /href=["']\/stories["']/i);
+});
+
+test("renders A1 Chapter 1 as one integrated six-skill course chapter", async () => {
+  const response = await renderRoute("/course/a1/chapter-1");
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Ich bin neu hier/i);
+  assert.match(html, /30 core words/i);
+  assert.match(html, /50 grammar exercises/i);
+  assert.match(html, /Listening check/i);
+  assert.match(html, /Personal pronouns and/i);
+  assert.match(html, /Introduce yourself without reading/i);
+  assert.match(html, /Write a personal introduction/i);
+  assert.match(html, /Integrated checkpoint/i);
 });
 
 test("preserves the complete story library at its dedicated route", async () => {
