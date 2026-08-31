@@ -233,7 +233,8 @@ const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 // The same German form can genuinely serve more than one learning card (for
 // example, a noun and a fixed expression). Card IDs—not surface spelling—must
 // be unique. Keep this guard lightweight because this module also runs in the
-// browser when the vocabulary route opens.
+// browser when the vocabulary route opens. The complete library is deliberately
+// allowed to contain related forms across levels.
 if (ALL_VOCABULARY.length < 2500 || vocabularyIds.size !== ALL_VOCABULARY.length) {
   throw new Error("The A1–B1 vocabulary library must contain at least 2,500 uniquely identified learning cards.");
 }
