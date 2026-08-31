@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
-import { ALL_VOCABULARY, VOCABULARY_CATEGORIES, type VocabularyCategory, type VocabularyWord } from "@/app/vocabulary/data";
+import { ALL_VOCABULARY, VOCABULARY_CATEGORIES, VOCABULARY_LEVEL_COUNTS, type VocabularyCategory, type VocabularyWord } from "@/app/vocabulary/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -176,8 +176,8 @@ export default function VocabularyPage() {
       <section className="vocabulary-hero">
         <div>
           <Badge className="eyebrow"><Sparkles /> A1–B1 · Vocabulary</Badge>
-          <h1>2,400 words.<br /><em>One clear path to B1.</em></h1>
-          <p>Build from 800 A1 foundations through 500 new A2 words and 1,100 new B1 words. Study frequent language from daily life, relationships, housing, work, education, travel, health, media, the environment, and public life.</p>
+          <h1>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words.<br /><em>One clear path to B1.</em></h1>
+          <p>Build from A1 foundations through A2 everyday life and B1 independent communication. Study essential language for people, housing, work, education, travel, health, media, the environment, public life, and real German services.</p>
         </div>
         <aside className="vocabulary-progress-card">
           <span>Your progress · {levelLabel}</span>
@@ -191,10 +191,10 @@ export default function VocabularyPage() {
         <div className="vocabulary-levels" aria-label="Choose a vocabulary level">
           <div><span>Study range</span><strong>{levelLabel}</strong></div>
           <div>
-            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>2,400 words</small></button>
-            <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>800 words</small></button>
-            <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>500 new words</small></button>
-            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>1,100 new words</small></button>
+            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words</small></button>
+            <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>{VOCABULARY_LEVEL_COUNTS.A1.toLocaleString("en")} words</small></button>
+            <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>{VOCABULARY_LEVEL_COUNTS.A2.toLocaleString("en")} words</small></button>
+            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>{VOCABULARY_LEVEL_COUNTS.B1.toLocaleString("en")} words</small></button>
           </div>
         </div>
         <div className="vocabulary-toolbar">
@@ -229,7 +229,7 @@ export default function VocabularyPage() {
         )}
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>2,400 essential vocabulary cards for the complete A1–B1 learning path.</p><div><Link href="/" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} essential vocabulary cards for the complete A1–B1 learning path.</p><div><Link href="/" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
+import { ESSENTIAL_A1, ESSENTIAL_A2, ESSENTIAL_B1, type EssentialVocabulary } from "@/app/vocabulary/essential-data";
 
 export const VOCABULARY_CATEGORIES = [
   "Grundlagen & Kommunikation",
@@ -185,17 +186,54 @@ function buildVocabulary(): VocabularyWord[] {
   return words.map((word, index) => ({ ...word, id: `a1-${String(index + 1).padStart(3, "0")}`, level: "A1" }));
 }
 
-export const A1_VOCABULARY = buildVocabulary();
-export { A2_VOCABULARY };
-export const B1_VOCABULARY = buildB1Vocabulary([...A1_VOCABULARY, ...A2_VOCABULARY]);
-export const ALL_VOCABULARY = [...A1_VOCABULARY, ...A2_VOCABULARY, ...B1_VOCABULARY];
+function addEssentialVocabulary(
+  existing: VocabularyWord[],
+  additions: EssentialVocabulary[],
+  level: VocabularyWord["level"],
+  idPrefix: string,
+  earlier: VocabularyWord[] = [],
+): VocabularyWord[] {
+  const german = new Set([...earlier, ...existing].map((word) => word.german.toLocaleLowerCase("de")));
+  const english = new Set([...earlier, ...existing].map((word) => word.english.toLocaleLowerCase("en")));
+  const unique = additions.filter((word) => {
+    const germanKey = word.german.toLocaleLowerCase("de");
+    const englishKey = word.english.toLocaleLowerCase("en");
+    if (german.has(germanKey) || english.has(englishKey)) return false;
+    german.add(germanKey);
+    english.add(englishKey);
+    return true;
+  });
+  return [...existing, ...unique.map((word, index) => ({
+    ...word,
+    id: `${idPrefix}-${String(existing.length + index + 1).padStart(4, "0")}`,
+    level,
+  }))];
+}
+
+export const A1_VOCABULARY = addEssentialVocabulary(buildVocabulary(), ESSENTIAL_A1, "A1", "a1");
+export const EXTENDED_A2_VOCABULARY = addEssentialVocabulary(A2_VOCABULARY, ESSENTIAL_A2, "A2", "a2", A1_VOCABULARY);
+export const B1_VOCABULARY = addEssentialVocabulary(
+  buildB1Vocabulary([...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY]),
+  ESSENTIAL_B1,
+  "B1",
+  "b1",
+  [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY],
+);
+export { EXTENDED_A2_VOCABULARY as A2_VOCABULARY };
+export const ALL_VOCABULARY = [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY, ...B1_VOCABULARY];
+export const VOCABULARY_LEVEL_COUNTS = {
+  A1: A1_VOCABULARY.length,
+  A2: EXTENDED_A2_VOCABULARY.length,
+  B1: B1_VOCABULARY.length,
+  all: ALL_VOCABULARY.length,
+} as const;
 
 const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 const germanEntries = new Set(ALL_VOCABULARY.map((word) => word.german.toLocaleLowerCase("de")));
 const englishEntries = new Set(ALL_VOCABULARY.map((word) => word.english.toLocaleLowerCase("en")));
 
-if (ALL_VOCABULARY.length !== 2400 || vocabularyIds.size !== 2400 || germanEntries.size !== 2400 || englishEntries.size !== 2400) {
-  throw new Error("Der A1–B1-Wortschatz muss 2.400 eindeutige Lernkarten enthalten.");
+if (ALL_VOCABULARY.length < 2700 || vocabularyIds.size !== ALL_VOCABULARY.length || germanEntries.size !== ALL_VOCABULARY.length || englishEntries.size !== ALL_VOCABULARY.length) {
+  throw new Error("The A1–B1 vocabulary library must contain at least 2,700 unique learning cards.");
 }
 
 for (const category of VOCABULARY_CATEGORIES) {
