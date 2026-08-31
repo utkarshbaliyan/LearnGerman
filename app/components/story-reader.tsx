@@ -26,6 +26,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const STOP_WORDS = new Set([
   "aber", "alle", "als", "am", "an", "auch", "auf", "aus", "bei", "das", "dem",
@@ -52,17 +58,26 @@ function StoryWord({ token, active }: {
   }
 
   return (
-    <button
-      type="button"
-      className={`story-word${active ? " is-active" : ""}`}
-      aria-label={`${word}: ${meaning}`}
-    >
-      {token}
-      <span className="word-gloss" role="tooltip" aria-hidden="true">
-        <span>{word}</span>
-        <strong>{meaning}</strong>
-      </span>
-    </button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          className={`story-word${active ? " is-active" : ""}`}
+          aria-label={`${word}: ${meaning}`}
+        >
+          {token}
+        </button>
+      </TooltipTrigger>
+      <TooltipContent
+        className="story-word-gloss"
+        side="top"
+        sideOffset={10}
+        collisionPadding={12}
+      >
+        <span lang="de">{word}</span>
+        <strong lang="en">{meaning}</strong>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -125,7 +140,6 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
       setPaused(false);
       setLoadingAudio(false);
       setAudioError("");
-      setSelectedGloss(null);
       activeWordRef.current = -1;
       setActiveWord(-1);
     });
@@ -355,8 +369,10 @@ export function StoryReader({ curriculum, story, completed, onComplete, onStoryC
       </div>}
       {audioError && <p className="audio-error" role="alert">{audioError}</p>}
 
-      <div className="word-help"><MousePointer2 /> Hover over an underlined word to see its English meaning</div>
-      <article className="reader-copy" lang="de">{renderText()}</article>
+      <div className="word-help"><MousePointer2 /> Hover over or focus an underlined word to see its English meaning</div>
+      <TooltipProvider delayDuration={120} skipDelayDuration={80}>
+        <article className="reader-copy" lang="de">{renderText()}</article>
+      </TooltipProvider>
 
       <section className="reader-notes">
         <div>
