@@ -14,7 +14,9 @@ export default async function CourseChapterPage({ params }: { params: Promise<{ 
   const level = rawLevel.toUpperCase() as GrammarLevel;
   const number = parseChapter(rawChapter);
 
-  if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL || !getCourseChapter(level, number)) notFound();
+  if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();
+  const content = getCourseChapter(level, number);
+  if (!content) notFound();
 
-  return <IntegratedCourseChapter level={level} number={number} />;
+  return <IntegratedCourseChapter content={content} />;
 }

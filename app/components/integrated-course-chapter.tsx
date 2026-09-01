@@ -27,7 +27,7 @@ import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
 import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";
 import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
-import { courseChapterHref, getCourseChapter } from "@/app/course/course-data";
+import type { CourseChapterContent } from "@/app/course/course-data";
 import type { ChapterQuestion } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
 import {
@@ -87,8 +87,12 @@ function QuizBlock({ questions, eyebrow, title, savedScore, onScore }: {
   );
 }
 
-export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel; number: number }) {
-  const content = getCourseChapter(level, number)!;
+function courseChapterHref(level: GrammarLevel, number: number) {
+  return `/course/${level.toLowerCase()}/chapter-${number}`;
+}
+
+export function IntegratedCourseChapter({ content }: { content: CourseChapterContent }) {
+  const { level, number } = content;
   const { progress, hydrated, updateChapter } = useCourseProgress();
   const { setStoryCompleted } = useStoryProgress();
   const chapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
@@ -107,8 +111,8 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
   const recorderRef = useRef<MediaRecorder | null>(null);
   const recordingStreamRef = useRef<MediaStream | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const writingMinimum = level === "A1" ? 40 : level === "A2" ? 70 : 100;
-  const speakingLength = level === "A1" ? "45–60 seconds" : level === "A2" ? "60–90 seconds" : "90–120 seconds";
+  const writingMinimum = content.writingMinimum;
+  const speakingLength = content.speakingLength;
   const tutorContext: TutorContext = {
     level,
     chapter: number,
@@ -250,8 +254,8 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
       <section className="chapter-hero">
         <div>
           <div className="chapter-kicker"><Badge>{level}</Badge><span>Module {content.module.number} · {content.module.title}</span></div>
-          <h1 lang="de">{content.story.title}</h1>
-          <p>{content.lesson.outcome} Story context: <em>{content.story.theme}</em>.</p>
+          <h1 lang="de">{content.heroTitle}</h1>
+          <p>{content.heroDescription}</p>
           <div className="chapter-facts"><span><BookOpen /> 1 narrated story</span><span><Languages /> {content.vocabulary.length} core words</span><span><GraduationCap /> {content.grammar.exercises.length} grammar exercises</span><span><Mic /> Speaking mission</span></div>
         </div>
         <aside className="chapter-skill-card">
@@ -299,11 +303,11 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
         <div className="chapter-tables">{content.grammar.tables?.map((table) => <article key={table.title}><h3>{table.title}</h3>{table.caption && <p>{table.caption}</p>}<div><table><thead><tr>{table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead><tbody>{table.rows.map((row) => <tr key={row.join("-")}>{row.map((cell, index) => <td key={`${cell}-${index}`} lang={index > 0 ? "de" : undefined}>{cell}</td>)}</tr>)}</tbody></table></div></article>)}</div>
         <div className="chapter-examples"><div><span>See it in use</span><h3>Useful examples</h3></div><div>{content.grammar.examples.map((example) => <article key={example.german}><strong lang="de">{example.german}</strong><span>{example.english}</span>{example.note && <small>{example.note}</small>}</article>)}</div></div>
         <div className="chapter-memory-tip"><Lightbulb /><div><span>Memory strategy</span><p>{content.grammar.memoryTip}</p></div></div>
-        <GrammarPracticePanel lessonId={content.id} completedSets={chapter.grammarSets} onFinish={finishGrammarSet} />
+        <GrammarPracticePanel exercises={content.grammar.exercises} completedSets={chapter.grammarSets} onFinish={finishGrammarSet} />
       </section>
 
       <section className="chapter-learning-section chapter-writing" id="writing">
-        <div className="chapter-section-copy"><span>04 · Writing</span><h2>Produce connected German.</h2><p>{content.writingPrompt} Minimum: {writingMinimum} words.</p></div>
+        <div className="chapter-section-copy"><span>04 · Writing</span><h2>{content.writingTitle}</h2><p>{content.writingPrompt} Minimum: {writingMinimum} words.</p></div>
         <div className="writing-workspace"><label><span>Your German text · {writingWords} words</span><Textarea lang="de" value={chapter.writingDraft} onChange={(event) => updateChapter(content.id, (current) => ({ ...current, writingDraft: event.target.value }))} placeholder={`Kapitel ${number}: ${content.story.theme} …`} /></label><div className="writing-rubric"><span>Self-check before submitting</span>{[
           ["content", "I answered every part of the writing mission."],
           ["grammar", `I deliberately used the focus: ${content.lesson.title}.`],
@@ -313,7 +317,7 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
       </section>
 
       <section className="chapter-learning-section chapter-speaking" id="speaking">
-        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Respond without reading.</h2><p>{content.speakingPrompt}</p></div>
+        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>{content.speakingTitle}</h2><p>{content.speakingPrompt}</p></div>
         <div className="speaking-mission"><div><Target /><span><b>Your mission</b><small>Speak for {speakingLength}. Use the grammar pattern and at least five chapter expressions.</small></span></div><ol><li>Listen to one paragraph again and shadow its rhythm.</li><li>Prepare keywords, not a complete script.</li><li>Record your response in one continuous attempt.</li><li>Submit it for a transcript, corrections, and a clear next step.</li></ol><div className="ai-tutor-actions">{!isRecording ? <Button variant={recordingBlob ? "outline" : "default"} onClick={startRecording}><Mic /> {recordingBlob ? "Record another response" : "Start recording"}</Button> : <Button className="recording-button" onClick={() => recorderRef.current?.stop()}><Square /> Stop recording</Button>}{recordingBlob && !isRecording && <Button onClick={checkSpeaking} disabled={isCheckingSpeaking}><Sparkles /> {isCheckingSpeaking ? "Checking…" : speakingFeedback ? "Check again" : "Check recording"}</Button>}</div>{recordingUrl && <div className="chapter-recording"><Volume2 /><span><b>Your recording</b><small>Kept in this open page. It is sent for feedback only when you submit.</small></span><audio controls src={recordingUrl}>Your browser cannot play this recording.</audio></div>}{recordingError && <p className="chapter-error" role="alert">{recordingError}</p>}<p className="ai-tutor-privacy">Your audio is transcribed securely when submitted. The course saves only your best skill score, not the recording or transcript.</p></div>
         {speakingFeedback && <AiTutorFeedback feedback={speakingFeedback} mode="speaking" onRetry={() => setSpeakingFeedback(null)} />}
       </section>
@@ -326,7 +330,7 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
       <section className={`chapter-finish${chapter.completed ? " is-complete" : ""}`}>
         <div>{chapter.completed ? <CheckCircle2 /> : <Sparkles />}</div>
         <span>{chapter.completed ? "Chapter mastered" : "Mastery gate"}</span>
-        <h2>{chapter.completed ? content.lesson.outcome : readyForMastery ? "Every skill is ready." : "Complete every skill before moving on."}</h2>
+        <h2>{chapter.completed ? content.completionOutcome : readyForMastery ? "Every skill is ready." : "Complete every skill before moving on."}</h2>
         <p>{chapter.completed ? `${level} is now one chapter closer to completion. Review remains available at any time.` : `Each skill needs 70%, all ${grammarGroups.length} grammar sets must be attempted, and the checkpoint needs 80%.`}</p>
         <div className="mastery-requirements">{SKILLS.map(({ id, label }) => <span key={id} className={(chapter.skillScores[id] ?? 0) >= 70 ? "is-ready" : ""}>{(chapter.skillScores[id] ?? 0) >= 70 ? <Check /> : <Circle />}{label} {chapter.skillScores[id] ?? 0}%</span>)}<span className={(chapter.checkpointScore ?? 0) >= 80 ? "is-ready" : ""}>{(chapter.checkpointScore ?? 0) >= 80 ? <Check /> : <Circle />}Checkpoint {chapter.checkpointScore ?? 0}%</span></div>
         <div className="chapter-finish-actions"><Button variant="outline" asChild><Link href={previousHref}><ArrowLeft /> Previous chapter</Link></Button>{chapter.completed ? <Button asChild><Link href={nextHref}>Continue to next chapter <ArrowRight /></Link></Button> : <Button size="lg" disabled={!readyForMastery || !hydrated} onClick={completeChapter}>Complete Chapter {number} <ArrowRight /></Button>}</div>

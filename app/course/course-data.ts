@@ -223,12 +223,21 @@ export function getCourseChapter(level: string, number: number) {
     level: normalizedLevel,
     number,
     levelCopy: LEVEL_COPY[normalizedLevel],
-    curriculum,
+    curriculum: {
+      id: curriculum.id,
+      audioBasePath: curriculum.audioBasePath,
+      audioVersion: curriculum.audioVersion,
+    },
     story,
     storyIndex,
     lesson,
     grammar,
     module: grammarModule,
+    heroTitle: isFirstChapter ? "Ich bin neu hier." : story.title,
+    heroDescription: isFirstChapter
+      ? "Learn to introduce yourself, understand a first meeting, and control personal pronouns with sein."
+      : `${lesson.outcome} Story context: ${story.theme}.`,
+    completionOutcome: isFirstChapter ? "Du kannst dich vorstellen." : lesson.outcome,
     outcomes: isFirstChapter ? CHAPTER_ONE_OUTCOMES : [
       lesson.outcome,
       `Understand the main ideas and key details in “${story.title}”.`,
@@ -241,10 +250,20 @@ export function getCourseChapter(level: string, number: number) {
     listening: isFirstChapter ? CHAPTER_ONE_LISTENING : generated.listening,
     reading: isFirstChapter ? CHAPTER_ONE_READING : generated.reading,
     checkpoint: isFirstChapter ? CHAPTER_ONE_CHECKPOINT : generated.checkpoint,
-    speakingPrompt: story.speakingPrompt ?? `Speak for 45–60 seconds about “${story.theme}”. Use the chapter grammar pattern and at least five new expressions.`,
-    writingPrompt: story.writingPrompt ?? `Write 50–80 words about “${story.theme}”. Use the chapter grammar focus and connect at least four complete sentences.`,
+    writingTitle: isFirstChapter ? "Write a personal introduction." : "Produce connected German.",
+    speakingPrompt: isFirstChapter
+      ? "Say your name, where you come from, where you live, which languages you speak, and one personal detail."
+      : story.speakingPrompt ?? `Speak for 45–60 seconds about “${story.theme}”. Use the chapter grammar pattern and at least five new expressions.`,
+    speakingTitle: isFirstChapter ? "Introduce yourself without reading." : "Respond without reading.",
+    speakingLength: isFirstChapter ? "30–45 seconds" : normalizedLevel === "A1" ? "45–60 seconds" : normalizedLevel === "A2" ? "60–90 seconds" : "90–120 seconds",
+    writingPrompt: isFirstChapter
+      ? "Write 30–50 words. Include your name, origin, current city, languages, and one reason for learning German."
+      : story.writingPrompt ?? `Write 50–80 words about “${story.theme}”. Use the chapter grammar focus and connect at least four complete sentences.`,
+    writingMinimum: isFirstChapter ? 30 : normalizedLevel === "A1" ? 40 : normalizedLevel === "A2" ? 70 : 100,
   };
 }
+
+export type CourseChapterContent = NonNullable<ReturnType<typeof getCourseChapter>>;
 
 export function courseChapterHref(level: GrammarLevel, number: number) {
   return `/course/${level.toLowerCase()}/chapter-${number}`;

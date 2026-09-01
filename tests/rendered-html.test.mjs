@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function renderRoute(pathname) {
@@ -40,6 +41,38 @@ test("renders the 72-chapter mastery course as the English home", async () => {
   assert.match(html, /href=["']\/stories["']/i);
 });
 
+test("keeps the complete grammar database out of ordinary course client bundles", async () => {
+  const manifestUrl = new URL("../dist/client/.vite/manifest.json", import.meta.url);
+  const manifest = JSON.parse(await readFile(manifestUrl, "utf8"));
+
+  async function transitiveBytes(entryKey) {
+    const visited = new Set();
+
+    async function visit(key) {
+      const entry = manifest[key];
+      if (!entry || visited.has(entry.file)) return;
+      visited.add(entry.file);
+      await Promise.all((entry.imports ?? []).map(visit));
+    }
+
+    await visit(entryKey);
+    const sizes = await Promise.all([...visited].map(async (file) => {
+      const assetUrl = new URL(`../dist/client/${file}`, import.meta.url);
+      return (await stat(assetUrl)).size;
+    }));
+    return sizes.reduce((sum, size) => sum + size, 0);
+  }
+
+  assert.ok(
+    (await transitiveBytes("app/components/course-home.tsx")) < 400_000,
+    "the course home should not download all 3,600 grammar exercises",
+  );
+  assert.ok(
+    (await transitiveBytes("app/components/integrated-course-chapter.tsx")) < 600_000,
+    "a chapter should ship only its own grammar exercises",
+  );
+});
+
 test("renders representative integrated chapters across A1, A2, and B1", async () => {
   for (const pathname of [
     "/course/a1/chapter-2",
@@ -73,7 +106,7 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   const response = await renderRoute("/course/a1/chapter-1");
 
   assert.equal(response.status, 200);
-  const html = await response.text();
+  const html = (await response.text()).replace(/<!--.*?-->/g, "");
   assert.match(html, /Ich bin neu hier/i);
   assert.match(html, /30 core words/i);
   assert.match(html, /50 grammar exercises/i);

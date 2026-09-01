@@ -87,7 +87,7 @@ export function NarratedTranslatedStory({
   playbackRate,
   speedLabel,
 }: {
-  curriculum: Curriculum;
+  curriculum: Pick<Curriculum, "id" | "audioBasePath" | "audioVersion">;
   story: Story;
   playbackRate: number;
   speedLabel: string;

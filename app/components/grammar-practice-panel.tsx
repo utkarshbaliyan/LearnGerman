@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { LIVE_GRAMMAR_LESSONS, type GrammarExercise } from "@/app/grammar/course";
+import type { GrammarExercise } from "@/app/grammar/course";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,12 +38,11 @@ function ExerciseType({ exercise }: { exercise: GrammarExercise }) {
   return <Badge variant="outline">{labels[exercise.type]}</Badge>;
 }
 
-export function GrammarPracticePanel({ lessonId, completedSets, onFinish }: {
-  lessonId: string;
+export function GrammarPracticePanel({ exercises: allExercises, completedSets, onFinish }: {
+  exercises: GrammarExercise[];
   completedSets: Record<string, number>;
   onFinish: (setName: string, score: number) => void;
 }) {
-  const allExercises = LIVE_GRAMMAR_LESSONS[lessonId].exercises;
   const groups = useMemo(() => [...new Set(allExercises.map((item) => item.group ?? "Core practice"))], [allExercises]);
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
