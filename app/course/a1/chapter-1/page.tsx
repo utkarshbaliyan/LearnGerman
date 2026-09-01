@@ -28,6 +28,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
 import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";
+import { TranslatedStoryText } from "@/app/components/translated-story-text";
 import {
   CHAPTER_ONE_CHECKPOINT,
   CHAPTER_ONE_LISTENING,
@@ -105,7 +106,7 @@ function QuizBlock({ questions, eyebrow, title, savedScore, onScore }: {
 }
 
 export default function ChapterOnePage() {
-  const { progress, hydrated, updateChapter, setSkillScore } = useCourseProgress();
+  const { progress, hydrated, updateChapter } = useCourseProgress();
   const { setStoryCompleted } = useStoryProgress();
   const chapter = progress.chapters[CHAPTER_ID] ?? EMPTY_CHAPTER_PROGRESS;
   const [showAllWords, setShowAllWords] = useState(false);
@@ -192,6 +193,17 @@ export default function ChapterOnePage() {
       const average = Math.round(Object.values(sets).reduce((sum, value) => sum + value, 0) / grammarGroups.length);
       return { ...current, grammarSets: sets, skillScores: { ...current.skillScores, grammar: Math.max(current.skillScores.grammar ?? 0, average) } };
     });
+  }
+
+  function saveStoryScore(score: number) {
+    updateChapter(CHAPTER_ID, (current) => ({
+      ...current,
+      skillScores: {
+        ...current.skillScores,
+        listening: Math.max(current.skillScores.listening ?? 0, score),
+        reading: Math.max(current.skillScores.reading ?? 0, score),
+      },
+    }));
   }
 
   async function startRecording() {
@@ -292,13 +304,17 @@ export default function ChapterOnePage() {
         </div>
         <aside className="chapter-skill-card">
           <span>Chapter mastery</span>
-          <div>{SKILLS.map(({ id, label, icon: Icon }) => { const score = chapter.skillScores[id] ?? 0; return <a key={id} href={`#${id}`}><Icon /><span>{label}</span><Progress value={score} /><b>{score}%</b></a>; })}</div>
+          <div>{SKILLS.map(({ id, label, icon: Icon }) => { const score = chapter.skillScores[id] ?? 0; return <a key={id} href={id === "listening" || id === "reading" ? "#story" : `#${id}`}><Icon /><span>{label}</span><Progress value={score} /><b>{score}%</b></a>; })}</div>
           <p>Every skill must reach at least 70%. The final checkpoint requires 80%.</p>
         </aside>
       </section>
 
       <nav className="chapter-section-nav" aria-label="Chapter sections">
-        {SKILLS.map(({ id, label, icon: Icon }) => <a key={id} href={`#${id}`}><Icon /><span>{label}</span>{(chapter.skillScores[id] ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>)}
+        <a href="#story"><Headphones /><span>Story</span>{(chapter.skillScores.listening ?? 0) >= 70 && (chapter.skillScores.reading ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>
+        <a href="#vocabulary"><Languages /><span>Vocabulary</span>{(chapter.skillScores.vocabulary ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>
+        <a href="#grammar"><GraduationCap /><span>Grammar</span>{(chapter.skillScores.grammar ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>
+        <a href="#writing"><PenLine /><span>Writing</span>{(chapter.skillScores.writing ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>
+        <a href="#speaking"><Mic /><span>Speaking</span>{(chapter.skillScores.speaking ?? 0) >= 70 ? <CheckCircle2 /> : <Circle />}</a>
         <a href="#checkpoint"><ClipboardCheck /><span>Checkpoint</span>{(chapter.checkpointScore ?? 0) >= 80 ? <CheckCircle2 /> : <Circle />}</a>
       </nav>
 
@@ -307,25 +323,26 @@ export default function ChapterOnePage() {
         <div>{CHAPTER_ONE_OUTCOMES.map((outcome) => <p key={outcome}><Check />{outcome}</p>)}</div>
       </section>
 
-      <section className="chapter-learning-section chapter-listening" id="listening">
-        <div className="chapter-section-copy"><span>01 · Listening</span><h2>Meet Mia in Berlin.</h2><p>Listen once without reading. Focus on who is speaking, where they are, and which personal details you hear. Then listen again before answering.</p><div className="chapter-audio-player"><Button size="icon-lg" onClick={toggleAudio} aria-label={isListening ? "Pause chapter audio" : "Play chapter audio"}>{isListening ? <Pause /> : <Play />}</Button><div><strong>{isListening ? "Listening in German" : "Guten Morgen, Mia!"}</strong><span>Natural story · learning speed 0.92×</span></div><Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Restart chapter audio"><RotateCcw /></Button></div>{audioError && <p className="chapter-error" role="alert">{audioError}</p>}</div>
-        <QuizBlock questions={CHAPTER_ONE_LISTENING} eyebrow="Listening check" title="What did you understand?" savedScore={chapter.skillScores.listening ?? 0} onScore={(score) => setSkillScore(CHAPTER_ID, "listening", score)} />
-      </section>
-
-      <section className="chapter-learning-section chapter-reading" id="reading">
-        <div className="chapter-section-copy"><span>02 · Reading</span><h2>Read for meaning and detail.</h2><p>Read the complete story. Do not translate every word; use the situation and familiar expressions first.</p></div>
-        <article className="chapter-story" lang="de"><div><Badge>Story 001</Badge><span>{story.text.split(/\s+/).length} words</span></div><h3>{story.title}</h3>{story.text.split(/\n\n/).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</article>
-        <QuizBlock questions={CHAPTER_ONE_READING} eyebrow="Reading check" title="Read beyond individual words." savedScore={chapter.skillScores.reading ?? 0} onScore={(score) => setSkillScore(CHAPTER_ID, "reading", score)} />
+      <section className="chapter-learning-section chapter-story-lesson" id="story">
+        <div className="chapter-section-copy"><span>01 · Story</span><h2>Listen, read, and understand.</h2><p>Play the story once with the text covered and listen for the situation. Then listen again while reading. Use a word translation only after trying to infer its meaning from context.</p></div>
+        <article className="chapter-story chapter-story-interactive" lang="de">
+          <div><Badge>Story 001</Badge><span>{story.text.split(/\s+/).length} words</span></div>
+          <h3>{story.title}</h3>
+          <div className="chapter-audio-player"><Button size="icon-lg" onClick={toggleAudio} aria-label={isListening ? "Pause chapter audio" : "Play chapter audio"}>{isListening ? <Pause /> : <Play />}</Button><div><strong>{isListening ? "Listening in German" : story.title}</strong><span>Natural story · learning speed 0.92×</span></div><Button variant="ghost" size="icon-sm" onClick={restartAudio} aria-label="Restart chapter audio"><RotateCcw /></Button></div>
+          {audioError && <p className="chapter-error" role="alert">{audioError}</p>}
+          <TranslatedStoryText text={story.text} />
+        </article>
+        <QuizBlock questions={[...CHAPTER_ONE_LISTENING, ...CHAPTER_ONE_READING]} eyebrow="Story check" title="What did you understand?" savedScore={Math.min(chapter.skillScores.listening ?? 0, chapter.skillScores.reading ?? 0)} onScore={saveStoryScore} />
       </section>
 
       <section className="chapter-learning-section chapter-vocabulary" id="vocabulary">
-        <div className="chapter-section-copy"><span>03 · Vocabulary</span><h2>Build the language for a first meeting.</h2><p>Learn every noun with its article and plural, every verb through a sentence, and every expression as something you can say.</p><div className="vocabulary-mastery-line"><strong>{chapter.knownWords.length}/{CHAPTER_ONE_VOCABULARY.length} recalled</strong><Progress value={(chapter.knownWords.length / CHAPTER_ONE_VOCABULARY.length) * 100} /></div></div>
+        <div className="chapter-section-copy"><span>02 · Vocabulary</span><h2>Build the language for a first meeting.</h2><p>Learn every noun with its article and plural, every verb through a sentence, and every expression as something you can say.</p><div className="vocabulary-mastery-line"><strong>{chapter.knownWords.length}/{CHAPTER_ONE_VOCABULARY.length} recalled</strong><Progress value={(chapter.knownWords.length / CHAPTER_ONE_VOCABULARY.length) * 100} /></div></div>
         <div className="chapter-vocab-grid">{CHAPTER_ONE_VOCABULARY.slice(0, showAllWords ? undefined : 12).map((word) => { const known = chapter.knownWords.includes(word.id); return <article key={word.id} className={known ? "is-known" : ""}><span>{word.english}</span><h3 lang="de">{word.german}</h3>{word.note && <small>{word.note}</small>}<p lang="de">{word.example}</p><button type="button" aria-pressed={known} onClick={() => toggleKnownWord(word.id)}><Check /> {known ? "I can recall this" : "Mark after recalling"}</button></article>; })}</div>
         {!showAllWords && <Button variant="outline" className="show-chapter-words" onClick={() => setShowAllWords(true)}>Show all 30 chapter words</Button>}
       </section>
 
       <section className="chapter-learning-section chapter-grammar" id="grammar">
-        <div className="chapter-section-copy"><span>04 · Grammar</span><h2>Personal pronouns and <em>sein</em>.</h2><p>{grammar.lead}</p></div>
+        <div className="chapter-section-copy"><span>03 · Grammar</span><h2>Personal pronouns and <em>sein</em>.</h2><p>{grammar.lead}</p></div>
         <div className="chapter-grammar-pattern"><span>Core pattern</span><strong lang="de">{grammar.pattern}</strong></div>
         <div className="chapter-explanation">{grammar.explanation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
         <div className="chapter-tables">{grammar.tables?.map((table) => <article key={table.title}><h3>{table.title}</h3>{table.caption && <p>{table.caption}</p>}<div><table><thead><tr>{table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead><tbody>{table.rows.map((row) => <tr key={row.join("-")}>{row.map((cell, index) => <td key={`${cell}-${index}`} lang={index > 0 ? "de" : undefined}>{cell}</td>)}</tr>)}</tbody></table></div></article>)}</div>
@@ -334,14 +351,8 @@ export default function ChapterOnePage() {
         <GrammarPracticePanel lessonId={CHAPTER_ID} completedSets={chapter.grammarSets} onFinish={finishGrammarSet} />
       </section>
 
-      <section className="chapter-learning-section chapter-speaking" id="speaking">
-        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Introduce yourself without reading.</h2><p>Say your name, where you come from, where you live, which languages you speak, and one personal detail. Aim for 30–45 seconds.</p></div>
-        <div className="speaking-mission"><div><Target /><span><b>Your mission</b><small>Use at least five chapter expressions and three correct forms of <em>sein</em>.</small></span></div><ol><li>Listen to the story introduction again.</li><li>Practise once with notes.</li><li>Record without reading a complete script.</li><li>Submit it for a transcript, corrections, and a clear next step.</li></ol><div className="ai-tutor-actions">{!isRecording ? <Button variant={recordingBlob ? "outline" : "default"} onClick={startRecording}><Mic /> {recordingBlob ? "Record another response" : "Start recording"}</Button> : <Button className="recording-button" onClick={() => recorderRef.current?.stop()}><Square /> Stop recording</Button>}{recordingBlob && !isRecording && <Button onClick={checkSpeaking} disabled={isCheckingSpeaking}><Sparkles /> {isCheckingSpeaking ? "Checking…" : speakingFeedback ? "Check again" : "Check recording"}</Button>}</div>{recordingUrl && <div className="chapter-recording"><Volume2 /><span><b>Your recording</b><small>Kept in this open page. It is sent for feedback only when you submit.</small></span><audio controls src={recordingUrl}>Your browser cannot play this recording.</audio></div>}{recordingError && <p className="chapter-error" role="alert">{recordingError}</p>}<p className="ai-tutor-privacy">Your audio is transcribed securely when submitted. The course saves only your best skill score, not the recording or transcript.</p></div>
-        {speakingFeedback && <AiTutorFeedback feedback={speakingFeedback} mode="speaking" onRetry={() => setSpeakingFeedback(null)} />}
-      </section>
-
       <section className="chapter-learning-section chapter-writing" id="writing">
-        <div className="chapter-section-copy"><span>06 · Writing</span><h2>Write a personal introduction.</h2><p>Write 30–50 words. Include your name, origin, current city, languages, and one reason for learning German.</p></div>
+        <div className="chapter-section-copy"><span>04 · Writing</span><h2>Write a personal introduction.</h2><p>Write 30–50 words. Include your name, origin, current city, languages, and one reason for learning German.</p></div>
         <div className="writing-workspace"><label><span>Your German text · {writingWords} words</span><Textarea lang="de" value={chapter.writingDraft} onChange={(event) => updateChapter(CHAPTER_ID, (current) => ({ ...current, writingDraft: event.target.value }))} placeholder="Hallo! Ich heiße …" /></label><div className="writing-rubric"><span>Self-check before submitting</span>{[
           ["content", "I included all five requested details."],
           ["grammar", "I checked ich bin, ich komme and ich spreche."],
@@ -350,8 +361,14 @@ export default function ChapterOnePage() {
         {writingFeedback && <AiTutorFeedback feedback={writingFeedback} mode="writing" onRetry={() => setWritingFeedback(null)} />}
       </section>
 
+      <section className="chapter-learning-section chapter-speaking" id="speaking">
+        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Introduce yourself without reading.</h2><p>Say your name, where you come from, where you live, which languages you speak, and one personal detail. Aim for 30–45 seconds.</p></div>
+        <div className="speaking-mission"><div><Target /><span><b>Your mission</b><small>Use at least five chapter expressions and three correct forms of <em>sein</em>.</small></span></div><ol><li>Listen to the story introduction again.</li><li>Practise once with notes.</li><li>Record without reading a complete script.</li><li>Submit it for a transcript, corrections, and a clear next step.</li></ol><div className="ai-tutor-actions">{!isRecording ? <Button variant={recordingBlob ? "outline" : "default"} onClick={startRecording}><Mic /> {recordingBlob ? "Record another response" : "Start recording"}</Button> : <Button className="recording-button" onClick={() => recorderRef.current?.stop()}><Square /> Stop recording</Button>}{recordingBlob && !isRecording && <Button onClick={checkSpeaking} disabled={isCheckingSpeaking}><Sparkles /> {isCheckingSpeaking ? "Checking…" : speakingFeedback ? "Check again" : "Check recording"}</Button>}</div>{recordingUrl && <div className="chapter-recording"><Volume2 /><span><b>Your recording</b><small>Kept in this open page. It is sent for feedback only when you submit.</small></span><audio controls src={recordingUrl}>Your browser cannot play this recording.</audio></div>}{recordingError && <p className="chapter-error" role="alert">{recordingError}</p>}<p className="ai-tutor-privacy">Your audio is transcribed securely when submitted. The course saves only your best skill score, not the recording or transcript.</p></div>
+        {speakingFeedback && <AiTutorFeedback feedback={speakingFeedback} mode="speaking" onRetry={() => setSpeakingFeedback(null)} />}
+      </section>
+
       <section className="chapter-learning-section chapter-checkpoint" id="checkpoint">
-        <div className="chapter-section-copy"><span>07 · Integrated checkpoint</span><h2>Prove that the chapter works together.</h2><p>This final check mixes the central vocabulary, grammar, reading situation, and communicative goal. You need at least 80%.</p></div>
+        <div className="chapter-section-copy"><span>06 · Integrated checkpoint</span><h2>Prove that the chapter works together.</h2><p>This final check mixes the central vocabulary, grammar, reading situation, and communicative goal. You need at least 80%.</p></div>
         <QuizBlock questions={CHAPTER_ONE_CHECKPOINT} eyebrow="Chapter checkpoint" title="Ready to use what you learned?" savedScore={chapter.checkpointScore ?? 0} onScore={(score) => updateChapter(CHAPTER_ID, (current) => ({ ...current, checkpointScore: Math.max(current.checkpointScore ?? 0, score) }))} />
       </section>
 
