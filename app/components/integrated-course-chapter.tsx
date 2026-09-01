@@ -13,9 +13,7 @@ import {
   Languages,
   Lightbulb,
   Mic,
-  Pause,
   PenLine,
-  Play,
   RotateCcw,
   Sparkles,
   Square,
@@ -28,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
 import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";
-import { TranslatedStoryText } from "@/app/components/translated-story-text";
+import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
 import { courseChapterHref, getCourseChapter } from "@/app/course/course-data";
 import type { ChapterQuestion } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
@@ -96,8 +94,6 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
   const chapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
   const grammarGroups = useMemo(() => [...new Set(content.grammar.exercises.map((exercise) => exercise.group ?? "Core practice"))], [content.grammar.exercises]);
   const [showAllWords, setShowAllWords] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [audioError, setAudioError] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [recordingUrl, setRecordingUrl] = useState("");
   const [recordingBlob, setRecordingBlob] = useState<Blob | null>(null);
@@ -108,11 +104,9 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
   const [writingFeedback, setWritingFeedback] = useState<TutorFeedback | null>(null);
   const [writingError, setWritingError] = useState("");
   const [isCheckingWriting, setIsCheckingWriting] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const recordingStreamRef = useRef<MediaStream | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const audioUrl = `${content.curriculum.audioBasePath}/story-${String(content.story.number).padStart(3, "0")}.webm?v=${content.curriculum.audioVersion}`;
   const writingMinimum = level === "A1" ? 40 : level === "A2" ? 70 : 100;
   const speakingLength = level === "A1" ? "45–60 seconds" : level === "A2" ? "60–90 seconds" : "90–120 seconds";
   const tutorContext: TutorContext = {
@@ -135,30 +129,9 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
   const nextHref = number < 24 ? courseChapterHref(level, number + 1) : level === "B1" ? "/" : courseChapterHref(level === "A1" ? "A2" : "B1", 1);
 
   useEffect(() => () => {
-    audioRef.current?.pause();
     recordingStreamRef.current?.getTracks().forEach((track) => track.stop());
     if (recordingUrl) URL.revokeObjectURL(recordingUrl);
   }, [recordingUrl]);
-
-  function toggleAudio() {
-    if (audioRef.current) {
-      if (audioRef.current.paused) {
-        if (audioRef.current.ended) audioRef.current.currentTime = 0;
-        void audioRef.current.play();
-      } else audioRef.current.pause();
-      return;
-    }
-    setAudioError("");
-    const audio = new Audio(audioUrl);
-    audio.preload = "auto";
-    audio.playbackRate = level === "A1" ? 0.92 : level === "A2" ? 0.96 : 1;
-    audioRef.current = audio;
-    audio.onplaying = () => setIsListening(true);
-    audio.onpause = () => setIsListening(false);
-    audio.onended = () => setIsListening(false);
-    audio.onerror = () => { setIsListening(false); setAudioError("The chapter audio could not be loaded."); };
-    void audio.play().catch(() => setAudioError("Playback could not start. Please try again."));
-  }
 
   function toggleKnownWord(wordId: string) {
     updateChapter(content.id, (current) => {
@@ -305,11 +278,9 @@ export function IntegratedCourseChapter({ level, number }: { level: GrammarLevel
       <section className="chapter-learning-section chapter-story-lesson" id="story">
         <div className="chapter-section-copy"><span>01 · Story</span><h2>Listen, read, and understand.</h2><p>Play the story once with the text covered and listen for the situation. Then listen again while reading. Use a word translation only after trying to infer its meaning from context.</p></div>
         <article className="chapter-story chapter-story-interactive" lang="de">
-          <div><Badge>Story {String(content.story.number).padStart(3, "0")}</Badge><span>{content.story.text.split(/\s+/).length} words</span></div>
+          <div className="chapter-story-meta"><Badge>Story {String(content.story.number).padStart(3, "0")}</Badge><span>{content.story.text.split(/\s+/).length} words</span></div>
           <h3>{content.story.title}</h3>
-          <div className="chapter-audio-player"><Button size="icon-lg" onClick={toggleAudio} aria-label={isListening ? "Pause chapter audio" : "Play chapter audio"}>{isListening ? <Pause /> : <Play />}</Button><div><strong>{isListening ? "Listening in German" : content.story.title}</strong><span>Narrated story · {level === "A1" ? "learning speed" : "natural speed"}</span></div><Button variant="ghost" size="icon-sm" onClick={() => { if (!audioRef.current) toggleAudio(); else { audioRef.current.currentTime = 0; void audioRef.current.play(); } }} aria-label="Restart chapter audio"><RotateCcw /></Button></div>
-          {audioError && <p className="chapter-error" role="alert">{audioError}</p>}
-          <TranslatedStoryText text={content.story.text} />
+          <NarratedTranslatedStory curriculum={content.curriculum} story={content.story} playbackRate={level === "A1" ? 0.92 : level === "A2" ? 0.96 : 1} speedLabel={level === "A1" ? "learning speed" : "natural speed"} />
         </article>
         <QuizBlock questions={[...content.listening, ...content.reading]} eyebrow="Story check" title="What did you understand?" savedScore={Math.min(chapter.skillScores.listening ?? 0, chapter.skillScores.reading ?? 0)} onScore={saveStoryScore} />
       </section>

@@ -314,10 +314,10 @@ footer > div a { color: var(--green); font-size: 10px; font-weight: 800; }
 .story-word:hover, .story-word:focus-visible { background: #f6ddd6; color: #9f2d1f; outline: 2px solid rgba(229,95,69,.45); outline-offset: 3px; }
 .story-word.no-gloss { cursor: default; text-decoration: none; }
 .story-word.is-active { background: var(--orange); color: white; text-decoration: none; box-shadow: 2px 0 0 var(--orange), -2px 0 0 var(--orange); }
-.story-word-gloss[data-slot="tooltip-content"] { z-index: 80; width: max-content; max-width: min(260px, calc(100vw - 24px)); padding: 9px 12px; display: grid; gap: 2px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: var(--ink); color: white; box-shadow: 0 10px 24px rgba(25,31,27,.26); white-space: normal; text-align: left; }
-.story-word-gloss span { opacity: .62; font: 700 9px/1.25 var(--font-ui); text-transform: capitalize; letter-spacing: .06em; }
-.story-word-gloss strong { font: 700 13px/1.35 var(--font-ui); overflow-wrap: anywhere; }
-.story-word-gloss [data-radix-popper-arrow] { background: var(--ink); fill: var(--ink); }
+.story-word-gloss[data-slot="tooltip-content"] { z-index: 80; width: max-content; max-width: min(260px, calc(100vw - 24px)); padding: 9px 12px; display: grid; gap: 2px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: #11151b; color: #fff; box-shadow: 0 10px 24px rgba(0,0,0,.32); white-space: normal; text-align: left; }
+.story-word-gloss span { color: rgba(255,255,255,.68); font: 700 9px/1.25 var(--font-ui); text-transform: capitalize; letter-spacing: .06em; }
+.story-word-gloss strong { color: #fff; font: 700 13px/1.35 var(--font-ui); overflow-wrap: anywhere; }
+.story-word-gloss [data-radix-popper-arrow] { background: #11151b; fill: #11151b; }
 .reader-notes { display: grid; grid-template-columns: .8fr 1.2fr .9fr; gap: 10px; }
 .reader-notes > div { min-height: 120px; padding: 17px; border: 1px solid var(--line); border-radius: 13px; background: #f3efe7; }
 .note-label, .speak-prompt span { color: var(--orange-dark); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
@@ -1549,7 +1549,7 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .chapter-quiz-result strong { font-size: 26px; }
 .chapter-quiz-result span { flex: 1; color: var(--ink-soft); font-size: 10px; }
 .chapter-story { max-width: 1100px; margin-bottom: 24px; padding: clamp(25px, 4vw, 48px); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 18px; background: var(--white); }
-.chapter-story > div { display: flex; align-items: center; justify-content: space-between; color: var(--ink-soft); font: 800 8px/1 var(--font-ui); text-transform: uppercase; }
+.chapter-story-meta { display: flex; align-items: center; justify-content: space-between; color: var(--ink-soft); font: 800 8px/1 var(--font-ui); text-transform: uppercase; }
 .chapter-story h3 { margin: 24px 0; font: 700 clamp(40px, 5vw, 64px)/.95 Georgia, serif; letter-spacing: -.045em; }
 .chapter-story p { max-width: 70ch; margin: 0 0 18px; font-size: 20px; line-height: 1.78; }
 .chapter-story-interactive .chapter-audio-player { max-width: none; margin: 0 0 22px; }
@@ -1557,6 +1557,9 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .chapter-word-help svg { width: 15px; color: var(--orange-dark); }
 .chapter-story-copy { max-width: 78ch; }
 .chapter-story-copy .story-word { color: inherit; }
+.chapter-story-copy .story-word:hover, .chapter-story-copy .story-word:focus-visible { background: #a43e2a; color: #fff; outline-color: #f2a38e; }
+.chapter-story-copy .story-word.is-active, .chapter-story-copy .story-word.is-active:hover { background: #315db6; color: #fff; outline: 2px solid #8eabff; outline-offset: 2px; box-shadow: 2px 0 0 #315db6, -2px 0 0 #315db6; }
+.chapter-story-copy .story-word.no-gloss:not(.is-active):hover { background: transparent; color: inherit; outline: 0; }
 .vocabulary-mastery-line { max-width: 620px; margin-top: 18px; display: grid; grid-template-columns: 130px 1fr; align-items: center; gap: 12px; font: 800 9px/1 var(--font-ui); }
 .vocabulary-mastery-line [data-slot="progress"] { height: 7px; background: var(--white); }
 .vocabulary-mastery-line [data-slot="progress-indicator"] { background: var(--green-accent); }
