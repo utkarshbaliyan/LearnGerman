@@ -38,6 +38,19 @@ async function readCssTree(directory) {
   return contents.join("\n");
 }
 
+function contrastRatio(foreground, background) {
+  const channels = (hex) => hex.match(/[a-f\d]{2}/gi).map((part) => {
+    const value = Number.parseInt(part, 16) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = (hex) => {
+    const [red, green, blue] = channels(hex);
+    return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+  };
+  const values = [luminance(foreground), luminance(background)].sort((left, right) => right - left);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+}
+
 test("emits the catalog's animation and scrolling utilities", async () => {
   const css = await readCssTree(path.join(root, "dist"));
 
@@ -59,6 +72,19 @@ test("emits the catalog's animation and scrolling utilities", async () => {
     globals,
     /html\[data-theme="dark"\] \.level-switcher button\.is-active :where\(b, span\)\s*\{\s*color:\s*#f7f7f8;/,
   );
+});
+
+test("keeps shared button and inverse-surface colors readable in both themes", async () => {
+  const globals = await readFile(path.join(root, "app/globals.css"), "utf8");
+  const button = await readFile(path.join(root, "components/ui/button.tsx"), "utf8");
+
+  assert.ok(contrastRatio("#ffffff", "#315ee8") >= 4.5);
+  assert.ok(contrastRatio("#0c1224", "#83a3ff") >= 4.5);
+  assert.ok(contrastRatio("#f7f7f8", "#171719") >= 4.5);
+  assert.ok(contrastRatio("#f7f7f8", "#090a0d") >= 4.5);
+  assert.match(globals, /button:not\(\[data-slot="button"\]\)/);
+  assert.match(globals, /\[data-slot="button"\]:disabled\s*\{[^}]*background:\s*var\(--muted\)[^}]*color:\s*var\(--muted-foreground\)[^}]*opacity:\s*1/s);
+  assert.doesNotMatch(button, /disabled:opacity-50/);
 });
 
 test("forwards progress semantics to the primitive", async () => {
