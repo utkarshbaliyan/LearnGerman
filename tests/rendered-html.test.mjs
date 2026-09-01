@@ -110,7 +110,7 @@ test("uses Groq as the primary provider and returns structured writing feedback"
   globalThis.fetch = async (input, init) => {
     providerUrl = String(input);
     providerRequest = JSON.parse(init.body);
-    return Response.json({ output_text: JSON.stringify({
+    return Response.json({ choices: [{ message: { content: JSON.stringify({
       overallScore: 84,
       mastery: true,
       summary: "The task is complete and clear.",
@@ -119,7 +119,7 @@ test("uses Groq as the primary provider and returns structured writing feedback"
       corrections: [{ original: "Ich wohnen", corrected: "Ich wohne", explanation: "Use the ich ending -e.", category: "Verb ending" }],
       nextStep: "Repeat the corrected sentence.",
       retryPrompt: "Write the answer once more without looking.",
-    }) });
+    }) } }] });
   };
   try {
     const response = await worker.fetch(
@@ -143,10 +143,11 @@ test("uses Groq as the primary provider and returns structured writing feedback"
     assert.equal(payload.overallScore, 84);
     assert.equal(payload.mastery, true);
     assert.equal(payload.corrections[0].category, "Verb ending");
-    assert.equal(providerUrl, "https://api.groq.com/openai/v1/responses");
-    assert.equal(providerRequest.model, "openai/gpt-oss-20b");
-    assert.equal(providerRequest.store, false);
-    assert.equal(providerRequest.text.format.type, "json_schema");
+    assert.equal(providerUrl, "https://api.groq.com/openai/v1/chat/completions");
+    assert.equal(providerRequest.model, "openai/gpt-oss-120b");
+    assert.equal(providerRequest.max_completion_tokens, 3_000);
+    assert.equal(providerRequest.reasoning_effort, "low");
+    assert.equal(providerRequest.response_format.type, "json_object");
   } finally {
     globalThis.fetch = originalFetch;
     if (originalGroqKey === undefined) delete process.env.GROQ_API_KEY;
