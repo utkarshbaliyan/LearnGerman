@@ -32,6 +32,42 @@ const FEEDBACK_SCHEMA = {
 
 const attempts = new Map<string, { count: number; resetAt: number }>();
 
+type ProviderConfiguration = {
+  name: "Groq" | "OpenAI";
+  apiKey: string;
+  baseUrl: string;
+  tutorModel: string;
+  transcriptionModel: string;
+};
+
+class ProviderRequestError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
+
+function providerConfiguration(): ProviderConfiguration {
+  if (process.env.GROQ_API_KEY) {
+    return {
+      name: "Groq",
+      apiKey: process.env.GROQ_API_KEY,
+      baseUrl: "https://api.groq.com/openai/v1",
+      tutorModel: process.env.GROQ_TUTOR_MODEL ?? "openai/gpt-oss-20b",
+      transcriptionModel: process.env.GROQ_TRANSCRIBE_MODEL ?? "whisper-large-v3-turbo",
+    };
+  }
+  if (process.env.OPENAI_API_KEY) {
+    return {
+      name: "OpenAI",
+      apiKey: process.env.OPENAI_API_KEY,
+      baseUrl: "https://api.openai.com/v1",
+      tutorModel: process.env.OPENAI_TUTOR_MODEL ?? "gpt-5.4-mini",
+      transcriptionModel: process.env.OPENAI_TRANSCRIBE_MODEL ?? "gpt-transcribe",
+    };
+  }
+  throw new Error("No feedback provider is configured");
+}
+
 export function rateLimited(request: Request) {
   const forwarded = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
   const key = forwarded.split(",")[0].trim();
@@ -47,6 +83,9 @@ export function rateLimited(request: Request) {
 
 export function tutorError(error: unknown) {
   console.error("Feedback request failed", error instanceof Error ? error.message : "Unknown error");
+  if (error instanceof ProviderRequestError && error.status === 429) {
+    return Response.json({ error: "Feedback has reached its current usage limit. Please wait and try again later." }, { status: 429 });
+  }
   return Response.json({ error: "Feedback is temporarily unavailable. Your work is still on this page; please try again." }, { status: 502 });
 }
 
@@ -71,12 +110,11 @@ function responseText(payload: Record<string, unknown>) {
       if (part && typeof part === "object" && typeof (part as { text?: unknown }).text === "string") return (part as { text: string }).text;
     }
   }
-  throw new Error("OpenAI response did not contain tutor feedback");
+  throw new Error("The provider response did not contain feedback");
 }
 
 export async function createTutorFeedback(mode: TutorMode, context: TutorContext, answer: string): Promise<TutorFeedback> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured");
+  const provider = providerConfiguration();
 
   const modeGuidance = mode === "speaking"
     ? "The answer is a German speech transcript. Evaluate communicative success, grammar, vocabulary, fluency visible in the transcript, and task completion. Do not pretend to have assessed accent, pronunciation, or audio quality."
@@ -89,11 +127,11 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
     learnerAnswer: answer,
   });
 
-  const response = await fetch("https://api.openai.com/v1/responses", {
+  const response = await fetch(`${provider.baseUrl}/responses`, {
     method: "POST",
-    headers: { authorization: `Bearer ${apiKey}`, "content-type": "application/json" },
+    headers: { authorization: `Bearer ${provider.apiKey}`, "content-type": "application/json" },
     body: JSON.stringify({
-      model: process.env.OPENAI_TUTOR_MODEL ?? "gpt-5.4-mini",
+      model: provider.tutorModel,
       store: false,
       instructions: [
         "You are LeseLaut's encouraging but exact German tutor.",
@@ -118,7 +156,7 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
 
   if (!response.ok) {
     const message = await response.text();
-    throw new Error(`OpenAI feedback request returned ${response.status}: ${message.slice(0, 300)}`);
+    throw new ProviderRequestError(response.status, `${provider.name} feedback request returned ${response.status}: ${message.slice(0, 300)}`);
   }
   const payload = await response.json() as Record<string, unknown>;
   const feedback = JSON.parse(responseText(payload)) as TutorFeedback;
@@ -128,21 +166,20 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
 }
 
 export async function transcribeGerman(audio: File) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured");
+  const provider = providerConfiguration();
   const data = new FormData();
   data.set("file", audio, audio.name || "learner-response.webm");
-  data.set("model", process.env.OPENAI_TRANSCRIBE_MODEL ?? "gpt-transcribe");
+  data.set("model", provider.transcriptionModel);
   data.set("language", "de");
   data.set("response_format", "json");
-  const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
+  const response = await fetch(`${provider.baseUrl}/audio/transcriptions`, {
     method: "POST",
-    headers: { authorization: `Bearer ${apiKey}` },
+    headers: { authorization: `Bearer ${provider.apiKey}` },
     body: data,
   });
   if (!response.ok) {
     const message = await response.text();
-    throw new Error(`OpenAI transcription returned ${response.status}: ${message.slice(0, 300)}`);
+    throw new ProviderRequestError(response.status, `${provider.name} transcription returned ${response.status}: ${message.slice(0, 300)}`);
   }
   const payload = await response.json() as { text?: string };
   if (!payload.text?.trim()) throw new Error("No German speech was detected");

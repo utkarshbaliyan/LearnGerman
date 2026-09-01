@@ -98,16 +98,18 @@ test("rejects incomplete AI tutor submissions before calling the model", async (
   assert.match((await response.json()).error, /valid chapter response/i);
 });
 
-test("returns structured writing feedback from the AI tutor route", async () => {
+test("uses Groq as the primary provider and returns structured writing feedback", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-tutor-feedback`);
   const { default: worker } = await import(workerUrl.href);
   const originalFetch = globalThis.fetch;
-  const originalKey = process.env.OPENAI_API_KEY;
-  let openAiRequest;
-  process.env.OPENAI_API_KEY = "test-key";
+  const originalGroqKey = process.env.GROQ_API_KEY;
+  let providerRequest;
+  let providerUrl;
+  process.env.GROQ_API_KEY = "test-key";
   globalThis.fetch = async (input, init) => {
-    openAiRequest = JSON.parse(init.body);
+    providerUrl = String(input);
+    providerRequest = JSON.parse(init.body);
     return Response.json({ output_text: JSON.stringify({
       overallScore: 84,
       mastery: true,
@@ -133,7 +135,7 @@ test("returns structured writing feedback from the AI tutor route", async () => 
           answer: "Hallo, ich wohnen in Berlin.",
         }),
       }),
-      { OPENAI_API_KEY: "test-key", ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+      { GROQ_API_KEY: "test-key", ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
       { waitUntil() {}, passThroughOnException() {} },
     );
     const payload = await response.json();
@@ -141,12 +143,48 @@ test("returns structured writing feedback from the AI tutor route", async () => 
     assert.equal(payload.overallScore, 84);
     assert.equal(payload.mastery, true);
     assert.equal(payload.corrections[0].category, "Verb ending");
-    assert.equal(openAiRequest.store, false);
-    assert.equal(openAiRequest.text.format.type, "json_schema");
+    assert.equal(providerUrl, "https://api.groq.com/openai/v1/responses");
+    assert.equal(providerRequest.model, "openai/gpt-oss-20b");
+    assert.equal(providerRequest.store, false);
+    assert.equal(providerRequest.text.format.type, "json_schema");
   } finally {
     globalThis.fetch = originalFetch;
-    if (originalKey === undefined) delete process.env.OPENAI_API_KEY;
-    else process.env.OPENAI_API_KEY = originalKey;
+    if (originalGroqKey === undefined) delete process.env.GROQ_API_KEY;
+    else process.env.GROQ_API_KEY = originalGroqKey;
+  }
+});
+
+test("turns provider rate limits into a clear retry message", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-provider-limit`);
+  const { default: worker } = await import(workerUrl.href);
+  const originalFetch = globalThis.fetch;
+  const originalGroqKey = process.env.GROQ_API_KEY;
+  process.env.GROQ_API_KEY = "test-key";
+  globalThis.fetch = async () => Response.json({ error: { code: "rate_limit_exceeded" } }, { status: 429 });
+  try {
+    const response = await worker.fetch(
+      new Request("http://localhost/api/tutor/writing", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-forwarded-for": "provider-limit-test" },
+        body: JSON.stringify({
+          level: "A1",
+          chapter: 1,
+          prompt: "Introduce yourself in German.",
+          grammarFocus: "Personal pronouns and sein",
+          vocabulary: ["wohnen — to live"],
+          answer: "Hallo, ich heiße Mia und wohne in Berlin.",
+        }),
+      }),
+      { GROQ_API_KEY: "test-key", ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+      { waitUntil() {}, passThroughOnException() {} },
+    );
+    assert.equal(response.status, 429);
+    assert.match((await response.json()).error, /usage limit/i);
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalGroqKey === undefined) delete process.env.GROQ_API_KEY;
+    else process.env.GROQ_API_KEY = originalGroqKey;
   }
 });
 
