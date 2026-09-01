@@ -28,7 +28,7 @@ import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";
 import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
 import type { CourseChapterContent } from "@/app/course/course-data";
-import type { ChapterQuestion } from "@/app/course/a1/chapter-one";
+import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
 import {
   COURSE_SKILLS,
@@ -37,8 +37,10 @@ import {
   useCourseProgress,
 } from "@/app/hooks/use-course-progress";
 import { useStoryProgress } from "@/app/hooks/use-story-progress";
+import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import { requestSpeakingFeedback, requestWritingFeedback } from "@/app/lib/ai-tutor-client";
 import type { TutorContext, TutorFeedback } from "@/app/lib/ai-tutor-types";
+import { syncGrammarLessonToLibrary } from "@/app/lib/progress-sync";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -95,6 +97,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const { level, number } = content;
   const { progress, hydrated, updateChapter } = useCourseProgress();
   const { setStoryCompleted } = useStoryProgress();
+  const { hydrated: vocabularyHydrated, importLearned, isLearned, setLearned } = useVocabularyProgress();
   const chapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
   const grammarGroups = useMemo(() => [...new Set(content.grammar.exercises.map((exercise) => exercise.group ?? "Core practice"))], [content.grammar.exercises]);
   const [showAllWords, setShowAllWords] = useState(false);
@@ -120,6 +123,10 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     grammarFocus: `${content.lesson.title}: ${content.grammar.pattern}`,
     vocabulary: content.vocabulary.slice(0, 20).map((word) => `${word.german} — ${word.english}`),
   };
+  const knownWordIds = useMemo(() => new Set(content.vocabulary
+    .filter(isLearned)
+    .map((word) => word.id)), [content.vocabulary, isLearned]);
+  const vocabularyScore = Math.round((knownWordIds.size / content.vocabulary.length) * 100);
 
   const chapterPercent = useMemo(() => {
     const skillTotal = COURSE_SKILLS.reduce((sum, skill) => sum + (chapter.skillScores[skill] ?? 0), 0);
@@ -137,21 +144,36 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     if (recordingUrl) URL.revokeObjectURL(recordingUrl);
   }, [recordingUrl]);
 
-  function toggleKnownWord(wordId: string) {
+  useEffect(() => {
+    if (!vocabularyHydrated || !chapter.knownWords.length) return;
+    importLearned(content.vocabulary.filter((word) => chapter.knownWords.includes(word.id)));
+    updateChapter(content.id, (current) => ({ ...current, knownWords: [] }));
+  }, [chapter.knownWords, content.id, content.vocabulary, importLearned, updateChapter, vocabularyHydrated]);
+
+  useEffect(() => {
+    if (!hydrated || !vocabularyHydrated || vocabularyScore <= (chapter.skillScores.vocabulary ?? 0)) return;
+    updateChapter(content.id, (current) => ({
+      ...current,
+      skillScores: { ...current.skillScores, vocabulary: vocabularyScore },
+    }));
+  }, [chapter.skillScores.vocabulary, content.id, hydrated, updateChapter, vocabularyHydrated, vocabularyScore]);
+
+  function toggleKnownWord(word: ChapterVocabulary) {
+    const wordId = word.id;
+    const willBeKnown = !knownWordIds.has(wordId);
+    setLearned(word, willBeKnown);
     updateChapter(content.id, (current) => {
-      const known = new Set(current.knownWords);
-      if (known.has(wordId)) known.delete(wordId); else known.add(wordId);
-      const score = Math.round((known.size / content.vocabulary.length) * 100);
-      return { ...current, knownWords: [...known], skillScores: { ...current.skillScores, vocabulary: Math.max(current.skillScores.vocabulary ?? 0, score) } };
+      const nextKnownCount = Math.max(0, knownWordIds.size + (willBeKnown ? 1 : -1));
+      const score = Math.round((nextKnownCount / content.vocabulary.length) * 100);
+      return { ...current, knownWords: [], skillScores: { ...current.skillScores, vocabulary: Math.max(current.skillScores.vocabulary ?? 0, score) } };
     });
   }
 
   function finishGrammarSet(setName: string, score: number) {
-    updateChapter(content.id, (current) => {
-      const sets = { ...current.grammarSets, [setName]: Math.max(current.grammarSets[setName] ?? 0, score) };
-      const average = Math.round(Object.values(sets).reduce((sum, value) => sum + value, 0) / grammarGroups.length);
-      return { ...current, grammarSets: sets, skillScores: { ...current.skillScores, grammar: Math.max(current.skillScores.grammar ?? 0, average) } };
-    });
+    const sets = { ...chapter.grammarSets, [setName]: Math.max(chapter.grammarSets[setName] ?? 0, score) };
+    const average = Math.round(Object.values(sets).reduce((sum, value) => sum + value, 0) / grammarGroups.length);
+    updateChapter(content.id, (current) => ({ ...current, grammarSets: sets, skillScores: { ...current.skillScores, grammar: Math.max(current.skillScores.grammar ?? 0, average) } }));
+    syncGrammarLessonToLibrary(localStorage, content.id, sets, average, grammarGroups.every((group) => sets[group] !== undefined));
   }
 
   function saveStoryScore(score: number) {
@@ -290,13 +312,13 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-vocabulary" id="vocabulary">
-        <div className="chapter-section-copy"><span>02 · Vocabulary</span><h2>Recall language from the story.</h2><p>Say the meaning before revealing it mentally, then read the complete story sentence. Mark a word only when you can recall it without help.</p><div className="vocabulary-mastery-line"><strong>{chapter.knownWords.filter((word) => content.vocabulary.some((item) => item.id === word)).length}/{content.vocabulary.length} recalled</strong><Progress value={(chapter.knownWords.filter((word) => content.vocabulary.some((item) => item.id === word)).length / content.vocabulary.length) * 100} /></div></div>
-        <div className="chapter-vocab-grid">{content.vocabulary.slice(0, showAllWords ? undefined : 12).map((word) => { const known = chapter.knownWords.includes(word.id); return <article key={word.id} className={known ? "is-known" : ""}><span>{word.english}</span><h3 lang="de">{word.german}</h3>{word.note && <small>{word.note}</small>}<p lang="de">{word.example}</p><button type="button" aria-pressed={known} onClick={() => toggleKnownWord(word.id)}><Check /> {known ? "I can recall this" : "Mark after recalling"}</button></article>; })}</div>
+        <div className="chapter-section-copy"><span>02 · Vocabulary · synced</span><h2>Recall language from the story.</h2><p>Say the meaning before revealing it mentally, then read the complete story sentence. Mark a word only when you can recall it without help. Matching cards update automatically on the Vocabulary page.</p><div className="vocabulary-mastery-line"><strong>{knownWordIds.size}/{content.vocabulary.length} recalled</strong><Progress value={vocabularyScore} /></div></div>
+        <div className="chapter-vocab-grid">{content.vocabulary.slice(0, showAllWords ? undefined : 12).map((word) => { const known = knownWordIds.has(word.id); return <article key={word.id} className={known ? "is-known" : ""}><span>{word.english}</span><h3 lang="de">{word.german}</h3>{word.note && <small>{word.note}</small>}<p lang="de">{word.example}</p><button type="button" aria-pressed={known} onClick={() => toggleKnownWord(word)}><Check /> {known ? "I can recall this" : "Mark after recalling"}</button></article>; })}</div>
         {!showAllWords && content.vocabulary.length > 12 && <Button variant="outline" className="show-chapter-words" onClick={() => setShowAllWords(true)}>Show all {content.vocabulary.length} chapter words</Button>}
       </section>
 
       <section className="chapter-learning-section chapter-grammar" id="grammar">
-        <div className="chapter-section-copy"><span>03 · Grammar</span><h2>{content.lesson.title}.</h2><p>{content.grammar.lead}</p></div>
+        <div className="chapter-section-copy"><span>03 · Grammar · synced</span><h2>{content.lesson.title}.</h2><p>{content.grammar.lead}</p></div>
         <div className="chapter-grammar-pattern"><span>Core pattern</span><strong lang="de">{content.grammar.pattern}</strong></div>
         <div className="chapter-explanation">{content.grammar.explanation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
         {content.grammar.sections?.map((section) => <article className="chapter-grammar-detail" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.examples?.map((example) => <p key={example.german}><b lang="de">{example.german}</b> — {example.english}</p>)}</article>)}

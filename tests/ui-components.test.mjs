@@ -87,6 +87,50 @@ test("keeps shared button and inverse-surface colors readable in both themes", a
   assert.doesNotMatch(button, /disabled:opacity-50/);
 });
 
+test("synchronizes equivalent vocabulary and grammar mastery across routes", async () => {
+  const {
+    emptyVocabularyProgress,
+    isVocabularyLearned,
+    mergeGrammarProgressWithCourse,
+    readCourseProgress,
+    readGrammarProgress,
+    readVocabularyProgress,
+    setVocabularyStatus,
+    syncGrammarLessonToCourse,
+    syncGrammarLessonToLibrary,
+    writeVocabularyProgress,
+  } = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+  };
+  const catalogWord = { id: "a1-001", german: "der Name", english: "name" };
+  const chapterWord = { id: "name", german: "der Name, die Namen", english: "name" };
+
+  writeVocabularyProgress(storage, setVocabularyStatus(emptyVocabularyProgress(), chapterWord, "learned"));
+  assert.equal(isVocabularyLearned(readVocabularyProgress(storage, [catalogWord]), catalogWord), true);
+
+  values.set("leselaut:vocabulary:a1-b1", JSON.stringify({ completed: ["a1-001"], review: [] }));
+  values.delete("leselaut:vocabulary-progress:v2");
+  const migrated = readVocabularyProgress(storage, [catalogWord]);
+  assert.equal(isVocabularyLearned(migrated, chapterWord), true);
+  writeVocabularyProgress(storage, setVocabularyStatus(migrated, catalogWord, "unlearned"));
+  assert.equal(isVocabularyLearned(readVocabularyProgress(storage, [catalogWord]), chapterWord), false);
+
+  syncGrammarLessonToLibrary(storage, "a1-1-1", { Recognition: 88 }, 88, false);
+  assert.equal(readGrammarProgress(storage).sets["a1-1-1"].Recognition, 88);
+
+  syncGrammarLessonToCourse(storage, "a1-1-1", { Production: 92 }, 92);
+  const course = readCourseProgress(storage);
+  assert.equal(course.chapters["a1-1-1"].grammarSets.Production, 92);
+  const merged = mergeGrammarProgressWithCourse(readGrammarProgress(storage), course, {
+    "a1-1-1": ["Recognition", "Production"],
+  });
+  assert.equal(merged.completed.includes("a1-1-1"), true);
+  assert.equal(merged.scores["a1-1-1"], 92);
+});
+
 test("forwards progress semantics to the primitive", async () => {
   const { Progress } = await vite.ssrLoadModule("/components/ui/progress.tsx");
   const html = renderToStaticMarkup(React.createElement(Progress, { value: 37 }));

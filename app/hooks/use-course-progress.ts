@@ -2,6 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import {
+  COURSE_PROGRESS_STORAGE_KEY,
+  mergeCourseProgressWithGrammar,
+  readCourseProgress,
+  readGrammarProgress,
+} from "@/app/lib/progress-sync";
+
 export const COURSE_SKILLS = ["reading", "listening", "vocabulary", "grammar", "speaking", "writing"] as const;
 export type CourseSkill = (typeof COURSE_SKILLS)[number];
 
@@ -15,11 +22,9 @@ export type ChapterProgress = {
   recordedSpeaking: boolean;
 };
 
-type CourseProgress = {
+export type CourseProgress = {
   chapters: Record<string, ChapterProgress>;
 };
-
-const STORAGE_KEY = "leselaut:course-progress:v1";
 
 export const EMPTY_CHAPTER_PROGRESS: ChapterProgress = {
   completed: false,
@@ -37,19 +42,23 @@ export function useCourseProgress() {
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Partial<CourseProgress>;
-        setProgress({ chapters: stored.chapters && typeof stored.chapters === "object" ? stored.chapters : {} });
-      } catch {
-        setProgress({ chapters: {} });
-      }
+      const merged = mergeCourseProgressWithGrammar(readCourseProgress(localStorage), readGrammarProgress(localStorage));
+      setProgress({
+        chapters: Object.fromEntries(Object.entries(merged.chapters).map(([chapterId, chapter]) => [chapterId, {
+          ...EMPTY_CHAPTER_PROGRESS,
+          ...chapter,
+          skillScores: { ...EMPTY_CHAPTER_PROGRESS.skillScores, ...(chapter.skillScores ?? {}) },
+          grammarSets: { ...EMPTY_CHAPTER_PROGRESS.grammarSets, ...(chapter.grammarSets ?? {}) },
+          knownWords: Array.isArray(chapter.knownWords) ? chapter.knownWords : [],
+        }])) as Record<string, ChapterProgress>,
+      });
       setHydrated(true);
     });
     return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    if (hydrated) localStorage.setItem(COURSE_PROGRESS_STORAGE_KEY, JSON.stringify(progress));
   }, [hydrated, progress]);
 
   const updateChapter = useCallback((chapterId: string, update: (chapter: ChapterProgress) => ChapterProgress) => {

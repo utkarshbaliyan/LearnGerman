@@ -7,9 +7,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties, type Dispatch, type SetStateAction } from "react";
+import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
+import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import { ALL_VOCABULARY, VOCABULARY_CATEGORIES, VOCABULARY_LEVEL_COUNTS, type VocabularyCategory, type VocabularyWord } from "@/app/vocabulary/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,9 +19,6 @@ import { Progress } from "@/components/ui/progress";
 
 type ProgressFilter = "all" | "completed" | "review";
 type LevelFilter = "all" | "A1" | "A2" | "B1";
-const STORAGE_KEY = "leselaut:vocabulary:a1-b1";
-const PREVIOUS_STORAGE_KEY = "leselaut:vocabulary:a1-a2";
-const LEGACY_STORAGE_KEY = "leselaut:vocabulary:a1";
 const VISIBLE_BATCH = 120;
 
 const CATEGORY_META: Record<VocabularyCategory, { icon: LucideIcon; color: string }> = {
@@ -87,31 +85,13 @@ export default function VocabularyPage() {
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
-  const [completed, setCompleted] = useState<Set<string>>(new Set());
-  const [review, setReview] = useState<Set<string>>(new Set());
-  const [hydrated, setHydrated] = useState(false);
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
+  const { isLearned, isReview, setLearned, setReview } = useVocabularyProgress(ALL_VOCABULARY);
   const deferredQuery = useDeferredValue(query);
 
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(PREVIOUS_STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY) ?? "{}") as { completed?: string[]; review?: string[] };
-        setCompleted(new Set(stored.completed ?? []));
-        setReview(new Set(stored.review ?? []));
-      } catch { /* Ignore a damaged device-local value. */ }
-      setHydrated(true);
-    });
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  useEffect(() => {
-    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify({ completed: [...completed], review: [...review] }));
-  }, [completed, hydrated, review]);
-
   const levelWords = useMemo(() => ALL_VOCABULARY.filter((word) => level === "all" || word.level === level), [level]);
-  const selectedCompleted = useMemo(() => levelWords.filter((word) => completed.has(word.id)).length, [completed, levelWords]);
-  const selectedReview = useMemo(() => levelWords.filter((word) => review.has(word.id)).length, [levelWords, review]);
+  const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
+  const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const categoryCounts = useMemo(() => Object.fromEntries(
     VOCABULARY_CATEGORIES.map((name) => [name, levelWords.filter((word) => word.category === name).length]),
   ) as Record<VocabularyCategory, number>, [levelWords]);
@@ -120,11 +100,11 @@ export default function VocabularyPage() {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
     return levelWords.filter((word) => {
       if (category !== "all" && word.category !== category) return false;
-      if (progressFilter === "completed" && !completed.has(word.id)) return false;
-      if (progressFilter === "review" && !review.has(word.id)) return false;
+      if (progressFilter === "completed" && !isLearned(word)) return false;
+      if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     });
-  }, [category, completed, deferredQuery, levelWords, progressFilter, review]);
+  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
 
@@ -148,22 +128,20 @@ export default function VocabularyPage() {
     setVisibleLimit(VISIBLE_BATCH);
   }
 
-  function toggle(setter: Dispatch<SetStateAction<Set<string>>>, id: string) {
-    setter((current) => {
+  function toggleRevealed(id: string) {
+    setRevealed((current) => {
       const next = new Set(current);
       if (next.has(id)) next.delete(id); else next.add(id);
       return next;
     });
   }
 
-  function markCompleted(id: string) {
-    toggle(setCompleted, id);
-    setReview((current) => { const next = new Set(current); next.delete(id); return next; });
+  function markCompleted(word: VocabularyWord) {
+    setLearned(word, !isLearned(word));
   }
 
-  function markReview(id: string) {
-    toggle(setReview, id);
-    setCompleted((current) => { const next = new Set(current); next.delete(id); return next; });
+  function markReview(word: VocabularyWord) {
+    setReview(word, !isReview(word));
   }
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
@@ -180,10 +158,10 @@ export default function VocabularyPage() {
           <p>Build from A1 foundations through A2 everyday life and B1 independent communication. Study essential language for people, housing, work, education, travel, health, media, the environment, public life, and real German services.</p>
         </div>
         <aside className="vocabulary-progress-card">
-          <span>Your progress · {levelLabel}</span>
+          <span>Synced progress · {levelLabel}</span>
           <div><strong>{selectedCompleted}</strong><small>of {levelWords.length} learned</small></div>
           <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
-          <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} ready for review.` : "No words are marked for review yet."}</p>
+          <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} ready for review.` : "Course recall and vocabulary cards stay synchronized on this device."}</p>
         </aside>
       </section>
 
@@ -221,7 +199,7 @@ export default function VocabularyPage() {
 
         {visibleWords.length ? (
           <>
-            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={completed.has(word.id)} review={review.has(word.id)} onReveal={() => toggle(setRevealed, word.id)} onComplete={() => markCompleted(word.id)} onReview={() => markReview(word.id)} />)}</div>
+            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} />)}</div>
             {renderedWords.length < visibleWords.length && <Button className="show-more-vocabulary" variant="outline" onClick={() => setVisibleLimit((current) => current + VISIBLE_BATCH)}>Show {Math.min(VISIBLE_BATCH, visibleWords.length - renderedWords.length)} more words</Button>}
           </>
         ) : (

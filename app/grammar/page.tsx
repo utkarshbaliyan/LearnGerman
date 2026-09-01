@@ -13,18 +13,23 @@ import {
   ALL_GRAMMAR_LESSONS, GRAMMAR_LEVELS, GRAMMAR_MODULES, LIVE_GRAMMAR_LESSONS,
   getGrammarModuleForLesson, type GrammarExercise, type GrammarLevel,
 } from "@/app/grammar/course";
+import {
+  mergeGrammarProgressWithCourse,
+  readCourseProgress,
+  readGrammarProgress,
+  syncGrammarLessonToCourse,
+  writeGrammarProgress,
+  type GrammarProgress,
+} from "@/app/lib/progress-sync";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 
-const STORAGE_KEY = "leselaut:grammar-progress:v1";
-
-type GrammarProgress = {
-  completed: string[];
-  scores: Record<string, number>;
-  sets: Record<string, Record<string, number>>;
-};
+const REQUIRED_GRAMMAR_SETS = Object.fromEntries(Object.entries(LIVE_GRAMMAR_LESSONS).map(([lessonId, lesson]) => [
+  lessonId,
+  [...new Set(lesson.exercises.map((exercise) => exercise.group ?? "Core practice"))],
+]));
 
 function normalize(value: string) {
   return value.trim().toLocaleLowerCase("de").replace(/[.!?]+$/g, "").replace(/\s+/g, " ");
@@ -111,7 +116,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
     return (
       <section className="grammar-practice" aria-label="Lesson practice">
         <div className="practice-heading">
-          <div><span>Chapter practice</span><h2>Choose a focused practice set.</h2></div>
+          <div><span>Lesson practice · synced</span><h2>Choose a focused practice set.</h2></div>
           <div><strong>{allExercises.length} tasks</strong><Progress value={(Object.keys(completedSets).length / groups.length) * 100} /></div>
         </div>
         <div className="practice-set-grid">
@@ -206,17 +211,18 @@ export default function GrammarPage() {
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Partial<GrammarProgress>;
-        setProgress({ completed: stored.completed ?? [], scores: stored.scores ?? {}, sets: stored.sets ?? {} });
-      } catch { /* Ignore damaged local data. */ }
+      setProgress(mergeGrammarProgressWithCourse(
+        readGrammarProgress(localStorage),
+        readCourseProgress(localStorage),
+        REQUIRED_GRAMMAR_SETS,
+      ));
       setHydrated(true);
     });
     return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    if (hydrated) writeGrammarProgress(localStorage, progress);
   }, [hydrated, progress]);
 
   const levelModules = GRAMMAR_MODULES.filter((item) => item.level === level);
@@ -243,18 +249,18 @@ export default function GrammarPage() {
   }
 
   function finishSet(setName: string, score: number) {
-    setProgress((current) => {
-      const previousSets = current.sets[selectedLessonId] ?? {};
-      const lessonSets = { ...previousSets, [setName]: Math.max(previousSets[setName] ?? 0, score) };
-      const requiredSets = new Set(LIVE_GRAMMAR_LESSONS[selectedLessonId].exercises.map((exercise) => exercise.group ?? "Core practice"));
-      const chapterComplete = [...requiredSets].every((name) => lessonSets[name] !== undefined);
-      const average = Math.round(Object.values(lessonSets).reduce((sum, value) => sum + value, 0) / Object.values(lessonSets).length);
-      return {
-        completed: chapterComplete && !current.completed.includes(selectedLessonId) ? [...current.completed, selectedLessonId] : current.completed,
-        scores: { ...current.scores, [selectedLessonId]: average },
-        sets: { ...current.sets, [selectedLessonId]: lessonSets },
-      };
-    });
+    const previousSets = progress.sets[selectedLessonId] ?? {};
+    const lessonSets = { ...previousSets, [setName]: Math.max(previousSets[setName] ?? 0, score) };
+    const requiredSets = REQUIRED_GRAMMAR_SETS[selectedLessonId] ?? [];
+    const chapterComplete = requiredSets.every((name) => lessonSets[name] !== undefined);
+    const average = Math.round(Object.values(lessonSets).reduce((sum, value) => sum + value, 0) / Object.values(lessonSets).length);
+    const next = {
+      completed: chapterComplete && !progress.completed.includes(selectedLessonId) ? [...progress.completed, selectedLessonId] : progress.completed,
+      scores: { ...progress.scores, [selectedLessonId]: average },
+      sets: { ...progress.sets, [selectedLessonId]: lessonSets },
+    };
+    setProgress(next);
+    syncGrammarLessonToCourse(localStorage, selectedLessonId, lessonSets, average);
   }
 
   const overallRoadmap = Math.round((progress.completed.length / ALL_GRAMMAR_LESSONS.length) * 100);
@@ -275,7 +281,7 @@ export default function GrammarPage() {
           <span>Your grammar course</span>
           <div className="grammar-score"><strong>{liveProgress}%</strong><small>current release</small></div>
           <Progress value={liveProgress} />
-          <p>{completedLive} of {liveLessons.length} available lessons completed.</p>
+          <p>{completedLive} of {liveLessons.length} available lessons completed. Practice results stay synced with matching course chapters.</p>
           <div className="grammar-progress-meta"><span><b>72</b> total lessons</span><span><b>{overallRoadmap}%</b> full path</span></div>
         </aside>
       </section>
