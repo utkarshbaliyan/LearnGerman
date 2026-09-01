@@ -1517,7 +1517,7 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .chapter-outcomes > div:first-child span, .chapter-section-copy > span { color: var(--blue); font: 900 9px/1 var(--font-ui); text-transform: uppercase; letter-spacing: .14em; }
 .chapter-outcomes h2, .chapter-section-copy h2 { margin: 8px 0 0; font: 700 clamp(40px, 5vw, 65px)/.98 Georgia, serif; letter-spacing: -.048em; }
 .chapter-outcomes > div:last-child { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.chapter-outcomes p { margin: 0; padding: 13px; display: flex; align-items: center; gap: 9px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: rgba(255,255,255,.78); font: 600 10px/1.4 var(--font-ui); }
+.chapter-outcomes p { margin: 0; padding: 13px; display: flex; align-items: center; gap: 9px; border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); border-radius: 10px; color: color-mix(in srgb, var(--paper) 78%, transparent); font: 600 10px/1.4 var(--font-ui); }
 .chapter-outcomes p svg { width: 15px; color: var(--green-accent); }
 .chapter-learning-section { padding: 90px clamp(20px, 5vw, 78px); scroll-margin-top: 138px; }
 .chapter-learning-section:nth-of-type(even) { background: var(--muted); }
