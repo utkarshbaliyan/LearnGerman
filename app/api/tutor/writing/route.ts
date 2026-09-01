@@ -1,7 +1,7 @@
 import { createTutorFeedback, rateLimited, tutorError, validateContext } from "@/app/api/tutor/_shared";
 
 export async function POST(request: Request) {
-  if (rateLimited(request)) return Response.json({ error: "Too many tutor requests. Please review your feedback and try again in a few minutes." }, { status: 429 });
+  if (rateLimited(request)) return Response.json({ error: "Too many checks. Please review your feedback and try again in a few minutes." }, { status: 429 });
   try {
     const body = await request.json() as Record<string, unknown>;
     const context = validateContext(body);

@@ -46,8 +46,8 @@ export function rateLimited(request: Request) {
 }
 
 export function tutorError(error: unknown) {
-  console.error("AI tutor request failed", error instanceof Error ? error.message : "Unknown error");
-  return Response.json({ error: "The AI tutor is temporarily unavailable. Your work is still on this page; please try again." }, { status: 502 });
+  console.error("Feedback request failed", error instanceof Error ? error.message : "Unknown error");
+  return Response.json({ error: "Feedback is temporarily unavailable. Your work is still on this page; please try again." }, { status: 502 });
 }
 
 export function validateContext(value: unknown): TutorContext | null {

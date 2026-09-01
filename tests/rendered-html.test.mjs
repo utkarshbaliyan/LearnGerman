@@ -56,9 +56,9 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     assert.match(html, /Listening check/i, pathname);
     assert.match(html, /core words/i, pathname);
     assert.match(html, /grammar exercises/i, pathname);
-    assert.match(html, /Start private recording/i, pathname);
-    assert.match(html, /Get AI tutor feedback/i, pathname);
+    assert.match(html, /Start recording/i, pathname);
     assert.match(html, /corrections, and a clear next step/i, pathname);
+    assert.doesNotMatch(html, /AI tutor/i, pathname);
     assert.match(html, /Integrated checkpoint/i, pathname);
   }
 });
@@ -75,7 +75,7 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   assert.match(html, /Personal pronouns and/i);
   assert.match(html, /Introduce yourself without reading/i);
   assert.match(html, /Write a personal introduction/i);
-  assert.match(html, /Get AI tutor feedback/i);
+  assert.match(html, /Submit/i);
   assert.match(html, /course saves only your best skill score/i);
   assert.match(html, /Integrated checkpoint/i);
 });

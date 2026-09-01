@@ -10,7 +10,7 @@ export function AiTutorFeedback({ feedback, mode, onRetry }: { feedback: TutorFe
   return (
     <section className={`ai-tutor-feedback${feedback.mastery ? " is-mastered" : ""}`} aria-live="polite">
       <header>
-        <div><Sparkles /><span><b>AI tutor feedback</b><small>{mode === "speaking" ? "German transcript review" : "Detailed writing review"}</small></span></div>
+        <div><Sparkles /><span><b>Feedback</b><small>{mode === "speaking" ? "German transcript review" : "Detailed writing review"}</small></span></div>
         <div className="ai-tutor-score"><strong>{feedback.overallScore}%</strong><Badge variant={feedback.mastery ? "default" : "outline"}>{feedback.mastery ? "Mastered" : "Revise and retry"}</Badge></div>
       </header>
       <p className="ai-tutor-summary">{feedback.summary}</p>

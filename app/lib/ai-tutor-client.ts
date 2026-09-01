@@ -2,7 +2,7 @@ import type { TutorContext, TutorFeedback } from "@/app/lib/ai-tutor-types";
 
 async function readTutorResponse(response: Response): Promise<TutorFeedback> {
   const payload = await response.json().catch(() => null) as (TutorFeedback & { error?: string }) | null;
-  if (!response.ok) throw new Error(payload?.error ?? "The AI tutor could not respond. Please try again.");
+  if (!response.ok) throw new Error(payload?.error ?? "Feedback could not be loaded. Please try again.");
   return payload as TutorFeedback;
 }
 

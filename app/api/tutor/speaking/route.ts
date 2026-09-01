@@ -3,7 +3,7 @@ import { createTutorFeedback, rateLimited, transcribeGerman, tutorError, validat
 const ALLOWED_AUDIO = new Set(["audio/webm", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/wav", "audio/x-wav"]);
 
 export async function POST(request: Request) {
-  if (rateLimited(request)) return Response.json({ error: "Too many tutor requests. Please review your feedback and try again in a few minutes." }, { status: 429 });
+  if (rateLimited(request)) return Response.json({ error: "Too many checks. Please review your feedback and try again in a few minutes." }, { status: 429 });
   try {
     const form = await request.formData();
     const audio = form.get("audio");
