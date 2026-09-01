@@ -1613,6 +1613,41 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .writing-submit { margin-top: 18px; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
 .writing-submit p { max-width: 650px; margin: 0; color: var(--ink-soft); font-size: 11px; }
 .writing-submit p span { display: block; margin-top: 4px; color: var(--ink); font-size: 13px; }
+.ai-tutor-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ai-tutor-privacy, .ai-tutor-requirement { margin: 12px 0 0; color: var(--ink-soft); font: 500 9px/1.5 var(--font-ui); }
+.ai-tutor-requirement { color: var(--amber); font-weight: 800; }
+.ai-tutor-feedback { max-width: 1050px; margin-top: 18px; padding: clamp(20px, 3vw, 32px); border: 1px solid color-mix(in srgb, var(--blue) 48%, var(--line)); border-radius: 18px; background: color-mix(in srgb, var(--blue) 6%, var(--white)); box-shadow: 0 18px 55px rgba(20, 31, 72, .08); }
+.ai-tutor-feedback.is-mastered { border-color: color-mix(in srgb, var(--green-accent) 60%, var(--line)); background: color-mix(in srgb, var(--green-accent) 7%, var(--white)); }
+.ai-tutor-feedback > header { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.ai-tutor-feedback > header > div:first-child { display: flex; align-items: center; gap: 10px; }
+.ai-tutor-feedback > header svg { width: 22px; color: var(--blue); }
+.ai-tutor-feedback > header span { display: grid; font-family: var(--font-ui); }
+.ai-tutor-feedback > header b { font-size: 13px; }
+.ai-tutor-feedback > header small { color: var(--ink-soft); font-size: 9px; }
+.ai-tutor-score { display: flex; align-items: center; gap: 9px; }
+.ai-tutor-score > strong { font: 700 28px/1 Georgia, serif; }
+.ai-tutor-summary { margin: 18px 0; font-size: 16px; }
+.ai-tutor-transcript, .ai-tutor-corrected { margin-top: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
+.ai-tutor-feedback :where(.ai-tutor-transcript, .ai-tutor-corrected, .ai-tutor-strengths, .ai-tutor-corrections) > span { color: var(--orange-dark); font: 900 8px/1 var(--font-ui); text-transform: uppercase; letter-spacing: .12em; }
+.ai-tutor-transcript p, .ai-tutor-corrected p { margin: 7px 0 0; font-size: 16px; line-height: 1.65; white-space: pre-wrap; }
+.ai-tutor-transcript small { display: block; margin-top: 7px; color: var(--ink-soft); font: 500 9px/1.45 var(--font-ui); }
+.ai-tutor-strengths { margin-top: 16px; }
+.ai-tutor-strengths p { margin: 7px 0 0; display: flex; align-items: flex-start; gap: 7px; color: var(--ink-soft); font: 600 11px/1.5 var(--font-ui); }
+.ai-tutor-strengths svg { width: 15px; flex: 0 0 auto; color: var(--green-accent); }
+.ai-tutor-corrections { margin-top: 20px; display: grid; gap: 8px; }
+.ai-tutor-corrections > span { margin-bottom: 2px; }
+.ai-tutor-corrections article { padding: 14px; border: 1px solid var(--line); border-radius: 11px; background: var(--white); }
+.ai-tutor-corrections article > div { display: flex; align-items: center; justify-content: space-between; color: var(--ink-soft); font: 700 9px/1 var(--font-ui); }
+.ai-tutor-corrections article > p { margin: 10px 0 6px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 9px; font-size: 14px; }
+.ai-tutor-corrections del { color: var(--destructive); text-decoration-thickness: 1px; }
+.ai-tutor-corrections ins { color: var(--green-accent); font-weight: 700; text-decoration: none; }
+.ai-tutor-corrections article > p svg { width: 14px; color: var(--green-accent); }
+.ai-tutor-corrections article > small { color: var(--ink-soft); font: 500 10px/1.5 var(--font-ui); }
+.ai-tutor-feedback > footer { margin-top: 18px; padding-top: 16px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; border-top: 1px solid var(--line); }
+.ai-tutor-feedback > footer > svg { width: 20px; color: var(--blue); }
+.ai-tutor-feedback > footer span { color: var(--orange-dark); font: 900 8px/1 var(--font-ui); text-transform: uppercase; letter-spacing: .12em; }
+.ai-tutor-feedback > footer p { margin: 4px 0 0; font-size: 13px; }
+.ai-tutor-feedback > footer small { display: block; margin-top: 3px; color: var(--ink-soft); font: 500 9px/1.4 var(--font-ui); }
 .chapter-finish { padding: 88px clamp(20px, 5vw, 78px); display: grid; justify-items: center; background: var(--ink); color: var(--paper); text-align: center; }
 .chapter-finish > div:first-child { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 18px; background: rgba(255,255,255,.1); }
 .chapter-finish > div:first-child svg { width: 26px; color: var(--blue); }
@@ -1679,6 +1714,13 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
   .chapter-question-list button { width: 100%; text-align: left; }
   .chapter-quiz-result, .writing-submit { align-items: stretch; flex-direction: column; }
   .chapter-quiz-result [data-slot="button"], .writing-submit [data-slot="button"] { width: 100%; }
+  .ai-tutor-actions { align-items: stretch; flex-direction: column; }
+  .ai-tutor-actions [data-slot="button"] { width: 100%; }
+  .ai-tutor-feedback > header { align-items: flex-start; flex-direction: column; }
+  .ai-tutor-corrections article > p { grid-template-columns: 1fr; }
+  .ai-tutor-corrections article > p svg { transform: rotate(90deg); }
+  .ai-tutor-feedback > footer { grid-template-columns: auto 1fr; align-items: start; }
+  .ai-tutor-feedback > footer [data-slot="button"] { width: 100%; grid-column: 1 / -1; }
   .chapter-finish { padding: 66px 16px; }
   .chapter-finish-actions { width: 100%; flex-direction: column; }
   .chapter-finish-actions [data-slot="button"] { width: 100%; }
