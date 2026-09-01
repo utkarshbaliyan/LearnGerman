@@ -1455,6 +1455,13 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .level-journey-grid article > svg { width: 18px; margin-top: auto; color: var(--ink-soft); }
 .level-journey-grid article > [data-slot="button"] { margin-top: auto; }
 .a1-roadmap { max-width: 1500px; margin: 0 auto; }
+.course-level-roadmap { padding-top: 68px; scroll-margin-top: 96px; }
+.course-level-roadmap + .course-level-roadmap { margin-top: 72px; border-top: 1px solid var(--line); }
+.course-level-roadmap > header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .45fr); align-items: end; gap: 10px 42px; }
+.course-level-roadmap > header > div { display: flex; align-items: center; gap: 9px; color: var(--ink-soft); font: 800 9px/1 var(--font-ui); text-transform: uppercase; letter-spacing: .08em; }
+.course-level-roadmap > header h2 { margin: 10px 0 0; font: 700 clamp(36px, 4vw, 56px)/1 Georgia, serif; letter-spacing: -.045em; }
+.course-level-roadmap > header [data-slot="progress"] { height: 9px; grid-column: 2; grid-row: 1 / span 2; background: var(--muted); }
+.course-level-roadmap > header [data-slot="progress-indicator"] { background: var(--green-accent); }
 .a1-module-list { margin-top: 42px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
 .a1-module { overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: var(--white); }
 .a1-module header { padding: 22px; border-bottom: 1px solid var(--line); background: var(--ink); color: var(--paper); }
@@ -1564,6 +1571,10 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .chapter-grammar-pattern strong { font: 700 clamp(21px, 3vw, 34px)/1.25 Georgia, serif; }
 .chapter-explanation { max-width: 950px; margin: 30px 0; }
 .chapter-explanation p { color: var(--ink-soft); font-size: 16px; line-height: 1.75; }
+.chapter-grammar-detail { max-width: 950px; margin: 22px 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+.chapter-grammar-detail h3 { margin: 0 0 10px; font: 700 25px/1.1 Georgia, serif; }
+.chapter-grammar-detail p { margin: 7px 0; color: var(--ink-soft); font-size: 13px; line-height: 1.65; }
+.chapter-grammar-detail b { color: var(--ink); }
 .chapter-tables { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .chapter-tables article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
 .chapter-tables h3 { margin: 0; font: 700 24px/1 Georgia, serif; }
@@ -1612,6 +1623,7 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .mastery-requirements span { padding: 8px 10px; display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: rgba(255,255,255,.55); font: 700 8px/1 var(--font-ui); }
 .mastery-requirements span.is-ready { border-color: var(--green-accent); color: var(--green-accent); }
 .mastery-requirements svg { width: 12px; }
+.chapter-finish-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 
 html[data-theme="dark"] :where(.course-mastery-card, .a1-module header, .resource-safety-net, .chapter-grammar-pattern, .chapter-audio-player, .chapter-finish) { background: #090a0d; color: #f7f7f8; }
 html[data-theme="dark"] .course-master-ring::after { background: #090a0d; }
@@ -1631,6 +1643,8 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
   .resource-safety-net { grid-template-columns: 1fr; align-items: start; }
   .resource-safety-net > div:last-child { justify-content: flex-start; }
   .chapter-vocab-grid { grid-template-columns: repeat(2, 1fr); }
+  .course-level-roadmap > header { grid-template-columns: 1fr; }
+  .course-level-roadmap > header [data-slot="progress"] { grid-column: 1; grid-row: auto; margin-top: 13px; }
 }
 
 @media (max-width: 720px) {
@@ -1666,4 +1680,6 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
   .chapter-quiz-result, .writing-submit { align-items: stretch; flex-direction: column; }
   .chapter-quiz-result [data-slot="button"], .writing-submit [data-slot="button"] { width: 100%; }
   .chapter-finish { padding: 66px 16px; }
+  .chapter-finish-actions { width: 100%; flex-direction: column; }
+  .chapter-finish-actions [data-slot="button"] { width: 100%; }
 }

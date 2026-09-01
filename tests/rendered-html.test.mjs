@@ -22,7 +22,7 @@ async function renderRoute(pathname) {
   );
 }
 
-test("renders the mastery-based A1–C1 course as the English home", async () => {
+test("renders the 72-chapter mastery course as the English home", async () => {
   const response = await renderRoute("/");
 
   assert.equal(response.status, 200);
@@ -34,9 +34,31 @@ test("renders the mastery-based A1–C1 course as the English home", async () =>
   assert.match(html, /<html[^>]*\blang=["']en["']/i);
   assert.match(html, /Learn every skill/i);
   assert.match(html, /Master every level/i);
-  assert.match(html, /A1 · 24 chapters/i);
+  assert.match(html, /A1–B1 · 72 chapters/i);
+  assert.match(html, /A1, A2, and B1 now contain 72 complete/i);
   assert.match(html, /Begin A1 Chapter 1/i);
   assert.match(html, /href=["']\/stories["']/i);
+});
+
+test("renders representative integrated chapters across A1, A2, and B1", async () => {
+  for (const pathname of [
+    "/course/a1/chapter-2",
+    "/course/a1/chapter-24",
+    "/course/a2/chapter-1",
+    "/course/a2/chapter-24",
+    "/course/b1/chapter-1",
+    "/course/b1/chapter-24",
+  ]) {
+    const response = await renderRoute(pathname);
+    assert.equal(response.status, 200, pathname);
+    const html = await response.text();
+    assert.match(html, /Chapter mastery/i, pathname);
+    assert.match(html, /Listening check/i, pathname);
+    assert.match(html, /core words/i, pathname);
+    assert.match(html, /grammar exercises/i, pathname);
+    assert.match(html, /Start private recording/i, pathname);
+    assert.match(html, /Integrated checkpoint/i, pathname);
+  }
 });
 
 test("renders A1 Chapter 1 as one integrated six-skill course chapter", async () => {
