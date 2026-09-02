@@ -172,8 +172,13 @@ export default function VocabularyPage() {
     if (!levelWords.length) return null;
     const word = levelWords[(quizRound * 47 + 19) % levelWords.length];
     const choices = [word];
-    for (let offset = 1; choices.length < 4 && offset <= levelWords.length; offset += 1) {
-      const candidate = levelWords[(quizRound * 31 + offset * 113) % levelWords.length];
+    const sameClass = levelWords.filter((candidate) => candidate.id !== word.id && vocabularyWordClass(candidate) === vocabularyWordClass(word));
+    const sameTopic = sameClass.filter((candidate) => candidate.category === word.category);
+    const candidatePool = [...sameTopic, ...sameClass, ...levelWords].filter((candidate, index, all) => (
+      candidate.id !== word.id && all.findIndex((item) => item.german === candidate.german) === index
+    ));
+    for (let offset = 0; choices.length < 4 && offset < candidatePool.length; offset += 1) {
+      const candidate = candidatePool[(quizRound * 17 + offset) % candidatePool.length];
       if (!choices.some((choice) => choice.german === candidate.german)) choices.push(candidate);
     }
     return { word, choices: choices.sort((left, right) => (left.id < right.id ? -1 : 1)) };
