@@ -236,12 +236,14 @@ export default function VocabularyPage() {
     if (!quiz || quizAnswer) return;
     setQuizAnswer(german);
     if (german === quiz.word.german) {
+      setLearned(quiz.word, true);
       setQuizStreak((current) => {
         const next = current + 1;
         setQuizBestStreak((best) => Math.max(best, next));
         return next;
       });
     } else {
+      setReview(quiz.word, true);
       setQuizStreak(0);
     }
   }
@@ -294,7 +296,7 @@ export default function VocabularyPage() {
             })}
           </div>
           {quizAnswer && <div className="vocabulary-quiz-result" aria-live="polite">
-            <span>{quizAnswer === quiz.word.german ? "Correct." : `The answer is ${quiz.word.german}. Keep practicing.`}</span>
+            <span>{quizAnswer === quiz.word.german ? "Correct. Added to learned." : `The answer is ${quiz.word.german}. Added to review.`}</span>
             <Button type="button" onClick={nextQuizQuestion}>Next word</Button>
           </div>}
         </section>}

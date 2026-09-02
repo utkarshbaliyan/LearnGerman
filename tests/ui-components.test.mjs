@@ -251,7 +251,7 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.match(first, /--skeleton-width:70%/);
 });
 
-test("rotates vocabulary quiz questions without changing mastery progress", async () => {
+test("rotates vocabulary quiz questions and records answer progress", async () => {
   const {
     advanceVocabularyQuiz,
     buildVocabularyQuiz,
@@ -278,7 +278,10 @@ test("rotates vocabulary quiz questions without changing mastery progress", asyn
   assert.equal(new Set(refreshedQuiz.choices.map((choice) => choice.german)).size, refreshedQuiz.choices.length);
 
   const pageSource = await readFile(path.join(root, "app/vocabulary/page.tsx"), "utf8");
-  assert.doesNotMatch(pageSource, /set(?:Learned|Review)\(quiz\.word/);
+  assert.match(pageSource, /setLearned\(quiz\.word, true\)/);
+  assert.match(pageSource, /setReview\(quiz\.word, true\)/);
+  assert.match(pageSource, /Correct\. Added to learned\./);
+  assert.match(pageSource, /Added to review\./);
 });
 
 test("renders story translations through collision-aware tooltips", async () => {
