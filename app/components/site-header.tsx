@@ -1,10 +1,10 @@
-import { BookOpen, CalendarCheck2, GraduationCap, Languages } from "lucide-react";
+import { BookOpen, CalendarCheck2, CircleUserRound, GraduationCap, Languages } from "lucide-react";
 import Link from "next/link";
 
 import { ThemeToggle } from "@/app/components/theme-toggle";
 
 type SiteHeaderProps = {
-  active: "course" | "stories" | "vocabulary" | "grammar";
+  active: "course" | "stories" | "vocabulary" | "grammar" | "account";
 };
 
 export function SiteHeader({ active }: SiteHeaderProps) {
@@ -19,6 +19,7 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         <Link href="/stories" prefetch aria-current={active === "stories" ? "page" : undefined}><BookOpen aria-hidden="true" /><span>Stories</span></Link>
         <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}><Languages aria-hidden="true" /><span>Vocabulary</span></Link>
         <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Grammar</span></Link>
+        <Link href="/account" prefetch aria-current={active === "account" ? "page" : undefined}><CircleUserRound aria-hidden="true" /><span>Account</span></Link>
       </nav>
       <ThemeToggle />
     </header>

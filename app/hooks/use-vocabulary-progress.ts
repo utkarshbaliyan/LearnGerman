@@ -14,6 +14,8 @@ import {
   type VocabularyIdentity,
   type VocabularyProgress,
 } from "@/app/lib/progress-sync";
+import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
+import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 
 const EMPTY_CATALOG: VocabularyIdentity[] = [];
 
@@ -22,22 +24,28 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    const refreshProgress = () => {
       setProgress(readVocabularyProgress(localStorage, catalog));
       setHydrated(true);
-    });
+    };
+    const frame = requestAnimationFrame(refreshProgress);
     const refresh = (event: StorageEvent) => {
       if (event.key === VOCABULARY_PROGRESS_STORAGE_KEY) setProgress(readVocabularyProgress(localStorage, catalog));
     };
     window.addEventListener("storage", refresh);
+    window.addEventListener(PROGRESS_SYNCED_EVENT, refreshProgress);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("storage", refresh);
+      window.removeEventListener(PROGRESS_SYNCED_EVENT, refreshProgress);
     };
   }, [catalog]);
 
   useEffect(() => {
-    if (hydrated) writeVocabularyProgress(localStorage, progress);
+    if (hydrated) {
+      writeVocabularyProgress(localStorage, progress);
+      queueCloudProgress("vocabulary", progress);
+    }
   }, [hydrated, progress]);
 
   const setLearned = useCallback((word: VocabularyIdentity, learned: boolean) => {

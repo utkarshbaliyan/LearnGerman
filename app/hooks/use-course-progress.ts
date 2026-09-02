@@ -8,6 +8,8 @@ import {
   readCourseProgress,
   readGrammarProgress,
 } from "@/app/lib/progress-sync";
+import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
+import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 
 export const COURSE_SKILLS = ["reading", "listening", "vocabulary", "grammar", "speaking", "writing"] as const;
 export type CourseSkill = (typeof COURSE_SKILLS)[number];
@@ -41,7 +43,7 @@ export function useCourseProgress() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    const refresh = () => {
       const merged = mergeCourseProgressWithGrammar(readCourseProgress(localStorage), readGrammarProgress(localStorage));
       setProgress({
         chapters: Object.fromEntries(Object.entries(merged.chapters).map(([chapterId, chapter]) => [chapterId, {
@@ -53,12 +55,17 @@ export function useCourseProgress() {
         }])) as Record<string, ChapterProgress>,
       });
       setHydrated(true);
-    });
-    return () => cancelAnimationFrame(frame);
+    };
+    const frame = requestAnimationFrame(refresh);
+    window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(COURSE_PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+    if (hydrated) {
+      localStorage.setItem(COURSE_PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+      queueCloudProgress("course", progress);
+    }
   }, [hydrated, progress]);
 
   const updateChapter = useCallback((chapterId: string, update: (chapter: ChapterProgress) => ChapterProgress) => {

@@ -21,6 +21,8 @@ import {
   writeGrammarProgress,
   type GrammarProgress,
 } from "@/app/lib/progress-sync";
+import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
+import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -210,19 +212,24 @@ export default function GrammarPage() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    const refresh = () => {
       setProgress(mergeGrammarProgressWithCourse(
         readGrammarProgress(localStorage),
         readCourseProgress(localStorage),
         REQUIRED_GRAMMAR_SETS,
       ));
       setHydrated(true);
-    });
-    return () => cancelAnimationFrame(frame);
+    };
+    const frame = requestAnimationFrame(refresh);
+    window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
   }, []);
 
   useEffect(() => {
-    if (hydrated) writeGrammarProgress(localStorage, progress);
+    if (hydrated) {
+      writeGrammarProgress(localStorage, progress);
+      queueCloudProgress("grammar", progress);
+    }
   }, [hydrated, progress]);
 
   const levelModules = GRAMMAR_MODULES.filter((item) => item.level === level);

@@ -1,17 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-
-const STORAGE_KEY = "leselaut:story-progress:v1";
+import { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
+import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 
 export function useStoryProgress() {
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    const refresh = () => {
       try {
-        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]") as unknown;
+        const stored = JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]") as unknown;
         if (Array.isArray(stored)) {
           setCompletedIds(new Set(stored.filter((value): value is string => typeof value === "string")));
         }
@@ -19,12 +19,18 @@ export function useStoryProgress() {
         // Ignore an invalid device-local value and start with a clean course state.
       }
       setHydrated(true);
-    });
-    return () => cancelAnimationFrame(frame);
+    };
+    const frame = requestAnimationFrame(refresh);
+    window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify([...completedIds]));
+    if (hydrated) {
+      const completed = [...completedIds];
+      localStorage.setItem(STORY_PROGRESS_STORAGE_KEY, JSON.stringify(completed));
+      queueCloudProgress("stories", completed);
+    }
   }, [completedIds, hydrated]);
 
   const setStoryCompleted = useCallback((storyId: string, completed = true) => {

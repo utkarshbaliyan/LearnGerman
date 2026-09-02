@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body>{children}</body>
+      <body><CloudProgressSync />{children}</body>
     </html>
   );
 }
