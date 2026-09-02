@@ -38,7 +38,9 @@ export async function PUT(request: Request) {
   const auth = await authenticatedDb(request);
   if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
 
-  const payload = await request.json() as { scope?: unknown; data?: unknown };
+  let payload: { scope?: unknown; data?: unknown };
+  try { payload = await request.json() as { scope?: unknown; data?: unknown }; }
+  catch { return Response.json({ error: "Request body must be valid JSON" }, { status: 400 }); }
   const validData = payload.scope === "stories"
     ? Array.isArray(payload.data) && payload.data.every((item) => typeof item === "string")
     : Boolean(payload.data) && typeof payload.data === "object" && !Array.isArray(payload.data);

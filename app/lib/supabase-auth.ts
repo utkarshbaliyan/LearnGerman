@@ -15,6 +15,6 @@ export async function getAuthenticatedUser(request: Request): Promise<Authentica
     if (!payload.sub || !email) return null;
     const metadata = payload.user_metadata && typeof payload.user_metadata === "object" ? payload.user_metadata as Record<string, unknown> : {};
     const name = [metadata.full_name, metadata.name, metadata.username].find((value): value is string => typeof value === "string" && value.trim().length > 0);
-    return { id: payload.sub, email, displayName: name?.trim() ?? email.split("@")[0], requestedUsername: typeof metadata.username === "string" ? metadata.username : null };
+    return { id: payload.sub, email, displayName: (name?.trim() ?? email.split("@")[0]).slice(0, 120), requestedUsername: typeof metadata.username === "string" ? metadata.username : null };
   } catch { return null; }
 }

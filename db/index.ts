@@ -5,8 +5,9 @@ let initialization: Promise<unknown> | null = null;
 
 export async function getD1() {
   const { env } = await import("cloudflare:workers");
-  if (!env.DB) throw new Error("Cloudflare D1 binding `DB` is unavailable.");
-  return env.DB;
+  const workerEnv = env as unknown as { DB?: D1Database };
+  if (!workerEnv.DB) throw new Error("Cloudflare D1 binding `DB` is unavailable.");
+  return workerEnv.DB;
 }
 
 export async function ensureDatabase() {
@@ -32,7 +33,7 @@ export async function ensureDatabase() {
       )`),
       ]);
       const columns = await d1.prepare("PRAGMA table_info(users)").all<{ name: string }>();
-      if (!columns.results.some((column) => column.name === "username")) {
+      if (!columns.results.some((column: { name: string }) => column.name === "username")) {
         await d1.prepare("ALTER TABLE users ADD COLUMN username TEXT").run();
       }
       await d1.prepare("CREATE UNIQUE INDEX IF NOT EXISTS users_username_unique ON users(username)").run();
