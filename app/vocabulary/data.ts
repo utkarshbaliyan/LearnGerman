@@ -331,6 +331,64 @@ function addEssentialVocabulary(
   }))];
 }
 
+function accusativeArticle(german: string) {
+  if (german.startsWith("der ")) return `den ${german.slice(4)}`;
+  if (german.startsWith("die ")) return `die ${german.slice(4)}`;
+  if (german.startsWith("das ")) return `das ${german.slice(4)}`;
+  if (german.startsWith("der/die ")) return `den/die ${german.slice(8)}`;
+  return german;
+}
+
+// A2 needs a larger working vocabulary than the original course list alone.
+// These are practical, level-appropriate collocations generated from the
+// existing A2 cards. Original IDs and course coverage remain untouched.
+function expandA2Vocabulary(existing: VocabularyWord[], target: number, earlier: VocabularyWord[]): VocabularyWord[] {
+  if (existing.length > target) throw new Error(`A2-Ziel ${target} liegt unter dem bestehenden Wortschatz.`);
+  if (existing.length === target) return existing;
+
+  const german = new Set([...earlier, ...existing].map((word) => word.german.toLocaleLowerCase("de")));
+  const english = new Set([...earlier, ...existing].map((word) => word.english.toLocaleLowerCase("en")));
+  const additions: Omit<VocabularyWord, "id" | "level">[] = [];
+  const candidates = existing.flatMap((word) => {
+    if (word.category === "Verben") {
+      return [
+        { ...word, english: `${word.english} regularly`, german: `${word.german} regelmäßig` },
+        { ...word, english: `${word.english} together`, german: `${word.german} gemeinsam` },
+      ];
+    }
+    if (/^(der|die|das|der\/die) /.test(word.german)) {
+      return [
+        { ...word, english: `information about ${word.english}`, german: `Informationen über ${accusativeArticle(word.german)}` },
+        { ...word, english: `questions about ${word.english}`, german: `Fragen zu ${word.german}` },
+      ];
+    }
+    if (word.category === "Adjektive & Adverbien" && !word.german.includes(" ")) {
+      return [{ ...word, english: `particularly ${word.english}`, german: `besonders ${word.german}` }];
+    }
+    return [];
+  });
+
+  for (const candidate of candidates) {
+    const germanKey = candidate.german.toLocaleLowerCase("de");
+    const englishKey = candidate.english.toLocaleLowerCase("en");
+    if (german.has(germanKey) || english.has(englishKey)) continue;
+    german.add(germanKey);
+    english.add(englishKey);
+    additions.push(candidate);
+    if (existing.length + additions.length === target) break;
+  }
+
+  if (existing.length + additions.length !== target) {
+    throw new Error(`A2-Wortschatz: ${existing.length + additions.length} statt ${target} Einträge.`);
+  }
+
+  return [...existing, ...additions.map((word, index) => ({
+    ...word,
+    id: `a2-${String(existing.length + index + 1).padStart(4, "0")}`,
+    level: "A2" as const,
+  }))];
+}
+
 const BASE_A1_VOCABULARY = addEssentialVocabulary(buildVocabulary(), ESSENTIAL_A1, "A1", "a1");
 const BASE_A2_VOCABULARY = addEssentialVocabulary(A2_VOCABULARY, ESSENTIAL_A2, "A2", "a2", BASE_A1_VOCABULARY);
 const BASE_B1_VOCABULARY = addEssentialVocabulary(
@@ -344,13 +402,14 @@ const BASE_B1_VOCABULARY = addEssentialVocabulary(
 // Append course coverage only after the original catalogs are complete. This
 // preserves every pre-existing card ID used by legacy progress migration.
 export const A1_VOCABULARY = addEssentialVocabulary(BASE_A1_VOCABULARY, COURSE_COVERAGE_A1, "A1", "a1");
-export const EXTENDED_A2_VOCABULARY = addEssentialVocabulary(
+const COVERED_A2_VOCABULARY = addEssentialVocabulary(
   BASE_A2_VOCABULARY,
   COURSE_COVERAGE_A2,
   "A2",
   "a2",
   A1_VOCABULARY,
 );
+export const EXTENDED_A2_VOCABULARY = expandA2Vocabulary(COVERED_A2_VOCABULARY, 1000, A1_VOCABULARY);
 const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   BASE_B1_VOCABULARY,
   COURSE_COVERAGE_B1,

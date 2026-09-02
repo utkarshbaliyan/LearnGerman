@@ -172,8 +172,9 @@ test("provides 5,000 stable vocabulary cards with grammatical classifications", 
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
   assert.equal(ALL_VOCABULARY.length, 5000);
-  assert.equal(VOCABULARY_LEVEL_COUNTS.B1, 3497);
-  assert.equal(B1_VOCABULARY.at(-1).id, "b1-3497");
+  assert.equal(VOCABULARY_LEVEL_COUNTS.A2, 1000);
+  assert.equal(VOCABULARY_LEVEL_COUNTS.B1, 3064);
+  assert.equal(B1_VOCABULARY.at(-1).id, "b1-3064");
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, 5000);
   for (const preservedId of ["a1-0936", "a2-0567", "b1-1155"]) {
     assert.ok(ALL_VOCABULARY.some((item) => item.id === preservedId), `${preservedId} should remain stable`);
