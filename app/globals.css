@@ -1136,6 +1136,7 @@ html[data-theme="dark"] .grammar-bridge-card > span { color: #b8a5f3; }
   .library-heading, .section-intro { grid-template-columns: 1fr; }
   .section-intro > span { grid-column: auto; }
   .grammar-course { grid-template-columns: 1fr; }
+  .learning-progress-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .grammar-roadmap { position: static; }
   .grammar-module-list { max-height: none; }
   .today-hero { grid-template-columns: 1fr; }
@@ -1189,6 +1190,8 @@ html[data-theme="dark"] .grammar-bridge-card > span { color: #b8a5f3; }
   .course-progress-panel, .vocabulary-progress-card, .grammar-progress-card { padding: 20px; }
   .progress-panel-heading h2 { font-size: 31px; }
   .curriculum { padding: 52px 16px; }
+  .learning-progress-overview { padding: 52px 16px; }
+  .learning-progress-grid { grid-template-columns: 1fr; }
   .section-intro h2 { font-size: 38px; }
   .current-level-progress { grid-template-columns: 1fr auto; }
   .current-level-progress [data-slot="progress"] { grid-column: 1 / -1; }
@@ -1474,6 +1477,17 @@ html[data-theme="dark"] .audio-bar > button:last-child { color: #f7f7f8; }
 .course-mastery-card > [data-slot="progress"] { height: 7px; margin-top: 24px; background: rgba(255,255,255,.12); }
 .course-mastery-card > [data-slot="progress"] [data-slot="progress-indicator"] { background: var(--blue); }
 .course-mastery-card > p { margin: 13px 0 20px; color: var(--inverse-muted); font: 500 10px/1.5 var(--font-ui); }
+.learning-progress-overview { padding: 82px clamp(20px, 5vw, 78px); background: var(--paper); }
+.learning-progress-overview > * { max-width: 1385px; margin-left: auto; margin-right: auto; }
+.learning-progress-grid { margin-top: 30px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.learning-progress-grid article { min-width: 0; padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); opacity: .68; transition: opacity 160ms ease; }
+.learning-progress-grid article.is-ready { opacity: 1; }
+.learning-progress-grid article > div { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.learning-progress-grid span { color: var(--ink-soft); font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.learning-progress-grid strong { color: var(--blue); font: 700 29px/1 Georgia,serif; letter-spacing: -.035em; }
+.learning-progress-grid [data-slot="progress"] { height: 7px; margin: 17px 0 11px; background: var(--muted); }
+.learning-progress-grid [data-slot="progress-indicator"] { background: var(--blue); }
+.learning-progress-grid p { margin: 0; color: var(--ink-soft); font-size: 10px; line-height: 1.45; }
 .course-skill-preview { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
 .course-skill-preview > div { padding: 10px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 7px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; font-family: var(--font-ui); }
 .course-skill-preview svg { width: 15px; color: var(--inverse-accent); }

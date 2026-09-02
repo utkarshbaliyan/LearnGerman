@@ -14,11 +14,16 @@ import {
   Target,
 } from "lucide-react";
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
+import { getCurriculum, LEVELS as CURRICULUM_LEVELS } from "@/app/curriculum";
 import type { GrammarLesson, GrammarLevel, GrammarModule } from "@/app/grammar/course";
 import { COURSE_SKILLS, useCourseProgress } from "@/app/hooks/use-course-progress";
+import { useStoryProgress } from "@/app/hooks/use-story-progress";
+import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
+import { readGrammarProgress } from "@/app/lib/progress-sync";
+import { ALL_VOCABULARY } from "@/app/vocabulary/data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -54,12 +59,33 @@ export function CourseHome({
   allGrammarLessons: GrammarLesson[];
 }) {
   const { progress, hydrated } = useCourseProgress();
+  const { completedIds, hydrated: storiesHydrated } = useStoryProgress();
+  const { isLearned, hydrated: vocabularyHydrated } = useVocabularyProgress(ALL_VOCABULARY);
+  const [completedGrammarIds, setCompletedGrammarIds] = useState<string[]>([]);
   const publishedLessons = allGrammarLessons.filter((lesson) => courseLevels.some((level) => lesson.id.startsWith(`${level.toLowerCase()}-`)));
   const completedChapters = publishedLessons.filter((lesson) => progress.chapters[lesson.id]?.completed).length;
   const coursePercent = Math.round((completedChapters / publishedLessons.length) * 100);
+  const availableStories = useMemo(() => CURRICULUM_LEVELS.flatMap((level) => getCurriculum(level.id)?.stories ?? []), []);
+  const completedStories = availableStories.filter((story) => completedIds.has(story.id)).length;
+  const completedGrammar = publishedLessons.filter((lesson) => completedGrammarIds.includes(lesson.id)).length;
+  const learnedVocabulary = ALL_VOCABULARY.filter(isLearned).length;
   const nextLesson = publishedLessons.find((lesson) => !progress.chapters[lesson.id]?.completed) ?? publishedLessons[0];
   const nextLevel = nextLesson.id.slice(0, 2).toUpperCase() as GrammarLevel;
   const activeChapter = progress.chapters[nextLesson.id];
+
+  useEffect(() => {
+    const refresh = () => setCompletedGrammarIds(readGrammarProgress(localStorage).completed);
+    refresh();
+    window.addEventListener("storage", refresh);
+    return () => window.removeEventListener("storage", refresh);
+  }, []);
+
+  const learningProgress = [
+    { label: "Course", value: completedChapters, total: publishedLessons.length, suffix: "chapters", ready: hydrated },
+    { label: "Stories", value: completedStories, total: availableStories.length, suffix: "stories", ready: storiesHydrated },
+    { label: "Grammar", value: completedGrammar, total: publishedLessons.length, suffix: "lessons", ready: Boolean(completedGrammarIds.length) || hydrated },
+    { label: "Vocabulary", value: learnedVocabulary, total: ALL_VOCABULARY.length, suffix: "words", ready: vocabularyHydrated },
+  ];
 
   return (
     <main className="site-shell course-home" id="top">
@@ -91,6 +117,20 @@ export function CourseHome({
         <div><Target /><span><b>No isolated sections</b><small>Every skill is practised inside the chapter where it is needed.</small></span></div>
         <div><CheckCircle2 /><span><b>Mastery, not screen completion</b><small>Weak skills cannot be hidden by a high score elsewhere.</small></span></div>
         <div><Languages /><span><b>8,500+ useful words by C1</b><small>Learned in context, recalled actively, and recycled later.</small></span></div>
+      </section>
+
+      <section className="learning-progress-overview" aria-labelledby="learning-progress-title">
+        <div className="course-section-heading"><span>Your learning data</span><h2 id="learning-progress-title">Progress across every part of LeseLaut.</h2><p>Each graph uses its own completed items, so a story, grammar lesson, vocabulary card, and full course chapter are counted separately and accurately.</p></div>
+        <div className="learning-progress-grid">
+          {learningProgress.map((item) => {
+            const percent = item.total ? Math.round((item.value / item.total) * 100) : 0;
+            return <article key={item.label} className={item.ready ? "is-ready" : ""}>
+              <div><span>{item.label}</span><strong>{percent}%</strong></div>
+              <Progress value={percent} aria-label={`${item.label}: ${percent}% complete`} />
+              <p>{item.value.toLocaleString("en")} of {item.total.toLocaleString("en")} {item.suffix} completed</p>
+            </article>;
+          })}
+        </div>
       </section>
 
       <section className="level-journey" aria-labelledby="level-journey-title">
