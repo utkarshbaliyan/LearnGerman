@@ -2,7 +2,7 @@
 
 import {
   ArrowUpDown, Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
-  ChevronDown, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
+  ChevronDown, CircleHelp, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
   Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, X,
   type LucideIcon,
 } from "lucide-react";
@@ -121,6 +121,10 @@ export default function VocabularyPage() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("course");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
+  const [quizRound, setQuizRound] = useState(0);
+  const [quizAnswer, setQuizAnswer] = useState<string | null>(null);
+  const [quizStreak, setQuizStreak] = useState(0);
+  const [quizBestStreak, setQuizBestStreak] = useState(0);
   const { isLearned, isReview, setLearned, setReview } = useVocabularyProgress(ALL_VOCABULARY);
   const deferredQuery = useDeferredValue(query);
 
@@ -164,10 +168,21 @@ export default function VocabularyPage() {
   }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, sortOrder, verbTypeFilter, wordClassFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
+  const quiz = useMemo(() => {
+    if (!levelWords.length) return null;
+    const word = levelWords[(quizRound * 47 + 19) % levelWords.length];
+    const choices = [word];
+    for (let offset = 1; choices.length < 4 && offset <= levelWords.length; offset += 1) {
+      const candidate = levelWords[(quizRound * 31 + offset * 113) % levelWords.length];
+      if (!choices.some((choice) => choice.german === candidate.german)) choices.push(candidate);
+    }
+    return { word, choices: choices.sort((left, right) => (left.id < right.id ? -1 : 1)) };
+  }, [levelWords, quizRound]);
 
   function chooseLevel(next: LevelFilter) {
     setLevel(next);
     setVisibleLimit(VISIBLE_BATCH);
+    setQuizAnswer(null);
   }
 
   function chooseCategory(next: VocabularyCategory | "all") {
@@ -228,6 +243,27 @@ export default function VocabularyPage() {
     setReview(word, !isReview(word));
   }
 
+  function answerQuiz(german: string) {
+    if (!quiz || quizAnswer) return;
+    setQuizAnswer(german);
+    if (german === quiz.word.german) {
+      setLearned(quiz.word, true);
+      setQuizStreak((current) => {
+        const next = current + 1;
+        setQuizBestStreak((best) => Math.max(best, next));
+        return next;
+      });
+    } else {
+      setQuizStreak(0);
+      setReview(quiz.word, true);
+    }
+  }
+
+  function nextQuizQuestion() {
+    setQuizRound((current) => current + 1);
+    setQuizAnswer(null);
+  }
+
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–B1" : level;
   const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all" || verbTypeFilter !== "all" || sortOrder !== "course";
@@ -255,6 +291,27 @@ export default function VocabularyPage() {
             </div>
           </div>
         </div>
+
+        {quiz && <section className="vocabulary-quiz" aria-labelledby="vocabulary-quiz-title">
+          <div className="vocabulary-quiz-heading">
+            <span><CircleHelp /> Quick guess</span>
+            <h2 id="vocabulary-quiz-title">What is <strong lang="en">{quiz.word.english}</strong> in German?</h2>
+            <p>{quizStreak} in a row · best streak {quizBestStreak}</p>
+          </div>
+          <div className="vocabulary-quiz-answers" role="group" aria-label="Choose the German answer">
+            {quiz.choices.map((choice) => {
+              const isCorrect = choice.german === quiz.word.german;
+              const isSelected = quizAnswer === choice.german;
+              const resultClass = quizAnswer ? (isCorrect ? "is-correct" : isSelected ? "is-wrong" : "") : "";
+              return <button key={choice.id} type="button" className={resultClass} disabled={Boolean(quizAnswer)} onClick={() => answerQuiz(choice.german)} lang="de">{choice.german}</button>;
+            })}
+          </div>
+          {quizAnswer && <div className="vocabulary-quiz-result" aria-live="polite">
+            <span>{quizAnswer === quiz.word.german ? "Correct — added to learned." : `The answer is ${quiz.word.german}. Added to review.`}</span>
+            <Button type="button" onClick={nextQuizQuestion}>Next word</Button>
+          </div>}
+        </section>}
+
         <div className="vocabulary-toolbar">
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">

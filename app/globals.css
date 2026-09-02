@@ -380,6 +380,20 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .vocabulary-levels button small { color: var(--ink-soft); font-size: 7px; font-weight: 800; }
 .vocabulary-levels button.is-active { border-color: var(--orange); background: var(--green); color: white; }
 .vocabulary-levels button.is-active small { color: rgba(255,255,255,.68); }
+.vocabulary-quiz { margin-bottom: 18px; padding: clamp(18px,2.5vw,28px); display: grid; grid-template-columns: minmax(240px,.8fr) minmax(0,1.2fr); gap: 22px; align-items: center; border: 1px solid var(--line); border-radius: 18px; background: var(--white); }
+.vocabulary-quiz-heading > span { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-size: 9px; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+.vocabulary-quiz-heading > span svg { width: 14px; }
+.vocabulary-quiz h2 { margin: 10px 0 8px; font: 700 clamp(23px,2.5vw,32px)/1.08 Georgia,serif; letter-spacing: -.025em; }
+.vocabulary-quiz h2 strong { color: var(--blue); }
+.vocabulary-quiz-heading p { margin: 0; color: var(--ink-soft); font-size: 11px; }
+.vocabulary-quiz-answers { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.vocabulary-quiz-answers button { min-height: 48px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 11px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 750; text-align: left; cursor: pointer; transition: border-color .18s ease, background .18s ease, color .18s ease; }
+.vocabulary-quiz-answers button:not(:disabled):hover { border-color: var(--blue); color: var(--blue); }
+.vocabulary-quiz-answers button:disabled { cursor: default; }
+.vocabulary-quiz-answers button.is-correct { border-color: #3f8b68; background: #e8f4ec; color: #246446; }
+.vocabulary-quiz-answers button.is-wrong { border-color: #c75c58; background: #fcebea; color: #9a3735; }
+.vocabulary-quiz-result { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--ink-soft); font-size: 12px; }
+.vocabulary-quiz-result button { min-height: 38px; flex: 0 0 auto; }
 .vocabulary-toolbar { display: grid; grid-template-columns: minmax(240px,1fr) auto; gap: 16px; align-items: center; }
 .vocabulary-search { position: relative; display: block; }
 .vocabulary-search > svg { width: 17px; position: absolute; left: 15px; top: 50%; z-index: 1; color: #858b85; transform: translateY(-50%); pointer-events: none; }
@@ -476,6 +490,8 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
   .footer-brand { justify-self: center; }
   .vocabulary-overview { grid-template-columns: 1fr; }
   .vocabulary-progress-card { max-width: 480px; }
+  .vocabulary-quiz { grid-template-columns: 1fr; }
+  .vocabulary-quiz-result { grid-column: auto; }
   .vocabulary-levels { align-items: stretch; flex-direction: column; }
   .vocabulary-levels > div:first-child { padding: 3px 4px; }
   .vocabulary-toolbar { grid-template-columns: 1fr; }
