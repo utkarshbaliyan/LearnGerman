@@ -1,5 +1,7 @@
 "use client";
 
+import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
+
 export type CloudProgressScope = "course" | "stories" | "grammar" | "vocabulary";
 
 const saveTimers = new Map<CloudProgressScope, ReturnType<typeof setTimeout>>();
@@ -10,9 +12,8 @@ export function setCloudAuthenticated(value: boolean) {
 }
 
 export async function putCloudProgress(scope: CloudProgressScope, data: unknown) {
-  const response = await fetch("/api/progress", {
+  const response = await authenticatedFetch("/api/progress", {
     method: "PUT",
-    credentials: "same-origin",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ scope, data }),
   });

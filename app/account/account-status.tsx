@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, Cloud, LoaderCircle } from "lucide-react";
 
 import { synchronizeCloudProgress } from "@/app/lib/cloud-progress";
+import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 
 export function AccountStatus() {
   const [status, setStatus] = useState<"syncing" | "ready" | "error">("syncing");
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/account", { credentials: "same-origin", cache: "no-store" }),
+      authenticatedFetch("/api/account", { cache: "no-store" }),
       synchronizeCloudProgress(),
     ]).then(([account, sync]) => setStatus(account.ok && sync.synced ? "ready" : "error"))
       .catch(() => setStatus("error"));

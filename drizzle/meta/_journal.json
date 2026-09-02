@@ -8,6 +8,13 @@
       "when": 1788343436046,
       "tag": "0000_jittery_photon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788345851886,
+      "tag": "0001_low_grey_gargoyle",
+      "breakpoints": true
     }
   ]
 }

@@ -7,6 +7,7 @@ import {
 } from "@/app/lib/progress-sync";
 import { putCloudProgress, setCloudAuthenticated, type CloudProgressScope } from "@/app/lib/cloud-progress-save";
 import { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
+import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 
 export { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 
@@ -96,7 +97,7 @@ function readLocal(scope: CloudProgressScope) {
 }
 
 export async function synchronizeCloudProgress() {
-  const response = await fetch("/api/progress", { credentials: "same-origin", cache: "no-store" });
+  const response = await authenticatedFetch("/api/progress", { cache: "no-store" });
   if (!response.ok) {
     if (response.status === 401) setCloudAuthenticated(false);
     return { authenticated: false, synced: false };

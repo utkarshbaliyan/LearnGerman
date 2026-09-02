@@ -12,15 +12,17 @@ export async function getD1() {
 export async function ensureDatabase() {
   if (!initialization) {
     const d1 = await getD1();
-    initialization = d1.batch([
-      d1.prepare(`CREATE TABLE IF NOT EXISTS users (
+    initialization = (async () => {
+      await d1.batch([
+        d1.prepare(`CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY NOT NULL,
         email TEXT NOT NULL,
+        username TEXT,
         display_name TEXT NOT NULL,
         created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
         updated_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL
       )`),
-      d1.prepare(`CREATE TABLE IF NOT EXISTS user_progress (
+        d1.prepare(`CREATE TABLE IF NOT EXISTS user_progress (
         user_id TEXT NOT NULL,
         scope TEXT NOT NULL,
         data TEXT DEFAULT '{}' NOT NULL,
@@ -28,7 +30,13 @@ export async function ensureDatabase() {
         PRIMARY KEY (user_id, scope),
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
       )`),
-    ]).catch((error) => { initialization = null; throw error; });
+      ]);
+      const columns = await d1.prepare("PRAGMA table_info(users)").all<{ name: string }>();
+      if (!columns.results.some((column) => column.name === "username")) {
+        await d1.prepare("ALTER TABLE users ADD COLUMN username TEXT").run();
+      }
+      await d1.prepare("CREATE UNIQUE INDEX IF NOT EXISTS users_username_unique ON users(username)").run();
+    })().catch((error) => { initialization = null; throw error; });
   }
   await initialization;
 }

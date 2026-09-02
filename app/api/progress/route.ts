@@ -1,8 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import { getChatGPTUser } from "@/app/chatgpt-auth";
+import { ensureAccount } from "@/app/lib/account-db";
+import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
 import { ensureDatabase, getDb } from "@/db";
-import { userProgress, users } from "@/db/schema";
+import { userProgress } from "@/db/schema";
 
 const SCOPES = ["course", "stories", "grammar", "vocabulary"] as const;
 type ProgressScope = (typeof SCOPES)[number];
@@ -11,21 +12,17 @@ function isScope(value: unknown): value is ProgressScope {
   return typeof value === "string" && SCOPES.includes(value as ProgressScope);
 }
 
-async function authenticatedDb() {
-  const user = await getChatGPTUser();
+async function authenticatedDb(request: Request) {
+  const user = await getAuthenticatedUser(request);
   if (!user) return null;
   await ensureDatabase();
   const db = await getDb();
-  await db.insert(users).values({ id: user.id, email: user.email, displayName: user.displayName })
-    .onConflictDoUpdate({
-      target: users.id,
-      set: { email: user.email, displayName: user.displayName, updatedAt: new Date().toISOString() },
-    });
+  await ensureAccount(user);
   return { db, user };
 }
 
-export async function GET() {
-  const auth = await authenticatedDb();
+export async function GET(request: Request) {
+  const auth = await authenticatedDb(request);
   if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
 
   const rows = await auth.db.select({ scope: userProgress.scope, data: userProgress.data })
@@ -38,7 +35,7 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
-  const auth = await authenticatedDb();
+  const auth = await authenticatedDb(request);
   if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
 
   const payload = await request.json() as { scope?: unknown; data?: unknown };
