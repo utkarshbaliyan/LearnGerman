@@ -82,7 +82,7 @@ export const COURSE_COVERAGE_A1 = [
 
 export const COURSE_COVERAGE_A2 = [
   ...rows("Grundlagen & Kommunikation", "everyone / each|jeder;this / these|diese;situation|Situation;group|Gruppe"),
-  ...rows("Verben", "wrote|schrieb;become|geworden;knew|kannte;wanted|wollte;must|musst;stall / stood|stand;came|kam;began|begann;named / called|nannte;resulted in|ergab;spoke|sprach;to ask / questions|fragte;is / may be|sei"),
+  ...rows("Verben", "wrote|schrieb;become|geworden;knew|kannte;wanted|wollte;must|musst;stall / stood|stand;came|kam;began|begann;named / called|nannte;resulted in|ergab;spoke|sprach;to ask / questions|fragte;is / may be|sei;to function|funktionieren"),
   ...rows("Adjektive & Adverbien", "far|weit;way / gone|weg;full|voll;difficult|schwierig;suitable|passende"),
 ];
 

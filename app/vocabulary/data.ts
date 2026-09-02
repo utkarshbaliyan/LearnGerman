@@ -1,6 +1,7 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary, expandB1Vocabulary } from "@/app/vocabulary/b1-data";
+import { verbHeadwordForForm } from "@/app/vocabulary/verb-forms";
 import {
   COURSE_COVERAGE_A1,
   COURSE_COVERAGE_A2,
@@ -168,6 +169,37 @@ const ADVERB_ENGLISH_PREFIXES = [
   "otherwise", "partly", "probably", "regardless", "relatively", "therefore", "ultimately", "under no circumstances",
 ];
 
+const INFINITIVE_ENGLISH_OVERRIDES: Record<string, string> = {
+  dürfen: "to be allowed to",
+  können: "to be able to",
+  mögen: "to like",
+  müssen: "to have to",
+  sein: "to be",
+  sollen: "to be supposed to",
+  tun: "to do",
+  wollen: "to want",
+};
+
+const GENERATED_VERB_ADVERBS = "erfolgreich|selbstständig|konsequent";
+const GENERATED_VERB_SUFFIXES = "regelmäßig|gemeinsam|sorgfältig|in der praxis";
+
+function containsGermanInfinitive(german: string) {
+  return german
+    .toLocaleLowerCase("de")
+    .split(/[^a-zäöüß]+/)
+    .some((token) => token === "sein" || token === "tun" || /(?:en|eln|ern)$/.test(token));
+}
+
+export function vocabularyVerbLemmaKey(word: VocabularyWord) {
+  return word.german
+    .toLocaleLowerCase("de")
+    .trim()
+    .replace(new RegExp(`^sich\\s+(?:${GENERATED_VERB_ADVERBS})\\s+`), "sich ")
+    .replace(new RegExp(`^(?:${GENERATED_VERB_ADVERBS})\\s+`), "")
+    .replace(new RegExp(`\\s+(?:${GENERATED_VERB_SUFFIXES})$`), "")
+    .replace(/\s+/g, " ");
+}
+
 function verbHeadword(word: VocabularyWord) {
   return word.german
     .toLocaleLowerCase("de")
@@ -180,10 +212,11 @@ function verbHeadword(word: VocabularyWord) {
 export function vocabularyWordClass(word: VocabularyWord): VocabularyWordClass {
   const german = word.german.toLocaleLowerCase("de").split(",")[0].trim();
   const english = word.english.toLocaleLowerCase("en");
-  if (word.category === "Verben" || english.startsWith("to ")) return "verb";
+  if (word.category === "Verben") return "verb";
   if (PRONOUN_WORDS.has(german)) return "pronoun";
   if (PREPOSITION_WORDS.has(german)) return "preposition";
   if (CONJUNCTION_WORDS.has(german)) return "conjunction";
+  if (english.startsWith("to ") && containsGermanInfinitive(german)) return "verb";
   if (/^(der|die|das|der\/die|die\/der)\s/.test(german) || /^[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]*$/.test(word.german)) return "noun";
   if (word.category === "Adjektive & Adverbien") {
     if (english.endsWith("ly") || ADVERB_ENGLISH_PREFIXES.some((prefix) => english.startsWith(prefix))) return "adverb";
@@ -331,6 +364,39 @@ function addEssentialVocabulary(
   }))];
 }
 
+function normalizeVerbCard(word: VocabularyWord) {
+  const headword = verbHeadwordForForm(word.german);
+  const german = headword?.german ?? word.german;
+  if (!containsGermanInfinitive(german)) return null;
+
+  const exactGerman = german.toLocaleLowerCase("de").trim();
+  const english = headword?.english ?? INFINITIVE_ENGLISH_OVERRIDES[exactGerman] ?? word.english;
+  if (!english.toLocaleLowerCase("en").startsWith("to ")) return null;
+  return { ...word, english, german };
+}
+
+function removeDuplicateVerbForms(words: VocabularyWord[]) {
+  const verbLemmas = new Set<string>();
+  const baseVerbLemmas = new Set(words.flatMap((word) => {
+    if (vocabularyWordClass(word) !== "verb" || verbHeadwordForForm(word.german)) return [];
+    const normalized = normalizeVerbCard(word);
+    if (!normalized || vocabularyVerbLemmaKey(normalized) !== normalized.german.toLocaleLowerCase("de").trim()) return [];
+    return [vocabularyVerbLemmaKey(normalized)];
+  }));
+
+  return words.flatMap((word) => {
+    if (vocabularyWordClass(word) !== "verb") return [word];
+    const headword = verbHeadwordForForm(word.german);
+    const normalized = normalizeVerbCard(word);
+    if (!normalized) return [];
+    const lemma = vocabularyVerbLemmaKey(normalized);
+    if (headword && baseVerbLemmas.has(lemma)) return [];
+    if (verbLemmas.has(lemma)) return [];
+    verbLemmas.add(lemma);
+    return [normalized];
+  });
+}
+
 function accusativeArticle(german: string) {
   if (german.startsWith("der ")) return `den ${german.slice(4)}`;
   if (german.startsWith("die ")) return `die ${german.slice(4)}`;
@@ -401,29 +467,38 @@ const BASE_B1_VOCABULARY = addEssentialVocabulary(
 
 // Append course coverage only after the original catalogs are complete. This
 // preserves every pre-existing card ID used by legacy progress migration.
-export const A1_VOCABULARY = addEssentialVocabulary(BASE_A1_VOCABULARY, COURSE_COVERAGE_A1, "A1", "a1");
+const RAW_A1_VOCABULARY = addEssentialVocabulary(BASE_A1_VOCABULARY, COURSE_COVERAGE_A1, "A1", "a1");
 const COVERED_A2_VOCABULARY = addEssentialVocabulary(
   BASE_A2_VOCABULARY,
   COURSE_COVERAGE_A2,
   "A2",
   "a2",
-  A1_VOCABULARY,
+  RAW_A1_VOCABULARY,
 );
-export const EXTENDED_A2_VOCABULARY = expandA2Vocabulary(COVERED_A2_VOCABULARY, 1000, A1_VOCABULARY);
+const RAW_EXTENDED_A2_VOCABULARY = expandA2Vocabulary(COVERED_A2_VOCABULARY, 1000, RAW_A1_VOCABULARY);
 const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   BASE_B1_VOCABULARY,
   COURSE_COVERAGE_B1,
   "B1",
   "b1",
-  [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY],
+  [...RAW_A1_VOCABULARY, ...RAW_EXTENDED_A2_VOCABULARY],
 );
 export const TOTAL_VOCABULARY_TARGET = 5000;
-export const B1_VOCABULARY = expandB1Vocabulary(
+const RAW_B1_VOCABULARY = expandB1Vocabulary(
   COVERED_B1_VOCABULARY,
-  TOTAL_VOCABULARY_TARGET - A1_VOCABULARY.length - EXTENDED_A2_VOCABULARY.length,
+  TOTAL_VOCABULARY_TARGET - RAW_A1_VOCABULARY.length - RAW_EXTENDED_A2_VOCABULARY.length,
 );
+const CLEAN_VOCABULARY = removeDuplicateVerbForms([
+  ...RAW_A1_VOCABULARY,
+  ...RAW_EXTENDED_A2_VOCABULARY,
+  ...RAW_B1_VOCABULARY,
+]);
+
+export const A1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A1");
+export const EXTENDED_A2_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A2");
+export const B1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "B1");
 export { EXTENDED_A2_VOCABULARY as A2_VOCABULARY };
-export const ALL_VOCABULARY = [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY, ...B1_VOCABULARY];
+export const ALL_VOCABULARY = CLEAN_VOCABULARY;
 export const VOCABULARY_LEVEL_COUNTS = {
   A1: A1_VOCABULARY.length,
   A2: EXTENDED_A2_VOCABULARY.length,
@@ -433,13 +508,10 @@ export const VOCABULARY_LEVEL_COUNTS = {
 
 const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 
-// The same German form can genuinely serve more than one learning card (for
-// example, a noun and a fixed expression). Card IDs—not surface spelling—must
-// be unique. Keep this guard lightweight because this module also runs in the
-// browser when the vocabulary route opens. The complete library is deliberately
-// allowed to contain related forms across levels.
-if (ALL_VOCABULARY.length !== TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
-  throw new Error(`The A1–B1 vocabulary library must contain exactly ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
+// The raw catalog may contain up to 5,000 cards. The public catalog is smaller
+// by design after conjugated and generated duplicate verb forms are removed.
+if (ALL_VOCABULARY.length > TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
+  throw new Error(`The A1–B1 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
 }
 
 for (const category of VOCABULARY_CATEGORIES) {

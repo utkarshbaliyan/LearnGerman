@@ -118,6 +118,12 @@ test("synchronizes equivalent vocabulary and grammar mastery across routes", asy
   writeVocabularyProgress(storage, setVocabularyStatus(migrated, catalogWord, "unlearned"));
   assert.equal(isVocabularyLearned(readVocabularyProgress(storage, [catalogWord]), chapterWord), false);
 
+  values.set("leselaut:vocabulary-progress:v2", JSON.stringify({ learnedKeys: ["de:lernt"], reviewKeys: [], legacyMigrated: true }));
+  assert.equal(
+    isVocabularyLearned(readVocabularyProgress(storage), { german: "lernen", english: "to learn" }),
+    true,
+  );
+
   syncGrammarLessonToLibrary(storage, "a1-1-1", { Recognition: 88 }, 88, false);
   assert.equal(readGrammarProgress(storage).sets["a1-1-1"].Recognition, 88);
 
@@ -159,26 +165,30 @@ test("gives every transferable course vocabulary item a standalone card", async 
   ]);
 });
 
-test("provides 5,000 stable vocabulary cards with grammatical classifications", async () => {
+test("provides a deduplicated vocabulary catalog with infinitive verb headwords", async () => {
   const {
     ALL_VOCABULARY,
-    B1_VOCABULARY,
     TOTAL_VOCABULARY_TARGET,
     VOCABULARY_LEVEL_COUNTS,
+    vocabularyVerbLemmaKey,
     vocabularyVerbType,
     vocabularyWordClass,
   } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
-  assert.equal(ALL_VOCABULARY.length, 5000);
-  assert.equal(VOCABULARY_LEVEL_COUNTS.A2, 1000);
-  assert.equal(VOCABULARY_LEVEL_COUNTS.B1, 3064);
-  assert.equal(B1_VOCABULARY.at(-1).id, "b1-3064");
-  assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, 5000);
-  for (const preservedId of ["a1-0936", "a2-0567", "b1-1155"]) {
-    assert.ok(ALL_VOCABULARY.some((item) => item.id === preservedId), `${preservedId} should remain stable`);
-  }
+  assert.equal(ALL_VOCABULARY.length, 4545);
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 860, A2: 988, B1: 2697, all: 4545 });
+  assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
+
+  const verbs = ALL_VOCABULARY.filter((item) => vocabularyWordClass(item) === "verb");
+  assert.ok(verbs.every((item) => item.english.toLocaleLowerCase("en").startsWith("to ")));
+  assert.equal(new Set(verbs.map(vocabularyVerbLemmaKey)).size, verbs.length);
+  assert.deepEqual(
+    verbs.filter((item) => /lern/i.test(item.german)).map(({ english, german }) => ({ english, german })),
+    [{ english: "to learn", german: "lernen" }],
+  );
+  assert.ok(!ALL_VOCABULARY.some((item) => item.german === "lernt" || item.german === "läuft"));
 
   assert.equal(vocabularyWordClass(word("die Entscheidung", "decision", "Grundlagen & Kommunikation")), "noun");
   assert.equal(vocabularyWordClass(word("du", "you", "Grundlagen & Kommunikation")), "pronoun");
@@ -195,7 +205,7 @@ test("renders advanced vocabulary progress, grammar, and sorting controls", asyn
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /5,000 words/);
+  assert.match(html, /4,545 words/);
   assert.match(html, /Not learned/);
   assert.match(html, /Advanced filters/);
   assert.match(html, /aria-label="Filter by word class"/);

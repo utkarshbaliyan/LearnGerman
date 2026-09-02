@@ -1,3 +1,5 @@
+import { germanVerbLemma } from "@/app/vocabulary/verb-forms";
+
 export const COURSE_PROGRESS_STORAGE_KEY = "leselaut:course-progress:v1";
 export const GRAMMAR_PROGRESS_STORAGE_KEY = "leselaut:grammar-progress:v1";
 export const VOCABULARY_PROGRESS_STORAGE_KEY = "leselaut:vocabulary-progress:v2";
@@ -64,6 +66,12 @@ function unique(values: Iterable<string>) {
   return [...new Set(values)];
 }
 
+function normalizeStoredVocabularyKey(key: string) {
+  if (!key.startsWith("de:")) return key;
+  const lemma = normalizeMeaning(germanVerbLemma(key.slice(3)));
+  return lemma ? `de:${lemma}` : key;
+}
+
 function normalizeMeaning(value: string) {
   return value
     .normalize("NFKC")
@@ -82,7 +90,7 @@ export function vocabularyProgressKey(word: VocabularyIdentity) {
 
 export function vocabularyProgressKeys(word: VocabularyIdentity) {
   const english = normalizeMeaning(word.english);
-  const german = normalizeMeaning(word.german.split(",")[0].replace(/^(der|die|das|ein|eine)\s+/i, ""));
+  const german = normalizeMeaning(germanVerbLemma(word.german.split(",")[0]).replace(/^(der|die|das|ein|eine)\s+/i, ""));
   return unique([
     english ? `en:${english}` : "",
     german ? `de:${german}` : "",
@@ -124,8 +132,8 @@ export function isVocabularyReview(progress: VocabularyProgress, word: Vocabular
 
 export function readVocabularyProgress(storage: StorageLike, catalog: VocabularyIdentity[] = []) {
   const stored = parseObject(storage.getItem(VOCABULARY_PROGRESS_STORAGE_KEY));
-  const learned = new Set(stringArray(stored.learnedKeys));
-  const review = new Set(stringArray(stored.reviewKeys));
+  const learned = new Set(stringArray(stored.learnedKeys).map(normalizeStoredVocabularyKey));
+  const review = new Set(stringArray(stored.reviewKeys).map(normalizeStoredVocabularyKey));
   const byId = new Map(catalog.filter((word) => word.id).map((word) => [word.id!, word]));
   const shouldMigrateLegacy = catalog.length > 0 && stored.legacyMigrated !== true;
 
