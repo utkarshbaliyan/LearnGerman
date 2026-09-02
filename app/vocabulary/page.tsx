@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ArrowUpDown, Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
+  Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
   ChevronDown, CircleHelp, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
   Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, X,
   type LucideIcon,
@@ -39,10 +39,22 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 
 type ProgressFilter = "all" | "unlearned" | "completed" | "review";
 type LevelFilter = "all" | "A1" | "A2" | "B1";
-type SortOrder = "course" | "german" | "english" | "unlearned-first" | "review-first";
+type WordClassFilter = VocabularyWordClass | `verb:${VocabularyVerbType}` | "all";
 const VISIBLE_BATCH = 120;
-const GERMAN_COLLATOR = new Intl.Collator("de", { sensitivity: "base" });
-const ENGLISH_COLLATOR = new Intl.Collator("en", { sensitivity: "base" });
+
+function isVerbTypeFilter(filter: WordClassFilter): filter is `verb:${VocabularyVerbType}` {
+  return filter.startsWith("verb:");
+}
+
+function selectedVerbType(filter: WordClassFilter): VocabularyVerbType | null {
+  return isVerbTypeFilter(filter) ? filter.slice(5) as VocabularyVerbType : null;
+}
+
+function vocabularyFilterLabel(filter: WordClassFilter): string {
+  if (filter === "all") return "all word classes";
+  if (isVerbTypeFilter(filter)) return VOCABULARY_VERB_TYPE_LABELS[filter.slice(5) as VocabularyVerbType].toLocaleLowerCase("en");
+  return VOCABULARY_WORD_CLASS_LABELS[filter].toLocaleLowerCase("en");
+}
 
 const WORD_CLASS_CARD_LABELS: Record<VocabularyWordClass, string> = {
   noun: "Noun",
@@ -122,9 +134,7 @@ export default function VocabularyPage() {
   const [level, setLevel] = useState<LevelFilter>("all");
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
-  const [wordClassFilter, setWordClassFilter] = useState<VocabularyWordClass | "all">("all");
-  const [verbTypeFilter, setVerbTypeFilter] = useState<VocabularyVerbType | "all">("all");
-  const [sortOrder, setSortOrder] = useState<SortOrder>("course");
+  const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
   const [quizCursor, setQuizCursor] = useState<VocabularyQuizCursor | null>(null);
@@ -150,28 +160,17 @@ export default function VocabularyPage() {
 
   const visibleWords = useMemo(() => {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
-    const filtered = levelWords.filter((word) => {
+    const verbTypeFilter = selectedVerbType(wordClassFilter);
+    return levelWords.filter((word) => {
       if (category !== "all" && word.category !== category) return false;
-      if (wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
-      if (verbTypeFilter !== "all" && vocabularyVerbType(word) !== verbTypeFilter) return false;
+      if (verbTypeFilter && vocabularyVerbType(word) !== verbTypeFilter) return false;
+      if (!verbTypeFilter && wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
       if (progressFilter === "unlearned" && (isLearned(word) || isReview(word))) return false;
       if (progressFilter === "completed" && !isLearned(word)) return false;
       if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     });
-
-    if (sortOrder === "course") return filtered;
-    return [...filtered].sort((left, right) => {
-      if (sortOrder === "german") return GERMAN_COLLATOR.compare(left.german, right.german);
-      if (sortOrder === "english") return ENGLISH_COLLATOR.compare(left.english, right.english);
-      if (sortOrder === "unlearned-first") {
-        const weight = (word: VocabularyWord) => isLearned(word) ? 2 : isReview(word) ? 1 : 0;
-        return weight(left) - weight(right);
-      }
-      const weight = (word: VocabularyWord) => isReview(word) ? 0 : isLearned(word) ? 2 : 1;
-      return weight(left) - weight(right);
-    });
-  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, sortOrder, verbTypeFilter, wordClassFilter]);
+  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
   const quiz = useMemo(() => quizCursor ? buildVocabularyQuiz(levelWords, quizCursor) : null, [levelWords, quizCursor]);
@@ -199,20 +198,8 @@ export default function VocabularyPage() {
     setVisibleLimit(VISIBLE_BATCH);
   }
 
-  function chooseWordClass(next: VocabularyWordClass | "all") {
+  function chooseWordClass(next: WordClassFilter) {
     setWordClassFilter(next);
-    if (next !== "verb") setVerbTypeFilter("all");
-    setVisibleLimit(VISIBLE_BATCH);
-  }
-
-  function chooseVerbType(next: VocabularyVerbType | "all") {
-    setWordClassFilter("verb");
-    setVerbTypeFilter(next);
-    setVisibleLimit(VISIBLE_BATCH);
-  }
-
-  function chooseSortOrder(next: SortOrder) {
-    setSortOrder(next);
     setVisibleLimit(VISIBLE_BATCH);
   }
 
@@ -221,8 +208,6 @@ export default function VocabularyPage() {
     setCategory("all");
     setProgressFilter("all");
     setWordClassFilter("all");
-    setVerbTypeFilter("all");
-    setSortOrder("course");
     setVisibleLimit(VISIBLE_BATCH);
   }
 
@@ -268,8 +253,8 @@ export default function VocabularyPage() {
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–B1" : level;
-  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all" || verbTypeFilter !== "all" || sortOrder !== "course";
-  const wordClassLabel = wordClassFilter === "all" ? "all word classes" : VOCABULARY_WORD_CLASS_LABELS[wordClassFilter].toLocaleLowerCase("en");
+  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
+  const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
 
   return (
     <main className="site-shell vocabulary-page" id="top">
@@ -328,40 +313,18 @@ export default function VocabularyPage() {
           <div className="vocabulary-filter-title"><SlidersHorizontal /><span>Advanced filters</span></div>
           <label className="vocabulary-filter-control">
             <span>Word class</span>
-            <Select value={wordClassFilter} onValueChange={(value) => chooseWordClass(value as VocabularyWordClass | "all")}>
-              <SelectTrigger className="vocabulary-select" aria-label="Filter by word class"><SelectValue /></SelectTrigger>
+            <Select value={wordClassFilter} onValueChange={(value) => chooseWordClass(value as WordClassFilter)}>
+              <SelectTrigger className="vocabulary-select" aria-label="Filter by word class and verb type"><SelectValue /></SelectTrigger>
               <SelectContent position="popper">
                 <SelectGroup>
                   <SelectLabel>Grammar</SelectLabel>
                   <SelectItem value="all">All word classes · {levelWords.length}</SelectItem>
-                  {VOCABULARY_WORD_CLASSES.map((name) => <SelectItem key={name} value={name}>{VOCABULARY_WORD_CLASS_LABELS[name]} · {wordClassCounts[name]}</SelectItem>)}
+                  {VOCABULARY_WORD_CLASSES.map((name) => <SelectItem key={name} value={name}>{name === "verb" ? "All verbs" : VOCABULARY_WORD_CLASS_LABELS[name]} · {wordClassCounts[name]}</SelectItem>)}
                 </SelectGroup>
-              </SelectContent>
-            </Select>
-          </label>
-          <label className="vocabulary-filter-control">
-            <span>Verb type</span>
-            <Select value={verbTypeFilter} onValueChange={(value) => chooseVerbType(value as VocabularyVerbType | "all")}>
-              <SelectTrigger className="vocabulary-select" aria-label="Filter by verb type"><SelectValue placeholder="All verbs" /></SelectTrigger>
-              <SelectContent position="popper">
                 <SelectGroup>
-                  <SelectLabel>Verb families</SelectLabel>
-                  <SelectItem value="all">All verbs · {wordClassCounts.verb}</SelectItem>
-                  {VOCABULARY_VERB_TYPES.map((name) => <SelectItem key={name} value={name}>{VOCABULARY_VERB_TYPE_LABELS[name]} · {verbTypeCounts[name]}</SelectItem>)}
+                  <SelectLabel>Verb types</SelectLabel>
+                  {VOCABULARY_VERB_TYPES.map((name) => <SelectItem key={name} value={`verb:${name}`}>{VOCABULARY_VERB_TYPE_LABELS[name]} · {verbTypeCounts[name]}</SelectItem>)}
                 </SelectGroup>
-              </SelectContent>
-            </Select>
-          </label>
-          <label className="vocabulary-filter-control">
-            <span>Sort order</span>
-            <Select value={sortOrder} onValueChange={(value) => chooseSortOrder(value as SortOrder)}>
-              <SelectTrigger className="vocabulary-select" aria-label="Sort vocabulary"><ArrowUpDown /><SelectValue /></SelectTrigger>
-              <SelectContent position="popper">
-                <SelectItem value="course">Course order</SelectItem>
-                <SelectItem value="german">German A–Z</SelectItem>
-                <SelectItem value="english">English A–Z</SelectItem>
-                <SelectItem value="unlearned-first">Not learned first</SelectItem>
-                <SelectItem value="review-first">Review first</SelectItem>
               </SelectContent>
             </Select>
           </label>

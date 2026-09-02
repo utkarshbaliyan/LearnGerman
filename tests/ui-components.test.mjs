@@ -201,16 +201,16 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   assert.equal(vocabularyVerbType(word("lernen", "to learn", "Verben")), "regular-other");
 });
 
-test("renders advanced vocabulary progress, grammar, and sorting controls", async () => {
+test("renders vocabulary progress and a unified grammar filter", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
   assert.match(html, /4,545 words/);
   assert.match(html, /Not learned/);
   assert.match(html, /Advanced filters/);
-  assert.match(html, /aria-label="Filter by word class"/);
-  assert.match(html, /aria-label="Filter by verb type"/);
-  assert.match(html, /aria-label="Sort vocabulary"/);
+  assert.match(html, /aria-label="Filter by word class and verb type"/);
+  assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
+  assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
 });
 
 test("forwards progress semantics to the primitive", async () => {

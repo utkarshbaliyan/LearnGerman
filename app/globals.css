@@ -411,7 +411,7 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .progress-filters button b { padding: 3px 6px; border-radius: 99px; background: var(--muted); color: var(--ink); font-size: 8px; }
 .progress-filters button.is-active { background: var(--green); color: white; }
 .progress-filters button.is-active b { background: rgba(255,255,255,.17); color: white; }
-.vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto repeat(3,minmax(170px,1fr)) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
+.vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto minmax(240px,1fr) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
 .vocabulary-filter-title { min-height: 42px; padding: 0 7px; display: flex; align-items: center; gap: 7px; color: var(--ink); font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
 .vocabulary-filter-title svg { width: 15px; color: var(--orange-dark); }
 .vocabulary-filter-control { min-width: 0; display: grid; gap: 6px; }
