@@ -26,7 +26,6 @@ import {
   type VocabularyWord,
   type VocabularyWordClass,
 } from "@/app/vocabulary/data";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -238,28 +237,22 @@ export default function VocabularyPage() {
     <main className="site-shell vocabulary-page" id="top">
       <SiteHeader active="vocabulary" />
 
-      <section className="vocabulary-hero">
-        <div>
-          <Badge className="eyebrow"><Sparkles /> A1–B1 · Vocabulary</Badge>
-          <h1>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words.<br /><em>One clear path to B1.</em></h1>
-          <p>Build from A1 foundations through A2 everyday life and B1 independent communication. Study essential language for people, housing, work, education, travel, health, media, the environment, public life, and real German services.</p>
-        </div>
-        <aside className="vocabulary-progress-card">
-          <span>Synced progress · {levelLabel}</span>
-          <div><strong>{selectedCompleted}</strong><small>of {levelWords.length} learned</small></div>
-          <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
-          <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} ready for review.` : "Course recall and vocabulary cards stay synchronized on this device."}</p>
-        </aside>
-      </section>
-
       <section className="vocabulary-workspace">
-        <div className="vocabulary-levels" aria-label="Choose a vocabulary level">
-          <div><span>Study range</span><strong>{levelLabel}</strong></div>
-          <div>
-            <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words</small></button>
-            <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>{VOCABULARY_LEVEL_COUNTS.A1.toLocaleString("en")} words</small></button>
-            <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>{VOCABULARY_LEVEL_COUNTS.A2.toLocaleString("en")} words</small></button>
-            <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>{VOCABULARY_LEVEL_COUNTS.B1.toLocaleString("en")} words</small></button>
+        <div className="vocabulary-overview">
+          <aside className="vocabulary-progress-card">
+            <span>Synced progress · {levelLabel}</span>
+            <div><strong>{selectedCompleted}</strong><small>of {levelWords.length} learned</small></div>
+            <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
+            <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} ready for review.` : "Course recall and vocabulary cards stay synchronized on this device."}</p>
+          </aside>
+          <div className="vocabulary-levels" aria-label="Choose a vocabulary level">
+            <div><span>Study range</span><strong>{levelLabel}</strong></div>
+            <div>
+              <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words</small></button>
+              <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>{VOCABULARY_LEVEL_COUNTS.A1.toLocaleString("en")} words</small></button>
+              <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>{VOCABULARY_LEVEL_COUNTS.A2.toLocaleString("en")} words</small></button>
+              <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>{VOCABULARY_LEVEL_COUNTS.B1.toLocaleString("en")} words</small></button>
+            </div>
           </div>
         </div>
         <div className="vocabulary-toolbar">
