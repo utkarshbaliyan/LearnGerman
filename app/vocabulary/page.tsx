@@ -7,7 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useDeferredValue, useMemo, useState, type CSSProperties } from "react";
+import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
@@ -26,6 +26,12 @@ import {
   type VocabularyWord,
   type VocabularyWordClass,
 } from "@/app/vocabulary/data";
+import {
+  advanceVocabularyQuiz,
+  buildVocabularyQuiz,
+  startVocabularyQuiz,
+  type VocabularyQuizCursor,
+} from "@/app/vocabulary/quiz";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -121,7 +127,7 @@ export default function VocabularyPage() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("course");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
-  const [quizRound, setQuizRound] = useState(0);
+  const [quizCursor, setQuizCursor] = useState<VocabularyQuizCursor | null>(null);
   const [quizAnswer, setQuizAnswer] = useState<string | null>(null);
   const [quizStreak, setQuizStreak] = useState(0);
   const [quizBestStreak, setQuizBestStreak] = useState(0);
@@ -168,21 +174,14 @@ export default function VocabularyPage() {
   }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, sortOrder, verbTypeFilter, wordClassFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
-  const quiz = useMemo(() => {
-    if (!levelWords.length) return null;
-    const word = levelWords[(quizRound * 47 + 19) % levelWords.length];
-    const choices = [word];
-    const sameClass = levelWords.filter((candidate) => candidate.id !== word.id && vocabularyWordClass(candidate) === vocabularyWordClass(word));
-    const sameTopic = sameClass.filter((candidate) => candidate.category === word.category);
-    const candidatePool = [...sameTopic, ...sameClass, ...levelWords].filter((candidate, index, all) => (
-      candidate.id !== word.id && all.findIndex((item) => item.german === candidate.german) === index
-    ));
-    for (let offset = 0; choices.length < 4 && offset < candidatePool.length; offset += 1) {
-      const candidate = candidatePool[(quizRound * 17 + offset) % candidatePool.length];
-      if (!choices.some((choice) => choice.german === candidate.german)) choices.push(candidate);
-    }
-    return { word, choices: choices.sort((left, right) => (left.id < right.id ? -1 : 1)) };
-  }, [levelWords, quizRound]);
+  const quiz = useMemo(() => quizCursor ? buildVocabularyQuiz(levelWords, quizCursor) : null, [levelWords, quizCursor]);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setQuizCursor(startVocabularyQuiz(localStorage, () => crypto.getRandomValues(new Uint32Array(1))[0]));
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   function chooseLevel(next: LevelFilter) {
     setLevel(next);
@@ -252,7 +251,6 @@ export default function VocabularyPage() {
     if (!quiz || quizAnswer) return;
     setQuizAnswer(german);
     if (german === quiz.word.german) {
-      setLearned(quiz.word, true);
       setQuizStreak((current) => {
         const next = current + 1;
         setQuizBestStreak((best) => Math.max(best, next));
@@ -260,12 +258,11 @@ export default function VocabularyPage() {
       });
     } else {
       setQuizStreak(0);
-      setReview(quiz.word, true);
     }
   }
 
   function nextQuizQuestion() {
-    setQuizRound((current) => current + 1);
+    setQuizCursor((current) => current ? advanceVocabularyQuiz(localStorage, current) : current);
     setQuizAnswer(null);
   }
 
@@ -312,7 +309,7 @@ export default function VocabularyPage() {
             })}
           </div>
           {quizAnswer && <div className="vocabulary-quiz-result" aria-live="polite">
-            <span>{quizAnswer === quiz.word.german ? "Correct — added to learned." : `The answer is ${quiz.word.german}. Added to review.`}</span>
+            <span>{quizAnswer === quiz.word.german ? "Correct." : `The answer is ${quiz.word.german}. Keep practicing.`}</span>
             <Button type="button" onClick={nextQuizQuestion}>Next word</Button>
           </div>}
         </section>}

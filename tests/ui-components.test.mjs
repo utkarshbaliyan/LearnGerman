@@ -239,6 +239,36 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.match(first, /--skeleton-width:70%/);
 });
 
+test("rotates vocabulary quiz questions without changing mastery progress", async () => {
+  const {
+    advanceVocabularyQuiz,
+    buildVocabularyQuiz,
+    startVocabularyQuiz,
+  } = await vite.ssrLoadModule("/app/vocabulary/quiz.ts");
+  const { ALL_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+  };
+
+  const firstCursor = startVocabularyQuiz(storage, () => 19);
+  const firstQuiz = buildVocabularyQuiz(ALL_VOCABULARY, firstCursor);
+  const refreshedCursor = startVocabularyQuiz(storage, () => 999);
+  const refreshedQuiz = buildVocabularyQuiz(ALL_VOCABULARY, refreshedCursor);
+  const nextCursor = advanceVocabularyQuiz(storage, refreshedCursor);
+  const nextQuiz = buildVocabularyQuiz(ALL_VOCABULARY, nextCursor);
+
+  assert.equal(firstCursor.seed, refreshedCursor.seed);
+  assert.equal(refreshedCursor.round, firstCursor.round + 1);
+  assert.notEqual(firstQuiz.word.id, refreshedQuiz.word.id);
+  assert.notEqual(refreshedQuiz.word.id, nextQuiz.word.id);
+  assert.equal(new Set(refreshedQuiz.choices.map((choice) => choice.german)).size, refreshedQuiz.choices.length);
+
+  const pageSource = await readFile(path.join(root, "app/vocabulary/page.tsx"), "utf8");
+  assert.doesNotMatch(pageSource, /set(?:Learned|Review)\(quiz\.word/);
+});
+
 test("renders story translations through collision-aware tooltips", async () => {
   const { StoryReader } = await vite.ssrLoadModule(
     "/app/components/story-reader.tsx",
