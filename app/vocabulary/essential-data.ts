@@ -58,3 +58,38 @@ export const ESSENTIAL_B1 = [
   ...rows("Dienstleistungen & Behörden", "state|der Staat;democracy|die Demokratie;law|das Gesetz;right|das Recht;duty|die Pflicht;authority|die Behörde;residence permit|die Aufenthaltserlaubnis;citizenship|die Staatsbürgerschaft;to apply for|beantragen;to appeal|Widerspruch einlegen"),
   ...rows("Adjektive & Adverbien", "fair|gerecht;unfair|ungerecht;independent|unabhängig;relevant|relevant;reliable|zuverlässig;sustainable|nachhaltig;critical|kritisch;objective|sachlich;currently|derzeit;therefore|deshalb"),
 ];
+
+// Compact coverage for contextual forms surfaced by the 72 integrated course
+// chapters. Keep this separate from course-data.ts so the Vocabulary route does
+// not pull stories, grammar lessons, or exercises into its client bundle.
+// Proper names are intentionally excluded: recognizing a person or place is not
+// a transferable vocabulary skill.
+export const COURSE_COVERAGE_A1 = [
+  ...rows("Grundlagen & Kommunikation", "good morning|Guten Morgen;you (informal singular)|du;each / every|jede;each / everyone|jedem;but rather|sondern;oneself / even|selbst;several|mehrere;lastly|zuletzt"),
+  ...rows("Familie & Menschen", "names|Namen;female partner|Partnerin;customers|Kunden"),
+  ...rows("Zuhause & Wohnen", "room|Raum;chest of drawers|Kommode"),
+  ...rows("Essen & Trinken", "next table|Nachbartisch;plates|Teller;cups|Tassen;stalls|Ständen;groceries / food|Lebensmittel"),
+  ...rows("Einkaufen & Kleidung", "clothing|Kleidung"),
+  ...rows("Schule & Lernen", "language|die Sprache, die Sprachen;languages|Sprachen;world map|Weltkarte;board|Tafel;list|Liste;language course|Sprachkurs;main character|Hauptperson;text|Text;texts|Texte;unknown|unbekannte"),
+  ...rows("Stadt & Verkehr", "seat / place|der Platz, die Plätze;ways / routes|Wege;plan / map|Plan;travel day|Reisetag;delayed|verspätete"),
+  ...rows("Gesundheit & Körper", "hair|Haare;hand|Hand;throat / neck|Hals;body|Körper"),
+  ...rows("Zeit, Zahlen & Mengen", "first / first of all|Zuerst;time of day|Uhrzeiten"),
+  ...rows("Freizeit, Kultur & Sport", "rhythm|Rhythmus"),
+  ...rows("Grundlagen & Kommunikation", "problem|Problem"),
+  ...rows("Verben", "to ask|fragen;to introduce oneself|sich vorstellen;draws|zeichnet;to name|nennen;to lie / be located|liegen;to be missing|fehlen;ends|endet;cut|geschnitten;to mark|markieren;to do|tun;checked|geprüft"),
+  ...rows("Adjektive & Adverbien", "different / differently|anders;full|vollen;beforehand|vorher"),
+];
+
+export const COURSE_COVERAGE_A2 = [
+  ...rows("Grundlagen & Kommunikation", "everyone / each|jeder;this / these|diese;situation|Situation;group|Gruppe"),
+  ...rows("Verben", "wrote|schrieb;become|geworden;knew|kannte;wanted|wollte;must|musst;stall / stood|stand;came|kam;began|begann;named / called|nannte;resulted in|ergab;spoke|sprach;to ask / questions|fragte;is / may be|sei"),
+  ...rows("Adjektive & Adverbien", "far|weit;way / gone|weg;full|voll;difficult|schwierig;suitable|passende"),
+];
+
+export const COURSE_COVERAGE_B1 = [
+  ...rows("Grundlagen & Kommunikation", "between|zwischen;the same thing|dasselbe;enough|genug;with one another|miteinander"),
+  ...rows("Arbeit & Beruf", "challenge|Herausforderung;point of view|Standpunkte"),
+  ...rows("Verben", "remained|blieb;went|ging;believed|glaubte;seemed|schienen;to ask / questions|Fragen;discussed|besprach;saw|sah;talked|redeten;difference|unterschieden;to become / will|werden;ends|endete;changed|verändert;to seem|wirken;should|sollen"),
+  ...rows("Adjektive & Adverbien", "most important|wichtigsten;difficult|schwierige;quietly|leise;originally|ursprünglicher"),
+  ...rows("Familie & Menschen", "group|Gruppen"),
+];

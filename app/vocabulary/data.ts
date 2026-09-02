@@ -1,7 +1,15 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
-import { ESSENTIAL_A1, ESSENTIAL_A2, ESSENTIAL_B1, type EssentialVocabulary } from "@/app/vocabulary/essential-data";
+import {
+  COURSE_COVERAGE_A1,
+  COURSE_COVERAGE_A2,
+  COURSE_COVERAGE_B1,
+  ESSENTIAL_A1,
+  ESSENTIAL_A2,
+  ESSENTIAL_B1,
+  type EssentialVocabulary,
+} from "@/app/vocabulary/essential-data";
 
 export const VOCABULARY_CATEGORIES = [
   "Grundlagen & Kommunikation",
@@ -210,11 +218,29 @@ function addEssentialVocabulary(
   }))];
 }
 
-export const A1_VOCABULARY = addEssentialVocabulary(buildVocabulary(), ESSENTIAL_A1, "A1", "a1");
-export const EXTENDED_A2_VOCABULARY = addEssentialVocabulary(A2_VOCABULARY, ESSENTIAL_A2, "A2", "a2", A1_VOCABULARY);
-export const B1_VOCABULARY = addEssentialVocabulary(
-  buildB1Vocabulary([...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY]),
+const BASE_A1_VOCABULARY = addEssentialVocabulary(buildVocabulary(), ESSENTIAL_A1, "A1", "a1");
+const BASE_A2_VOCABULARY = addEssentialVocabulary(A2_VOCABULARY, ESSENTIAL_A2, "A2", "a2", BASE_A1_VOCABULARY);
+const BASE_B1_VOCABULARY = addEssentialVocabulary(
+  buildB1Vocabulary([...BASE_A1_VOCABULARY, ...BASE_A2_VOCABULARY]),
   ESSENTIAL_B1,
+  "B1",
+  "b1",
+  [...BASE_A1_VOCABULARY, ...BASE_A2_VOCABULARY],
+);
+
+// Append course coverage only after the original catalogs are complete. This
+// preserves every pre-existing card ID used by legacy progress migration.
+export const A1_VOCABULARY = addEssentialVocabulary(BASE_A1_VOCABULARY, COURSE_COVERAGE_A1, "A1", "a1");
+export const EXTENDED_A2_VOCABULARY = addEssentialVocabulary(
+  BASE_A2_VOCABULARY,
+  COURSE_COVERAGE_A2,
+  "A2",
+  "a2",
+  A1_VOCABULARY,
+);
+export const B1_VOCABULARY = addEssentialVocabulary(
+  BASE_B1_VOCABULARY,
+  COURSE_COVERAGE_B1,
   "B1",
   "b1",
   [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY],

@@ -131,6 +131,34 @@ test("synchronizes equivalent vocabulary and grammar mastery across routes", asy
   assert.equal(merged.scores["a1-1-1"], 92);
 });
 
+test("gives every transferable course vocabulary item a standalone card", async () => {
+  const { getCourseChapter, COURSE_LEVELS, CHAPTERS_PER_LEVEL } = await vite.ssrLoadModule(
+    "/app/course/course-data.ts",
+  );
+  const { ALL_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
+  const { vocabularyProgressKeys } = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const catalogKeys = new Set(ALL_VOCABULARY.flatMap(vocabularyProgressKeys));
+  const unmatched = [];
+
+  for (const level of COURSE_LEVELS) {
+    for (let number = 1; number <= CHAPTERS_PER_LEVEL; number += 1) {
+      const chapter = getCourseChapter(level, number);
+      for (const word of chapter.vocabulary) {
+        if (!vocabularyProgressKeys(word).some((key) => catalogKeys.has(key))) {
+          unmatched.push(`${level}-${number}: ${word.german} — ${word.english}`);
+        }
+      }
+    }
+  }
+
+  assert.deepEqual(unmatched, [
+    "A1-7: Ben — Ben",
+    "A1-22: Bonn — Bonn",
+    "B1-2: Ben — Ben",
+    "B1-19: Ben — Ben",
+  ]);
+});
+
 test("forwards progress semantics to the primitive", async () => {
   const { Progress } = await vite.ssrLoadModule("/components/ui/progress.tsx");
   const html = renderToStaticMarkup(React.createElement(Progress, { value: 37 }));
