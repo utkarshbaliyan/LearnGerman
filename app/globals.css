@@ -389,6 +389,17 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .progress-filters button b { padding: 3px 6px; border-radius: 99px; background: var(--muted); color: var(--ink); font-size: 8px; }
 .progress-filters button.is-active { background: var(--green); color: white; }
 .progress-filters button.is-active b { background: rgba(255,255,255,.17); color: white; }
+.vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto repeat(3,minmax(170px,1fr)) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
+.vocabulary-filter-title { min-height: 42px; padding: 0 7px; display: flex; align-items: center; gap: 7px; color: var(--ink); font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
+.vocabulary-filter-title svg { width: 15px; color: var(--orange-dark); }
+.vocabulary-filter-control { min-width: 0; display: grid; gap: 6px; }
+.vocabulary-filter-control > span { color: var(--ink-soft); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
+[data-slot="select-trigger"].vocabulary-select { width: 100%; min-height: 42px; border-color: var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: none; font-size: 10px; font-weight: 750; }
+[data-slot="select-trigger"].vocabulary-select:hover { border-color: var(--blue); background: var(--accent); }
+.vocabulary-filter-reset { min-height: 42px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--ink-soft); font-size: 9px; font-weight: 800; cursor: pointer; }
+.vocabulary-filter-reset svg { width: 13px; }
+.vocabulary-filter-reset:hover:not(:disabled) { border-color: var(--blue); color: var(--ink); background: var(--accent); }
+.vocabulary-filter-reset:disabled { cursor: default; opacity: .45; }
 .category-scroller { margin-top: 22px; padding-bottom: 8px; display: grid; grid-auto-columns: minmax(125px,1fr); grid-auto-flow: column; gap: 8px; overflow-x: auto; scrollbar-width: thin; }
 .category-scroller button { min-height: 112px; padding: 13px; display: grid; grid-template-columns: 1fr auto; align-content: space-between; gap: 7px; border: 1px solid var(--line); border-top: 4px solid var(--category-color,var(--orange)); border-radius: 13px; background: var(--white); text-align: left; cursor: pointer; transition: transform 150ms ease,background 150ms ease; }
 .category-scroller button:hover { transform: translateY(-2px); }
@@ -464,6 +475,8 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
   .vocabulary-levels { align-items: stretch; flex-direction: column; }
   .vocabulary-levels > div:first-child { padding: 3px 4px; }
   .vocabulary-toolbar { grid-template-columns: 1fr; }
+  .vocabulary-advanced-filters { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .vocabulary-filter-title { grid-column: 1 / -1; min-height: auto; padding: 2px 0 4px; }
 }
 @media (max-width: 650px) {
   .topbar { height: 70px; padding: 0 14px; }
@@ -513,6 +526,9 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
   .vocabulary-levels button { min-width: 122px; }
   .progress-filters { width: 100%; overflow-x: auto; }
   .progress-filters button { flex: 1 0 auto; }
+  .vocabulary-advanced-filters { grid-template-columns: 1fr; }
+  .vocabulary-filter-title { grid-column: auto; }
+  .vocabulary-filter-reset { width: 100%; }
   .category-scroller { grid-auto-columns: 126px; }
   .vocabulary-list-heading { margin-top: 34px; align-items: start; }
   .vocabulary-list-heading h2 { font-size: 35px; }
@@ -954,6 +970,7 @@ html[data-theme="dark"] .category-scroller button,
 html[data-theme="dark"] .progress-filters button,
 html[data-theme="dark"] .grammar-release-note,
 html[data-theme="dark"] .vocabulary-empty { background: var(--white); border-color: var(--line); }
+html[data-theme="dark"] .vocabulary-advanced-filters { background: var(--white); }
 
 /* Daily learning playground */
 .today-page { background: var(--paper); }

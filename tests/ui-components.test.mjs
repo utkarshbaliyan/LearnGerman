@@ -159,6 +159,49 @@ test("gives every transferable course vocabulary item a standalone card", async 
   ]);
 });
 
+test("provides 5,000 stable vocabulary cards with grammatical classifications", async () => {
+  const {
+    ALL_VOCABULARY,
+    B1_VOCABULARY,
+    TOTAL_VOCABULARY_TARGET,
+    VOCABULARY_LEVEL_COUNTS,
+    vocabularyVerbType,
+    vocabularyWordClass,
+  } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
+  const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
+
+  assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
+  assert.equal(ALL_VOCABULARY.length, 5000);
+  assert.equal(VOCABULARY_LEVEL_COUNTS.B1, 3497);
+  assert.equal(B1_VOCABULARY.at(-1).id, "b1-3497");
+  assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, 5000);
+  for (const preservedId of ["a1-0936", "a2-0567", "b1-1155"]) {
+    assert.ok(ALL_VOCABULARY.some((item) => item.id === preservedId), `${preservedId} should remain stable`);
+  }
+
+  assert.equal(vocabularyWordClass(word("die Entscheidung", "decision", "Grundlagen & Kommunikation")), "noun");
+  assert.equal(vocabularyWordClass(word("du", "you", "Grundlagen & Kommunikation")), "pronoun");
+  assert.equal(vocabularyWordClass(word("sorgfältig", "carefully", "Adjektive & Adverbien")), "adverb");
+  assert.equal(vocabularyWordClass(word("obwohl", "although", "Grundlagen & Kommunikation")), "conjunction");
+  assert.equal(vocabularyVerbType(word("müssen", "must", "Verben")), "modal");
+  assert.equal(vocabularyVerbType(word("anmelden", "to register", "Verben")), "separable");
+  assert.equal(vocabularyVerbType(word("sich beschweren", "to complain", "Verben")), "reflexive");
+  assert.equal(vocabularyVerbType(word("gehen", "to go", "Verben")), "strong-irregular");
+  assert.equal(vocabularyVerbType(word("lernen", "to learn", "Verben")), "regular-other");
+});
+
+test("renders advanced vocabulary progress, grammar, and sorting controls", async () => {
+  const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
+  const html = renderToStaticMarkup(React.createElement(VocabularyPage));
+
+  assert.match(html, /5,000 words/);
+  assert.match(html, /Not learned/);
+  assert.match(html, /Advanced filters/);
+  assert.match(html, /aria-label="Filter by word class"/);
+  assert.match(html, /aria-label="Filter by verb type"/);
+  assert.match(html, /aria-label="Sort vocabulary"/);
+});
+
 test("forwards progress semantics to the primitive", async () => {
   const { Progress } = await vite.ssrLoadModule("/components/ui/progress.tsx");
   const html = renderToStaticMarkup(React.createElement(Progress, { value: 37 }));

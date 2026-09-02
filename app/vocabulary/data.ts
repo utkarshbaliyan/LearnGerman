@@ -1,6 +1,6 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
-import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
+import { buildB1Vocabulary, expandB1Vocabulary } from "@/app/vocabulary/b1-data";
 import {
   COURSE_COVERAGE_A1,
   COURSE_COVERAGE_A2,
@@ -39,6 +39,43 @@ export type VocabularyWord = {
   german: string;
   category: VocabularyCategory;
   level: "A1" | "A2" | "B1";
+};
+
+export const VOCABULARY_WORD_CLASSES = [
+  "noun",
+  "pronoun",
+  "verb",
+  "adjective",
+  "adverb",
+  "preposition",
+  "conjunction",
+  "number-time",
+  "phrase-other",
+] as const;
+
+export type VocabularyWordClass = (typeof VOCABULARY_WORD_CLASSES)[number];
+
+export const VOCABULARY_WORD_CLASS_LABELS: Record<VocabularyWordClass, string> = {
+  noun: "Nouns",
+  pronoun: "Pronouns",
+  verb: "Verbs",
+  adjective: "Adjectives",
+  adverb: "Adverbs",
+  preposition: "Prepositions",
+  conjunction: "Conjunctions",
+  "number-time": "Numbers & time",
+  "phrase-other": "Phrases & other",
+};
+
+export const VOCABULARY_VERB_TYPES = ["modal", "separable", "reflexive", "strong-irregular", "regular-other"] as const;
+export type VocabularyVerbType = (typeof VOCABULARY_VERB_TYPES)[number];
+
+export const VOCABULARY_VERB_TYPE_LABELS: Record<VocabularyVerbType, string> = {
+  modal: "Modal verbs",
+  separable: "Separable verbs",
+  reflexive: "Reflexive verbs",
+  "strong-irregular": "Strong & irregular",
+  "regular-other": "Regular & other",
 };
 
 const FUNCTION_WORDS = new Set([
@@ -90,6 +127,82 @@ const VERB_FIRST_WORDS = new Set([
   "sings", "sits", "sleeps", "smiles", "speaks", "stands", "starts", "stays", "stops", "studies", "takes", "thanks",
   "throws", "travels", "tries", "understands", "uses", "waits", "walks", "wants", "was", "wears", "wins", "works", "writes",
 ]);
+
+const PRONOUN_WORDS = new Set([
+  "alle", "beide", "dein", "deine", "du", "einander", "er", "es", "etwas", "ich", "ihr", "ihre", "ihm", "ihnen",
+  "jemand", "jeder", "jede", "jedem", "jeden", "man", "mein", "meine", "niemand", "nichts", "sie", "uns", "unser",
+  "unsere", "was", "welche", "wer", "wir",
+]);
+
+const PREPOSITION_WORDS = new Set([
+  "an", "auf", "aus", "bei", "bis", "durch", "für", "gegen", "hinter", "in", "mit", "nach", "neben", "ohne", "seit",
+  "über", "um", "unter", "von", "vor", "während", "wegen", "zu", "zwischen",
+]);
+
+const CONJUNCTION_WORDS = new Set([
+  "aber", "als", "bevor", "bis", "da", "damit", "dass", "denn", "falls", "nachdem", "ob", "obwohl", "oder", "seitdem",
+  "sobald", "sondern", "und", "während", "weil", "wenn", "wohingegen",
+]);
+
+const MODAL_VERB_FORMS = new Set([
+  "dürfen", "darf", "durfte", "können", "kann", "konnte", "mögen", "mag", "möchte", "müssen", "muss", "musst", "musste",
+  "sollen", "soll", "sollte", "wollen", "will", "wollte",
+]);
+
+const STRONG_IRREGULAR_VERBS = new Set([
+  "beginnen", "begann", "bleiben", "blieb", "bringen", "brachte", "denken", "dachte", "essen", "fahren", "finden", "fand",
+  "geben", "gehen", "ging", "haben", "heißen", "helfen", "kommen", "kam", "kennen", "kannte", "lesen", "liegen", "nehmen",
+  "rufen", "sah", "schlafen", "schreiben", "schrieb", "sehen", "sein", "sprechen", "sprach", "stehen", "tragen", "treffen",
+  "tun", "werden", "wissen", "ziehen",
+]);
+
+const SEPARABLE_PREFIXES = [
+  "ab", "an", "auf", "aus", "bei", "ein", "fest", "fort", "her", "hin", "los", "mit", "nach", "statt", "teil", "vor",
+  "weg", "weiter", "wieder", "zu", "zurück", "zusammen",
+];
+
+const ADVERB_ENGLISH_PREFIXES = [
+  "afterwards", "apparently", "at first", "at least", "at most", "at the same time", "basically", "consequently", "currently",
+  "especially", "eventually", "first", "for this reason", "furthermore", "however", "in any case", "in comparison", "in contrast",
+  "in general", "in practice", "in the long run", "in the meantime", "lastly", "moreover", "nevertheless", "on average",
+  "otherwise", "partly", "probably", "regardless", "relatively", "therefore", "ultimately", "under no circumstances",
+];
+
+function verbHeadword(word: VocabularyWord) {
+  return word.german
+    .toLocaleLowerCase("de")
+    .replace(/^(erfolgreich|selbstständig|konsequent)\s+/, "")
+    .replace(/\s+(gemeinsam|sorgfältig|in der praxis)$/, "")
+    .replace(/^sich\s+/, "")
+    .split(/\s+/)[0];
+}
+
+export function vocabularyWordClass(word: VocabularyWord): VocabularyWordClass {
+  const german = word.german.toLocaleLowerCase("de").split(",")[0].trim();
+  const english = word.english.toLocaleLowerCase("en");
+  if (word.category === "Verben" || english.startsWith("to ")) return "verb";
+  if (PRONOUN_WORDS.has(german)) return "pronoun";
+  if (PREPOSITION_WORDS.has(german)) return "preposition";
+  if (CONJUNCTION_WORDS.has(german)) return "conjunction";
+  if (/^(der|die|das|der\/die|die\/der)\s/.test(german) || /^[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]*$/.test(word.german)) return "noun";
+  if (word.category === "Adjektive & Adverbien") {
+    if (english.endsWith("ly") || ADVERB_ENGLISH_PREFIXES.some((prefix) => english.startsWith(prefix))) return "adverb";
+    return "adjective";
+  }
+  if (word.category === "Zeit, Zahlen & Mengen") return "number-time";
+  return "phrase-other";
+}
+
+export function vocabularyVerbType(word: VocabularyWord): VocabularyVerbType | null {
+  if (vocabularyWordClass(word) !== "verb") return null;
+  const german = word.german.toLocaleLowerCase("de");
+  const headword = verbHeadword(word);
+  if (MODAL_VERB_FORMS.has(headword)) return "modal";
+  if (german.includes("sich ")) return "reflexive";
+  if (SEPARABLE_PREFIXES.some((prefix) => headword.startsWith(prefix) && headword.length > prefix.length + 3)) return "separable";
+  if (STRONG_IRREGULAR_VERBS.has(headword)) return "strong-irregular";
+  return "regular-other";
+}
 
 const ARTICLE_OVERRIDES: Record<string, "der" | "die" | "das"> = {
   abend: "der", abfahrt: "die", adresse: "die", anfang: "der", ankunft: "die", arbeit: "die", arbeitsplatz: "der", arzt: "der", ausweis: "der", bahnhof: "der", balkon: "der", bank: "die",
@@ -238,12 +351,17 @@ export const EXTENDED_A2_VOCABULARY = addEssentialVocabulary(
   "a2",
   A1_VOCABULARY,
 );
-export const B1_VOCABULARY = addEssentialVocabulary(
+const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   BASE_B1_VOCABULARY,
   COURSE_COVERAGE_B1,
   "B1",
   "b1",
   [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY],
+);
+export const TOTAL_VOCABULARY_TARGET = 5000;
+export const B1_VOCABULARY = expandB1Vocabulary(
+  COVERED_B1_VOCABULARY,
+  TOTAL_VOCABULARY_TARGET - A1_VOCABULARY.length - EXTENDED_A2_VOCABULARY.length,
 );
 export { EXTENDED_A2_VOCABULARY as A2_VOCABULARY };
 export const ALL_VOCABULARY = [...A1_VOCABULARY, ...EXTENDED_A2_VOCABULARY, ...B1_VOCABULARY];
@@ -261,8 +379,8 @@ const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 // be unique. Keep this guard lightweight because this module also runs in the
 // browser when the vocabulary route opens. The complete library is deliberately
 // allowed to contain related forms across levels.
-if (ALL_VOCABULARY.length < 2500 || vocabularyIds.size !== ALL_VOCABULARY.length) {
-  throw new Error("The A1–B1 vocabulary library must contain at least 2,500 uniquely identified learning cards.");
+if (ALL_VOCABULARY.length !== TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
+  throw new Error(`The A1–B1 vocabulary library must contain exactly ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
 }
 
 for (const category of VOCABULARY_CATEGORIES) {

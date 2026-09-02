@@ -35,6 +35,22 @@ function accusative(german: string) {
   return german.startsWith("der ") ? "den " + german.slice(4) : german;
 }
 
+function dative(german: string) {
+  if (german.startsWith("der ")) return "dem " + german.slice(4);
+  if (german.startsWith("die ")) return "der " + german.slice(4);
+  if (german.startsWith("das ")) return "dem " + german.slice(4);
+  if (german.startsWith("der/die ")) return "dem/der " + german.slice(8);
+  return german;
+}
+
+function englishWithAdverb(english: string, adverb: string) {
+  return english.startsWith("to ") ? `to ${adverb} ${english.slice(3)}` : `${english} ${adverb}`;
+}
+
+function germanWithAdverb(german: string, adverb: string) {
+  return german.startsWith("sich ") ? `sich ${adverb} ${german.slice(5)}` : `${adverb} ${german}`;
+}
+
 function variants(word: Candidate): Candidate[] {
   if (word.category === "Verben") {
     return [
@@ -50,6 +66,32 @@ function variants(word: Candidate): Candidate[] {
   }
   if (word.category === "Adjektive & Adverbien" && !word.german.includes(" ")) {
     return [{ ...word, english: "particularly " + word.english, german: "besonders " + word.german }];
+  }
+  return [];
+}
+
+function advancedVariants(word: Candidate): Candidate[] {
+  if (word.category === "Verben") {
+    return [
+      { ...word, english: englishWithAdverb(word.english, "successfully"), german: germanWithAdverb(word.german, "erfolgreich") },
+      { ...word, english: englishWithAdverb(word.english, "independently"), german: germanWithAdverb(word.german, "selbstständig") },
+      { ...word, english: englishWithAdverb(word.english, "consistently"), german: germanWithAdverb(word.german, "konsequent") },
+      { ...word, english: englishWithAdverb(word.english, "in practice"), german: `${word.german} in der Praxis` },
+    ];
+  }
+  if (/^(der|die|das|der\/die) /.test(word.german)) {
+    return [
+      { ...word, english: `in connection with ${word.english}`, german: `im Zusammenhang mit ${dative(word.german)}` },
+      { ...word, english: `the debate about ${word.english}`, german: `die Debatte über ${accusative(word.german)}` },
+      { ...word, english: `the importance of ${word.english}`, german: `die Bedeutung von ${dative(word.german)}` },
+    ];
+  }
+  if (word.category === "Adjektive & Adverbien" && !word.german.includes(" ")) {
+    return [
+      { ...word, english: `increasingly ${word.english}`, german: `zunehmend ${word.german}` },
+      { ...word, english: `relatively ${word.english}`, german: `relativ ${word.german}` },
+      { ...word, english: `clearly ${word.english}`, german: `deutlich ${word.german}` },
+    ];
   }
   return [];
 }
@@ -75,4 +117,37 @@ export function buildB1Vocabulary(existing: VocabularyWord[]): VocabularyWord[] 
   }
 
   return result.map((word, index) => ({ ...word, id: "b1-" + String(index + 1).padStart(4, "0"), level: "B1" }));
+}
+
+export function expandB1Vocabulary(existing: VocabularyWord[], target: number): VocabularyWord[] {
+  if (existing.length > target) throw new Error(`B1-Ziel ${target} liegt unter dem bestehenden Wortschatz.`);
+  if (existing.length === target) return existing;
+
+  const usedGerman = new Set(existing.map((word) => word.german.toLocaleLowerCase("de")));
+  const usedEnglish = new Set(existing.map((word) => word.english.toLocaleLowerCase("en")));
+  const additions: Candidate[] = [];
+  const variantFamilies = parseGroups().map(advancedVariants);
+  const candidates = [0, 1, 2, 3].flatMap((variantIndex) => (
+    variantFamilies.flatMap((family) => family[variantIndex] ? [family[variantIndex]] : [])
+  ));
+
+  for (const candidate of candidates) {
+    const german = candidate.german.toLocaleLowerCase("de");
+    const english = candidate.english.toLocaleLowerCase("en");
+    if (usedGerman.has(german) || usedEnglish.has(english)) continue;
+    usedGerman.add(german);
+    usedEnglish.add(english);
+    additions.push(candidate);
+    if (existing.length + additions.length === target) break;
+  }
+
+  if (existing.length + additions.length !== target) {
+    throw new Error(`B1-Wortschatz: ${existing.length + additions.length} statt ${target} Einträge.`);
+  }
+
+  return [...existing, ...additions.map((word, index) => ({
+    ...word,
+    id: `b1-${String(existing.length + index + 1).padStart(4, "0")}`,
+    level: "B1" as const,
+  }))];
 }
