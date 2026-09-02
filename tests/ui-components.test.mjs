@@ -72,6 +72,8 @@ test("emits the catalog's animation and scrolling utilities", async () => {
     globals,
     /html\[data-theme="dark"\] \.level-switcher button\.is-active :where\(b, span\)\s*\{\s*color:\s*#f7f7f8;/,
   );
+  assert.match(globals, /\.vocabulary-card \{[^}]*min-height:\s*208px;/s);
+  assert.match(globals, /\.vocabulary-reveal \{[^}]*min-height:\s*154px;/s);
 });
 
 test("keeps shared button and inverse-surface colors readable in both themes", async () => {

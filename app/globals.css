@@ -438,16 +438,16 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .vocabulary-list-heading > p { margin: 0; color: var(--ink-soft); font-size: 10px; }
 .vocabulary-list-heading > p strong { color: var(--ink); font: 700 22px/1 Georgia,serif; }
 .vocabulary-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
-.vocabulary-card { min-height: 248px; display: grid; grid-template-rows: 1fr auto; overflow: hidden; border: 1px solid var(--line); border-top: 4px solid var(--vocabulary-color); border-radius: 15px; background: var(--white); content-visibility: auto; contain-intrinsic-size: 248px; transition: border-color 160ms ease,box-shadow 160ms ease,transform 160ms ease; }
+.vocabulary-card { min-height: 208px; display: grid; grid-template-rows: 1fr auto; overflow: hidden; border: 1px solid var(--line); border-top: 4px solid var(--vocabulary-color); border-radius: 15px; background: var(--white); content-visibility: auto; contain-intrinsic-size: 208px; transition: border-color 160ms ease,box-shadow 160ms ease,transform 160ms ease; }
 .vocabulary-card:hover { border-color: var(--vocabulary-color); box-shadow: 0 14px 30px rgba(50,42,30,.08); transform: translateY(-2px); }
 .vocabulary-card.is-completed { border-top-color: #3d846c; background: #f5faf7; }
 .vocabulary-card.is-review { border-top-color: #c58a2c; background: #fffbf2; }
-.vocabulary-reveal { width: 100%; min-height: 186px; padding: 16px 17px 18px; display: flex; flex-direction: column; align-items: stretch; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.vocabulary-reveal { width: 100%; min-height: 154px; padding: 14px 16px 16px; display: flex; flex-direction: column; align-items: stretch; border: 0; background: transparent; text-align: left; cursor: pointer; }
 .vocabulary-card-top { display: flex; align-items: center; justify-content: space-between; color: var(--vocabulary-color); }
 .vocabulary-card-top small { font-size: 8px; font-weight: 900; letter-spacing: .12em; }
 .vocabulary-card-top svg { width: 14px; transition: transform 160ms ease; }
 .vocabulary-card.is-revealed .vocabulary-card-top svg { transform: rotate(180deg); }
-.vocabulary-prompt { margin-top: 23px; color: var(--ink-soft); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .11em; }
+.vocabulary-prompt { margin-top: 18px; color: var(--ink-soft); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .11em; }
 .vocabulary-hint { margin-top: auto; color: var(--ink-soft); font-size: 8px; }
 .vocabulary-answer { margin-top: auto; display: flex; align-items: baseline; gap: 7px; color: var(--ink); }
 .vocabulary-answer small { color: var(--orange-dark); font: italic 700 15px/1 Georgia,serif; }
@@ -923,7 +923,7 @@ footer { background: var(--muted); }
 .vocabulary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .vocabulary-card {
   --vocabulary-color: var(--blue) !important;
-  min-height: 250px;
+  min-height: 208px;
   border-top-width: 3px;
   border-radius: 13px;
   background: var(--white);
@@ -934,7 +934,7 @@ footer { background: var(--muted); }
 .vocabulary-card.is-review { border-top-color: var(--amber); background: color-mix(in srgb, var(--amber) 8%, var(--white)); }
 .vocabulary-prompt { font-size: 13px; }
 .vocabulary-hint { font-size: 12px; }
-.vocabulary-card-actions button { min-height: 48px; background: var(--paper); font-size: 12px; }
+.vocabulary-card-actions button { min-height: 44px; background: var(--paper); font-size: 12px; }
 .vocabulary-card-actions button:first-child.is-active { background: color-mix(in srgb, var(--green-accent) 18%, var(--white)); color: var(--green-accent); }
 .vocabulary-card-actions button:last-child.is-active { background: color-mix(in srgb, var(--amber) 18%, var(--white)); color: var(--amber); }
 
@@ -1248,8 +1248,8 @@ html[data-theme="dark"] .grammar-bridge-card > span { color: #b8a5f3; }
 @media (max-width: 520px) {
   .story-grid, .vocabulary-grid { grid-template-columns: 1fr; }
   .story-card { min-height: 230px; }
-  .vocabulary-card { min-height: 220px; }
-  .vocabulary-reveal { min-height: 160px; }
+  .vocabulary-card { min-height: 196px; }
+  .vocabulary-reveal { min-height: 142px; }
   .level-progress-list button { grid-template-columns: 68px 1fr 42px; }
   .level-progress-list button small { display: none; }
   .progress-ring { width: 74px; height: 74px; }
