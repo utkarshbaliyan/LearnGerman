@@ -1,6 +1,6 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
-import { buildB1Vocabulary, expandB1Vocabulary } from "@/app/vocabulary/b1-data";
+import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
 import { verbHeadwordForForm } from "@/app/vocabulary/verb-forms";
 import {
   COURSE_COVERAGE_A1,
@@ -65,7 +65,7 @@ export const VOCABULARY_WORD_CLASS_LABELS: Record<VocabularyWordClass, string> =
   preposition: "Prepositions",
   conjunction: "Conjunctions",
   "number-time": "Numbers & time",
-  "phrase-other": "Phrases & other",
+  "phrase-other": "Other words",
 };
 
 export const VOCABULARY_VERB_TYPES = ["modal", "separable", "reflexive", "strong-irregular", "regular-other"] as const;
@@ -397,62 +397,26 @@ function removeDuplicateVerbForms(words: VocabularyWord[]) {
   });
 }
 
-function accusativeArticle(german: string) {
-  if (german.startsWith("der ")) return `den ${german.slice(4)}`;
-  if (german.startsWith("die ")) return `die ${german.slice(4)}`;
-  if (german.startsWith("das ")) return `das ${german.slice(4)}`;
-  if (german.startsWith("der/die ")) return `den/die ${german.slice(8)}`;
-  return german;
-}
+const STANDALONE_TOKEN = /^[\p{L}\p{N}][\p{L}\p{N}’'\-]*$/u;
+const NOUN_HEADWORD = /^(?:der|die|das|der\/die|die\/der)\s+[\p{L}\p{N}][\p{L}\p{N}’'\-]*(?:,\s*(?:der|die|das)\s+[\p{L}\p{N}][\p{L}\p{N}’'\-]*)?$/u;
 
-// A2 needs a larger working vocabulary than the original course list alone.
-// These are practical, level-appropriate collocations generated from the
-// existing A2 cards. Original IDs and course coverage remain untouched.
-function expandA2Vocabulary(existing: VocabularyWord[], target: number, earlier: VocabularyWord[]): VocabularyWord[] {
-  if (existing.length > target) throw new Error(`A2-Ziel ${target} liegt unter dem bestehenden Wortschatz.`);
-  if (existing.length === target) return existing;
+/**
+ * Keep dictionary-style headwords only. German nouns may include their article
+ * and verbs may include a reflexive pronoun or governed preposition. Generated
+ * collocations such as "Informationen über die Ehe" are deliberately rejected.
+ */
+export function isStandaloneVocabularyHeadword(word: VocabularyWord) {
+  const german = word.german.trim();
+  if (NOUN_HEADWORD.test(german)) return true;
 
-  const german = new Set([...earlier, ...existing].map((word) => word.german.toLocaleLowerCase("de")));
-  const english = new Set([...earlier, ...existing].map((word) => word.english.toLocaleLowerCase("en")));
-  const additions: Omit<VocabularyWord, "id" | "level">[] = [];
-  const candidates = existing.flatMap((word) => {
-    if (word.category === "Verben") {
-      return [
-        { ...word, english: `${word.english} regularly`, german: `${word.german} regelmäßig` },
-        { ...word, english: `${word.english} together`, german: `${word.german} gemeinsam` },
-      ];
-    }
-    if (/^(der|die|das|der\/die) /.test(word.german)) {
-      return [
-        { ...word, english: `information about ${word.english}`, german: `Informationen über ${accusativeArticle(word.german)}` },
-        { ...word, english: `questions about ${word.english}`, german: `Fragen zu ${word.german}` },
-      ];
-    }
-    if (word.category === "Adjektive & Adverbien" && !word.german.includes(" ")) {
-      return [{ ...word, english: `particularly ${word.english}`, german: `besonders ${word.german}` }];
-    }
-    return [];
-  });
-
-  for (const candidate of candidates) {
-    const germanKey = candidate.german.toLocaleLowerCase("de");
-    const englishKey = candidate.english.toLocaleLowerCase("en");
-    if (german.has(germanKey) || english.has(englishKey)) continue;
-    german.add(germanKey);
-    english.add(englishKey);
-    additions.push(candidate);
-    if (existing.length + additions.length === target) break;
+  if (vocabularyWordClass(word) === "verb") {
+    const verb = german.toLocaleLowerCase("de").replace(/^sich\s+/, "");
+    const parts = verb.split(/\s+/);
+    if (parts.length === 1) return STANDALONE_TOKEN.test(parts[0]) && containsGermanInfinitive(parts[0]);
+    return parts.length === 2 && containsGermanInfinitive(parts[0]) && PREPOSITION_WORDS.has(parts[1]);
   }
 
-  if (existing.length + additions.length !== target) {
-    throw new Error(`A2-Wortschatz: ${existing.length + additions.length} statt ${target} Einträge.`);
-  }
-
-  return [...existing, ...additions.map((word, index) => ({
-    ...word,
-    id: `a2-${String(existing.length + index + 1).padStart(4, "0")}`,
-    level: "A2" as const,
-  }))];
+  return STANDALONE_TOKEN.test(german);
 }
 
 const BASE_A1_VOCABULARY = addEssentialVocabulary(buildVocabulary(), ESSENTIAL_A1, "A1", "a1");
@@ -475,7 +439,7 @@ const COVERED_A2_VOCABULARY = addEssentialVocabulary(
   "a2",
   RAW_A1_VOCABULARY,
 );
-const RAW_EXTENDED_A2_VOCABULARY = expandA2Vocabulary(COVERED_A2_VOCABULARY, 1000, RAW_A1_VOCABULARY);
+const RAW_EXTENDED_A2_VOCABULARY = COVERED_A2_VOCABULARY;
 const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   BASE_B1_VOCABULARY,
   COURSE_COVERAGE_B1,
@@ -484,15 +448,12 @@ const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   [...RAW_A1_VOCABULARY, ...RAW_EXTENDED_A2_VOCABULARY],
 );
 export const TOTAL_VOCABULARY_TARGET = 5000;
-const RAW_B1_VOCABULARY = expandB1Vocabulary(
-  COVERED_B1_VOCABULARY,
-  TOTAL_VOCABULARY_TARGET - RAW_A1_VOCABULARY.length - RAW_EXTENDED_A2_VOCABULARY.length,
-);
+const RAW_B1_VOCABULARY = COVERED_B1_VOCABULARY;
 const CLEAN_VOCABULARY = removeDuplicateVerbForms([
   ...RAW_A1_VOCABULARY,
   ...RAW_EXTENDED_A2_VOCABULARY,
   ...RAW_B1_VOCABULARY,
-]);
+]).filter(isStandaloneVocabularyHeadword);
 
 export const A1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A1");
 export const EXTENDED_A2_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A2");
@@ -508,8 +469,8 @@ export const VOCABULARY_LEVEL_COUNTS = {
 
 const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 
-// The raw catalog may contain up to 5,000 cards. The public catalog is smaller
-// by design after conjugated and generated duplicate verb forms are removed.
+// The raw catalog may contain up to 5,000 candidates. The public catalog is
+// smaller by design after conjugations, duplicates, and phrase padding are removed.
 if (ALL_VOCABULARY.length > TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
   throw new Error(`The A1–B1 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
 }

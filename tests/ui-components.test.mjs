@@ -202,7 +202,9 @@ test("gives every transferable course vocabulary item a standalone card", async 
   }
 
   assert.deepEqual(unmatched, [
+    "A1-1: Guten Morgen — good morning",
     "A1-7: Ben — Ben",
+    "A1-16: Verkehrsmitteln — public transport",
     "A1-22: Bonn — Bonn",
     "B1-2: Ben — Ben",
     "B1-19: Ben — Ben",
@@ -214,6 +216,7 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
     ALL_VOCABULARY,
     TOTAL_VOCABULARY_TARGET,
     VOCABULARY_LEVEL_COUNTS,
+    isStandaloneVocabularyHeadword,
     vocabularyVerbLemmaKey,
     vocabularyVerbType,
     vocabularyWordClass,
@@ -221,9 +224,12 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
-  assert.equal(ALL_VOCABULARY.length, 4545);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 860, A2: 988, B1: 2697, all: 4545 });
+  assert.equal(ALL_VOCABULARY.length, 2011);
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 857, A2: 534, B1: 620, all: 2011 });
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
+  assert.ok(ALL_VOCABULARY.every(isStandaloneVocabularyHeadword));
+  assert.ok(!ALL_VOCABULARY.some((item) => /^(?:Informationen über|Fragen zu|die Debatte über|in Bezug auf|im Zusammenhang mit|die Bedeutung von)\b/i.test(item.german)));
+  assert.ok(!ALL_VOCABULARY.some((item) => /^(?:information about|questions about|with regard to|in connection with|the debate about|the importance of)\b/i.test(item.english)));
 
   const verbs = ALL_VOCABULARY.filter((item) => vocabularyWordClass(item) === "verb");
   assert.ok(verbs.every((item) => item.english.toLocaleLowerCase("en").startsWith("to ")));
@@ -249,7 +255,7 @@ test("renders vocabulary progress and a unified grammar filter", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /4,545 words/);
+  assert.match(html, /2,011 words/);
   assert.match(html, /Not learned/);
   assert.match(html, /Advanced filters/);
   assert.match(html, /Every set contains 30–60 words/);
@@ -258,6 +264,7 @@ test("renders vocabulary progress and a unified grammar filter", async () => {
   assert.equal((html.match(/aria-label="Pronounce this word in German"/g) ?? []).length, 120);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
+  assert.doesNotMatch(html, /Phrase \/ other|Phrases &amp; other/);
 });
 
 test("configures vocabulary pronunciation for German speech", async () => {

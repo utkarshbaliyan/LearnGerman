@@ -65,7 +65,7 @@ const WORD_CLASS_CARD_LABELS: Record<VocabularyWordClass, string> = {
   preposition: "Preposition",
   conjunction: "Conjunction",
   "number-time": "Number / time",
-  "phrase-other": "Phrase / other",
+  "phrase-other": "Other words",
 };
 
 const CATEGORY_META: Record<VocabularyCategory, { icon: LucideIcon; color: string }> = {
