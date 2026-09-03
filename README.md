@@ -38,7 +38,9 @@ Cloudflare D1. Supabase stores passwords; LeseLaut stores only the user's profil
 unique username, and learning progress.
 
 Email confirmation returns through `/auth/confirm`. Both local and deployed URLs
-must be present in Supabase's redirect allow list.
+must be present in Supabase's redirect allow list. Production uses
+`https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm`, with the same
+origin configured as Supabase's Site URL.
 
 ## Diagnostic Commands
 

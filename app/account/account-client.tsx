@@ -5,6 +5,7 @@ import { Cloud, LockKeyhole, LogOut, ShieldCheck } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
 import { AccountStatus } from "@/app/account/account-status";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
+import { AUTH_CONFIRM_URL } from "@/app/lib/public-site";
 import { supabase } from "@/app/lib/supabase-client";
 
 type Account = { email: string; displayName: string; username: string };
@@ -17,6 +18,16 @@ export function AccountClient() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    const parameters = new URLSearchParams(window.location.search);
+    const authError = parameters.get("auth_error");
+    const callbackMessage = authError ?? (parameters.get("auth") === "confirmed" ? "Email verified. Your account and progress are ready." : "");
+    const frame = requestAnimationFrame(() => {
+      if (callbackMessage) setMessage(callbackMessage);
+    });
+    if (parameters.has("auth") || parameters.has("auth_error")) window.history.replaceState({}, "", "/account");
+    return () => cancelAnimationFrame(frame);
+  }, []);
   useEffect(() => {
     void supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null)).finally(() => setSessionReady(true));
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -50,7 +61,7 @@ export function AccountClient() {
     }
     try {
       const result = mode === "signup"
-        ? await supabase.auth.signUp({ email, password, options: { data: { username }, emailRedirectTo: `${window.location.origin}/auth/confirm` } })
+        ? await supabase.auth.signUp({ email, password, options: { data: { username }, emailRedirectTo: AUTH_CONFIRM_URL } })
         : await supabase.auth.signInWithPassword({ email, password });
       if (result.error) setMessage(result.error.message);
       else if (mode === "signup" && !result.data.session) setMessage("Check your email to confirm your account, then sign in.");

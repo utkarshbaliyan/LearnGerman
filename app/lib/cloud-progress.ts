@@ -5,8 +5,15 @@ import {
   GRAMMAR_PROGRESS_STORAGE_KEY,
   VOCABULARY_PROGRESS_STORAGE_KEY,
 } from "@/app/lib/progress-sync";
-import { putCloudProgress, setCloudAuthenticated, type CloudProgressScope } from "@/app/lib/cloud-progress-save";
-import { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
+import {
+  acknowledgeCloudProgress,
+  pauseCloudProgressSaves,
+  putCloudProgress,
+  queuedCloudProgressRevision,
+  resumeCloudProgressSaves,
+  type CloudProgressScope,
+} from "@/app/lib/cloud-progress-save";
+import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 
 export { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
@@ -96,21 +103,43 @@ function readLocal(scope: CloudProgressScope) {
   catch { return scope === "stories" ? [] : {}; }
 }
 
-export async function synchronizeCloudProgress() {
-  const response = await authenticatedFetch("/api/progress", { cache: "no-store" });
-  if (!response.ok) {
-    if (response.status === 401) setCloudAuthenticated(false);
-    return { authenticated: false, synced: false };
-  }
-  setCloudAuthenticated(true);
-  const payload = await response.json() as { progress?: Record<string, unknown> };
-  const remote = payload.progress ?? {};
+async function performCloudSynchronization() {
+  pauseCloudProgressSaves();
+  try {
+    const response = await authenticatedFetch("/api/progress", { cache: "no-store" });
+    if (!response.ok) {
+      resumeCloudProgressSaves(response.status === 401 ? false : null);
+      return { authenticated: false, synced: false };
+    }
+    const payload = await response.json() as { progress?: Record<string, unknown>; userId?: string };
+    const remote = payload.progress ?? {};
+    if (!payload.userId) throw new Error("Authenticated progress response did not include an account ID.");
+    const localOwner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
+    const canMergeLocal = !localOwner || localOwner === payload.userId;
 
-  for (const scope of Object.keys(STORAGE_KEYS) as CloudProgressScope[]) {
-    const merged = mergeProgress(scope, readLocal(scope), remote[scope]);
-    localStorage.setItem(STORAGE_KEYS[scope], JSON.stringify(merged));
-    await putCloudProgress(scope, merged);
+    for (const scope of Object.keys(STORAGE_KEYS) as CloudProgressScope[]) {
+      const local = canMergeLocal ? readLocal(scope) : scope === "stories" ? [] : {};
+      const queuedRevision = queuedCloudProgressRevision(scope);
+      const merged = mergeProgress(scope, local, remote[scope]);
+      localStorage.setItem(STORAGE_KEYS[scope], JSON.stringify(merged));
+      await putCloudProgress(scope, merged);
+      acknowledgeCloudProgress(scope, queuedRevision);
+    }
+    localStorage.setItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY, payload.userId);
+    resumeCloudProgressSaves(true);
+    window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT));
+    return { authenticated: true, synced: true };
+  } catch (error) {
+    resumeCloudProgressSaves(null);
+    throw error;
   }
-  window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT));
-  return { authenticated: true, synced: true };
+}
+
+let activeSynchronization: Promise<{ authenticated: boolean; synced: boolean }> | null = null;
+
+export function synchronizeCloudProgress() {
+  if (!activeSynchronization) {
+    activeSynchronization = performCloudSynchronization().finally(() => { activeSynchronization = null; });
+  }
+  return activeSynchronization;
 }

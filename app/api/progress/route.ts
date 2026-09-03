@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 
 import { ensureAccount } from "@/app/lib/account-db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
-import { ensureDatabase, getDb } from "@/db";
+import { getDb } from "@/db";
 import { userProgress } from "@/db/schema";
 
 const SCOPES = ["course", "stories", "grammar", "vocabulary"] as const;
@@ -15,7 +15,6 @@ function isScope(value: unknown): value is ProgressScope {
 async function authenticatedDb(request: Request) {
   const user = await getAuthenticatedUser(request);
   if (!user) return null;
-  await ensureDatabase();
   const db = await getDb();
   await ensureAccount(user);
   return { db, user };
@@ -31,7 +30,7 @@ export async function GET(request: Request) {
   const progress = Object.fromEntries(rows.flatMap((row) => {
     try { return [[row.scope, JSON.parse(row.data)]]; } catch { return []; }
   }));
-  return Response.json({ progress });
+  return Response.json({ progress, userId: auth.user.id });
 }
 
 export async function PUT(request: Request) {

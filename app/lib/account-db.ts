@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import type { AuthenticatedUser } from "@/app/lib/supabase-auth";
-import { ensureDatabase, getD1, getDb } from "@/db";
+import { getD1, getDb } from "@/db";
 import { users } from "@/db/schema";
 
 function normalizeUsername(value: string) {
@@ -14,7 +14,6 @@ function usernameCandidate(base: string, attempt: number) {
 }
 
 export async function ensureAccount(user: AuthenticatedUser) {
-  await ensureDatabase();
   const db = await getDb();
   const d1 = await getD1();
   const base = normalizeUsername(user.requestedUsername ?? user.displayName ?? user.email.split("@")[0]);

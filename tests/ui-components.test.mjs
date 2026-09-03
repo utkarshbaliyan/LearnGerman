@@ -139,6 +139,48 @@ test("synchronizes equivalent vocabulary and grammar mastery across routes", asy
   assert.equal(merged.scores["a1-1-1"], 92);
 });
 
+test("merges cloud progress without losing learned or review state", async () => {
+  const { mergeProgress } = await vite.ssrLoadModule("/app/lib/cloud-progress.ts");
+
+  assert.deepEqual(
+    mergeProgress(
+      "vocabulary",
+      { learnedKeys: ["de:lernen"], reviewKeys: ["de:gehen"], legacyMigrated: true },
+      { learnedKeys: ["de:gehen", "de:sprechen"], reviewKeys: ["de:schreiben"] },
+    ),
+    {
+      learnedKeys: ["de:gehen", "de:sprechen", "de:lernen"],
+      reviewKeys: ["de:schreiben"],
+      legacyMigrated: true,
+    },
+  );
+  assert.deepEqual(mergeProgress("stories", ["local-story"], ["remote-story"]), ["remote-story", "local-story"]);
+});
+
+test("uses account-owned durable progress and production email confirmation", async () => {
+  const [saveSource, syncSource, listenerSource, callbackSource, accountSource, databaseSource, apiSource] = await Promise.all([
+    readFile(path.join(root, "app/lib/cloud-progress-save.ts"), "utf8"),
+    readFile(path.join(root, "app/lib/cloud-progress.ts"), "utf8"),
+    readFile(path.join(root, "app/components/cloud-progress-sync.tsx"), "utf8"),
+    readFile(path.join(root, "app/auth/confirm/page.tsx"), "utf8"),
+    readFile(path.join(root, "app/account/account-client.tsx"), "utf8"),
+    readFile(path.join(root, "db/index.ts"), "utf8"),
+    readFile(path.join(root, "app/api/progress/route.ts"), "utf8"),
+  ]);
+
+  assert.match(saveSource, /pendingProgress\.set/);
+  assert.doesNotMatch(saveSource, /cloudAuthenticated !== true\) return/);
+  assert.match(syncSource, /CLOUD_PROGRESS_OWNER_STORAGE_KEY/);
+  assert.match(listenerSource, /onAuthStateChange/);
+  assert.match(listenerSource, /addEventListener\("online"/);
+  assert.match(callbackSource, /verifyOtp/);
+  assert.match(callbackSource, /exchangeCodeForSession/);
+  assert.match(accountSource, /AUTH_CONFIRM_URL/);
+  assert.doesNotMatch(accountSource, /window\.location\.origin.*auth\/confirm/);
+  assert.match(apiSource, /userId: auth\.user\.id/);
+  assert.doesNotMatch(databaseSource, /CREATE TABLE|ALTER TABLE/);
+});
+
 test("gives every transferable course vocabulary item a standalone card", async () => {
   const { getCourseChapter, COURSE_LEVELS, CHAPTERS_PER_LEVEL } = await vite.ssrLoadModule(
     "/app/course/course-data.ts",
