@@ -213,8 +213,19 @@ test("renders vocabulary progress and a unified grammar filter", async () => {
   assert.match(html, /Every set contains 30–60 words/);
   assert.match(html, /aria-label="Vocabulary study sets"/);
   assert.match(html, /aria-label="Filter by word class and verb type"/);
+  assert.equal((html.match(/aria-label="Pronounce this word in German"/g) ?? []).length, 120);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
+});
+
+test("configures vocabulary pronunciation for German speech", async () => {
+  const pageSource = await readFile(path.join(root, "app/vocabulary/page.tsx"), "utf8");
+
+  assert.match(pageSource, /new SpeechSynthesisUtterance\(word\.german\)/);
+  assert.match(pageSource, /utterance\.lang = "de-DE"/);
+  assert.match(pageSource, /utterance\.rate = 0\.82/);
+  assert.match(pageSource, /voice\.lang\.toLocaleLowerCase\(\)\.startsWith\("de"\)/);
+  assert.match(pageSource, /Pronunciation is not available in this browser\./);
 });
 
 test("partitions every CEFR range into complete 30–60 word study sets", async () => {

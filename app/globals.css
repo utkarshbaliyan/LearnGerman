@@ -398,6 +398,7 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .vocabulary-quiz-answers button.is-wrong { border-color: #c75c58; background: #fcebea; color: #9a3735; }
 .vocabulary-quiz-result { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--ink-soft); font-size: 12px; }
 .vocabulary-quiz-result button { min-height: 38px; flex: 0 0 auto; }
+.vocabulary-quiz-result > div { display: flex; gap: 7px; }
 .vocabulary-toolbar { display: grid; grid-template-columns: minmax(240px,1fr) auto; gap: 16px; align-items: center; }
 .vocabulary-search { position: relative; display: block; }
 .vocabulary-search > svg { width: 17px; position: absolute; left: 15px; top: 50%; z-index: 1; color: #858b85; transform: translateY(-50%); pointer-events: none; }
@@ -460,13 +461,15 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .vocabulary-answer { margin-top: auto; display: flex; align-items: baseline; gap: 7px; color: var(--ink); }
 .vocabulary-answer small { color: var(--orange-dark); font: italic 700 15px/1 Georgia,serif; }
 .vocabulary-answer strong { font: 700 clamp(25px,2.3vw,34px)/.98 Georgia,serif; letter-spacing: -.03em; overflow-wrap: anywhere; }
-.vocabulary-card-actions { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.vocabulary-card-actions { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid var(--line); }
 .vocabulary-card-actions button { min-height: 45px; display: flex; align-items: center; justify-content: center; gap: 5px; border: 0; border-right: 1px solid var(--line); background: rgba(244,240,231,.48); color: var(--ink-soft); font-size: 8px; font-weight: 800; cursor: pointer; }
 .vocabulary-card-actions button:last-child { border-right: 0; }
 .vocabulary-card-actions button:hover { background: var(--muted); color: var(--ink); }
 .vocabulary-card-actions button svg { width: 12px; }
 .vocabulary-card-actions button:first-child.is-active { background: #dcece4; color: #28644f; }
-.vocabulary-card-actions button:last-child.is-active { background: #f5e6c8; color: #8e5d12; }
+.vocabulary-card-actions button:nth-child(2).is-active { background: #f5e6c8; color: #8e5d12; }
+.vocabulary-card-actions button.is-speaking { background: color-mix(in srgb,var(--blue) 12%,var(--white)); color: var(--blue); }
+.vocabulary-pronunciation-status { margin: 14px 0 0; padding: 10px 12px; border: 1px solid var(--amber); border-radius: 10px; background: color-mix(in srgb,var(--amber) 9%,var(--white)); color: var(--ink); font-size: 13px; }
 .vocabulary-empty { margin-top: 24px; min-height: 300px; padding: 60px 20px; display: grid; place-items: center; align-content: center; border: 1px dashed #cfc8bb; border-radius: 18px; background: rgba(255,253,248,.65); text-align: center; }
 .vocabulary-empty > svg { width: 28px; color: var(--orange); }
 .vocabulary-empty h3 { margin: 14px 0 5px; font: 700 25px/1 Georgia,serif; }
@@ -944,7 +947,7 @@ footer { background: var(--muted); }
 .vocabulary-hint { font-size: 12px; }
 .vocabulary-card-actions button { min-height: 44px; background: var(--paper); font-size: 12px; }
 .vocabulary-card-actions button:first-child.is-active { background: color-mix(in srgb, var(--green-accent) 18%, var(--white)); color: var(--green-accent); }
-.vocabulary-card-actions button:last-child.is-active { background: color-mix(in srgb, var(--amber) 18%, var(--white)); color: var(--amber); }
+.vocabulary-card-actions button:nth-child(2).is-active { background: color-mix(in srgb, var(--amber) 18%, var(--white)); color: var(--amber); }
 
 .grammar-method { grid-template-columns: repeat(3, 1fr); background: var(--white); }
 .grammar-method > div { min-height: 96px; }

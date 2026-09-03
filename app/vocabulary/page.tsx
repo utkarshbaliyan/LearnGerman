@@ -3,7 +3,7 @@
 import {
   Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
   ChevronDown, CircleHelp, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
-  Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, X,
+  Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, Volume2, X,
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -99,14 +99,16 @@ function GermanAnswer({ answer }: { answer: string }) {
   );
 }
 
-function VocabularyCard({ word, revealed, completed, review, onReveal, onComplete, onReview }: {
+function VocabularyCard({ word, revealed, completed, review, speaking, onReveal, onComplete, onReview, onPronounce }: {
   word: VocabularyWord;
   revealed: boolean;
   completed: boolean;
   review: boolean;
+  speaking: boolean;
   onReveal: () => void;
   onComplete: () => void;
   onReview: () => void;
+  onPronounce: () => void;
 }) {
   const wordClass = vocabularyWordClass(word);
   const verbType = vocabularyVerbType(word);
@@ -124,6 +126,7 @@ function VocabularyCard({ word, revealed, completed, review, onReveal, onComplet
       <div className="vocabulary-card-actions">
         <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Learned</button>
         <button type="button" className={review ? "is-active" : ""} aria-pressed={review} onClick={onReview}><Bookmark /> Review</button>
+        <button type="button" className={speaking ? "is-speaking" : ""} aria-label="Pronounce this word in German" onClick={onPronounce}><Volume2 /> {speaking ? "Playing" : "Listen"}</button>
       </div>
     </article>
   );
@@ -141,6 +144,8 @@ export default function VocabularyPage() {
   const [quizAnswer, setQuizAnswer] = useState<string | null>(null);
   const [quizStreak, setQuizStreak] = useState(0);
   const [quizBestStreak, setQuizBestStreak] = useState(0);
+  const [speakingWordId, setSpeakingWordId] = useState<string | null>(null);
+  const [pronunciationUnavailable, setPronunciationUnavailable] = useState(false);
   const { isLearned, isReview, setLearned, setReview } = useVocabularyProgress(ALL_VOCABULARY);
   const deferredQuery = useDeferredValue(query);
 
@@ -184,6 +189,10 @@ export default function VocabularyPage() {
       setQuizCursor(startVocabularyQuiz(localStorage, () => crypto.getRandomValues(new Uint32Array(1))[0]));
     });
     return () => cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => () => {
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
   }, []);
 
   function chooseLevel(next: LevelFilter) {
@@ -235,6 +244,28 @@ export default function VocabularyPage() {
 
   function markReview(word: VocabularyWord) {
     setReview(word, !isReview(word));
+  }
+
+  function pronounceWord(word: VocabularyWord) {
+    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+      setPronunciationUnavailable(true);
+      return;
+    }
+
+    const speech = window.speechSynthesis;
+    speech.cancel();
+    const utterance = new SpeechSynthesisUtterance(word.german);
+    const voices = speech.getVoices();
+    utterance.lang = "de-DE";
+    utterance.rate = 0.82;
+    utterance.voice = voices.find((voice) => voice.lang.toLocaleLowerCase() === "de-de")
+      ?? voices.find((voice) => voice.lang.toLocaleLowerCase().startsWith("de"))
+      ?? null;
+    utterance.onend = () => setSpeakingWordId((current) => current === word.id ? null : current);
+    utterance.onerror = () => setSpeakingWordId((current) => current === word.id ? null : current);
+    setPronunciationUnavailable(false);
+    setSpeakingWordId(word.id);
+    speech.speak(utterance);
   }
 
   function answerQuiz(german: string) {
@@ -303,7 +334,7 @@ export default function VocabularyPage() {
           </div>
           {quizAnswer && <div className="vocabulary-quiz-result" aria-live="polite">
             <span>{quizAnswer === quiz.word.german ? "Correct. Added to learned." : `The answer is ${quiz.word.german}. Added to review.`}</span>
-            <Button type="button" onClick={nextQuizQuestion}>Next word</Button>
+            <div><Button type="button" variant="outline" onClick={() => pronounceWord(quiz.word)}><Volume2 /> Listen</Button><Button type="button" onClick={nextQuizQuestion}>Next word</Button></div>
           </div>}
         </section>}
 
@@ -358,9 +389,11 @@ export default function VocabularyPage() {
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 
+        {pronunciationUnavailable && <p className="vocabulary-pronunciation-status" role="alert">Pronunciation is not available in this browser.</p>}
+
         {visibleWords.length ? (
           <>
-            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} />)}</div>
+            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} speaking={speakingWordId === word.id} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} onPronounce={() => pronounceWord(word)} />)}</div>
             {renderedWords.length < visibleWords.length && <Button className="show-more-vocabulary" variant="outline" onClick={() => setVisibleLimit((current) => current + VISIBLE_BATCH)}>Show {Math.min(VISIBLE_BATCH, visibleWords.length - renderedWords.length)} more words</Button>}
           </>
         ) : (
