@@ -210,9 +210,31 @@ test("renders vocabulary progress and a unified grammar filter", async () => {
   assert.match(html, /4,545 words/);
   assert.match(html, /Not learned/);
   assert.match(html, /Advanced filters/);
+  assert.match(html, /Every set contains 30–60 words/);
+  assert.match(html, /aria-label="Vocabulary study sets"/);
   assert.match(html, /aria-label="Filter by word class and verb type"/);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
+});
+
+test("partitions every CEFR range into complete 30–60 word study sets", async () => {
+  const { ALL_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
+  const {
+    buildVocabularyStudySets,
+    MAX_STUDY_SET_SIZE,
+    MIN_STUDY_SET_SIZE,
+  } = await vite.ssrLoadModule("/app/vocabulary/study-sets.ts");
+
+  for (const level of ["all", "A1", "A2", "B1"]) {
+    const words = level === "all" ? ALL_VOCABULARY : ALL_VOCABULARY.filter((word) => word.level === level);
+    const sets = buildVocabularyStudySets(words);
+    const assignedIds = sets.flatMap((set) => set.words.map((word) => word.id));
+
+    assert.ok(sets.every((set) => set.words.length >= MIN_STUDY_SET_SIZE));
+    assert.ok(sets.every((set) => set.words.length <= MAX_STUDY_SET_SIZE));
+    assert.equal(new Set(assignedIds).size, words.length);
+    assert.deepEqual(new Set(assignedIds), new Set(words.map((word) => word.id)));
+  }
 });
 
 test("forwards progress semantics to the primitive", async () => {

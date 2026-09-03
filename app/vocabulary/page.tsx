@@ -13,7 +13,6 @@ import { SiteHeader } from "@/app/components/site-header";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import {
   ALL_VOCABULARY,
-  VOCABULARY_CATEGORIES,
   VOCABULARY_LEVEL_COUNTS,
   VOCABULARY_VERB_TYPES,
   VOCABULARY_VERB_TYPE_LABELS,
@@ -32,6 +31,7 @@ import {
   startVocabularyQuiz,
   type VocabularyQuizCursor,
 } from "@/app/vocabulary/quiz";
+import { buildVocabularyStudySets } from "@/app/vocabulary/study-sets";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -132,7 +132,7 @@ function VocabularyCard({ word, revealed, completed, review, onReveal, onComplet
 export default function VocabularyPage() {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
-  const [category, setCategory] = useState<VocabularyCategory | "all">("all");
+  const [studySetId, setStudySetId] = useState<string | "all">("all");
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
@@ -148,9 +148,13 @@ export default function VocabularyPage() {
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
-  const categoryCounts = useMemo(() => Object.fromEntries(
-    VOCABULARY_CATEGORIES.map((name) => [name, levelWords.filter((word) => word.category === name).length]),
-  ) as Record<VocabularyCategory, number>, [levelWords]);
+  const studySets = useMemo(() => buildVocabularyStudySets(levelWords), [levelWords]);
+  const activeStudySet = useMemo(
+    () => studySetId === "all" ? null : studySets.find((set) => set.id === studySetId) ?? null,
+    [studySetId, studySets],
+  );
+  const activeStudySetWordIds = useMemo(() => new Set(activeStudySet?.words.map((word) => word.id) ?? []), [activeStudySet]);
+  const studySetProgress = useMemo(() => new Map(studySets.map((set) => [set.id, set.words.filter(isLearned).length])), [isLearned, studySets]);
   const wordClassCounts = useMemo(() => Object.fromEntries(
     VOCABULARY_WORD_CLASSES.map((name) => [name, levelWords.filter((word) => vocabularyWordClass(word) === name).length]),
   ) as Record<VocabularyWordClass, number>, [levelWords]);
@@ -162,7 +166,7 @@ export default function VocabularyPage() {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
     const verbTypeFilter = selectedVerbType(wordClassFilter);
     return levelWords.filter((word) => {
-      if (category !== "all" && word.category !== category) return false;
+      if (activeStudySet && !activeStudySetWordIds.has(word.id)) return false;
       if (verbTypeFilter && vocabularyVerbType(word) !== verbTypeFilter) return false;
       if (!verbTypeFilter && wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
       if (progressFilter === "unlearned" && (isLearned(word) || isReview(word))) return false;
@@ -170,7 +174,7 @@ export default function VocabularyPage() {
       if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     });
-  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
+  }, [activeStudySet, activeStudySetWordIds, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
   const quiz = useMemo(() => quizCursor ? buildVocabularyQuiz(levelWords, quizCursor) : null, [levelWords, quizCursor]);
@@ -184,12 +188,13 @@ export default function VocabularyPage() {
 
   function chooseLevel(next: LevelFilter) {
     setLevel(next);
+    setStudySetId("all");
     setVisibleLimit(VISIBLE_BATCH);
     setQuizAnswer(null);
   }
 
-  function chooseCategory(next: VocabularyCategory | "all") {
-    setCategory(next);
+  function chooseStudySet(next: string | "all") {
+    setStudySetId(next);
     setVisibleLimit(VISIBLE_BATCH);
   }
 
@@ -205,7 +210,7 @@ export default function VocabularyPage() {
 
   function clearFilters() {
     setQuery("");
-    setCategory("all");
+    setStudySetId("all");
     setProgressFilter("all");
     setWordClassFilter("all");
     setVisibleLimit(VISIBLE_BATCH);
@@ -255,8 +260,9 @@ export default function VocabularyPage() {
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–B1" : level;
-  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
+  const hasActiveFilters = query || studySetId !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
+  const activeStudySetLearned = activeStudySet ? studySetProgress.get(activeStudySet.id) ?? 0 : 0;
 
   return (
     <main className="site-shell vocabulary-page" id="top">
@@ -333,16 +339,22 @@ export default function VocabularyPage() {
           <button type="button" className="vocabulary-filter-reset" onClick={clearFilters} disabled={!hasActiveFilters}><RotateCcw /> Clear filters</button>
         </div>
 
-        <div className="category-scroller" aria-label="Vocabulary categories">
-          <button type="button" className={category === "all" ? "is-active" : ""} onClick={() => chooseCategory("all")}><span><Sparkles /></span><strong>All categories</strong><small>{levelWords.length}</small></button>
-          {VOCABULARY_CATEGORIES.map((name) => {
-            const Icon = CATEGORY_META[name].icon;
-            return <button key={name} type="button" className={category === name ? "is-active" : ""} style={{ "--category-color": CATEGORY_META[name].color } as CSSProperties} onClick={() => chooseCategory(name)}><span><Icon /></span><strong lang="de">{name}</strong><small>{categoryCounts[name]}</small></button>;
+        <div className="study-set-heading">
+          <div><span>Study sets</span><p>Choose one focused set. Every set contains 30–60 words.</p></div>
+          <strong>{studySets.length} sets</strong>
+        </div>
+        <div className="category-scroller" aria-label="Vocabulary study sets">
+          <button type="button" className={studySetId === "all" ? "is-active" : ""} onClick={() => chooseStudySet("all")}><span><Sparkles /></span><strong>All study sets</strong><small>{levelWords.length} words</small><em>{selectedCompleted} learned</em></button>
+          {studySets.map((set) => {
+            const Icon = CATEGORY_META[set.primaryCategory].icon;
+            const learned = studySetProgress.get(set.id) ?? 0;
+            const complete = learned === set.words.length;
+            return <button key={set.id} type="button" className={`${studySetId === set.id ? "is-active" : ""}${complete ? " is-complete" : ""}`} aria-label={`${set.title}, ${learned} of ${set.words.length} learned`} style={{ "--category-color": CATEGORY_META[set.primaryCategory].color } as CSSProperties} onClick={() => chooseStudySet(set.id)}><span><Icon /></span><strong>{set.title}</strong><small>{set.words.length} words</small><em>{complete ? <><Check /> Complete</> : `${set.words.length - learned} left`}</em></button>;
           })}
         </div>
 
         <div className="vocabulary-list-heading">
-          <div><span>{category === "all" ? `${levelLabel} · ${wordClassLabel}` : `${levelLabel} · ${category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
+          <div><span>{`${levelLabel} · ${activeStudySet?.title ?? "all study sets"} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : activeStudySet && activeStudySetLearned === activeStudySet.words.length ? "Study set complete" : activeStudySet ? "Complete this study set" : "Explore vocabulary"}</h2></div>
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 
