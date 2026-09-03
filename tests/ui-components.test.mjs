@@ -214,6 +214,7 @@ test("gives every transferable course vocabulary item a standalone card", async 
 test("provides a deduplicated vocabulary catalog with infinitive verb headwords", async () => {
   const {
     ALL_VOCABULARY,
+    CORE_VOCABULARY,
     TOTAL_VOCABULARY_TARGET,
     VOCABULARY_LEVEL_COUNTS,
     isStandaloneVocabularyHeadword,
@@ -224,10 +225,18 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
-  assert.equal(ALL_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 857, A2: 534, B1: 620, all: 2011 });
+  assert.equal(ALL_VOCABULARY.length, 4011);
+  assert.equal(CORE_VOCABULARY.length, 2011);
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 857, A2: 534, B1: 2620, all: 4011 });
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
   assert.ok(ALL_VOCABULARY.every(isStandaloneVocabularyHeadword));
+  const headwordKey = (item) => item.german.toLocaleLowerCase("de").replace(/^(?:der|die|das)\s+/, "").trim();
+  const extended = ALL_VOCABULARY.filter((item) => item.id.startsWith("lexicon-b1-"));
+  const coreHeadwords = new Set(CORE_VOCABULARY.map(headwordKey));
+  assert.equal(extended.length, 2000);
+  assert.equal(new Set(extended.map(headwordKey)).size, extended.length);
+  assert.ok(extended.every((item) => !coreHeadwords.has(headwordKey(item))));
+  assert.ok(extended.every((item) => !/\s/.test(headwordKey(item))));
   assert.ok(!ALL_VOCABULARY.some((item) => /^(?:Informationen über|Fragen zu|die Debatte über|in Bezug auf|im Zusammenhang mit|die Bedeutung von)\b/i.test(item.german)));
   assert.ok(!ALL_VOCABULARY.some((item) => /^(?:information about|questions about|with regard to|in connection with|the debate about|the importance of)\b/i.test(item.english)));
 
@@ -235,7 +244,7 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   assert.ok(verbs.every((item) => item.english.toLocaleLowerCase("en").startsWith("to ")));
   assert.equal(new Set(verbs.map(vocabularyVerbLemmaKey)).size, verbs.length);
   assert.deepEqual(
-    verbs.filter((item) => /lern/i.test(item.german)).map(({ english, german }) => ({ english, german })),
+    verbs.filter((item) => item.german === "lernen").map(({ english, german }) => ({ english, german })),
     [{ english: "to learn", german: "lernen" }],
   );
   assert.ok(!ALL_VOCABULARY.some((item) => item.german === "lernt" || item.german === "läuft"));
@@ -255,7 +264,7 @@ test("renders vocabulary progress and a unified grammar filter", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /2,011 words/);
+  assert.match(html, /4,011 words/);
   assert.match(html, /Not learned/);
   assert.match(html, /Advanced filters/);
   assert.match(html, /Every set contains 30–60 words/);

@@ -1,6 +1,7 @@
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
+import { EXTENDED_B1_LEXICON } from "@/app/vocabulary/extended-data";
 import { verbHeadwordForForm } from "@/app/vocabulary/verb-forms";
 import {
   COURSE_COVERAGE_A1,
@@ -449,10 +450,14 @@ const COVERED_B1_VOCABULARY = addEssentialVocabulary(
 );
 export const TOTAL_VOCABULARY_TARGET = 5000;
 const RAW_B1_VOCABULARY = COVERED_B1_VOCABULARY;
-const CLEAN_VOCABULARY = removeDuplicateVerbForms([
+export const CORE_VOCABULARY = removeDuplicateVerbForms([
   ...RAW_A1_VOCABULARY,
   ...RAW_EXTENDED_A2_VOCABULARY,
   ...RAW_B1_VOCABULARY,
+]).filter(isStandaloneVocabularyHeadword);
+const CLEAN_VOCABULARY = removeDuplicateVerbForms([
+  ...CORE_VOCABULARY,
+  ...EXTENDED_B1_LEXICON,
 ]).filter(isStandaloneVocabularyHeadword);
 
 export const A1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A1");
