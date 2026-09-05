@@ -42,16 +42,19 @@ export function advanceVocabularyQuiz(storage: QuizStorage, cursor: VocabularyQu
   return saveCursor(storage, { ...cursor, round: cursor.round + 1 });
 }
 
-export function buildVocabularyQuiz(words: VocabularyWord[], cursor: VocabularyQuizCursor) {
+export function buildVocabularyQuiz(words: VocabularyWord[], cursor: VocabularyQuizCursor, target?: VocabularyWord) {
   if (!words.length) return null;
 
-  const word = words[positiveModulo(cursor.seed + cursor.round * 47, words.length)];
+  const word = target ?? words[positiveModulo(cursor.seed + cursor.round * 47, words.length)];
   const choices = [word];
   const sameClass = words.filter((candidate) => candidate.id !== word.id && vocabularyWordClass(candidate) === vocabularyWordClass(word));
   const sameTopic = sameClass.filter((candidate) => candidate.category === word.category);
-  const candidatePool = [...sameTopic, ...sameClass, ...words].filter((candidate, index, all) => (
-    candidate.id !== word.id && all.findIndex((item) => item.german === candidate.german) === index
-  ));
+  const seen = new Set([word.german]);
+  const candidatePool = [...sameTopic, ...sameClass, ...words].filter((candidate) => {
+    if (seen.has(candidate.german) || candidate.english.toLowerCase() === word.english.toLowerCase()) return false;
+    seen.add(candidate.german);
+    return true;
+  });
 
   for (let offset = 0; choices.length < 4 && offset < candidatePool.length; offset += 1) {
     const index = positiveModulo(cursor.seed * 31 + cursor.round * 17 + offset, candidatePool.length);

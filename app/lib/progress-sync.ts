@@ -21,7 +21,50 @@ export type VocabularyProgress = {
   learnedKeys: string[];
   reviewKeys: string[];
   legacyMigrated: boolean;
+  cards?: Record<string, VocabularyReviewCard>;
 };
+
+export type VocabularyReviewCard = {
+  status: "learned" | "review" | "unlearned";
+  updatedAt: number;
+  dueAt: number;
+  intervalMinutes: number;
+};
+
+export function readReviewCards(value: unknown): Record<string, VocabularyReviewCard> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  return Object.fromEntries(Object.entries(value).filter((entry): entry is [string, VocabularyReviewCard] => {
+    const card = entry[1] as VocabularyReviewCard | null;
+    return entry[0].startsWith("de:") && !!card && ["learned", "review", "unlearned"].includes(card.status)
+      && [card.updatedAt, card.dueAt, card.intervalMinutes].every((n) => Number.isFinite(n) && n >= 0)
+      && card.intervalMinutes <= 525600;
+  }));
+}
+
+export function vocabularyCardKey(word: VocabularyIdentity) {
+  return vocabularyProgressKeys(word).find((key) => key.startsWith("de:"))!;
+}
+
+export function mergeVocabularyProgress(local: unknown, remote: unknown): VocabularyProgress {
+  const a = (remote ?? {}) as Partial<VocabularyProgress>;
+  const b = (local ?? {}) as Partial<VocabularyProgress>;
+  const cards = { ...readReviewCards(a.cards) };
+  for (const [key, card] of Object.entries(readReviewCards(b.cards))) {
+    if (!cards[key] || card.updatedAt > cards[key].updatedAt
+      || (card.updatedAt === cards[key].updatedAt && JSON.stringify(card) > JSON.stringify(cards[key]))) cards[key] = card;
+  }
+  const learned = new Set([...stringArray(a.learnedKeys), ...stringArray(b.learnedKeys)]);
+  const review = new Set([...stringArray(a.reviewKeys), ...stringArray(b.reviewKeys)]);
+  for (const [key, card] of Object.entries(cards)) {
+    learned.delete(key);
+    review.delete(key);
+    if (card.status === "learned") learned.add(key);
+    if (card.status === "review") review.add(key);
+  }
+  for (const key of learned) review.delete(key);
+  return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: a.legacyMigrated === true || b.legacyMigrated === true,
+    ...(Object.keys(cards).length ? { cards } : {}) };
+}
 
 export type GrammarProgress = {
   completed: string[];
@@ -105,6 +148,7 @@ export function setVocabularyStatus(
   current: VocabularyProgress,
   word: VocabularyIdentity,
   status: "learned" | "review" | "unlearned",
+  now = Date.now(),
 ): VocabularyProgress {
   const keys = vocabularyProgressKeys(word);
   const learned = new Set(current.learnedKeys);
@@ -118,14 +162,37 @@ export function setVocabularyStatus(
     keys.forEach((key) => { learned.delete(key); review.delete(key); });
   }
 
-  return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated };
+  const key = vocabularyCardKey(word);
+  const updatedAt = Math.max(now, (current.cards?.[key]?.updatedAt ?? 0) + 1);
+  return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated,
+    cards: { ...current.cards, [key]: { status, updatedAt, dueAt: now, intervalMinutes: 0 } } };
+}
+
+export function scheduleVocabularyReview(current: VocabularyProgress, word: VocabularyIdentity, minutes: number, now = Date.now()): VocabularyProgress {
+  if (!Number.isFinite(minutes) || minutes < 0 || minutes > 525600) throw new Error("Choose a review interval between 0 and 365 days.");
+  const next = setVocabularyStatus(current, word, "review", now);
+  const key = vocabularyCardKey(word);
+  return { ...next, cards: { ...next.cards, [key]: { ...next.cards![key], dueAt: now + minutes * 60000, intervalMinutes: minutes } } };
+}
+
+export function vocabularyReviewDueAt(progress: VocabularyProgress, word: VocabularyIdentity) {
+  return isVocabularyReview(progress, word) ? progress.cards?.[vocabularyCardKey(word)]?.dueAt ?? 0 : Infinity;
+}
+
+export function recordVocabularyGuess(current: VocabularyProgress, word: VocabularyIdentity, correct: boolean, now = Date.now()) {
+  if (correct && isVocabularyReview(current, word)) return current;
+  return setVocabularyStatus(current, word, correct ? "learned" : "review", now);
 }
 
 export function isVocabularyLearned(progress: VocabularyProgress, word: VocabularyIdentity) {
+  const card = progress.cards?.[vocabularyCardKey(word)];
+  if (card) return card.status === "learned";
   return vocabularyProgressKeys(word).some((key) => progress.learnedKeys.includes(key));
 }
 
 export function isVocabularyReview(progress: VocabularyProgress, word: VocabularyIdentity) {
+  const card = progress.cards?.[vocabularyCardKey(word)];
+  if (card) return card.status === "review";
   const keys = vocabularyProgressKeys(word);
   return !keys.some((key) => progress.learnedKeys.includes(key)) && keys.some((key) => progress.reviewKeys.includes(key));
 }
@@ -156,6 +223,7 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
     learnedKeys: [...learned],
     reviewKeys: [...review],
     legacyMigrated: stored.legacyMigrated === true || shouldMigrateLegacy,
+    ...(stored.cards ? { cards: readReviewCards(stored.cards) } : {}),
   };
 }
 
@@ -164,6 +232,7 @@ export function writeVocabularyProgress(storage: StorageLike, progress: Vocabula
     learnedKeys: unique(progress.learnedKeys),
     reviewKeys: unique(progress.reviewKeys.filter((key) => !progress.learnedKeys.includes(key))),
     legacyMigrated: progress.legacyMigrated,
+    ...(progress.cards ? { cards: progress.cards } : {}),
   }));
 }
 

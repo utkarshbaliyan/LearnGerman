@@ -412,7 +412,24 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .progress-filters button b { padding: 3px 6px; border-radius: 99px; background: var(--muted); color: var(--ink); font-size: 8px; }
 .progress-filters button.is-active { background: var(--green); color: white; }
 .progress-filters button.is-active b { background: rgba(255,255,255,.17); color: white; }
-.vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto minmax(240px,1fr) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
+.vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
+.vocabulary-practice { margin: 18px 0; border: 1px solid var(--line); border-radius: 18px; padding: clamp(16px, 2vw, 26px); background: var(--white); }
+.vocabulary-practice .vocabulary-quiz { border: 0; padding: 16px 0 0; margin: 0; }
+.practice-controls, .practice-controls > div, .practice-actions, .practice-schedule { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.practice-controls label { display: flex; align-items: center; gap: 8px; }
+.practice-controls span, .practice-description { color: var(--ink-soft); }
+.practice-description { margin: 14px 0 0; font-size: 14px; }
+.practice-feedback { grid-column: 1 / -1; min-width: 0; }
+.practice-feedback p { margin: 0 0 14px; }
+.practice-schedule { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+.practice-schedule form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.practice-schedule input { width: 84px; }
+.practice-schedule select { color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 9px; }
+.practice-flashcard { display: grid; place-items: center; min-height: 150px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); padding: 20px; }
+.practice-flashcard strong { font: 700 clamp(24px, 3vw, 38px)/1.2 Georgia, serif; overflow-wrap: anywhere; }
+.practice-empty { padding: 24px 0 8px; }
+.vocabulary-due-date { margin: 0; padding: 8px 16px; color: var(--ink-soft); font-size: 13px; border-top: 1px solid var(--line); }
+.vocabulary-practice :where(p, label, span, button) { font-size: 14px; }
 .vocabulary-filter-title { min-height: 42px; padding: 0 7px; display: flex; align-items: center; gap: 7px; color: var(--ink); font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
 .vocabulary-filter-title svg { width: 15px; color: var(--orange-dark); }
 .vocabulary-filter-control { min-width: 0; display: grid; gap: 6px; }

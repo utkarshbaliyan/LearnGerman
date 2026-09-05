@@ -4,6 +4,7 @@ import {
   COURSE_PROGRESS_STORAGE_KEY,
   GRAMMAR_PROGRESS_STORAGE_KEY,
   VOCABULARY_PROGRESS_STORAGE_KEY,
+  mergeVocabularyProgress,
 } from "@/app/lib/progress-sync";
 import {
   acknowledgeCloudProgress,
@@ -80,15 +81,7 @@ function mergeGrammar(local: unknown, remote: unknown) {
 }
 
 function mergeVocabulary(local: unknown, remote: unknown) {
-  const a = object(remote);
-  const b = object(local);
-  const learnedKeys = [...new Set([...strings(a.learnedKeys), ...strings(b.learnedKeys)])];
-  const learned = new Set(learnedKeys);
-  return {
-    learnedKeys,
-    reviewKeys: [...new Set([...strings(a.reviewKeys), ...strings(b.reviewKeys)])].filter((key) => !learned.has(key)),
-    legacyMigrated: a.legacyMigrated === true || b.legacyMigrated === true,
-  };
+  return mergeVocabularyProgress(local, remote);
 }
 
 export function mergeProgress(scope: CloudProgressScope, local: unknown, remote: unknown): unknown {

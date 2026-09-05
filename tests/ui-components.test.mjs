@@ -227,7 +227,7 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
   assert.equal(ALL_VOCABULARY.length, 4011);
   assert.equal(CORE_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 857, A2: 534, B1: 2620, all: 4011 });
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 857, A2: 1051, B1: 2103, all: 4011 });
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
   assert.ok(ALL_VOCABULARY.every(isStandaloneVocabularyHeadword));
   const headwordKey = (item) => item.german.toLocaleLowerCase("de").replace(/^(?:der|die|das)\s+/, "").trim();
@@ -368,11 +368,56 @@ test("rotates vocabulary quiz questions and records answer progress", async () =
   assert.notEqual(refreshedQuiz.word.id, nextQuiz.word.id);
   assert.equal(new Set(refreshedQuiz.choices.map((choice) => choice.german)).size, refreshedQuiz.choices.length);
 
-  const pageSource = await readFile(path.join(root, "app/vocabulary/page.tsx"), "utf8");
-  assert.match(pageSource, /setLearned\(quiz\.word, true\)/);
-  assert.match(pageSource, /setReview\(quiz\.word, true\)/);
-  assert.match(pageSource, /Correct\. Added to learned\./);
-  assert.match(pageSource, /Added to review\./);
+});
+
+test("review cards repeat until explicitly learned and obey their due dates", async () => {
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const { vocabularyPracticeQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
+  const a = { id: "a", german: "lernen", english: "to learn", level: "A2", category: "Verben" };
+  const b = { id: "b", german: "gehen", english: "to go", level: "A1", category: "Verben" };
+  let state = p.recordVocabularyGuess(p.emptyVocabularyProgress(), a, false, 1000);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], state, 1000, false), [a]);
+  state = p.recordVocabularyGuess(state, a, true, 2000);
+  assert.equal(p.isVocabularyReview(state, a), true);
+  assert.equal(p.isVocabularyLearned(state, a), false);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], state, 2000, true), [a]);
+  const scheduled = p.scheduleVocabularyReview(state, a, 1440, 3000);
+  const dueAt = 3000 + 86400000;
+  assert.deepEqual(vocabularyPracticeQueue([a, b], scheduled, dueAt - 1, true), []);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], scheduled, dueAt - 1, false), [b]);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], scheduled, dueAt, true), [a]);
+  const learned = p.setVocabularyStatus(scheduled, a, "learned", dueAt + 1);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], learned, dueAt + 1000, true), []);
+  assert.equal(p.isVocabularyLearned(learned, a), true);
+  const wrongAgain = p.recordVocabularyGuess(learned, a, false, dueAt + 2000);
+  assert.equal(p.isVocabularyReview(wrongAgain, a), true);
+  for (const invalid of [-1, NaN, Infinity, 525601]) assert.throws(() => p.scheduleVocabularyReview(state, a, invalid));
+  const secondReview = p.setVocabularyStatus(state, b, "review", 1001);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], secondReview, 2000, true, "a"), [b]);
+});
+
+test("newer review schedules and learned decisions survive storage and cross-browser merges", async () => {
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const a = { german: "lernen", english: "to learn" };
+  const b = { german: "gehen", english: "to go" };
+  const older = p.setVocabularyStatus(p.emptyVocabularyProgress(), a, "learned", 1000);
+  const newer = p.scheduleVocabularyReview(older, a, 4320, 2000);
+  const otherBrowser = p.setVocabularyStatus(older, b, "learned", 3000);
+  for (const merged of [p.mergeVocabularyProgress(newer, otherBrowser), p.mergeVocabularyProgress(otherBrowser, newer)]) {
+    assert.equal(p.isVocabularyReview(merged, a), true);
+    assert.equal(p.isVocabularyLearned(merged, b), true);
+    assert.equal(p.vocabularyReviewDueAt(merged, a), 2000 + 4320 * 60000);
+    const values = new Map();
+    const storage = { getItem: (key) => values.get(key), setItem: (key, value) => values.set(key, value) };
+    p.writeVocabularyProgress(storage, merged);
+    const restored = p.readVocabularyProgress(storage);
+    assert.equal(p.vocabularyReviewDueAt(restored, a), p.vocabularyReviewDueAt(merged, a));
+    const unlearned = p.setVocabularyStatus(restored, a, "unlearned", 5000);
+    const final = p.mergeVocabularyProgress(unlearned, older);
+    assert.equal(p.isVocabularyLearned(final, a), false);
+    assert.equal(p.isVocabularyReview(final, a), false);
+  }
+  assert.deepEqual(p.readReviewCards({ "de:lernen": { status: "review", updatedAt: 1, dueAt: "tomorrow", intervalMinutes: 2 } }), {});
 });
 
 test("renders story translations through collision-aware tooltips", async () => {

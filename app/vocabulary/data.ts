@@ -2,6 +2,7 @@ import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
 import { EXTENDED_B1_LEXICON } from "@/app/vocabulary/extended-data";
+import { applyVocabularyPlacement } from "@/app/vocabulary/placement";
 import { verbHeadwordForForm } from "@/app/vocabulary/verb-forms";
 import {
   COURSE_COVERAGE_A1,
@@ -41,6 +42,7 @@ export type VocabularyWord = {
   german: string;
   category: VocabularyCategory;
   level: "A1" | "A2" | "B1";
+  wordClass?: VocabularyWordClass;
 };
 
 export const VOCABULARY_WORD_CLASSES = [
@@ -211,6 +213,7 @@ function verbHeadword(word: VocabularyWord) {
 }
 
 export function vocabularyWordClass(word: VocabularyWord): VocabularyWordClass {
+  if (word.wordClass) return word.wordClass;
   const german = word.german.toLocaleLowerCase("de").split(",")[0].trim();
   const english = word.english.toLocaleLowerCase("en");
   if (word.category === "Verben") return "verb";
@@ -455,10 +458,10 @@ export const CORE_VOCABULARY = removeDuplicateVerbForms([
   ...RAW_EXTENDED_A2_VOCABULARY,
   ...RAW_B1_VOCABULARY,
 ]).filter(isStandaloneVocabularyHeadword);
-const CLEAN_VOCABULARY = removeDuplicateVerbForms([
+const CLEAN_VOCABULARY = applyVocabularyPlacement(removeDuplicateVerbForms([
   ...CORE_VOCABULARY,
   ...EXTENDED_B1_LEXICON,
-]).filter(isStandaloneVocabularyHeadword);
+]).filter(isStandaloneVocabularyHeadword).map((word) => ({ ...word, wordClass: vocabularyWordClass(word) })));
 
 export const A1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A1");
 export const EXTENDED_A2_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A2");

@@ -9,7 +9,8 @@ import {
   isVocabularyReview,
   readVocabularyProgress,
   setVocabularyStatus,
-  vocabularyProgressKeys,
+  scheduleVocabularyReview,
+  recordVocabularyGuess,
   writeVocabularyProgress,
   type VocabularyIdentity,
   type VocabularyProgress,
@@ -58,17 +59,19 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
 
   const importLearned = useCallback((words: VocabularyIdentity[]) => {
     setProgress((current) => {
-      const learned = new Set(current.learnedKeys);
-      const review = new Set(current.reviewKeys);
+      let next = current;
       for (const word of words) {
-        vocabularyProgressKeys(word).forEach((key) => {
-          learned.add(key);
-          review.delete(key);
-        });
+        if (!isVocabularyLearned(next, word) && !isVocabularyReview(next, word)) next = setVocabularyStatus(next, word, "learned");
       }
-      if (learned.size === current.learnedKeys.length && review.size === current.reviewKeys.length) return current;
-      return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated };
+      return next;
     });
+  }, []);
+
+  const scheduleReview = useCallback((word: VocabularyIdentity, minutes: number) => {
+    setProgress((current) => scheduleVocabularyReview(current, word, minutes));
+  }, []);
+  const recordGuess = useCallback((word: VocabularyIdentity, correct: boolean) => {
+    setProgress((current) => recordVocabularyGuess(current, word, correct));
   }, []);
 
   return {
@@ -79,5 +82,7 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     setLearned,
     setReview,
     importLearned,
+    scheduleReview,
+    recordGuess,
   };
 }
