@@ -120,113 +120,14 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   assert.match(html, /Integrated checkpoint/i);
 });
 
-test("rejects incomplete AI tutor submissions before calling the model", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-tutor-validation`);
-  const { default: worker } = await import(workerUrl.href);
-  const response = await worker.fetch(
-    new Request("http://localhost/api/tutor/writing", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ level: "A1", chapter: 1, answer: "Hallo" }),
-    }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
-
-  assert.equal(response.status, 400);
-  assert.match((await response.json()).error, /valid chapter response/i);
-});
-
-test("uses Groq as the primary provider and returns structured writing feedback", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-tutor-feedback`);
-  const { default: worker } = await import(workerUrl.href);
-  const originalFetch = globalThis.fetch;
-  const originalGroqKey = process.env.GROQ_API_KEY;
-  let providerRequest;
-  let providerUrl;
-  process.env.GROQ_API_KEY = "test-key";
-  globalThis.fetch = async (input, init) => {
-    providerUrl = String(input);
-    providerRequest = JSON.parse(init.body);
-    return Response.json({ choices: [{ message: { content: JSON.stringify({
-      overallScore: 84,
-      mastery: true,
-      summary: "The task is complete and clear.",
-      correctedAnswer: "Ich wohne in Berlin.",
-      strengths: ["Clear meaning"],
-      corrections: [{ original: "Ich wohnen", corrected: "Ich wohne", explanation: "Use the ich ending -e.", category: "Verb ending" }],
-      nextStep: "Repeat the corrected sentence.",
-      retryPrompt: "Write the answer once more without looking.",
-    }) } }] });
-  };
-  try {
-    const response = await worker.fetch(
-      new Request("http://localhost/api/tutor/writing", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          level: "A1",
-          chapter: 1,
-          prompt: "Introduce yourself in German.",
-          grammarFocus: "Personal pronouns and sein",
-          vocabulary: ["wohnen — to live"],
-          answer: "Hallo, ich wohnen in Berlin.",
-        }),
-      }),
-      { GROQ_API_KEY: "test-key", ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-      { waitUntil() {}, passThroughOnException() {} },
-    );
-    const payload = await response.json();
-    assert.equal(response.status, 200);
-    assert.equal(payload.overallScore, 84);
-    assert.equal(payload.mastery, true);
-    assert.equal(payload.corrections[0].category, "Verb ending");
-    assert.equal(providerUrl, "https://api.groq.com/openai/v1/chat/completions");
-    assert.equal(providerRequest.model, "openai/gpt-oss-120b");
-    assert.equal(providerRequest.max_completion_tokens, 3_000);
-    assert.equal(providerRequest.reasoning_effort, "low");
-    assert.equal(providerRequest.response_format.type, "json_object");
-  } finally {
-    globalThis.fetch = originalFetch;
-    if (originalGroqKey === undefined) delete process.env.GROQ_API_KEY;
-    else process.env.GROQ_API_KEY = originalGroqKey;
-  }
-});
-
-test("turns provider rate limits into a clear retry message", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-provider-limit`);
-  const { default: worker } = await import(workerUrl.href);
-  const originalFetch = globalThis.fetch;
-  const originalGroqKey = process.env.GROQ_API_KEY;
-  process.env.GROQ_API_KEY = "test-key";
-  globalThis.fetch = async () => Response.json({ error: { code: "rate_limit_exceeded" } }, { status: 429 });
-  try {
-    const response = await worker.fetch(
-      new Request("http://localhost/api/tutor/writing", {
-        method: "POST",
-        headers: { "content-type": "application/json", "x-forwarded-for": "provider-limit-test" },
-        body: JSON.stringify({
-          level: "A1",
-          chapter: 1,
-          prompt: "Introduce yourself in German.",
-          grammarFocus: "Personal pronouns and sein",
-          vocabulary: ["wohnen — to live"],
-          answer: "Hallo, ich heiße Mia und wohne in Berlin.",
-        }),
-      }),
-      { GROQ_API_KEY: "test-key", ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-      { waitUntil() {}, passThroughOnException() {} },
-    );
-    assert.equal(response.status, 429);
-    assert.match((await response.json()).error, /usage limit/i);
-  } finally {
-    globalThis.fetch = originalFetch;
-    if (originalGroqKey === undefined) delete process.env.GROQ_API_KEY;
-    else process.env.GROQ_API_KEY = originalGroqKey;
-  }
+test("writing tutor requires account authentication before invoking a provider", async () => {
+  const { default: worker } = await import(new URL("../dist/server/index.js", import.meta.url).href);
+  const response = await worker.fetch(new Request("http://localhost/api/tutor/writing", {
+    method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ taskId: "a2-1-1", action: "check", answer: "Ich wohne in Berlin." }),
+  }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+  assert.equal(response.status, 401);
+  assert.match((await response.json()).error, /Sign in/);
 });
 
 test("preserves the complete story library at its dedicated route", async () => {

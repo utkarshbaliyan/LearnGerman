@@ -24,6 +24,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
+import { WritingRepairWorkspace } from "@/app/components/writing-repair-workspace";
+import { writingMission } from "@/app/lib/writing-mission";
 import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";
 import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
@@ -38,14 +40,13 @@ import {
 } from "@/app/hooks/use-course-progress";
 import { useStoryProgress } from "@/app/hooks/use-story-progress";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
-import { requestSpeakingFeedback, requestWritingFeedback } from "@/app/lib/ai-tutor-client";
+import { requestSpeakingFeedback } from "@/app/lib/ai-tutor-client";
 import type { TutorContext, TutorFeedback } from "@/app/lib/ai-tutor-types";
 import { syncGrammarLessonToLibrary } from "@/app/lib/progress-sync";
 import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Textarea } from "@/components/ui/textarea";
 
 const SKILLS: Array<{ id: CourseSkill; label: string; icon: typeof BookOpen }> = [
   { id: "listening", label: "Listening", icon: Headphones },
@@ -108,14 +109,9 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const [recordingError, setRecordingError] = useState("");
   const [speakingFeedback, setSpeakingFeedback] = useState<TutorFeedback | null>(null);
   const [isCheckingSpeaking, setIsCheckingSpeaking] = useState(false);
-  const [writingChecks, setWritingChecks] = useState<Set<string>>(new Set());
-  const [writingFeedback, setWritingFeedback] = useState<TutorFeedback | null>(null);
-  const [writingError, setWritingError] = useState("");
-  const [isCheckingWriting, setIsCheckingWriting] = useState(false);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const recordingStreamRef = useRef<MediaStream | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const writingMinimum = content.writingMinimum;
   const speakingLength = content.speakingLength;
   const tutorContext: TutorContext = {
     level,
@@ -136,7 +132,6 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const readyForMastery = COURSE_SKILLS.every((skill) => (chapter.skillScores[skill] ?? 0) >= 70)
     && (chapter.checkpointScore ?? 0) >= 80
     && Object.keys(chapter.grammarSets).length === grammarGroups.length;
-  const writingWords = chapter.writingDraft.trim() ? chapter.writingDraft.trim().split(/\s+/).length : 0;
   const previousHref = number > 1 ? courseChapterHref(level, number - 1) : level === "A1" ? "/" : courseChapterHref(level === "A2" ? "A1" : "A2", 24);
   const nextHref = number < 24 ? courseChapterHref(level, number + 1) : level === "B1" ? "/" : courseChapterHref(level === "A1" ? "A2" : "B1", 1);
 
@@ -244,21 +239,6 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     }
   }
 
-  async function checkWriting() {
-    if (writingWords < writingMinimum || writingChecks.size < 3 || isCheckingWriting) return;
-    setIsCheckingWriting(true);
-    setWritingError("");
-    try {
-      const feedback = await requestWritingFeedback(tutorContext, chapter.writingDraft);
-      setWritingFeedback(feedback);
-      saveTutorScore("writing", feedback);
-    } catch (error) {
-      setWritingError(error instanceof Error ? error.message : "Writing feedback could not be loaded.");
-    } finally {
-      setIsCheckingWriting(false);
-    }
-  }
-
   function completeChapter() {
     if (!readyForMastery) return;
     updateChapter(content.id, (current) => ({ ...current, completed: true }));
@@ -330,13 +310,8 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-writing" id="writing">
-        <div className="chapter-section-copy"><span>04 · Writing</span><h2>{content.writingTitle}</h2><p>{content.writingPrompt} Minimum: {writingMinimum} words.</p></div>
-        <div className="writing-workspace"><label><span>Your German text · {writingWords} words</span><Textarea lang="de" value={chapter.writingDraft} onChange={(event) => updateChapter(content.id, (current) => ({ ...current, writingDraft: event.target.value }))} placeholder={`Kapitel ${number}: ${content.story.theme} …`} /></label><div className="writing-rubric"><span>Self-check before submitting</span>{[
-          ["content", "I answered every part of the writing mission."],
-          ["grammar", `I deliberately used the focus: ${content.lesson.title}.`],
-          ["clarity", "I checked sentence order, capitals, endings, and punctuation."],
-        ].map(([id, text]) => <button key={id} type="button" aria-pressed={writingChecks.has(id)} onClick={() => setWritingChecks((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; })}><Check />{text}</button>)}</div><div className="writing-submit"><p>Use expressions from the story, but make the response your own. After submitting, you will see corrections, mistake explanations, and the next improvement to practise.</p><Button disabled={writingWords < writingMinimum || writingChecks.size < 3 || isCheckingWriting} onClick={checkWriting}><Sparkles /> {isCheckingWriting ? "Checking…" : writingFeedback ? "Check again" : "Submit"}</Button></div>{writingWords < writingMinimum && <p className="ai-tutor-requirement">Write {writingMinimum - writingWords} more {writingMinimum - writingWords === 1 ? "word" : "words"} to submit.</p>}{writingWords >= writingMinimum && writingChecks.size < 3 && <p className="ai-tutor-requirement">Complete all three self-checks to submit.</p>}{writingError && <p className="chapter-error" role="alert">{writingError}</p>}<p className="ai-tutor-privacy">Your text is sent for feedback only when you submit. The course keeps your draft and best skill score on this device.</p></div>
-        {writingFeedback && <AiTutorFeedback feedback={writingFeedback} mode="writing" onRetry={() => setWritingFeedback(null)} />}
+        <div className="chapter-section-copy"><span>04 · Writing</span><h2>Write, repair, try again.</h2><p>Communicate a message, use a focused hint, then rewrite it yourself.</p></div>
+        <WritingRepairWorkspace key={content.id} taskId={content.id} prompt={writingMission(content)} suggestedWords={content.writingMinimum} />
       </section>
 
       <section className="chapter-learning-section chapter-speaking" id="speaking">

@@ -5,6 +5,10 @@ export type TutorCorrection = {
   corrected: string;
   explanation: string;
   category: string;
+  hint?: string;
+  kind?: "error" | "style";
+  confidence?: number;
+  severity?: "minor" | "major";
 };
 
 export type TutorFeedback = {

@@ -59,3 +59,45 @@ The timeout defaults can be overridden for a controlled canary with `SITES_INSTA
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)
 - [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+
+### Writing repair (first tutor milestone)
+
+Chapter writing now uses an account-owned repair loop: a purposeful message task,
+explicit draft saving, up to two validated error/style spans, hints, revisions,
+and an optional correction reveal. There is no word-count pass gate and no full
+corrected answer in the initial response. Writing practice does not update course
+mastery scores. Existing historical course scores are preserved, not revalidated.
+
+`/api/tutor/writing` uses Supabase JWT identity and stores records in the existing
+Sites D1 database (`tutor_sessions`), not browser storage. Apply the generated
+`0002_legal_nehzno.sql` migration with the normal Sites deployment. GET loads a
+chapter; POST actions are `draft`, `check`, `reveal`, and `delete`. Mutations use a
+version for optimistic concurrency. Checks also require an idempotency request ID.
+Account changes invalidate UI requests and owner headers prevent cross-account saves.
+
+A daily atomic quota in `tutor_quotas` permits 20 writing checks per account per UTC
+day across tasks and Worker instances. Provider failures count toward the budget.
+Provider requests have a 30-second deadline and a 3,000-token output limit. A stale
+pending attempt can be recovered after 60 seconds. Invalid, ambiguous, overlapping,
+or low-confidence spans are withheld and cannot support task-success evidence.
+Model confidence is not calibrated and feedback still needs teacher evaluation.
+
+Records retain drafts and at most 40 attempts per chapter until the learner deletes
+that chapter's history. Deletion clears content using a versioned tombstone so stale
+tabs cannot restore it; content-free quota counts remain. The app does not control
+provider retention. No new provider keys or settings are required.
+
+Assistance is inferred from saved history: first attempt, hint-assisted revision,
+or correction-assisted revision. This is recorded assistance, not proof that the
+learner used no external help. Same-task success never establishes mastery. Shared
+error-pattern memory, unfamiliar delayed tasks, speaking missions, transcript
+confirmation, and durable speaking quotas remain subsequent milestones. The
+speaking endpoint still has its older IP-based limiter; this release is not a
+monetization-ready tutor backend.
+
+Validation: `npx tsc --noEmit`, `npm run lint`, `npx vinext build`, and
+`node --test tests/*.test.mjs`. The existing `npm test` wrapper requires GNU
+`timeout`; on macOS without it, use the explicit build and test commands above.
+Writing API tests use real SQLite queries and mocked authentication/provider
+responses to verify ownership, quotas, concurrency, idempotency, deletion,
+assistance tracking, and feedback redaction. No paid provider calls are used in tests.

@@ -1958,3 +1958,14 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
   .chapter-finish-actions { width: 100%; flex-direction: column; }
   .chapter-finish-actions [data-slot="button"] { width: 100%; }
 }
+
+.writing-repair { display: grid; gap: 1rem; }
+.writing-repair-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.writing-repair .writing-guidance { font-size: .875rem; color: var(--muted-foreground); line-height: 1.6; }
+.writing-repair-feedback { border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem; display: grid; gap: 1rem; }
+.writing-repair-feedback h3 { font-size: 1.25rem; font-weight: 650; }
+.writing-repair-feedback article, .writing-attempt { border-top: 1px solid var(--border); padding-block: 1rem; }
+.writing-source { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; }
+.writing-source mark { background: #fee2e2; color: #7f1d1d; border-bottom: 2px solid #b91c1c; padding: .1em .15em; }
+.writing-source mark.writing-style-mark { background: #dbeafe; color: #1e3a8a; border-color: #2563eb; }
+.writing-repair summary { cursor: pointer; font-weight: 600; }

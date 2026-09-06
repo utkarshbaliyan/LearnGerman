@@ -15,6 +15,13 @@
       "when": 1788345851886,
       "tag": "0001_low_grey_gargoyle",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788709367296,
+      "tag": "0002_legal_nehzno",
+      "breakpoints": true
     }
   ]
 }
