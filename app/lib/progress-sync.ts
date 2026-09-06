@@ -1,4 +1,5 @@
 import { germanVerbLemma } from "@/app/vocabulary/verb-forms";
+import { flashcardOptions, serializeFlashcard, validFlashcardMemory, type FlashcardMemory, type FlashcardRating } from "./flashcard-scheduler";
 
 export const COURSE_PROGRESS_STORAGE_KEY = "leselaut:course-progress:v1";
 export const GRAMMAR_PROGRESS_STORAGE_KEY = "leselaut:grammar-progress:v1";
@@ -29,6 +30,7 @@ export type VocabularyReviewCard = {
   updatedAt: number;
   dueAt: number;
   intervalMinutes: number;
+  memory?: FlashcardMemory;
 };
 
 export function readReviewCards(value: unknown): Record<string, VocabularyReviewCard> {
@@ -37,7 +39,8 @@ export function readReviewCards(value: unknown): Record<string, VocabularyReview
     const card = entry[1] as VocabularyReviewCard | null;
     return entry[0].startsWith("de:") && !!card && ["learned", "review", "unlearned"].includes(card.status)
       && [card.updatedAt, card.dueAt, card.intervalMinutes].every((n) => Number.isFinite(n) && n >= 0)
-      && card.intervalMinutes <= 525600;
+      && card.intervalMinutes <= 52560000
+      && (card.memory === undefined || validFlashcardMemory(card.memory));
   }));
 }
 
@@ -179,9 +182,21 @@ export function vocabularyReviewDueAt(progress: VocabularyProgress, word: Vocabu
   return isVocabularyReview(progress, word) ? progress.cards?.[vocabularyCardKey(word)]?.dueAt ?? 0 : Infinity;
 }
 
+export function rateVocabularyFlashcard(current: VocabularyProgress, word: VocabularyIdentity, rating: FlashcardRating, now = Date.now()): VocabularyProgress {
+  if (![1, 2, 3, 4].includes(rating)) throw new Error("Invalid flashcard rating.");
+  const key = vocabularyCardKey(word);
+  const card = flashcardOptions(current.cards?.[key], now)[rating].card;
+  const next = setVocabularyStatus(current, word, "review", now);
+  return { ...next, cards: { ...next.cards, [key]: { ...next.cards![key], dueAt: card.due.getTime(),
+    intervalMinutes: (card.due.getTime() - now) / 60000, memory: serializeFlashcard(card) } } };
+}
+
 export function recordVocabularyGuess(current: VocabularyProgress, word: VocabularyIdentity, correct: boolean, now = Date.now()) {
   if (correct && isVocabularyReview(current, word)) return current;
-  return setVocabularyStatus(current, word, correct ? "learned" : "review", now);
+  const next = setVocabularyStatus(current, word, correct ? "learned" : "review", now);
+  const key = vocabularyCardKey(word);
+  if (!correct && current.cards?.[key]?.memory) next.cards![key].memory = current.cards[key].memory;
+  return next;
 }
 
 export function isVocabularyLearned(progress: VocabularyProgress, word: VocabularyIdentity) {

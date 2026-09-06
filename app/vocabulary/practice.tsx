@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { isVocabularyReview, vocabularyReviewDueAt, type VocabularyProgress } from "@/app/lib/progress-sync";
+import { isVocabularyReview, vocabularyCardKey, vocabularyReviewDueAt, type VocabularyProgress } from "@/app/lib/progress-sync";
+import { FLASHCARD_RATINGS, flashcardOptions, flashcardInterval, type FlashcardRating } from "@/app/lib/flashcard-scheduler";
 import type { VocabularyWord } from "@/app/vocabulary/data";
 import { buildVocabularyQuiz, startVocabularyQuiz, advanceVocabularyQuiz, type VocabularyQuizCursor } from "@/app/vocabulary/quiz";
 import { vocabularyPracticeQueue } from "@/app/vocabulary/review-queue";
@@ -15,11 +15,11 @@ type Props = {
   hydrated: boolean;
   setLearned: (word: VocabularyWord, learned: boolean) => void;
   recordGuess: (word: VocabularyWord, correct: boolean) => void;
-  scheduleReview: (word: VocabularyWord, minutes: number) => void;
+  rateFlashcard: (word: VocabularyWord, rating: FlashcardRating) => void;
   pronounce: (word: VocabularyWord) => void;
 };
 
-export function VocabularyPractice({ words, progress, hydrated, setLearned, recordGuess, scheduleReview, pronounce }: Props) {
+export function VocabularyPractice({ words, progress, hydrated, setLearned, recordGuess, rateFlashcard, pronounce }: Props) {
   const [mode, setMode] = useState<"guess" | "flashcard">("guess");
   const [reviewOnly, setReviewOnly] = useState(false);
   const [now, setNow] = useState(0);
@@ -29,9 +29,6 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
   const [revealed, setRevealed] = useState(false);
   const [lastId, setLastId] = useState<string>();
   const [streak, setStreak] = useState(0);
-  const [custom, setCustom] = useState("2");
-  const [unit, setUnit] = useState("days");
-  const [scheduled, setScheduled] = useState<string | null>(null);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -56,14 +53,13 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
   const nextDue = Math.min(...reviews.map((word) => vocabularyReviewDueAt(progress, word)).filter((time) => time > now));
   const finished = Boolean(answer) || revealed;
   const needsReview = question && isVocabularyReview(progress, question.word);
+  const options = question && finished ? flashcardOptions(progress.cards?.[vocabularyCardKey(question.word)], now) : null;
 
   function next() {
     setLastId(question?.word.id);
     setQuestion(null);
     setAnswer(null);
     setRevealed(false);
-    setScheduled(null);
-    setNow(Date.now());
     setCursor((current) => current ? advanceVocabularyQuiz(localStorage, current) : current);
   }
 
@@ -78,11 +74,10 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
     }
   }
 
-  function postpone(minutes: number, label: string) {
-    if (!question || !Number.isFinite(minutes) || minutes < 1 || minutes > 525600) return;
-    scheduleReview(question.word, minutes);
+  function rate(rating: FlashcardRating) {
+    if (!question || !finished) return;
+    rateFlashcard(question.word, rating);
     next();
-    setScheduled(`Repeats in ${label}.`);
   }
 
   return <section className="vocabulary-practice" aria-label="Vocabulary practice">
@@ -94,7 +89,7 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
       <label><input type="checkbox" checked={reviewOnly} onChange={(event) => { setReviewOnly(event.target.checked); next(); }} /> Review only</label>
       <span>{due.length} due · {reviews.length} in review</span>
     </div>
-    <p className="practice-description">Due review words come first. Choose when to repeat them, or mark them learned to finish.</p>
+    <p className="practice-description">Due cards come first. Reveal the answer, then rate your recall. Again means forgotten; Hard means you remembered with difficulty. Review intervals adjust automatically.</p>
     {!hydrated || !cursor ? <p role="status">Loading your progress…</p> : !question ? <div className="practice-empty" role="status">
       <strong>{reviews.length ? "All scheduled reviews are caught up." : reviewOnly ? "Your review deck is empty." : "You’ve learned every word in this selection."}</strong>
       {Number.isFinite(nextDue) && <p>Next review: {new Date(nextDue).toLocaleString()}.</p>}
@@ -117,21 +112,15 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
           : `The answer is ${question.word.german}. Added to review.`}</p>
         <div className="practice-actions">
           <Button variant="outline" onClick={() => pronounce(question.word)}><Volume2 /> Listen</Button>
-          <Button onClick={() => { setLearned(question.word, true); next(); }}>Mark learned</Button>
-          <Button variant="outline" onClick={next}>Next word</Button>
+          {mode === "guess" && <><Button onClick={() => { setLearned(question.word, true); next(); }}>Mark learned</Button>
+          <Button variant="outline" onClick={next}>Next word</Button></>}
         </div>
-        <div className="practice-schedule">
-          <span>Repeat in</span>
-          {[[1, "1 min"], [10, "10 min"], [1440, "1 day"], [4320, "3 days"], [10080, "7 days"]].map(([minutes, label]) =>
-            <Button variant="outline" key={minutes} onClick={() => postpone(Number(minutes), String(label))}>{label}</Button>)}
-          <form onSubmit={(event) => { event.preventDefault(); postpone(Number(custom) * (unit === "days" ? 1440 : unit === "hours" ? 60 : 1), `${custom} ${unit}`); }}>
-            <Input aria-label="Custom review interval" type="number" min="1" max={unit === "days" ? 365 : unit === "hours" ? 8760 : 525600} step="1" value={custom} onChange={(event) => setCustom(event.target.value)} required />
-            <select aria-label="Review interval unit" value={unit} onChange={(event) => setUnit(event.target.value)}><option value="minutes">minutes</option><option value="hours">hours</option><option value="days">days</option></select>
-            <Button variant="outline" type="submit">Schedule</Button>
-          </form>
-        </div>
+        {options && (mode === "flashcard" || needsReview) && <div className="practice-ratings" role="group" aria-label="Rate your recall">
+          {FLASHCARD_RATINGS.map(({ rating, label, hint }) => <Button variant="outline" key={rating} title={hint} onClick={() => rate(rating)}>
+            <span>{label}</span><small>{flashcardInterval(options[rating].card.due.getTime(), now)}</small>
+          </Button>)}
+        </div>}
       </div>}
     </div>}
-    {scheduled && <p role="status">{scheduled}</p>}
   </section>;
 }

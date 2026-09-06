@@ -56,6 +56,14 @@ test("vocabulary API persists schedules, merges concurrent browsers, and isolate
     assert.equal(p.isVocabularyReview(saved, a), true, "stale client cannot replace newer review state");
     assert.equal((await put("alice", p.setVocabularyStatus(saved, a, "learned", 400))).status, 200);
     assert.equal(p.isVocabularyLearned((await get("alice")).progress.vocabulary, a), true);
+    const rated = p.rateVocabularyFlashcard(saved, a, 3, 500);
+    assert.equal((await put("alice", rated)).status, 200);
+    const freshBrowser = (await get("alice")).progress.vocabulary;
+    assert.deepEqual(freshBrowser.cards[p.vocabularyCardKey(a)], rated.cards[p.vocabularyCardKey(a)]);
+    const secondRating = p.rateVocabularyFlashcard(freshBrowser, a, 3, p.vocabularyReviewDueAt(freshBrowser, a));
+    assert.equal((await put("alice", secondRating)).status, 200);
+    assert.equal((await get("alice")).progress.vocabulary.cards[p.vocabularyCardKey(a)].memory.reps, 2);
+    assert.deepEqual((await get("bob")).progress, {});
   } finally {
     await vite.close();
     sqlite.close();

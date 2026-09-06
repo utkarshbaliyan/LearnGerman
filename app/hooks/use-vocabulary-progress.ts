@@ -9,7 +9,7 @@ import {
   isVocabularyReview,
   readVocabularyProgress,
   setVocabularyStatus,
-  scheduleVocabularyReview,
+  rateVocabularyFlashcard,
   recordVocabularyGuess,
   writeVocabularyProgress,
   type VocabularyIdentity,
@@ -17,6 +17,7 @@ import {
 } from "@/app/lib/progress-sync";
 import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
 import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
+import type { FlashcardRating } from "@/app/lib/flashcard-scheduler";
 
 const EMPTY_CATALOG: VocabularyIdentity[] = [];
 
@@ -67,8 +68,8 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     });
   }, []);
 
-  const scheduleReview = useCallback((word: VocabularyIdentity, minutes: number) => {
-    setProgress((current) => scheduleVocabularyReview(current, word, minutes));
+  const rateFlashcard = useCallback((word: VocabularyIdentity, rating: FlashcardRating) => {
+    setProgress((current) => rateVocabularyFlashcard(current, word, rating));
   }, []);
   const recordGuess = useCallback((word: VocabularyIdentity, correct: boolean) => {
     setProgress((current) => recordVocabularyGuess(current, word, correct));
@@ -82,7 +83,7 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     setLearned,
     setReview,
     importLearned,
-    scheduleReview,
+    rateFlashcard,
     recordGuess,
   };
 }

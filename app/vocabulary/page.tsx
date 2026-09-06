@@ -145,7 +145,7 @@ export default function VocabularyPage() {
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
   const [speakingWordId, setSpeakingWordId] = useState<string | null>(null);
   const [pronunciationUnavailable, setPronunciationUnavailable] = useState(false);
-  const { progress: vocabularyProgress, hydrated, isLearned, isReview, setLearned, setReview, scheduleReview, recordGuess } = useVocabularyProgress(ALL_VOCABULARY);
+  const { progress: vocabularyProgress, hydrated, isLearned, isReview, setLearned, setReview, rateFlashcard, recordGuess } = useVocabularyProgress(ALL_VOCABULARY);
   const deferredQuery = useDeferredValue(query);
 
   const levelWords = useMemo(() => ALL_VOCABULARY.filter((word) => level === "all" || word.level === level), [level]);
@@ -401,7 +401,7 @@ export default function VocabularyPage() {
               {(activeStudySet || category !== "all") && <Button variant="outline" onClick={clearFilters}>Use all {levelLabel} words</Button>}
             </div>
             <VocabularyPractice key={`${level}:${category}:${studySetId}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
-              setLearned={setLearned} recordGuess={recordGuess} scheduleReview={scheduleReview} pronounce={pronounceWord} />
+              setLearned={setLearned} recordGuess={recordGuess} rateFlashcard={rateFlashcard} pronounce={pronounceWord} />
             {pronunciationUnavailable && <p role="alert">Pronunciation is not available in this browser.</p>}
           </TabsContent>
         </Tabs>

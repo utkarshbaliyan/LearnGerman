@@ -38,6 +38,40 @@ async function readCssTree(directory) {
   return contents.join("\n");
 }
 
+test("FSRS ratings preserve memory across account sync and schedule due-only repeats", async () => {
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const s = await vite.ssrLoadModule("/app/lib/flashcard-scheduler.ts");
+  const { vocabularyPracticeQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
+  const word = { id: "learn", german: "lernen", english: "to learn" };
+  const now = Date.UTC(2026, 8, 6);
+  const initial = p.setVocabularyStatus(p.emptyVocabularyProgress(), word, "review", now);
+  const choices = s.flashcardOptions(undefined, now);
+  assert.equal(choices[1].card.due.getTime() - now, 60000);
+  assert.equal(choices[3].card.due.getTime() - now, 600000);
+  assert.ok(choices[4].card.due > choices[3].card.due);
+  let progress = p.rateVocabularyFlashcard(initial, word, 3, now);
+  const key = p.vocabularyCardKey(word);
+  assert.equal(progress.cards[key].memory.reps, 1);
+  assert.equal(p.isVocabularyLearned(progress, word), false);
+  assert.deepEqual(vocabularyPracticeQueue([word], progress, now, true), []);
+  const due = progress.cards[key].dueAt;
+  assert.deepEqual(vocabularyPracticeQueue([word], progress, due, true), [word]);
+  progress = p.mergeVocabularyProgress({}, JSON.parse(JSON.stringify(progress)));
+  progress = p.rateVocabularyFlashcard(progress, word, 3, due);
+  assert.equal(progress.cards[key].memory.reps, 2);
+  assert.equal(progress.cards[key].memory.state, 2);
+  assert.ok(progress.cards[key].intervalMinutes >= 1440);
+  progress = p.rateVocabularyFlashcard(progress, word, 1, progress.cards[key].dueAt);
+  assert.equal(progress.cards[key].memory.lapses, 1);
+  assert.equal(progress.cards[key].memory.state, 3);
+  assert.equal(progress.cards[key].intervalMinutes, 10);
+  assert.deepEqual(p.readReviewCards({ [key]: { ...progress.cards[key], memory: { state: 2 } } }), {});
+  assert.throws(() => p.rateVocabularyFlashcard(progress, word, 0, now));
+  const source = await readFile(path.join(root, "app/vocabulary/practice.tsx"), "utf8");
+  assert.doesNotMatch(source, /Custom review interval|Repeat in|>Schedule</);
+  assert.match(source, /Rate your recall/);
+});
+
 function contrastRatio(foreground, background) {
   const channels = (hex) => hex.match(/[a-f\d]{2}/gi).map((part) => {
     const value = Number.parseInt(part, 16) / 255;

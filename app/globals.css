@@ -480,10 +480,10 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .practice-description { margin: 14px 0 0; font-size: 14px; }
 .practice-feedback { grid-column: 1 / -1; min-width: 0; }
 .practice-feedback p { margin: 0 0 14px; }
-.practice-schedule { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
-.practice-schedule form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.practice-schedule input { width: 84px; }
-.practice-schedule select { color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 9px; }
+.practice-ratings { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+.practice-ratings button { height: auto; min-height: 64px; flex-direction: column; gap: 4px; padding: 10px 4px; }
+.practice-ratings small { font-size: 0.875rem; font-weight: normal; }
+@media (max-width: 400px) { .practice-ratings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .practice-flashcard { display: grid; place-items: center; min-height: 150px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); padding: 20px; }
 .practice-flashcard strong { font: 700 clamp(24px, 3vw, 38px)/1.2 Georgia, serif; overflow-wrap: anywhere; }
 .practice-empty { padding: 24px 0 8px; }
