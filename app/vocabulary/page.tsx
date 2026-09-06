@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
+  ArrowLeft, ArrowRight, Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
   ChevronDown, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
   Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, Volume2, X,
   type LucideIcon,
@@ -32,6 +32,7 @@ import { buildVocabularyStudySets } from "@/app/vocabulary/study-sets";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type ProgressFilter = "all" | "unlearned" | "completed" | "review";
@@ -132,6 +133,8 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
 }
 
 export default function VocabularyPage() {
+  const [view, setView] = useState("sets");
+  const [setLimit, setSetLimit] = useState(12);
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
   const [studySetId, setStudySetId] = useState<string | "all">("all");
@@ -190,11 +193,16 @@ export default function VocabularyPage() {
     setStudySetId("all");
     setVisibleLimit(VISIBLE_BATCH);
     setCategory("all");
+    setSetLimit(12);
   }
 
   function chooseStudySet(next: string | "all") {
     setStudySetId(next);
     setVisibleLimit(VISIBLE_BATCH);
+    setQuery("");
+    setProgressFilter("all");
+    setWordClassFilter("all");
+    setView("library");
   }
 
   function chooseProgressFilter(next: ProgressFilter) {
@@ -269,28 +277,65 @@ export default function VocabularyPage() {
     <main className="site-shell vocabulary-page" id="top">
       <SiteHeader active="vocabulary" />
 
-      <section className="vocabulary-workspace">
-        <div className="vocabulary-overview">
-          <aside className="vocabulary-progress-card">
-            <span>Synced progress · {levelLabel}</span>
-            <div><strong>{selectedCompleted}</strong><small>of {levelWords.length} learned</small></div>
-            <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
-            <p>{selectedReview ? `${selectedReview} ${selectedReview === 1 ? "word is" : "words are"} in your review deck.` : "Your vocabulary and course progress stay connected."}</p>
-          </aside>
-          <div className="vocabulary-levels" aria-label="Choose a vocabulary level">
-            <div><span>Study range</span><strong>{levelLabel}</strong></div>
-            <div>
-              <button type="button" className={level === "all" ? "is-active" : ""} aria-pressed={level === "all"} onClick={() => chooseLevel("all")}><span>A1–B1</span><small>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words</small></button>
-              <button type="button" className={level === "A1" ? "is-active" : ""} aria-pressed={level === "A1"} onClick={() => chooseLevel("A1")}><span>A1</span><small>{VOCABULARY_LEVEL_COUNTS.A1.toLocaleString("en")} words</small></button>
-              <button type="button" className={level === "A2" ? "is-active" : ""} aria-pressed={level === "A2"} onClick={() => chooseLevel("A2")}><span>A2</span><small>{VOCABULARY_LEVEL_COUNTS.A2.toLocaleString("en")} words</small></button>
-              <button type="button" className={level === "B1" ? "is-active" : ""} aria-pressed={level === "B1"} onClick={() => chooseLevel("B1")}><span>B1</span><small>{VOCABULARY_LEVEL_COUNTS.B1.toLocaleString("en")} words</small></button>
-            </div>
-          </div>
+      <section className="vocabulary-workspace vocabulary-organized">
+        <header className="vocab-page-heading">
+          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to B1</p></div>
+          <label className="vocab-level-picker"><span>Study level</span>
+            <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>
+              <SelectTrigger aria-label="Choose a vocabulary level"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All levels · {VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")}</SelectItem>
+                {(["A1", "A2", "B1"] as const).map((name) => <SelectItem key={name} value={name}>{name} · {VOCABULARY_LEVEL_COUNTS[name].toLocaleString("en")} words</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </label>
+        </header>
+        <div className="vocab-progress-strip" aria-label="Vocabulary progress">
+          <span><strong>{selectedCompleted}</strong> / {levelWords.length.toLocaleString("en")} learned</span>
+          <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
+          <span><strong>{selectedReview}</strong> in review</span>
         </div>
 
-        <VocabularyPractice key={`${level}:${category}:${studySetId}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
-          setLearned={setLearned} recordGuess={recordGuess} scheduleReview={scheduleReview} pronounce={pronounceWord} />
+        <Tabs value={view} onValueChange={setView} className="vocab-sections">
+          <TabsList variant="line" aria-label="Vocabulary sections">
+            <TabsTrigger value="sets">Learning sets</TabsTrigger>
+            <TabsTrigger value="library">Word library</TabsTrigger>
+            <TabsTrigger value="practice">Practice & review</TabsTrigger>
+          </TabsList>
 
+          <TabsContent value="sets">
+            <div className="vocab-section-heading">
+              <div><h2>Choose your next set</h2><p>Every set contains 30–60 words. {studySets.length} sets in {levelLabel}.</p></div>
+              <label className="vocab-topic-picker"><span>Topic</span>
+                <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setStudySetId("all"); setSetLimit(12); }}>
+                  <SelectTrigger aria-label="Filter learning sets by topic"><SelectValue /></SelectTrigger>
+                  <SelectContent><SelectItem value="all">All topics</SelectItem>{VOCABULARY_CATEGORIES.map((name) => <SelectItem key={name} value={name}>{name}</SelectItem>)}</SelectContent>
+                </Select>
+              </label>
+            </div>
+            <div className="vocab-set-grid" aria-label="Vocabulary study sets">
+              {studySets.slice(0, setLimit).map((set) => {
+                const Icon = CATEGORY_META[set.primaryCategory].icon;
+                const learned = studySetProgress.get(set.id) ?? 0;
+                const complete = learned === set.words.length;
+                return <button key={set.id} type="button" className={`vocab-set-card${complete ? " is-complete" : ""}`} onClick={() => chooseStudySet(set.id)}>
+                  <span className="vocab-set-top"><span className="vocab-set-icon"><Icon /></span><span>{complete ? "Completed" : learned ? "In progress" : `${set.words.length} words`}</span></span>
+                  <strong>{set.title}</strong>
+                  <Progress value={learned / set.words.length * 100} aria-label={`${learned} of ${set.words.length} words learned`} />
+                  <span className="vocab-set-bottom"><span>{learned} / {set.words.length} learned</span>{complete ? <Check /> : <ArrowRight />}</span>
+                </button>;
+              })}
+            </div>
+            {setLimit < studySets.length && <Button className="vocab-more-sets" variant="outline" onClick={() => setSetLimit((current) => current + 12)}>Show more sets</Button>}
+            {!studySets.length && <p className="practice-empty">No sets in this topic at {levelLabel}. Choose another topic.</p>}
+          </TabsContent>
+
+          <TabsContent value="library">
+            {activeStudySet && <div className="vocab-current-set">
+              <Button variant="ghost" onClick={() => { setView("sets"); setStudySetId("all"); }}><ArrowLeft /> Learning sets</Button>
+              <span>{activeStudySet.title} · {activeStudySetLearned}/{activeStudySet.words.length} learned</span>
+              <Button onClick={() => setView("practice")}>Practice this set <ArrowRight /></Button>
+            </div>}
         <div className="vocabulary-toolbar">
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
@@ -301,8 +346,9 @@ export default function VocabularyPage() {
           </div>
         </div>
 
+        <details className="vocab-filter-drawer">
+          <summary><SlidersHorizontal /> Filters{hasActiveFilters ? " · active" : ""}<ChevronDown /></summary>
         <div className="vocabulary-advanced-filters" aria-label="Advanced vocabulary filters">
-          <div className="vocabulary-filter-title"><SlidersHorizontal /><span>Advanced filters</span></div>
           <label className="vocabulary-filter-control"><span>Topic</span>
             <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setStudySetId("all"); setVisibleLimit(VISIBLE_BATCH); }}>
               <SelectTrigger className="vocabulary-select" aria-label="Filter by vocabulary topic"><SelectValue /></SelectTrigger>
@@ -328,20 +374,8 @@ export default function VocabularyPage() {
           </label>
           <button type="button" className="vocabulary-filter-reset" onClick={clearFilters} disabled={!hasActiveFilters}><RotateCcw /> Clear filters</button>
         </div>
+        </details>
 
-        <div className="study-set-heading">
-          <div><span>Study sets</span><p>Choose one focused set. Every set contains 30–60 words.</p></div>
-          <strong>{studySets.length} sets</strong>
-        </div>
-        <div className="category-scroller" aria-label="Vocabulary study sets">
-          <button type="button" className={studySetId === "all" ? "is-active" : ""} onClick={() => chooseStudySet("all")}><span><Sparkles /></span><strong>All study sets</strong><small>{levelWords.length} words</small><em>{selectedCompleted} learned</em></button>
-          {studySets.map((set) => {
-            const Icon = CATEGORY_META[set.primaryCategory].icon;
-            const learned = studySetProgress.get(set.id) ?? 0;
-            const complete = learned === set.words.length;
-            return <button key={set.id} type="button" className={`${studySetId === set.id ? "is-active" : ""}${complete ? " is-complete" : ""}`} aria-label={`${set.title}, ${learned} of ${set.words.length} learned`} style={{ "--category-color": CATEGORY_META[set.primaryCategory].color } as CSSProperties} onClick={() => chooseStudySet(set.id)}><span><Icon /></span><strong>{set.title}</strong><small>{set.words.length} words</small><em>{complete ? <><Check /> Complete</> : `${set.words.length - learned} left`}</em></button>;
-          })}
-        </div>
 
         <div className="vocabulary-list-heading">
           <div><span>{`${levelLabel} · ${activeStudySet?.title ?? "all study sets"} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : activeStudySet && activeStudySetLearned === activeStudySet.words.length ? "Study set complete" : activeStudySet ? "Complete this study set" : "Explore vocabulary"}</h2></div>
@@ -358,6 +392,19 @@ export default function VocabularyPage() {
         ) : (
           <div className="vocabulary-empty"><BookOpen /><h3>No words here yet.</h3><p>Choose another filter or change your search.</p><Button variant="outline" onClick={clearFilters}>Clear filters</Button></div>
         )}
+
+          </TabsContent>
+
+          <TabsContent value="practice">
+            <div className="vocab-section-heading">
+              <div><h2>{activeStudySet ? activeStudySet.title : "Practice & review"}</h2><p>{practiceWords.length.toLocaleString("en")} words · {levelLabel}{category !== "all" && !activeStudySet ? ` · ${category}` : ""}</p></div>
+              {(activeStudySet || category !== "all") && <Button variant="outline" onClick={clearFilters}>Use all {levelLabel} words</Button>}
+            </div>
+            <VocabularyPractice key={`${level}:${category}:${studySetId}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
+              setLearned={setLearned} recordGuess={recordGuess} scheduleReview={scheduleReview} pronounce={pronounceWord} />
+            {pronunciationUnavailable && <p role="alert">Pronunciation is not available in this browser.</p>}
+          </TabsContent>
+        </Tabs>
       </section>
 
       <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} essential vocabulary cards for the complete A1–B1 learning path.</p><div><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>

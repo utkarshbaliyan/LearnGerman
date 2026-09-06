@@ -260,17 +260,20 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   assert.equal(vocabularyVerbType(word("lernen", "to learn", "Verben")), "regular-other");
 });
 
-test("renders vocabulary progress and a unified grammar filter", async () => {
+test("opens vocabulary on focused learning sets with separate library and practice areas", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
   assert.match(html, /4,011 words/);
-  assert.match(html, /Not learned/);
-  assert.match(html, /Advanced filters/);
+  assert.match(html, /Word library/);
+  assert.match(html, /Practice &amp; review/);
+  assert.match(html, /aria-label="Vocabulary sections"/);
   assert.match(html, /Every set contains 30–60 words/);
   assert.match(html, /aria-label="Vocabulary study sets"/);
-  assert.match(html, /aria-label="Filter by word class and verb type"/);
-  assert.equal((html.match(/aria-label="Pronounce this word in German"/g) ?? []).length, 120);
+  assert.match(html, /aria-label="Filter learning sets by topic"/);
+  assert.equal((html.match(/class="vocab-set-card/g) ?? []).length, 12);
+  assert.doesNotMatch(html, /aria-label="Pronounce this word in German"/);
+  assert.doesNotMatch(html, /aria-label="Choose the German answer"/);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
   assert.doesNotMatch(html, /Phrase \/ other|Phrases &amp; other/);
