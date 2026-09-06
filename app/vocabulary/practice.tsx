@@ -7,21 +7,25 @@ import { isVocabularyReview, vocabularyCardKey, vocabularyReviewDueAt, type Voca
 import { FLASHCARD_RATINGS, flashcardOptions, flashcardInterval, type FlashcardRating } from "@/app/lib/flashcard-scheduler";
 import type { VocabularyWord } from "@/app/vocabulary/data";
 import { buildVocabularyQuiz, startVocabularyQuiz, advanceVocabularyQuiz, type VocabularyQuizCursor } from "@/app/vocabulary/quiz";
-import { vocabularyPracticeQueue } from "@/app/vocabulary/review-queue";
+import { vocabularyGuessQueue, vocabularyPracticeQueue } from "@/app/vocabulary/review-queue";
 
 type Props = {
   words: VocabularyWord[];
   progress: VocabularyProgress;
   hydrated: boolean;
-  setLearned: (word: VocabularyWord, learned: boolean) => void;
   recordGuess: (word: VocabularyWord, correct: boolean) => void;
   rateFlashcard: (word: VocabularyWord, rating: FlashcardRating) => void;
   pronounce: (word: VocabularyWord) => void;
 };
 
-export function VocabularyPractice({ words, progress, hydrated, setLearned, recordGuess, rateFlashcard, pronounce }: Props) {
-  const [mode, setMode] = useState<"guess" | "flashcard">("guess");
-  const [reviewOnly, setReviewOnly] = useState(false);
+export function VocabularyPractice(props: Props) {
+  return <div className="practice-boxes">
+    <PracticeBox {...props} mode="guess" />
+    <PracticeBox {...props} mode="flashcard" />
+  </div>;
+}
+
+function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pronounce, mode }: Props & { mode: "guess" | "flashcard" }) {
   const [now, setNow] = useState(0);
   const [cursor, setCursor] = useState<VocabularyQuizCursor | null>(null);
   const [question, setQuestion] = useState<ReturnType<typeof buildVocabularyQuiz>>(null);
@@ -41,19 +45,19 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
 
   useEffect(() => {
     if (!hydrated || !cursor || !now || question) return;
-    const queue = vocabularyPracticeQueue(words, progress, now, reviewOnly, lastId);
+    const queue = mode === "guess" ? vocabularyGuessQueue(words, progress) : vocabularyPracticeQueue(words, progress, now, true, lastId);
     if (!queue.length) return;
     const target = queue[(cursor.seed + cursor.round) % queue.length];
     const frame = requestAnimationFrame(() => setQuestion(buildVocabularyQuiz(words, cursor, target)));
     return () => cancelAnimationFrame(frame);
-  }, [cursor, hydrated, lastId, now, progress, question, reviewOnly, words]);
+  }, [cursor, hydrated, lastId, now, progress, question, mode, words]);
 
   const reviews = words.filter((word) => isVocabularyReview(progress, word));
   const due = reviews.filter((word) => vocabularyReviewDueAt(progress, word) <= now);
   const nextDue = Math.min(...reviews.map((word) => vocabularyReviewDueAt(progress, word)).filter((time) => time > now));
   const finished = Boolean(answer) || revealed;
   const needsReview = question && isVocabularyReview(progress, question.word);
-  const options = question && finished ? flashcardOptions(progress.cards?.[vocabularyCardKey(question.word)], now) : null;
+  const options = mode === "flashcard" && question && finished ? flashcardOptions(progress.cards?.[vocabularyCardKey(question.word)], now) : null;
 
   function next() {
     setLastId(question?.word.id);
@@ -80,20 +84,18 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
     next();
   }
 
-  return <section className="vocabulary-practice" aria-label="Vocabulary practice">
+  return <section className="vocabulary-practice" aria-label={mode === "guess" ? "Quick guess" : "Review flashcards"}>
     <div className="practice-controls">
-      <div role="group" aria-label="Practice mode">
-        <Button variant={mode === "guess" ? "default" : "outline"} onClick={() => { setMode("guess"); next(); }}>Quick guess</Button>
-        <Button variant={mode === "flashcard" ? "default" : "outline"} onClick={() => { setMode("flashcard"); setReviewOnly(true); next(); }}>Review flashcards</Button>
-      </div>
-      <label><input type="checkbox" checked={reviewOnly} onChange={(event) => { setReviewOnly(event.target.checked); next(); }} /> Review only</label>
-      <span>{due.length} due · {reviews.length} in review</span>
+      <h2>{mode === "guess" ? "Quick guess" : "Review flashcards"}</h2>
+      {mode === "flashcard" && <span>{due.length} due · {reviews.length} in review</span>}
     </div>
-    <p className="practice-description">Due cards come first. Reveal the answer, then rate your recall. Again means forgotten; Hard means you remembered with difficulty. Review intervals adjust automatically.</p>
+    <p className="practice-description">{mode === "guess"
+      ? "Correct answers are automatically marked Learned. Wrong answers go to Review for flashcard practice. Answered words do not repeat in this game."
+      : "Reveal the answer, then rate your recall. Again means forgotten; Hard means you remembered with difficulty. Review intervals adjust automatically."}</p>
     {!hydrated || !cursor ? <p role="status">Loading your progress…</p> : !question ? <div className="practice-empty" role="status">
-      <strong>{reviews.length ? "All scheduled reviews are caught up." : reviewOnly ? "Your review deck is empty." : "You’ve learned every word in this selection."}</strong>
-      {Number.isFinite(nextDue) && <p>Next review: {new Date(nextDue).toLocaleString()}.</p>}
-      <p>Mark any word Review to add it to this deck.</p>
+      <strong>{mode === "guess" ? "No new words left in this selection." : reviews.length ? "All scheduled reviews are caught up." : "Your review deck is empty."}</strong>
+      {mode === "flashcard" && Number.isFinite(nextDue) && <p>Next review: {new Date(nextDue).toLocaleString()}.</p>}
+      <p>{mode === "guess" ? "Choose another learning set, or practise your review words in Flashcards." : "Wrong guesses and words you mark Review appear here."}</p>
     </div> : <div className="vocabulary-quiz">
       <div className="vocabulary-quiz-heading">
         <span>{needsReview ? "Review" : "Practice"} · {question.word.level} · {mode === "guess" ? `${streak} correct in a row` : "Recall before revealing"}</span>
@@ -108,14 +110,13 @@ export function VocabularyPractice({ words, progress, hydrated, setLearned, reco
       </div>}
       {finished && <div className="practice-feedback">
         <p role="status">{mode === "flashcard" ? question.word.german : answer === question.word.german
-          ? needsReview ? "Correct. Still in review until you mark it learned." : "Correct. Added to learned."
+          ? "Correct. Added to learned."
           : `The answer is ${question.word.german}. Added to review.`}</p>
         <div className="practice-actions">
           <Button variant="outline" onClick={() => pronounce(question.word)}><Volume2 /> Listen</Button>
-          {mode === "guess" && <><Button onClick={() => { setLearned(question.word, true); next(); }}>Mark learned</Button>
-          <Button variant="outline" onClick={next}>Next word</Button></>}
+          {mode === "guess" && <Button variant="outline" onClick={next}>Next word</Button>}
         </div>
-        {options && (mode === "flashcard" || needsReview) && <div className="practice-ratings" role="group" aria-label="Rate your recall">
+        {options && <div className="practice-ratings" role="group" aria-label="Rate your recall">
           {FLASHCARD_RATINGS.map(({ rating, label, hint }) => <Button variant="outline" key={rating} title={hint} onClick={() => rate(rating)}>
             <span>{label}</span><small>{flashcardInterval(options[rating].card.due.getTime(), now)}</small>
           </Button>)}

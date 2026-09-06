@@ -474,7 +474,10 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 .vocabulary-advanced-filters { margin-top: 12px; padding: 13px; display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr) auto; align-items: end; gap: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
 .vocabulary-practice { margin: 18px 0; border: 1px solid var(--line); border-radius: 18px; padding: clamp(16px, 2vw, 26px); background: var(--white); }
 .vocabulary-practice .vocabulary-quiz { border: 0; padding: 16px 0 0; margin: 0; }
-.practice-controls, .practice-controls > div, .practice-actions, .practice-schedule { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.practice-boxes { display: grid; gap: 24px; }
+.practice-boxes .vocabulary-practice { margin: 0; }
+.practice-controls h2 { margin: 0; font-size: 1.5rem; }
+.practice-controls, .practice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .practice-controls label { display: flex; align-items: center; gap: 8px; }
 .practice-controls span, .practice-description { color: var(--ink-soft); }
 .practice-description { margin: 14px 0 0; font-size: 14px; }

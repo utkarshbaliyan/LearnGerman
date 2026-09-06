@@ -407,7 +407,7 @@ test("rotates vocabulary quiz questions and records answer progress", async () =
 
 });
 
-test("review cards repeat until explicitly learned and obey their due dates", async () => {
+test("quick guesses update status automatically and flashcards obey due dates", async () => {
   const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
   const { vocabularyPracticeQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
   const a = { id: "a", german: "lernen", english: "to learn", level: "A2", category: "Verben" };
@@ -415,9 +415,9 @@ test("review cards repeat until explicitly learned and obey their due dates", as
   let state = p.recordVocabularyGuess(p.emptyVocabularyProgress(), a, false, 1000);
   assert.deepEqual(vocabularyPracticeQueue([a, b], state, 1000, false), [a]);
   state = p.recordVocabularyGuess(state, a, true, 2000);
-  assert.equal(p.isVocabularyReview(state, a), true);
-  assert.equal(p.isVocabularyLearned(state, a), false);
-  assert.deepEqual(vocabularyPracticeQueue([a, b], state, 2000, true), [a]);
+  assert.equal(p.isVocabularyReview(state, a), false);
+  assert.equal(p.isVocabularyLearned(state, a), true);
+  assert.deepEqual(vocabularyPracticeQueue([a, b], state, 2000, true), []);
   const scheduled = p.scheduleVocabularyReview(state, a, 1440, 3000);
   const dueAt = 3000 + 86400000;
   assert.deepEqual(vocabularyPracticeQueue([a, b], scheduled, dueAt - 1, true), []);
@@ -431,6 +431,28 @@ test("review cards repeat until explicitly learned and obey their due dates", as
   for (const invalid of [-1, NaN, Infinity, 525601]) assert.throws(() => p.scheduleVocabularyReview(state, a, invalid));
   const secondReview = p.setVocabularyStatus(state, b, "review", 1001);
   assert.deepEqual(vocabularyPracticeQueue([a, b], secondReview, 2000, true, "a"), [b]);
+});
+
+test("separates guess and flashcard boxes and never requeues answered guesses", async () => {
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const { vocabularyGuessQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
+  const { VocabularyPractice } = await vite.ssrLoadModule("/app/vocabulary/practice.tsx");
+  const words = [{ id: "a", german: "lernen", english: "to learn" }, { id: "b", german: "gehen", english: "to go" }];
+  let progress = p.emptyVocabularyProgress();
+  assert.equal(vocabularyGuessQueue(words, progress).length, 2);
+  progress = p.recordVocabularyGuess(progress, words[0], true, 1000);
+  progress = p.recordVocabularyGuess(progress, words[1], false, 2000);
+  assert.deepEqual(vocabularyGuessQueue(words, progress), []);
+  const storage = { getItem: () => JSON.stringify(progress) };
+  assert.deepEqual(vocabularyGuessQueue(words, p.readVocabularyProgress(storage)), []);
+  const html = renderToStaticMarkup(React.createElement(VocabularyPractice, { words, progress, hydrated: false,
+    recordGuess() {}, rateFlashcard() {}, pronounce() {} }));
+  assert.equal((html.match(/class="vocabulary-practice"/g) ?? []).length, 2);
+  assert.match(html, /aria-label="Quick guess"/);
+  assert.match(html, /aria-label="Review flashcards"/);
+  assert.match(html, /Correct answers are automatically marked Learned/);
+  assert.match(html, /Wrong answers go to Review/);
+  assert.doesNotMatch(html, /Mark learned|Practice mode|Review only/);
 });
 
 test("newer review schedules and learned decisions survive storage and cross-browser merges", async () => {

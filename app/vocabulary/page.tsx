@@ -401,7 +401,7 @@ export default function VocabularyPage() {
               {(activeStudySet || category !== "all") && <Button variant="outline" onClick={clearFilters}>Use all {levelLabel} words</Button>}
             </div>
             <VocabularyPractice key={`${level}:${category}:${studySetId}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
-              setLearned={setLearned} recordGuess={recordGuess} rateFlashcard={rateFlashcard} pronounce={pronounceWord} />
+              recordGuess={recordGuess} rateFlashcard={rateFlashcard} pronounce={pronounceWord} />
             {pronunciationUnavailable && <p role="alert">Pronunciation is not available in this browser.</p>}
           </TabsContent>
         </Tabs>

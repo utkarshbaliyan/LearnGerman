@@ -192,7 +192,6 @@ export function rateVocabularyFlashcard(current: VocabularyProgress, word: Vocab
 }
 
 export function recordVocabularyGuess(current: VocabularyProgress, word: VocabularyIdentity, correct: boolean, now = Date.now()) {
-  if (correct && isVocabularyReview(current, word)) return current;
   const next = setVocabularyStatus(current, word, correct ? "learned" : "review", now);
   const key = vocabularyCardKey(word);
   if (!correct && current.cards?.[key]?.memory) next.cards![key].memory = current.cards[key].memory;

@@ -1,6 +1,10 @@
 import { isVocabularyLearned, isVocabularyReview, vocabularyReviewDueAt, type VocabularyProgress } from "@/app/lib/progress-sync";
 import type { VocabularyWord } from "@/app/vocabulary/data";
 
+export function vocabularyGuessQueue(words: VocabularyWord[], progress: VocabularyProgress) {
+  return words.filter((word) => !isVocabularyLearned(progress, word) && !isVocabularyReview(progress, word));
+}
+
 export function vocabularyPracticeQueue(words: VocabularyWord[], progress: VocabularyProgress, now: number, reviewOnly: boolean, lastId?: string) {
   const due = words.filter((word) => vocabularyReviewDueAt(progress, word) <= now)
     .sort((a, b) => vocabularyReviewDueAt(progress, a) - vocabularyReviewDueAt(progress, b));
