@@ -23,7 +23,15 @@ export type VocabularyProgress = {
   reviewKeys: string[];
   legacyMigrated: boolean;
   cards?: Record<string, VocabularyReviewCard>;
+  guessStreak?: { current: number; best: number; updatedAt: number };
 };
+
+export function readGuessStreak(value: unknown): NonNullable<VocabularyProgress["guessStreak"]> | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const s = value as NonNullable<VocabularyProgress["guessStreak"]>;
+  if (![s.current, s.best, s.updatedAt].every((n) => Number.isSafeInteger(n) && n >= 0) || s.best < s.current) return undefined;
+  return { current: s.current, best: s.best, updatedAt: s.updatedAt };
+}
 
 export type VocabularyReviewCard = {
   status: "learned" | "review" | "unlearned";
@@ -51,6 +59,10 @@ export function vocabularyCardKey(word: VocabularyIdentity) {
 export function mergeVocabularyProgress(local: unknown, remote: unknown): VocabularyProgress {
   const a = (remote ?? {}) as Partial<VocabularyProgress>;
   const b = (local ?? {}) as Partial<VocabularyProgress>;
+  const streaks = [readGuessStreak(a.guessStreak), readGuessStreak(b.guessStreak)].filter((s) => s !== undefined);
+  // Latest answer owns the current run; best scores never move backwards.
+  streaks.sort((x, y) => y.updatedAt - x.updatedAt || x.current - y.current);
+  const guessStreak = streaks.length ? { ...streaks[0], best: Math.max(...streaks.map((s) => s.best)) } : undefined;
   const cards = { ...readReviewCards(a.cards) };
   for (const [key, card] of Object.entries(readReviewCards(b.cards))) {
     if (!cards[key] || card.updatedAt > cards[key].updatedAt
@@ -66,7 +78,7 @@ export function mergeVocabularyProgress(local: unknown, remote: unknown): Vocabu
   }
   for (const key of learned) review.delete(key);
   return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: a.legacyMigrated === true || b.legacyMigrated === true,
-    ...(Object.keys(cards).length ? { cards } : {}) };
+    ...(Object.keys(cards).length ? { cards } : {}), ...(guessStreak ? { guessStreak } : {}) };
 }
 
 export type GrammarProgress = {
@@ -167,7 +179,7 @@ export function setVocabularyStatus(
 
   const key = vocabularyCardKey(word);
   const updatedAt = Math.max(now, (current.cards?.[key]?.updatedAt ?? 0) + 1);
-  return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated,
+  return { ...current, learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated,
     cards: { ...current.cards, [key]: { status, updatedAt, dueAt: now, intervalMinutes: 0 } } };
 }
 
@@ -193,6 +205,9 @@ export function rateVocabularyFlashcard(current: VocabularyProgress, word: Vocab
 
 export function recordVocabularyGuess(current: VocabularyProgress, word: VocabularyIdentity, correct: boolean, now = Date.now()) {
   const next = setVocabularyStatus(current, word, correct ? "learned" : "review", now);
+  const previous = readGuessStreak(current.guessStreak) ?? { current: 0, best: 0, updatedAt: 0 };
+  const streak = correct ? previous.current + 1 : 0;
+  next.guessStreak = { current: streak, best: Math.max(previous.best, streak), updatedAt: Math.max(now, previous.updatedAt + 1) };
   const key = vocabularyCardKey(word);
   if (!correct && current.cards?.[key]?.memory) next.cards![key].memory = current.cards[key].memory;
   return next;
@@ -237,6 +252,7 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
     learnedKeys: [...learned],
     reviewKeys: [...review],
     legacyMigrated: stored.legacyMigrated === true || shouldMigrateLegacy,
+    ...(readGuessStreak(stored.guessStreak) ? { guessStreak: readGuessStreak(stored.guessStreak) } : {}),
     ...(stored.cards ? { cards: readReviewCards(stored.cards) } : {}),
   };
 }
@@ -246,6 +262,7 @@ export function writeVocabularyProgress(storage: StorageLike, progress: Vocabula
     learnedKeys: unique(progress.learnedKeys),
     reviewKeys: unique(progress.reviewKeys.filter((key) => !progress.learnedKeys.includes(key))),
     legacyMigrated: progress.legacyMigrated,
+    ...(readGuessStreak(progress.guessStreak) ? { guessStreak: readGuessStreak(progress.guessStreak) } : {}),
     ...(progress.cards ? { cards: progress.cards } : {}),
   }));
 }

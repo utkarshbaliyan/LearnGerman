@@ -63,6 +63,13 @@ test("vocabulary API persists schedules, merges concurrent browsers, and isolate
     const secondRating = p.rateVocabularyFlashcard(freshBrowser, a, 3, p.vocabularyReviewDueAt(freshBrowser, a));
     assert.equal((await put("alice", secondRating)).status, 200);
     assert.equal((await get("alice")).progress.vocabulary.cards[p.vocabularyCardKey(a)].memory.reps, 2);
+    const streakRun = p.recordVocabularyGuess(secondRating, b, true, 700000);
+    assert.equal((await put("alice", streakRun)).status, 200);
+    assert.deepEqual((await get("alice")).progress.vocabulary.guessStreak, streakRun.guessStreak);
+    const mistake = p.recordVocabularyGuess(streakRun, a, false, 800000);
+    assert.equal((await put("alice", mistake)).status, 200);
+    assert.equal((await put("alice", streakRun)).status, 200);
+    assert.deepEqual((await get("alice")).progress.vocabulary.guessStreak, { current: 0, best: 1, updatedAt: 800000 });
     assert.deepEqual((await get("bob")).progress, {});
   } finally {
     await vite.close();

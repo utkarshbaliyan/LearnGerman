@@ -379,6 +379,32 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.match(first, /--skeleton-width:70%/);
 });
 
+test("guess streaks persist, reset on mistakes, and keep the best across sync", async () => {
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const word = { german: "lernen", english: "to learn" };
+  let progress = p.emptyVocabularyProgress();
+  progress = p.recordVocabularyGuess(progress, word, true, 100);
+  progress = p.recordVocabularyGuess(progress, word, true, 200);
+  assert.deepEqual(progress.guessStreak, { current: 2, best: 2, updatedAt: 200 });
+  const stale = progress;
+  progress = p.recordVocabularyGuess(progress, word, false, 300);
+  assert.deepEqual(progress.guessStreak, { current: 0, best: 2, updatedAt: 300 });
+  assert.deepEqual(p.mergeVocabularyProgress(stale, progress).guessStreak, progress.guessStreak);
+  assert.deepEqual(p.mergeVocabularyProgress(progress, stale).guessStreak, progress.guessStreak);
+  const values = new Map();
+  const storage = { getItem: (k) => values.get(k) ?? null, setItem: (k, v) => values.set(k, v) };
+  p.writeVocabularyProgress(storage, progress);
+  progress = p.readVocabularyProgress(storage);
+  assert.deepEqual(progress.guessStreak, { current: 0, best: 2, updatedAt: 300 });
+  assert.deepEqual(p.rateVocabularyFlashcard(progress, word, 3, 400).guessStreak, progress.guessStreak);
+  assert.deepEqual(p.setVocabularyStatus(progress, word, "learned", 400).guessStreak, progress.guessStreak);
+  progress = p.recordVocabularyGuess(progress, word, true, 500);
+  assert.equal(progress.guessStreak.current, 1);
+  assert.equal(progress.guessStreak.best, 2);
+  assert.equal(p.readGuessStreak({ current: -1, best: 2, updatedAt: 1 }), undefined);
+  assert.equal(p.readGuessStreak({ current: 3, best: 2, updatedAt: 1 }), undefined);
+});
+
 test("rotates vocabulary quiz questions and records answer progress", async () => {
   const {
     advanceVocabularyQuiz,
@@ -452,6 +478,8 @@ test("separates guess and flashcard boxes and never requeues answered guesses", 
   assert.match(html, /aria-label="Review flashcards"/);
   assert.match(html, /Correct answers are automatically marked Learned/);
   assert.match(html, /Wrong answers go to Review/);
+  assert.match(html, /Current streak/);
+  assert.match(html, /Best streak/);
   assert.doesNotMatch(html, /Mark learned|Practice mode|Review only/);
 });
 

@@ -32,7 +32,6 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
   const [answer, setAnswer] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [lastId, setLastId] = useState<string>();
-  const [streak, setStreak] = useState(0);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -71,11 +70,6 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
     if (!question || answer) return;
     setAnswer(german);
     recordGuess(question.word, german === question.word.german);
-    if (german === question.word.german) {
-      setStreak((value) => value + 1);
-    } else {
-      setStreak(0);
-    }
   }
 
   function rate(rating: FlashcardRating) {
@@ -87,6 +81,10 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
   return <section className="vocabulary-practice" aria-label={mode === "guess" ? "Quick guess" : "Review flashcards"}>
     <div className="practice-controls">
       <h2>{mode === "guess" ? "Quick guess" : "Review flashcards"}</h2>
+      {mode === "guess" && <dl className="guess-streaks" aria-live="polite">
+        <div><dt>Current streak</dt><dd>{hydrated ? progress.guessStreak?.current ?? 0 : "—"}</dd></div>
+        <div><dt>Best streak</dt><dd>{hydrated ? progress.guessStreak?.best ?? 0 : "—"}</dd></div>
+      </dl>}
       {mode === "flashcard" && <span>{due.length} due · {reviews.length} in review</span>}
     </div>
     <p className="practice-description">{mode === "guess"
@@ -98,7 +96,7 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
       <p>{mode === "guess" ? "Choose another learning set, or practise your review words in Flashcards." : "Wrong guesses and words you mark Review appear here."}</p>
     </div> : <div className="vocabulary-quiz">
       <div className="vocabulary-quiz-heading">
-        <span>{needsReview ? "Review" : "Practice"} · {question.word.level} · {mode === "guess" ? `${streak} correct in a row` : "Recall before revealing"}</span>
+        <span>{needsReview ? "Review" : "Practice"} · {question.word.level}{mode === "flashcard" ? " · Recall before revealing" : ""}</span>
         <h2>What is <strong lang="en">{question.word.english}</strong> in German?</h2>
       </div>
       {mode === "guess" ? <div className="vocabulary-quiz-answers" role="group" aria-label="Choose the German answer">
