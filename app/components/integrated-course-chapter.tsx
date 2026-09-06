@@ -41,6 +41,7 @@ import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import { requestSpeakingFeedback, requestWritingFeedback } from "@/app/lib/ai-tutor-client";
 import type { TutorContext, TutorFeedback } from "@/app/lib/ai-tutor-types";
 import { syncGrammarLessonToLibrary } from "@/app/lib/progress-sync";
+import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -173,7 +174,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     const sets = { ...chapter.grammarSets, [setName]: Math.max(chapter.grammarSets[setName] ?? 0, score) };
     const average = Math.round(Object.values(sets).reduce((sum, value) => sum + value, 0) / grammarGroups.length);
     updateChapter(content.id, (current) => ({ ...current, grammarSets: sets, skillScores: { ...current.skillScores, grammar: Math.max(current.skillScores.grammar ?? 0, average) } }));
-    syncGrammarLessonToLibrary(localStorage, content.id, sets, average, grammarGroups.every((group) => sets[group] !== undefined));
+    queueCloudProgress("grammar", syncGrammarLessonToLibrary(localStorage, content.id, sets, average, grammarGroups.every((group) => sets[group] !== undefined)));
   }
 
   function saveStoryScore(score: number) {

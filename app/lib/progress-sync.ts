@@ -1,5 +1,5 @@
 import { germanVerbLemma } from "@/app/vocabulary/verb-forms";
-import { flashcardOptions, serializeFlashcard, validFlashcardMemory, type FlashcardMemory, type FlashcardRating } from "./flashcard-scheduler";
+import { validFlashcardMemory, type FlashcardMemory } from "./flashcard-memory";
 
 export const COURSE_PROGRESS_STORAGE_KEY = "leselaut:course-progress:v1";
 export const GRAMMAR_PROGRESS_STORAGE_KEY = "leselaut:grammar-progress:v1";
@@ -120,6 +120,12 @@ function numericRecord(value: unknown) {
   return Object.fromEntries(Object.entries(value).filter((entry): entry is [string, number] => typeof entry[1] === "number"));
 }
 
+function maximumScores(a: Record<string, number> = {}, b: Record<string, number> = {}) {
+  const result = { ...a };
+  for (const [key, value] of Object.entries(b)) result[key] = Math.max(result[key] ?? 0, value);
+  return result;
+}
+
 function unique(values: Iterable<string>) {
   return [...new Set(values)];
 }
@@ -194,14 +200,6 @@ export function vocabularyReviewDueAt(progress: VocabularyProgress, word: Vocabu
   return isVocabularyReview(progress, word) ? progress.cards?.[vocabularyCardKey(word)]?.dueAt ?? 0 : Infinity;
 }
 
-export function rateVocabularyFlashcard(current: VocabularyProgress, word: VocabularyIdentity, rating: FlashcardRating, now = Date.now()): VocabularyProgress {
-  if (![1, 2, 3, 4].includes(rating)) throw new Error("Invalid flashcard rating.");
-  const key = vocabularyCardKey(word);
-  const card = flashcardOptions(current.cards?.[key], now)[rating].card;
-  const next = setVocabularyStatus(current, word, "review", now);
-  return { ...next, cards: { ...next.cards, [key]: { ...next.cards![key], dueAt: card.due.getTime(),
-    intervalMinutes: (card.due.getTime() - now) / 60000, memory: serializeFlashcard(card) } } };
-}
 
 export function recordVocabularyGuess(current: VocabularyProgress, word: VocabularyIdentity, correct: boolean, now = Date.now()) {
   const next = setVocabularyStatus(current, word, correct ? "learned" : "review", now);
@@ -304,7 +302,7 @@ export function mergeCourseProgressWithGrammar(course: StoredCourseProgress, gra
     const grammarScore = grammar.scores[lessonId] ?? 0;
     chapters[lessonId] = {
       ...current,
-      grammarSets: { ...(current.grammarSets ?? {}), ...(grammar.sets[lessonId] ?? {}) },
+      grammarSets: maximumScores(current.grammarSets, grammar.sets[lessonId]),
       skillScores: {
         ...(current.skillScores ?? {}),
         grammar: Math.max(current.skillScores?.grammar ?? 0, grammarScore),
@@ -327,7 +325,7 @@ export function mergeGrammarProgressWithCourse(
   for (const [lessonId, chapter] of Object.entries(course.chapters)) {
     const chapterSets = chapter.grammarSets ?? {};
     if (!Object.keys(chapterSets).length && chapter.skillScores?.grammar === undefined) continue;
-    sets[lessonId] = { ...(sets[lessonId] ?? {}), ...chapterSets };
+    sets[lessonId] = maximumScores(sets[lessonId], chapterSets);
     scores[lessonId] = Math.max(scores[lessonId] ?? 0, chapter.skillScores?.grammar ?? 0);
     const requirements = requiredSets[lessonId] ?? [];
     if (requirements.length && requirements.every((name) => sets[lessonId]?.[name] !== undefined)) completed.add(lessonId);

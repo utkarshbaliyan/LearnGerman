@@ -1,5 +1,5 @@
 import { and, eq } from "drizzle-orm";
-import { mergeVocabularyProgress } from "@/app/lib/progress-sync";
+import { mergeProgress } from "@/app/lib/progress-merge";
 
 import { ensureAccount } from "@/app/lib/account-db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
@@ -38,11 +38,15 @@ export async function PUT(request: Request) {
   const auth = await authenticatedDb(request);
   if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
 
+  const expectedOwner = request.headers.get("x-progress-owner");
+  if (expectedOwner && expectedOwner !== auth.user.id) return Response.json({ error: "Account changed. Reload progress before saving." }, { status: 409 });
+
   let payload: { scope?: unknown; data?: unknown };
   try { payload = await request.json() as { scope?: unknown; data?: unknown }; }
   catch { return Response.json({ error: "Request body must be valid JSON" }, { status: 400 }); }
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return Response.json({ error: "Request body must be an object" }, { status: 400 });
   const validData = payload.scope === "stories"
-    ? Array.isArray(payload.data) && payload.data.every((item) => typeof item === "string")
+    ? (Array.isArray(payload.data) && payload.data.every((item) => typeof item === "string")) || (Boolean(payload.data) && typeof payload.data === "object" && !Array.isArray(payload.data))
     : Boolean(payload.data) && typeof payload.data === "object" && !Array.isArray(payload.data);
   if (!isScope(payload.scope) || !validData) {
     return Response.json({ error: "A valid progress scope and object are required" }, { status: 400 });
@@ -50,29 +54,24 @@ export async function PUT(request: Request) {
   const serialized = JSON.stringify(payload.data);
   if (serialized.length > 1_000_000) return Response.json({ error: "Progress document is too large" }, { status: 413 });
 
-  if (payload.scope === "vocabulary") {
+  {
+    const scope = payload.scope;
     // Compare-and-swap prevents simultaneous browsers from replacing each other's cards.
     for (let attempt = 0; attempt < 5; attempt += 1) {
       const [existing] = await auth.db.select({ data: userProgress.data }).from(userProgress)
-        .where(and(eq(userProgress.userId, auth.user.id), eq(userProgress.scope, "vocabulary")));
+        .where(and(eq(userProgress.userId, auth.user.id), eq(userProgress.scope, scope)));
       let remote: unknown = {};
       try { remote = JSON.parse(existing?.data ?? "{}"); } catch { /* Recover malformed legacy documents. */ }
-      const data = JSON.stringify(mergeVocabularyProgress(payload.data, remote));
+      const data = JSON.stringify(mergeProgress(scope, payload.data, remote));
       if (data.length > 1_000_000) return Response.json({ error: "Progress document is too large" }, { status: 413 });
       const saved = existing
         ? await auth.db.update(userProgress).set({ data, updatedAt: new Date().toISOString() })
-          .where(and(eq(userProgress.userId, auth.user.id), eq(userProgress.scope, "vocabulary"), eq(userProgress.data, existing.data))).returning({ scope: userProgress.scope })
-        : await auth.db.insert(userProgress).values({ userId: auth.user.id, scope: "vocabulary", data })
+          .where(and(eq(userProgress.userId, auth.user.id), eq(userProgress.scope, scope), eq(userProgress.data, existing.data))).returning({ scope: userProgress.scope })
+        : await auth.db.insert(userProgress).values({ userId: auth.user.id, scope, data })
           .onConflictDoNothing().returning({ scope: userProgress.scope });
-      if (saved.length) return Response.json({ saved: true, scope: "vocabulary" });
+      if (saved.length) return Response.json({ saved: true, scope, data: JSON.parse(data), userId: auth.user.id });
     }
     return Response.json({ error: "Progress changed concurrently. Please retry." }, { status: 409 });
   }
 
-  await auth.db.insert(userProgress).values({ userId: auth.user.id, scope: payload.scope, data: serialized })
-    .onConflictDoUpdate({
-      target: [userProgress.userId, userProgress.scope],
-      set: { data: serialized, updatedAt: new Date().toISOString() },
-    });
-  return Response.json({ saved: true, scope: payload.scope });
 }

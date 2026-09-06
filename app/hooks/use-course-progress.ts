@@ -58,7 +58,8 @@ export function useCourseProgress() {
     };
     const frame = requestAnimationFrame(refresh);
     window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
+    window.addEventListener("storage", refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); window.removeEventListener("storage", refresh); };
   }, []);
 
   useEffect(() => {

@@ -1,55 +1,32 @@
 "use client";
-
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
+import { markStory, readStoryProgress, type StoryProgress } from "@/app/lib/story-progress";
 
 export function useStoryProgress() {
-  const [completedIds, setCompletedIds] = useState<Set<string>>(new Set());
+  const [progress, setProgress] = useState<StoryProgress>({ entries: {} });
   const [hydrated, setHydrated] = useState(false);
-
+  const completedIds = useMemo(() => new Set(Object.entries(progress.entries).filter(([, item]) => item.completed).map(([id]) => id)), [progress]);
   useEffect(() => {
     const refresh = () => {
-      try {
-        const stored = JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]") as unknown;
-        if (Array.isArray(stored)) {
-          setCompletedIds(new Set(stored.filter((value): value is string => typeof value === "string")));
-        }
-      } catch {
-        // Ignore an invalid device-local value and start with a clean course state.
-      }
+      try { setProgress(readStoryProgress(JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]"))); }
+      catch { setProgress({ entries: {} }); }
       setHydrated(true);
     };
     const frame = requestAnimationFrame(refresh);
     window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
+    window.addEventListener("storage", refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); window.removeEventListener("storage", refresh); };
   }, []);
-
   useEffect(() => {
-    if (hydrated) {
-      const completed = [...completedIds];
-      localStorage.setItem(STORY_PROGRESS_STORAGE_KEY, JSON.stringify(completed));
-      queueCloudProgress("stories", completed);
-    }
-  }, [completedIds, hydrated]);
-
-  const setStoryCompleted = useCallback((storyId: string, completed = true) => {
-    setCompletedIds((current) => {
-      const next = new Set(current);
-      if (completed) next.add(storyId);
-      else next.delete(storyId);
-      return next;
-    });
+    if (hydrated) queueCloudProgress("stories", progress);
+  }, [hydrated, progress]);
+  const setStoryCompleted = useCallback((id: string, completed = true) => {
+    setProgress((current) => markStory(current, id, completed));
   }, []);
-
-  const toggleStoryCompleted = useCallback((storyId: string) => {
-    setCompletedIds((current) => {
-      const next = new Set(current);
-      if (next.has(storyId)) next.delete(storyId);
-      else next.add(storyId);
-      return next;
-    });
+  const toggleStoryCompleted = useCallback((id: string) => {
+    setProgress((current) => markStory(current, id, !current.entries[id]?.completed));
   }, []);
-
   return { completedIds, hydrated, setStoryCompleted, toggleStoryCompleted };
 }

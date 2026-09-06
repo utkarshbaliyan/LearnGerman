@@ -35,9 +35,9 @@ test("vocabulary API persists schedules, merges concurrent browsers, and isolate
   });
   try {
     const api = await vite.ssrLoadModule("/app/api/progress/route.ts");
-    const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+    const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
     const a = { german: "lernen", english: "to learn" }, b = { german: "gehen", english: "to go" };
-    const put = (user, data) => api.PUT(new Request("http://localhost/api/progress", { method: "PUT", headers: { "content-type": "application/json", ...(user ? { "x-test-user": user } : {}) }, body: JSON.stringify({ scope: "vocabulary", data }) }));
+    const put = (user, data, scope = "vocabulary") => api.PUT(new Request("http://localhost/api/progress", { method: "PUT", headers: { "content-type": "application/json", ...(user ? { "x-test-user": user } : {}) }, body: JSON.stringify({ scope, data }) }));
     const get = async (user) => (await api.GET(new Request("http://localhost/api/progress", { headers: { "x-test-user": user } }))).json();
     assert.equal((await put(null, {})).status, 401);
     const old = p.setVocabularyStatus(p.emptyVocabularyProgress(), a, "learned", 100);
@@ -51,6 +51,31 @@ test("vocabulary API persists schedules, merges concurrent browsers, and isolate
     assert.equal(p.isVocabularyLearned(saved, b), true);
     assert.equal(p.vocabularyReviewDueAt(saved, a), 200 + 4320 * 60000);
     assert.deepEqual((await get("bob")).progress, {});
+    const concurrentCourse = await Promise.all([
+      put("alice", { chapters: { "a1-1-1": { completed: true, skillScores: { reading: 90 } } } }, "course"),
+      put("alice", { chapters: { "a1-1-2": { skillScores: { writing: 80 } } } }, "course"),
+    ]);
+    assert.ok(concurrentCourse.every((r) => r.status === 200));
+    let all = (await get("alice")).progress;
+    assert.equal(all.course.chapters["a1-1-1"].completed, true);
+    assert.equal(all.course.chapters["a1-1-2"].skillScores.writing, 80);
+    const concurrentGrammar = await Promise.all([
+      put("alice", { completed: ["lesson-a"], scores: { "lesson-a": 90 }, sets: { "lesson-a": { one: 90 } } }, "grammar"),
+      put("alice", { completed: ["lesson-b"], scores: { "lesson-a": 60 }, sets: { "lesson-a": { two: 80 } } }, "grammar"),
+    ]);
+    assert.ok(concurrentGrammar.every((r) => r.status === 200));
+    all = (await get("alice")).progress;
+    assert.deepEqual(new Set(all.grammar.completed), new Set(["lesson-a", "lesson-b"]));
+    assert.deepEqual(all.grammar.sets["lesson-a"], { one: 90, two: 80 });
+    assert.equal(all.grammar.scores["lesson-a"], 90);
+    await put("alice", ["story-a"], "stories");
+    await put("alice", { entries: { "story-a": { completed: false, updatedAt: 20 }, "story-b": { completed: true, updatedAt: 10 } } }, "stories");
+    await put("alice", ["story-a"], "stories");
+    all = (await get("alice")).progress;
+    assert.equal(all.stories.entries["story-a"].completed, false);
+    assert.equal(all.stories.entries["story-b"].completed, true);
+    assert.deepEqual((await get("bob")).progress, {});
+    assert.equal((await api.PUT(new Request("http://localhost/api/progress", { method: "PUT", headers: { "x-test-user": "bob", "x-progress-owner": "alice" }, body: JSON.stringify({ scope: "course", data: {} }) }))).status, 409);
     assert.equal((await put("alice", old)).status, 200);
     saved = (await get("alice")).progress.vocabulary;
     assert.equal(p.isVocabularyReview(saved, a), true, "stale client cannot replace newer review state");

@@ -222,7 +222,8 @@ export default function GrammarPage() {
     };
     const frame = requestAnimationFrame(refresh);
     window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
+    window.addEventListener("storage", refresh);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); window.removeEventListener("storage", refresh); };
   }, []);
 
   useEffect(() => {
@@ -267,7 +268,7 @@ export default function GrammarPage() {
       sets: { ...progress.sets, [selectedLessonId]: lessonSets },
     };
     setProgress(next);
-    syncGrammarLessonToCourse(localStorage, selectedLessonId, lessonSets, average);
+    queueCloudProgress("course", syncGrammarLessonToCourse(localStorage, selectedLessonId, lessonSets, average));
   }
 
   const overallRoadmap = Math.round((progress.completed.length / ALL_GRAMMAR_LESSONS.length) * 100);

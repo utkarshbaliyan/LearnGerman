@@ -39,7 +39,7 @@ async function readCssTree(directory) {
 }
 
 test("FSRS ratings preserve memory across account sync and schedule due-only repeats", async () => {
-  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const s = await vite.ssrLoadModule("/app/lib/flashcard-scheduler.ts");
   const { vocabularyPracticeQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
   const word = { id: "learn", german: "lernen", english: "to learn" };
@@ -188,7 +188,9 @@ test("merges cloud progress without losing learned or review state", async () =>
       legacyMigrated: true,
     },
   );
-  assert.deepEqual(mergeProgress("stories", ["local-story"], ["remote-story"]), ["remote-story", "local-story"]);
+  assert.deepEqual(mergeProgress("stories", ["local-story"], ["remote-story"]), { entries: {
+    "remote-story": { completed: true, updatedAt: 0 }, "local-story": { completed: true, updatedAt: 0 },
+  } });
 });
 
 test("uses account-owned durable progress and production email confirmation", async () => {
@@ -386,7 +388,7 @@ test("renders sidebar skeletons deterministically", async () => {
 });
 
 test("guess streaks persist, reset on mistakes, and keep the best across sync", async () => {
-  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const word = { german: "lernen", english: "to learn" };
   let progress = p.emptyVocabularyProgress();
   progress = p.recordVocabularyGuess(progress, word, true, 100);
@@ -440,7 +442,7 @@ test("rotates vocabulary quiz questions and records answer progress", async () =
 });
 
 test("quick guesses update status automatically and flashcards obey due dates", async () => {
-  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const { vocabularyPracticeQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
   const a = { id: "a", german: "lernen", english: "to learn", level: "A2", category: "Verben" };
   const b = { id: "b", german: "gehen", english: "to go", level: "A1", category: "Verben" };
@@ -466,7 +468,7 @@ test("quick guesses update status automatically and flashcards obey due dates", 
 });
 
 test("separates guess and flashcard boxes and never requeues answered guesses", async () => {
-  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const { vocabularyGuessQueue } = await vite.ssrLoadModule("/app/vocabulary/review-queue.ts");
   const { VocabularyPractice } = await vite.ssrLoadModule("/app/vocabulary/practice.tsx");
   const words = [{ id: "a", german: "lernen", english: "to learn" }, { id: "b", german: "gehen", english: "to go" }];
@@ -490,7 +492,7 @@ test("separates guess and flashcard boxes and never requeues answered guesses", 
 });
 
 test("newer review schedules and learned decisions survive storage and cross-browser merges", async () => {
-  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const a = { german: "lernen", english: "to learn" };
   const b = { german: "gehen", english: "to go" };
   const older = p.setVocabularyStatus(p.emptyVocabularyProgress(), a, "learned", 1000);

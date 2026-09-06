@@ -14,7 +14,7 @@ type Props = {
   progress: VocabularyProgress;
   hydrated: boolean;
   recordGuess: (word: VocabularyWord, correct: boolean) => void;
-  rateFlashcard: (word: VocabularyWord, rating: FlashcardRating) => void;
+  rateFlashcard: (word: VocabularyWord, rating: FlashcardRating) => void | Promise<void>;
   pronounce: (word: VocabularyWord) => void;
 };
 
@@ -31,6 +31,8 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
   const [question, setQuestion] = useState<ReturnType<typeof buildVocabularyQuiz>>(null);
   const [answer, setAnswer] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [ratingPending, setRatingPending] = useState(false);
+  const [ratingError, setRatingError] = useState(false);
   const [lastId, setLastId] = useState<string>();
 
   useEffect(() => {
@@ -72,10 +74,15 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
     recordGuess(question.word, german === question.word.german);
   }
 
-  function rate(rating: FlashcardRating) {
-    if (!question || !finished) return;
-    rateFlashcard(question.word, rating);
-    next();
+  async function rate(rating: FlashcardRating) {
+    if (!question || !finished || ratingPending) return;
+    setRatingPending(true);
+    setRatingError(false);
+    try {
+      await rateFlashcard(question.word, rating);
+      next();
+    } catch { setRatingError(true); }
+    finally { setRatingPending(false); }
   }
 
   return <section className="vocabulary-practice" aria-label={mode === "guess" ? "Quick guess" : "Review flashcards"}>
@@ -115,10 +122,11 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
           {mode === "guess" && <Button variant="outline" onClick={next}>Next word</Button>}
         </div>
         {options && <div className="practice-ratings" role="group" aria-label="Rate your recall">
-          {FLASHCARD_RATINGS.map(({ rating, label, hint }) => <Button variant="outline" key={rating} title={hint} onClick={() => rate(rating)}>
+          {FLASHCARD_RATINGS.map(({ rating, label, hint }) => <Button variant="outline" key={rating} title={hint} disabled={ratingPending} onClick={() => void rate(rating)}>
             <span>{label}</span><small>{flashcardInterval(options[rating].card.due.getTime(), now)}</small>
           </Button>)}
         </div>}
+        {ratingError && <p role="alert">Could not update this card. Please try again.</p>}
       </div>}
     </div>}
   </section>;

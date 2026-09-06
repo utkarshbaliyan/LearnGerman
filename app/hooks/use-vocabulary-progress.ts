@@ -9,7 +9,6 @@ import {
   isVocabularyReview,
   readVocabularyProgress,
   setVocabularyStatus,
-  rateVocabularyFlashcard,
   recordVocabularyGuess,
   writeVocabularyProgress,
   type VocabularyIdentity,
@@ -18,6 +17,7 @@ import {
 import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
 import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 import type { FlashcardRating } from "@/app/lib/flashcard-scheduler";
+import { CLOUD_PROGRESS_OWNER_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 
 const EMPTY_CATALOG: VocabularyIdentity[] = [];
 
@@ -68,8 +68,12 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     });
   }, []);
 
-  const rateFlashcard = useCallback((word: VocabularyIdentity, rating: FlashcardRating) => {
-    setProgress((current) => rateVocabularyFlashcard(current, word, rating));
+  const rateFlashcard = useCallback(async (word: VocabularyIdentity, rating: FlashcardRating) => {
+    const owner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
+    await import("@/app/lib/flashcard-progress").then(({ rateVocabularyFlashcard }) => {
+      if (owner !== localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) return;
+      setProgress((current) => rateVocabularyFlashcard(current, word, rating));
+    });
   }, []);
   const recordGuess = useCallback((word: VocabularyIdentity, correct: boolean) => {
     setProgress((current) => recordVocabularyGuess(current, word, correct));
