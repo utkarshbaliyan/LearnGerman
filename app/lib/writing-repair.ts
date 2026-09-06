@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { PhotoReading } from "./writing-photo";
 import type { TutorFeedback } from "./ai-tutor-types";
 
 const correctionSchema = z.object({
@@ -11,9 +12,10 @@ export type RepairIssue = z.infer<typeof correctionSchema> & { start: number; en
 export type RepairFeedback = { summary: string; issues: RepairIssue[]; taskSuccess: boolean; needsReview: boolean };
 export type WritingAttempt = {
   id: string; answer: string; createdAt: string; assistance: "independent" | "hint" | "correction";
+  sourcePhotoId?: string;
   revealed: boolean; status: "pending" | "complete" | "failed"; feedback?: RepairFeedback;
 };
-export type WritingSession = { draft: string; attempts: WritingAttempt[] };
+export type WritingSession = { draft: string; attempts: WritingAttempt[]; photos?: PhotoReading[]; draftPhotoId?: string };
 export type WritingRecord = { version: number; session: WritingSession };
 
 // Reject hallucinated, ambiguous and overlapping spans instead of marking innocent text.

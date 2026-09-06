@@ -75,7 +75,7 @@ chapter; POST actions are `draft`, `check`, `reveal`, and `delete`. Mutations us
 version for optimistic concurrency. Checks also require an idempotency request ID.
 Account changes invalidate UI requests and owner headers prevent cross-account saves.
 
-A daily atomic quota in `tutor_quotas` permits 20 writing checks per account per UTC
+A daily atomic quota in `tutor_quotas` permits 20 AI requests (photo reads or writing checks) per account per UTC
 day across tasks and Worker instances. Provider failures count toward the budget.
 Provider requests have a 30-second deadline and a 3,000-token output limit. A stale
 pending attempt can be recovered after 60 seconds. Invalid, ambiguous, overlapping,
@@ -101,3 +101,36 @@ Validation: `npx tsc --noEmit`, `npm run lint`, `npx vinext build`, and
 Writing API tests use real SQLite queries and mocked authentication/provider
 responses to verify ownership, quotas, concurrency, idempotency, deletion,
 assistance tracking, and feedback redaction. No paid provider calls are used in tests.
+
+
+### Handwritten assignment photos
+
+In each chapter's writing workspace, signed-in students can choose a JPG, PNG or
+WebP image (up to 12 MB), preview it, and consent to sending it to the AI provider.
+The browser converts it to JPEG, strips image metadata and resizes it to at most
+2048 pixels on its longest edge. HEIC and PDF are not supported in this release.
+The server caps multipart body bytes, checks the image signature and dimensions,
+and accepts at most 2.5 MB of JPEG/PNG image data. It never fetches arbitrary image URLs.
+
+Photo reading uses the existing Groq account with `GROQ_VISION_MODEL` (default
+`qwen/qwen3.6-27b`), following the [Groq vision API documentation](https://console.groq.com/docs/vision).
+It transcribes the student's answer without correcting it and marks illegible
+words `[unclear]`. The student compares the extraction with the paper, fixes
+recognition mistakes, then explicitly confirms before replacing their draft.
+Corrections, explanations and revisions use the existing writing repair workflow.
+Photo reading and writing checks each reserve one unit from the same daily quota.
+Image-reading models and handwriting accuracy still require ongoing evaluation.
+
+The app does not persist image bytes or original filenames. It stores a photo
+request ID, content hash, original transcription, uncertainty flag, confirmation
+text and timestamp in the existing account-owned session JSON. Attempts link to
+the confirmed photo source. Up to 20 photo readings are retained per task; deleting
+task history also deletes these records, while quota usage remains. Pending or
+interrupted requests use the same optimistic locking and retry protection as checks.
+No additional database migration is required beyond the writing repair tables.
+
+Verification includes 31 automated tests plus a live Groq smoke test using a
+synthetic handwriting-font German assignment. That test preserved deliberate
+verb-agreement and word-order errors and produced two valid feedback spans with
+hints and explanations. It verifies the provider connection and workflow, not
+accuracy on diverse student handwriting. No student photos were used for testing.

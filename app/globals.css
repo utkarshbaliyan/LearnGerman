@@ -1969,3 +1969,14 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .writing-source mark { background: #fee2e2; color: #7f1d1d; border-bottom: 2px solid #b91c1c; padding: .1em .15em; }
 .writing-source mark.writing-style-mark { background: #dbeafe; color: #1e3a8a; border-color: #2563eb; }
 .writing-repair summary { cursor: pointer; font-weight: 600; }
+.writing-photo-upload { border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem; display: grid; gap: 1rem; }
+.writing-photo-upload h3 { display: flex; align-items: center; gap: .6rem; font-weight: 650; font-size: 1.125rem; }
+.writing-photo-upload h3 svg { width: 1.25rem; flex-shrink: 0; }
+.writing-photo-preview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.writing-photo-preview img { width: 100%; max-height: 24rem; object-fit: contain; border: 1px solid var(--border); border-radius: .5rem; background: white; }
+.writing-photo-upload .writing-photo-consent { display: flex; gap: .75rem; align-items: flex-start; line-height: 1.5; margin-bottom: 1rem; }
+.writing-photo-consent input { margin-top: .25rem; width: 1.125rem; height: 1.125rem; flex-shrink: 0; }
+.writing-photo-confirm { display: grid; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+.writing-photo-confirm h4 { font-size: 1.125rem; font-weight: 650; }
+.writing-photo-warning { border-left: 3px solid #b45309; padding-left: .75rem; }
+@media (max-width: 640px) { .writing-photo-preview { grid-template-columns: minmax(0, 1fr); } }
