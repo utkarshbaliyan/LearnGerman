@@ -305,7 +305,7 @@ export default function VocabularyPage() {
 
           <TabsContent value="sets">
             <div className="vocab-section-heading">
-              <div><h2>Choose your next set</h2><p>Every set contains 30–60 words. {studySets.length} sets in {levelLabel}.</p></div>
+              <div><h2>Choose your next set</h2><p>30 words per set, with shorter sets at the end of a topic. Each set stays within one topic and level. {studySets.length} sets in {levelLabel}.</p></div>
               <label className="vocab-topic-picker"><span>Topic</span>
                 <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setStudySetId("all"); setSetLimit(12); }}>
                   <SelectTrigger aria-label="Filter learning sets by topic"><SelectValue /></SelectTrigger>

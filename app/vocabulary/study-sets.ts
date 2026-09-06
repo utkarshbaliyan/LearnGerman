@@ -4,8 +4,7 @@ import {
   type VocabularyWord,
 } from "@/app/vocabulary/data";
 
-export const MIN_STUDY_SET_SIZE = 30;
-export const MAX_STUDY_SET_SIZE = 60;
+export const MAX_STUDY_SET_SIZE = 30;
 
 export type VocabularyStudySet = {
   id: string;
@@ -34,83 +33,24 @@ const CATEGORY_STUDY_LABELS: Record<VocabularyCategory, string> = {
   "Adjektive & Adverbien": "Adjectives & adverbs",
 };
 
-function balancedGroups(words: VocabularyWord[]): VocabularyWord[][] {
-  if (words.length < MIN_STUDY_SET_SIZE) return [words];
-  const groupCount = Math.ceil(words.length / MAX_STUDY_SET_SIZE);
-  const baseSize = Math.floor(words.length / groupCount);
-  const largerGroups = words.length % groupCount;
-  const groups: VocabularyWord[][] = [];
-  let cursor = 0;
-
-  for (let index = 0; index < groupCount; index += 1) {
-    const size = baseSize + (index < largerGroups ? 1 : 0);
-    groups.push(words.slice(cursor, cursor + size));
-    cursor += size;
-  }
-
-  return groups;
-}
-
-function categoriesIn(words: VocabularyWord[]): VocabularyCategory[] {
-  return VOCABULARY_CATEGORIES.filter((category) => words.some((word) => word.category === category));
-}
-
+// Keep each set within one topic and CEFR level. Short topic endings stay
+// short instead of borrowing unrelated words to fill an arbitrary quota.
 export function buildVocabularyStudySets(words: VocabularyWord[]): VocabularyStudySet[] {
-  if (words.length === 0) return [];
-
-  const groupedWords: VocabularyWord[][] = [];
-  let pending: VocabularyWord[] = [];
-
-  for (const category of VOCABULARY_CATEGORIES) {
-    let categoryWords = words.filter((word) => word.category === category);
-    if (categoryWords.length === 0) continue;
-
-    if (pending.length > 0) {
-      const needed = MIN_STUDY_SET_SIZE - pending.length;
-      pending = [...pending, ...categoryWords.slice(0, needed)];
-      categoryWords = categoryWords.slice(needed);
-      if (pending.length >= MIN_STUDY_SET_SIZE) {
-        groupedWords.push(pending);
-        pending = [];
-      } else {
-        continue;
+  const sets: VocabularyStudySet[] = [];
+  for (const level of ["A1", "A2", "B1"] as const) {
+    for (const category of VOCABULARY_CATEGORIES) {
+      const topicWords = words.filter((word) => word.level === level && word.category === category);
+      for (let offset = 0; offset < topicWords.length; offset += MAX_STUDY_SET_SIZE) {
+        const setWords = topicWords.slice(offset, offset + MAX_STUDY_SET_SIZE);
+        const number = offset / MAX_STUDY_SET_SIZE + 1;
+        sets.push({
+          id: `${setWords[0].id}--${setWords.at(-1)?.id}`,
+          title: `${level} · ${CATEGORY_STUDY_LABELS[category]} · Set ${number}`,
+          primaryCategory: category,
+          words: setWords,
+        });
       }
     }
-
-    if (categoryWords.length < MIN_STUDY_SET_SIZE) {
-      pending = categoryWords;
-    } else {
-      groupedWords.push(...balancedGroups(categoryWords));
-    }
   }
-
-  if (pending.length > 0) {
-    const previous = groupedWords.pop() ?? [];
-    groupedWords.push(...balancedGroups([...previous, ...pending]));
-  }
-
-  const categorySetNumbers = new Map<VocabularyCategory, number>();
-
-  return groupedWords.map((setWords) => {
-    const categories = categoriesIn(setWords);
-    const primaryCategory = categories[0];
-    let title: string;
-
-    if (categories.length === 1) {
-      const setNumber = (categorySetNumbers.get(primaryCategory) ?? 0) + 1;
-      categorySetNumbers.set(primaryCategory, setNumber);
-      title = `${CATEGORY_STUDY_LABELS[primaryCategory]} · Set ${setNumber}`;
-    } else {
-      title = categories.length === 2
-        ? `${CATEGORY_STUDY_LABELS[categories[0]]} + ${CATEGORY_STUDY_LABELS[categories[1]]}`
-        : `${CATEGORY_STUDY_LABELS[categories[0]]} + more`;
-    }
-
-    return {
-      id: `${setWords[0].id}--${setWords.at(-1)?.id}`,
-      title,
-      primaryCategory,
-      words: setWords,
-    };
-  });
+  return sets;
 }

@@ -302,7 +302,7 @@ test("opens vocabulary on focused learning sets with separate library and practi
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);
-  assert.match(html, /Every set contains 30–60 words/);
+  assert.match(html, /30 words per set, with shorter sets at the end of a topic/);
   assert.match(html, /aria-label="Vocabulary study sets"/);
   assert.match(html, /aria-label="Filter learning sets by topic"/);
   assert.equal((html.match(/class="vocab-set-card/g) ?? []).length, 12);
@@ -323,12 +323,11 @@ test("configures vocabulary pronunciation for German speech", async () => {
   assert.match(pageSource, /Pronunciation is not available in this browser\./);
 });
 
-test("partitions every CEFR range into complete 30–60 word study sets", async () => {
+test("partitions every CEFR range into topic-pure sets of at most 30 words", async () => {
   const { ALL_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
   const {
     buildVocabularyStudySets,
     MAX_STUDY_SET_SIZE,
-    MIN_STUDY_SET_SIZE,
   } = await vite.ssrLoadModule("/app/vocabulary/study-sets.ts");
 
   for (const level of ["all", "A1", "A2", "B1"]) {
@@ -336,7 +335,14 @@ test("partitions every CEFR range into complete 30–60 word study sets", async 
     const sets = buildVocabularyStudySets(words);
     const assignedIds = sets.flatMap((set) => set.words.map((word) => word.id));
 
-    assert.ok(sets.every((set) => set.words.length >= MIN_STUDY_SET_SIZE));
+    assert.equal(MAX_STUDY_SET_SIZE, 30);
+    assert.ok(sets.every((set) => set.words.length > 0));
+    assert.ok(sets.every((set) => new Set(set.words.map((word) => word.category)).size === 1));
+    assert.ok(sets.every((set) => new Set(set.words.map((word) => word.level)).size === 1));
+    assert.equal(new Set(sets.map((set) => set.title)).size, sets.length);
+    for (const cefr of ["A1", "A2", "B1"]) {
+      assert.deepEqual(sets.filter((set) => set.words[0].level === cefr), buildVocabularyStudySets(words.filter((word) => word.level === cefr)));
+    }
     assert.ok(sets.every((set) => set.words.length <= MAX_STUDY_SET_SIZE));
     assert.equal(new Set(assignedIds).size, words.length);
     assert.deepEqual(new Set(assignedIds), new Set(words.map((word) => word.id)));
