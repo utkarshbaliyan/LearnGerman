@@ -126,7 +126,7 @@ export function SpeakingWorkspace({ taskId }: { taskId: string }) {
     window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = "de-DE"; utterance.rate = .9; window.speechSynthesis.speak(utterance);
   }
   const state = record?.session.speaking;
-  const latest = state?.missionId === record?.mission.id ? record?.session.attempts.filter((item) => item.status === "complete" && item.createdAt >= state.startedAt).at(-1) : undefined;
+  const latest = state && state.missionId === record?.mission.id ? record?.session.attempts.filter((item) => item.status === "complete" && item.createdAt >= state.startedAt).at(-1) : undefined;
   return <div className="speaking-workspace">
     {!signedIn ? <p><Link href="/account">Sign in</Link> to start a speaking mission and save your progress.</p> : !record ? <p>Loading your speaking practice…</p> : <>
       <p>{record.mission.speakingSize} · {record.mission.turns} questions</p>
