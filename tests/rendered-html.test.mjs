@@ -139,3 +139,24 @@ test("preserves the complete story library at its dedicated route", async () => 
   assert.match(html, /Browse stories/i);
   assert.match(html, /Overall progress/i);
 });
+
+test("grammar exposes complete, accessible case recall tables without loading exercises", async () => {
+  const response = await renderRoute("/grammar/cheat-sheets");
+  assert.equal(response.status, 200);
+  const html = (await response.text()).replace(/<!--.*?-->/g, "");
+  assert.match(html, /German case cheat sheets/);
+  for (const id of ["articles", "indefinite", "negative", "personal", "reflexive", "possessive-articles", "possessive-pronouns", "demonstratives", "relative", "adjectives-weak", "adjectives-mixed", "adjectives-strong", "nouns", "weak-nouns", "prepositions", "two-way", "verbs"]) {
+    assert.ok(html.includes(`id="${id}"`), `Missing ${id} sheet`);
+    assert.ok(html.includes(`href="#${id}"`), `Missing ${id} navigation`);
+  }
+  assert.equal((html.match(/<table>/g) ?? []).length, 22);
+  assert.match(html, /scope="col"/);
+  assert.match(html, /scope="row"/);
+  assert.match(html, /Movement alone does not mean accusative/);
+  assert.match(html, /Genitive personal pronouns are formal or literary/);
+  assert.match(html, /denen/);
+  assert.match(html, /des Herzens/);
+  assert.doesNotMatch(html, /Choose your practice set/);
+  const grammar = await renderRoute("/grammar");
+  assert.match(await grammar.text(), /href="\/grammar\/cheat-sheets"/);
+});

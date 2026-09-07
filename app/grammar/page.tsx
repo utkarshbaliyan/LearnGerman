@@ -283,7 +283,7 @@ export default function GrammarPage() {
           <Badge className="eyebrow"><Sparkles /> A1–B1 · Grammar course</Badge>
           <h1>Understand the rule.<br /><em>Use it with confidence.</em></h1>
           <p>A complete 72-lesson roadmap from first sentences to connected B1 German. Every lesson follows the same learning loop: notice, understand, build, correct, produce, and review.</p>
-          <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a></div>
+          <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
         </div>
         <aside className="grammar-progress-card">
           <span>Your grammar course</span>
@@ -293,6 +293,8 @@ export default function GrammarPage() {
           <div className="grammar-progress-meta"><span><b>72</b> total lessons</span><span><b>{overallRoadmap}%</b> full path</span></div>
         </aside>
       </section>
+
+      <section className="grammar-recall-entry" aria-labelledby="recall-entry-title"><div><span>Keep the patterns close</span><h2 id="recall-entry-title">Four cases. One reference section.</h2><p>Recall articles, pronouns, adjective endings, noun forms and prepositions with side-by-side tables.</p></div><Link href="/grammar/cheat-sheets">Open cheat sheets →</Link></section>
 
       <section className="grammar-method">
         <div><Target /><strong>Understand</strong><span>Plain-English rules and visual patterns</span></div>

@@ -1991,3 +1991,43 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .speaking-workspace .writing-photo-consent { display: flex; gap: .75rem; align-items: start; font-size: .9375rem; }
 .speaking-workspace audio { width: 100%; }
 .feedback-challenge { display: grid; gap: .75rem; padding-top: .75rem; }
+
+/* Grammar reference tables stay separate from the exercise bundle. */
+.grammar-recall-entry { max-width: 1354px; margin: 0 auto 36px; padding: 28px clamp(20px,3vw,42px); border-block: 1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.grammar-recall-entry span, .recall-eyebrow { color:var(--orange); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.grammar-recall-entry h2 { font:700 28px Georgia,serif; margin:8px 0; }
+.grammar-recall-entry p { color:var(--ink-soft); margin:0; line-height:1.6; }
+.grammar-recall-entry > a { flex-shrink:0; color:var(--ink); font-weight:800; text-underline-offset:5px; }
+.recall-page { max-width:1440px; margin:auto; padding:32px clamp(16px,4vw,60px) 80px; }
+.recall-header { max-width:950px; margin-bottom:32px; }
+.recall-header > a, .recall-sources a { color:var(--ink); text-underline-offset:4px; }
+.recall-header h1 { font:700 clamp(34px,5vw,60px)/1.05 Georgia,serif; margin:14px 0; letter-spacing:-.035em; }
+.recall-header > p:not(.recall-eyebrow) { color:var(--ink-soft); line-height:1.65; max-width:720px; }
+.recall-case-key { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.recall-case-key span { padding:8px 12px; border:1px solid var(--line); border-radius:6px; font-size:13px; font-weight:700; }
+.recall-layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:38px; align-items:start; }
+.recall-nav { position:sticky; top:20px; max-height:calc(100vh - 40px); overflow-y:auto; }
+.recall-nav h2 { font-size:14px; margin:0 0 14px; }
+.recall-nav a { display:flex; gap:10px; padding:8px 6px; color:var(--ink-soft); text-decoration:none; font-size:13px; line-height:1.4; border-radius:4px; }
+.recall-nav a:hover { color:var(--ink); background:var(--line); }
+.recall-nav a span { color:var(--orange); font-variant-numeric:tabular-nums; }
+.recall-sheet { scroll-margin-top:24px; padding:0 0 30px; margin-bottom:34px; border-bottom:1px solid var(--line); }
+.recall-sheet-heading { display:flex; align-items:baseline; gap:12px; }
+.recall-sheet-heading > span { color:var(--orange); font-size:14px; font-weight:800; }
+.recall-sheet h2 { font:700 clamp(23px,3vw,30px)/1.2 Georgia,serif; margin:0; }
+.recall-sheet > p { color:var(--ink-soft); line-height:1.65; font-size:15px; }
+.recall-table-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+.recall-table-scroll:focus-visible { outline:2px solid var(--orange); outline-offset:3px; }
+.recall-sheet table { border-collapse:collapse; width:100%; min-width:560px; text-align:left; font-size:14px; line-height:1.6; }
+.recall-sheet caption { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.recall-sheet th, .recall-sheet td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+.recall-sheet thead th { background:var(--ink); color:var(--paper); font-size:12px; }
+.recall-sheet tbody th { font-weight:700; min-width:105px; }
+.recall-sheet tbody tr:nth-child(even) { background:color-mix(in srgb, var(--ink) 4%, transparent); }
+.recall-sheet tbody tr:last-child > * { border-bottom:0; }
+.recall-sheet .recall-tip { border-left:3px solid var(--orange); padding:8px 14px; margin:18px 0; }
+.recall-top { color:var(--ink-soft); font-size:12px; text-underline-offset:4px; }
+.recall-sources { font-size:14px; line-height:1.7; }
+.recall-sources h2 { font-size:18px; }
+@media (max-width:850px) { .recall-layout { grid-template-columns:1fr; gap:30px; } .recall-nav { position:static; max-height:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px 12px; } .recall-nav h2 { grid-column:1/-1; } .grammar-recall-entry { align-items:flex-start; flex-direction:column; } }
+@media print { .recall-page { padding:0; } .recall-layout { display:block; } .recall-nav, .recall-top, .recall-header > a, .recall-page ~ * { display:none; } .recall-table-scroll { overflow:visible; } .recall-sheet table { min-width:0; font-size:10px; } .recall-sheet th, .recall-sheet td { padding:5px; } .recall-sheet { break-inside:avoid; } }
