@@ -32,4 +32,5 @@ export type TutorContext = {
   grammarFocus: string;
   vocabulary: string[];
   targetPattern?: string;
+  rubric?: string;
 };

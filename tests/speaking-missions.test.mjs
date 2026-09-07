@@ -41,8 +41,8 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     const id = () => `speaking-request-${++sequence}`;
     const post = (user, body, owner = user) => api.POST(new Request("http://localhost/api/tutor/speaking", { method: "POST", headers: { "content-type": "application/json", ...(user ? { "x-test-user": user, "x-tutor-owner": owner } : {}) }, body: JSON.stringify({ taskId: "a2-1-1", ...body }) }));
     const get = async user => (await api.GET(new Request("http://localhost/api/tutor/speaking?taskId=a2-1-1", { headers: { "x-test-user": user } }))).json();
-    const transcribe = (user, version, requestId, consent = true, type = "audio/webm;codecs=opus", size = 200) => {
-      const form = new FormData(); form.set("taskId", "a2-1-1"); form.set("version", String(version)); form.set("requestId", requestId); form.set("consent", String(consent));
+    const transcribe = (user, version, requestId, consent = true, type = "audio/webm;codecs=opus", size = 200, taskId = "a2-1-1") => {
+      const form = new FormData(); form.set("taskId", taskId); form.set("version", String(version)); form.set("requestId", requestId); form.set("consent", String(consent));
       form.set("audio", new File([new Uint8Array(size)], "recording.webm", { type }));
       return api.POST(new Request("http://localhost/api/tutor/speaking", { method: "POST", headers: { "x-test-user": user, "x-tutor-owner": user }, body: form }));
     };
@@ -64,7 +64,7 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     assert.equal(saved.session.speaking.transcript.original, "Ich möchten den Termin ändern.");
     assert.equal((await post("alice", { action: "respond", version: saved.version, requestId: id(), answer: "Ich möchten den Termin ändern.", transcriptId: requestId, confirmed: false })).status, 400);
     assert.equal((await post("bob", { action: "respond", version: 0, requestId: id(), answer: "Ich möchten den Termin ändern.", transcriptId: requestId, confirmed: true })).status, 400);
-    for (let turn = 0; turn < 4; turn++) {
+    for (let turn = 0; turn < 3; turn++) {
       if (turn > 0) { assert.equal((await transcribe("alice", saved.version, id())).status, 200); saved = await get("alice"); }
       const responseId = id();
       const body = { action: "respond", version: saved.version, requestId: responseId, answer: `Ich möchten den Termin ändern. Antwort ${turn}.`, transcriptId: saved.session.speaking.transcript.id, confirmed: true };
@@ -72,11 +72,11 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
       assert.equal((await post("alice", body)).status, 200);
       saved = await get("alice");
       assert.equal(saved.session.speaking.turns.length, turn + 1);
-      assert.equal(grades, turn === 3 ? 1 : 0, "Conversation feedback waits until the final turn");
+      assert.equal(grades, turn === 2 ? 1 : 0, "Conversation feedback waits until the final turn");
     }
     assert.equal(saved.session.speaking.ended, true);
     assert.equal(saved.session.attempts.length, 1);
-    assert.equal(sqlite.prepare("SELECT used FROM tutor_quotas WHERE user_id='alice'").get().used, 9);
+    assert.equal(sqlite.prepare("SELECT used FROM tutor_quotas WHERE user_id='alice'").get().used, 7);
     assert.equal((await get("bob")).session.speaking, undefined);
     await post("bob", { action: "start", mode: "focus", version: 0 });
     saved = await get("bob"); await transcribe("bob", saved.version, id()); saved = await get("bob");
@@ -89,6 +89,21 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     await post("bob", { action: "repair", version: saved.version, requestId: id(), answer: "Ich möchte den Termin ändern.", transcriptId: saved.session.speaking.transcript.id, confirmed: true });
     saved = await get("bob"); assert.equal(saved.session.speaking.turns.length, 1); assert.equal(saved.session.attempts.length, 2); assert.equal(saved.session.attempts[1].assistance, "correction");
     assert.equal(sqlite.prepare("SELECT used FROM tutor_quotas WHERE user_id='bob'").get().used, 5);
+    // An old task is archived rather than resumed under unrelated new instructions.
+    sqlite.prepare("INSERT INTO tutor_sessions(user_id,task_id,data,version,updated_at) VALUES(?,?,?,1,?)").run("legacy", "speaking:a2-1-1", JSON.stringify({draft:"",attempts:[],speaking:{mode:"conversation",ended:false,turns:[],requests:[],startedAt:new Date().toISOString()}}), new Date().toISOString());
+    assert.equal((await get("legacy")).session.speaking.ended, true);
+    assert.equal((await post("legacy", {action:"start",mode:"conversation",version:1})).status,200);
+    assert.equal((await get("legacy")).session.speakingHistory.length,1);
+    let beginner = await (await post("beginner", {action:"start",mode:"conversation",version:0,taskId:"a1-1-1"})).json();
+    const beforeReplies = replies;
+    for (const answer of ["Ich bin Ada.", "Ja"]) {
+      beginner = await (await transcribe("beginner", beginner.version, id(), true, "audio/webm;codecs=opus", 200, "a1-1-1")).json();
+      const response = await post("beginner", {action:"respond",version:beginner.version,taskId:"a1-1-1",requestId:id(),answer,transcriptId:beginner.session.speaking.transcript.id,confirmed:true});
+      assert.equal(response.status,200); beginner=await response.json();
+    }
+    assert.equal(beginner.session.speaking.ended,true);
+    assert.equal(replies,beforeReplies,"Beginner questions cannot drift into AI-generated advanced topics");
+    assert.equal(sqlite.prepare("SELECT used FROM tutor_quotas WHERE user_id='beginner'").get().used,3);
     const version = saved.version;
     assert.equal((await post("bob", { action: "delete", version })).status, 200);
     assert.equal((await get("bob")).session.speaking, undefined);

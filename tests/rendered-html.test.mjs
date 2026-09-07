@@ -85,13 +85,13 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     const response = await renderRoute(pathname);
     assert.equal(response.status, 200, pathname);
     const html = await response.text();
-    assert.match(html, /Chapter mastery/i, pathname);
+    assert.match(html, /Chapter progress/i, pathname);
     assert.match(html, /Story check/i, pathname);
     assert.match(html, /Hover, tap, or focus an underlined word/i, pathname);
     assert.match(html, /core words/i, pathname);
     assert.match(html, /grammar exercises/i, pathname);
-    assert.match(html, /Have a real exchange/i, pathname);
-    assert.match(html, /confirm what was heard/i, pathname);
+    assert.match(html, /Try it aloud/i, pathname);
+    assert.match(html, /Sign in/i, pathname);
     assert.doesNotMatch(html, /AI tutor/i, pathname);
     assert.match(html, /Integrated checkpoint/i, pathname);
     assert.ok(html.indexOf("01 · Story") < html.indexOf("02 · Vocabulary"), pathname);
@@ -113,10 +113,10 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   assert.match(html, /Story check/i);
   assert.match(html, /Hover, tap, or focus an underlined word/i);
   assert.match(html, /Personal pronouns and/i);
-  assert.match(html, /Introduce yourself without reading/i);
-  assert.match(html, /Write a personal introduction/i);
-  assert.match(html, /Have a real exchange/i);
-  assert.match(html, /four-turn mission/i);
+  assert.match(html, /Say hello/i);
+  assert.match(html, /Introduce yourself with your name/i);
+  assert.match(html, /Try it aloud/i);
+  assert.match(html, /2 short sentences/i);
   assert.match(html, /Integrated checkpoint/i);
 });
 

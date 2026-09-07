@@ -31,7 +31,7 @@ import type { CourseChapterContent } from "@/app/course/course-data";
 import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
 import {
-  COURSE_SKILLS,
+
   EMPTY_CHAPTER_PROGRESS,
   type CourseSkill,
   useCourseProgress,
@@ -44,6 +44,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
+const CHECKED_SKILLS: CourseSkill[] = ["reading", "listening", "vocabulary", "grammar"];
 const SKILLS: Array<{ id: CourseSkill; label: string; icon: typeof BookOpen }> = [
   { id: "listening", label: "Listening", icon: Headphones },
   { id: "reading", label: "Reading", icon: BookOpen },
@@ -105,12 +106,12 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const vocabularyScore = Math.round((knownWordIds.size / content.vocabulary.length) * 100);
 
   const chapterPercent = useMemo(() => {
-    const skillTotal = COURSE_SKILLS.reduce((sum, skill) => sum + (chapter.skillScores[skill] ?? 0), 0);
-    return Math.round((skillTotal + (chapter.checkpointScore ?? 0)) / (COURSE_SKILLS.length + 1));
+    const skillTotal = CHECKED_SKILLS.reduce((sum, skill) => sum + (chapter.skillScores[skill] ?? 0), 0);
+    return Math.round((skillTotal + (chapter.checkpointScore ?? 0)) / (CHECKED_SKILLS.length + 1));
   }, [chapter]);
-  const readyForMastery = COURSE_SKILLS.every((skill) => (chapter.skillScores[skill] ?? 0) >= 70)
+  const readyForMastery = CHECKED_SKILLS.every((skill) => (chapter.skillScores[skill] ?? 0) >= 70)
     && (chapter.checkpointScore ?? 0) >= 80
-    && Object.keys(chapter.grammarSets).length === grammarGroups.length;
+    && grammarGroups.every((group) => chapter.grammarSets[group] !== undefined);
   const previousHref = number > 1 ? courseChapterHref(level, number - 1) : level === "A1" ? "/" : courseChapterHref(level === "A2" ? "A1" : "A2", 24);
   const nextHref = number < 24 ? courseChapterHref(level, number + 1) : level === "B1" ? "/" : courseChapterHref(level === "A1" ? "A2" : "B1", 1);
 
@@ -180,8 +181,8 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
           <div className="chapter-facts"><span><BookOpen /> 1 narrated story</span><span><Languages /> {content.vocabulary.length} core words</span><span><GraduationCap /> {content.grammar.exercises.length} grammar exercises</span><span><Mic /> Speaking mission</span></div>
         </div>
         <aside className="chapter-skill-card">
-          <span>Chapter mastery</span>
-          <div>{SKILLS.map(({ id, label, icon: Icon }) => { const score = chapter.skillScores[id] ?? 0; return <a key={id} href={id === "listening" || id === "reading" ? "#story" : `#${id}`}><Icon /><span>{label}</span><Progress value={score} /><b>{score}%</b></a>; })}</div>
+          <span>Chapter progress</span>
+          <div>{SKILLS.map(({ id, label, icon: Icon }) => { const score = chapter.skillScores[id] ?? 0; return <a key={id} href={id === "listening" || id === "reading" ? "#story" : `#${id}`}><Icon /><span>{label}</span>{id === "writing" || id === "speaking" ? <b>Practice</b> : <><Progress value={score} /><b>{score}%</b></>}</a>; })}</div>
           <p>Every skill must reach at least 70%. The final checkpoint requires 80%.</p>
         </aside>
       </section>
@@ -220,20 +221,22 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
         <div className="chapter-section-copy"><span>03 · Grammar · synced</span><h2>{content.lesson.title}.</h2><p>{content.grammar.lead}</p></div>
         <div className="chapter-grammar-pattern"><span>Core pattern</span><strong lang="de">{content.grammar.pattern}</strong></div>
         <div className="chapter-explanation">{content.grammar.explanation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+        <details className="tutor-optional"><summary>More examples & reference tables</summary>
         {content.grammar.sections?.map((section) => <article className="chapter-grammar-detail" key={section.title}><h3>{section.title}</h3>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.examples?.map((example) => <p key={example.german}><b lang="de">{example.german}</b> — {example.english}</p>)}</article>)}
         <div className="chapter-tables">{content.grammar.tables?.map((table) => <article key={table.title}><h3>{table.title}</h3>{table.caption && <p>{table.caption}</p>}<div><table><thead><tr>{table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead><tbody>{table.rows.map((row) => <tr key={row.join("-")}>{row.map((cell, index) => <td key={`${cell}-${index}`} lang={index > 0 ? "de" : undefined}>{cell}</td>)}</tr>)}</tbody></table></div></article>)}</div>
         <div className="chapter-examples"><div><span>See it in use</span><h3>Useful examples</h3></div><div>{content.grammar.examples.map((example) => <article key={example.german}><strong lang="de">{example.german}</strong><span>{example.english}</span>{example.note && <small>{example.note}</small>}</article>)}</div></div>
         <div className="chapter-memory-tip"><Lightbulb /><div><span>Memory strategy</span><p>{content.grammar.memoryTip}</p></div></div>
+        </details>
         <GrammarPracticePanel exercises={content.grammar.exercises} completedSets={chapter.grammarSets} onFinish={finishGrammarSet} />
       </section>
 
       <section className="chapter-learning-section chapter-writing" id="writing">
-        <div className="chapter-section-copy"><span>04 · Writing</span><h2>Write, repair, try again.</h2><p>Communicate a message, use a focused hint, then rewrite it yourself.</p></div>
+        <div className="chapter-section-copy"><span>04 · Writing</span><h2>{content.writingTitle}</h2></div>
         <WritingRepairWorkspace key={content.id} taskId={content.id} prompt={writingMission(content)} suggestedWords={content.writingMinimum} />
       </section>
 
       <section className="chapter-learning-section chapter-speaking" id="speaking">
-        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Have a real exchange.</h2><p>Complete a four-turn mission, confirm what was heard, and practise the language you need.</p></div>
+        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Try it aloud.</h2></div>
         <SpeakingWorkspace key={content.id} taskId={content.id} />
       </section>
 
@@ -244,14 +247,14 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
 
       <section className={`chapter-finish${chapter.completed ? " is-complete" : ""}`}>
         <div>{chapter.completed ? <CheckCircle2 /> : <Sparkles />}</div>
-        <span>{chapter.completed ? "Chapter mastered" : "Mastery gate"}</span>
-        <h2>{chapter.completed ? content.completionOutcome : readyForMastery ? "Every skill is ready." : "Complete every skill before moving on."}</h2>
-        <p>{chapter.completed ? `${level} is now one chapter closer to completion. Review remains available at any time.` : `Each skill needs 70%, all ${grammarGroups.length} grammar sets must be attempted, and the checkpoint needs 80%.`}</p>
-        <div className="mastery-requirements">{SKILLS.map(({ id, label }) => <span key={id} className={(chapter.skillScores[id] ?? 0) >= 70 ? "is-ready" : ""}>{(chapter.skillScores[id] ?? 0) >= 70 ? <Check /> : <Circle />}{label} {chapter.skillScores[id] ?? 0}%</span>)}<span className={(chapter.checkpointScore ?? 0) >= 80 ? "is-ready" : ""}>{(chapter.checkpointScore ?? 0) >= 80 ? <Check /> : <Circle />}Checkpoint {chapter.checkpointScore ?? 0}%</span></div>
+        <span>{chapter.completed ? "Chapter completed" : "Finish this chapter"}</span>
+        <h2>{chapter.completed ? content.completionOutcome : readyForMastery ? "Ready for the next chapter." : "Finish the practice checks."}</h2>
+        <p>{chapter.completed ? `${level} is now one chapter closer to completion. Review remains available at any time.` : `Aim for 70% in the practice checks and 80% in the checkpoint. Speaking and writing are for practice, without a score requirement.`}</p>
+        <div className="mastery-requirements">{SKILLS.filter(({ id }) => CHECKED_SKILLS.includes(id)).map(({ id, label }) => <span key={id} className={(chapter.skillScores[id] ?? 0) >= 70 ? "is-ready" : ""}>{(chapter.skillScores[id] ?? 0) >= 70 ? <Check /> : <Circle />}{label} {chapter.skillScores[id] ?? 0}%</span>)}<span className={(chapter.checkpointScore ?? 0) >= 80 ? "is-ready" : ""}>{(chapter.checkpointScore ?? 0) >= 80 ? <Check /> : <Circle />}Checkpoint {chapter.checkpointScore ?? 0}%</span></div>
         <div className="chapter-finish-actions"><Button variant="outline" asChild><Link href={previousHref}><ArrowLeft /> Previous chapter</Link></Button>{chapter.completed ? <Button asChild><Link href={nextHref}>Continue to next chapter <ArrowRight /></Link></Button> : <Button size="lg" disabled={!readyForMastery || !hydrated} onClick={completeChapter}>Complete Chapter {number} <ArrowRight /></Button>}</div>
       </section>
 
-      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through complete courses</small></span></Link><p>{level} Chapter {number} integrates all six language skills and a mastery checkpoint.</p><div><a href="#top">Back to top</a><Link href="/">Course roadmap</Link></div></footer>
+      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through complete courses</small></span></Link><p>{level} Chapter {number} integrates all six language skills and a chapter checkpoint.</p><div><a href="#top">Back to top</a><Link href="/">Course roadmap</Link></div></footer>
     </main>
   );
 }

@@ -1,3 +1,4 @@
+import { getChapterOutputTask } from "./chapter-output-tasks";
 import { getPracticeTask } from "./tutor-practice";
 import { TUTOR_PATTERNS } from "./tutor-patterns";
 import { getCourseChapter } from "@/app/course/course-data";
@@ -10,7 +11,7 @@ export function getWritingTask(taskId: string) {
   if (!match) return null;
   const content = getCourseChapter(match[1], (Number(match[2]) - 1) * 6 + Number(match[3]));
   if (!content) return null;
-  return { level: content.level, chapter: content.number, prompt: writingMission(content),
+  return { level: content.level, chapter: content.number, prompt: writingMission(content), rubric: getChapterOutputTask(taskId)!.rubric,
     grammarFocus: `${content.lesson.title}: ${content.grammar.pattern}`,
     vocabulary: content.vocabulary.slice(0, 20).map((word) => word.german) };
 }

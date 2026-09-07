@@ -1,3 +1,4 @@
+import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
 import {
   CHAPTER_ONE_CHECKPOINT,
   CHAPTER_ONE_LISTENING,
@@ -250,16 +251,12 @@ export function getCourseChapter(level: string, number: number) {
     listening: isFirstChapter ? CHAPTER_ONE_LISTENING : generated.listening,
     reading: isFirstChapter ? CHAPTER_ONE_READING : generated.reading,
     checkpoint: isFirstChapter ? CHAPTER_ONE_CHECKPOINT : generated.checkpoint,
-    writingTitle: isFirstChapter ? "Write a personal introduction." : "Produce connected German.",
-    speakingPrompt: isFirstChapter
-      ? "Say your name, where you come from, where you live, which languages you speak, and one personal detail."
-      : story.speakingPrompt ?? `Speak for 45–60 seconds about “${story.theme}”. Use the chapter grammar pattern and at least five new expressions.`,
-    speakingTitle: isFirstChapter ? "Introduce yourself without reading." : "Respond without reading.",
-    speakingLength: isFirstChapter ? "30–45 seconds" : normalizedLevel === "A1" ? "45–60 seconds" : normalizedLevel === "A2" ? "60–90 seconds" : "90–120 seconds",
-    writingPrompt: isFirstChapter
-      ? "Write 30–50 words. Include your name, origin, current city, languages, and one reason for learning German."
-      : story.writingPrompt ?? `Write 50–80 words about “${story.theme}”. Use the chapter grammar focus and connect at least four complete sentences.`,
-    writingMinimum: isFirstChapter ? 30 : normalizedLevel === "A1" ? 40 : normalizedLevel === "A2" ? 70 : 100,
+    writingTitle: getChapterOutputTask(lesson.id)!.title,
+    speakingPrompt: getChapterOutputTask(lesson.id)!.questions[0],
+    speakingTitle: getChapterOutputTask(lesson.id)!.title,
+    speakingLength: getChapterOutputTask(lesson.id)!.speakingSize,
+    writingPrompt: getChapterOutputTask(lesson.id)!.writing,
+    writingMinimum: getChapterOutputTask(lesson.id)!.suggestedWords,
   };
 }
 

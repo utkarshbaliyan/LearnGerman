@@ -2031,3 +2031,8 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .recall-sources h2 { font-size:18px; }
 @media (max-width:850px) { .recall-layout { grid-template-columns:1fr; gap:30px; } .recall-nav { position:static; max-height:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px 12px; } .recall-nav h2 { grid-column:1/-1; } .grammar-recall-entry { align-items:flex-start; flex-direction:column; } }
 @media print { .recall-page { padding:0; } .recall-layout { display:block; } .recall-nav, .recall-top, .recall-header > a, .recall-page ~ * { display:none; } .recall-table-scroll { overflow:visible; } .recall-sheet table { min-width:0; font-size:10px; } .recall-sheet th, .recall-sheet td { padding:5px; } .recall-sheet { break-inside:avoid; } }
+
+.tutor-optional { margin:14px 0; padding:12px 0; border-top:1px solid var(--line); }
+.tutor-optional > summary, .tutor-memory-panel > summary { cursor:pointer; font-size:14px; font-weight:600; color:var(--ink-soft); }
+.writing-starter { padding:12px 16px; border-left:3px solid var(--orange); background:color-mix(in srgb,var(--orange) 5%,transparent); }
+.writing-starter span { font-size:13px; color:var(--ink-soft); margin-right:10px; }

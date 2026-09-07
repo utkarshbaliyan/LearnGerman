@@ -17,7 +17,9 @@ export async function GET(request: Request) {
   const taskId = new URL(request.url).searchParams.get("taskId") ?? "";
   const mission = getSpeakingMission(taskId);
   if (!mission) return fail("Unknown speaking task.");
-  return Response.json({ ...publicWritingRecord(await readTutorSession(await getD1(), user.id, `speaking:${taskId}`)), mission }, { headers: responseHeaders });
+  const record = await readTutorSession(await getD1(), user.id, `speaking:${taskId}`);
+  if (record.session.speaking && record.session.speaking.missionId !== mission.id) record.session.speaking.ended = true;
+  return Response.json({ ...publicWritingRecord(record), mission }, { headers: responseHeaders });
 }
 export async function POST(request: Request) {
   const user = await getAuthenticatedUser(request);
@@ -65,10 +67,10 @@ export async function POST(request: Request) {
   if (body.action === "delete") record.session = { draft: "", attempts: [] };
   else if (body.action === "start") {
     if (body.mode !== "focus" && body.mode !== "conversation") return fail("Choose a speaking mode.");
-    if (record.session.speaking && !record.session.speaking.ended) return fail("Finish or delete the current mission before starting another.", 409);
+    if (record.session.speaking?.missionId === mission.id && !record.session.speaking.ended) return fail("Finish or delete the current mission before starting another.", 409);
     if ((record.session.speakingHistory?.length ?? 0) >= 9) return fail("Ten missions are saved. Delete this task’s speaking history before starting again.");
     if (record.session.speaking) record.session.speakingHistory = [...(record.session.speakingHistory ?? []), record.session.speaking];
-    record.session.speaking = { mode: body.mode, startedAt: new Date().toISOString(), ended: false, turns: [], requests: [] };
+    record.session.speaking = { missionId: mission.id, mode: body.mode, startedAt: new Date().toISOString(), ended: false, turns: [], requests: [] };
   } else {
     const state = record.session.speaking;
     if (!state) return fail("Start a speaking mission first.");
@@ -76,11 +78,12 @@ export async function POST(request: Request) {
       const problem = applyFeedbackAction(record.session.attempts, body);
       if (problem) return fail(problem);
     } else if (body.action === "transcribe" || (body.action === "respond" || body.action === "repair")) {
+      if (state.missionId !== mission.id) return fail("This chapter has a new task. Start it to continue.", 409);
       if (state.ended && !(state.mode === "focus" && body.action !== "respond")) return fail("This mission is finished. Start another mission.", 409);
       if (typeof body.requestId !== "string" || !/^[a-zA-Z0-9-]{16,80}$/.test(body.requestId)) return fail("A valid request ID is required.");
       if (state.requests.length >= 32) return fail("Too many requests in this mission. Delete it to start again.");
       if (body.action === "transcribe" && !audio) return fail("Record a response first.");
-      if ((body.action === "respond" || body.action === "repair") && (body.confirmed !== true || !state.transcript || state.transcript.consumed || body.transcriptId !== state.transcript.id || typeof body.answer !== "string" || body.answer.trim().length < 3 || body.answer.length > 2000)) return fail("Confirm the transcript before sending your response.");
+      if ((body.action === "respond" || body.action === "repair") && (body.confirmed !== true || !state.transcript || state.transcript.consumed || body.transcriptId !== state.transcript.id || typeof body.answer !== "string" || body.answer.trim().length < (mission.level === "A1" ? 1 : 3) || body.answer.length > 2000)) return fail("Confirm the transcript before sending your response.");
       if (body.action === "repair" && (state.mode !== "focus" || !state.turns.length)) return fail("There is no focused response to repair.");
       const operation = { id: body.requestId, hash, action: body.action, status: "pending" as "pending" | "complete" | "failed", createdAt: new Date().toISOString() };
       state.requests.push(operation);
@@ -88,7 +91,8 @@ export async function POST(request: Request) {
       let error: string | undefined, status = 502;
       try {
         const grade = body.action === "repair" || body.action === "respond" && (state.mode === "focus" || state.turns.length + 1 === mission.turns);
-        if (!await reserveTutorQuota(db, user.id, grade && body.action !== "repair" ? 2 : 1)) { status = 429; error = "Daily AI limit reached. Speaking, writing and photo reads share 20 requests per day."; }
+        const units = body.action === "transcribe" || body.action === "repair" ? 1 : (grade ? 1 : 0) + (mission.level === "A1" ? 0 : 1);
+        if (units > 0 && !await reserveTutorQuota(db, user.id, units)) { status = 429; error = "Daily AI limit reached. Speaking, writing and photo reads share 20 requests per day."; }
         else if (body.action === "transcribe") {
           const text = await transcribeGerman(audio!);
           if (text.length > 2000) throw new Error("Transcript too long");
@@ -99,7 +103,7 @@ export async function POST(request: Request) {
           const combined = grade && state.mode === "conversation" ? [...state.turns.map((turn) => turn.text), answer].join("\n") : answer;
           let attempt: WritingAttempt | undefined;
           if (grade) {
-            const context = { level: mission.level, chapter: 1, prompt: `${mission.goal} Questions asked: ${[...state.turns.map((turn) => turn.prompt), (body.action === "repair" ? state.turns.at(-1)?.prompt : state.turns.at(-1)?.reply) ?? mission.opening].join(" ")}`, grammarFocus: mission.patternId, vocabulary: [], targetPattern: mission.patternId };
+            const context = { level: mission.level, chapter: mission.chapter, rubric: mission.rubric, prompt: `${mission.goal} Questions asked: ${[...state.turns.map((turn) => turn.prompt), (body.action === "repair" ? state.turns.at(-1)?.prompt : state.turns.at(-1)?.reply) ?? mission.opening].join(" ")}`, grammarFocus: mission.grammarFocus, vocabulary: [], targetPattern: mission.patternId };
             attempt = { id: operation.id, answer: combined, createdAt: operation.createdAt, status: "complete", revealed: false,
               assistance: record.session.attempts.some((x) => x.revealed) ? "correction" : record.session.attempts.some((x) => x.status === "complete") ? "hint" : "independent",
               feedback: repairFeedback(await createTutorFeedback("speaking", context, combined), combined) };

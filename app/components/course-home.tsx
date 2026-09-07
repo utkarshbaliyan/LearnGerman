@@ -79,12 +79,12 @@ export function CourseHome({
         <aside className={`course-mastery-card${hydrated ? " is-ready" : ""}`}>
           <div className="course-mastery-heading"><div><span>Your published course</span><h2>{coursePercent}% complete</h2></div><div className="course-master-ring" style={{ "--mastery": `${coursePercent * 3.6}deg` } as CSSProperties}><strong>{completedChapters}/72</strong></div></div>
           <Progress value={coursePercent} aria-label={`Published course ${coursePercent}% complete`} />
-          <p>A chapter counts only after reading, listening, vocabulary, grammar, speaking, and writing requirements are met.</p>
+          <p>Complete the practice checks to finish a chapter. Speaking and writing help you use what you learn.</p>
           <div className="course-skill-preview">
             {COURSE_SKILLS.map((skill) => {
               const Icon = SKILL_META[skill].icon;
               const score = activeChapter?.skillScores[skill] ?? 0;
-              return <div key={skill}><Icon /><span>{SKILL_META[skill].label}</span><b>{score}%</b></div>;
+              return <div key={skill}><Icon /><span>{SKILL_META[skill].label}</span><b>{skill === "speaking" || skill === "writing" ? "Practice" : `${score}%`}</b></div>;
             })}
           </div>
         </aside>

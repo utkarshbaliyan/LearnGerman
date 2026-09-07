@@ -21,11 +21,9 @@ export function TutorMemoryPanel({ level }: { level: string }) {
     refresh(); window.addEventListener("leselaut-tutor-updated", refresh);
     return () => { active = false; revision++; window.removeEventListener("leselaut-tutor-updated", refresh); };
   }, [level]);
-  return <section className="tutor-memory-panel" aria-label="Your learning profile"><h3>Your learning profile</h3>
-    {error && <p role="status">{error}</p>}
-    {memory && !memory.patterns.length && <p>Your recurring patterns will appear here after verified feedback. Writing and speaking share this profile.</p>}
-    {memory?.patterns.slice(0, 5).map((pattern) => <article key={pattern.patternId}><b>{pattern.label}</b><p>{pattern.errorScenarios} {pattern.errorScenarios === 1 ? "scenario with an error" : "scenarios with errors"} · {pattern.independentUses} independent uses · {pattern.assistedUses} assisted uses · {pattern.delayedIndependentUses} delayed independent uses</p>{!pattern.delayedIndependentUses && <small>New-context review from {new Date(pattern.nextDueAt).toLocaleDateString()}.</small>}</article>)}
-    {memory?.recommendations.map((item) => <p key={item.taskId}><Link href={`/practice/tutor?task=${encodeURIComponent(item.taskId)}`}>{item.delayed ? "Try a delayed review" : "Practise now"}: {getPracticeTask(item.taskId)?.title}</Link></p>)}
-    <p className="writing-guidance">Based on your most recent {memory?.attemptsConsidered ?? 0} checked attempts (up to 1,000). Styles and disputed corrections are excluded. Independent means no help recorded in that task; these counts are evidence, not a mastery certificate.</p>
-  </section>;
+  if (error || !memory?.patterns.length) return null;
+  return <details className="tutor-memory-panel"><summary>Extra practice</summary>
+    {memory.recommendations.map((item) => <p key={item.taskId}><Link href={`/practice/tutor?task=${encodeURIComponent(item.taskId)}`}>{getPracticeTask(item.taskId)?.title}</Link></p>)}
+    {!memory.recommendations.length && <p>No extra practice is due.</p>}
+  </details>;
 }
