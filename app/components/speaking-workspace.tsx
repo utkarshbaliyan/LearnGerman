@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MAX_SPEAKING_AUDIO_BYTES, speakingAudioFile, speakingAudioProblem } from "@/app/lib/speaking-audio";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
@@ -75,14 +76,16 @@ export function SpeakingWorkspace({ taskId }: { taskId: string }) {
       const chunks: Blob[] = []; let total = 0;
       recorder.current = capture; setAudio(null); setAudioUrl(""); key.current = null;
       if (url.current) URL.revokeObjectURL(url.current); url.current = "";
-      capture.ondataavailable = (event) => { total += event.data.size; chunks.push(event.data); if (total > 5_242_880 && capture.state === "recording") capture.stop(); };
+      capture.ondataavailable = (event) => { total += event.data.size; chunks.push(event.data); if (total > MAX_SPEAKING_AUDIO_BYTES && capture.state === "recording") capture.stop(); };
       capture.onstop = () => {
         media.getTracks().forEach((track) => track.stop());
         if (timer.current) clearTimeout(timer.current);
         if (generation !== epoch.current) return;
         setRecording(false);
-        if (total > 5_242_880) { setError("Recording was too large. Try a shorter response."); return; }
+        if (total > MAX_SPEAKING_AUDIO_BYTES) { setError("Recording was too large. Try a shorter response."); return; }
         const blob = new Blob(chunks, { type: capture.mimeType || "audio/webm" });
+        const problem = speakingAudioProblem(blob);
+        if (problem) { setError(problem); return; }
         setAudio(blob); url.current = URL.createObjectURL(blob); setAudioUrl(url.current);
       };
       capture.onerror = () => { if (generation === epoch.current) { stopMedia(); setRecording(false); setError("Recording stopped unexpectedly. Please record again."); } };
@@ -100,9 +103,7 @@ export function SpeakingWorkspace({ taskId }: { taskId: string }) {
       const headers: Record<string, string> = { "x-tutor-owner": owner.current ?? "" };
       let body: FormData | string;
       if (action === "transcribe" && audio) {
-        const type = audio.type.split(";")[0];
-        const extension = type === "audio/mp4" ? "mp4" : type === "audio/ogg" ? "ogg" : "webm";
-        body = new FormData(); body.set("audio", new File([audio], `response.${extension}`, { type }));
+        body = new FormData(); body.set("audio", speakingAudioFile(audio));
         body.set("taskId", taskId); body.set("requestId", key.current.id); body.set("version", String(record.version)); body.set("consent", String(consent));
       } else {
         headers["content-type"] = "application/json";

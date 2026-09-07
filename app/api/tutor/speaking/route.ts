@@ -1,3 +1,4 @@
+import { speakingAudioFile, speakingAudioProblem } from "@/app/lib/speaking-audio";
 import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
 import { getD1 } from "@/db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
@@ -31,9 +32,11 @@ export async function POST(request: Request) {
     if (multipart) {
       const form = await new Response(new Blob([bytes.buffer as ArrayBuffer]), { headers: { "content-type": type } }).formData();
       const file = form.get("audio");
-      if (!(file instanceof File) || file.size < 100 || file.size > 5_242_880 || !["audio/webm", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/wav", "audio/x-wav"].includes(file.type.split(";")[0])) return fail("Choose a supported audio recording under 5 MB.");
+      if (!file || typeof file === "string") return fail("No audio file was received. Record a response first.");
+      const problem = speakingAudioProblem(file);
+      if (problem) return fail(problem);
       if (form.get("consent") !== "true") return fail("Recording consent is required.");
-      audio = file;
+      audio = speakingAudioFile(file);
       body = { action: "transcribe", taskId: form.get("taskId"), requestId: form.get("requestId"), version: Number(form.get("version")) };
     } else body = JSON.parse(new TextDecoder().decode(bytes));
   } catch { return fail("Invalid speaking request."); }

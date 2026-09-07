@@ -28,7 +28,7 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
   let transcriptions = 0, replies = 0, grades = 0, failProvider = false;
   globalThis.fetch = async (url, init) => {
     if (failProvider) return Response.json({}, { status: 503 });
-    if (String(url).endsWith("/audio/transcriptions")) { transcriptions++; return Response.json({ text: "Ich möchten den Termin ändern." }); }
+    if (String(url).endsWith("/audio/transcriptions")) { assert.equal(init.body.get("file").type, "audio/webm"); transcriptions++; return Response.json({ text: "Ich möchten den Termin ändern." }); }
     const payload = JSON.parse(init.body);
     assert.ok(init.signal);
     if (payload.max_completion_tokens === 700) { replies++; return Response.json({ choices: [{ message: { content: JSON.stringify({ reply: "Am Dienstag ist noch ein Termin frei. Passt Ihnen das?" }) } }] }); }
@@ -41,9 +41,9 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     const id = () => `speaking-request-${++sequence}`;
     const post = (user, body, owner = user) => api.POST(new Request("http://localhost/api/tutor/speaking", { method: "POST", headers: { "content-type": "application/json", ...(user ? { "x-test-user": user, "x-tutor-owner": owner } : {}) }, body: JSON.stringify({ taskId: "a2-1-1", ...body }) }));
     const get = async user => (await api.GET(new Request("http://localhost/api/tutor/speaking?taskId=a2-1-1", { headers: { "x-test-user": user } }))).json();
-    const transcribe = (user, version, requestId, consent = true) => {
+    const transcribe = (user, version, requestId, consent = true, type = "audio/webm;codecs=opus", size = 200) => {
       const form = new FormData(); form.set("taskId", "a2-1-1"); form.set("version", String(version)); form.set("requestId", requestId); form.set("consent", String(consent));
-      form.set("audio", new File([new Uint8Array(200)], "recording.webm", { type: "audio/webm" }));
+      form.set("audio", new File([new Uint8Array(size)], "recording.webm", { type }));
       return api.POST(new Request("http://localhost/api/tutor/speaking", { method: "POST", headers: { "x-test-user": user, "x-tutor-owner": user }, body: form }));
     };
     assert.equal((await post(null, { action: "start", mode: "conversation", version: 0 })).status, 401);
@@ -51,6 +51,11 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     assert.equal((await post("alice", { action: "start", mode: "conversation", version: 0 })).status, 200);
     let saved = await get("alice");
     assert.equal((await transcribe("alice", saved.version, id(), false)).status, 400);
+    const empty = await transcribe("alice", saved.version, id(), true, "audio/webm", 0);
+    assert.equal(empty.status, 400); assert.match((await empty.json()).error, /No usable audio/);
+    const wrongFormat = await transcribe("alice", saved.version, id(), true, "text/plain");
+    assert.equal(wrongFormat.status, 400); assert.match((await wrongFormat.json()).error, /format is not supported/);
+    assert.equal(transcriptions, 0);
     const requestId = id();
     assert.equal((await transcribe("alice", saved.version, requestId)).status, 200);
     assert.equal((await transcribe("alice", saved.version, requestId)).status, 200);
