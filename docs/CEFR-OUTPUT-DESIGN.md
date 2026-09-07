@@ -14,3 +14,7 @@ Empty profiles are hidden. Extra practice, photo input, alternate speaking modes
 Basis: Council of Europe [CEFR descriptors](https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-descriptors-search), [self-assessment grid](https://rm.coe.int/16802fc1bf), and [Goethe level descriptions](https://www.goethe.de/en/m/spr/kur/stu.html). A1 allows simple formulaic phrases with support; A2 focuses on routine familiar exchanges; B1 develops connected accounts and reasons.
 
 This is a redesign of chapter output tasks, feedback expectations and course presentation. Existing story texts and grammar exercise banks have not undergone a full teacher-led CEFR calibration. CEFR does not prescribe an exact grammar syllabus or certify these chapter assignments. Teacher review and a beginner pilot remain necessary before claiming validated alignment or learning gains.
+
+## Simplified speaking drill
+
+The student now sees one chapter question immediately, records an answer, and stops to receive feedback and corrections automatically. Retry stays on that question; Next question is optional. There is no mission setup, mode selection or mandatory transcript-confirmation step. Learners may correct speech-recognition mistakes and request updated feedback. Unconfirmed transcripts are excluded from shared error/independent-use evidence. Corrections are shown immediately for speaking, so later retries are recorded as correction-assisted. The writing repair workflow is unchanged. Existing mission history is retained separately from new drill history.

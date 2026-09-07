@@ -8,7 +8,7 @@ export type TutorMemory = { patterns: PatternMemory[]; recommendations: { taskId
 export const TRANSFER_DELAY = 7 * 24 * 60 * 60_000;
 
 export function deriveTutorMemory(sources: MemorySource[], level: string, now = Date.now()): TutorMemory {
-  const rows = sources.filter(({ attempt }) => attempt.status === "complete" && Number.isFinite(Date.parse(attempt.createdAt))).sort((a, b) => Date.parse(a.attempt.createdAt) - Date.parse(b.attempt.createdAt));
+  const rows = sources.filter(({ attempt }) => attempt.status === "complete" && attempt.transcriptConfirmed !== false && Number.isFinite(Date.parse(attempt.createdAt))).sort((a, b) => Date.parse(a.attempt.createdAt) - Date.parse(b.attempt.createdAt));
   const patterns = new Map<TutorPatternId, { errors: Map<string, number>; independent: Set<string>; assisted: Set<string>; delayed: Set<string>; answers: Set<string>; lastSeen: string }>();
   const seenAttempts = new Set<string>();
   for (const { taskId: sourceTaskId, attempt } of rows) {

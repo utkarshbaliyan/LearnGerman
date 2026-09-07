@@ -16,6 +16,9 @@ export type RepairFeedback = { summary: string; issues: RepairIssue[]; taskSucce
 export type WritingAttempt = {
   id: string; answer: string; createdAt: string; assistance: "independent" | "hint" | "correction";
   sourcePhotoId?: string;
+  questionIndex?: number;
+  transcriptConfirmed?: boolean;
+  requestHash?: string;
   answerFingerprint?: string;
   helpLevel?: number;
   disputes?: { start: number; reason: "incorrect" | "meaning"; note: string; createdAt: string }[];
