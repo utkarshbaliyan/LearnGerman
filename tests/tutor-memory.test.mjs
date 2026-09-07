@@ -28,6 +28,7 @@ test("shared tutor memory distinguishes repetition, assistance, delayed transfer
     sources.push({ taskId: "speaking:a2-1-2", attempt: positive("s1", "weil ich lernen möchte", start + TRANSFER_DELAY, "hint") });
     memory = deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY);
     assert.equal(memory.patterns[0].assistedUses, 1); assert.equal(memory.patterns[0].delayedIndependentUses, 0);
+    assert.equal(deriveTutorMemory([...sources, { taskId: "speaking:a2-1-9", attempt: positive("copied", "weil ich lernen möchte", start + TRANSFER_DELAY + 1) }], "A2", start + TRANSFER_DELAY + 2).patterns[0].delayedIndependentUses, 0, "Copying an assisted script is not independent transfer");
     sources.push({ taskId: "practice-a2-verb-position-2", attempt: positive("p2", "weil ich krank bin", start + TRANSFER_DELAY) });
     assert.equal(deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY).patterns[0].delayedIndependentUses, 0, "Same script in another task is not transfer");
     sources.push({ taskId: "speaking:a2-1-3", attempt: positive("s2", "weil der Bus zu spät kommt", start + TRANSFER_DELAY + 1000) });

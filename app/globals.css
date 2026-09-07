@@ -1984,3 +1984,10 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .tutor-memory-panel h3 { font-size: 1.125rem; font-weight: 650; }
 .tutor-memory-panel article { border-bottom: 1px solid var(--border); padding-bottom: .75rem; }
 .tutor-memory-panel a { text-decoration: underline; text-underline-offset: .2rem; }
+.speaking-workspace { display: grid; gap: 1.25rem; }
+.speaking-workspace h3 { font-size: 1.25rem; font-weight: 650; }
+.speaking-partner { background: var(--muted); border-radius: 1rem; padding: 1.25rem; display: grid; gap: 1rem; }
+.speaking-partner p { font-size: 1.125rem; line-height: 1.7; }
+.speaking-workspace .writing-photo-consent { display: flex; gap: .75rem; align-items: start; font-size: .9375rem; }
+.speaking-workspace audio { width: 100%; }
+.feedback-challenge { display: grid; gap: .75rem; padding-top: .75rem; }

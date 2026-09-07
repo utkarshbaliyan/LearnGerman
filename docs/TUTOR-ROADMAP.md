@@ -10,29 +10,29 @@ Objective: help A2–B1 learners independently use German they recognize. Preser
 - Require seven days and a different scenario before recording delayed independent reuse. A missing error alone is not proof of correct use.
 - Verify ownership, repeat/idempotent reads, date eligibility, source-span validation and deletion propagation.
 
-## 2. Speaking workflow and dialogue missions — in progress
+## 2. Speaking workflow and dialogue missions — implemented; targeted tests passing
 - Authenticate every request; use the shared durable quota and server-owned task definitions.
 - Record with explicit consent, cap duration and payload, replay locally, transcribe, then require editable transcript confirmation before language feedback.
 - Offer goal-based, 3–6-turn dialogues with responses grounded in the student's last turn.
 - Conversation mode: feedback after the exchange. Focus mode: repair after each response.
 - Persist confirmed turns and feedback, resume sessions, support deletion. Do not store raw audio or claim pronunciation scoring.
 
-## 3. Graduated help — queued
+## 3. Graduated help — implemented; automated checks passing
 - Progress through clue, guiding question, partial example and correction with explanation.
 - Persist support requests; subsequent attempts inherit the highest assistance already seen.
 - Show one or two prioritized errors and identify optional style separately.
 
-## 4. Autosave and recovery — queued
+## 4. Autosave and recovery — implemented; recovery checks passing
 - Debounce authenticated draft saves without interrupting typing or overwriting new edits.
 - Preserve unsent work locally under its account and task; restore after reload and retry after reconnect.
 - Surface conflicting remote edits and let the student choose; never silently overwrite another browser.
 
-## 5. Feedback challenges — queued
+## 5. Feedback challenges — implemented; automated checks passing
 - Let the learner flag incorrect feedback or explain that a correction changes their meaning.
 - Save the report with its source attempt and exclude disputed evidence from the learning profile pending review.
 - Keep deletion and history views consistent.
 
-## 6. Validation and release — queued
+## 6. Validation and release — automated checks passing; public release pending
 - Automated tests of new state transitions, isolation, quotas, concurrency, assistance, transfer eligibility, recovery and challenges.
 - Production build, types and lint; bounded synthetic live-provider checks where needed.
 - Commit and push each complete milestone to GitHub. Preserve the running local preview.
@@ -43,3 +43,8 @@ Objective: help A2–B1 learners independently use German they recognize. Preser
 - Pilot with 20–30 A2 learners and unfamiliar delayed tasks after 7+ days.
 - Measure independent task success, recurring errors, false corrections, completed repairs, retention, latency and cost.
 - These product features and automated checks do not establish educational effectiveness or validated pronunciation assessment.
+
+## Latest verification
+- 34 automated tests pass, including API ownership, transcript confirmation, conversation/focus modes, repairs, help redaction, disputes, recovery isolation, in-flight edits and render/bundle checks.
+- TypeScript, ESLint and production build pass. Browser interaction and the human pilot remain unvalidated; recovery helpers are tested, not a full browser crash simulation.
+- The ten paired pilot tasks are drafted in `TUTOR-PILOT.md`; teacher review and learner recruitment remain external work.

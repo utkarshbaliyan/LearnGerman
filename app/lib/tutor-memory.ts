@@ -1,4 +1,5 @@
 import { TUTOR_PATTERNS, tutorPattern, type TutorPatternId } from "./tutor-patterns";
+import { getSpeakingMission } from "./speaking-missions";
 import type { WritingAttempt } from "./writing-repair";
 
 export type MemorySource = { taskId: string; attempt: WritingAttempt };
@@ -10,8 +11,10 @@ export function deriveTutorMemory(sources: MemorySource[], level: string, now = 
   const rows = sources.filter(({ attempt }) => attempt.status === "complete" && Number.isFinite(Date.parse(attempt.createdAt))).sort((a, b) => Date.parse(a.attempt.createdAt) - Date.parse(b.attempt.createdAt));
   const patterns = new Map<TutorPatternId, { errors: Map<string, number>; independent: Set<string>; assisted: Set<string>; delayed: Set<string>; answers: Set<string>; lastSeen: string }>();
   const seenAttempts = new Set<string>();
-  for (const { taskId, attempt } of rows) {
-    const key = `${taskId}:${attempt.id}`;
+  for (const { taskId: sourceTaskId, attempt } of rows) {
+    const mission = sourceTaskId.startsWith("speaking:") ? getSpeakingMission(sourceTaskId.slice(9)) : null;
+    const taskId = mission ? `speaking:${mission.id}` : sourceTaskId;
+    const key = `${sourceTaskId}:${attempt.id}`;
     if (seenAttempts.has(key)) continue;
     seenAttempts.add(key);
     const disputed = new Set(attempt.disputes?.map((x) => x.start) ?? []);
@@ -23,16 +26,16 @@ export function deriveTutorMemory(sources: MemorySource[], level: string, now = 
       if (!event.patternId || event.patternId === "other") continue;
       const state = patterns.get(event.patternId) ?? { errors: new Map(), independent: new Set(), assisted: new Set(), delayed: new Set(), answers: new Set(), lastSeen: attempt.createdAt };
       state.lastSeen = attempt.createdAt;
+      const answer = attempt.answerFingerprint ?? attempt.answer.toLocaleLowerCase("de").replace(/[^\p{L}\p{N}]/gu, "");
       if (!event.correct) state.errors.set(taskId, Math.min(state.errors.get(taskId) ?? Infinity, Date.parse(attempt.createdAt)));
       else if (attempt.assistance !== "independent") state.assisted.add(taskId);
       else {
-        const answer = attempt.answerFingerprint ?? attempt.answer.toLocaleLowerCase("de").replace(/[^\p{L}\p{N}]/gu, "");
         if (!state.answers.has(answer)) {
           state.independent.add(taskId);
           if ([...state.errors].some(([sourceTask, date]) => sourceTask !== taskId && Date.parse(attempt.createdAt) - date >= TRANSFER_DELAY)) state.delayed.add(taskId);
-          state.answers.add(answer);
         }
       }
+      state.answers.add(answer);
       patterns.set(event.patternId, state);
     }
   }

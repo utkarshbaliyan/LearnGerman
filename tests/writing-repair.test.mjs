@@ -66,6 +66,17 @@ test("writing repair protects accounts, reserves quotas, persists revisions and 
     assert.equal((await get("bob")).session.attempts.length, 0);
     assert.equal((await post("bob", { action: "reveal", version: 0, attemptId: first.requestId })).status, 404);
     assert.equal((await post("alice", { action: "draft", version: 1, answer: "Stale draft" })).status, 409);
+    assert.equal((await post("alice", { action: "help", version: saved.version, attemptId: first.requestId, level: 1 })).status, 200);
+    saved = await get("alice");
+    assert.ok(saved.session.attempts[0].feedback.issues[0].guidingQuestion);
+    assert.equal(saved.session.attempts[0].feedback.issues[0].corrected, "");
+    assert.equal((await post("alice", { action: "help", version: saved.version, attemptId: first.requestId, level: 2 })).status, 200);
+    saved = await get("alice");
+    assert.ok(saved.session.attempts[0].feedback.issues[0].partialExample);
+    assert.equal((await post("alice", { action: "dispute", version: saved.version, attemptId: first.requestId, start: 999, reason: "incorrect", note: "" })).status, 400);
+    assert.equal((await post("alice", { action: "dispute", version: saved.version, attemptId: first.requestId, start: 7, reason: "meaning", note: "I meant a different subject." })).status, 200);
+    saved = await get("alice");
+    assert.equal(saved.session.attempts[0].disputes.length, 1);
     assert.equal((await post("alice", check(saved.version, 2, "Hallo, ich wohnen jetzt in Bonn."))).status, 200);
     saved = await get("alice");
     assert.equal(saved.session.attempts[1].assistance, "hint");

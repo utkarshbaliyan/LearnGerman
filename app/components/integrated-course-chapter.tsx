@@ -16,18 +16,15 @@ import {
   PenLine,
   RotateCcw,
   Sparkles,
-  Square,
-  Target,
-  Volume2,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
 import dynamic from "next/dynamic";
 const WritingRepairWorkspace = dynamic(() => import("@/app/components/writing-repair-workspace").then((module) => module.WritingRepairWorkspace), { loading: () => <p>Loading writing practice…</p> });
 import { writingMission } from "@/app/lib/writing-mission";
-import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
+const SpeakingWorkspace = dynamic(() => import("@/app/components/speaking-workspace").then((module) => module.SpeakingWorkspace), { loading: () => <p>Loading speaking practice…</p> });
 import { SiteHeader } from "@/app/components/site-header";
 import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
 import type { CourseChapterContent } from "@/app/course/course-data";
@@ -41,8 +38,6 @@ import {
 } from "@/app/hooks/use-course-progress";
 import { useStoryProgress } from "@/app/hooks/use-story-progress";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
-import { requestSpeakingFeedback } from "@/app/lib/ai-tutor-client";
-import type { TutorContext, TutorFeedback } from "@/app/lib/ai-tutor-types";
 import { syncGrammarLessonToLibrary } from "@/app/lib/progress-sync";
 import { queueCloudProgress } from "@/app/lib/cloud-progress-save";
 import { Badge } from "@/components/ui/badge";
@@ -104,23 +99,6 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const chapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
   const grammarGroups = useMemo(() => [...new Set(content.grammar.exercises.map((exercise) => exercise.group ?? "Core practice"))], [content.grammar.exercises]);
   const [showAllWords, setShowAllWords] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
-  const [recordingUrl, setRecordingUrl] = useState("");
-  const [recordingBlob, setRecordingBlob] = useState<Blob | null>(null);
-  const [recordingError, setRecordingError] = useState("");
-  const [speakingFeedback, setSpeakingFeedback] = useState<TutorFeedback | null>(null);
-  const [isCheckingSpeaking, setIsCheckingSpeaking] = useState(false);
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const recordingStreamRef = useRef<MediaStream | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const speakingLength = content.speakingLength;
-  const tutorContext: TutorContext = {
-    level,
-    chapter: number,
-    prompt: content.writingPrompt,
-    grammarFocus: `${content.lesson.title}: ${content.grammar.pattern}`,
-    vocabulary: content.vocabulary.slice(0, 20).map((word) => `${word.german} — ${word.english}`),
-  };
   const knownWordIds = useMemo(() => new Set(content.vocabulary
     .filter(isLearned)
     .map((word) => word.id)), [content.vocabulary, isLearned]);
@@ -135,11 +113,6 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     && Object.keys(chapter.grammarSets).length === grammarGroups.length;
   const previousHref = number > 1 ? courseChapterHref(level, number - 1) : level === "A1" ? "/" : courseChapterHref(level === "A2" ? "A1" : "A2", 24);
   const nextHref = number < 24 ? courseChapterHref(level, number + 1) : level === "B1" ? "/" : courseChapterHref(level === "A1" ? "A2" : "B1", 1);
-
-  useEffect(() => () => {
-    recordingStreamRef.current?.getTracks().forEach((track) => track.stop());
-    if (recordingUrl) URL.revokeObjectURL(recordingUrl);
-  }, [recordingUrl]);
 
   useEffect(() => {
     if (!vocabularyHydrated || !chapter.knownWords.length) return;
@@ -182,62 +155,6 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
         reading: Math.max(current.skillScores.reading ?? 0, score),
       },
     }));
-  }
-
-  async function startRecording() {
-    setRecordingError("");
-    setSpeakingFeedback(null);
-    setRecordingBlob(null);
-    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
-      setRecordingError("Voice recording is not supported in this browser.");
-      return;
-    }
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      recordingStreamRef.current = stream;
-      recorderRef.current = recorder;
-      chunksRef.current = [];
-      recorder.ondataavailable = (event) => { if (event.data.size) chunksRef.current.push(event.data); };
-      recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: recorder.mimeType || "audio/webm" });
-        setRecordingBlob(blob);
-        setRecordingUrl((current) => { if (current) URL.revokeObjectURL(current); return URL.createObjectURL(blob); });
-        recordingStreamRef.current?.getTracks().forEach((track) => track.stop());
-        recordingStreamRef.current = null;
-        setIsRecording(false);
-        updateChapter(content.id, (current) => ({ ...current, recordedSpeaking: true }));
-      };
-      recorder.start();
-      setIsRecording(true);
-    } catch {
-      setRecordingError("Microphone access was not available. Check browser permission and try again.");
-    }
-  }
-
-  function saveTutorScore(skill: "speaking" | "writing", feedback: TutorFeedback) {
-    updateChapter(content.id, (current) => ({
-      ...current,
-      skillScores: {
-        ...current.skillScores,
-        [skill]: Math.max(current.skillScores[skill] ?? 0, feedback.mastery ? feedback.overallScore : Math.min(feedback.overallScore, 69)),
-      },
-    }));
-  }
-
-  async function checkSpeaking() {
-    if (!recordingBlob || isCheckingSpeaking) return;
-    setIsCheckingSpeaking(true);
-    setRecordingError("");
-    try {
-      const feedback = await requestSpeakingFeedback({ ...tutorContext, prompt: content.speakingPrompt }, recordingBlob);
-      setSpeakingFeedback(feedback);
-      saveTutorScore("speaking", feedback);
-    } catch (error) {
-      setRecordingError(error instanceof Error ? error.message : "Speaking feedback could not be loaded.");
-    } finally {
-      setIsCheckingSpeaking(false);
-    }
   }
 
   function completeChapter() {
@@ -316,9 +233,8 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-speaking" id="speaking">
-        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>{content.speakingTitle}</h2><p>{content.speakingPrompt}</p></div>
-        <div className="speaking-mission"><div><Target /><span><b>Your mission</b><small>Speak for {speakingLength}. Use the grammar pattern and at least five chapter expressions.</small></span></div><ol><li>Listen to one paragraph again and shadow its rhythm.</li><li>Prepare keywords, not a complete script.</li><li>Record your response in one continuous attempt.</li><li>Submit it for a transcript, corrections, and a clear next step.</li></ol><div className="ai-tutor-actions">{!isRecording ? <Button variant={recordingBlob ? "outline" : "default"} onClick={startRecording}><Mic /> {recordingBlob ? "Record another response" : "Start recording"}</Button> : <Button className="recording-button" onClick={() => recorderRef.current?.stop()}><Square /> Stop recording</Button>}{recordingBlob && !isRecording && <Button onClick={checkSpeaking} disabled={isCheckingSpeaking}><Sparkles /> {isCheckingSpeaking ? "Checking…" : speakingFeedback ? "Check again" : "Check recording"}</Button>}</div>{recordingUrl && <div className="chapter-recording"><Volume2 /><span><b>Your recording</b><small>Kept in this open page. It is sent for feedback only when you submit.</small></span><audio controls src={recordingUrl}>Your browser cannot play this recording.</audio></div>}{recordingError && <p className="chapter-error" role="alert">{recordingError}</p>}<p className="ai-tutor-privacy">Your audio is transcribed securely when submitted. The course saves only your best skill score, not the recording or transcript.</p></div>
-        {speakingFeedback && <AiTutorFeedback feedback={speakingFeedback} mode="speaking" onRetry={() => setSpeakingFeedback(null)} />}
+        <div className="chapter-section-copy"><span>05 · Speaking</span><h2>Have a real exchange.</h2><p>Complete a four-turn mission, confirm what was heard, and practise the language you need.</p></div>
+        <SpeakingWorkspace key={content.id} taskId={content.id} />
       </section>
 
       <section className="chapter-learning-section chapter-checkpoint" id="checkpoint">

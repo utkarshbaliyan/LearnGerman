@@ -1,5 +1,6 @@
+import type { SpeakingState } from "./speaking-missions";
 import { z } from "zod";
-import { tutorPattern, type TutorPatternId } from "./tutor-patterns";
+import { TUTOR_PATTERNS, tutorPattern, type TutorPatternId } from "./tutor-patterns";
 import type { PhotoReading } from "./writing-photo";
 import type { TutorFeedback } from "./ai-tutor-types";
 
@@ -10,7 +11,7 @@ const correctionSchema = z.object({
   hint: z.string().min(1).max(700), kind: z.enum(["error", "style"]),
   confidence: z.number().min(0).max(1), severity: z.enum(["minor", "major"]),
 });
-export type RepairIssue = z.infer<typeof correctionSchema> & { start: number; end: number };
+export type RepairIssue = z.infer<typeof correctionSchema> & { start: number; end: number; guidingQuestion?: string; partialExample?: string };
 export type RepairFeedback = { summary: string; issues: RepairIssue[]; taskSuccess: boolean; needsReview: boolean; evidence?: { patternId: TutorPatternId; source: string }[] };
 export type WritingAttempt = {
   id: string; answer: string; createdAt: string; assistance: "independent" | "hint" | "correction";
@@ -20,7 +21,7 @@ export type WritingAttempt = {
   disputes?: { start: number; reason: "incorrect" | "meaning"; note: string; createdAt: string }[];
   revealed: boolean; status: "pending" | "complete" | "failed"; feedback?: RepairFeedback;
 };
-export type WritingSession = { draft: string; attempts: WritingAttempt[]; photos?: PhotoReading[]; draftPhotoId?: string };
+export type WritingSession = { draft: string; attempts: WritingAttempt[]; photos?: PhotoReading[]; draftPhotoId?: string; speaking?: SpeakingState; speakingHistory?: SpeakingState[] };
 export type WritingRecord = { version: number; session: WritingSession };
 
 // Reject hallucinated, ambiguous and overlapping spans instead of marking innocent text.
@@ -55,6 +56,12 @@ export function repairFeedback(feedback: TutorFeedback, answer: string): RepairF
 
 export function publicWritingRecord(record: WritingRecord): WritingRecord {
   return { ...record, session: { ...record.session, attempts: record.session.attempts.map((attempt) => ({
-    ...attempt, feedback: attempt.feedback && { ...attempt.feedback, issues: attempt.feedback.issues.map((issue) => attempt.revealed ? issue : { ...issue, corrected: "", explanation: "" }) },
+    ...attempt, feedback: attempt.feedback && { ...attempt.feedback, issues: attempt.feedback.issues.map((issue) => {
+      const pattern = TUTOR_PATTERNS[tutorPattern(issue.patternId ?? issue.category) ?? "other"];
+      return { ...issue, corrected: attempt.revealed ? issue.corrected : "", explanation: attempt.revealed ? issue.explanation : "",
+        guidingQuestion: (attempt.helpLevel ?? 0) >= 1 ? pattern.question : undefined,
+        partialExample: (attempt.helpLevel ?? 0) >= 2 ? pattern.example : undefined,
+      };
+    }) },
   })) } };
 }

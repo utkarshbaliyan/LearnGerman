@@ -1,3 +1,5 @@
+import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
+import { readTutorSession as read, saveTutorSession as save, reserveTutorQuota as reserveQuota } from "@/app/api/tutor/_sessions";
 import { loadTutorMemory } from "@/app/lib/tutor-memory";
 import { getPracticeTask } from "@/app/lib/tutor-practice";
 import { getD1 } from "@/db";
@@ -9,18 +11,6 @@ import { boundedBody, readAssignmentPhoto } from "@/app/api/tutor/_photo";
 import { MAX_PHOTO_BYTES, photoProblem, type PhotoReading } from "@/app/lib/writing-photo";
 
 const error = (message: string, status = 400) => Response.json({ error: message }, { status });
-async function read(db: D1Database, user: string, task: string): Promise<WritingRecord> {
-  const row = await db.prepare("SELECT data, version FROM tutor_sessions WHERE user_id = ? AND task_id = ?").bind(user, task).first<{ data: string; version: number }>();
-  return row ? { version: row.version, session: JSON.parse(row.data) } : { version: 0, session: { draft: "", attempts: [] } };
-}
-async function save(db: D1Database, user: string, task: string, record: WritingRecord) {
-  const result = record.version === 0
-    ? await db.prepare("INSERT INTO tutor_sessions (user_id, task_id, data, version, updated_at) VALUES (?, ?, ?, 1, ?) ON CONFLICT DO NOTHING").bind(user, task, JSON.stringify(record.session), new Date().toISOString()).run()
-    : await db.prepare("UPDATE tutor_sessions SET data = ?, version = version + 1, updated_at = ? WHERE user_id = ? AND task_id = ? AND version = ?").bind(JSON.stringify(record.session), new Date().toISOString(), user, task, record.version).run();
-  if (!result.meta.changes) return false;
-  record.version += 1;
-  return true;
-}
 function response(record: WritingRecord) { return Response.json(publicWritingRecord(record), { headers: { "cache-control": "no-store" } }); }
 async function practiceAccess(db: D1Database, userId: string, taskId: string) {
   const practice = getPracticeTask(taskId);
@@ -28,9 +18,6 @@ async function practiceAccess(db: D1Database, userId: string, taskId: string) {
   const memory = await loadTutorMemory(db, userId, practice.level);
   const pattern = memory.patterns.find((item) => item.patternId === practice.patternId);
   return !pattern || Date.parse(pattern.nextDueAt) > Date.now() ? error("This delayed review becomes available seven days after relevant feedback. Choose a practice task from your learning profile.", 403) : null;
-}
-async function reserveQuota(db: D1Database, userId: string) {
-  return db.prepare("INSERT INTO tutor_quotas (user_id, day, used) VALUES (?, ?, 1) ON CONFLICT (user_id, day) DO UPDATE SET used = used + 1 WHERE used < 20 RETURNING used").bind(userId, new Date().toISOString().slice(0, 10)).first();
 }
 
 export async function GET(request: Request) {
@@ -142,10 +129,9 @@ export async function POST(request: Request) {
   } else if (body.action === "delete") {
     // Keep an empty versioned tombstone so stale tabs cannot resurrect deleted text.
     record.session = { draft: "", attempts: [] };
-  } else if (body.action === "reveal") {
-    const attempt = record.session.attempts.find((x) => x.id === body.attemptId && x.status === "complete");
-    if (!attempt) return error("Attempt not found.", 404);
-    attempt.revealed = true;
+  } else if (["reveal", "help", "dispute"].includes(String(body.action))) {
+    const problem = applyFeedbackAction(record.session.attempts, body);
+    if (problem) return error(problem, problem === "Feedback not found." ? 404 : 400);
   } else if (body.action === "draft" || body.action === "check") {
     if (typeof body.answer !== "string" || body.answer.length > 8000) return error("Write no more than 8,000 characters.");
     record.session.draft = body.answer;

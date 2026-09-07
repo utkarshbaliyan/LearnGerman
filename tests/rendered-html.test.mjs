@@ -90,8 +90,8 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     assert.match(html, /Hover, tap, or focus an underlined word/i, pathname);
     assert.match(html, /core words/i, pathname);
     assert.match(html, /grammar exercises/i, pathname);
-    assert.match(html, /Start recording/i, pathname);
-    assert.match(html, /corrections, and a clear next step/i, pathname);
+    assert.match(html, /Have a real exchange/i, pathname);
+    assert.match(html, /confirm what was heard/i, pathname);
     assert.doesNotMatch(html, /AI tutor/i, pathname);
     assert.match(html, /Integrated checkpoint/i, pathname);
     assert.ok(html.indexOf("01 · Story") < html.indexOf("02 · Vocabulary"), pathname);
@@ -115,8 +115,8 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   assert.match(html, /Personal pronouns and/i);
   assert.match(html, /Introduce yourself without reading/i);
   assert.match(html, /Write a personal introduction/i);
-  assert.match(html, /Submit/i);
-  assert.match(html, /course saves only your best skill score/i);
+  assert.match(html, /Have a real exchange/i);
+  assert.match(html, /four-turn mission/i);
   assert.match(html, /Integrated checkpoint/i);
 });
 
