@@ -5,6 +5,7 @@ export type TutorCorrection = {
   corrected: string;
   explanation: string;
   category: string;
+  patternId?: string;
   hint?: string;
   kind?: "error" | "style";
   confidence?: number;
@@ -21,6 +22,7 @@ export type TutorFeedback = {
   nextStep: string;
   retryPrompt: string;
   transcript?: string;
+  constructionEvidence?: { patternId: string; source: string; correct: boolean; confidence: number }[];
 };
 
 export type TutorContext = {
@@ -29,4 +31,5 @@ export type TutorContext = {
   prompt: string;
   grammarFocus: string;
   vocabulary: string[];
+  targetPattern?: string;
 };

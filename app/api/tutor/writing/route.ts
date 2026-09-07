@@ -1,3 +1,5 @@
+import { loadTutorMemory } from "@/app/lib/tutor-memory";
+import { getPracticeTask } from "@/app/lib/tutor-practice";
 import { getD1 } from "@/db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
 import { getWritingTask } from "@/app/lib/writing-task";
@@ -20,6 +22,13 @@ async function save(db: D1Database, user: string, task: string, record: WritingR
   return true;
 }
 function response(record: WritingRecord) { return Response.json(publicWritingRecord(record), { headers: { "cache-control": "no-store" } }); }
+async function practiceAccess(db: D1Database, userId: string, taskId: string) {
+  const practice = getPracticeTask(taskId);
+  if (!practice || practice.variant !== 2) return null;
+  const memory = await loadTutorMemory(db, userId, practice.level);
+  const pattern = memory.patterns.find((item) => item.patternId === practice.patternId);
+  return !pattern || Date.parse(pattern.nextDueAt) > Date.now() ? error("This delayed review becomes available seven days after relevant feedback. Choose a practice task from your learning profile.", 403) : null;
+}
 async function reserveQuota(db: D1Database, userId: string) {
   return db.prepare("INSERT INTO tutor_quotas (user_id, day, used) VALUES (?, ?, 1) ON CONFLICT (user_id, day) DO UPDATE SET used = used + 1 WHERE used < 20 RETURNING used").bind(userId, new Date().toISOString().slice(0, 10)).first();
 }
@@ -30,7 +39,9 @@ export async function GET(request: Request) {
   if (request.headers.get("x-writing-owner") && request.headers.get("x-writing-owner") !== user.id) return error("Account changed. Reload saved work.", 409);
   const taskId = new URL(request.url).searchParams.get("taskId") ?? "";
   if (!getWritingTask(taskId)) return error("Unknown writing task.");
-  return response(await read(await getD1(), user.id, taskId));
+  const db = await getD1();
+  const denied = await practiceAccess(db, user.id, taskId);
+  return denied ?? response(await read(db, user.id, taskId));
 }
 
 export async function POST(request: Request) {
@@ -62,6 +73,8 @@ export async function POST(request: Request) {
   const task = getWritingTask(taskId);
   if (!task) return error("Unknown writing task.");
   const db = await getD1();
+  const denied = body.action === "delete" ? null : await practiceAccess(db, user.id, taskId);
+  if (denied) return denied;
   const record = await read(db, user.id, taskId);
   if (body.action === "photo" && photo) {
     const existing = record.session.photos?.find((x) => x.id === body.requestId);

@@ -24,7 +24,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { GrammarPracticePanel } from "@/app/components/grammar-practice-panel";
-import { WritingRepairWorkspace } from "@/app/components/writing-repair-workspace";
+import dynamic from "next/dynamic";
+const WritingRepairWorkspace = dynamic(() => import("@/app/components/writing-repair-workspace").then((module) => module.WritingRepairWorkspace), { loading: () => <p>Loading writing practice…</p> });
 import { writingMission } from "@/app/lib/writing-mission";
 import { AiTutorFeedback } from "@/app/components/ai-tutor-feedback";
 import { SiteHeader } from "@/app/components/site-header";

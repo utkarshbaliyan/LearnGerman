@@ -1,0 +1,49 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { createServer } from "vite";
+import { DatabaseSync } from "node:sqlite";
+import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
+
+test("shared tutor memory distinguishes repetition, assistance, delayed transfer and disputed evidence", async () => {
+  const root = fileURLToPath(new URL("..", import.meta.url));
+  const vite = await createServer({ root, configFile: false, appType: "custom", resolve: { alias: { "@": root } }, server: { middlewareMode: true, ws: false } });
+  const sqlite = new DatabaseSync(":memory:");
+  sqlite.exec(readFileSync(new URL("../drizzle/0002_legal_nehzno.sql", import.meta.url), "utf8"));
+  const db = { prepare(sql) { return { bind(...params) { return { async all() { return { results: sqlite.prepare(sql).all(...params) }; } }; } }; } };
+  try {
+    const { deriveTutorMemory, loadTutorMemory, TRANSFER_DELAY } = await vite.ssrLoadModule("/app/lib/tutor-memory.ts");
+    const { repairFeedback } = await vite.ssrLoadModule("/app/lib/writing-repair.ts");
+    const start = Date.UTC(2026, 8, 1);
+    const issue = { patternId: "verb-position", original: "weil ich bin", corrected: "weil ich müde bin", hint: "Where does the verb belong?", explanation: "End position", category: "Word order", kind: "error", confidence: .95, severity: "major", start: 0, end: 12 };
+    const errorAttempt = { id: "first", answer: "weil ich bin müde", status: "complete", createdAt: new Date(start).toISOString(), assistance: "independent", revealed: false, feedback: { issues: [issue], evidence: [], needsReview: false } };
+    const positive = (id, answer, time, assistance = "independent") => ({ id, answer, status: "complete", createdAt: new Date(time).toISOString(), assistance, revealed: false, feedback: { issues: [], evidence: [{ patternId: "verb-position", source: answer }], needsReview: false } });
+    const sources = [{ taskId: "a2-1-1", attempt: errorAttempt }, { taskId: "a2-1-1", attempt: { ...errorAttempt, id: "retry", assistance: "hint" } }];
+    let memory = deriveTutorMemory(sources, "A2", start);
+    assert.equal(memory.patterns[0].errorScenarios, 1);
+    assert.equal(memory.recommendations[0].taskId, "practice-a2-verb-position-1");
+    assert.equal(deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY).recommendations[0].taskId, "practice-a2-verb-position-2");
+    sources.push({ taskId: "practice-a2-verb-position-1", attempt: positive("p1", "weil ich krank bin", start + 1000) });
+    assert.equal(deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY).patterns[0].delayedIndependentUses, 0);
+    sources.push({ taskId: "speaking:a2-1-2", attempt: positive("s1", "weil ich lernen möchte", start + TRANSFER_DELAY, "hint") });
+    memory = deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY);
+    assert.equal(memory.patterns[0].assistedUses, 1); assert.equal(memory.patterns[0].delayedIndependentUses, 0);
+    sources.push({ taskId: "practice-a2-verb-position-2", attempt: positive("p2", "weil ich krank bin", start + TRANSFER_DELAY) });
+    assert.equal(deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY).patterns[0].delayedIndependentUses, 0, "Same script in another task is not transfer");
+    sources.push({ taskId: "speaking:a2-1-3", attempt: positive("s2", "weil der Bus zu spät kommt", start + TRANSFER_DELAY + 1000) });
+    memory = deriveTutorMemory(sources, "A2", start + TRANSFER_DELAY + 2000);
+    assert.equal(memory.patterns[0].delayedIndependentUses, 1);
+    assert.equal(memory.recommendations.length, 0);
+    assert.deepEqual(deriveTutorMemory([sources[0], sources[0]], "A2", start), deriveTutorMemory([sources[0]], "A2", start));
+    assert.equal(deriveTutorMemory([{ taskId: "x", attempt: { ...errorAttempt, disputes: [{ start: 0 }] } }], "A2", start).patterns.length, 0);
+    assert.equal(deriveTutorMemory([{ taskId: "x", attempt: { ...errorAttempt, feedback: { issues: [{ ...issue, kind: "style" }] } } }], "A2", start).patterns.length, 0);
+    const forged = repairFeedback({ overallScore: 100, corrections: [], constructionEvidence: [{ patternId: "verb-position", source: "not in answer", correct: true, confidence: .99 }] }, "Hallo Anna.");
+    assert.equal(forged.evidence.length, 0);
+    const insert = sqlite.prepare("INSERT INTO tutor_sessions (user_id,task_id,data,version,updated_at) VALUES(?,?,?,1,?)");
+    insert.run("alice", "a2-1-1", JSON.stringify({ draft: "", attempts: [errorAttempt] }), new Date(start).toISOString());
+    assert.equal((await loadTutorMemory(db, "alice", "A2", start)).patterns[0].errorScenarios, 1);
+    assert.equal((await loadTutorMemory(db, "bob", "A2", start)).patterns.length, 0);
+    sqlite.prepare("UPDATE tutor_sessions SET data=? WHERE user_id=?").run(JSON.stringify({ draft: "", attempts: [] }), "alice");
+    assert.equal((await loadTutorMemory(db, "alice", "A2", start)).patterns.length, 0, "Deleting source history removes derived memory");
+  } finally { await vite.close(); sqlite.close(); }
+});

@@ -1980,3 +1980,7 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .writing-photo-confirm h4 { font-size: 1.125rem; font-weight: 650; }
 .writing-photo-warning { border-left: 3px solid #b45309; padding-left: .75rem; }
 @media (max-width: 640px) { .writing-photo-preview { grid-template-columns: minmax(0, 1fr); } }
+.tutor-memory-panel { padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; display: grid; gap: .8rem; }
+.tutor-memory-panel h3 { font-size: 1.125rem; font-weight: 650; }
+.tutor-memory-panel article { border-bottom: 1px solid var(--border); padding-bottom: .75rem; }
+.tutor-memory-panel a { text-decoration: underline; text-underline-offset: .2rem; }

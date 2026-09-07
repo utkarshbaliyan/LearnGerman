@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TutorMemoryPanel } from "@/app/components/tutor-memory-panel";
 import { WritingPhotoUpload } from "@/app/components/writing-photo-upload";
 import { Textarea } from "@/components/ui/textarea";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
@@ -82,6 +83,7 @@ export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { tas
         throw new Error(payload.error ?? "Writing could not be saved.");
       }
       setRecord(payload);
+      window.dispatchEvent(new Event("leselaut-tutor-updated"));
       if (action === "delete") { setDraft(""); setConfirmDelete(false); }
       if (action === "confirm-photo") { setDraft(payload.session.draft); requestKey.current = null; }
       if (action === "check") requestKey.current = null;
@@ -97,6 +99,7 @@ export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { tas
     <p className="writing-guidance">Aim for about {suggestedWords} words. Communicating your message matters more than length.</p>
     {!signedIn ? <p><Link href="/account">Sign in</Link> to save drafts and practise with feedback.</p> : <>
       {!record ? <p>Load your saved writing to begin.</p> : <>
+        <TutorMemoryPanel level={taskId.includes("a1") ? "A1" : taskId.includes("b1") ? "B1" : "A2"} />
         <WritingPhotoUpload photos={record.session.photos ?? []} busy={busy} hasDraft={Boolean(draft.trim())} onUpload={(file, requestId) => act("photo", undefined, { file, requestId })} onConfirm={(text, photoId) => act("confirm-photo", photoId, { text })} />
         <label><span>Your German message · {draft.trim() ? draft.trim().split(/\s+/).length : 0} words</span><Textarea lang="de" value={draft} maxLength={8000} disabled={busy} onChange={(event) => { setDraft(event.target.value); setNotice(""); requestKey.current = null; }} placeholder="Schreib deine Nachricht …" /></label>
         <div className="writing-repair-actions"><Button variant="outline" disabled={busy || draft === record.session.draft} onClick={() => void act("draft")}>Save draft</Button><Button disabled={busy || draft.trim().length < 10 || draft === latest?.answer} onClick={() => void act("check")}>{busy ? "Saving / checking…" : latest ? "Check my revision" : "Get a hint"}</Button></div>
@@ -110,7 +113,7 @@ export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { tas
           <p className="writing-guidance">{latest.revealed ? "Correction viewed. Later revisions are recorded as correction-assisted." : "Use the hints to rewrite your message above."} A revision of this task does not prove independent reuse.</p>
         </section>}
         {attempts.length > 0 && <details><summary>Saved attempts ({attempts.length})</summary>{[...attempts].reverse().map((attempt, i) => <article className="writing-attempt" key={attempt.id}><b>Attempt {attempts.length - i}{attempt.sourcePhotoId ? " · From confirmed photo" : ""} · {attempt.status === "complete" ? attempt.assistance === "independent" ? "Independent first attempt" : attempt.assistance === "hint" ? "Hint-assisted revision" : "Correction-assisted revision" : attempt.status === "pending" ? "Check pending" : "Check incomplete"}</b><p className="writing-source" lang="de">{attempt.answer}</p><small>{new Date(attempt.createdAt).toLocaleString()}{attempt.revealed ? " · Correction viewed" : ""}</small></article>)}</details>}
-        <p className="ai-tutor-privacy">Submitted text is sent to our feedback provider. Drafts, attempts, hints and correction views are saved to your account until you delete this task’s history. This history records practice, not mastery. Transfer assessment is not available yet, so writing practice does not raise your course mastery score.</p>
+        <p className="ai-tutor-privacy">Submitted text is sent to our feedback provider. Drafts, attempts, hints and correction views are saved to your account until you delete this task’s history. This history records practice, not mastery. Delayed independent reuse is recorded in your learning profile; practice does not raise the old course mastery score.</p>
         {confirmDelete ? <div><p>Delete all saved writing for this task? This cannot be undone.</p><Button variant="destructive" disabled={busy} onClick={() => void act("delete")}>Delete this task’s history</Button> <Button variant="outline" onClick={() => setConfirmDelete(false)}>Cancel</Button></div> : <Button variant="ghost" disabled={busy} onClick={() => setConfirmDelete(true)}>Delete saved writing</Button>}
       </>}
       <Button variant="ghost" disabled={busy} onClick={() => { setBusy(true); void load().catch((e) => setError(e.message)).finally(() => setBusy(false)); }}>Reload saved work</Button>

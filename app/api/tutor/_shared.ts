@@ -1,9 +1,10 @@
+import { TUTOR_PATTERN_IDS } from "@/app/lib/tutor-patterns";
 import type { TutorContext, TutorFeedback, TutorMode } from "@/app/lib/ai-tutor-types";
 
 const FEEDBACK_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["overallScore", "mastery", "summary", "correctedAnswer", "strengths", "corrections", "nextStep", "retryPrompt"],
+  required: ["overallScore", "mastery", "summary", "correctedAnswer", "strengths", "corrections", "nextStep", "retryPrompt", "constructionEvidence"],
   properties: {
     overallScore: { type: "integer", minimum: 0, maximum: 100 },
     mastery: { type: "boolean" },
@@ -15,8 +16,9 @@ const FEEDBACK_SCHEMA = {
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["original", "corrected", "explanation", "category", "hint", "kind", "confidence", "severity"],
+        required: ["original", "corrected", "explanation", "category", "hint", "kind", "confidence", "severity", "patternId"],
         properties: {
+          patternId: { type: "string", enum: TUTOR_PATTERN_IDS },
           original: { type: "string" },
           corrected: { type: "string" },
           explanation: { type: "string" },
@@ -28,6 +30,8 @@ const FEEDBACK_SCHEMA = {
         },
       },
     },
+    constructionEvidence: { type: "array", items: { type: "object", additionalProperties: false,
+      required: ["patternId", "source", "correct", "confidence"], properties: { patternId: { type: "string", enum: TUTOR_PATTERN_IDS }, source: { type: "string" }, correct: { type: "boolean" }, confidence: { type: "number", minimum: 0, maximum: 1 } } } },
     nextStep: { type: "string" },
     retryPrompt: { type: "string" },
   },
@@ -137,6 +141,7 @@ function normalizeFeedback(value: unknown, learnerAnswer: string): TutorFeedback
     ? raw.corrections.filter((item) => item && typeof item === "object").map((item) => {
       const correction = item as Partial<TutorFeedback["corrections"][number]>;
       return {
+        patternId: correction.patternId,
         hint: correction.hint,
         kind: correction.kind,
         confidence: correction.confidence,
@@ -150,6 +155,7 @@ function normalizeFeedback(value: unknown, learnerAnswer: string): TutorFeedback
     : [];
   return {
     overallScore,
+    constructionEvidence: Array.isArray(raw.constructionEvidence) ? raw.constructionEvidence.filter((x) => x && typeof x.source === "string" && typeof x.patternId === "string" && typeof x.correct === "boolean" && typeof x.confidence === "number").slice(0, 5) : [],
     mastery: raw.mastery === true && overallScore >= 80,
     summary: typeof raw.summary === "string" && raw.summary.trim() ? raw.summary : "Your response was checked. Review the corrected version and try once more.",
     correctedAnswer: typeof raw.correctedAnswer === "string" && raw.correctedAnswer.trim() ? raw.correctedAnswer : learnerAnswer,
@@ -172,6 +178,7 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
     grammarFocus: context.grammarFocus,
     chapterVocabulary: context.vocabulary,
     learnerAnswer: answer,
+    targetPattern: context.targetPattern ?? null,
   });
   const instructions = [
     "You are LeseLaut's encouraging but exact German tutor.",
@@ -181,10 +188,12 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
     "Use German in corrected examples. Keep feedback appropriate to the stated CEFR level.",
     mode === "writing" ? "Set mastery false. This is repair practice, not a transfer assessment." : "Set mastery true only when the answer fulfills the task and scores at least 80. Do not reward length alone.",
     "Return no more than four strengths and two important corrections. Focus on self-repair.",
+    `Each correction requires a stable patternId chosen from: ${TUTOR_PATTERN_IDS.join(", ")}.`,
+    "Also return constructionEvidence: up to 5 objects {patternId, source, correct, confidence} for constructions actually used in the answer. source must be an exact non-empty quote from the learner text. For a targetPattern include evidence only when the student actually uses it; absence of an error is NOT evidence. Never invent examples. Use an empty array when uncertain.",
     "Each correction also requires hint (a question or clue that does NOT give the answer), kind (error or style), confidence (0 to 1), severity (minor or major).",
     "original must be a non-empty exact, unique substring of the learner answer, preserving case and whitespace. Do not invent source spans. Separate actual errors from optional stylistic suggestions.",
     "summary, nextStep and retryPrompt must encourage repair without revealing corrected words or sentences. Do not give a corrected example in these fields or in strengths.",
-    "Return only one JSON object with these keys: overallScore, mastery, summary, correctedAnswer, strengths, corrections, nextStep, retryPrompt. Each correction must contain original, corrected, explanation, and category.",
+    "Return only one JSON object with these keys: overallScore, mastery, summary, correctedAnswer, strengths, corrections, nextStep, retryPrompt, constructionEvidence. Each correction must contain original, corrected, explanation, and category.",
     "If already correct, reinforce what worked without inventing errors.",
   ].join(" ");
 
