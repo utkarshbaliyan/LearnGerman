@@ -3,7 +3,7 @@ import { z } from "zod";
 
 const extraction = z.object({ text: z.string().max(8000), readable: z.boolean(), uncertain: z.boolean() });
 
-export async function readAssignmentPhoto(bytes: Uint8Array, mime: string) {
+export async function readAssignmentPhoto(bytes: Uint8Array, mime: string, minCharacters = 10) {
   if (!process.env.GROQ_API_KEY) throw new Error("Photo reading provider is not configured");
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST", signal: AbortSignal.timeout(30_000),
@@ -21,7 +21,7 @@ export async function readAssignmentPhoto(bytes: Uint8Array, mime: string) {
   const payload = await response.json() as { choices?: { finish_reason?: string; message?: { content?: string } }[] };
   if (payload.choices?.[0]?.finish_reason !== "stop") throw new Error("Photo transcription was incomplete");
   const value = extraction.parse(JSON.parse(payload.choices[0].message?.content ?? ""));
-  if (!value.readable || value.text.trim().length < 10) return null;
+  if (!value.readable || value.text.trim().length < minCharacters) return null;
   return { text: value.text, uncertain: value.uncertain || /\[unclear\]/i.test(value.text) };
 }
 

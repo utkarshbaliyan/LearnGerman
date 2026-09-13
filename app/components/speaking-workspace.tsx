@@ -7,11 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import type { WritingRecord } from "@/app/lib/writing-repair";
 import type { SpeakingMission } from "@/app/lib/speaking-missions";
-import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
+import { getChapterOutputTask, type ChapterOutputTask } from "@/app/lib/chapter-output-tasks";
 
 
 type SpeakingRecord = WritingRecord & { mission: SpeakingMission; error?: string };
-export function SpeakingWorkspace({ taskId }: { taskId: string }) {
+export function SpeakingWorkspace({ taskId, outputTask }: { taskId: string; outputTask?: ChapterOutputTask }) {
   const [record, setRecord] = useState<SpeakingRecord | null>(null);
   const [signedIn, setSignedIn] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -123,7 +123,7 @@ export function SpeakingWorkspace({ taskId }: { taskId: string }) {
     if (!("speechSynthesis" in window)) { setError("Audio playback is not supported in this browser."); return; }
     window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = "de-DE"; utterance.rate = .9; window.speechSynthesis.speak(utterance);
   }
-  const task = getChapterOutputTask(taskId);
+  const task = outputTask ?? getChapterOutputTask(taskId);
   const questions = record?.mission.questions ?? task?.questions ?? [];
   const question = questions[questionIndex] ?? questions[0] ?? "Introduce yourself.";
   const latest = record?.session.attempts.filter(item => item.questionIndex === questionIndex && item.status === "complete").at(-1);
@@ -135,15 +135,15 @@ export function SpeakingWorkspace({ taskId }: { taskId: string }) {
   return <div className="speaking-workspace speaking-drill">
     <div className="speaking-partner"><p lang="de">{question}</p><Button variant="ghost" disabled={busy || recording} onClick={() => play(question)}>Hear question</Button></div>
     {!signedIn ? <p><Link href="/account">Sign in</Link> to record your answer.</p> : !record ? <p>Loading…</p> : <>
-      <div className="writing-repair-actions"><Button disabled={busy} onClick={() => recording ? stopMedia() : void startRecording()}>{recording ? "Stop & check" : busy ? "Checking…" : latest ? "Try again" : "Record answer"}</Button>{latest && !recording && <Button variant="outline" disabled={busy} onClick={changeQuestion}>{questionIndex + 1 < questions.length ? "Next question" : "Back to first question"}</Button>}</div>
+      <div className="writing-repair-actions"><Button disabled={busy} onClick={() => recording ? stopMedia() : void startRecording()}>{recording ? "Stop & check" : busy ? "Checking…" : latest ? "Try again" : "Record answer"}</Button>{latest && questions.length > 1 && !recording && <Button variant="outline" disabled={busy} onClick={changeQuestion}>{questionIndex + 1 < questions.length ? "Next question" : "Back to first question"}</Button>}</div>
       {!latest && !busy && <p className="writing-guidance">A short answer is enough. Stopping sends your recording for AI feedback.</p>}
       {error && <div role="alert"><p className="chapter-error">{error}</p>{audio && <Button variant="outline" disabled={busy || recording} onClick={() => void check("check", audio)}>Check recording again</Button>}</div>}
       {latest && !busy && <section className="writing-repair-feedback" aria-label="Speaking feedback"><h3>{latest.feedback?.taskSuccess ? "Well done" : "Your feedback"}</h3><p><span>I heard: </span><span lang="de">{latest.answer}</span></p>
         {latest.feedback?.issues.map((issue) => <article key={issue.start}><p lang="de">{issue.original} → <strong>{issue.corrected}</strong></p><p>{issue.explanation}</p>{issue.kind === "style" && <small>Optional suggestion</small>}</article>)}
-        {!latest.feedback?.issues.length && <p>{latest.feedback?.needsReview ? "I could not give reliable feedback. Please try again." : latest.feedback?.taskSuccess ? "Your answer works. Try the next question." : "Try answering the question more directly."}</p>}
+        {!latest.feedback?.issues.length && <p>{latest.feedback?.needsReview ? "I could not give reliable feedback. Please try again." : latest.feedback?.taskSuccess ? "Your answer works. You can try again or continue." : "Try answering the question more directly."}</p>}
         <details className="tutor-optional"><summary>Did I hear you incorrectly?</summary><label><span>Change only speech-recognition mistakes.</span><Textarea value={transcript || latest.answer} onChange={event => { setTranscript(event.target.value); key.current = null; }} maxLength={2000} /></label><Button variant="outline" disabled={busy || recording} onClick={() => void check("correct-transcript", undefined, latest.id)}>Update feedback</Button></details>
       </section>}
-      <details className="tutor-optional"><summary>Recording & saved work</summary>{audioUrl && <audio controls src={audioUrl}>Your recording</audio>}<p className="ai-tutor-privacy">AI checks the transcript, not pronunciation. Audio is sent for transcription; text and feedback are saved until deleted. Each recording check uses two of your 20 daily AI requests.</p><Button variant="outline" disabled={busy || recording} onClick={() => void load().catch(e => setError(e.message))}>Reload saved work</Button>{deleteOpen ? <><p>Delete this chapter’s saved speaking drills?</p><Button variant="destructive" disabled={busy || recording} onClick={() => void check("delete")}>Delete</Button><Button variant="ghost" onClick={() => setDeleteOpen(false)}>Cancel</Button></> : <Button variant="ghost" disabled={busy || recording} onClick={() => setDeleteOpen(true)}>Delete saved drills</Button>}</details>
+      <details className="tutor-optional"><summary>Recording & saved work</summary>{audioUrl && <audio controls src={audioUrl}>Your recording</audio>}<p className="ai-tutor-privacy">AI checks the transcript, not pronunciation. Audio is sent for transcription; text and feedback are saved until deleted. Each recording check uses two of your 20 daily AI requests.</p><Button variant="outline" disabled={busy || recording} onClick={() => void load().catch(e => setError(e.message))}>Reload saved work</Button>{deleteOpen ? <><p>Delete this task’s saved speaking attempts?</p><Button variant="destructive" disabled={busy || recording} onClick={() => void check("delete")}>Delete</Button><Button variant="ghost" onClick={() => setDeleteOpen(false)}>Cancel</Button></> : <Button variant="ghost" disabled={busy || recording} onClick={() => setDeleteOpen(true)}>Delete saved drills</Button>}</details>
     </>}
   </div>;
 }

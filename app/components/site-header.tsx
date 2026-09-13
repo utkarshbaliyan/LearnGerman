@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/app/components/theme-toggle";
 
 type SiteHeaderProps = {
-  active: "course" | "stories" | "vocabulary" | "grammar" | "account";
+  active: "active-learning" | "course" | "stories" | "vocabulary" | "grammar" | "account";
 };
 
 export function SiteHeader({ active }: SiteHeaderProps) {
@@ -16,6 +16,7 @@ export function SiteHeader({ active }: SiteHeaderProps) {
       </Link>
       <nav className="topnav" aria-label="Main navigation">
         <Link href="/" prefetch aria-current={active === "course" ? "page" : undefined}><CalendarCheck2 aria-hidden="true" /><span>Course</span></Link>
+        <Link href="/active-learning" prefetch aria-current={active === "active-learning" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Active Learning</span></Link>
         <Link href="/stories" prefetch aria-current={active === "stories" ? "page" : undefined}><BookOpen aria-hidden="true" /><span>Stories</span></Link>
         <Link href="/vocabulary" prefetch aria-current={active === "vocabulary" ? "page" : undefined}><Languages aria-hidden="true" /><span>Vocabulary</span></Link>
         <Link href="/grammar" prefetch aria-current={active === "grammar" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Grammar</span></Link>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
+import { getChapterOutputTask, type ChapterOutputTask } from "@/app/lib/chapter-output-tasks";
 import { recoveryKey, readRecovery, acknowledgeDraft } from "@/app/lib/writing-draft-recovery";
 import { Button } from "@/components/ui/button";
 import { TutorRepairFeedback } from "@/app/components/tutor-repair-feedback";
@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import type { WritingRecord } from "@/app/lib/writing-repair";
 
-export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { taskId: string; prompt: string; suggestedWords: number }) {
+export function WritingRepairWorkspace({ taskId, prompt, suggestedWords, outputTask }: { taskId: string; prompt: string; suggestedWords: number; outputTask?: ChapterOutputTask }) {
   const [record, setRecord] = useState<WritingRecord | null>(null);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
@@ -121,7 +121,7 @@ export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { tas
     window.addEventListener("beforeunload", warn); window.addEventListener("online", reconnect);
     return () => { window.removeEventListener("beforeunload", warn); window.removeEventListener("online", reconnect); };
   }, [record]);
-  const task = getChapterOutputTask(taskId);
+  const task = outputTask ?? getChapterOutputTask(taskId);
   const attempts = record?.session.attempts ?? [];
   const latest = attempts.filter((a) => a.status === "complete").at(-1);
   return <div className="writing-workspace writing-repair">
@@ -132,13 +132,13 @@ export function WritingRepairWorkspace({ taskId, prompt, suggestedWords }: { tas
         {recovery !== null && <div role="status"><p>This browser has an unsent draft. Compare it with the saved version below before continuing.</p><pre className="writing-source">{recovery}</pre><Button onClick={() => { setDraft(recovery); currentDraft.current = recovery; cacheDraft(recovery, record.version); setRecovery(null); }}>Use recovered draft</Button> <Button variant="outline" onClick={() => { clearCache(); setRecovery(null); }}>Keep account version</Button></div>}
 
         {task?.starter && <p className="writing-starter"><span>Start with:</span> <b lang="de">{task.starter}</b></p>}
-        <details className="tutor-optional"><summary>Use a photo instead</summary><WritingPhotoUpload photos={record.session.photos ?? []} busy={busy || autoSaving || conflict || recovery !== null} hasDraft={Boolean(draft.trim())} onUpload={(file, requestId) => act("photo", undefined, { file, requestId })} onConfirm={(text, photoId) => act("confirm-photo", photoId, { text })} /></details>
+        <details className="tutor-optional"><summary>Use a photo instead</summary><WritingPhotoUpload minCharacters={taskId.startsWith("active-") ? 2 : 10} photos={record.session.photos ?? []} busy={busy || autoSaving || conflict || recovery !== null} hasDraft={Boolean(draft.trim())} onUpload={(file, requestId) => act("photo", undefined, { file, requestId })} onConfirm={(text, photoId) => act("confirm-photo", photoId, { text })} /></details>
         <label><span>Your German message · {draft.trim() ? draft.trim().split(/\s+/).length : 0} words</span><Textarea lang="de" value={draft} maxLength={8000} disabled={busy || recovery !== null} onChange={(event) => { setDraft(event.target.value); currentDraft.current = event.target.value; cacheDraft(event.target.value, record.version); setNotice(""); requestKey.current = null; }} placeholder="Schreib deine Nachricht …" /></label>
-        <div className="writing-repair-actions"><Button variant="outline" disabled={busy || autoSaving || conflict || recovery !== null || draft === record.session.draft} onClick={() => void act("draft")}>Save draft</Button><Button disabled={busy || autoSaving || conflict || recovery !== null || draft.trim().length < 10 || draft === latest?.answer} onClick={() => void act("check")}>{busy ? "Saving / checking…" : latest ? "Check my revision" : "Get a hint"}</Button></div>
+        <div className="writing-repair-actions"><Button variant="outline" disabled={busy || autoSaving || conflict || recovery !== null || draft === record.session.draft} onClick={() => void act("draft")}>Save draft</Button><Button disabled={busy || autoSaving || conflict || recovery !== null || draft.trim().length < (taskId.startsWith("active-") ? 2 : 10) || draft === latest?.answer} onClick={() => void act("check")}>{busy ? "Saving / checking…" : latest ? "Check my revision" : taskId.startsWith("active-") ? "Check my writing" : "Get a hint"}</Button></div>
         <p className="writing-guidance" role="status">{autoSaving ? "Saving…" : draft !== record.session.draft ? "Unsaved changes" : "Saved"}</p>
-        {latest && <TutorRepairFeedback attempt={latest} busy={busy || autoSaving || conflict || recovery !== null} onReveal={() => void act("reveal", latest.id)} onAction={(input) => void act(input.action, latest.id, input)} />}
+        {latest && <TutorRepairFeedback compact={taskId.startsWith("active-")} attempt={latest} busy={busy || autoSaving || conflict || recovery !== null} onReveal={() => void act("reveal", latest.id)} onAction={(input) => void act(input.action, latest.id, input)} />}
         {attempts.length > 0 && <details><summary>Saved attempts ({attempts.length})</summary>{[...attempts].reverse().map((attempt, i) => <article className="writing-attempt" key={attempt.id}><b>Attempt {attempts.length - i}{attempt.sourcePhotoId ? " · From confirmed photo" : ""} · {attempt.status === "complete" ? attempt.assistance === "independent" ? "Independent first attempt" : attempt.assistance === "hint" ? "Hint-assisted revision" : "Correction-assisted revision" : attempt.status === "pending" ? "Check pending" : "Check incomplete"}</b><p className="writing-source" lang="de">{attempt.answer}</p><small>{new Date(attempt.createdAt).toLocaleString()}{attempt.revealed ? " · Correction viewed" : ""}</small></article>)}</details>}
-        <TutorMemoryPanel level={task?.level ?? "A2"} />
+        {!taskId.startsWith("active-") && <TutorMemoryPanel level={task?.level ?? "A2"} />}
         <details className="tutor-optional"><summary>Saved work & privacy</summary><p className="ai-tutor-privacy">Checks send your text to our AI provider. Text and feedback stay in your account until deleted. Unsent drafts are kept in this browser for recovery. The daily allowance is 20 AI requests across speaking, writing and photos; saving drafts is free.</p>
         {confirmDelete ? <div><p>Delete all saved writing for this task? This cannot be undone.</p><Button variant="destructive" disabled={busy || autoSaving} onClick={() => void act("delete")}>Delete this task’s history</Button> <Button variant="outline" onClick={() => setConfirmDelete(false)}>Cancel</Button></div> : <Button variant="ghost" disabled={busy || autoSaving} onClick={() => setConfirmDelete(true)}>Delete saved writing</Button>}</details>
       </>}

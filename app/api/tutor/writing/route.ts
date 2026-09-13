@@ -109,7 +109,7 @@ export async function POST(request: Request) {
         status = 429;
         failure = "Daily AI limit reached (20 photo reads or writing checks). Try again after midnight UTC.";
       } else {
-        const result = await readAssignmentPhoto(photo.bytes, photo.mime);
+        const result = await readAssignmentPhoto(photo.bytes, photo.mime, taskId.startsWith("active-") ? 2 : 10);
         if (!result) { status = 422; failure = "The German answer could not be read. Use a clearer, closer photo of one page, or type your answer."; }
         else { Object.assign(reading, result); reading.status = "complete"; }
       }
@@ -121,7 +121,7 @@ export async function POST(request: Request) {
     const reading = record.session.photos?.find((x) => x.id === body.photoId && x.status === "complete");
     if (!reading) return error("Photo reading not found.", 404);
     if (reading.confirmedAt) return error("This photo has already been confirmed. Revise the draft directly.", 409);
-    if (typeof body.answer !== "string" || body.answer.trim().length < 10 || body.answer.length > 8000 || /\[unclear\]/i.test(body.answer)) return error("Check the extracted text and replace every [unclear] marker before confirming.");
+    if (typeof body.answer !== "string" || body.answer.trim().length < (taskId.startsWith("active-") ? 2 : 10) || body.answer.length > 8000 || /\[unclear\]/i.test(body.answer)) return error("Check the extracted text and replace every [unclear] marker before confirming.");
     reading.confirmedText = body.answer;
     reading.confirmedAt = new Date().toISOString();
     record.session.draft = body.answer;
@@ -136,7 +136,7 @@ export async function POST(request: Request) {
     if (typeof body.answer !== "string" || body.answer.length > 8000) return error("Write no more than 8,000 characters.");
     record.session.draft = body.answer;
     if (body.action === "check") {
-      if (body.answer.trim().length < 10) return error("Write a German response before checking it.");
+      if (body.answer.trim().length < (taskId.startsWith("active-") ? 2 : 10)) return error("Write a German response before checking it.");
       if (typeof body.requestId !== "string" || !/^[a-zA-Z0-9-]{16,80}$/.test(body.requestId)) return error("A valid request ID is required.");
       if (record.session.attempts.length >= 40) return error("This task has 40 saved attempts. Delete this task’s history to start again.");
       const previous = record.session.attempts.filter((x) => x.status === "complete");
@@ -156,6 +156,7 @@ export async function POST(request: Request) {
         }
         attempt.feedback = repairFeedback(await createTutorFeedback("writing", task, body.answer), body.answer);
         attempt.status = "complete";
+        if (taskId.startsWith("active-")) attempt.revealed = true;
       } catch (cause) {
         attempt.status = "failed";
         await save(db, user.id, taskId, record);

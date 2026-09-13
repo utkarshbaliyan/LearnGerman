@@ -1,0 +1,146 @@
+[
+  {
+    "writing": "You are joining a library. Give the librarian your name and town.",
+    "speaking": "Du bist in einer Bibliothek. Wie heißt du und wo wohnst du?"
+  },
+  {
+    "writing": "A new neighbour asks who lives with you. Introduce two real or fictional people.",
+    "speaking": "Wer wohnt bei dir? Stell zwei Personen kurz vor."
+  },
+  {
+    "writing": "Your guest needs a cup. Tell them it is in the kitchen and describe the kitchen briefly.",
+    "speaking": "Dein Gast sucht eine Tasse. Sie ist in der Küche. Was sagst du?"
+  },
+  {
+    "writing": "Tomorrow you study at 9 and work from 12 to 4. Tell a friend when you are free.",
+    "speaking": "Morgen lernst du um neun und arbeitest von zwölf bis vier. Wann hast du Zeit?"
+  },
+  {
+    "writing": "You join a new evening course. Ask where the classroom is and ask to borrow a pen.",
+    "speaking": "Du bist neu im Abendkurs. Frag nach dem Raum und nach einem Stift."
+  },
+  {
+    "writing": "You help in a café from 10 to 2. Introduce your role and say when you finish.",
+    "speaking": "Du hilfst von zehn bis zwei im Café. Was machst du und wann bist du fertig?"
+  },
+  {
+    "writing": "At a station café, order a water and a sandwich without cheese. Ask for the bill.",
+    "speaking": "Bestell ein Wasser und ein Brot ohne Käse. Bitte dann um die Rechnung."
+  },
+  {
+    "writing": "At a market, buy three apples and ask their price.",
+    "speaking": "Kauf auf dem Markt drei Äpfel und frage nach dem Preis."
+  },
+  {
+    "writing": "At a station, ask where the bus to Bonn leaves and buy one ticket.",
+    "speaking": "Wo fährt der Bus nach Bonn ab? Frag danach und kauf eine Fahrkarte."
+  },
+  {
+    "writing": "You arrive at a hostel. Give a fictional name and ask when breakfast starts.",
+    "speaking": "Du kommst in einer Jugendherberge an. Sag deinen Namen und frag nach dem Frühstück."
+  },
+  {
+    "writing": "You feel unwell and cannot visit a friend today. Tell them simply.",
+    "speaking": "Du fühlst dich nicht gut und kannst deinen Freund heute nicht besuchen. Was sagst du?"
+  },
+  {
+    "writing": "Invite a new classmate to a park on Sunday at 3.",
+    "speaking": "Lade jemanden aus deinem Kurs am Sonntag um drei in den Park ein."
+  },
+  {
+    "writing": "A neighbour asks about a recent visit. Tell them who you visited and what you did. Ask about their weekend.",
+    "speaking": "Erzähl deinem Nachbarn von einem Besuch und frage nach seinem Wochenende."
+  },
+  {
+    "writing": "Your new flatmate works at night. Arrange quiet hours and divide one household chore.",
+    "speaking": "Dein neuer Mitbewohner arbeitet nachts. Vereinbart eine Ruhezeit und teilt eine Hausarbeit auf."
+  },
+  {
+    "writing": "You missed a cooking class because you were ill. Ask the teacher what to practise before next week.",
+    "speaking": "Du warst krank und hast den Kochkurs verpasst. Frage, was du bis nächste Woche üben sollst."
+  },
+  {
+    "writing": "A colleague needs your list today, but two prices are missing. Explain the delay and offer tomorrow morning.",
+    "speaking": "Zwei Preise fehlen auf deiner Liste. Erkläre das und biete morgen früh als neuen Termin an."
+  },
+  {
+    "writing": "Organise a picnic with a friend who does not eat meat. Agree what each person brings.",
+    "speaking": "Plant ein Picknick ohne Fleisch. Wer bringt was mit?"
+  },
+  {
+    "writing": "A lamp ordered online arrived broken. Ask for an exchange and arrange collection on Friday.",
+    "speaking": "Deine bestellte Lampe ist kaputt angekommen. Bitte um einen Umtausch und eine Abholung am Freitag."
+  },
+  {
+    "writing": "Your bus is late and you will reach the hotel after 10 tonight. Tell reception and ask whether you can still check in.",
+    "speaking": "Dein Bus ist spät. Du kommst erst nach zehn ins Hotel. Informiere die Rezeption und frage nach dem Einchecken."
+  },
+  {
+    "writing": "You have had a cough for two days. Ask a practice for a morning appointment and repeat the time to confirm.",
+    "speaking": "Du hast seit zwei Tagen Husten. Bitte um einen Vormittagstermin und bestätige die Uhrzeit."
+  },
+  {
+    "writing": "You need a library membership appointment. Ask which documents to bring and confirm Tuesday at 11.",
+    "speaking": "Du möchtest dich in einer Bibliothek anmelden. Frage nach den Unterlagen und bestätige Dienstag um elf."
+  },
+  {
+    "writing": "A friend suggests cycling Saturday, but rain is forecast. Suggest an indoor plan and agree a time.",
+    "speaking": "Am Samstag soll es regnen. Schlage statt der Radtour etwas drinnen vor und vereinbare eine Zeit."
+  },
+  {
+    "writing": "You have 25 euros for a shared gift. A book costs 18 and flowers cost 12. Suggest a choice and explain the budget to a friend.",
+    "speaking": "Ihr habt 25 Euro. Ein Buch kostet 18, Blumen kosten 12 Euro. Was kauft ihr und warum?"
+  },
+  {
+    "writing": "Your neighbourhood event moves from the park to the hall because of rain. Tell volunteers the new place and who brings drinks.",
+    "speaking": "Das Treffen ist wegen Regen jetzt im Saal. Informiere die Helfer und vereinbare, wer Getränke mitbringt."
+  },
+  {
+    "writing": "A friend is nervous about joining a new club. Describe a relevant experience and give one reasoned suggestion.",
+    "speaking": "Ein Freund ist nervös vor seinem ersten Vereinstreffen. Erzähl von einer Erfahrung und gib einen begründeten Rat."
+  },
+  {
+    "writing": "Your neighbour needs quiet mornings; you practise music then. Explain your needs and propose a workable compromise.",
+    "speaking": "Du übst morgens Musik, dein Nachbar braucht dann Ruhe. Erkläre deine Situation und schlage einen Kompromiss vor."
+  },
+  {
+    "writing": "Choose between a cheaper weekend course far away and an online evening course. Explain your priorities and ask about one unclear requirement.",
+    "speaking": "Vergleiche einen günstigen Wochenendkurs weit weg mit einem Online-Abendkurs. Begründe deine Wahl und stelle eine Rückfrage."
+  },
+  {
+    "writing": "A team member is absent before an event. Reassign two tasks, agree priorities and send the absent person a clear summary.",
+    "speaking": "Vor einer Veranstaltung fehlt eine Person. Verteilt zwei Aufgaben neu und fasst den Plan für sie zusammen."
+  },
+  {
+    "writing": "Apply to help at a local bookshop. Describe relevant real or fictional experience and ask about training and hours.",
+    "speaking": "Bewirb dich bei einer Buchhandlung. Beschreibe passende Erfahrungen und frage nach Einarbeitung und Arbeitszeiten."
+  },
+  {
+    "writing": "Your group reserved a quiet restaurant table but is seated beside loud music. Explain the problem; the terrace offered is too cold. Suggest another solution.",
+    "speaking": "Euer reservierter Tisch ist sehr laut. Die angebotene Terrasse ist zu kalt. Erkläre das Problem und schlage eine andere Lösung vor."
+  },
+  {
+    "writing": "Your headphones fail after charging. Support offers repair in two weeks or a different replacement today. Compare options and confirm your choice.",
+    "speaking": "Deine Kopfhörer funktionieren nicht. Reparatur: zwei Wochen. Anderer Ersatz: heute. Vergleiche die Lösungen und bestätige deine Wahl."
+  },
+  {
+    "writing": "Your evening train is cancelled. Compare a bus arriving at midnight with a train tomorrow, explain your choice and inform your host.",
+    "speaking": "Dein Zug fällt aus. Der Bus kommt um Mitternacht an, der nächste Zug morgen. Wähle eine Lösung und informiere deinen Gastgeber."
+  },
+  {
+    "writing": "An office asks you to appear tomorrow, but you cannot leave work. Explain what you have already submitted and ask whether a video appointment is possible.",
+    "speaking": "Du kannst morgen nicht persönlich zum Amt kommen. Erkläre die bisherigen Schritte und frage nach einem Videotermin."
+  },
+  {
+    "writing": "Read this proposal: “Our library wants a weekly phone-free hour.” Summarise it, give your opinion with an example and respond to someone who wants to stay reachable.",
+    "speaking": "Die Bibliothek plant eine handyfreie Stunde pro Woche. Fasse den Vorschlag zusammen und begründe deine Meinung. Was sagst du jemandem, der erreichbar bleiben möchte?"
+  },
+  {
+    "writing": "Plan a neighbourhood book exchange with a 40-euro budget. Compare indoor/outdoor locations, assign tasks and summarise the decision for someone absent.",
+    "speaking": "Plant einen Büchertausch mit 40 Euro Budget. Vergleicht drinnen und draußen, verteilt Aufgaben und fasst die Entscheidung zusammen."
+  },
+  {
+    "writing": "Plan a day out for a visitor who enjoys museums and a friend who prefers nature. Rain starts at 3; you have 50 euros. Agree a plan and write a follow-up message.",
+    "speaking": "Plant einen Ausflug: Eine Person mag Museen, eine Natur. Ab drei regnet es. Ihr habt 50 Euro. Findet einen Plan und fasst ihn zusammen."
+  }
+]

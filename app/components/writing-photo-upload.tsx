@@ -28,7 +28,7 @@ async function preparePhoto(file: File) {
   } finally { bitmap.close(); }
 }
 
-function ConfirmPhotoText({ reading, busy, hasDraft, onConfirm }: { reading: PhotoReading; busy: boolean; hasDraft: boolean; onConfirm: (text: string, photoId: string) => Promise<void> }) {
+function ConfirmPhotoText({ reading, busy, hasDraft, onConfirm, minCharacters }: { reading: PhotoReading; minCharacters: number; busy: boolean; hasDraft: boolean; onConfirm: (text: string, photoId: string) => Promise<void> }) {
   const [text, setText] = useState(reading.text ?? "");
   const [confirmed, setConfirmed] = useState(false);
   return <div className="writing-photo-confirm">
@@ -38,12 +38,12 @@ function ConfirmPhotoText({ reading, busy, hasDraft, onConfirm }: { reading: Pho
     <label><span>Text read from your assignment</span><Textarea lang="de" maxLength={8000} value={text} disabled={busy} onChange={(event) => { setText(event.target.value); setConfirmed(false); }} /></label>
     <label className="writing-photo-consent"><input type="checkbox" checked={confirmed} disabled={busy} onChange={(event) => setConfirmed(event.target.checked)} /><span>I compared this text with my assignment and fixed any reading mistakes.</span></label>
     {hasDraft && <p className="writing-guidance">Using this text replaces your current draft. Previous submitted attempts remain saved.</p>}
-    <Button disabled={busy || !confirmed || text.trim().length < 10 || /\[unclear\]/i.test(text)} onClick={() => void onConfirm(text, reading.id)}>Use confirmed text in my draft</Button>
+    <Button disabled={busy || !confirmed || text.trim().length < minCharacters || /\[unclear\]/i.test(text)} onClick={() => void onConfirm(text, reading.id)}>Use confirmed text in my draft</Button>
   </div>;
 }
 
-export function WritingPhotoUpload({ photos, busy, hasDraft, onUpload, onConfirm }: {
-  photos: PhotoReading[]; busy: boolean; hasDraft: boolean;
+export function WritingPhotoUpload({ photos, busy, hasDraft, onUpload, onConfirm, minCharacters = 10 }: {
+  photos: PhotoReading[]; minCharacters?: number; busy: boolean; hasDraft: boolean;
   onUpload: (file: File, requestId: string) => Promise<void>;
   onConfirm: (text: string, photoId: string) => Promise<void>;
 }) {
@@ -79,7 +79,7 @@ export function WritingPhotoUpload({ photos, busy, hasDraft, onUpload, onConfirm
   }
   return <section className="writing-photo-upload" aria-label="Upload a written assignment">
     <h3><Camera aria-hidden="true" /> Upload your handwritten assignment</h3>
-    <p>Photograph your answer to this chapter’s writing task. Use good light, keep the page flat, and include one page at a time.</p>
+    <p>Photograph your answer to this writing task. Use good light, keep the page flat, and include one page at a time.</p>
     <label><span>Assignment photo · JPG, PNG or WebP · up to 12 MB</span><Input type="file" accept="image/jpeg,image/png,image/webp" disabled={busy || preparing} onChange={(event) => { void choose(event.target.files?.[0]); event.target.value = ""; }} /></label>
     {preparing && <p role="status">Preparing your photo…</p>}
     {preview && <div className="writing-photo-preview">
@@ -94,7 +94,7 @@ export function WritingPhotoUpload({ photos, busy, hasDraft, onUpload, onConfirm
     {error && <p className="chapter-error" role="alert">{error}</p>}
     {latest?.status === "pending" && <p role="status">Your photo is being read. Reload saved work if the connection was interrupted.</p>}
     {latest?.status === "failed" && <p>The last photo could not be read. Try a clearer photo or type your assignment below.</p>}
-    {latest?.status === "complete" && !latest.confirmedAt && <ConfirmPhotoText key={latest.id} reading={latest} busy={busy} hasDraft={hasDraft} onConfirm={onConfirm} />}
-    {latest?.confirmedAt && <p role="status">Photo text confirmed. Choose Get a hint or Check my revision below for corrections and explanations.</p>}
+    {latest?.status === "complete" && !latest.confirmedAt && <ConfirmPhotoText minCharacters={minCharacters} key={latest.id} reading={latest} busy={busy} hasDraft={hasDraft} onConfirm={onConfirm} />}
+    {latest?.confirmedAt && <p role="status">Photo text confirmed. Check your writing below for corrections and explanations.</p>}
   </section>;
 }
