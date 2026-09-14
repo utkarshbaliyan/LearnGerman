@@ -1,3 +1,4 @@
+import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
 import { readTutorSession as read, saveTutorSession as save, reserveTutorQuota as reserveQuota } from "@/app/api/tutor/_sessions";
 import { loadTutorMemory } from "@/app/lib/tutor-memory";
@@ -140,7 +141,7 @@ export async function POST(request: Request) {
       if (typeof body.requestId !== "string" || !/^[a-zA-Z0-9-]{16,80}$/.test(body.requestId)) return error("A valid request ID is required.");
       if (record.session.attempts.length >= 40) return error("This task has 40 saved attempts. Delete this task’s history to start again.");
       const previous = record.session.attempts.filter((x) => x.status === "complete");
-      if (previous.at(-1)?.answer === body.answer) return error("Change your draft before checking again.");
+      if (previous.at(-1)?.answer === body.answer && !(taskId.startsWith("active-") && (!previous.at(-1)?.feedback?.development || previous.at(-1)?.feedback?.development?.explanation.startsWith("The tutor could not reliably")))) return error("Change your draft before checking again.");
       const attempt: WritingAttempt = { id: body.requestId, answer: body.answer, status: "pending", createdAt: new Date().toISOString(), revealed: false,
         ...(record.session.draftPhotoId ? { sourcePhotoId: record.session.draftPhotoId } : {}),
         assistance: previous.some((x) => x.revealed) ? "correction" : previous.length ? "hint" : "independent" };
@@ -154,7 +155,13 @@ export async function POST(request: Request) {
           await save(db, user.id, taskId, record);
           return Response.json({ error: "Daily AI limit reached (20 photo reads or writing checks). Try again after midnight UTC. Your draft is saved.", ...publicWritingRecord(record) }, { status: 429 });
         }
-        attempt.feedback = repairFeedback(await createTutorFeedback("writing", task, body.answer), body.answer);
+        const active = taskId.startsWith("active-");
+        const providerFeedback = await createTutorFeedback("writing", active ? {...task, rubric: `${task.rubric} ${developmentRubric(task.level,task.chapter,"writing")}`} : task, body.answer);
+        attempt.feedback = repairFeedback(providerFeedback, body.answer);
+        if (active) {
+          attempt.feedback.development = assessDevelopment(providerFeedback.responseDevelopment,body.answer,task.level,"writing");
+          if (!attempt.feedback.development.sufficient) { attempt.feedback.taskSuccess = false; attempt.feedback.evidence = []; }
+        }
         attempt.status = "complete";
         if (taskId.startsWith("active-")) attempt.revealed = true;
       } catch (cause) {

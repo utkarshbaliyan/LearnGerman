@@ -12,7 +12,7 @@ const correctionSchema = z.object({
   confidence: z.number().min(0).max(1), severity: z.enum(["minor", "major"]),
 });
 export type RepairIssue = z.infer<typeof correctionSchema> & { start: number; end: number; guidingQuestion?: string; partialExample?: string };
-export type RepairFeedback = { summary: string; issues: RepairIssue[]; taskSuccess: boolean; needsReview: boolean; evidence?: { patternId: TutorPatternId; source: string }[] };
+export type RepairFeedback = { development?: import("./response-development").ResponseDevelopment; summary: string; issues: RepairIssue[]; taskSuccess: boolean; needsReview: boolean; evidence?: { patternId: TutorPatternId; source: string }[] };
 export type WritingAttempt = {
   id: string; answer: string; createdAt: string; assistance: "independent" | "hint" | "correction";
   sourcePhotoId?: string;

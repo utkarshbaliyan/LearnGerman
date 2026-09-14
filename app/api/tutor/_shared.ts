@@ -1,11 +1,13 @@
+import { developmentSchema } from "@/app/lib/response-development";
 import { TUTOR_PATTERN_IDS } from "@/app/lib/tutor-patterns";
 import type { TutorContext, TutorFeedback, TutorMode } from "@/app/lib/ai-tutor-types";
 
 const FEEDBACK_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["overallScore", "mastery", "summary", "correctedAnswer", "strengths", "corrections", "nextStep", "retryPrompt", "constructionEvidence"],
+  required: ["overallScore", "mastery", "summary", "correctedAnswer", "strengths", "corrections", "nextStep", "retryPrompt", "constructionEvidence", "responseDevelopment"],
   properties: {
+    responseDevelopment: { type: "object", additionalProperties: false, required: ["sufficient", "explanation", "nextQuestions"], properties: { sufficient: {type:"boolean"}, explanation: {type:"string"}, nextQuestions: {type:"array",items:{type:"string"},maxItems:3} } },
     overallScore: { type: "integer", minimum: 0, maximum: 100 },
     mastery: { type: "boolean" },
     summary: { type: "string" },
@@ -155,6 +157,7 @@ function normalizeFeedback(value: unknown, learnerAnswer: string): TutorFeedback
     : [];
   return {
     overallScore,
+    responseDevelopment: developmentSchema.safeParse(raw.responseDevelopment).data,
     constructionEvidence: Array.isArray(raw.constructionEvidence) ? raw.constructionEvidence.filter((x) => x && typeof x.source === "string" && typeof x.patternId === "string" && typeof x.correct === "boolean" && typeof x.confidence === "number").slice(0, 5) : [],
     mastery: raw.mastery === true && overallScore >= 80,
     summary: typeof raw.summary === "string" && raw.summary.trim() ? raw.summary : "Your response was checked. Review the corrected version and try once more.",
@@ -194,7 +197,7 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
     "Each correction also requires hint (a question or clue that does NOT give the answer), kind (error or style), confidence (0 to 1), severity (minor or major).",
     "original must be a non-empty exact, unique substring of the learner answer, preserving case and whitespace. Do not invent source spans. Separate actual errors from optional stylistic suggestions.",
     "summary, nextStep and retryPrompt must encourage repair without revealing corrected words or sentences. Do not give a corrected example in these fields or in strengths.",
-    "Return only one JSON object with these keys: overallScore, mastery, summary, correctedAnswer, strengths, corrections, nextStep, retryPrompt, constructionEvidence. Each correction must contain original, corrected, explanation, and category.",
+    "Return only one JSON object with these keys: overallScore, mastery, summary, correctedAnswer, strengths, corrections, nextStep, retryPrompt, constructionEvidence, responseDevelopment. responseDevelopment must contain sufficient (boolean), explanation (brief English), and nextQuestions (up to three specific English questions about missing information, empty when sufficient). Each correction must contain original, corrected, explanation, and category.",
     "If already correct, reinforce what worked without inventing errors.",
   ].join(" ");
 

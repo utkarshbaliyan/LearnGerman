@@ -13,6 +13,7 @@ export type TutorCorrection = {
 };
 
 export type TutorFeedback = {
+  responseDevelopment?: { sufficient: boolean; explanation: string; nextQuestions: string[] };
   overallScore: number;
   mastery: boolean;
   summary: string;

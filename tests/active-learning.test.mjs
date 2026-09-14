@@ -21,7 +21,7 @@ test('Active Learning has a complete versioned course, account-owned progress an
   if (Array.isArray(input.messages[1].content)) return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify({text:'Bo',readable:true,uncertain:false})}}]});
   assert.match(JSON.stringify(input.messages),/Active Learning/);
   assert.doesNotMatch(input.messages[1].content,/FORGED RUBRIC/);
-  return Response.json({choices:[{message:{content:JSON.stringify({overallScore:90,corrections:[],constructionEvidence:[]})}}]});
+  return Response.json({choices:[{message:{content:JSON.stringify({overallScore:90,corrections:[],constructionEvidence:[],responseDevelopment:{sufficient:true,explanation:"The answer covers the task.",nextQuestions:[]}})}}]});
  };
  try {
   const {activeLessons,activeReviews,activeTasks,activeTask} = await vite.ssrLoadModule('/app/lib/active-learning.ts');
@@ -52,7 +52,17 @@ test('Active Learning has a complete versioned course, account-owned progress an
   for(const lesson of activeLessons.slice(0,4)) progress[lesson.id]={writing:{checked:true,firstCheckedAt:new Date(start).toISOString(),updatedAt:new Date(start+999).toISOString()},speaking:{checked:true,firstCheckedAt:new Date(start).toISOString(),updatedAt:new Date(start+999).toISOString()}};
   assert.equal(reviewDueAt(activeReviews[0].id,progress),start+7*86400000,'Retried practice does not postpone the first delayed check');
   res=await post({action:'delete',version:saved.version});assert.equal(res.status,200);progress=(await (await getProgress('alice')).json()).progress;assert.equal(progress[taskId].writing,undefined);assert.equal(progress[taskId].speaking.checked,true,'Deleting writing leaves speaking intact');
-  const photo=new FormData();for(const[k,v] of Object.entries({taskId,version:(await res.json()).version,requestId:'active-photo-00001',consent:'true'}))photo.set(k,String(v));photo.set('photo',new File([Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aKbcAAAAASUVORK5CYII=','base64')],'assignment.png',{type:'image/png'}));
+  const b1=activeLessons.find(row=>row.level==='B1').id;
+  res=await post({taskId:b1,action:'check',version:0,answer:'Ich war in Berlin.',requestId:'active-b1-brief-0001'});assert.equal(res.status,200);let b1record=await res.json();
+  assert.equal(b1record.session.attempts[0].feedback.development.sufficient,false,'One-line B1 does not pass even if provider over-praises it');
+  assert.ok(b1record.session.attempts[0].feedback.development.nextQuestions.length);
+  assert.equal((await (await getProgress('alice')).json()).progress[b1].writing.checked,false);
+  const developed='Letzten Sommer bin ich mit meiner Schwester nach Berlin gefahren. Wir haben dort drei Tage verbracht und ein interessantes Museum besucht. Besonders gut hat mir der gemeinsame Spaziergang gefallen, weil wir endlich Zeit zum Reden hatten. Beim nächsten Mal möchte ich länger bleiben und auch Freunde besuchen.';
+  res=await post({taskId:b1,action:'check',version:b1record.version,answer:developed,requestId:'active-b1-full-00001'});b1record=await res.json();assert.equal(res.status,200);
+  assert.equal((await (await getProgress('alice')).json()).progress[b1].writing.checked,true);
+  res=await post({taskId:b1,action:'check',version:b1record.version,answer:'Es war schön.',requestId:'active-b1-brief-0002'});assert.equal(res.status,200);
+  assert.equal((await (await getProgress('alice')).json()).progress[b1].writing.checked,false,'Latest insufficient response cannot borrow an earlier passing result');
+  const photo=new FormData();for(const[k,v] of Object.entries({taskId,version:(await (await writing.GET(new Request(`http://local/api/tutor/writing?taskId=${taskId}`,{headers:{'x-test-user':'alice'}}))).json()).version,requestId:'active-photo-00001',consent:'true'}))photo.set(k,String(v));photo.set('photo',new File([Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aKbcAAAAASUVORK5CYII=','base64')],'assignment.png',{type:'image/png'}));
   res=await writing.POST(new Request('http://local/api/tutor/writing',{method:'POST',headers:{'x-test-user':'alice','x-writing-owner':'alice'},body:photo}));assert.equal(res.status,200);saved=await res.json();
   res=await post({action:'confirm-photo',version:saved.version,photoId:'active-photo-00001',answer:'Bo'});assert.equal(res.status,200);assert.equal((await res.json()).session.draft,'Bo','Short beginner photo text is accepted');
  } finally {globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GROQ_API_KEY;else process.env.GROQ_API_KEY=oldKey;delete globalThis.__activeDb;await vite.close();sqlite.close();}

@@ -1,4 +1,5 @@
 "use client";
+import { ResponseDevelopmentFeedback } from "./response-development-feedback";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,7 @@ export function TutorRepairFeedback({ attempt, busy, onReveal, onAction, compact
     let corrected = attempt.answer;
     for (const issue of [...issues].reverse()) if (attempt.revealed) corrected = corrected.slice(0, issue.start) + issue.corrected + corrected.slice(issue.end);
     return <section className="writing-repair-feedback" aria-label="Writing feedback"><h3>{attempt.feedback?.taskSuccess ? "Your message works" : "Your feedback"}</h3>
+      <ResponseDevelopmentFeedback development={attempt.feedback?.development}/>
       {attempt.feedback?.needsReview && <p>Some feedback was uncertain. Try again if the correction does not match your meaning.</p>}
       {issues.length ? <><HighlightedAnswer attempt={attempt}/>{issues.map(issue => <article key={issue.start}><p lang="de">{issue.original} → <strong>{issue.corrected}</strong></p><p>{issue.explanation || issue.hint}</p>{issue.kind === "style" && <small>Optional style suggestion</small>}</article>)}<details><summary>See your message with these corrections</summary><p className="writing-source" lang="de">{corrected}</p><p>These are the focused corrections from this check. Try using them in your own revision.</p></details><details><summary>More help or question a correction</summary>{issues.map(issue => <div key={issue.start}><p>{issue.hint}</p>{attempt.disputes?.some(item => item.start === issue.start) ? <p>Concern saved.</p> : <ChallengeCorrection start={issue.start} busy={busy} onAction={onAction}/>}</div>)}</details></> : <p>{attempt.feedback?.taskSuccess ? "No changes needed in this check. You can continue." : "Try answering the task more directly. Use the example above if you need a starting point."}</p>}
     </section>;

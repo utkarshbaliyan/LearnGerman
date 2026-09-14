@@ -2080,3 +2080,7 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .active-lesson .active-intro { margin-bottom: 1rem; }
 .active-lesson .active-back { margin-bottom: 1.25rem; }
 .active-lesson [data-slot="tabs-trigger"] { white-space: nowrap; }
+
+.speaking-target { margin: .75rem 0 1.25rem; font-size: 1rem; font-weight: 600; line-height: 1.6; }
+.response-development { padding: 1rem; margin: 1rem 0; border: 1px solid var(--border); border-radius: .75rem; }
+.response-development h4 { font-weight: 700; font-size: 1.1rem; }.response-development ul { list-style: disc; padding-left: 1.5rem; margin: .75rem 0; }.response-development li { padding: .25rem 0; }

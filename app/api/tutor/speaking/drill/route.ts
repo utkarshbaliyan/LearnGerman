@@ -1,3 +1,4 @@
+import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { getD1 } from "@/db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
 import { getSpeakingMission } from "@/app/lib/speaking-missions";
@@ -78,8 +79,12 @@ export async function POST(request: Request) {
     else {
       if (audio) attempt.answer = await transcribeGerman(audio);
       if (!attempt.answer.trim() || attempt.answer.length > 2000) throw new Error("Unusable transcript");
-      const feedback = await createTutorFeedback("speaking", { level: mission.level, chapter: mission.chapter, prompt: `Answer this one question: ${mission.questions[questionIndex as number]}`, grammarFocus: mission.grammarFocus, vocabulary: [], rubric: `${mission.rubric} Grade only this one spoken answer, not the whole chapter task. A brief answer is enough. Speech recognition may be wrong; do not claim to assess pronunciation.` }, attempt.answer);
+      const feedback = await createTutorFeedback("speaking", { level: mission.level, chapter: mission.chapter, prompt: `Answer this one question: ${mission.questions[questionIndex as number]}`, grammarFocus: mission.grammarFocus, vocabulary: [], rubric: `${mission.rubric} Grade only this one spoken answer, not the whole chapter task. ${taskId.startsWith("active-") ? developmentRubric(mission.level,mission.chapter,"speaking") : "A brief answer is enough."} Speech recognition may be wrong; do not claim to assess pronunciation.` }, attempt.answer);
       attempt.feedback = repairFeedback(feedback, attempt.answer);
+      if (taskId.startsWith("active-")) {
+        attempt.feedback.development = assessDevelopment(feedback.responseDevelopment,attempt.answer,mission.level,"speaking");
+        if (!attempt.feedback.development.sufficient) { attempt.feedback.taskSuccess = false; attempt.feedback.evidence = []; }
+      }
     }
   } catch { error = "We could not check that recording. Please try again."; }
   attempt.status = error ? "failed" : "complete";

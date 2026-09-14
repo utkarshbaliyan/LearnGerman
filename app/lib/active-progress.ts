@@ -2,14 +2,14 @@ import { activeLessons, activeReviews, getActiveLesson } from './active-learning
 export type ActiveMode = 'speaking' | 'writing';
 export type TaskProgress = { attempts: number; checked: boolean; successful: boolean; updatedAt?: string; firstCheckedAt?: string };
 export type ActiveProgress = Record<string, Partial<Record<ActiveMode, TaskProgress>>>;
-export type ProgressRow = { taskId: string; attempts: number; successful: number; updatedAt: string; firstCheckedAt: string };
+export type ProgressRow = { taskId: string; accepted: number; attempts: number; successful: number; updatedAt: string; firstCheckedAt: string };
 export function deriveActiveProgress(rows: ProgressRow[]): ActiveProgress {
  const result: ActiveProgress = {};
  for (const row of rows) {
   const speaking = row.taskId.startsWith('speaking-drill:');
   const id = speaking ? row.taskId.slice('speaking-drill:'.length) : row.taskId;
   if (!getActiveLesson(id)) continue;
-  (result[id] ??= {})[speaking ? 'speaking' : 'writing'] = { attempts: row.attempts, checked: row.attempts > 0, successful: row.successful > 0, updatedAt: row.updatedAt, firstCheckedAt: row.firstCheckedAt };
+  (result[id] ??= {})[speaking ? 'speaking' : 'writing'] = { attempts: row.attempts, checked: row.accepted > 0, successful: row.successful > 0, updatedAt: row.updatedAt, firstCheckedAt: row.firstCheckedAt };
  }
  return result;
 }
