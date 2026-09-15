@@ -140,7 +140,7 @@ const VERB_FORM_HEADWORDS: Record<string, VerbHeadword> = {
 };
 
 export function verbHeadwordForForm(german: string) {
-  return VERB_FORM_HEADWORDS[german.toLocaleLowerCase("de").trim()] ?? null;
+  return VERB_FORM_HEADWORDS[german.toLowerCase().trim()] ?? null;
 }
 
 export function germanVerbLemma(german: string) {

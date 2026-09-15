@@ -612,7 +612,7 @@ Object.assign(GLOSSARY, {
 });
 
 export function cleanWord(token: string) {
-  return token.toLocaleLowerCase("de-DE").replace(/[^a-zäöüßé]/gi, "");
+  return token.toLowerCase().replace(/[^a-zäöüßé]/gi, "");
 }
 
 const ALL_READING_WORDS = A1_STORIES.flatMap((story) =>

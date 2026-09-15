@@ -188,14 +188,14 @@ const GENERATED_VERB_SUFFIXES = "regelmäßig|gemeinsam|sorgfältig|in der praxi
 
 function containsGermanInfinitive(german: string) {
   return german
-    .toLocaleLowerCase("de")
+    .toLowerCase()
     .split(/[^a-zäöüß]+/)
     .some((token) => token === "sein" || token === "tun" || /(?:en|eln|ern)$/.test(token));
 }
 
 export function vocabularyVerbLemmaKey(word: VocabularyWord) {
   return word.german
-    .toLocaleLowerCase("de")
+    .toLowerCase()
     .trim()
     .replace(new RegExp(`^sich\\s+(?:${GENERATED_VERB_ADVERBS})\\s+`), "sich ")
     .replace(new RegExp(`^(?:${GENERATED_VERB_ADVERBS})\\s+`), "")
@@ -205,7 +205,7 @@ export function vocabularyVerbLemmaKey(word: VocabularyWord) {
 
 function verbHeadword(word: VocabularyWord) {
   return word.german
-    .toLocaleLowerCase("de")
+    .toLowerCase()
     .replace(/^(erfolgreich|selbstständig|konsequent)\s+/, "")
     .replace(/\s+(gemeinsam|sorgfältig|in der praxis)$/, "")
     .replace(/^sich\s+/, "")
@@ -214,8 +214,8 @@ function verbHeadword(word: VocabularyWord) {
 
 export function vocabularyWordClass(word: VocabularyWord): VocabularyWordClass {
   if (word.wordClass) return word.wordClass;
-  const german = word.german.toLocaleLowerCase("de").split(",")[0].trim();
-  const english = word.english.toLocaleLowerCase("en");
+  const german = word.german.toLowerCase().split(",")[0].trim();
+  const english = word.english.toLowerCase();
   if (word.category === "Verben") return "verb";
   if (PRONOUN_WORDS.has(german)) return "pronoun";
   if (PREPOSITION_WORDS.has(german)) return "preposition";
@@ -232,7 +232,7 @@ export function vocabularyWordClass(word: VocabularyWord): VocabularyWordClass {
 
 export function vocabularyVerbType(word: VocabularyWord): VocabularyVerbType | null {
   if (vocabularyWordClass(word) !== "verb") return null;
-  const german = word.german.toLocaleLowerCase("de");
+  const german = word.german.toLowerCase();
   const headword = verbHeadword(word);
   if (MODAL_VERB_FORMS.has(headword)) return "modal";
   if (german.includes("sich ")) return "reflexive";
@@ -312,7 +312,7 @@ function categoryFor(word: string, english: string, isVerb: boolean, isAdjective
   if (isVerb) return "Verben";
   if (isAdjective) return "Adjektive & Adverbien";
   if (NUMBER_AND_TIME.has(word)) return "Zeit, Zahlen & Mengen";
-  const normalized = english.toLocaleLowerCase("en");
+  const normalized = english.toLowerCase();
   return THEME_HINTS.find(([, hints]) => hints.some((hint) => normalized.includes(hint)))?.[0] ?? "Grundlagen & Kommunikation";
 }
 
@@ -325,8 +325,8 @@ function buildVocabulary(): VocabularyWord[] {
   const words: Omit<VocabularyWord, "id" | "level">[] = [];
 
   for (const [rawWord, english] of Object.entries(GLOSSARY)) {
-    const word = rawWord.toLocaleLowerCase("de");
-    const normalizedEnglish = english.toLocaleLowerCase("en").trim();
+    const word = rawWord.toLowerCase();
+    const normalizedEnglish = english.toLowerCase().trim();
     if (!word || PROPER_WORDS.has(word) || seenEnglish.has(normalizedEnglish)) continue;
 
     const firstEnglish = normalizedEnglish.split(/\s+/)[0].replace(/[^a-z]/g, "");
@@ -351,11 +351,11 @@ function addEssentialVocabulary(
   idPrefix: string,
   earlier: VocabularyWord[] = [],
 ): VocabularyWord[] {
-  const german = new Set([...earlier, ...existing].map((word) => word.german.toLocaleLowerCase("de")));
-  const english = new Set([...earlier, ...existing].map((word) => word.english.toLocaleLowerCase("en")));
+  const german = new Set([...earlier, ...existing].map((word) => word.german.toLowerCase()));
+  const english = new Set([...earlier, ...existing].map((word) => word.english.toLowerCase()));
   const unique = additions.filter((word) => {
-    const germanKey = word.german.toLocaleLowerCase("de");
-    const englishKey = word.english.toLocaleLowerCase("en");
+    const germanKey = word.german.toLowerCase();
+    const englishKey = word.english.toLowerCase();
     if (german.has(germanKey) || english.has(englishKey)) return false;
     german.add(germanKey);
     english.add(englishKey);
@@ -373,9 +373,9 @@ function normalizeVerbCard(word: VocabularyWord) {
   const german = headword?.german ?? word.german;
   if (!containsGermanInfinitive(german)) return null;
 
-  const exactGerman = german.toLocaleLowerCase("de").trim();
+  const exactGerman = german.toLowerCase().trim();
   const english = headword?.english ?? INFINITIVE_ENGLISH_OVERRIDES[exactGerman] ?? word.english;
-  if (!english.toLocaleLowerCase("en").startsWith("to ")) return null;
+  if (!english.toLowerCase().startsWith("to ")) return null;
   return { ...word, english, german };
 }
 
@@ -384,7 +384,7 @@ function removeDuplicateVerbForms(words: VocabularyWord[]) {
   const baseVerbLemmas = new Set(words.flatMap((word) => {
     if (vocabularyWordClass(word) !== "verb" || verbHeadwordForForm(word.german)) return [];
     const normalized = normalizeVerbCard(word);
-    if (!normalized || vocabularyVerbLemmaKey(normalized) !== normalized.german.toLocaleLowerCase("de").trim()) return [];
+    if (!normalized || vocabularyVerbLemmaKey(normalized) !== normalized.german.toLowerCase().trim()) return [];
     return [vocabularyVerbLemmaKey(normalized)];
   }));
 
@@ -414,7 +414,7 @@ export function isStandaloneVocabularyHeadword(word: VocabularyWord) {
   if (NOUN_HEADWORD.test(german)) return true;
 
   if (vocabularyWordClass(word) === "verb") {
-    const verb = german.toLocaleLowerCase("de").replace(/^sich\s+/, "");
+    const verb = german.toLowerCase().replace(/^sich\s+/, "");
     const parts = verb.split(/\s+/);
     if (parts.length === 1) return STANDALONE_TOKEN.test(parts[0]) && containsGermanInfinitive(parts[0]);
     return parts.length === 2 && containsGermanInfinitive(parts[0]) && PREPOSITION_WORDS.has(parts[1]);

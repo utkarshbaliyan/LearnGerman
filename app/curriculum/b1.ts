@@ -262,6 +262,6 @@ export const B1_STORIES: Story[] = B1_UNITS.flatMap((unit) => unit.stories);
 const words = B1_STORIES.flatMap((story) => story.text.split(/\s+/).filter(Boolean));
 export const B1_STATS = {
   totalWords: words.length,
-  uniqueWordForms: new Set(words.map((word) => word.toLocaleLowerCase("de-DE").replace(/[^a-zäöüßé]/gi, ""))).size,
+  uniqueWordForms: new Set(words.map((word) => word.toLowerCase().replace(/[^a-zäöüßé]/gi, ""))).size,
   averageStoryWords: Math.round(words.length / B1_STORIES.length),
 };
