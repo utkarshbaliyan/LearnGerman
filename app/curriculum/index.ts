@@ -1,3 +1,5 @@
+import storyGlosses from "./story-glosses.json";
+const STORY_GLOSSES: Record<string, string> = storyGlosses;
 import {
   A1_STATS,
   A1_STORIES,
@@ -109,6 +111,11 @@ export function getCurriculum(level: CefrLevel) {
 export { cleanWord };
 
 export function meaningFor(token: string) {
+  return STORY_GLOSSES[cleanWord(token)] ?? courseVocabularyMeaningFor(token);
+}
+
+// Freeze the existing chapter word selection when story-only gloss coverage grows.
+export function courseVocabularyMeaningFor(token: string) {
   const word = cleanWord(token);
   if (!word) return "";
   if (FORM_GLOSSES[word]) return FORM_GLOSSES[word];
@@ -134,7 +141,6 @@ export function meaningFor(token: string) {
       return B1_GLOSSARY[candidate] || A2_GLOSSARY[candidate] || GLOSSARY[candidate];
     }
   }
-  if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";
   return "";
 }
 export type { CefrLevel, Curriculum, Story, Unit } from "@/app/curriculum/types";

@@ -26,7 +26,7 @@ const WritingRepairWorkspace = dynamic(() => import("@/app/components/writing-re
 import { writingMission } from "@/app/lib/writing-mission";
 const SpeakingWorkspace = dynamic(() => import("@/app/components/speaking-workspace").then((module) => module.SpeakingWorkspace), { loading: () => <p>Loading speaking practice…</p> });
 import { SiteHeader } from "@/app/components/site-header";
-import { NarratedTranslatedStory } from "@/app/components/translated-story-text";
+const NarratedTranslatedStory = dynamic(() => import("@/app/components/translated-story-text").then(module => module.NarratedTranslatedStory), { loading: () => <p>Loading story translations…</p> });
 import type { CourseChapterContent } from "@/app/course/course-data";
 import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";

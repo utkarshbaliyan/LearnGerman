@@ -8,7 +8,7 @@ import {
   type ChapterQuestion,
   type ChapterVocabulary,
 } from "@/app/course/a1/chapter-one";
-import { getCurriculum, meaningFor, type Story } from "@/app/curriculum";
+import { getCurriculum, courseVocabularyMeaningFor, type Story } from "@/app/curriculum";
 import {
   ALL_GRAMMAR_LESSONS,
   LIVE_GRAMMAR_LESSONS,
@@ -63,13 +63,13 @@ function contextualVocabulary(story: Story, level: GrammarLevel): ChapterVocabul
     const tokens = sentence.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß-]*/g) ?? [];
     for (const token of tokens) {
       const normalized = token.toLocaleLowerCase("de");
-      const english = meaningFor(token);
+      const english = courseVocabularyMeaningFor(token);
       if (
         normalized.length < 3
         || seen.has(normalized)
         || COMMON_WORDS.has(normalized)
         || !english
-        || english === "name / place"
+        || /personal name|possessive name|surname/.test(english)
       ) continue;
       seen.add(normalized);
       words.push({

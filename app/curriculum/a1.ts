@@ -641,6 +641,5 @@ export function meaningFor(token: string) {
   for (const candidate of candidates) {
     if (candidate && GLOSSARY[candidate]) return GLOSSARY[candidate];
   }
-  if (/^[A-ZÄÖÜ]/.test(token)) return "name / place";
   return "";
 }
