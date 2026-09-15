@@ -14,7 +14,7 @@ Validation: independent skill updates, lower/latest results, cross-device merge,
 
 Limit: existing comprehension questions still use recognition of familiar story material. This release fixes measurement separation, not assessment validity. Course overview history may retain previous completion while a chapter shows newly separated checks. Repeated checks are still practice.
 
-## 2. Rebuild A1 module 1 as a teaching unit — next
+## 2. Rebuild A1 module 1 as a teaching unit — initial implementation
 
 - Four small lessons: name, origin, home, combined introduction.
 - Actual German phrases with meanings, listenable models and one supported attempt before an own-details response.
@@ -50,3 +50,11 @@ Limit: existing comprehension questions still use recognition of familiar story 
 - Separate meaningful task achievement from grammatical accuracy in the tutor rubric.
 - Recommend review from recurring errors and delayed reuse, rather than a completion total.
 - Readiness evidence across listening, reading, writing and interaction, with teacher calibration. Keep certificates and fluency claims out until supported.
+
+### Module 1 release — 15 September 2026
+
+Implemented four short preparation sequences: taught question/meaning, usable phrase, listening message, separate reading message and a supported fill-in. Preparation is optional and ungraded; its intermediate state is page-local. Own-details writing/photo/speaking retains durable existing tutor progress. Core module-1 attempts are conservatively classified as guided (hint) even if preparation is skipped, avoiding unsupported independent-use evidence. This rule applies to new attempts; historical attempts are unchanged.
+
+Added a separate paired introduction check without visible models, under a distinct task ID. It uses existing account-owned tutor progress, quotas, revisions and feedback. It is accessible from module 1 and after its last lesson; it is not included in the 96 core-activity count. The seven-day return scenario remains separate. The new check is practice evidence, not a calibrated readiness test.
+
+Listening uses browser German speech synthesis with optional transcript and an error fallback. No pronunciation or audio-comprehension certification is claimed. Human review, a recorded multi-speaker listening bank, exact grammar prerequisite links and broader readiness assessment remain outstanding. Validate the teaching sequence before expanding it to the remaining modules.

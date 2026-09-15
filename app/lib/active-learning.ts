@@ -10,7 +10,12 @@ export const activeReviews = activeLessons.filter(row => row.lesson === 4).map((
  communication_goal: `Use it again: ${row.module_title}`, writing_prompt: reviewPrompts[index].writing,
  question: reviewPrompts[index].speaking,
 }));
-export const activeTasks = [...activeLessons, ...activeReviews];
+export const starterCheckpoint = { ...activeLessons[3], id: 'active-a1-m01-check-v1', review: true,
+ communication_goal: 'Meet a new course partner',
+ question: 'Hallo! Wie heißt du und wo wohnst du?',
+ writing_prompt: 'You join a new online German group. Write a short greeting, your name and the city where you live. Two short sentences are enough. You may use fictional details.',
+};
+export const activeTasks = [...activeLessons, ...activeReviews, starterCheckpoint];
 export type ActiveLesson = typeof activeLessons[number];
 export function getActiveLesson(id: string) { return activeTasks.find(lesson => lesson.id === id); }
 export function activeTask(id: string): ChapterOutputTask | null {

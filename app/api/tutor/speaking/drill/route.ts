@@ -1,3 +1,4 @@
+import { isGuidedStarter } from "@/app/lib/a1-starter";
 import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { getD1 } from "@/db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
   if (!audio && (body.action !== "correct-transcript" || !source || typeof body.answer !== "string" || !body.answer.trim() || body.answer.length > 2000)) return fail("Enter what you actually said.");
   if (typeof body.requestId !== "string" || !/^[a-zA-Z0-9-]{16,80}$/.test(body.requestId)) return fail("A valid request ID is required.");
   if (record.session.attempts.length >= 60) return fail("Delete saved practice to make room for more attempts.");
-  const attempt: WritingAttempt = { id: body.requestId, requestHash: hash, questionIndex: questionIndex as number, transcriptConfirmed: !audio, answer: audio ? "" : body.answer as string, createdAt: new Date().toISOString(), status: "pending", revealed: true, assistance: record.session.attempts.some(x => x.questionIndex === questionIndex && x.status === "complete") ? "correction" : "independent" };
+  const attempt: WritingAttempt = { id: body.requestId, requestHash: hash, questionIndex: questionIndex as number, transcriptConfirmed: !audio, answer: audio ? "" : body.answer as string, createdAt: new Date().toISOString(), status: "pending", revealed: true, assistance: record.session.attempts.some(x => x.questionIndex === questionIndex && x.status === "complete") ? "correction" : isGuidedStarter(taskId) ? "hint" : "independent" };
   record.session.attempts.push(attempt);
   if (!await save()) return fail("Saved work changed. Reload.", 409);
   let error: string | undefined, status = 502;

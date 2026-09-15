@@ -28,7 +28,7 @@ test('Active Learning has a complete versioned course, account-owned progress an
   const {getWritingTask} = await vite.ssrLoadModule('/app/lib/writing-task.ts');
   const {getSpeakingMission} = await vite.ssrLoadModule('/app/lib/speaking-missions.ts');
   const {reviewDueAt} = await vite.ssrLoadModule('/app/lib/active-progress.ts');
-  assert.equal(activeLessons.length,144);assert.equal(activeReviews.length,36);assert.equal(new Set(activeTasks.map(x=>x.id)).size,180);
+  assert.equal(activeLessons.length,144);assert.equal(activeReviews.length,36);assert.equal(new Set(activeTasks.map(x=>x.id)).size,181);
   for(const level of ['A1','A2','B1']) assert.equal(activeLessons.filter(x=>x.level===level).length,48);
   for(const task of activeTasks) {assert.ok(getWritingTask(task.id));assert.ok(getSpeakingMission(task.id));assert.ok(task.question.length>8);assert.ok(task.example.length>8);assert.ok(task.writing_prompt.length>15);}
   const taskId=activeLessons[0].id;
@@ -40,7 +40,7 @@ test('Active Learning has a complete versioned course, account-owned progress an
   let res=await post({action:'draft',version:0,answer:'Bo'});assert.equal(res.status,200);let saved=await res.json();
   assert.deepEqual((await (await getProgress('alice')).json()).progress,{},'Drafts do not complete tasks');
   const request={action:'check',version:saved.version,answer:'Bo',requestId:'active-request-0001',rubric:'FORGED RUBRIC'};
-  res=await post(request);assert.equal(res.status,200);saved=await res.json();assert.equal(saved.session.attempts[0].revealed,true);
+  res=await post(request);assert.equal(res.status,200);saved=await res.json();assert.equal(saved.session.attempts[0].revealed,true);assert.equal(saved.session.attempts[0].assistance,"hint","Starter teaching is guided practice");
   assert.equal((await post(request)).status,200);assert.equal(calls,1,'Network retry does not double charge');
   let progress=(await (await getProgress('alice')).json()).progress;assert.equal(progress[taskId].writing.checked,true);assert.equal(progress[taskId].speaking,undefined);
   assert.deepEqual((await (await getProgress('bob')).json()).progress,{});
@@ -52,6 +52,10 @@ test('Active Learning has a complete versioned course, account-owned progress an
   for(const lesson of activeLessons.slice(0,4)) progress[lesson.id]={writing:{checked:true,firstCheckedAt:new Date(start).toISOString(),updatedAt:new Date(start+999).toISOString()},speaking:{checked:true,firstCheckedAt:new Date(start).toISOString(),updatedAt:new Date(start+999).toISOString()}};
   assert.equal(reviewDueAt(activeReviews[0].id,progress),start+7*86400000,'Retried practice does not postpone the first delayed check');
   res=await post({action:'delete',version:saved.version});assert.equal(res.status,200);progress=(await (await getProgress('alice')).json()).progress;assert.equal(progress[taskId].writing,undefined);assert.equal(progress[taskId].speaking.checked,true,'Deleting writing leaves speaking intact');
+  res=await post({taskId:'active-a1-m01-check-v1',action:'check',version:0,answer:'Hallo, ich heiße Bo. Ich wohne in Bonn.',requestId:'starter-check-00001'});
+  assert.equal(res.status,200);const fresh=await res.json();
+  assert.equal(fresh.session.attempts[0].assistance,'independent');
+  assert.equal((await (await getProgress('alice')).json()).progress['active-a1-m01-check-v1'].writing.checked,true);
   const b1=activeLessons.find(row=>row.level==='B1').id;
   res=await post({taskId:b1,action:'check',version:0,answer:'Ich war in Berlin.',requestId:'active-b1-brief-0001'});assert.equal(res.status,200);let b1record=await res.json();
   assert.equal(b1record.session.attempts[0].feedback.development.sufficient,false,'One-line B1 does not pass even if provider over-praises it');

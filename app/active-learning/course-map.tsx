@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Check, Mic, PenLine } from 'lucide-react';
-import { ACTIVE_LEVELS, activeLessons, activeReviews, type ActiveLevel } from '@/app/lib/active-learning';
+import { ACTIVE_LEVELS, activeLessons, activeReviews, starterCheckpoint, type ActiveLevel } from '@/app/lib/active-learning';
 import { reviewDueAt, type ActiveMode } from '@/app/lib/active-progress';
 import { useActiveProgress } from '@/app/hooks/use-active-progress';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -34,6 +34,7 @@ export function CourseMap() {
    return <details key={`${level}-${module}`} className="active-module" open={next?.row.module === module || undefined}>
     <summary><span className="active-module-number">{done === 8 ? <Check size={20}/> : String(module).padStart(2,'0')}</span><span><b>{group[0].module_title}</b><small>{done} / 8 activities completed</small></span><span className="active-expand">+</span></summary>
     <ol>{group.map(row => <li key={row.id}><span>{row.communication_goal}</span><div>{modes.map(mode => <Link key={mode} href={`/active-learning/${row.id}?mode=${mode}`} className={progress[row.id]?.[mode]?.checked ? 'is-practised' : ''} aria-label={`${mode === 'speaking' ? 'Speak' : 'Write'}: ${row.communication_goal}${progress[row.id]?.[mode]?.checked ? ', practised' : ''}`}>{progress[row.id]?.[mode]?.checked ? <Check size={16}/> : mode === 'speaking' ? <Mic size={16}/> : <PenLine size={16}/>} {mode === 'speaking' ? 'Speak' : 'Write'}</Link>)}</div></li>)}</ol>
+    {level === 'A1' && module === 1 && <div className="starter-module-check"><b>Try a new introduction</b><p>Use the phrases in a new situation, without an example.</p>{modes.map(mode => <Link key={mode} href={`/active-learning/${starterCheckpoint.id}?mode=${mode}`}>{progress[starterCheckpoint.id]?.[mode]?.checked ? '✓ ' : ''}{mode === 'speaking' ? 'Speak' : 'Write'}</Link>)}</div>}
    </details>;
   })}</div>
   <p className="active-footnote">Completion means your answer included enough relevant detail. Later checks help you see what you can use again; completion is not a B1 certificate.</p>

@@ -1,3 +1,4 @@
+import { isGuidedStarter } from "@/app/lib/a1-starter";
 import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
 import { readTutorSession as read, saveTutorSession as save, reserveTutorQuota as reserveQuota } from "@/app/api/tutor/_sessions";
@@ -144,7 +145,7 @@ export async function POST(request: Request) {
       if (previous.at(-1)?.answer === body.answer && !(taskId.startsWith("active-") && (!previous.at(-1)?.feedback?.development || previous.at(-1)?.feedback?.development?.explanation.startsWith("The tutor could not reliably")))) return error("Change your draft before checking again.");
       const attempt: WritingAttempt = { id: body.requestId, answer: body.answer, status: "pending", createdAt: new Date().toISOString(), revealed: false,
         ...(record.session.draftPhotoId ? { sourcePhotoId: record.session.draftPhotoId } : {}),
-        assistance: previous.some((x) => x.revealed) ? "correction" : previous.length ? "hint" : "independent" };
+        assistance: previous.some((x) => x.revealed) ? "correction" : previous.length || isGuidedStarter(taskId) ? "hint" : "independent" };
       record.session.attempts.push(attempt);
       if (!await save(db, user.id, taskId, record)) return error("Your work changed. Reload saved work.", 409);
       try {

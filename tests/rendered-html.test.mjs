@@ -166,11 +166,15 @@ test("grammar exposes complete, accessible case recall tables without loading ex
 
 test("renders the Active Learning map and all levels with server-owned tasks", async () => {
   const home = await renderRoute("/active-learning"); assert.equal(home.status, 200);
-  const html = await home.text(); assert.match(html, /German you can use/); assert.match(html, /active-a1-m01-l01-v1/);
+  const html = await home.text(); assert.match(html, /German you can use/); assert.match(html, /active-a1-m01-l01-v1/); assert.match(html, /active-a1-m01-check-v1/);
   for (const [taskId, prompt] of [["active-a1-m01-l01-v1", "Wie heißt du"], ["active-a2-m09-l03-v1", "Termin verschieben"], ["active-b1-m12-l04-v1", "gemeinsamen Tag"], ["active-a1-m01-review-v1", "Bibliothek"]]) {
     const response = await renderRoute(`/active-learning/${taskId}?mode=speaking`); assert.equal(response.status, 200); assert.ok((await response.text()).includes(prompt));
   }
-  const writing = await renderRoute("/active-learning/active-a1-m01-l01-v1?mode=writing"); assert.equal(writing.status, 200); assert.match(await writing.text(), /Write one sentence/);
+  const writing = await renderRoute("/active-learning/active-a1-m01-l01-v1?mode=writing"); assert.equal(writing.status, 200); assert.match(await writing.text(), /My name is Lina/);
+  const checkpoint = await renderRoute("/active-learning/active-a1-m01-check-v1?mode=writing");
+  const checkpointHtml = await checkpoint.text();
+  assert.equal(checkpoint.status, 200); assert.match(checkpointHtml, /new online German group/);
+  assert.doesNotMatch(checkpointHtml, /A little help before you start|Listen to the example|Review the phrases/);
   assert.equal((await renderRoute("/active-learning/active-a1-m99-l01-v1")).status, 404);
   assert.equal((await renderRoute("/api/active-learning/progress")).status, 401);
 });

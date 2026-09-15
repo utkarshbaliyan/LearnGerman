@@ -2084,3 +2084,14 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .speaking-target { margin: .75rem 0 1.25rem; font-size: 1rem; font-weight: 600; line-height: 1.6; }
 .response-development { padding: 1rem; margin: 1rem 0; border: 1px solid var(--border); border-radius: .75rem; }
 .response-development h4 { font-weight: 700; font-size: 1.1rem; }.response-development ul { list-style: disc; padding-left: 1.5rem; margin: .75rem 0; }.response-development li { padding: .25rem 0; }
+
+.starter-preparation { margin: 1.25rem 0; padding: 1.5rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
+.starter-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+.starter-preparation p { margin: .9rem 0; line-height:1.65; font-size:1rem; }
+.starter-preparation blockquote { margin:1rem 0; font-size:1.35rem; line-height:1.6; }
+.starter-options { display:flex; gap:.75rem; flex-wrap:wrap; margin:1rem 0; }
+.starter-preparation input { display:block; width:100%; max-width:25rem; padding:.75rem; border:1px solid var(--border); border-radius:.5rem; background:var(--background); margin:1rem 0; font-size:1rem; }
+.starter-preparation summary { cursor:pointer; margin:.75rem 0; }
+.starter-module-check { padding:1rem 1.25rem; border-top:1px solid var(--border); }
+.starter-module-check p { margin:.5rem 0; color:var(--muted-foreground); }
+.starter-module-check a { display:inline-block; padding:.6rem 1rem; margin:.25rem .5rem .25rem 0; border:1px solid var(--border); border-radius:.5rem; }
