@@ -85,8 +85,10 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     const response = await renderRoute(pathname);
     assert.equal(response.status, 200, pathname);
     const html = await response.text();
-    assert.match(html, /Chapter progress/i, pathname);
-    assert.match(html, /Story check/i, pathname);
+    assert.match(html, /Chapter practice/i, pathname);
+    assert.match(html, /Listening practice/i, pathname);
+    assert.match(html, /Reading practice/i, pathname);
+    assert.ok(html.indexOf("What did you hear?") < html.indexOf("Open the story for reading or listening help"), pathname);
     assert.match(html, /Hover, tap, or focus an underlined word/i, pathname);
     assert.match(html, /core words/i, pathname);
     assert.match(html, /grammar exercises/i, pathname);
@@ -94,7 +96,7 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     assert.match(html, /Sign in/i, pathname);
     assert.doesNotMatch(html, /AI tutor/i, pathname);
     assert.match(html, /Integrated checkpoint/i, pathname);
-    assert.ok(html.indexOf("01 · Story") < html.indexOf("02 · Vocabulary"), pathname);
+    assert.ok(html.indexOf("01 · Listening and reading") < html.indexOf("02 · Vocabulary"), pathname);
     assert.ok(html.indexOf("02 · Vocabulary") < html.indexOf("03 · Grammar"), pathname);
     assert.ok(html.indexOf("03 · Grammar") < html.indexOf("04 · Writing"), pathname);
     assert.ok(html.indexOf("04 · Writing") < html.indexOf("05 · Speaking"), pathname);
@@ -110,7 +112,7 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
   assert.match(html, /Ich bin neu hier/i);
   assert.match(html, /30 core words/i);
   assert.match(html, /50 grammar exercises/i);
-  assert.match(html, /Story check/i);
+  assert.match(html, /Listening practice/i);
   assert.match(html, /Hover, tap, or focus an underlined word/i);
   assert.match(html, /Personal pronouns and/i);
   assert.match(html, /Say hello/i);
