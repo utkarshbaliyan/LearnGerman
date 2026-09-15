@@ -44,6 +44,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
+import { mergeComprehensionChecks, type ComprehensionSkill } from "@/app/lib/comprehension-progress";
+
 const CHECKED_SKILLS: CourseSkill[] = ["reading", "listening", "vocabulary", "grammar"];
 const SKILLS: Array<{ id: CourseSkill; label: string; icon: typeof BookOpen }> = [
   { id: "listening", label: "Listening", icon: Headphones },
@@ -72,7 +74,7 @@ function QuizBlock({ questions, eyebrow, title, savedScore, onScore }: {
 
   return (
     <div className="chapter-quiz">
-      <div className="chapter-quiz-heading"><div><span>{eyebrow}</span><h3>{title}</h3></div>{savedScore > 0 && <Badge variant="outline">Best {savedScore}%</Badge>}</div>
+      <div className="chapter-quiz-heading"><div><span>{eyebrow}</span><h3>{title}</h3></div>{savedScore > 0 && <Badge variant="outline">Saved practice {savedScore}%</Badge>}</div>
       <div className="chapter-question-list">
         {questions.map((question, index) => <article key={question.id} className={submitted ? (answers[question.id] === question.answer ? "is-correct" : "is-wrong") : ""}>
           <span>{String(index + 1).padStart(2, "0")}</span>
@@ -82,7 +84,7 @@ function QuizBlock({ questions, eyebrow, title, savedScore, onScore }: {
         </article>)}
       </div>
       {submitted
-        ? <div className="chapter-quiz-result"><strong>{score}%</strong><span>{score >= 80 ? "Strong result. This skill is ready." : "Review the feedback, then try again."}</span><Button variant="outline" onClick={() => { setAnswers({}); setSubmitted(false); }}><RotateCcw /> Try again</Button></div>
+        ? <div className="chapter-quiz-result"><strong>{score}%</strong><span>{score >= 80 ? "Good result on this practice check." : "Review the feedback, then try again."}</span><Button variant="outline" onClick={() => { setAnswers({}); setSubmitted(false); }}><RotateCcw /> Try again</Button></div>
         : <Button onClick={submit} disabled={Object.keys(answers).length < questions.length}>Check all answers <ArrowRight /></Button>}
     </div>
   );
@@ -97,7 +99,11 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const { progress, hydrated, updateChapter } = useCourseProgress();
   const { setStoryCompleted } = useStoryProgress();
   const { hydrated: vocabularyHydrated, importLearned, isLearned, setLearned } = useVocabularyProgress();
-  const chapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
+  const storedChapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
+  const checks = mergeComprehensionChecks(storedChapter.comprehensionChecks, undefined);
+  const chapter = { ...storedChapter, skillScores: { ...storedChapter.skillScores,
+    reading: checks.reading?.score ?? 0, listening: checks.listening?.score ?? 0 } };
+  const [usedStoryText, setUsedStoryText] = useState(false);
   const grammarGroups = useMemo(() => [...new Set(content.grammar.exercises.map((exercise) => exercise.group ?? "Core practice"))], [content.grammar.exercises]);
   const [showAllWords, setShowAllWords] = useState(false);
   const knownWordIds = useMemo(() => new Set(content.vocabulary
@@ -147,14 +153,11 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
     queueCloudProgress("grammar", syncGrammarLessonToLibrary(localStorage, content.id, sets, average, grammarGroups.every((group) => sets[group] !== undefined)));
   }
 
-  function saveStoryScore(score: number) {
-    updateChapter(content.id, (current) => ({
-      ...current,
-      skillScores: {
-        ...current.skillScores,
-        listening: Math.max(current.skillScores.listening ?? 0, score),
-        reading: Math.max(current.skillScores.reading ?? 0, score),
-      },
+  function saveComprehensionScore(skill: ComprehensionSkill, score: number) {
+    updateChapter(content.id, current => ({ ...current,
+      comprehensionChecks: { ...current.comprehensionChecks, [skill]: {
+        score, checkedAt: new Date().toISOString(), usedText: skill === "reading" || usedStoryText,
+      } },
     }));
   }
 
@@ -181,9 +184,9 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
           <div className="chapter-facts"><span><BookOpen /> 1 narrated story</span><span><Languages /> {content.vocabulary.length} core words</span><span><GraduationCap /> {content.grammar.exercises.length} grammar exercises</span><span><Mic /> Speaking mission</span></div>
         </div>
         <aside className="chapter-skill-card">
-          <span>Chapter progress</span>
+          <span>Chapter practice</span>
           <div>{SKILLS.map(({ id, label, icon: Icon }) => { const score = chapter.skillScores[id] ?? 0; return <a key={id} href={id === "listening" || id === "reading" ? "#story" : `#${id}`}><Icon /><span>{label}</span>{id === "writing" || id === "speaking" ? <b>Practice</b> : <><Progress value={score} /><b>{score}%</b></>}</a>; })}</div>
-          <p>Every skill must reach at least 70%. The final checkpoint requires 80%.</p>
+          <p>Practice checks: 70%; final checkpoint: 80%. Speaking and writing remain separate practice.</p>
         </aside>
       </section>
 
@@ -202,13 +205,20 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-story-lesson" id="story">
-        <div className="chapter-section-copy"><span>01 · Story</span><h2>Listen, read, and understand.</h2><p>Play the story once with the text covered and listen for the situation. Then listen again while reading. Use a word translation only after trying to infer its meaning from context.</p></div>
-        <article className="chapter-story chapter-story-interactive" lang="de">
-          <div className="chapter-story-meta"><Badge>Story {String(content.story.number).padStart(3, "0")}</Badge><span>{content.story.text.split(/\s+/).length} words</span></div>
-          <h3>{content.story.title}</h3>
-          <NarratedTranslatedStory curriculum={content.curriculum} story={content.story} playbackRate={level === "A1" ? 0.92 : level === "A2" ? 0.96 : 1} speedLabel={level === "A1" ? "learning speed" : "natural speed"} />
-        </article>
-        <QuizBlock questions={[...content.listening, ...content.reading]} eyebrow="Story check" title="What did you understand?" savedScore={Math.min(chapter.skillScores.listening ?? 0, chapter.skillScores.reading ?? 0)} onScore={saveStoryScore} />
+        <div className="chapter-section-copy"><span>01 · Listening and reading</span><h2>Listen first. Then read.</h2><p>Try the listening questions before opening the story. You can replay the audio.</p></div>
+        <audio controls preload="none" aria-label="Listen to the chapter story" style={{width:'100%'}} src={`${content.curriculum.audioBasePath}/story-${String(content.story.number).padStart(3, '0')}.webm?v=${content.curriculum.audioVersion}`} />
+        <QuizBlock questions={content.listening} eyebrow="Listening practice" title="What did you hear?" savedScore={checks.listening?.score ?? 0} onScore={score => saveComprehensionScore("listening", score)} />
+        {checks.listening && <p>Latest listening check: {checks.listening.score}% · {checks.listening.usedText ? 'Story text opened for support' : 'Story text not opened in this visit'}</p>}
+        <details onToggle={event => { if (event.currentTarget.open) setUsedStoryText(true); }}>
+          <summary>Open the story for reading or listening help</summary>
+          <article className="chapter-story chapter-story-interactive" lang="de">
+            <h3>{content.story.title}</h3>
+            <NarratedTranslatedStory curriculum={content.curriculum} story={content.story} playbackRate={level === "A1" ? 0.92 : level === "A2" ? 0.96 : 1} speedLabel={level === "A1" ? "learning speed" : "natural speed"} />
+          </article>
+        </details>
+        <QuizBlock questions={content.reading} eyebrow="Reading practice" title="What did you read?" savedScore={checks.reading?.score ?? 0} onScore={score => saveComprehensionScore("reading", score)} />
+        {!checks.reading && !checks.listening && (storedChapter.skillScores.reading !== undefined || storedChapter.skillScores.listening !== undefined) && <p>Your earlier combined story result is saved. These new checks track reading and listening separately.</p>}
+
       </section>
 
       <section className="chapter-learning-section chapter-vocabulary" id="vocabulary">
@@ -241,7 +251,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-checkpoint" id="checkpoint">
-        <div className="chapter-section-copy"><span>06 · Integrated checkpoint</span><h2>Prove that the chapter works together.</h2><p>This final check mixes the story, contextual vocabulary, grammar patterns, correction, and communicative outcome. You need at least 80%.</p></div>
+        <div className="chapter-section-copy"><span>06 · Integrated checkpoint</span><h2>Review this chapter.</h2><p>This final check mixes the story, contextual vocabulary, grammar patterns, correction, and communicative outcome. You need at least 80%.</p></div>
         <QuizBlock questions={content.checkpoint} eyebrow="Chapter checkpoint" title="Ready to use what you learned?" savedScore={chapter.checkpointScore ?? 0} onScore={(score) => updateChapter(content.id, (current) => ({ ...current, checkpointScore: Math.max(current.checkpointScore ?? 0, score) }))} />
       </section>
 
@@ -254,7 +264,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
         <div className="chapter-finish-actions"><Button variant="outline" asChild><Link href={previousHref}><ArrowLeft /> Previous chapter</Link></Button>{chapter.completed ? <Button asChild><Link href={nextHref}>Continue to next chapter <ArrowRight /></Link></Button> : <Button size="lg" disabled={!readyForMastery || !hydrated} onClick={completeChapter}>Complete Chapter {number} <ArrowRight /></Button>}</div>
       </section>
 
-      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through complete courses</small></span></Link><p>{level} Chapter {number} integrates all six language skills and a chapter checkpoint.</p><div><a href="#top">Back to top</a><Link href="/">Course roadmap</Link></div></footer>
+      <footer><Link href="/" className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through complete courses</small></span></Link><p>{level} Chapter {number} combines reading, listening, vocabulary, grammar, speaking and writing practice.</p><div><a href="#top">Back to top</a><Link href="/">Course roadmap</Link></div></footer>
     </main>
   );
 }

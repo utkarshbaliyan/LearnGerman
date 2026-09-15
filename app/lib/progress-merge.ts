@@ -1,3 +1,4 @@
+import { mergeComprehensionChecks } from "./comprehension-progress";
 import { mergeVocabularyProgress } from "./progress-sync";
 import { mergeStoryProgress } from "./story-progress";
 import type { CloudProgressScope } from "./cloud-progress-save";
@@ -32,6 +33,7 @@ function mergeCourse(local: unknown, remote: unknown) {
       completed: a.completed === true || b.completed === true,
       checkpointScore: Math.max(Number(a.checkpointScore) || 0, Number(b.checkpointScore) || 0),
       skillScores: maxNumbers(a.skillScores, b.skillScores),
+      comprehensionChecks: mergeComprehensionChecks(a.comprehensionChecks, b.comprehensionChecks),
       grammarSets: maxNumbers(a.grammarSets, b.grammarSets),
       knownWords: [...new Set([...strings(a.knownWords), ...strings(b.knownWords)])],
       writingDraft: String(b.writingDraft || a.writingDraft || ""),

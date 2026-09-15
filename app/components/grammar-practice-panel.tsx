@@ -126,7 +126,7 @@ export function GrammarPracticePanel({ exercises: allExercises, completedSets, o
         <span><CheckCircle2 /></span>
         <p>Practice set complete</p>
         <strong>{score}%</strong>
-        <h3>{score >= 80 ? "You reached mastery." : "Good first pass—review once more."}</h3>
+        <h3>{score >= 80 ? "Practice set completed." : "Good first pass—review once more."}</h3>
         <p>{correctCount} of {gradedTotal} graded tasks were correct. Your best score is saved on this device.</p>
         <div className="practice-finish-actions"><Button onClick={restart} variant="outline"><RefreshCcw /> Practice again</Button><Button onClick={() => setActiveGroup(null)}>All practice sets</Button></div>
       </div>

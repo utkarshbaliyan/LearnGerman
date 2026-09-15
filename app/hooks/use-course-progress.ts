@@ -15,6 +15,7 @@ export const COURSE_SKILLS = ["reading", "listening", "vocabulary", "grammar", "
 export type CourseSkill = (typeof COURSE_SKILLS)[number];
 
 export type ChapterProgress = {
+  comprehensionChecks?: import("@/app/lib/comprehension-progress").ComprehensionChecks;
   completed: boolean;
   checkpointScore: number;
   skillScores: Partial<Record<CourseSkill, number>>;

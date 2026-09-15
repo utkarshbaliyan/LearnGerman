@@ -88,6 +88,7 @@ export type GrammarProgress = {
 };
 
 type StoredChapterProgress = {
+  comprehensionChecks?: import("./comprehension-progress").ComprehensionChecks;
   completed?: boolean;
   checkpointScore?: number;
   skillScores?: Record<string, number>;
