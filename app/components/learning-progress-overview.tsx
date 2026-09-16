@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { getCurriculum, LEVELS as CURRICULUM_LEVELS } from "@/app/curriculum";
+import { readingEditionId } from "@/app/lib/reading-progress";
 import { useStoryProgress } from "@/app/hooks/use-story-progress";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
@@ -20,7 +20,7 @@ export function LearningProgressOverview({ completedChapters, chapterTotal, gram
   const { isLearned, hydrated: vocabularyHydrated } = useVocabularyProgress(ALL_VOCABULARY);
   const [completedGrammarIds, setCompletedGrammarIds] = useState<string[]>([]);
   const [grammarReady, setGrammarReady] = useState(false);
-  const availableStories = useMemo(() => CURRICULUM_LEVELS.flatMap((level) => getCurriculum(level.id)?.stories ?? []), []);
+  const availableStories = useMemo(() => ["A1", "A2", "B1"].flatMap(level => Array.from({ length: 24 }, (_, index) => ({ id: readingEditionId(level, index + 1) }))), []);
 
   useEffect(() => {
     const refresh = () => { setCompletedGrammarIds(readGrammarProgress(localStorage).completed); setGrammarReady(true); };

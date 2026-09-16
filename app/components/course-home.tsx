@@ -46,6 +46,8 @@ function courseChapterHref(level: GrammarLevel, number: number) {
   return `/course/${level.toLowerCase()}/chapter-${number}`;
 }
 
+import { readingEditionComplete, readingEditionId } from "@/app/lib/reading-progress";
+
 export function CourseHome({
   courseLevels,
   grammarModules,
@@ -57,11 +59,13 @@ export function CourseHome({
 }) {
   const { progress, hydrated } = useCourseProgress();
   const publishedLessons = allGrammarLessons.filter((lesson) => courseLevels.some((level) => lesson.id.startsWith(`${level.toLowerCase()}-`)));
-  const completedChapters = publishedLessons.filter((lesson) => progress.chapters[lesson.id]?.completed).length;
+  const isComplete = (lesson: GrammarLesson) => readingEditionComplete(progress.chapters[lesson.id]?.readingEditions?.[readingEditionId(lesson.id.slice(0, 2), lesson.number)]);
+  const completedChapters = publishedLessons.filter((lesson) => isComplete(lesson)).length;
   const coursePercent = Math.round((completedChapters / publishedLessons.length) * 100);
-  const nextLesson = publishedLessons.find((lesson) => !progress.chapters[lesson.id]?.completed) ?? publishedLessons[0];
+  const nextLesson = publishedLessons.find((lesson) => !isComplete(lesson)) ?? publishedLessons[0];
   const nextLevel = nextLesson.id.slice(0, 2).toUpperCase() as GrammarLevel;
   const activeChapter = progress.chapters[nextLesson.id];
+  const activeReading = activeChapter?.readingEditions?.[readingEditionId(nextLevel, nextLesson.number)];
 
 
   return (
@@ -83,7 +87,9 @@ export function CourseHome({
           <div className="course-skill-preview">
             {COURSE_SKILLS.map((skill) => {
               const Icon = SKILL_META[skill].icon;
-              const score = activeChapter?.skillScores[skill] ?? 0;
+              const score = skill === "reading" || skill === "listening"
+                ? activeReading?.[skill]?.score ?? 0
+                : activeChapter?.skillScores[skill] ?? 0;
               return <div key={skill}><Icon /><span>{SKILL_META[skill].label}</span><b>{skill === "speaking" || skill === "writing" ? "Practice" : `${score}%`}</b></div>;
             })}
           </div>
@@ -106,15 +112,15 @@ export function CourseHome({
       </section>
 
       <section className="a1-roadmap" id="roadmap" aria-labelledby="course-roadmap-title">
-        <div className="course-section-heading"><span>A1–B1 · 72 chapters</span><h2 id="course-roadmap-title">A complete path through independent German.</h2><p>Each level contains four modules. Every chapter combines story, audio, contextual vocabulary, deep grammar practice, speaking, writing, and a mastery checkpoint.</p></div>
+        <div className="course-section-heading"><span>A1–B1 · 72 chapters</span><h2 id="course-roadmap-title">A complete path through independent German.</h2><p>Each level contains four modules. Every chapter combines story, audio, contextual vocabulary, deep grammar practice, speaking, writing, and a practice checkpoint.</p></div>
         {courseLevels.map((level) => {
           const lessons = allGrammarLessons.filter((lesson) => lesson.id.startsWith(`${level.toLowerCase()}-`));
-          const done = lessons.filter((lesson) => progress.chapters[lesson.id]?.completed).length;
+          const done = lessons.filter((lesson) => isComplete(lesson)).length;
           return <section className="course-level-roadmap" id={`roadmap-${level.toLowerCase()}`} key={level}>
-            <header><div><Badge>{level}</Badge><span>{done}/24 chapters mastered</span></div><h2>{level === "A1" ? "Build a complete foundation." : level === "A2" ? "Become independent in everyday life." : "Communicate with confidence and detail."}</h2><Progress value={(done / 24) * 100} aria-label={`${level}: ${done} of 24 chapters mastered`} /></header>
+            <header><div><Badge>{level}</Badge><span>{done}/24 chapters completed</span></div><h2>{level === "A1" ? "Build a complete foundation." : level === "A2" ? "Become independent in everyday life." : "Communicate with confidence and detail."}</h2><Progress value={(done / 24) * 100} aria-label={`${level}: ${done} of 24 chapters completed`} /></header>
             <div className="a1-module-list">
               {grammarModules.filter((module) => module.level === level).map((module) => <section key={module.id} className="a1-module"><header><span>Module {module.number}</span><h3>{module.title}</h3><p>{module.description}</p></header><div>{module.lessons.map((lesson) => {
-                const complete = progress.chapters[lesson.id]?.completed;
+                const complete = isComplete(lesson);
                 return <Link key={lesson.id} href={courseChapterHref(level, lesson.number)} className="is-available"><span>{String(lesson.number).padStart(2, "0")}</span><div><strong>{lesson.title}</strong><small>{lesson.outcome}</small></div>{complete ? <CheckCircle2 /> : <ArrowRight />}</Link>;
               })}</div></section>)}
             </div>

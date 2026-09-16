@@ -1,0 +1,898 @@
+[
+  {
+    "german": "das Namensschild",
+    "english": "name badge",
+    "level": "A1",
+    "id": "reading-lexicon-001",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "das Ei",
+    "english": "egg",
+    "level": "A1",
+    "id": "reading-lexicon-002",
+    "category": "Einkaufen & Kleidung",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Tasche",
+    "english": "bag",
+    "level": "A1",
+    "id": "reading-lexicon-003",
+    "category": "Einkaufen & Kleidung",
+    "wordClass": "noun"
+  },
+  {
+    "german": "erst",
+    "english": "not until / only",
+    "level": "A1",
+    "id": "reading-lexicon-004",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adverb"
+  },
+  {
+    "german": "die Richtung",
+    "english": "direction",
+    "level": "A1",
+    "id": "reading-lexicon-005",
+    "category": "Stadt & Verkehr",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Kerze",
+    "english": "candle",
+    "level": "A1",
+    "id": "reading-lexicon-006",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Schrank",
+    "english": "wardrobe",
+    "level": "A1",
+    "id": "reading-lexicon-007",
+    "category": "Zuhause & Wohnen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "sich anziehen",
+    "english": "to get dressed",
+    "level": "A1",
+    "id": "reading-lexicon-008",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Wecker",
+    "english": "alarm clock",
+    "level": "A1",
+    "id": "reading-lexicon-009",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "ausziehen",
+    "english": "to take off",
+    "level": "A1",
+    "id": "reading-lexicon-010",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "vorlesen",
+    "english": "to read aloud",
+    "level": "A1",
+    "id": "reading-lexicon-011",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "feiern",
+    "english": "to celebrate",
+    "level": "A1",
+    "id": "reading-lexicon-012",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "die Schüssel",
+    "english": "bowl",
+    "level": "A1",
+    "id": "reading-lexicon-013",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "regnen",
+    "english": "to rain",
+    "level": "A1",
+    "id": "reading-lexicon-014",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Paketbote",
+    "english": "parcel delivery worker",
+    "level": "A2",
+    "id": "reading-lexicon-015",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Schachtel",
+    "english": "box",
+    "level": "A2",
+    "id": "reading-lexicon-016",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "gießen",
+    "english": "to water plants",
+    "level": "A2",
+    "id": "reading-lexicon-017",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "umstellen",
+    "english": "to rearrange",
+    "level": "A2",
+    "id": "reading-lexicon-018",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "vorsichtig",
+    "english": "carefully",
+    "level": "A2",
+    "id": "reading-lexicon-019",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adverb"
+  },
+  {
+    "german": "der Spielplan",
+    "english": "game board",
+    "level": "A2",
+    "id": "reading-lexicon-020",
+    "category": "Medien & Digitales",
+    "wordClass": "noun"
+  },
+  {
+    "german": "das Bürgerbüro",
+    "english": "municipal service office",
+    "level": "A2",
+    "id": "reading-lexicon-021",
+    "category": "Dienstleistungen & Behörden",
+    "wordClass": "noun"
+  },
+  {
+    "german": "anmelden",
+    "english": "to register",
+    "level": "A2",
+    "id": "reading-lexicon-022",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "die Mappe",
+    "english": "folder",
+    "level": "A2",
+    "id": "reading-lexicon-023",
+    "category": "Dienstleistungen & Behörden",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Schal",
+    "english": "scarf",
+    "level": "A2",
+    "id": "reading-lexicon-024",
+    "category": "Zuhause & Wohnen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Garderobe",
+    "english": "coat rack",
+    "level": "A2",
+    "id": "reading-lexicon-025",
+    "category": "Zuhause & Wohnen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "vergessen",
+    "english": "to forget",
+    "level": "A2",
+    "id": "reading-lexicon-026",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "niemand",
+    "english": "nobody",
+    "level": "A2",
+    "id": "reading-lexicon-027",
+    "category": "Essen & Trinken",
+    "wordClass": "pronoun"
+  },
+  {
+    "german": "der Topf",
+    "english": "pot",
+    "level": "A2",
+    "id": "reading-lexicon-028",
+    "category": "Essen & Trinken",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Sahne",
+    "english": "cream",
+    "level": "A2",
+    "id": "reading-lexicon-029",
+    "category": "Essen & Trinken",
+    "wordClass": "noun"
+  },
+  {
+    "german": "spülen",
+    "english": "to wash dishes",
+    "level": "A2",
+    "id": "reading-lexicon-030",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Stoff",
+    "english": "fabric",
+    "level": "A2",
+    "id": "reading-lexicon-031",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "dünn",
+    "english": "thin",
+    "level": "A2",
+    "id": "reading-lexicon-032",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "das Schloss",
+    "english": "lock",
+    "level": "A2",
+    "id": "reading-lexicon-033",
+    "category": "Stadt & Verkehr",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Zutatenliste",
+    "english": "ingredient list",
+    "level": "A2",
+    "id": "reading-lexicon-034",
+    "category": "Essen & Trinken",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Nuss",
+    "english": "nut",
+    "level": "A2",
+    "id": "reading-lexicon-035",
+    "category": "Essen & Trinken",
+    "wordClass": "noun"
+  },
+  {
+    "german": "zurücklegen",
+    "english": "to put aside / save",
+    "level": "A2",
+    "id": "reading-lexicon-036",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Rucksack",
+    "english": "backpack",
+    "level": "A2",
+    "id": "reading-lexicon-037",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "winken",
+    "english": "to wave",
+    "level": "A2",
+    "id": "reading-lexicon-038",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "das Klassenfoto",
+    "english": "class photo",
+    "level": "A2",
+    "id": "reading-lexicon-039",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Lauftreff",
+    "english": "running group",
+    "level": "A2",
+    "id": "reading-lexicon-040",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Atem",
+    "english": "breath",
+    "level": "A2",
+    "id": "reading-lexicon-041",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "abwechseln",
+    "english": "to alternate",
+    "level": "A2",
+    "id": "reading-lexicon-042",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "sich vergleichen",
+    "english": "to compare oneself",
+    "level": "A2",
+    "id": "reading-lexicon-043",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "das Werkzeug",
+    "english": "tool",
+    "level": "A2",
+    "id": "reading-lexicon-044",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "aufpumpen",
+    "english": "to pump up",
+    "level": "A2",
+    "id": "reading-lexicon-045",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Fleck",
+    "english": "stain",
+    "level": "A2",
+    "id": "reading-lexicon-046",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Sporthalle",
+    "english": "sports hall",
+    "level": "A2",
+    "id": "reading-lexicon-047",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Berufsschule",
+    "english": "vocational school",
+    "level": "A2",
+    "id": "reading-lexicon-048",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "möbliert",
+    "english": "furnished",
+    "level": "A2",
+    "id": "reading-lexicon-049",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "die Schlüsselübergabe",
+    "english": "key handover",
+    "level": "A2",
+    "id": "reading-lexicon-050",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "hoffentlich",
+    "english": "hopefully",
+    "level": "A2",
+    "id": "reading-lexicon-051",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adverb"
+  },
+  {
+    "german": "die Dose",
+    "english": "tin / container",
+    "level": "A2",
+    "id": "reading-lexicon-052",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Abendkurs",
+    "english": "evening course",
+    "level": "A2",
+    "id": "reading-lexicon-053",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "erschöpft",
+    "english": "exhausted",
+    "level": "A2",
+    "id": "reading-lexicon-054",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "einpacken",
+    "english": "to wrap",
+    "level": "A2",
+    "id": "reading-lexicon-055",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "beides",
+    "english": "both things",
+    "level": "A2",
+    "id": "reading-lexicon-056",
+    "category": "Familie & Menschen",
+    "wordClass": "pronoun"
+  },
+  {
+    "german": "einander",
+    "english": "each other",
+    "level": "A2",
+    "id": "reading-lexicon-057",
+    "category": "Familie & Menschen",
+    "wordClass": "pronoun"
+  },
+  {
+    "german": "der Haupteingang",
+    "english": "main entrance",
+    "level": "A2",
+    "id": "reading-lexicon-058",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "ausdrucken",
+    "english": "to print out",
+    "level": "A2",
+    "id": "reading-lexicon-059",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Beginn",
+    "english": "start",
+    "level": "A2",
+    "id": "reading-lexicon-060",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Gemeinschaftsraum",
+    "english": "shared room",
+    "level": "A2",
+    "id": "reading-lexicon-061",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Karton",
+    "english": "cardboard box",
+    "level": "A2",
+    "id": "reading-lexicon-062",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "einnähen",
+    "english": "to sew in",
+    "level": "A2",
+    "id": "reading-lexicon-063",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "der Stadtrand",
+    "english": "edge of town",
+    "level": "B1",
+    "id": "reading-lexicon-064",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Innenhof",
+    "english": "inner courtyard",
+    "level": "B1",
+    "id": "reading-lexicon-065",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Gesamtkosten",
+    "english": "total costs",
+    "level": "B1",
+    "id": "reading-lexicon-066",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Patrone",
+    "english": "ink cartridge",
+    "level": "B1",
+    "id": "reading-lexicon-067",
+    "category": "Einkaufen & Kleidung",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Kaufpreis",
+    "english": "purchase price",
+    "level": "B1",
+    "id": "reading-lexicon-068",
+    "category": "Einkaufen & Kleidung",
+    "wordClass": "noun"
+  },
+  {
+    "german": "anschaffen",
+    "english": "to buy / acquire",
+    "level": "B1",
+    "id": "reading-lexicon-069",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "die Verwaltung",
+    "english": "administration",
+    "level": "B1",
+    "id": "reading-lexicon-070",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Treffpunkt",
+    "english": "meeting place",
+    "level": "B1",
+    "id": "reading-lexicon-071",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "barrierearm",
+    "english": "with few accessibility barriers",
+    "level": "B1",
+    "id": "reading-lexicon-072",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "die Zusage",
+    "english": "promise / commitment",
+    "level": "B1",
+    "id": "reading-lexicon-073",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "das Ersatzteil",
+    "english": "spare part",
+    "level": "B1",
+    "id": "reading-lexicon-074",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "das Leihrad",
+    "english": "loan bicycle",
+    "level": "B1",
+    "id": "reading-lexicon-075",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "verzichten auf",
+    "english": "to do without",
+    "level": "B1",
+    "id": "reading-lexicon-076",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "mitreden",
+    "english": "to join the conversation",
+    "level": "B1",
+    "id": "reading-lexicon-077",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "die Zustimmung",
+    "english": "consent / agreement",
+    "level": "B1",
+    "id": "reading-lexicon-078",
+    "category": "Zuhause & Wohnen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "entsorgen",
+    "english": "to dispose of",
+    "level": "B1",
+    "id": "reading-lexicon-079",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "zuordnen",
+    "english": "to identify as belonging to",
+    "level": "B1",
+    "id": "reading-lexicon-080",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "aufgeben",
+    "english": "to give up",
+    "level": "B1",
+    "id": "reading-lexicon-081",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "die Berufsbezeichnung",
+    "english": "job title",
+    "level": "B1",
+    "id": "reading-lexicon-082",
+    "category": "Schule & Lernen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Buchungsnummer",
+    "english": "booking reference",
+    "level": "B1",
+    "id": "reading-lexicon-083",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "umständlich",
+    "english": "cumbersome",
+    "level": "B1",
+    "id": "reading-lexicon-084",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "das Beet",
+    "english": "garden bed",
+    "level": "B1",
+    "id": "reading-lexicon-085",
+    "category": "Natur, Wetter & Umwelt",
+    "wordClass": "noun"
+  },
+  {
+    "german": "beheben",
+    "english": "to fix / resolve",
+    "level": "B1",
+    "id": "reading-lexicon-086",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "beschädigt",
+    "english": "damaged",
+    "level": "B1",
+    "id": "reading-lexicon-087",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "die Schätzung",
+    "english": "estimate",
+    "level": "B1",
+    "id": "reading-lexicon-088",
+    "category": "Medien & Digitales",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Bedenken",
+    "english": "concerns",
+    "level": "B1",
+    "id": "reading-lexicon-089",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Einwand",
+    "english": "objection",
+    "level": "B1",
+    "id": "reading-lexicon-090",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Rechtfertigung",
+    "english": "justification",
+    "level": "B1",
+    "id": "reading-lexicon-091",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Vorhersage",
+    "english": "forecast",
+    "level": "B1",
+    "id": "reading-lexicon-092",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Eintrittskosten",
+    "english": "admission costs",
+    "level": "B1",
+    "id": "reading-lexicon-093",
+    "category": "Reisen & Unterkunft",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Kleinigkeit",
+    "english": "small matter",
+    "level": "B1",
+    "id": "reading-lexicon-094",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Beratungsstelle",
+    "english": "advice centre",
+    "level": "B1",
+    "id": "reading-lexicon-095",
+    "category": "Arbeit & Beruf",
+    "wordClass": "noun"
+  },
+  {
+    "german": "das Volkslied",
+    "english": "traditional folk song",
+    "level": "B1",
+    "id": "reading-lexicon-096",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Verständlichkeit",
+    "english": "intelligibility",
+    "level": "B1",
+    "id": "reading-lexicon-097",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "ausgeruht",
+    "english": "rested",
+    "level": "B1",
+    "id": "reading-lexicon-098",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "wartend",
+    "english": "waiting",
+    "level": "B1",
+    "id": "reading-lexicon-099",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "der Betrachter",
+    "english": "viewer",
+    "level": "B1",
+    "id": "reading-lexicon-100",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Mittelpunkt",
+    "english": "centre / focus",
+    "level": "B1",
+    "id": "reading-lexicon-101",
+    "category": "Freizeit, Kultur & Sport",
+    "wordClass": "noun"
+  },
+  {
+    "german": "empört",
+    "english": "outraged",
+    "level": "B1",
+    "id": "reading-lexicon-102",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "das Vorhaben",
+    "english": "plan / project",
+    "level": "B1",
+    "id": "reading-lexicon-103",
+    "category": "Grundlagen & Kommunikation",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Sperrung",
+    "english": "blocking of a card",
+    "level": "B1",
+    "id": "reading-lexicon-104",
+    "category": "Dienstleistungen & Behörden",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Identität",
+    "english": "identity",
+    "level": "B1",
+    "id": "reading-lexicon-105",
+    "category": "Dienstleistungen & Behörden",
+    "wordClass": "noun"
+  },
+  {
+    "german": "überschaubar",
+    "english": "manageable",
+    "level": "B1",
+    "id": "reading-lexicon-106",
+    "category": "Adjektive & Adverbien",
+    "wordClass": "adjective"
+  },
+  {
+    "german": "umgestalten",
+    "english": "to redesign",
+    "level": "B1",
+    "id": "reading-lexicon-107",
+    "category": "Verben",
+    "wordClass": "verb"
+  },
+  {
+    "german": "das Anliegen",
+    "english": "concern / aim",
+    "level": "B1",
+    "id": "reading-lexicon-108",
+    "category": "Stadt & Verkehr",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Entwurf",
+    "english": "draft design",
+    "level": "B1",
+    "id": "reading-lexicon-109",
+    "category": "Stadt & Verkehr",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Erreichbarkeit",
+    "english": "accessibility / ease of reaching",
+    "level": "B1",
+    "id": "reading-lexicon-110",
+    "category": "Stadt & Verkehr",
+    "wordClass": "noun"
+  },
+  {
+    "german": "der Gesprächsnachmittag",
+    "english": "afternoon conversation gathering",
+    "level": "B1",
+    "id": "reading-lexicon-111",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  },
+  {
+    "german": "die Partnerstadt",
+    "english": "twin town",
+    "level": "B1",
+    "id": "reading-lexicon-112",
+    "category": "Familie & Menschen",
+    "wordClass": "noun"
+  }
+]

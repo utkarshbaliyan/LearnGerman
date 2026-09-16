@@ -1,0 +1,366 @@
+[
+  {
+    "level": "A1",
+    "domain": "Introductions and origins",
+    "storyIds": [
+      "reading-a1-01-v1",
+      "reading-a1-04-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Friends, colleagues and interests",
+    "storyIds": [
+      "reading-a1-02-v1",
+      "reading-a1-12-v1",
+      "reading-a1-13-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Places and directions",
+    "storyIds": [
+      "reading-a1-05-v1",
+      "reading-a1-15-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Food and purchases",
+    "storyIds": [
+      "reading-a1-06-v1",
+      "reading-a1-07-v1",
+      "reading-a1-09-v1",
+      "reading-a1-16-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Family and routines",
+    "storyIds": [
+      "reading-a1-12-v1",
+      "reading-a1-14-v1",
+      "reading-a1-18-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Social time and invitations",
+    "storyIds": [
+      "reading-a1-13-v1",
+      "reading-a1-16-v1",
+      "reading-a1-22-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Working life",
+    "storyIds": [
+      "reading-a1-02-v1",
+      "reading-a1-18-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Health and exercise",
+    "storyIds": [
+      "reading-a1-15-v1",
+      "reading-a1-19-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Home and furniture",
+    "storyIds": [
+      "reading-a1-08-v1",
+      "reading-a1-17-v1",
+      "reading-a1-21-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Study and jobs",
+    "storyIds": [
+      "reading-a1-02-v1",
+      "reading-a1-10-v1",
+      "reading-a1-13-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Clothes and shopping",
+    "storyIds": [
+      "reading-a1-08-v1",
+      "reading-a1-11-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A1",
+    "domain": "Travel and holidays",
+    "storyIds": [
+      "reading-a1-20-v1",
+      "reading-a1-23-v1",
+      "reading-a1-24-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Biography and everyday activities",
+    "storyIds": [
+      "reading-a2-01-v1",
+      "reading-a2-13-v1",
+      "reading-a2-15-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Education and school memories",
+    "storyIds": [
+      "reading-a2-11-v1",
+      "reading-a2-14-v1",
+      "reading-a2-19-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Digital life and devices",
+    "storyIds": [
+      "reading-a2-03-v1",
+      "reading-a2-10-v1",
+      "reading-a2-22-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Feelings and relationships",
+    "storyIds": [
+      "reading-a2-05-v1",
+      "reading-a2-12-v1",
+      "reading-a2-16-v1",
+      "reading-a2-21-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "City services and administration",
+    "storyIds": [
+      "reading-a2-04-v1",
+      "reading-a2-18-v1",
+      "reading-a2-20-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Working environments",
+    "storyIds": [
+      "reading-a2-07-v1",
+      "reading-a2-13-v1",
+      "reading-a2-15-v1",
+      "reading-a2-22-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Mobility",
+    "storyIds": [
+      "reading-a2-08-v1",
+      "reading-a2-15-v1",
+      "reading-a2-18-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Learning strategies",
+    "storyIds": [
+      "reading-a2-11-v1",
+      "reading-a2-14-v1",
+      "reading-a2-19-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Sport and activity",
+    "storyIds": [
+      "reading-a2-08-v1",
+      "reading-a2-12-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Shared living",
+    "storyIds": [
+      "reading-a2-01-v1",
+      "reading-a2-02-v1",
+      "reading-a2-06-v1",
+      "reading-a2-20-v1",
+      "reading-a2-23-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Time, memories and change",
+    "storyIds": [
+      "reading-a2-05-v1",
+      "reading-a2-14-v1",
+      "reading-a2-17-v1",
+      "reading-a2-21-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "A2",
+    "domain": "Culture and entertainment",
+    "storyIds": [
+      "reading-a2-03-v1",
+      "reading-a2-11-v1",
+      "reading-a2-16-v1",
+      "reading-a2-22-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Travel and preferences",
+    "storyIds": [
+      "reading-b1-01-v1",
+      "reading-b1-08-v1",
+      "reading-b1-14-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Consumption, services and advertising",
+    "storyIds": [
+      "reading-b1-02-v1",
+      "reading-b1-04-v1",
+      "reading-b1-05-v1",
+      "reading-b1-11-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Life changes and biographies",
+    "storyIds": [
+      "reading-b1-07-v1",
+      "reading-b1-09-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Employment and applications",
+    "storyIds": [
+      "reading-b1-04-v1",
+      "reading-b1-09-v1",
+      "reading-b1-12-v1",
+      "reading-b1-17-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Environment and practical action",
+    "storyIds": [
+      "reading-b1-10-v1",
+      "reading-b1-11-v1",
+      "reading-b1-23-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Future aims and expectations",
+    "storyIds": [
+      "reading-b1-07-v1",
+      "reading-b1-09-v1",
+      "reading-b1-12-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Friendship and resolving conflict",
+    "storyIds": [
+      "reading-b1-13-v1",
+      "reading-b1-15-v1",
+      "reading-b1-16-v1",
+      "reading-b1-17-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Wellbeing and learning",
+    "storyIds": [
+      "reading-b1-17-v1",
+      "reading-b1-19-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Art and music",
+    "storyIds": [
+      "reading-b1-16-v1",
+      "reading-b1-18-v1",
+      "reading-b1-20-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Participation, institutions and Europe",
+    "storyIds": [
+      "reading-b1-03-v1",
+      "reading-b1-06-v1",
+      "reading-b1-10-v1",
+      "reading-b1-21-v1",
+      "reading-b1-24-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Urban and rural life",
+    "storyIds": [
+      "reading-b1-03-v1",
+      "reading-b1-15-v1",
+      "reading-b1-23-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  },
+  {
+    "level": "B1",
+    "domain": "Money, banking and difficult situations",
+    "storyIds": [
+      "reading-b1-02-v1",
+      "reading-b1-05-v1",
+      "reading-b1-22-v1"
+    ],
+    "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
+  }
+]

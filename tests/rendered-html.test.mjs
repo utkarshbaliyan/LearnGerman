@@ -89,7 +89,7 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     assert.match(html, /Listening practice/i, pathname);
     assert.match(html, /Reading practice/i, pathname);
     assert.ok(html.indexOf("What did you hear?") < html.indexOf("Open the story for reading or listening help"), pathname);
-    assert.match(html, /Hover, tap, or focus an underlined word/i, pathname);
+    assert.match(html, /Tap a word for its meaning/i, pathname);
     assert.match(html, /core words/i, pathname);
     assert.match(html, /grammar exercises/i, pathname);
     assert.match(html, /Try it aloud/i, pathname);
@@ -109,11 +109,11 @@ test("renders A1 Chapter 1 as one integrated six-skill course chapter", async ()
 
   assert.equal(response.status, 200);
   const html = (await response.text()).replace(/<!--.*?-->/g, "");
-  assert.match(html, /Ich bin neu hier/i);
-  assert.match(html, /30 core words/i);
+  assert.match(html, /Hallo, Mia!/i);
+  assert.match(html, /3 core words/i);
   assert.match(html, /50 grammar exercises/i);
   assert.match(html, /Listening practice/i);
-  assert.match(html, /Hover, tap, or focus an underlined word/i);
+  assert.match(html, /Tap a word for its meaning/i);
   assert.match(html, /Personal pronouns and/i);
   assert.match(html, /Say hello/i);
   assert.match(html, /Introduce yourself with your name/i);
@@ -133,7 +133,7 @@ test("writing tutor requires account authentication before invoking a provider",
 });
 
 test("preserves the complete story library at its dedicated route", async () => {
-  const response = await renderRoute("/stories");
+  const response = await renderRoute("/stories/previous");
 
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -177,4 +177,22 @@ test("renders the Active Learning map and all levels with server-owned tasks", a
   assert.doesNotMatch(checkpointHtml, /A little help before you start|Listen to the example|Review the phrases/);
   assert.equal((await renderRoute("/active-learning/active-a1-m99-l01-v1")).status, 404);
   assert.equal((await renderRoute("/api/active-learning/progress")).status, 401);
+});
+
+
+test("renders the graded reading path and independent story pages", async () => {
+  for (const level of ["A1", "A2", "B1"]) {
+    const response = await renderRoute(`/stories?level=${level}`); assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /One short story at a time/); assert.match(html, /Previous story library/);
+    assert.ok(html.includes(`reading-${level.toLowerCase()}-01-v1`));
+  }
+  for (const id of ["reading-a1-01-v1", "reading-a2-18-v1", "reading-b1-24-v1"]) {
+    const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /What happened/); assert.match(html, /Need the gist in English/);
+    assert.match(html, /Check my answers/); assert.match(html, /Use this story in the course/);
+    assert.doesNotMatch(html, /src=["'][^"']*story-\d+\.webm/);
+  }
+  assert.equal((await renderRoute('/stories/reading-a1-25-v1')).status, 404);
 });

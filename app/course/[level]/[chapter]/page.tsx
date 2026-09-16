@@ -18,5 +18,5 @@ export default async function CourseChapterPage({ params }: { params: Promise<{ 
   const content = getCourseChapter(level, number);
   if (!content) notFound();
 
-  return <IntegratedCourseChapter content={content} />;
+  return <IntegratedCourseChapter key={content.story.id} content={content} />;
 }

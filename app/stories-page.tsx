@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState, type CSSProperties } from "react";
 import { ArrowRight, BookOpen, CheckCircle2, Circle, Headphones, Play, Sparkles } from "lucide-react";
 
@@ -69,7 +70,7 @@ export default function Home() {
 
   return (
       <main className="site-shell">
-        <SiteHeader active="stories" />
+        <SiteHeader active="stories" /><p className="reading-footer"><Link href="/stories">← Return to the new reading path</Link><span>Previous library · earlier stories and saved progress</span></p>
 
         <section className="hero" id="start">
           <div className="hero-copy">

@@ -1,13 +1,7 @@
+import { getChapterReading } from "@/app/lib/reading-path";
+import { readingGlosses } from "@/app/lib/reading-content";
 import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
-import {
-  CHAPTER_ONE_CHECKPOINT,
-  CHAPTER_ONE_LISTENING,
-  CHAPTER_ONE_OUTCOMES,
-  CHAPTER_ONE_READING,
-  CHAPTER_ONE_VOCABULARY,
-  type ChapterQuestion,
-  type ChapterVocabulary,
-} from "@/app/course/a1/chapter-one";
+import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import { getCurriculum, courseVocabularyMeaningFor, type Story } from "@/app/curriculum";
 import {
   ALL_GRAMMAR_LESSONS,
@@ -215,9 +209,20 @@ export function getCourseChapter(level: string, number: number) {
   if (!lesson || !grammar || !grammarModule) return null;
 
   const storyIndex = Math.round(((number - 1) * (curriculum.stories.length - 1)) / (CHAPTERS_PER_LEVEL - 1));
-  const story = curriculum.stories[storyIndex];
+  const readingStory = getChapterReading(normalizedLevel, number)!;
+  const glosses = readingGlosses(readingStory);
+  const story: Story = { ...curriculum.stories[storyIndex], id: readingStory.id, number: readingStory.number,
+    title: readingStory.title, text: readingStory.text, grammar: readingStory.grammar, canDo: readingStory.goal,
+    theme: readingStory.topics.join(", "), audioReady: false };
+  const readingQuestions = readingStory.questions.map((q, index) => ({ id: `${story.id}-read-${index}`, prompt: q.prompt,
+    options: q.options, answer: q.options[q.answer], explanation: q.explanation }));
+  const vocabulary = readingStory.words.filter(word => !word.contextOnly).map((word, index) => ({
+    id: `${story.id}-word-${index}`, german: word.headword, english: word.headwordEnglish,
+    example: word.example,
+    note: "Read the word in the story above",
+  }));
   const generated = generatedQuestions(normalizedLevel, number, story, storyIndex);
-  const isFirstChapter = normalizedLevel === "A1" && number === 1;
+
 
   return {
     id: lessonId,
@@ -230,27 +235,20 @@ export function getCourseChapter(level: string, number: number) {
       audioVersion: curriculum.audioVersion,
     },
     story,
+    readingStory,
+    readingGlosses: glosses,
     storyIndex,
     lesson,
     grammar,
     module: grammarModule,
-    heroTitle: isFirstChapter ? "Ich bin neu hier." : story.title,
-    heroDescription: isFirstChapter
-      ? "Learn to introduce yourself, understand a first meeting, and control personal pronouns with sein."
-      : `${lesson.outcome} Story context: ${story.theme}.`,
-    completionOutcome: isFirstChapter ? "Du kannst dich vorstellen." : lesson.outcome,
-    outcomes: isFirstChapter ? CHAPTER_ONE_OUTCOMES : [
-      lesson.outcome,
-      `Understand the main ideas and key details in “${story.title}”.`,
-      `Recall and use 30 expressions from the ${story.theme} context.`,
-      story.canDo,
-      "Complete a spoken response without reading a full script.",
-      "Produce a connected written response and check it independently.",
-    ],
-    vocabulary: isFirstChapter ? CHAPTER_ONE_VOCABULARY : generated.vocabulary,
-    listening: isFirstChapter ? CHAPTER_ONE_LISTENING : generated.listening,
-    reading: isFirstChapter ? CHAPTER_ONE_READING : generated.reading,
-    checkpoint: isFirstChapter ? CHAPTER_ONE_CHECKPOINT : generated.checkpoint,
+    heroTitle: story.title,
+    heroDescription: readingStory.goal,
+    completionOutcome: readingStory.goal,
+    outcomes: [readingStory.goal, lesson.outcome, "Use a few useful expressions from this story."],
+    vocabulary,
+    listening: [readingQuestions[0]],
+    reading: [readingQuestions[1]],
+    checkpoint: generated.checkpoint.slice(0, 4).concat(readingQuestions),
     writingTitle: getChapterOutputTask(lesson.id)!.title,
     speakingPrompt: getChapterOutputTask(lesson.id)!.questions[0],
     speakingTitle: getChapterOutputTask(lesson.id)!.title,

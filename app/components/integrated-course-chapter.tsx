@@ -26,7 +26,8 @@ const WritingRepairWorkspace = dynamic(() => import("@/app/components/writing-re
 import { writingMission } from "@/app/lib/writing-mission";
 const SpeakingWorkspace = dynamic(() => import("@/app/components/speaking-workspace").then((module) => module.SpeakingWorkspace), { loading: () => <p>Loading speaking practice…</p> });
 import { SiteHeader } from "@/app/components/site-header";
-const NarratedTranslatedStory = dynamic(() => import("@/app/components/translated-story-text").then(module => module.NarratedTranslatedStory), { loading: () => <p>Loading story translations…</p> });
+const ReadingText = dynamic(() => import("@/app/components/reading-experience").then(module => module.ReadingText), { loading: () => <p>Loading the story…</p> });
+const ReadingAudio = dynamic(() => import("@/app/components/reading-experience").then(module => module.ReadingAudio));
 import type { CourseChapterContent } from "@/app/course/course-data";
 import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
@@ -44,7 +45,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
-import { mergeComprehensionChecks, type ComprehensionSkill } from "@/app/lib/comprehension-progress";
+import { type ComprehensionSkill } from "@/app/lib/comprehension-progress";
+
+import { mergeReadingEditionChecks, readingEditionComplete } from "@/app/lib/reading-progress";
 
 const CHECKED_SKILLS: CourseSkill[] = ["reading", "listening", "vocabulary", "grammar"];
 const SKILLS: Array<{ id: CourseSkill; label: string; icon: typeof BookOpen }> = [
@@ -100,9 +103,9 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
   const { setStoryCompleted } = useStoryProgress();
   const { hydrated: vocabularyHydrated, importLearned, isLearned, setLearned } = useVocabularyProgress();
   const storedChapter = progress.chapters[content.id] ?? EMPTY_CHAPTER_PROGRESS;
-  const checks = mergeComprehensionChecks(storedChapter.comprehensionChecks, undefined);
-  const chapter = { ...storedChapter, skillScores: { ...storedChapter.skillScores,
-    reading: checks.reading?.score ?? 0, listening: checks.listening?.score ?? 0 } };
+  const checks = mergeReadingEditionChecks(storedChapter.readingEditions, undefined)[content.story.id] ?? {};
+  const chapter = { ...storedChapter, completed: readingEditionComplete(checks), checkpointScore: checks.checkpoint?.score ?? 0, skillScores: { ...storedChapter.skillScores,
+    reading: checks.reading?.score ?? 0, listening: checks.listening?.score ?? 0, vocabulary: Math.round(content.vocabulary.filter(isLearned).length / content.vocabulary.length * 100) } };
   const [usedStoryText, setUsedStoryText] = useState(false);
   const grammarGroups = useMemo(() => [...new Set(content.grammar.exercises.map((exercise) => exercise.group ?? "Core practice"))], [content.grammar.exercises]);
   const [showAllWords, setShowAllWords] = useState(false);
@@ -155,15 +158,18 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
 
   function saveComprehensionScore(skill: ComprehensionSkill, score: number) {
     updateChapter(content.id, current => ({ ...current,
-      comprehensionChecks: { ...current.comprehensionChecks, [skill]: {
-        score, checkedAt: new Date().toISOString(), usedText: skill === "reading" || usedStoryText,
+      readingEditions: { ...current.readingEditions, [content.story.id]: {
+        ...current.readingEditions?.[content.story.id], [skill]: {
+          score, checkedAt: new Date().toISOString(), usedText: skill === "reading" || usedStoryText,
+        },
       } },
     }));
+    if (score === 100 && checks[skill === "reading" ? "listening" : "reading"]?.score === 100) setStoryCompleted(content.story.id, true);
   }
 
   function completeChapter() {
     if (!readyForMastery) return;
-    updateChapter(content.id, (current) => ({ ...current, completed: true }));
+    updateChapter(content.id, (current) => ({ ...current, completed: true, readingEditions: { ...current.readingEditions, [content.story.id]: { ...current.readingEditions?.[content.story.id], completedAt: new Date().toISOString() } } }));
     setStoryCompleted(content.story.id, true);
   }
 
@@ -181,7 +187,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
           <div className="chapter-kicker"><Badge>{level}</Badge><span>Module {content.module.number} · {content.module.title}</span></div>
           <h1 lang="de">{content.heroTitle}</h1>
           <p>{content.heroDescription}</p>
-          <div className="chapter-facts"><span><BookOpen /> 1 narrated story</span><span><Languages /> {content.vocabulary.length} core words</span><span><GraduationCap /> {content.grammar.exercises.length} grammar exercises</span><span><Mic /> Speaking mission</span></div>
+          <div className="chapter-facts"><span><BookOpen /> 1 short story</span><span><Languages /> {content.vocabulary.length} core words</span><span><GraduationCap /> {content.grammar.exercises.length} grammar exercises</span><span><Mic /> Speaking mission</span></div>
         </div>
         <aside className="chapter-skill-card">
           <span>Chapter practice</span>
@@ -205,19 +211,20 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       </section>
 
       <section className="chapter-learning-section chapter-story-lesson" id="story">
-        <div className="chapter-section-copy"><span>01 · Listening and reading</span><h2>Listen first. Then read.</h2><p>Try the listening questions before opening the story. You can replay the audio.</p></div>
-        <audio controls preload="none" aria-label="Listen to the chapter story" style={{width:'100%'}} src={`${content.curriculum.audioBasePath}/story-${String(content.story.number).padStart(3, '0')}.webm?v=${content.curriculum.audioVersion}`} />
+        <div className="chapter-section-copy"><span>01 · Listening and reading</span><h2>One story. Take your time.</h2><p>Try listening first, or open the text whenever you need it.</p></div>
+        <ReadingAudio key={content.story.id} text={content.story.text} level={level} />
         <QuizBlock questions={content.listening} eyebrow="Listening practice" title="What did you hear?" savedScore={checks.listening?.score ?? 0} onScore={score => saveComprehensionScore("listening", score)} />
         {checks.listening && <p>Latest listening check: {checks.listening.score}% · {checks.listening.usedText ? 'Story text opened for support' : 'Story text not opened in this visit'}</p>}
         <details onToggle={event => { if (event.currentTarget.open) setUsedStoryText(true); }}>
           <summary>Open the story for reading or listening help</summary>
           <article className="chapter-story chapter-story-interactive" lang="de">
             <h3>{content.story.title}</h3>
-            <NarratedTranslatedStory curriculum={content.curriculum} story={content.story} playbackRate={level === "A1" ? 0.92 : level === "A2" ? 0.96 : 1} speedLabel={level === "A1" ? "learning speed" : "natural speed"} />
+            <ReadingText story={content.readingStory} glosses={content.readingGlosses} />
           </article>
         </details>
         <QuizBlock questions={content.reading} eyebrow="Reading practice" title="What did you read?" savedScore={checks.reading?.score ?? 0} onScore={score => saveComprehensionScore("reading", score)} />
-        {!checks.reading && !checks.listening && (storedChapter.skillScores.reading !== undefined || storedChapter.skillScores.listening !== undefined) && <p>Your earlier combined story result is saved. These new checks track reading and listening separately.</p>}
+        {!checks.reading && storedChapter.completed && <p>Your earlier course result is saved. This rewritten story has new practice.</p>}
+        <Link href={`/stories/${content.story.id}`}>Read this story on its own <ArrowRight size={16} /></Link>
 
       </section>
 
@@ -252,7 +259,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
 
       <section className="chapter-learning-section chapter-checkpoint" id="checkpoint">
         <div className="chapter-section-copy"><span>06 · Integrated checkpoint</span><h2>Review this chapter.</h2><p>This final check mixes the story, contextual vocabulary, grammar patterns, correction, and communicative outcome. You need at least 80%.</p></div>
-        <QuizBlock questions={content.checkpoint} eyebrow="Chapter checkpoint" title="Ready to use what you learned?" savedScore={chapter.checkpointScore ?? 0} onScore={(score) => updateChapter(content.id, (current) => ({ ...current, checkpointScore: Math.max(current.checkpointScore ?? 0, score) }))} />
+        <QuizBlock questions={content.checkpoint} eyebrow="Chapter checkpoint" title="Ready to use what you learned?" savedScore={chapter.checkpointScore ?? 0} onScore={(score) => updateChapter(content.id, (current) => ({ ...current, readingEditions: { ...current.readingEditions, [content.story.id]: { ...current.readingEditions?.[content.story.id], checkpoint: { score, checkedAt: new Date().toISOString(), usedText: usedStoryText } } } }))} />
       </section>
 
       <section className={`chapter-finish${chapter.completed ? " is-complete" : ""}`}>
