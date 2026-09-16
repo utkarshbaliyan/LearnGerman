@@ -1,0 +1,362 @@
+[
+  {
+    "storyId": "reading-a1-01-v1",
+    "before": 26,
+    "after": 52
+  },
+  {
+    "storyId": "reading-a1-02-v1",
+    "before": 33,
+    "after": 66
+  },
+  {
+    "storyId": "reading-a1-03-v1",
+    "before": 36,
+    "after": 71
+  },
+  {
+    "storyId": "reading-a1-04-v1",
+    "before": 44,
+    "after": 89
+  },
+  {
+    "storyId": "reading-a1-05-v1",
+    "before": 36,
+    "after": 70
+  },
+  {
+    "storyId": "reading-a1-06-v1",
+    "before": 36,
+    "after": 70
+  },
+  {
+    "storyId": "reading-a1-07-v1",
+    "before": 31,
+    "after": 65
+  },
+  {
+    "storyId": "reading-a1-08-v1",
+    "before": 57,
+    "after": 113
+  },
+  {
+    "storyId": "reading-a1-09-v1",
+    "before": 81,
+    "after": 159
+  },
+  {
+    "storyId": "reading-a1-10-v1",
+    "before": 62,
+    "after": 125
+  },
+  {
+    "storyId": "reading-a1-11-v1",
+    "before": 67,
+    "after": 135
+  },
+  {
+    "storyId": "reading-a1-12-v1",
+    "before": 53,
+    "after": 102
+  },
+  {
+    "storyId": "reading-a1-13-v1",
+    "before": 73,
+    "after": 146
+  },
+  {
+    "storyId": "reading-a1-14-v1",
+    "before": 66,
+    "after": 131
+  },
+  {
+    "storyId": "reading-a1-15-v1",
+    "before": 92,
+    "after": 183
+  },
+  {
+    "storyId": "reading-a1-16-v1",
+    "before": 103,
+    "after": 207
+  },
+  {
+    "storyId": "reading-a1-17-v1",
+    "before": 84,
+    "after": 172
+  },
+  {
+    "storyId": "reading-a1-18-v1",
+    "before": 85,
+    "after": 174
+  },
+  {
+    "storyId": "reading-a1-19-v1",
+    "before": 110,
+    "after": 217
+  },
+  {
+    "storyId": "reading-a1-20-v1",
+    "before": 97,
+    "after": 198
+  },
+  {
+    "storyId": "reading-a1-21-v1",
+    "before": 91,
+    "after": 184
+  },
+  {
+    "storyId": "reading-a1-22-v1",
+    "before": 97,
+    "after": 192
+  },
+  {
+    "storyId": "reading-a1-23-v1",
+    "before": 100,
+    "after": 200
+  },
+  {
+    "storyId": "reading-a1-24-v1",
+    "before": 111,
+    "after": 224
+  },
+  {
+    "storyId": "reading-a2-01-v1",
+    "before": 93,
+    "after": 194
+  },
+  {
+    "storyId": "reading-a2-02-v1",
+    "before": 94,
+    "after": 192
+  },
+  {
+    "storyId": "reading-a2-03-v1",
+    "before": 99,
+    "after": 201
+  },
+  {
+    "storyId": "reading-a2-04-v1",
+    "before": 99,
+    "after": 202
+  },
+  {
+    "storyId": "reading-a2-05-v1",
+    "before": 93,
+    "after": 190
+  },
+  {
+    "storyId": "reading-a2-06-v1",
+    "before": 101,
+    "after": 203
+  },
+  {
+    "storyId": "reading-a2-07-v1",
+    "before": 101,
+    "after": 203
+  },
+  {
+    "storyId": "reading-a2-08-v1",
+    "before": 103,
+    "after": 202
+  },
+  {
+    "storyId": "reading-a2-09-v1",
+    "before": 115,
+    "after": 228
+  },
+  {
+    "storyId": "reading-a2-10-v1",
+    "before": 113,
+    "after": 220
+  },
+  {
+    "storyId": "reading-a2-11-v1",
+    "before": 114,
+    "after": 220
+  },
+  {
+    "storyId": "reading-a2-12-v1",
+    "before": 111,
+    "after": 217
+  },
+  {
+    "storyId": "reading-a2-13-v1",
+    "before": 114,
+    "after": 224
+  },
+  {
+    "storyId": "reading-a2-14-v1",
+    "before": 116,
+    "after": 229
+  },
+  {
+    "storyId": "reading-a2-15-v1",
+    "before": 117,
+    "after": 230
+  },
+  {
+    "storyId": "reading-a2-16-v1",
+    "before": 118,
+    "after": 231
+  },
+  {
+    "storyId": "reading-a2-17-v1",
+    "before": 120,
+    "after": 235
+  },
+  {
+    "storyId": "reading-a2-18-v1",
+    "before": 117,
+    "after": 231
+  },
+  {
+    "storyId": "reading-a2-19-v1",
+    "before": 119,
+    "after": 235
+  },
+  {
+    "storyId": "reading-a2-20-v1",
+    "before": 130,
+    "after": 258
+  },
+  {
+    "storyId": "reading-a2-21-v1",
+    "before": 121,
+    "after": 241
+  },
+  {
+    "storyId": "reading-a2-22-v1",
+    "before": 126,
+    "after": 249
+  },
+  {
+    "storyId": "reading-a2-23-v1",
+    "before": 128,
+    "after": 256
+  },
+  {
+    "storyId": "reading-a2-24-v1",
+    "before": 126,
+    "after": 261
+  },
+  {
+    "storyId": "reading-b1-01-v1",
+    "before": 146,
+    "after": 298
+  },
+  {
+    "storyId": "reading-b1-02-v1",
+    "before": 146,
+    "after": 295
+  },
+  {
+    "storyId": "reading-b1-03-v1",
+    "before": 143,
+    "after": 286
+  },
+  {
+    "storyId": "reading-b1-04-v1",
+    "before": 149,
+    "after": 295
+  },
+  {
+    "storyId": "reading-b1-05-v1",
+    "before": 152,
+    "after": 299
+  },
+  {
+    "storyId": "reading-b1-06-v1",
+    "before": 150,
+    "after": 296
+  },
+  {
+    "storyId": "reading-b1-07-v1",
+    "before": 161,
+    "after": 316
+  },
+  {
+    "storyId": "reading-b1-08-v1",
+    "before": 149,
+    "after": 298
+  },
+  {
+    "storyId": "reading-b1-09-v1",
+    "before": 152,
+    "after": 311
+  },
+  {
+    "storyId": "reading-b1-10-v1",
+    "before": 156,
+    "after": 309
+  },
+  {
+    "storyId": "reading-b1-11-v1",
+    "before": 149,
+    "after": 300
+  },
+  {
+    "storyId": "reading-b1-12-v1",
+    "before": 149,
+    "after": 299
+  },
+  {
+    "storyId": "reading-b1-13-v1",
+    "before": 159,
+    "after": 322
+  },
+  {
+    "storyId": "reading-b1-14-v1",
+    "before": 160,
+    "after": 320
+  },
+  {
+    "storyId": "reading-b1-15-v1",
+    "before": 160,
+    "after": 327
+  },
+  {
+    "storyId": "reading-b1-16-v1",
+    "before": 151,
+    "after": 309
+  },
+  {
+    "storyId": "reading-b1-17-v1",
+    "before": 183,
+    "after": 360
+  },
+  {
+    "storyId": "reading-b1-18-v1",
+    "before": 178,
+    "after": 351
+  },
+  {
+    "storyId": "reading-b1-19-v1",
+    "before": 169,
+    "after": 339
+  },
+  {
+    "storyId": "reading-b1-20-v1",
+    "before": 177,
+    "after": 355
+  },
+  {
+    "storyId": "reading-b1-21-v1",
+    "before": 169,
+    "after": 330
+  },
+  {
+    "storyId": "reading-b1-22-v1",
+    "before": 181,
+    "after": 358
+  },
+  {
+    "storyId": "reading-b1-23-v1",
+    "before": 180,
+    "after": 358
+  },
+  {
+    "storyId": "reading-b1-24-v1",
+    "before": 191,
+    "after": 382
+  }
+]

@@ -10,11 +10,19 @@ test('graded stories have complete vocabulary support, meaningful questions and 
   const {readingGlosses} = await vite.ssrLoadModule('/app/lib/reading-content.ts');
   const {cleanWord} = await vite.ssrLoadModule('/app/curriculum/index.ts');
   const {getCourseChapter} = await vite.ssrLoadModule('/app/course/course-data.ts');
+  const lengthAudit = JSON.parse(await readFile(new URL("../docs/reading/length-expansion.json", import.meta.url), "utf8"));
+  assert.equal(lengthAudit.length, 72);
+  for (const row of lengthAudit) {
+   const expanded = getReadingStory(row.storyId);
+   assert.ok(expanded, row.storyId);
+   assert.equal(readingWordCount(expanded.text), row.after);
+   assert.ok(row.after >= row.before * 1.9 && row.after <= row.before * 2.1, `${row.storyId}: approximately double the original length`);
+  }
   const ids = new Set(stories.map(story=>story.id));
   assert.equal(ids.size,72);
   assert.equal(getReadingStory('reading-a1-25-v1'),undefined);
   assert.equal(getReadingStory('a1-1'),undefined);
-  assert.ok(readingWordCount(stories[0].text)<=35);
+  assert.ok(readingWordCount(stories[0].text)<=60);
   for(const level of ['A1','A2','B1']) {
    const group=stories.filter(s=>s.level===level);assert.equal(group.length,24);
    const means=[1,2,3,4].map(section=>{
