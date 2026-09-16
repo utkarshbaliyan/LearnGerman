@@ -1,0 +1,194 @@
+{
+  "reception-a1-01-v1-listening-guided": {
+    "src": "/audio/reception/reception-a1-01-v1-listening-guided.m4a",
+    "duration": 14.36,
+    "starts": [
+      0.0,
+      3.206,
+      5.154,
+      6.571,
+      10.295
+    ],
+    "textHash": "6f9e5fb24e4a780f83fa821eca4b5225c1e411962050d302d1d093e66cbcd3b3",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-a1-01-v1-listening-transfer": {
+    "src": "/audio/reception/reception-a1-01-v1-listening-transfer.m4a",
+    "duration": 11.999,
+    "starts": [
+      0.0,
+      3.564,
+      7.369,
+      9.634
+    ],
+    "textHash": "b2858e26684fcf35bbfbfe0b58e8d910bc4eaf682877ac37374e9eeadb541002",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-a1-09-v1-listening-guided": {
+    "src": "/audio/reception/reception-a1-09-v1-listening-guided.m4a",
+    "duration": 16.549,
+    "starts": [
+      0.0,
+      3.959,
+      9.107,
+      11.709,
+      14.072
+    ],
+    "textHash": "b818ab60a3657e0566fb2e429e780fafe0b4ffc1fafcc44f015f8db4376c5119",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-a1-09-v1-listening-transfer": {
+    "src": "/audio/reception/reception-a1-09-v1-listening-transfer.m4a",
+    "duration": 15.48,
+    "starts": [
+      0.0,
+      3.914,
+      9.637,
+      12.251
+    ],
+    "textHash": "a4156d6495ca8bd712a82bb47925ffa35635582c8763bf725ba95a62764ad7db",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-a2-04-v1-listening-guided": {
+    "src": "/audio/reception/reception-a2-04-v1-listening-guided.m4a",
+    "duration": 22.876,
+    "starts": [
+      0.0,
+      7.827,
+      15.887
+    ],
+    "textHash": "b4c12a492d2117fbb3956d22282d593fb062cb236c1ee7d83cb555b30d9d6517",
+    "voices": [
+      "Anna"
+    ],
+    "synthetic": true
+  },
+  "reception-a2-04-v1-listening-transfer": {
+    "src": "/audio/reception/reception-a2-04-v1-listening-transfer.m4a",
+    "duration": 23.285,
+    "starts": [
+      0.0,
+      7.885,
+      15.596
+    ],
+    "textHash": "3082a89f882c507e7732c2475264d5cbd5fac56ca5ec36d23c625573d493dd92",
+    "voices": [
+      "Anna"
+    ],
+    "synthetic": true
+  },
+  "reception-a2-18-v1-listening-guided": {
+    "src": "/audio/reception/reception-a2-18-v1-listening-guided.m4a",
+    "duration": 19.739,
+    "starts": [
+      0.0,
+      7.758,
+      12.818
+    ],
+    "textHash": "ef625d154033feeef74eeb90f27afd0fe9a6923972e4f4f5ce4403ddd3da0ceb",
+    "voices": [
+      "Anna"
+    ],
+    "synthetic": true
+  },
+  "reception-a2-18-v1-listening-transfer": {
+    "src": "/audio/reception/reception-a2-18-v1-listening-transfer.m4a",
+    "duration": 17.676,
+    "starts": [
+      0.0,
+      5.725,
+      12.821
+    ],
+    "textHash": "f0e0303ef89e47d764434e45de2674da61d685b3b19aed8db6311e954101b944",
+    "voices": [
+      "Anna"
+    ],
+    "synthetic": true
+  },
+  "reception-b1-01-v1-listening-guided": {
+    "src": "/audio/reception/reception-b1-01-v1-listening-guided.m4a",
+    "duration": 40.016,
+    "starts": [
+      0.0,
+      8.938,
+      19.671,
+      26.535,
+      35.3
+    ],
+    "textHash": "e4c9c2583cf56e20b59361d10700b7ff4c527b4a7f341088539c647d254ccb58",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-b1-01-v1-listening-transfer": {
+    "src": "/audio/reception/reception-b1-01-v1-listening-transfer.m4a",
+    "duration": 36.766,
+    "starts": [
+      0.0,
+      8.718,
+      16.891,
+      24.215,
+      32.851
+    ],
+    "textHash": "53ce6f4ec6343927281268555d9d2d31521a87f7bd55b0ecaa8d95c312f08f74",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-b1-04-v1-listening-guided": {
+    "src": "/audio/reception/reception-b1-04-v1-listening-guided.m4a",
+    "duration": 42.968,
+    "starts": [
+      0.0,
+      6.641,
+      16.35,
+      21.329,
+      31.806,
+      38.252
+    ],
+    "textHash": "91ab49b7b4895fa3f528057801188ce81870d71dbd65c5975d07a6b5c36f1478",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  },
+  "reception-b1-04-v1-listening-transfer": {
+    "src": "/audio/reception/reception-b1-04-v1-listening-transfer.m4a",
+    "duration": 46.563,
+    "starts": [
+      0.0,
+      7.744,
+      20.747,
+      25.219,
+      36.336,
+      42.376
+    ],
+    "textHash": "722583d90d0a7d312f34cfe5055e2da224ca8d809c45c101bccefd67e0d1e090",
+    "voices": [
+      "Anna",
+      "Reed (German (Germany))"
+    ],
+    "synthetic": true
+  }
+}

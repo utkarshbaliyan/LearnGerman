@@ -88,6 +88,7 @@ export type GrammarProgress = {
 };
 
 type StoredChapterProgress = {
+  reception?: import('@/app/lib/reception-progress').ReceptionProgress;
   readingEditions?: import('./reading-progress').ReadingEditionChecks;
   comprehensionChecks?: import("./comprehension-progress").ComprehensionChecks;
   completed?: boolean;

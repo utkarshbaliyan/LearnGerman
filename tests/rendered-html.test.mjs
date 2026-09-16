@@ -196,3 +196,13 @@ test("renders the graded reading path and independent story pages", async () => 
   }
   assert.equal((await renderRoute('/stories/reading-a1-25-v1')).status, 404);
 });
+
+test('practical reading and listening samples are linked and render accessible first activities', async()=>{
+ const index=await renderRoute('/stories/practice');assert.equal(index.status,200);assert.match(await index.text(),/Choosing accommodation/);
+ for(const id of ['reception-a1-01-v1','reception-a2-18-v1','reception-b1-04-v1']){
+  const response=await renderRoute(`/stories/practice/${id}`);assert.equal(response.status,200);const html=await response.text();
+  assert.match(html,/Practical reading/);assert.match(html,/Check my understanding/);assert.match(html,/seven days later/);assert.match(html,/English word help/);
+ }
+ const missing=await renderRoute('/stories/practice/not-a-lesson');assert.equal(missing.status,404);
+ const chapter=await renderRoute('/course/a2/chapter-18');assert.match(await chapter.text(),/\/stories\/practice\/reception-a2-18-v1/);
+});

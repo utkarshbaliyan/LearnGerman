@@ -224,6 +224,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
         </details>
         <QuizBlock questions={content.reading} eyebrow="Reading practice" title="What did you read?" savedScore={checks.reading?.score ?? 0} onScore={score => saveComprehensionScore("reading", score)} />
         {!checks.reading && storedChapter.completed && <p>Your earlier course result is saved. This rewritten story has new practice.</p>}
+        {content.receptionLessonId && <div className="reception-teaser"><h3>Try a different reading and listening task</h3><Link href={`/stories/practice/${content.receptionLessonId}`}>Messages and conversations from everyday life →</Link></div>}
         <Link href={`/stories/${content.story.id}`}>Read this story on its own <ArrowRight size={16} /></Link>
 
       </section>

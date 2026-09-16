@@ -1,3 +1,4 @@
+import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
 import { getChapterReading } from "@/app/lib/reading-path";
 import { readingGlosses } from "@/app/lib/reading-content";
 import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
@@ -235,6 +236,7 @@ export function getCourseChapter(level: string, number: number) {
       audioVersion: curriculum.audioVersion,
     },
     story,
+    receptionLessonId: RECEPTION_CATALOG.find(item => item.level === normalizedLevel && item.chapter === number)?.id,
     readingStory,
     readingGlosses: glosses,
     storyIndex,

@@ -1,3 +1,4 @@
+import { mergeReceptionProgress } from './reception-progress';
 import { mergeComprehensionChecks } from "./comprehension-progress";
 import { mergeReadingEditionChecks } from './reading-progress';
 import { mergeVocabularyProgress } from "./progress-sync";
@@ -35,6 +36,7 @@ function mergeCourse(local: unknown, remote: unknown) {
       checkpointScore: Math.max(Number(a.checkpointScore) || 0, Number(b.checkpointScore) || 0),
       skillScores: maxNumbers(a.skillScores, b.skillScores),
       comprehensionChecks: mergeComprehensionChecks(a.comprehensionChecks, b.comprehensionChecks),
+      reception: mergeReceptionProgress(a.reception, b.reception),
       readingEditions: mergeReadingEditionChecks(a.readingEditions, b.readingEditions),
       grammarSets: maxNumbers(a.grammarSets, b.grammarSets),
       knownWords: [...new Set([...strings(a.knownWords), ...strings(b.knownWords)])],

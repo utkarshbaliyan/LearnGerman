@@ -15,6 +15,7 @@ export const COURSE_SKILLS = ["reading", "listening", "vocabulary", "grammar", "
 export type CourseSkill = (typeof COURSE_SKILLS)[number];
 
 export type ChapterProgress = {
+  reception?: import('@/app/lib/reception-progress').ReceptionProgress;
   readingEditions?: import('@/app/lib/reading-progress').ReadingEditionChecks;
   comprehensionChecks?: import("@/app/lib/comprehension-progress").ComprehensionChecks;
   completed: boolean;

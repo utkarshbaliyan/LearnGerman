@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
 import { useState } from 'react';
 import { ArrowRight, BookOpen, CheckCircle2 } from 'lucide-react';
 import { SiteHeader } from '@/app/components/site-header';
@@ -29,6 +30,7 @@ export function ReadingPath({ stories, sections, goals, initialLevel }: {
         {done === 6 && <p className="reading-section-success">Section complete. You practised: {goals[level][index].toLowerCase()}</p>}
       </details>;
     })}</div>
+    <section className="reception-teaser"><h2>Read & listen in everyday life</h2><ul>{RECEPTION_CATALOG.filter(lesson => lesson.level === level).map(lesson => <li key={lesson.id}><Link href={`/stories/practice/${lesson.id}`}>{lesson.title} →</Link></li>)}</ul></section>
     <footer className="reading-footer"><p>Your reading progress syncs when you’re signed in.</p><Link href="/stories/previous">Previous story library <ArrowRight size={15} /></Link></footer>
   </main></div>;
 }

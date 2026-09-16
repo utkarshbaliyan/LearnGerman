@@ -1,0 +1,1939 @@
+[
+  {
+    "id": "reception-a1-01-v1",
+    "level": "A1",
+    "chapter": 1,
+    "title": "Names and places",
+    "guided": [
+      {
+        "id": "reception-a1-01-v1-reading-guided",
+        "skill": "reading",
+        "title": "A course card",
+        "instruction": "Read the card. Find the name and town.",
+        "segments": [
+          {
+            "text": "DEUTSCHKURS · ANMELDUNG"
+          },
+          {
+            "text": "Vorname: Lina\nNachname: Weber\nWohnort: Bonn"
+          },
+          {
+            "text": "Kurs: Deutsch A1\nLehrerin: Frau Sommer"
+          }
+        ],
+        "help": "Vorname = first name; Nachname = surname; Wohnort = town where someone lives; Lehrerin = teacher.",
+        "questions": [
+          {
+            "prompt": "What is the learner’s first name?",
+            "kind": "choice",
+            "options": [
+              "Sommer",
+              "Lina",
+              "Bonn"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Vorname: Lina gives her first name."
+          },
+          {
+            "prompt": "Where does Lina live?",
+            "kind": "choice",
+            "options": [
+              "Berlin",
+              "Köln",
+              "Bonn"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Wohnort: Bonn tells you where she lives."
+          }
+        ]
+      },
+      {
+        "id": "reception-a1-01-v1-listening-guided",
+        "skill": "listening",
+        "title": "Before the first class",
+        "instruction": "Listen to two people meeting.",
+        "segments": [
+          {
+            "speaker": "Lena",
+            "text": "Hallo! Ich heiße Lena. Wie heißt du?"
+          },
+          {
+            "speaker": "Omar",
+            "text": "Ich heiße Omar."
+          },
+          {
+            "speaker": "Lena",
+            "text": "Wohnst du in Bonn?"
+          },
+          {
+            "speaker": "Omar",
+            "text": "Nein, ich wohne in Köln. Und du?"
+          },
+          {
+            "speaker": "Lena",
+            "text": "Ich wohne in Bonn. Komm, hier ist unser Deutschkurs."
+          }
+        ],
+        "help": "heiße = am called; wohnst = live; nein = no; hier = here.",
+        "questions": [
+          {
+            "prompt": "Who is Lena speaking to?",
+            "kind": "choice",
+            "options": [
+              "Omar",
+              "Sam",
+              "Mia"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "He introduces himself with Ich heiße Omar."
+          },
+          {
+            "prompt": "Where does Omar live?",
+            "kind": "choice",
+            "options": [
+              "Bonn",
+              "Köln",
+              "Berlin"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "Omar says Nein to Bonn, then gives his town: Köln."
+          }
+        ]
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-a1-01-v1-reading-transfer",
+        "skill": "reading",
+        "title": "A library card",
+        "instruction": "Read this different card.",
+        "segments": [
+          {
+            "text": "BIBLIOTHEK · KARTE"
+          },
+          {
+            "text": "Vorname: Emil\nNachname: Braun\nWohnort: Berlin"
+          },
+          {
+            "text": "Sprache: Deutsch"
+          }
+        ],
+        "help": "Bibliothek = library; Karte = card; Vorname = first name; Wohnort = town where someone lives.",
+        "questions": [
+          {
+            "prompt": "What is the first name on the card?",
+            "kind": "choice",
+            "options": [
+              "Braun",
+              "Emil",
+              "Berlin"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Emil is listed as Vorname."
+          },
+          {
+            "prompt": "Where does Emil live?",
+            "kind": "choice",
+            "options": [
+              "Bonn",
+              "Köln",
+              "Berlin"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The Wohnort line says Berlin."
+          }
+        ]
+      },
+      {
+        "id": "reception-a1-01-v1-listening-transfer",
+        "skill": "listening",
+        "title": "A new neighbour",
+        "instruction": "Listen to another introduction.",
+        "segments": [
+          {
+            "speaker": "Sara",
+            "text": "Guten Tag. Ich bin Sara. Wohnen Sie hier?"
+          },
+          {
+            "speaker": "Paul",
+            "text": "Ja. Ich heiße Paul. Und Sie?"
+          },
+          {
+            "speaker": "Sara",
+            "text": "Ich wohne auch hier in Hamburg."
+          },
+          {
+            "speaker": "Paul",
+            "text": "Willkommen, Sara!"
+          }
+        ],
+        "help": "Wohnen Sie hier? = Do you live here?; auch = also; willkommen = welcome.",
+        "questions": [
+          {
+            "prompt": "What is the man’s name?",
+            "kind": "choice",
+            "options": [
+              "Paul",
+              "Omar",
+              "Emil"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "He says Ich heiße Paul."
+          },
+          {
+            "prompt": "Which town do they live in?",
+            "kind": "choice",
+            "options": [
+              "Bonn",
+              "Hamburg",
+              "Köln"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "Sara says hier in Hamburg, and both live here."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reception-a1-09-v1",
+    "level": "A1",
+    "chapter": 9,
+    "title": "Buying what you need",
+    "guided": [
+      {
+        "id": "reception-a1-09-v1-reading-guided",
+        "skill": "reading",
+        "title": "At the market",
+        "instruction": "Read the prices and the shopping note.",
+        "segments": [
+          {
+            "text": "OBSTSTAND · HEUTE\nÄpfel: 3 Euro pro Kilo\nBananen: 2 Euro pro Kilo\nErdbeeren: 4 Euro pro Schale"
+          },
+          {
+            "text": "EINKAUFSZETTEL\nEin Kilo Äpfel und eine Schale Erdbeeren. Keine Bananen."
+          }
+        ],
+        "help": "pro Kilo = per kilogram; Schale = punnet; Erdbeeren = strawberries; keine = no.",
+        "questions": [
+          {
+            "prompt": "Which fruit is NOT on the shopping list?",
+            "kind": "choice",
+            "options": [
+              "Apples",
+              "Strawberries",
+              "Bananas"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Keine Bananen explicitly excludes bananas."
+          },
+          {
+            "prompt": "How much does the complete list cost?",
+            "kind": "choice",
+            "options": [
+              "7 euros",
+              "5 euros",
+              "9 euros"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0,
+              1
+            ],
+            "explanation": "One kilo of apples costs 3 euros; one punnet of strawberries costs 4. Together: 7 euros."
+          }
+        ]
+      },
+      {
+        "id": "reception-a1-09-v1-listening-guided",
+        "skill": "listening",
+        "title": "At the fruit stall",
+        "instruction": "Listen for the fruit and the amount.",
+        "segments": [
+          {
+            "speaker": "Customer",
+            "text": "Guten Morgen! Ich möchte zwei Kilo Äpfel, bitte."
+          },
+          {
+            "speaker": "Seller",
+            "text": "Gern. Ein Kilo kostet drei Euro. Noch etwas?"
+          },
+          {
+            "speaker": "Customer",
+            "text": "Nein, danke. Nur die Äpfel."
+          },
+          {
+            "speaker": "Seller",
+            "text": "Dann sind das sechs Euro."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Hier, bitte. Auf Wiedersehen!"
+          }
+        ],
+        "help": "zwei Kilo = two kilograms; noch etwas? = anything else?; nur = only; sechs = six.",
+        "questions": [
+          {
+            "prompt": "What does the customer buy?",
+            "kind": "choice",
+            "options": [
+              "One kilo of apples",
+              "Two kilos of apples",
+              "Two kilos of bananas"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The request is zwei Kilo Äpfel."
+          },
+          {
+            "prompt": "What is the total price?",
+            "kind": "choice",
+            "options": [
+              "3 euros",
+              "9 euros",
+              "6 euros"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "The seller states the total: sechs Euro."
+          }
+        ]
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-a1-09-v1-reading-transfer",
+        "skill": "reading",
+        "title": "A bakery notice",
+        "instruction": "Read the offer and decide what to buy.",
+        "segments": [
+          {
+            "text": "BÄCKEREI · ANGEBOT\nEin Brötchen: 1 Euro\nEin Brot: 3 Euro\nEin Stück Kuchen: 2 Euro"
+          },
+          {
+            "text": "Für das Frühstück: zwei Brötchen und ein Brot. Kuchen brauchen wir heute nicht."
+          }
+        ],
+        "help": "Brötchen = bread roll; Stück = piece; brauchen = need.",
+        "questions": [
+          {
+            "prompt": "What do they need for breakfast?",
+            "kind": "choice",
+            "options": [
+              "Two rolls and a loaf",
+              "A loaf and cake",
+              "Two pieces of cake"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The note asks for zwei Brötchen und ein Brot."
+          },
+          {
+            "prompt": "What do they pay?",
+            "kind": "choice",
+            "options": [
+              "4 euros",
+              "5 euros",
+              "6 euros"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0,
+              1
+            ],
+            "explanation": "Two rolls cost 2 euros and the loaf costs 3: 5 euros altogether."
+          }
+        ]
+      },
+      {
+        "id": "reception-a1-09-v1-listening-transfer",
+        "skill": "listening",
+        "title": "Buying vegetables",
+        "instruction": "Listen to a different purchase.",
+        "segments": [
+          {
+            "speaker": "Customer",
+            "text": "Ich nehme ein Kilo Tomaten und zwei Gurken, bitte."
+          },
+          {
+            "speaker": "Seller",
+            "text": "Die Tomaten kosten vier Euro. Eine Gurke kostet einen Euro."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Gut. Ich habe eine Tasche dabei."
+          },
+          {
+            "speaker": "Seller",
+            "text": "Alles zusammen kostet sechs Euro."
+          }
+        ],
+        "help": "Tomaten = tomatoes; Gurken = cucumbers; alles zusammen = everything together.",
+        "questions": [
+          {
+            "prompt": "How many cucumbers does the customer buy?",
+            "kind": "choice",
+            "options": [
+              "One",
+              "Three",
+              "Two"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The customer asks for zwei Gurken."
+          },
+          {
+            "prompt": "What costs four euros?",
+            "kind": "choice",
+            "options": [
+              "The tomatoes",
+              "One cucumber",
+              "The whole purchase"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Die Tomaten kosten vier Euro. The total is six euros."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reception-a2-04-v1",
+    "level": "A2",
+    "chapter": 4,
+    "title": "Understanding an appointment",
+    "guided": [
+      {
+        "id": "reception-a2-04-v1-reading-guided",
+        "skill": "reading",
+        "title": "An appointment email",
+        "instruction": "Read the email and plan your visit.",
+        "segments": [
+          {
+            "text": "Von: Bürgerbüro\nBetreff: Ihr Termin am Dienstag"
+          },
+          {
+            "text": "Guten Tag Frau Keller,\nIhr Termin zur Anmeldung ist am Dienstag um 15:30 Uhr. Bitte kommen Sie zehn Minuten früher und nehmen Sie im Wartebereich Platz."
+          },
+          {
+            "text": "Bringen Sie Ihren Ausweis und die Bestätigung Ihres Vermieters mit. Eine Kopie Ihres Mietvertrags ist nicht nötig."
+          },
+          {
+            "text": "Wenn Sie den Termin nicht wahrnehmen können, sagen Sie bitte bis Montag telefonisch ab. Antworten auf diese E-Mail werden nicht gelesen."
+          }
+        ],
+        "help": "Anmeldung = address registration; Ausweis = ID; Bestätigung = confirmation; absagen = cancel.",
+        "questions": [
+          {
+            "prompt": "When should Frau Keller arrive?",
+            "kind": "choice",
+            "options": [
+              "15:20",
+              "15:30",
+              "15:40"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The appointment is 15:30, but she is asked to arrive ten minutes earlier."
+          },
+          {
+            "prompt": "Match each item to its requirement.",
+            "kind": "match",
+            "labels": [
+              "ID",
+              "Landlord confirmation",
+              "Rental contract copy"
+            ],
+            "options": [
+              "Bring it",
+              "Not needed"
+            ],
+            "answers": [
+              0,
+              0,
+              1
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "The ID and landlord confirmation are required. The contract copy is explicitly not needed."
+          },
+          {
+            "prompt": "How should she cancel?",
+            "kind": "choice",
+            "options": [
+              "Reply to the email on Tuesday",
+              "Call by Monday",
+              "Send a contract copy"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "Cancellation is by phone by Monday; email replies are not read."
+          }
+        ]
+      },
+      {
+        "id": "reception-a2-04-v1-listening-guided",
+        "skill": "listening",
+        "title": "A voicemail from the dentist",
+        "instruction": "Listen for the new arrangement.",
+        "segments": [
+          {
+            "speaker": "Reception",
+            "text": "Guten Tag, Herr Beck. Hier ist die Zahnarztpraxis am Markt. Ihr Termin morgen um neun Uhr muss leider verschoben werden."
+          },
+          {
+            "speaker": "Reception",
+            "text": "Wir können Ihnen morgen um elf Uhr einen neuen Termin anbieten. Wenn das nicht passt, rufen Sie uns bitte heute bis siebzehn Uhr an."
+          },
+          {
+            "speaker": "Reception",
+            "text": "Bringen Sie bitte Ihre Versichertenkarte mit. Unsere Adresse bleibt gleich. Vielen Dank und auf Wiederhören."
+          }
+        ],
+        "help": "verschoben = moved to another time; anbieten = offer; Versichertenkarte = health insurance card.",
+        "questions": [
+          {
+            "prompt": "Why is the practice calling?",
+            "kind": "choice",
+            "options": [
+              "To change an appointment",
+              "To change its address",
+              "To ask for payment"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The appointment must be verschoben: rescheduled."
+          },
+          {
+            "prompt": "What new time is offered?",
+            "kind": "choice",
+            "options": [
+              "Today at 17:00",
+              "Tomorrow at 09:00",
+              "Tomorrow at 11:00"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Morgen um elf Uhr is the offered appointment. 17:00 is the callback deadline."
+          },
+          {
+            "prompt": "What must Herr Beck do if that time does not work?",
+            "kind": "choice",
+            "options": [
+              "Reply tomorrow",
+              "Call today by 17:00",
+              "Go to a new address"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The message asks him to call today by seventeen o’clock if the new time is unsuitable."
+          }
+        ]
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-a2-04-v1-reading-transfer",
+        "skill": "reading",
+        "title": "A course office email",
+        "instruction": "Read the new instructions carefully.",
+        "segments": [
+          {
+            "text": "Betreff: Beratung zu Ihrem Abendkurs"
+          },
+          {
+            "text": "Guten Tag Herr Lang,\nwir erwarten Sie am Donnerstag um 18 Uhr in Raum 12. Melden Sie sich bitte zuerst am Empfang im Erdgeschoss an."
+          },
+          {
+            "text": "Bringen Sie Ihren Ausweis mit. Das Anmeldeformular liegt hier bereit; Sie müssen es nicht ausdrucken. Ein Passfoto ist ebenfalls nicht nötig."
+          },
+          {
+            "text": "Falls Sie nicht kommen können, antworten Sie bitte bis Mittwoch auf diese E-Mail. Unsere Telefonleitung ist diese Woche nicht besetzt."
+          }
+        ],
+        "help": "Beratung = advice appointment; Empfang = reception; bereitliegen = be ready; besetzt = staffed / occupied.",
+        "questions": [
+          {
+            "prompt": "Where should Herr Lang go first?",
+            "kind": "choice",
+            "options": [
+              "Room 12",
+              "The reception desk",
+              "The printer"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "He must first register at reception: zuerst am Empfang."
+          },
+          {
+            "prompt": "What should he bring?",
+            "kind": "match",
+            "labels": [
+              "ID",
+              "Printed form",
+              "Passport photo"
+            ],
+            "options": [
+              "Bring it",
+              "Not needed"
+            ],
+            "answers": [
+              0,
+              1,
+              1
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "He needs ID. The form is available there, and no photo is needed."
+          },
+          {
+            "prompt": "How can he cancel?",
+            "kind": "choice",
+            "options": [
+              "By phone on Thursday",
+              "By email by Wednesday",
+              "By visiting Room 12 on Friday"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "He should reply to the email by Wednesday; the phone is not staffed."
+          }
+        ]
+      },
+      {
+        "id": "reception-a2-04-v1-listening-transfer",
+        "skill": "listening",
+        "title": "A message about a repair visit",
+        "instruction": "Listen for a changed home visit.",
+        "segments": [
+          {
+            "speaker": "Office",
+            "text": "Guten Tag, Frau König. Hier ist der Reparaturservice. Unser Mitarbeiter kann heute leider nicht mehr zu Ihnen kommen."
+          },
+          {
+            "speaker": "Office",
+            "text": "Wir haben jetzt Freitag um vierzehn Uhr für Sie vorgemerkt. Bitte bestätigen Sie diesen Termin bis morgen Mittag per E-Mail."
+          },
+          {
+            "speaker": "Office",
+            "text": "Sie müssen kein Werkzeug bereitstellen. Bitte sorgen Sie nur dafür, dass jemand die Haustür öffnet. Auf Wiederhören."
+          }
+        ],
+        "help": "vorgemerkt = provisionally scheduled; bestätigen = confirm; bereitstellen = provide.",
+        "questions": [
+          {
+            "prompt": "What happened to today’s visit?",
+            "kind": "choice",
+            "options": [
+              "It is cancelled",
+              "It starts earlier",
+              "It is already finished"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The employee cannot come today."
+          },
+          {
+            "prompt": "When is the replacement visit planned?",
+            "kind": "choice",
+            "options": [
+              "Tomorrow at noon",
+              "Friday at 14:00",
+              "Friday at noon"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Friday at fourteen o’clock is the visit; tomorrow noon is the confirmation deadline."
+          },
+          {
+            "prompt": "How should Frau König confirm?",
+            "kind": "choice",
+            "options": [
+              "By bringing tools",
+              "By phone on Friday",
+              "By email by tomorrow noon"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The message explicitly requests an email by tomorrow midday."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reception-a2-18-v1",
+    "level": "A2",
+    "chapter": 18,
+    "title": "Finding the right connection",
+    "guided": [
+      {
+        "id": "reception-a2-18-v1-reading-guided",
+        "skill": "reading",
+        "title": "A revised train timetable",
+        "instruction": "Choose the connection that fits the message.",
+        "segments": [
+          {
+            "text": "BONN → KÖLN · SONNTAG\nZug A: 09:10–09:40 · direkt\nZug B: 09:20–10:05 · einmal umsteigen\nZug C: 09:45–10:15 · direkt"
+          },
+          {
+            "text": "Hinweis: Zug A fällt wegen Bauarbeiten aus. Die anderen Verbindungen fahren wie angegeben."
+          },
+          {
+            "text": "Nachricht von Jule: „Bitte komm spätestens um 10:10 Uhr. Ich warte vor dem Haupteingang.“"
+          }
+        ],
+        "help": "direkt = direct; umsteigen = change trains; fällt aus = is cancelled; spätestens = no later than.",
+        "questions": [
+          {
+            "prompt": "Which train still gets you there on time?",
+            "kind": "choice",
+            "options": [
+              "Train A",
+              "Train B",
+              "Train C"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0,
+              1,
+              2
+            ],
+            "explanation": "A is cancelled; C arrives after 10:10. B arrives at 10:05."
+          },
+          {
+            "prompt": "What does that journey require?",
+            "kind": "choice",
+            "options": [
+              "One change of train",
+              "No changes",
+              "Two changes"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "Train B requires einmal umsteigen."
+          },
+          {
+            "prompt": "Where is Jule waiting?",
+            "kind": "choice",
+            "options": [
+              "On the train",
+              "At the ticket counter",
+              "Outside the main entrance"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "She writes vor dem Haupteingang."
+          }
+        ]
+      },
+      {
+        "id": "reception-a2-18-v1-listening-guided",
+        "skill": "listening",
+        "title": "A station announcement",
+        "instruction": "Listen before going to your platform.",
+        "segments": [
+          {
+            "speaker": "Announcement",
+            "text": "Achtung, eine Änderung für Reisende nach Köln: Der Regionalzug um zehn Uhr zwanzig fährt heute nicht von Gleis drei ab."
+          },
+          {
+            "speaker": "Announcement",
+            "text": "Bitte gehen Sie zu Gleis fünf. Die Abfahrt verspätet sich um zehn Minuten."
+          },
+          {
+            "speaker": "Announcement",
+            "text": "Fahrgäste nach Düsseldorf bleiben bitte an Gleis drei. Ihr Zug fährt planmäßig. Wir bitten um Entschuldigung."
+          }
+        ],
+        "help": "Gleis = platform / track; verspätet sich = is delayed; planmäßig = as scheduled.",
+        "questions": [
+          {
+            "prompt": "Where does the train to Köln leave?",
+            "kind": "choice",
+            "options": [
+              "Platform 3",
+              "Platform 5",
+              "Platform 10"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Köln passengers are directed to Gleis fünf."
+          },
+          {
+            "prompt": "What is its new departure time?",
+            "kind": "choice",
+            "options": [
+              "10:10",
+              "10:20",
+              "10:30"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              0,
+              1
+            ],
+            "explanation": "The original 10:20 departure is delayed ten minutes: 10:30."
+          },
+          {
+            "prompt": "Who should stay at platform 3?",
+            "kind": "choice",
+            "options": [
+              "Passengers for Düsseldorf",
+              "Passengers for Köln",
+              "All passengers"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "Only Düsseldorf passengers are told to remain at platform 3."
+          }
+        ]
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-a2-18-v1-reading-transfer",
+        "skill": "reading",
+        "title": "Getting to the museum",
+        "instruction": "Use the bus notice to plan the trip.",
+        "segments": [
+          {
+            "text": "ZUM MUSEUM\nLinie 4: ab Rathaus 13:10 · an Museum 13:25\nLinie 6: ab Markt 13:15 · an Museum 13:40\nLinie 8: ab Bahnhof 13:30 · an Museum 13:50"
+          },
+          {
+            "text": "Heute: Die Haltestelle Rathaus ist gesperrt. Linie 4 hält dort nicht. Linie 6 und Linie 8 fahren normal."
+          },
+          {
+            "text": "Die Führung beginnt um 13:45 Uhr. Bitte seien Sie fünf Minuten vorher an der Museumskasse."
+          }
+        ],
+        "help": "Linie = route; gesperrt = closed; Führung = guided tour; Museumskasse = museum ticket desk.",
+        "questions": [
+          {
+            "prompt": "Which available bus arrives in time?",
+            "kind": "choice",
+            "options": [
+              "Route 4 from Rathaus",
+              "Route 8 from Bahnhof",
+              "Route 6 from Markt"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              0,
+              1,
+              2
+            ],
+            "explanation": "Route 6 arrives at 13:40; Route 8 is too late and the listed Route 4 stop is closed."
+          },
+          {
+            "prompt": "When should you be at the ticket desk?",
+            "kind": "choice",
+            "options": [
+              "13:40",
+              "13:45",
+              "13:50"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "Five minutes before 13:45 is 13:40."
+          },
+          {
+            "prompt": "Where do you board the suitable bus?",
+            "kind": "choice",
+            "options": [
+              "Rathaus",
+              "Markt",
+              "Bahnhof"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "Route 6 leaves from Markt."
+          }
+        ]
+      },
+      {
+        "id": "reception-a2-18-v1-listening-transfer",
+        "skill": "listening",
+        "title": "A bus replacement announcement",
+        "instruction": "Listen for the replacement service.",
+        "segments": [
+          {
+            "speaker": "Announcement",
+            "text": "Liebe Fahrgäste, die Straßenbahn nach Nordpark kann heute ab achtzehn Uhr nicht fahren."
+          },
+          {
+            "speaker": "Announcement",
+            "text": "Ein Ersatzbus fährt um achtzehn Uhr fünfzehn vor dem Bahnhof ab. Bitte nutzen Sie nicht die Haltestelle am Markt."
+          },
+          {
+            "speaker": "Announcement",
+            "text": "Ihre Fahrkarten gelten auch im Bus. Sie müssen keine neue Karte kaufen."
+          }
+        ],
+        "help": "Ersatzbus = replacement bus; gelten = are valid; nutzen = use.",
+        "questions": [
+          {
+            "prompt": "What replaces the tram?",
+            "kind": "choice",
+            "options": [
+              "A train",
+              "A bus",
+              "A taxi"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "An Ersatzbus replaces the tram."
+          },
+          {
+            "prompt": "Where and when does it leave?",
+            "kind": "choice",
+            "options": [
+              "At Markt at 18:00",
+              "At the station at 18:00",
+              "Outside the station at 18:15"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The bus leaves vor dem Bahnhof at eighteen fifteen."
+          },
+          {
+            "prompt": "What happens to existing tickets?",
+            "kind": "choice",
+            "options": [
+              "They remain valid",
+              "They must be exchanged",
+              "They cannot be used"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "The announcement says the tickets also apply on the bus."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reception-b1-01-v1",
+    "level": "B1",
+    "chapter": 1,
+    "title": "Choosing accommodation",
+    "guided": [
+      {
+        "id": "reception-b1-01-v1-reading-guided",
+        "skill": "reading",
+        "title": "Two accommodation offers",
+        "instruction": "Compare the offers with the guest’s needs.",
+        "segments": [
+          {
+            "text": "GÄSTEHAUS WALDBLICK\nZwei Nächte: 150 Euro. Frühstück inklusive. Ruhige Lage. Anreise nur bis 20 Uhr. Keine Schlüsselbox."
+          },
+          {
+            "text": "PENSION AM PARK\nZwei Nächte: 140 Euro. Frühstück: 8 Euro pro Person und Tag. Anreise jederzeit über Schlüsselbox. Ruhige Zimmer zum Hof nur auf Anfrage."
+          },
+          {
+            "text": "E-Mail von Jana: „Ich reise allein und komme erst um 22 Uhr an. Für Unterkunft und zweimal Frühstück habe ich höchstens 160 Euro. Ein ruhiges Zimmer ist mir wichtig.“"
+          }
+        ],
+        "help": "inklusive = included; Anreise = arrival; auf Anfrage = on request; höchstens = at most.",
+        "questions": [
+          {
+            "prompt": "Which offer could meet all Jana’s requirements?",
+            "kind": "choice",
+            "options": [
+              "Pension am Park, if a courtyard room is confirmed",
+              "Gästehaus Waldblick without any changes",
+              "Neither, because both exceed her budget"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0,
+              1,
+              2
+            ],
+            "explanation": "The pension allows late arrival and costs 156 euros with two breakfasts, but room availability needs confirmation."
+          },
+          {
+            "prompt": "Why does Waldblick not fit as advertised?",
+            "kind": "choice",
+            "options": [
+              "Breakfast is excluded",
+              "Its arrival deadline is too early",
+              "It costs more than 160 euros"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0,
+              2
+            ],
+            "explanation": "Jana arrives at 22:00; Waldblick only accepts arrivals until 20:00."
+          },
+          {
+            "prompt": "What is the pension’s total with two breakfasts?",
+            "kind": "choice",
+            "options": [
+              "148 euros",
+              "160 euros",
+              "156 euros"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "140 + 8 + 8 = 156 euros for one guest."
+          },
+          {
+            "prompt": "What still needs checking?",
+            "kind": "choice",
+            "options": [
+              "Whether late arrival is possible",
+              "Whether the quiet room is available",
+              "Whether breakfast costs extra"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Quiet courtyard rooms are only on request; they are not guaranteed by the offer."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the decision in 2–3 sentences, in German or English.",
+          "points": [
+            "Name the selected option.",
+            "Give the decisive reason.",
+            "Mention one limitation or condition."
+          ]
+        }
+      },
+      {
+        "id": "reception-b1-01-v1-listening-guided",
+        "skill": "listening",
+        "title": "Planning a weekend away",
+        "instruction": "Follow two people comparing their priorities.",
+        "segments": [
+          {
+            "speaker": "Mara",
+            "text": "Das Hotel im Zentrum kostet für uns zusammen hundertachtzig Euro. Frühstück ist dabei. Wir könnten nach dem Konzert zu Fuß zurückgehen."
+          },
+          {
+            "speaker": "Ben",
+            "text": "Mir ist der Schlaf wichtiger. In den Bewertungen steht, dass die Straße nachts laut ist. Das Gästehaus kostet hundertsechzig Euro und liegt ruhiger."
+          },
+          {
+            "speaker": "Mara",
+            "text": "Aber für die Busfahrten zahlen wir zusammen noch zwanzig Euro. Dann kosten beide Möglichkeiten gleich viel."
+          },
+          {
+            "speaker": "Ben",
+            "text": "Stimmt. Frag doch zuerst beim Hotel nach einem Zimmer zum Hof. Wenn sie das bestätigen, wäre das für mich in Ordnung."
+          },
+          {
+            "speaker": "Mara",
+            "text": "Gut, ich schreibe eine E-Mail. Buchen werde ich erst nach der Antwort."
+          }
+        ],
+        "help": "Bewertungen = reviews; zum Hof = facing the courtyard; bestätigen = confirm.",
+        "questions": [
+          {
+            "prompt": "What matters most to Ben?",
+            "kind": "choice",
+            "options": [
+              "The lowest room price",
+              "Being near the stage",
+              "Sleeping somewhere quiet"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Ben explicitly puts sleep first and worries about street noise."
+          },
+          {
+            "prompt": "Match each amount.",
+            "kind": "match",
+            "labels": [
+              "Hotel including breakfast",
+              "Guesthouse plus bus fares"
+            ],
+            "options": [
+              "160 euros",
+              "180 euros",
+              "200 euros"
+            ],
+            "answers": [
+              1,
+              1
+            ],
+            "evidence": [
+              0,
+              1,
+              2
+            ],
+            "explanation": "The hotel is 180. The guesthouse is 160 plus 20 for buses: also 180."
+          },
+          {
+            "prompt": "Put the agreed steps in order.",
+            "kind": "sequence",
+            "options": [
+              "Book if the answer meets their needs",
+              "Ask the hotel about a courtyard room",
+              "Read the hotel’s answer"
+            ],
+            "answers": [
+              1,
+              2,
+              0
+            ],
+            "evidence": [
+              3,
+              4
+            ],
+            "explanation": "They will enquire, wait for a reply, then decide whether to book."
+          },
+          {
+            "prompt": "Have they already booked?",
+            "kind": "choice",
+            "options": [
+              "No, they are waiting for confirmation",
+              "Yes, the guesthouse",
+              "Yes, the hotel"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              4
+            ],
+            "explanation": "Mara says she will only book after the reply."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the decision in 2–3 sentences, in German or English.",
+          "points": [
+            "Name the selected option.",
+            "Give the decisive reason.",
+            "Mention one limitation or condition."
+          ]
+        }
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-b1-01-v1-reading-transfer",
+        "skill": "reading",
+        "title": "Choosing a room for a visit",
+        "instruction": "Compare a different pair of offers.",
+        "segments": [
+          {
+            "text": "HOTEL SÜD\nEine Nacht: 92 Euro, Frühstück inklusive. Kostenlos stornierbar bis Donnerstag, 18 Uhr. Check-in bis 23 Uhr."
+          },
+          {
+            "text": "ZIMMER AM FLUSS\nEine Nacht: 75 Euro. Frühstück: 10 Euro. Buchungen können nicht kostenlos storniert werden. Anreise bis 22 Uhr."
+          },
+          {
+            "text": "Nachricht von Erik: „Ich komme am Freitag gegen 21 Uhr an. Erst Donnerstag um 12 Uhr erfahre ich, ob die Reise stattfindet. Mein Budget ist 95 Euro mit Frühstück. Ich möchte heute reservieren, aber bei einer Absage nichts bezahlen.“"
+          }
+        ],
+        "help": "stornierbar = cancellable; Absage = cancellation; gegen = around.",
+        "questions": [
+          {
+            "prompt": "Which offer fits his requirements for booking today?",
+            "kind": "choice",
+            "options": [
+              "Zimmer am Fluss",
+              "Hotel Süd",
+              "Neither"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              0,
+              1,
+              2
+            ],
+            "explanation": "Hotel Süd is within budget, permits his arrival time and allows cancellation after he receives the decision."
+          },
+          {
+            "prompt": "What would the river room cost with breakfast?",
+            "kind": "choice",
+            "options": [
+              "75 euros",
+              "85 euros",
+              "95 euros"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "75 + 10 = 85 euros."
+          },
+          {
+            "prompt": "Why is the cheaper room unsuitable?",
+            "kind": "choice",
+            "options": [
+              "Its arrival deadline is too early",
+              "It has no breakfast",
+              "Cancellation is not free"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1,
+              2
+            ],
+            "explanation": "The problem is cancellation risk, not the arrival time or total price."
+          },
+          {
+            "prompt": "If his trip is cancelled, when must he cancel Hotel Süd for free?",
+            "kind": "choice",
+            "options": [
+              "By Thursday at 18:00",
+              "By Friday at 21:00",
+              "By Thursday at 12:00"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The stated free-cancellation deadline is Thursday at eighteen o’clock."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the decision in 2–3 sentences, in German or English.",
+          "points": [
+            "Name the selected option.",
+            "Give the decisive reason.",
+            "Mention one limitation or condition."
+          ]
+        }
+      },
+      {
+        "id": "reception-b1-01-v1-listening-transfer",
+        "skill": "listening",
+        "title": "Planning a family visit",
+        "instruction": "Listen to a new choice with different priorities.",
+        "segments": [
+          {
+            "speaker": "Nina",
+            "text": "Die Ferienwohnung kostet zweihundert Euro. Dort könnten wir selbst kochen. Das Hotel kostet zweihundertzwanzig Euro mit Frühstück."
+          },
+          {
+            "speaker": "Timo",
+            "text": "Meine Mutter kann schlecht Treppen steigen. Bei der Wohnung steht dritter Stock, ohne Aufzug. Das wäre schwierig."
+          },
+          {
+            "speaker": "Nina",
+            "text": "Dann frage ich das Hotel, ob ein Zimmer im Erdgeschoss frei ist. Der höhere Preis wäre noch in unserem Budget."
+          },
+          {
+            "speaker": "Timo",
+            "text": "Ja. Aber lass dir das Zimmer bestätigen, bevor du buchst. Nur ein Hotelname sagt noch nichts über den Zugang."
+          },
+          {
+            "speaker": "Nina",
+            "text": "Ich rufe an und bitte danach um eine schriftliche Bestätigung."
+          }
+        ],
+        "help": "Aufzug = lift; Erdgeschoss = ground floor; Zugang = access.",
+        "questions": [
+          {
+            "prompt": "Why is the apartment unsuitable?",
+            "kind": "choice",
+            "options": [
+              "It costs too much",
+              "It has stairs without a lift",
+              "It has no kitchen"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The third-floor apartment has no lift, and Timo’s mother has difficulty with stairs."
+          },
+          {
+            "prompt": "Match the price to the option.",
+            "kind": "match",
+            "labels": [
+              "Apartment",
+              "Hotel with breakfast"
+            ],
+            "options": [
+              "200 euros",
+              "220 euros",
+              "240 euros"
+            ],
+            "answers": [
+              0,
+              1
+            ],
+            "evidence": [
+              0
+            ],
+            "explanation": "The apartment is 200 euros; the hotel with breakfast is 220."
+          },
+          {
+            "prompt": "What will Nina do?",
+            "kind": "sequence",
+            "options": [
+              "Book after the room is confirmed",
+              "Call the hotel",
+              "Obtain written confirmation"
+            ],
+            "answers": [
+              1,
+              2,
+              0
+            ],
+            "evidence": [
+              2,
+              3,
+              4
+            ],
+            "explanation": "She will ask by phone and get written confirmation before booking."
+          },
+          {
+            "prompt": "What must be confirmed?",
+            "kind": "choice",
+            "options": [
+              "A ground-floor room",
+              "A kitchen",
+              "A free breakfast for everyone"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              2
+            ],
+            "explanation": "Nina needs to confirm that a room on the ground floor is available."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the decision in 2–3 sentences, in German or English.",
+          "points": [
+            "Name the selected option.",
+            "Give the decisive reason.",
+            "Mention one limitation or condition."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "reception-b1-04-v1",
+    "level": "B1",
+    "chapter": 4,
+    "title": "Resolving a repair problem",
+    "guided": [
+      {
+        "id": "reception-b1-04-v1-reading-guided",
+        "skill": "reading",
+        "title": "An email from the workshop",
+        "instruction": "Work out what is ready and what is still conditional.",
+        "segments": [
+          {
+            "text": "Betreff: Ihr Fahrrad – Auftrag 214"
+          },
+          {
+            "text": "Guten Tag Frau Wolf,\nleider ist das Ersatzteil nicht rechtzeitig eingetroffen. Deshalb können Sie Ihr Fahrrad heute noch nicht abholen. Wir rechnen mit der Lieferung am Mittwoch, können diesen Termin aber noch nicht garantieren."
+          },
+          {
+            "text": "Für Ihren Arbeitsweg bieten wir Ihnen ab morgen kostenlos ein Leihrad an. Bitte antworten Sie bis heute um 17 Uhr, wenn Sie es nutzen möchten."
+          },
+          {
+            "text": "Sobald Ihr Fahrrad fertig ist, rufen wir Sie an. Bitte kommen Sie erst nach unserem Anruf. Der vereinbarte Reparaturpreis bleibt unverändert."
+          }
+        ],
+        "help": "Ersatzteil = spare part; Leihrad = loan bicycle; unverändert = unchanged.",
+        "questions": [
+          {
+            "prompt": "What is the main purpose of the email?",
+            "kind": "choice",
+            "options": [
+              "To demand extra payment",
+              "To report a delay and offer temporary help",
+              "To confirm collection today"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1,
+              2
+            ],
+            "explanation": "The workshop explains the delay and offers a free loan bike."
+          },
+          {
+            "prompt": "What does Wednesday refer to?",
+            "kind": "choice",
+            "options": [
+              "A guaranteed collection time",
+              "The reply deadline",
+              "An expected, unconfirmed parts delivery"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "They expect delivery on Wednesday but explicitly cannot guarantee it."
+          },
+          {
+            "prompt": "To use the loan bike and later collect her own, what should she do?",
+            "kind": "sequence",
+            "options": [
+              "Collect her repaired bike after the call",
+              "Reply by 17:00 today",
+              "Use the loan bike from tomorrow"
+            ],
+            "answers": [
+              1,
+              2,
+              0
+            ],
+            "evidence": [
+              2,
+              3
+            ],
+            "explanation": "First request the loan bike, then use it, and collect her own only after the workshop calls."
+          },
+          {
+            "prompt": "What happens to the repair price?",
+            "kind": "choice",
+            "options": [
+              "It stays the same",
+              "It is waived",
+              "It increases"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "Der vereinbarte Reparaturpreis bleibt unverändert."
+          }
+        ],
+        "summary": {
+          "prompt": "Summarise what Frau Wolf should do next.",
+          "points": [
+            "Explain why collection is delayed.",
+            "Distinguish the expected delivery from a guaranteed appointment.",
+            "Mention the reply deadline and the collection call."
+          ]
+        }
+      },
+      {
+        "id": "reception-b1-04-v1-listening-guided",
+        "skill": "listening",
+        "title": "A call about a laptop",
+        "instruction": "Follow the problem and the proposed solution.",
+        "segments": [
+          {
+            "speaker": "Customer",
+            "text": "Guten Tag. Mein Laptop sollte heute fertig sein. Ich brauche ihn morgen für eine Präsentation."
+          },
+          {
+            "speaker": "Technician",
+            "text": "Es tut mir leid. Der neue Akku ist noch nicht da. Wahrscheinlich kommt er morgen, aber einen festen Termin kann ich noch nicht nennen."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Dann brauche ich eine andere Lösung. Können Sie mir für morgen ein Gerät leihen?"
+          },
+          {
+            "speaker": "Technician",
+            "text": "Ja, ein Leihgerät können Sie heute bis achtzehn Uhr abholen. Bitte bringen Sie Ihren Ausweis mit. Ihre Dateien müssen Sie selbst übertragen."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Gut, ich komme um siebzehn Uhr. Bitte rufen Sie mich an, sobald die Reparatur fertig ist."
+          },
+          {
+            "speaker": "Technician",
+            "text": "Das mache ich. Der vereinbarte Preis ändert sich nicht."
+          }
+        ],
+        "help": "Akku = battery; Leihgerät = loan device; übertragen = transfer.",
+        "questions": [
+          {
+            "prompt": "Why is the laptop not ready?",
+            "kind": "choice",
+            "options": [
+              "The customer has not paid",
+              "The new battery has not arrived",
+              "The files are missing"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The technician is waiting for the battery."
+          },
+          {
+            "prompt": "What is actually confirmed?",
+            "kind": "choice",
+            "options": [
+              "The repair will finish tomorrow",
+              "The files will be transferred by the shop",
+              "A loan device is available today"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1,
+              3
+            ],
+            "explanation": "Tomorrow’s delivery is uncertain; today’s loan device is offered concretely."
+          },
+          {
+            "prompt": "Who is responsible for each action?",
+            "kind": "match",
+            "labels": [
+              "Transfer the files",
+              "Call when the repair is finished"
+            ],
+            "options": [
+              "Customer",
+              "Technician"
+            ],
+            "answers": [
+              0,
+              1
+            ],
+            "evidence": [
+              3,
+              4,
+              5
+            ],
+            "explanation": "The customer transfers the files; the technician agrees to call after repair."
+          },
+          {
+            "prompt": "When does the customer plan to collect the loan device?",
+            "kind": "choice",
+            "options": [
+              "17:00 today",
+              "18:00 tomorrow",
+              "Tomorrow morning"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              4
+            ],
+            "explanation": "The customer says ich komme um siebzehn Uhr. 18:00 is the latest collection time."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the temporary solution and what remains uncertain.",
+          "points": [
+            "Mention the loan device and today’s collection.",
+            "Say who transfers the files.",
+            "Explain that the repair completion time is not confirmed."
+          ]
+        }
+      }
+    ],
+    "transfer": [
+      {
+        "id": "reception-b1-04-v1-reading-transfer",
+        "skill": "reading",
+        "title": "An order delayed",
+        "instruction": "Read the shop’s email before choosing an option.",
+        "segments": [
+          {
+            "text": "Betreff: Ihre Bestellung – Schreibtisch"
+          },
+          {
+            "text": "Guten Tag Herr Mai,\nIhr Schreibtisch kann leider nicht am Freitag geliefert werden. Wir erwarten die Ware nächste Woche, haben aber noch keine Bestätigung des Herstellers."
+          },
+          {
+            "text": "Sie können entweder auf Ihre Bestellung warten oder bis Donnerstag kostenlos stornieren. Als Alternative haben wir ein kleineres Modell auf Lager. Es kostet 30 Euro weniger; die Lieferung wäre am Freitag möglich."
+          },
+          {
+            "text": "Bitte teilen Sie uns per E-Mail mit, welche Lösung Sie wählen. Wir ändern Ihre Bestellung nicht ohne Ihre Zustimmung."
+          }
+        ],
+        "help": "Ware = goods; Hersteller = manufacturer; auf Lager = in stock; Zustimmung = agreement.",
+        "questions": [
+          {
+            "prompt": "Why is the shop writing?",
+            "kind": "choice",
+            "options": [
+              "To announce a delay and offer choices",
+              "To confirm delivery of the original desk",
+              "To request an extra 30 euros"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1,
+              2
+            ],
+            "explanation": "The original delivery is delayed and several options are offered."
+          },
+          {
+            "prompt": "What is certain about the original desk?",
+            "kind": "choice",
+            "options": [
+              "It will arrive next week",
+              "It cannot be delivered this Friday",
+              "It is no longer made"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "Next week is an expectation without confirmation; Friday is explicitly unavailable."
+          },
+          {
+            "prompt": "Match the options to the stated conditions.",
+            "kind": "match",
+            "labels": [
+              "Cancel",
+              "Choose the smaller model",
+              "Wait for the original"
+            ],
+            "options": [
+              "No confirmed delivery date",
+              "30 euros cheaper, Friday delivery possible",
+              "Free until Thursday"
+            ],
+            "answers": [
+              2,
+              1,
+              0
+            ],
+            "evidence": [
+              1,
+              2
+            ],
+            "explanation": "Cancellation is free until Thursday; the smaller desk is cheaper and available; the original date remains uncertain."
+          },
+          {
+            "prompt": "What should Herr Mai do next?",
+            "kind": "choice",
+            "options": [
+              "Wait for an automatic substitution",
+              "Pay the higher price",
+              "Email his preferred option"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              3
+            ],
+            "explanation": "The shop asks for his decision by email and will not change the order without consent."
+          }
+        ],
+        "summary": {
+          "prompt": "Explain the decision in 2–3 sentences, in German or English.",
+          "points": [
+            "Name the selected option.",
+            "Give the decisive reason.",
+            "Mention one limitation or condition."
+          ]
+        }
+      },
+      {
+        "id": "reception-b1-04-v1-listening-transfer",
+        "skill": "listening",
+        "title": "A problem with a washing machine",
+        "instruction": "Listen for responsibilities and an uncertain repair time.",
+        "segments": [
+          {
+            "speaker": "Customer",
+            "text": "Guten Tag. Die Waschmaschine ist nach Ihrer Reparatur wieder stehen geblieben. Ich möchte wissen, wie es jetzt weitergeht."
+          },
+          {
+            "speaker": "Service",
+            "text": "Das tut mir leid. Wir müssen das Gerät noch einmal prüfen. Eine Technikerin kann morgen zwischen neun und elf Uhr kommen. Wie lange die Reparatur dauert, wissen wir noch nicht."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Ich bin erst ab zehn zu Hause. Können wir das genauer vereinbaren?"
+          },
+          {
+            "speaker": "Service",
+            "text": "Ja, ich kann Ihnen zehn Uhr bestätigen. Bitte halten Sie die Rechnung bereit. Die Technikerin klärt vor weiteren Arbeiten mit Ihnen, ob Kosten entstehen."
+          },
+          {
+            "speaker": "Customer",
+            "text": "Gut. Dann warte ich morgen um zehn. Bitte geben Sie ihr auch die Beschreibung des Fehlers weiter."
+          },
+          {
+            "speaker": "Service",
+            "text": "Das notiere ich im Auftrag und leite es an sie weiter."
+          }
+        ],
+        "help": "stehen geblieben = stopped working; bereit halten = have ready; entstehen = arise.",
+        "questions": [
+          {
+            "prompt": "What is agreed?",
+            "kind": "choice",
+            "options": [
+              "A completed repair by 11:00",
+              "A technician’s visit tomorrow at 10:00",
+              "A free replacement today"
+            ],
+            "answers": [
+              1
+            ],
+            "evidence": [
+              3,
+              4
+            ],
+            "explanation": "The confirmed time concerns the visit, not the completion of repair."
+          },
+          {
+            "prompt": "What remains unknown?",
+            "kind": "choice",
+            "options": [
+              "The customer’s address",
+              "Whether a visit is possible",
+              "How long the repair will take"
+            ],
+            "answers": [
+              2
+            ],
+            "evidence": [
+              1
+            ],
+            "explanation": "The service says the repair duration is not yet known."
+          },
+          {
+            "prompt": "Match the responsibilities.",
+            "kind": "match",
+            "labels": [
+              "Have the invoice ready",
+              "Discuss possible costs before more work",
+              "Pass on the fault description"
+            ],
+            "options": [
+              "Customer",
+              "Technician",
+              "Service office"
+            ],
+            "answers": [
+              0,
+              1,
+              2
+            ],
+            "evidence": [
+              3,
+              5
+            ],
+            "explanation": "The customer prepares the invoice, the technician discusses costs, and the office passes on the notes."
+          },
+          {
+            "prompt": "What was changed during the call?",
+            "kind": "choice",
+            "options": [
+              "The broad arrival window became a 10:00 appointment",
+              "The repair price increased",
+              "The visit moved to today"
+            ],
+            "answers": [
+              0
+            ],
+            "evidence": [
+              1,
+              2,
+              3
+            ],
+            "explanation": "An initial 09:00–11:00 window became a specific 10:00 appointment."
+          }
+        ],
+        "summary": {
+          "prompt": "Summarise the agreement without promising more than the call confirms.",
+          "points": [
+            "State the agreed visit time.",
+            "Mention the invoice and discussion of costs.",
+            "Keep the repair duration separate from the arrival time."
+          ]
+        }
+      }
+    ]
+  }
+]
