@@ -19,7 +19,7 @@ export function CourseMap() {
   return at && at <= Date.now() ? modes.filter(mode => !progress[row.id]?.[mode]?.checked).map(mode => ({row,mode})) : [];
  });
  return <>
-  <Tabs value={level} onValueChange={value => setLevel(value as ActiveLevel)}><TabsList aria-label="Course level">{ACTIVE_LEVELS.map(item => <TabsTrigger value={item} key={item}>{item}</TabsTrigger>)}</TabsList></Tabs>
+  <Tabs value={level} onValueChange={value => setLevel(value as ActiveLevel)}><TabsList aria-label="Learning level">{ACTIVE_LEVELS.map(item => <TabsTrigger value={item} key={item}>{item}</TabsTrigger>)}</TabsList></Tabs>
   <section className="active-next">
    <div><p className="active-eyebrow">{loading ? 'YOUR COURSE' : completed ? 'YOUR NEXT SMALL STEP' : 'START SMALL'}</p><h2>{next ? next.row.communication_goal : 'You’ve completed every task in this level.'}</h2><p>{next ? `${next.row.module_title} · ${next.mode === 'speaking' ? 'Speak' : 'Write'} · ${level === 'A1' ? '3–8' : level === 'A2' ? '8–12' : '12–18'} min` : 'Revisit a task or try a later check in a new situation.'}</p>{next && <Link className="active-primary" href={`/active-learning/${next.row.id}?mode=${next.mode}`}>{completed ? 'Continue' : next.mode === 'speaking' ? 'Start speaking' : 'Start writing'}<ArrowRight size={18}/></Link>}</div>
    <div className="active-progress"><strong>{completed}<span> / 96</span></strong><p>{level} activities completed</p><Progress value={completed / 96 * 100} aria-label={`${completed} of 96 ${level} activities completed`}/><small>{loading ? 'Loading saved progress…' : signedIn ? 'Saved to your account' : 'Sign in to save your progress'}</small></div>

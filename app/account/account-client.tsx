@@ -85,7 +85,7 @@ export function AccountClient() {
     {!sessionReady ? <div className="account-panel account-session-loading" aria-live="polite">Checking your account…</div> : user ? <div className="account-panel">
       <div className="account-profile"><span>{displayName.slice(0, 1).toLocaleUpperCase()}</span><div><small>Signed in as</small><strong>{displayName}</strong><p>{account ? `@${account.username} · ` : ""}{user.email}</p></div></div>
       <AccountStatus />
-      <div className="account-benefits"><div><Cloud /><span><b>Cross-device progress</b><small>Course, stories, grammar, and vocabulary sync automatically.</small></span></div><div><LockKeyhole /><span><b>Private by account</b><small>Every saved record is isolated by your authenticated user ID.</small></span></div></div>
+      <div className="account-benefits"><div><Cloud /><span><b>Cross-device progress</b><small>Stories, grammar, vocabulary, and Active Learning sync automatically.</small></span></div><div><LockKeyhole /><span><b>Private by account</b><small>Every saved record is isolated by your authenticated user ID.</small></span></div></div>
       <button className="account-signout" type="button" onClick={signOut} disabled={busy}><LogOut /> Sign out</button>
     </div> : <div className="account-panel account-auth">
       <div className="account-auth-tabs" role="tablist" aria-label="Account action"><button type="button" className={mode === "signup" ? "is-active" : ""} onClick={() => { setMode("signup"); setMessage(""); }}>Create account</button><button type="button" className={mode === "signin" ? "is-active" : ""} onClick={() => { setMode("signin"); setMessage(""); }}>Sign in</button></div>

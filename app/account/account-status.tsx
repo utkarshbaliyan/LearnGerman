@@ -19,6 +19,6 @@ export function AccountStatus() {
 
   return <div className={`account-sync-status is-${status}`} aria-live="polite">
     {status === "syncing" ? <LoaderCircle className="is-spinning" /> : status === "ready" ? <CheckCircle2 /> : <Cloud />}
-    <span><strong>{status === "syncing" ? "Syncing your learning data" : status === "ready" ? "Progress is synced" : "Cloud sync is temporarily unavailable"}</strong><small>{status === "ready" ? "Your course, stories, grammar, and vocabulary follow this account." : status === "error" ? "Your progress is still saved on this device and will retry automatically." : "Merging this device with your account…"}</small></span>
+    <span><strong>{status === "syncing" ? "Syncing your learning data" : status === "ready" ? "Progress is synced" : "Cloud sync is temporarily unavailable"}</strong><small>{status === "ready" ? "Your stories, grammar, vocabulary, and Active Learning follow this account." : status === "error" ? "Your progress is still saved on this device and will retry automatically." : "Merging this device with your account…"}</small></span>
   </div>;
 }

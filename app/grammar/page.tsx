@@ -290,7 +290,7 @@ export default function GrammarPage() {
 
       <section className="grammar-hero">
         <div>
-          <Badge className="eyebrow"><Sparkles /> A1–B1 · Grammar course</Badge>
+          <Badge className="eyebrow"><Sparkles /> A1–B1 · Grammar lessons</Badge>
           <h1>Understand the rule.<br /><em>Use it with confidence.</em></h1>
           <p>A complete 72-lesson roadmap from first sentences to connected B1 German. Every lesson follows the same learning loop: notice, understand, build, correct, produce, and review.</p>
           <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
@@ -377,7 +377,7 @@ export default function GrammarPage() {
         )}
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>A structured A1–B1 grammar course with explanations, practice, and saved mastery.</p><div><Link href="/stories" prefetch>Stories</Link><Link href="/vocabulary" prefetch>Vocabulary</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>A1–B1 grammar lessons with explanations, practice, and saved progress.</p><div><Link href="/stories" prefetch>Stories</Link><Link href="/vocabulary" prefetch>Vocabulary</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

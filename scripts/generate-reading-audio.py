@@ -59,7 +59,7 @@ def main():
         if args.only and story["id"] != args.only:
             continue
         digest = hashlib.sha256(story["text"].encode()).hexdigest()
-        name = f'{story["id"]}-{digest[:12]}'
+        name = f'{story["id"]}-{digest[:12]}-aac38'
         audio_path = output / f"{name}.m4a"
         timing_path = output / f"{name}.json"
         if not (audio_path.exists() and timing_path.exists()):
@@ -84,7 +84,7 @@ def main():
                 expected = sum(bool(re.search(r"[A-Za-zÄÖÜäöüßÉé0-9]", token)) for token in story["text"].split())
                 if len(starts) != expected or any(b <= a for a, b in zip(starts, starts[1:])):
                     raise RuntimeError(f'Invalid word timings: {story["id"]}')
-                subprocess.run(["afconvert", str(wav_path), str(audio_path), "-f", "m4af", "-d", "aac", "-b", "64000"], check=True)
+                subprocess.run(["afconvert", str(wav_path), str(audio_path), "-f", "m4af", "-d", "aac", "-b", "38000"], check=True)
                 timing_path.write_text(json.dumps({"textHash": digest, "starts": [round(n / voice.config.sample_rate, 4) for n in starts], "duration": round(samples / voice.config.sample_rate, 4)}, separators=(",", ":")))
         timing = json.loads(timing_path.read_text())
         manifest[story["id"]] = {"src": f"/audio/reading/{name}.m4a", "timingSrc": f"/audio/reading/{name}.json", "textHash": digest, "wordCount": len(timing["starts"]), "duration": timing["duration"]}
