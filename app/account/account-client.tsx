@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { Cloud, LockKeyhole, LogOut, ShieldCheck } from "lucide-react";
+import { Cloud, Download, LockKeyhole, LogOut, ShieldCheck } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
 import { AccountStatus } from "@/app/account/account-status";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
@@ -17,6 +17,8 @@ export function AccountClient() {
   const [mode, setMode] = useState<"signin" | "signup">("signup");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [exporting, setExporting] = useState(false);
+  const [exportMessage, setExportMessage] = useState("");
 
   useEffect(() => {
     const parameters = new URLSearchParams(window.location.search);
@@ -79,6 +81,22 @@ export function AccountClient() {
     finally { setBusy(false); }
   }
 
+  async function exportData() {
+    setExporting(true); setExportMessage("");
+    try {
+      const response = await authenticatedFetch("/api/account/export", { cache: "no-store" });
+      if (!response.ok) throw new Error("Export unavailable");
+      const url = URL.createObjectURL(await response.blob());
+      const link = document.createElement("a");
+      link.href = url; link.download = "leselaut-account-data.json";
+      document.body.appendChild(link); link.click(); link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setExportMessage("Download started. Keep this file private: it contains your learning history.");
+    } catch {
+      setExportMessage("Download failed. Check your connection and sign-in, then try again.");
+    } finally { setExporting(false); }
+  }
+
   const displayName = account?.displayName ?? user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Learner";
   return <section className="account-shell">
     <div className="account-intro"><span><ShieldCheck /> LeseLaut account</span><h1>{user ? `Welcome, ${displayName}.` : "Keep your German progress with you."}</h1><p>{user ? "Your learning history is attached to this account and available whenever you sign in." : "Create a secure LeseLaut account with a username, email, and password. Your progress will follow you across devices."}</p></div>
@@ -86,7 +104,13 @@ export function AccountClient() {
       <div className="account-profile"><span>{displayName.slice(0, 1).toLocaleUpperCase()}</span><div><small>Signed in as</small><strong>{displayName}</strong><p>{account ? `@${account.username} · ` : ""}{user.email}</p></div></div>
       <AccountStatus />
       <div className="account-benefits"><div><Cloud /><span><b>Cross-device progress</b><small>Stories, grammar, vocabulary, and Active Learning sync automatically.</small></span></div><div><LockKeyhole /><span><b>Private by account</b><small>Every saved record is isolated by your authenticated user ID.</small></span></div></div>
-      <button className="account-signout" type="button" onClick={signOut} disabled={busy}><LogOut /> Sign out</button>
+      <div className="account-data-export">
+        <h2>Your saved data</h2>
+        <p>Download your server-saved profile, progress, tutor drafts, attempts, feedback, and AI usage as JSON. Unsynced browser drafts and original photos or recordings are not included.</p>
+        <button className="account-signout" type="button" onClick={exportData} disabled={busy || exporting}><Download /> {exporting ? "Preparing download…" : "Download my data"}</button>
+        {exportMessage && <p role="status">{exportMessage}</p>}
+      </div>
+      <button className="account-signout" type="button" onClick={signOut} disabled={busy || exporting}><LogOut /> Sign out</button>
     </div> : <div className="account-panel account-auth">
       <div className="account-auth-tabs" role="tablist" aria-label="Account action"><button type="button" className={mode === "signup" ? "is-active" : ""} onClick={() => { setMode("signup"); setMessage(""); }}>Create account</button><button type="button" className={mode === "signin" ? "is-active" : ""} onClick={() => { setMode("signin"); setMessage(""); }}>Sign in</button></div>
       <form onSubmit={submit}>
