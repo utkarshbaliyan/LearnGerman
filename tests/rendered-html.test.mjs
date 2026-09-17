@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function renderRoute(pathname) {
@@ -23,58 +22,21 @@ async function renderRoute(pathname) {
   );
 }
 
-test("renders the 72-chapter mastery course as the English home", async () => {
+test("opens Stories as home while the integrated course is paused", async () => {
   const response = await renderRoute("/");
-
-  assert.equal(response.status, 200);
-  assert.match(
-    response.headers.get("content-type") ?? "",
-    /^text\/html\b/i,
-  );
-  const html = await response.text();
-  assert.match(html, /<html[^>]*\blang=["']en["']/i);
-  assert.match(html, /Learn every skill/i);
-  assert.match(html, /Master every level/i);
-  assert.match(html, /A1–B1 · 72 chapters/i);
-  assert.match(html, /A1, A2, and B1 now contain 72 complete/i);
-  assert.match(html, /Begin A1 Chapter 1/i);
-  assert.match(html, /href=["']\/stories["']/i);
+  assert.equal(response.status, 307);
+  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/stories");
+  const stories = await renderRoute("/stories");
+  assert.equal(stories.status, 200);
+  const html = await stories.text();
+  assert.match(html, /One short story at a time/);
+  assert.match(html, /Active Learning/);
+  assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
 
-test("keeps the complete grammar database out of ordinary course client bundles", async () => {
-  const manifestUrl = new URL("../dist/client/.vite/manifest.json", import.meta.url);
-  const manifest = JSON.parse(await readFile(manifestUrl, "utf8"));
-
-  async function transitiveBytes(entryKey) {
-    const visited = new Set();
-
-    async function visit(key) {
-      const entry = manifest[key];
-      if (!entry || visited.has(entry.file)) return;
-      visited.add(entry.file);
-      await Promise.all((entry.imports ?? []).map(visit));
-    }
-
-    await visit(entryKey);
-    const sizes = await Promise.all([...visited].map(async (file) => {
-      const assetUrl = new URL(`../dist/client/${file}`, import.meta.url);
-      return (await stat(assetUrl)).size;
-    }));
-    return sizes.reduce((sum, size) => sum + size, 0);
-  }
-
-  assert.ok(
-    (await transitiveBytes("app/components/course-home.tsx")) < 400_000,
-    "the course home should not download all 3,600 grammar exercises",
-  );
-  assert.ok(
-    (await transitiveBytes("app/components/integrated-course-chapter.tsx")) < 600_000,
-    "a chapter should ship only its own grammar exercises",
-  );
-});
-
-test("renders representative integrated chapters across A1, A2, and B1", async () => {
+test("old chapter bookmarks open their matching stories", async () => {
   for (const pathname of [
+    "/course/a1/chapter-1",
     "/course/a1/chapter-2",
     "/course/a1/chapter-24",
     "/course/a2/chapter-1",
@@ -83,43 +45,11 @@ test("renders representative integrated chapters across A1, A2, and B1", async (
     "/course/b1/chapter-24",
   ]) {
     const response = await renderRoute(pathname);
-    assert.equal(response.status, 200, pathname);
-    const html = await response.text();
-    assert.match(html, /Chapter practice/i, pathname);
-    assert.match(html, /Listening practice/i, pathname);
-    assert.match(html, /Reading practice/i, pathname);
-    assert.ok(html.indexOf("What did you hear?") < html.indexOf("Open the story for reading or listening help"), pathname);
-    assert.match(html, /Tap a word for its meaning/i, pathname);
-    assert.match(html, /core words/i, pathname);
-    assert.match(html, /grammar exercises/i, pathname);
-    assert.match(html, /Try it aloud/i, pathname);
-    assert.match(html, /Sign in/i, pathname);
-    assert.doesNotMatch(html, /AI tutor/i, pathname);
-    assert.match(html, /Integrated checkpoint/i, pathname);
-    assert.ok(html.indexOf("01 · Listening and reading") < html.indexOf("02 · Vocabulary"), pathname);
-    assert.ok(html.indexOf("02 · Vocabulary") < html.indexOf("03 · Grammar"), pathname);
-    assert.ok(html.indexOf("03 · Grammar") < html.indexOf("04 · Writing"), pathname);
-    assert.ok(html.indexOf("04 · Writing") < html.indexOf("05 · Speaking"), pathname);
-    assert.ok(html.indexOf("05 · Speaking") < html.indexOf("06 · Integrated checkpoint"), pathname);
+    assert.equal(response.status, 307, pathname);
+    const match = /\/course\/(a1|a2|b1)\/chapter-(\d+)/.exec(pathname);
+    assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname,
+      `/stories/reading-${match[1]}-${match[2].padStart(2, "0")}-v1`);
   }
-});
-
-test("renders A1 Chapter 1 as one integrated six-skill course chapter", async () => {
-  const response = await renderRoute("/course/a1/chapter-1");
-
-  assert.equal(response.status, 200);
-  const html = (await response.text()).replace(/<!--.*?-->/g, "");
-  assert.match(html, /Hallo, Mia!/i);
-  assert.match(html, /3 core words/i);
-  assert.match(html, /50 grammar exercises/i);
-  assert.match(html, /Listening practice/i);
-  assert.match(html, /Tap a word for its meaning/i);
-  assert.match(html, /Personal pronouns and/i);
-  assert.match(html, /Say hello/i);
-  assert.match(html, /Introduce yourself with your name/i);
-  assert.match(html, /Try it aloud/i);
-  assert.match(html, /2 short sentences/i);
-  assert.match(html, /Integrated checkpoint/i);
 });
 
 test("writing tutor requires account authentication before invoking a provider", async () => {
@@ -191,8 +121,13 @@ test("renders the graded reading path and independent story pages", async () => 
     const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /What happened/); assert.match(html, /Need the gist in English/);
-    assert.match(html, /Check my answers/); assert.match(html, /Use this story in the course/);
+    assert.match(html, /Check my answers/); assert.match(html, /Practice this grammar/);
+    assert.match(html, /href="\/grammar\?lesson=/);
     assert.doesNotMatch(html, /src=["'][^"']*story-\d+\.webm/);
+    assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
+    assert.match(html, /aria-label="Narration speed"/);
+    assert.match(html, /data-reading-word="0"/);
+    assert.doesNotMatch(html, /Device voice/);
   }
   assert.equal((await renderRoute('/stories/reading-a1-25-v1')).status, 404);
 });
@@ -204,5 +139,5 @@ test('practical reading and listening samples are linked and render accessible f
   assert.match(html,/Practical reading/);assert.match(html,/Check my understanding/);assert.match(html,/seven days later/);assert.match(html,/English word help/);
  }
  const missing=await renderRoute('/stories/practice/not-a-lesson');assert.equal(missing.status,404);
- const chapter=await renderRoute('/course/a2/chapter-18');assert.match(await chapter.text(),/\/stories\/practice\/reception-a2-18-v1/);
+ const story=await renderRoute('/stories/reading-a2-18-v1');assert.match(await story.text(),/\/stories\/practice\/reception-a2-18-v1/);
 });

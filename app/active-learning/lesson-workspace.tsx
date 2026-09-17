@@ -30,7 +30,7 @@ export function ActiveLessonWorkspace({lesson,initialMode}:{lesson:ActiveLesson;
   window.speechSynthesis.cancel(); window.speechSynthesis.speak(speech);
  }
  return <div className="site-shell"><SiteHeader active="active-learning"/><main className="active-learning active-lesson">
-  <Link href="/active-learning" className="active-back"><ArrowLeft size={16}/> Course overview</Link>
+  <Link href="/active-learning" className="active-back"><ArrowLeft size={16}/> Active Learning overview</Link>
   <p className="active-eyebrow">{lesson.level} · MODULE {lesson.module} · {lesson.id === starterCheckpoint.id ? 'NEW SITUATION' : lesson.review ? 'LATER PRACTICE' : `LESSON ${lesson.lesson} OF 4`}</p>
   <h1>{lesson.communication_goal}</h1><p className="active-intro">{lesson.module_title}</p>
   <Tabs value={mode} onValueChange={value => setMode(value as ActiveMode)}><TabsList aria-label="Practice mode"><TabsTrigger value="speaking">Speaking</TabsTrigger><TabsTrigger value="writing">Writing & photo</TabsTrigger></TabsList></Tabs>

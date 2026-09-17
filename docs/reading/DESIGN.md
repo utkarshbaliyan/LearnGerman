@@ -24,7 +24,7 @@ Course grammar, writing/speaking tasks and existing learned-word state are prese
 
 The length expansion retains the same story IDs, focus vocabulary, original passages and questions, so existing completion is preserved. Completion uses versioned story IDs. Course comprehension and checkpoint evidence is stored per story edition and merged by latest timestamp, including lower scores. Earlier course and story records remain stored; they cannot automatically certify the new edition. Grammar progress is reused. Story completion is shared between the library and course after both meaning questions have been checked correctly; overall chapter completion still requires its separate checks.
 
-Current narration uses the browser's German speech synthesis of the current text, with slow/normal speed, cancellation and error handling. It never plays an old recording over new text. Voice availability and quality depend on the device. Professionally reviewed and consistently recorded narration remains a quality improvement, not an implemented claim.
+All 72 current stories use pre-rendered German neural narration, shared between the story reader and course. Playback has pause/resume, seeking, restart and live speed changes from 0.75× to 1.5× with pitch preservation. Word highlighting follows the recording's media time and generated phoneme timings, including after seeking or changing speed. Text-hashed audio assets and validated timing sidecars prevent accidentally pairing an older recording with revised text. Translations remain available on every word. See [narration production notes](NARRATION.md). The voice is synthetic; human narration and teacher review of pronunciation and prosody remain outstanding.
 
 ## Reference scope and remaining validation
 

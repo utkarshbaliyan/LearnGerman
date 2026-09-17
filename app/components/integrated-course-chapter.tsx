@@ -27,7 +27,7 @@ import { writingMission } from "@/app/lib/writing-mission";
 const SpeakingWorkspace = dynamic(() => import("@/app/components/speaking-workspace").then((module) => module.SpeakingWorkspace), { loading: () => <p>Loading speaking practice…</p> });
 import { SiteHeader } from "@/app/components/site-header";
 const ReadingText = dynamic(() => import("@/app/components/reading-experience").then(module => module.ReadingText), { loading: () => <p>Loading the story…</p> });
-const ReadingAudio = dynamic(() => import("@/app/components/reading-experience").then(module => module.ReadingAudio));
+import { ReadingAudio, ReadingNarrationProvider } from "@/app/components/reading-narration";
 import type { CourseChapterContent } from "@/app/course/course-data";
 import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import type { GrammarLevel } from "@/app/grammar/course";
@@ -212,7 +212,8 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
 
       <section className="chapter-learning-section chapter-story-lesson" id="story">
         <div className="chapter-section-copy"><span>01 · Listening and reading</span><h2>One story. Take your time.</h2><p>Try listening first, or open the text whenever you need it.</p></div>
-        <ReadingAudio key={content.story.id} text={content.story.text} level={level} />
+        <ReadingNarrationProvider key={content.story.id}>
+        <ReadingAudio storyId={content.story.id} />
         <QuizBlock questions={content.listening} eyebrow="Listening practice" title="What did you hear?" savedScore={checks.listening?.score ?? 0} onScore={score => saveComprehensionScore("listening", score)} />
         {checks.listening && <p>Latest listening check: {checks.listening.score}% · {checks.listening.usedText ? 'Story text opened for support' : 'Story text not opened in this visit'}</p>}
         <details onToggle={event => { if (event.currentTarget.open) setUsedStoryText(true); }}>
@@ -222,6 +223,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
             <ReadingText story={content.readingStory} glosses={content.readingGlosses} />
           </article>
         </details>
+        </ReadingNarrationProvider>
         <QuizBlock questions={content.reading} eyebrow="Reading practice" title="What did you read?" savedScore={checks.reading?.score ?? 0} onScore={score => saveComprehensionScore("reading", score)} />
         {!checks.reading && storedChapter.completed && <p>Your earlier course result is saved. This rewritten story has new practice.</p>}
         {content.receptionLessonId && <div className="reception-teaser"><h3>Try a different reading and listening task</h3><Link href={`/stories/practice/${content.receptionLessonId}`}>Messages and conversations from everyday life →</Link></div>}

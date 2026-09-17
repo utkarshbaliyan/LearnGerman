@@ -44,7 +44,7 @@ export function ReceptionWorkspace({lesson,audio}: {lesson: ReceptionLesson;audi
    {unlocked?<><p>Ready for your later check. Start without help if you can.</p><div className="reception-tabs">{lesson.transfer.map(a=><button key={a.id} type="button" aria-pressed={selection===`${a.skill}-transfer`} onClick={()=>setSelection(`${a.skill}-transfer`)}>{a.skill==='reading'?'New reading':'New listening'}{records[a.id]?.attempts.length?' · checked':''}</button>)}</div></>:<p>{due?`Available ${new Date(due).toLocaleDateString(undefined,{day:'numeric',month:'long'})} — seven days after your initial checks.`:'Check both activities first. A different reading and listening task will open seven days later.'}</p>}
   </section>
   <p className="reception-note">Practice results sync when you’re signed in.</p>
-  <Link href={`/course/${lesson.level.toLowerCase()}/chapter-${lesson.chapter}#story`}>Back to the course chapter →</Link>
+  <Link href={`/stories/reading-${lesson.level.toLowerCase()}-${String(lesson.chapter).padStart(2,'0')}-v1`}>Read the related story →</Link>
  </div>;
 }
 

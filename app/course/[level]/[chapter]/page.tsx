@@ -1,7 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
-import { IntegratedCourseChapter } from "@/app/components/integrated-course-chapter";
-import { CHAPTERS_PER_LEVEL, COURSE_LEVELS, getCourseChapter } from "@/app/course/course-data";
+import { CHAPTERS_PER_LEVEL, COURSE_LEVELS } from "@/app/course/course-data";
 import type { GrammarLevel } from "@/app/grammar/course";
 
 function parseChapter(value: string) {
@@ -15,8 +14,5 @@ export default async function CourseChapterPage({ params }: { params: Promise<{ 
   const number = parseChapter(rawChapter);
 
   if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();
-  const content = getCourseChapter(level, number);
-  if (!content) notFound();
-
-  return <IntegratedCourseChapter key={content.story.id} content={content} />;
+  redirect(`/stories/reading-${level.toLowerCase()}-${String(number).padStart(2, "0")}-v1`);
 }

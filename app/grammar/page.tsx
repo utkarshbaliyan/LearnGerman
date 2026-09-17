@@ -227,6 +227,16 @@ export default function GrammarPage() {
   }, []);
 
   useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("lesson");
+    if (!requested || !LIVE_GRAMMAR_LESSONS[requested]) return;
+    const frame = requestAnimationFrame(() => {
+      setSelectedLessonId(requested);
+      setLevel(requested.split("-")[0].toUpperCase() as GrammarLevel);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
     if (hydrated) {
       writeGrammarProgress(localStorage, progress);
       queueCloudProgress("grammar", progress);
@@ -286,10 +296,10 @@ export default function GrammarPage() {
           <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
         </div>
         <aside className="grammar-progress-card">
-          <span>Your grammar course</span>
+          <span>Your grammar progress</span>
           <div className="grammar-score"><strong>{liveProgress}%</strong><small>current release</small></div>
           <Progress value={liveProgress} />
-          <p>{completedLive} of {liveLessons.length} available lessons completed. Practice results stay synced with matching course chapters.</p>
+          <p>{completedLive} of {liveLessons.length} available lessons completed. Your practice results are saved to your account.</p>
           <div className="grammar-progress-meta"><span><b>72</b> total lessons</span><span><b>{overallRoadmap}%</b> full path</span></div>
         </aside>
       </section>
@@ -304,7 +314,7 @@ export default function GrammarPage() {
 
       <section className="grammar-course" id="roadmap">
         <div className="grammar-roadmap">
-          <div className="grammar-roadmap-heading"><span>Course roadmap</span><h2>From your first sentence to B1 precision.</h2><p>The entire syllabus is mapped now. Lessons become available module by module so each explanation and exercise set receives the same depth.</p></div>
+          <div className="grammar-roadmap-heading"><span>Grammar roadmap</span><h2>From your first sentence to B1 precision.</h2><p>Choose a lesson to study its explanation and practice.</p></div>
           <div className="grammar-level-switcher" aria-label="Choose a grammar level">
             {GRAMMAR_LEVELS.map((item) => <button key={item} type="button" className={level === item ? "is-active" : ""} onClick={() => selectLevel(item)}><b>{item}</b><span>24 lessons</span></button>)}
           </div>

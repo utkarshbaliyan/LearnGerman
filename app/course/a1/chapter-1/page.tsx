@@ -1,6 +1,5 @@
-import { IntegratedCourseChapter } from "@/app/components/integrated-course-chapter";
-import { getCourseChapter } from "@/app/course/course-data";
+import { redirect } from 'next/navigation';
 
 export default function ChapterOnePage() {
-  return <IntegratedCourseChapter content={getCourseChapter("A1", 1)!} />;
+  redirect('/stories/reading-a1-01-v1');
 }
