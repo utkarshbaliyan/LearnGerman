@@ -98,9 +98,9 @@ test("renders the Active Learning map and all levels with server-owned tasks", a
   const home = await renderRoute("/active-learning"); assert.equal(home.status, 200);
   const html = await home.text(); assert.match(html, /German you can use/); assert.match(html, /active-a1-m01-l01-v1/); assert.match(html, /active-a1-m01-check-v1/);
   for (const [taskId, prompt] of [["active-a1-m01-l01-v1", "Wie heißt du"], ["active-a2-m09-l03-v1", "Termin verschieben"], ["active-b1-m12-l04-v1", "gemeinsamen Tag"], ["active-a1-m01-review-v1", "Bibliothek"]]) {
-    const response = await renderRoute(`/active-learning/${taskId}?mode=speaking`); assert.equal(response.status, 200); assert.ok((await response.text()).includes(prompt));
+    const response = await renderRoute(`/active-learning/${taskId}?mode=speaking`); assert.equal(response.status, 200); const taskHtml = await response.text(); assert.ok(taskHtml.includes(prompt)); assert.doesNotMatch(taskHtml, /Prepare your first German answer|A little help before you start|Listen to example|Review the phrases|Hear question|Correction report/);
   }
-  const writing = await renderRoute("/active-learning/active-a1-m01-l01-v1?mode=writing"); assert.equal(writing.status, 200); assert.match(await writing.text(), /My name is Lina/);
+  const writing = await renderRoute("/active-learning/active-a1-m01-l01-v1?mode=writing"); assert.equal(writing.status, 200); const writingHtml = await writing.text(); assert.match(writingHtml, /Write one sentence telling a new classmate your name/); assert.doesNotMatch(writingHtml, /Prepare your first German answer|My name is Lina|Listen to the example|Correction report/);
   const checkpoint = await renderRoute("/active-learning/active-a1-m01-check-v1?mode=writing");
   const checkpointHtml = await checkpoint.text();
   assert.equal(checkpoint.status, 200); assert.match(checkpointHtml, /new online German group/);

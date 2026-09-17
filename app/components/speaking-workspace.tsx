@@ -141,14 +141,14 @@ export function SpeakingWorkspace({ taskId, outputTask }: { taskId: string; outp
     if (url.current) URL.revokeObjectURL(url.current); url.current = "";
   };
   return <div className="speaking-workspace speaking-drill">
-    <div className="speaking-partner"><p lang="de">{question}</p><Button variant="ghost" disabled={busy || recording} onClick={() => play(question)}>Hear question</Button></div>
+    <div className="speaking-partner"><p lang="de">{question}</p>{!taskId.startsWith("active-") && <Button variant="ghost" disabled={busy || recording} onClick={() => play(question)}>Hear question</Button>}</div>
     {taskId.startsWith("active-") && <p className="speaking-target">{task?.speakingSize ?? record?.mission.speakingSize}</p>}
     {recording && <p role="timer" aria-label="Recording time">Recording · {Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2,"0")}</p>}
     {!signedIn ? <p><Link href="/account">Sign in</Link> to record your answer.</p> : !record ? <p>Loading…</p> : <>
       <div className="writing-repair-actions"><Button disabled={busy} onClick={() => recording ? stopMedia() : void startRecording()}>{recording ? "Stop & check" : busy ? "Checking…" : latest ? "Try again" : "Record answer"}</Button>{latest && questions.length > 1 && !recording && <Button variant="outline" disabled={busy} onClick={changeQuestion}>{questionIndex + 1 < questions.length ? "Next question" : "Back to first question"}</Button>}</div>
       {!latest && !busy && <p className="writing-guidance">{taskId.startsWith("active-") ? "Answer in your own words. Stopping sends your recording for AI feedback." : "A short answer is enough. Stopping sends your recording for AI feedback."}</p>}
       {error && <div role="alert"><p className="chapter-error">{error}</p>{audio && <Button variant="outline" disabled={busy || recording} onClick={() => void check("check", audio)}>Check recording again</Button>}</div>}
-      {latest && !busy && <section className="writing-repair-feedback" aria-label="Speaking feedback"><h3>{latest.feedback?.taskSuccess ? "Well done" : "Your feedback"}</h3><p><span>I heard: </span><span lang="de">{latest.answer}</span></p>
+      {latest && !busy && <section className="writing-repair-feedback" aria-label="Speaking feedback"><h3>Correction report</h3><p><span>I heard: </span><span lang="de">{latest.answer}</span></p>
         <ResponseDevelopmentFeedback development={latest.feedback?.development}/>
         {latest.feedback?.issues.map((issue) => <article key={issue.start}><p lang="de">{issue.original} → <strong>{issue.corrected}</strong></p><p>{issue.explanation}</p>{issue.kind === "style" && <small>Optional suggestion</small>}</article>)}
         {!latest.feedback?.issues.length && latest.feedback?.development?.sufficient !== false && <p>{latest.feedback?.needsReview ? "I could not give reliable feedback. Please try again." : latest.feedback?.taskSuccess ? "Your answer works. You can try again or continue." : "Try answering the question more directly."}</p>}

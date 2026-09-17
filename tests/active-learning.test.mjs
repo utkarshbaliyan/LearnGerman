@@ -40,12 +40,12 @@ test('Active Learning has a complete versioned course, account-owned progress an
   let res=await post({action:'draft',version:0,answer:'Bo'});assert.equal(res.status,200);let saved=await res.json();
   assert.deepEqual((await (await getProgress('alice')).json()).progress,{},'Drafts do not complete tasks');
   const request={action:'check',version:saved.version,answer:'Bo',requestId:'active-request-0001',rubric:'FORGED RUBRIC'};
-  res=await post(request);assert.equal(res.status,200);saved=await res.json();assert.equal(saved.session.attempts[0].revealed,true);assert.equal(saved.session.attempts[0].assistance,"hint","Starter teaching is guided practice");
+  res=await post(request);assert.equal(res.status,200);saved=await res.json();assert.equal(saved.session.attempts[0].revealed,true);assert.equal(saved.session.attempts[0].assistance,"independent","First submissions receive no advance help");
   assert.equal((await post(request)).status,200);assert.equal(calls,1,'Network retry does not double charge');
   let progress=(await (await getProgress('alice')).json()).progress;assert.equal(progress[taskId].writing.checked,true);assert.equal(progress[taskId].speaking,undefined);
   assert.deepEqual((await (await getProgress('bob')).json()).progress,{});
   const form=new FormData();for(const[k,v] of Object.entries({taskId,version:0,questionIndex:0,requestId:'active-speaking-0001',consent:'true'}))form.set(k,String(v));form.set('audio',new File([new Uint8Array(200)],'answer.webm',{type:'audio/webm'}));
-  res=await speaking.POST(new Request('http://local/api/tutor/speaking/drill',{method:'POST',headers:{'x-test-user':'alice','x-tutor-owner':'alice'},body:form}));assert.equal(res.status,200);
+  res=await speaking.POST(new Request('http://local/api/tutor/speaking/drill',{method:'POST',headers:{'x-test-user':'alice','x-tutor-owner':'alice'},body:form}));assert.equal(res.status,200);assert.equal((await res.json()).session.attempts[0].assistance,"independent");
   progress=(await (await getProgress('alice')).json()).progress;assert.equal(progress[taskId].speaking.checked,true);assert.equal(calls,3);
   assert.equal(reviewDueAt(activeReviews[0].id,progress),null);
   const start=Date.UTC(2026,8,1);
