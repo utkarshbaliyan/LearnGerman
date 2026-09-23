@@ -38,8 +38,6 @@ export type Curriculum = {
   id: CefrLevel;
   title: string;
   shortTitle: string;
-  audioBasePath: string;
-  audioVersion: string;
   stories: Story[];
   units: Unit[];
   stats: CurriculumStats;

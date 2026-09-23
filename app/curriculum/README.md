@@ -1,16 +1,15 @@
 # Curriculum structure
 
-Each CEFR level owns its curriculum data and audio directory.
+Each CEFR level retains curriculum data needed by the paused course and existing progress records.
 
 - `types.ts` defines the shared story, unit and level shapes.
 - `a1.ts` contains the A1 curriculum.
 - `index.ts` registers the levels exposed by the interface.
-- `public/audio/<level>/` stores matching narration and timing files.
+- Current story narration and timing files live in `public/audio/reading/`.
 
-To publish A2, B1 or B2, add its curriculum module, register it in `index.ts`, and
-place its audio files in the corresponding lowercase level directory. The shared
-Piper generator supports `LESELAUT_LEVEL=a1`, `a2`, or `b1`, preserving the same
-Thorsten narrator and word-level highlighting across levels.
+The earlier 440-story library and daily practice were retired to free the Site
+archive for the current graded stories. Their completion IDs remain in account
+progress. New reading audio is generated with `scripts/generate-reading-audio.py`.
 
 Each new story can optionally carry `pronunciation`, `referenceFocus`,
 `speakingPrompt`, and `writingPrompt`. These fields make sentence complexity,

@@ -508,42 +508,6 @@ test("newer review schedules and learned decisions survive storage and cross-bro
   assert.deepEqual(p.readReviewCards({ "de:lernen": { status: "review", updatedAt: 1, dueAt: "tomorrow", intervalMinutes: 2 } }), {});
 });
 
-test("renders story translations through collision-aware tooltips", async () => {
-  const { StoryReader } = await vite.ssrLoadModule(
-    "/app/components/story-reader.tsx",
-  );
-  const { Dialog } = await vite.ssrLoadModule(
-    "/components/ui/dialog.tsx",
-  );
-  const { getCurriculum } = await vite.ssrLoadModule(
-    "/app/curriculum/index.ts",
-  );
-  const curriculum = getCurriculum("A1");
-  const html = renderToStaticMarkup(
-    React.createElement(
-      Dialog,
-      { open: true },
-      React.createElement(StoryReader, {
-        curriculum,
-        story: curriculum.stories[0],
-        completed: false,
-        onComplete() {},
-        onStoryChange() {},
-        onToggleComplete() {},
-      }),
-    ),
-  );
-
-  assert.match(html, /data-slot="tooltip-trigger"/);
-  assert.match(html, /aria-label="[^"]+: [^"]+"/);
-  assert.doesNotMatch(html, /word-gloss/);
-  const source = await readFile(
-    path.join(root, "app/components/story-reader.tsx"),
-    "utf8",
-  );
-  assert.match(source, /collisionPadding=\{12\}/);
-});
-
 test("keeps the grammar roadmap and released lessons complete", async () => {
   const { ALL_GRAMMAR_LESSONS, GRAMMAR_MODULES, LIVE_GRAMMAR_LESSONS } = await vite.ssrLoadModule(
     "/app/grammar/course.ts",

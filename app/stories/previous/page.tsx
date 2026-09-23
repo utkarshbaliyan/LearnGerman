@@ -1,2 +1,5 @@
-export { default } from '@/app/stories-page';
-export const metadata = { title: 'Previous story library · LeseLaut' };
+import { redirect } from 'next/navigation';
+
+export default function PreviousStories() {
+  redirect('/stories');
+}

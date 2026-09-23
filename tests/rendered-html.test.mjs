@@ -29,7 +29,7 @@ test("opens Stories as home while the integrated course is paused", async () => 
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();
-  assert.match(html, /One short story at a time/);
+  assert.match(html, /Grow from simple scenes to connected German stories/);
   assert.match(html, /Active Learning/);
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
@@ -62,14 +62,12 @@ test("writing tutor requires account authentication before invoking a provider",
   assert.match((await response.json()).error, /Sign in/);
 });
 
-test("preserves the complete story library at its dedicated route", async () => {
-  const response = await renderRoute("/stories/previous");
-
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Learn German/i);
-  assert.match(html, /Browse stories/i);
-  assert.match(html, /Overall progress/i);
+test("retired library and daily practice bookmarks redirect to current learning", async () => {
+  for (const [from, to] of [["/stories/previous", "/stories"], ["/practice", "/active-learning"]]) {
+    const response = await renderRoute(from);
+    assert.equal(response.status, 307);
+    assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, to);
+  }
 });
 
 test("grammar exposes complete, accessible case recall tables without loading exercises", async () => {
@@ -114,7 +112,7 @@ test("renders the graded reading path and independent story pages", async () => 
   for (const level of ["A1", "A2", "B1"]) {
     const response = await renderRoute(`/stories?level=${level}`); assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /One short story at a time/); assert.match(html, /Previous story library/);
+    assert.match(html, /Grow from simple scenes to connected German stories/); assert.doesNotMatch(html, /Previous story library/);
     assert.ok(html.includes(`reading-${level.toLowerCase()}-01-v1`));
   }
   for (const id of ["reading-a1-01-v1", "reading-a2-18-v1", "reading-b1-24-v1"]) {
@@ -135,8 +133,8 @@ test("renders the graded reading path and independent story pages", async () => 
     const html = await response.text();
     assert.match(html, /What happened/);
     assert.match(html, /Open grammar recall tables/);
-    assert.match(html, /Narration is unavailable/);
-    assert.doesNotMatch(html, /<audio/);
+    assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
+    assert.doesNotMatch(html, /Narration is unavailable/);
     assert.ok(html.replace(/<!--.*?-->/gs, "").includes(`${total}/${total}`));
   }
   assert.equal((await renderRoute('/stories/reading-a1-999-v1')).status, 404);

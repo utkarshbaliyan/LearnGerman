@@ -6,14 +6,14 @@
     "section": 1,
     "title": "Hallo, Mia!",
     "goal": "Understand a first introduction.",
-    "text": "„Hallo! Ich heiße Mia. Wie heißt du?“\n\n„Ich bin Sam.“\n\n„Wohnst du hier?“\n\n„Ja, ich wohne in Bonn. Und du?“\n\n„Ich auch!“\n\nMia und Sam lachen.\n\n„Bist du im Deutschkurs?“\n\n„Ja. Und du?“\n\n„Ich auch. Da ist unser Kurs.“\n\n„Gut! Kommst du, Mia?“\n\n„Ja, Sam. Wir gehen zusammen.“\n\n„Hallo!“, sagt die Lehrerin.",
+    "text": "„Hallo! Ich heiße Mia. Wie heißt du?“\n\n„Ich bin Sam.“\n\n„Wohnst du hier?“\n\n„Ja, ich wohne in Bonn. Und du?“\n\n„Ich auch!“\n\nMia und Sam lachen.\n\n„Bist du im Deutschkurs?“\n\n„Ja. Und du?“\n\n„Ich auch. Da ist unser Kurs.“\n\n„Gut! Kommst du, Mia?“\n\n„Ja, Sam. Wir gehen zusammen.“\n\nMia sieht an der Tür das Schild „Deutschkurs“. Sam ist noch unsicher. „Ist das unser Zimmer?“, fragt er. Mia nickt. Sie finden zwei freie Plätze.\n\n„Hallo!“, sagt die Lehrerin.",
     "english": "“Hello! My name is Mia. What is your name?” “My name is Sam.” “Do you live here?” “Yes, I live in Bonn. And you?” “Me too!” Mia and Sam laugh. They discover that they attend the same German class and go in together.",
     "words": [
       {
         "german": "ich heiße",
         "english": "my name is",
         "form": "ich heiße",
-        "example": "„Hallo! Ich heiße Mia. Wie heißt du?“",
+        "example": "Ich heiße Mia.",
         "headword": "heißen",
         "headwordEnglish": "to be called",
         "contextOnly": false
@@ -22,7 +22,7 @@
         "german": "wohne",
         "english": "live",
         "form": "wohne",
-        "example": "„Ja, ich wohne in Bonn. Und du?“",
+        "example": "„Ja, ich wohne in Bonn.",
         "headword": "wohnen",
         "headwordEnglish": "to live",
         "contextOnly": false
@@ -72,14 +72,14 @@
     "level": "A1",
     "title": "Sam hat heute frei",
     "goal": "Understand work and leisure routines.",
-    "text": "Sam arbeitet im Café. Heute arbeitet er nicht. Er lernt Deutsch. Mia lernt auch Deutsch.\n\n„Kommst du?“, fragt Mia.\n\n„Ja. Wir lernen zusammen.“\n\nSam bringt Kaffee. Mia bringt Bücher. Die Pause beginnt sofort.\n\nDann öffnet Mia ein Buch. „Was ist das?“\n\n„Ein Tisch“, sagt Sam.\n\n„Und das?“\n\n„Eine Tasse.“\n\nMia trinkt Kaffee. Sam liest drei Wörter. Dann schreibt er sie.\n\n„Jetzt lernen wir wirklich“, sagt Mia.",
+    "text": "Sam arbeitet im Café. Heute arbeitet er nicht. Er lernt Deutsch. Mia lernt auch Deutsch.\n\n„Kommst du?“, fragt Mia.\n\n„Ja. Wir lernen zusammen.“\n\nSam bringt Kaffee. Mia bringt Bücher. Die Pause beginnt sofort.\n\nDann öffnet Mia ein Buch. „Was ist das?“\n\n„Ein Tisch“, sagt Sam.\n\n„Und das?“\n\n„Eine Tasse.“\n\nMia trinkt Kaffee. Sam liest drei Wörter. Dann schreibt er sie. Er zeigt Mia das Heft. Sie findet einen kleinen Fehler. Sam verbessert das Wort und liest es noch einmal laut.\n\n„Jetzt lernen wir wirklich“, sagt Mia.",
     "english": "Sam has a day off from the café. He studies German with Mia, bringing coffee while she brings books. They start with a break. After the break, they name familiar objects, read words and write them down.",
     "words": [
       {
         "german": "arbeitet",
         "english": "works",
         "form": "arbeitet",
-        "example": "Sam arbeitet im Café. Heute arbeitet er nicht. Er lernt Deutsch. Mia lernt auch Deutsch.",
+        "example": "Sam arbeitet im Café.",
         "headword": "arbeiten",
         "headwordEnglish": "to work",
         "contextOnly": false
@@ -88,7 +88,7 @@
         "german": "heute",
         "english": "today",
         "form": "heute",
-        "example": "Sam arbeitet im Café. Heute arbeitet er nicht. Er lernt Deutsch. Mia lernt auch Deutsch.",
+        "example": "Heute arbeitet er nicht.",
         "headword": "heute",
         "headwordEnglish": "today",
         "contextOnly": false
@@ -97,7 +97,7 @@
         "german": "zusammen",
         "english": "together",
         "form": "zusammen",
-        "example": "„Ja. Wir lernen zusammen.“",
+        "example": "Wir lernen zusammen.“",
         "headword": "zusammen",
         "headwordEnglish": "together",
         "contextOnly": false
@@ -106,7 +106,7 @@
         "german": "Bücher",
         "english": "books",
         "form": "Bücher",
-        "example": "Sam bringt Kaffee. Mia bringt Bücher. Die Pause beginnt sofort.",
+        "example": "Mia bringt Bücher.",
         "headword": "das Buch",
         "headwordEnglish": "book",
         "contextOnly": false
@@ -157,7 +157,7 @@
         "german": "isst",
         "english": "eats",
         "form": "isst",
-        "example": "Mia isst Brot. Sam trinkt Tee und liest die Zeitung.",
+        "example": "Mia isst Brot.",
         "headword": "essen",
         "headwordEnglish": "to eat",
         "contextOnly": false
@@ -166,7 +166,7 @@
         "german": "liest",
         "english": "reads",
         "form": "liest",
-        "example": "Mia isst Brot. Sam trinkt Tee und liest die Zeitung.",
+        "example": "Sam trinkt Tee und liest die Zeitung.",
         "headword": "lesen",
         "headwordEnglish": "to read",
         "contextOnly": false
@@ -175,7 +175,7 @@
         "german": "Zeitung",
         "english": "newspaper",
         "form": "Zeitung",
-        "example": "Mia isst Brot. Sam trinkt Tee und liest die Zeitung.",
+        "example": "Sam trinkt Tee und liest die Zeitung.",
         "headword": "Zeitung",
         "headwordEnglish": "newspaper",
         "contextOnly": false
@@ -184,7 +184,7 @@
         "german": "Brot",
         "english": "bread",
         "form": "Brot",
-        "example": "Mia isst Brot. Sam trinkt Tee und liest die Zeitung.",
+        "example": "Mia isst Brot.",
         "headword": "Brot",
         "headwordEnglish": "bread",
         "contextOnly": false
@@ -238,7 +238,7 @@
         "german": "Namensschild",
         "english": "name badge",
         "form": "Namensschild",
-        "example": "Im Kurs liegt ein Namensschild. Auf dem Schild steht: „Sam, Berlin“.",
+        "example": "Im Kurs liegt ein Namensschild.",
         "headword": "das Namensschild",
         "headwordEnglish": "name badge",
         "contextOnly": false
@@ -247,7 +247,7 @@
         "german": "aber",
         "english": "but",
         "form": "aber",
-        "example": "Sam liest das Schild. „Ich heiße Sam. Aber ich wohne in Bonn!“",
+        "example": "Aber ich wohne in Bonn!“",
         "headword": "aber",
         "headwordEnglish": "but",
         "contextOnly": false
@@ -256,7 +256,7 @@
         "german": "stimmt",
         "english": "is right",
         "form": "stimmt",
-        "example": "„Jetzt stimmt es“, sagt Sam. „Ich komme aus Kanada. Aber jetzt wohne ich hier.“",
+        "example": "„Jetzt stimmt es“, sagt Sam.",
         "headword": "stimmen",
         "headwordEnglish": "to be right",
         "contextOnly": false
@@ -317,7 +317,7 @@
         "german": "wo",
         "english": "where",
         "form": "wo",
-        "example": "„Entschuldigung, wo ist die Bibliothek?“, fragt Sam.",
+        "example": "„Entschuldigung, wo ist die Bibliothek?“",
         "headword": "wo",
         "headwordEnglish": "where",
         "contextOnly": false
@@ -326,7 +326,7 @@
         "german": "links",
         "english": "left",
         "form": "links",
-        "example": "„Da links. Neben dem Hotel.“",
+        "example": "„Da links.",
         "headword": "links",
         "headwordEnglish": "left",
         "contextOnly": false
@@ -402,7 +402,7 @@
         "german": "keine",
         "english": "no / not any",
         "form": "keine",
-        "example": "Lea öffnet den Kühlschrank. Es gibt keine Milch. Brot ist auch nicht da.",
+        "example": "Es gibt keine Milch.",
         "headword": "kein",
         "headwordEnglish": "no / not any",
         "contextOnly": false
@@ -411,7 +411,7 @@
         "german": "Milch",
         "english": "milk",
         "form": "Milch",
-        "example": "Lea öffnet den Kühlschrank. Es gibt keine Milch. Brot ist auch nicht da.",
+        "example": "Es gibt keine Milch.",
         "headword": "Milch",
         "headwordEnglish": "milk",
         "contextOnly": false
@@ -429,7 +429,7 @@
         "german": "Tasche",
         "english": "bag",
         "form": "Tasche",
-        "example": "Sam kommt. Er hat eine Tasche.",
+        "example": "Er hat eine Tasche.",
         "headword": "die Tasche",
         "headwordEnglish": "bag",
         "contextOnly": false
@@ -489,7 +489,7 @@
     "section": 2,
     "title": "Zwei Tassen",
     "goal": "Recognise a simple café order.",
-    "text": "Mia und Sam sind im Café.\n\n„Einen Tee, bitte“, sagt Mia.\n\n„Und einen Kaffee, bitte“, sagt Sam.\n\nDer Tee ist heiß. Der Kaffee ist kalt.\n\n„Oh!“, sagt Sam. „Das ist Eiskaffee!“\n\n„Möchtest du einen heißen Kaffee?“, fragt Mia.\n\nSam probiert den Eiskaffee. „Nein, danke. Der schmeckt gut!“\n\nMia trinkt ihren Tee. Dann bezahlen sie.\n\n„Morgen wieder?“, fragt Sam.\n\n„Ja. Aber dann nehme ich auch Eiskaffee.“",
+    "text": "Mia und Sam sind im Café.\n\n„Einen Tee, bitte“, sagt Mia.\n\n„Und einen Kaffee, bitte“, sagt Sam.\n\nDer Tee ist heiß. Der Kaffee ist kalt.\n\n„Oh!“, sagt Sam. „Das ist Eiskaffee!“\n\n„Möchtest du einen heißen Kaffee?“, fragt Mia.\n\nSam probiert den Eiskaffee. „Nein, danke. Der schmeckt gut!“\n\nMia trinkt ihren Tee. Dann bezahlen sie. Sam fragt nach dem Preis. Die Frau zeigt auf die Karte. Mia und Sam teilen sich die Rechnung.\n\n„Morgen wieder?“, fragt Sam.\n\n„Ja. Aber dann nehme ich auch Eiskaffee.“",
     "english": "Mia and Sam are in a café. “A tea, please,” says Mia. “And a coffee, please,” says Sam. The tea is hot. The coffee is cold. “Oh!” says Sam. “That’s iced coffee!” Sam tries the iced coffee and likes it. Mia wants to try one next time.",
     "words": [
       {
@@ -505,7 +505,7 @@
         "german": "heiß",
         "english": "hot",
         "form": "heiß",
-        "example": "Der Tee ist heiß. Der Kaffee ist kalt.",
+        "example": "Der Tee ist heiß.",
         "headword": "heiß",
         "headwordEnglish": "hot",
         "contextOnly": false
@@ -514,7 +514,7 @@
         "german": "kalt",
         "english": "cold",
         "form": "kalt",
-        "example": "Der Tee ist heiß. Der Kaffee ist kalt.",
+        "example": "Der Kaffee ist kalt.",
         "headword": "kalt",
         "headwordEnglish": "cold",
         "contextOnly": false
@@ -565,7 +565,7 @@
         "german": "Schlüssel",
         "english": "key",
         "form": "Schlüssel",
-        "example": "Sam möchte zum Kurs gehen. Seine Tasche ist fertig. Aber wo ist der Schlüssel?",
+        "example": "Aber wo ist der Schlüssel?",
         "headword": "Schlüssel",
         "headwordEnglish": "key",
         "contextOnly": false
@@ -574,7 +574,7 @@
         "german": "sucht",
         "english": "looks for",
         "form": "sucht",
-        "example": "Er sucht auf dem Tisch. Da liegt ein Buch. Er sucht in der Tasche. Da ist nur sein Handy.",
+        "example": "Er sucht auf dem Tisch.",
         "headword": "sucht",
         "headwordEnglish": "looks for",
         "contextOnly": false
@@ -583,7 +583,7 @@
         "german": "Schuh",
         "english": "shoe",
         "form": "Schuh",
-        "example": "Mia wartet an der Tür. „Schau mal in deinen Schuh!“",
+        "example": "„Schau mal in deinen Schuh!“",
         "headword": "Schuh",
         "headwordEnglish": "shoe",
         "contextOnly": false
@@ -647,7 +647,7 @@
         "german": "brauchen",
         "english": "need",
         "form": "brauchen",
-        "example": "Mia und Lea kaufen Obst auf dem Markt. Für einen Kuchen brauchen sie vier Äpfel.",
+        "example": "Für einen Kuchen brauchen sie vier Äpfel.",
         "headword": "brauchen",
         "headwordEnglish": "need",
         "contextOnly": false
@@ -656,7 +656,7 @@
         "german": "bezahlt",
         "english": "pays",
         "form": "bezahlt",
-        "example": "Der Verkäufer wiegt die Äpfel. Sie kosten genau drei Euro. Mia bezahlt. Dann gehen die Schwestern nach Hause. Unterwegs essen sie je einen Apfel. Zu Hause liegen noch vier Äpfel in der Tasche. Genau richtig für den Kuchen.",
+        "example": "Mia bezahlt.",
         "headword": "bezahlt",
         "headwordEnglish": "pays",
         "contextOnly": false
@@ -665,7 +665,7 @@
         "german": "je einen",
         "english": "one each",
         "form": "je einen",
-        "example": "Der Verkäufer wiegt die Äpfel. Sie kosten genau drei Euro. Mia bezahlt. Dann gehen die Schwestern nach Hause. Unterwegs essen sie je einen Apfel. Zu Hause liegen noch vier Äpfel in der Tasche. Genau richtig für den Kuchen.",
+        "example": "Unterwegs essen sie je einen Apfel.",
         "headword": "je",
         "headwordEnglish": "each",
         "contextOnly": false
@@ -721,7 +721,7 @@
         "german": "Personen",
         "english": "people",
         "form": "Personen",
-        "example": "Heute sind zwölf Personen im Deutschkurs. Eine neue Studentin kommt. Sie heißt Nora. Sie studiert Biologie. Alle Stühle sind besetzt. Nur der Stuhl neben Sam ist frei.",
+        "example": "Heute sind zwölf Personen im Deutschkurs.",
         "headword": "Personen",
         "headwordEnglish": "people",
         "contextOnly": false
@@ -730,7 +730,7 @@
         "german": "Stühle",
         "english": "chairs",
         "form": "Stühle",
-        "example": "Heute sind zwölf Personen im Deutschkurs. Eine neue Studentin kommt. Sie heißt Nora. Sie studiert Biologie. Alle Stühle sind besetzt. Nur der Stuhl neben Sam ist frei.",
+        "example": "Alle Stühle sind besetzt.",
         "headword": "Stühle",
         "headwordEnglish": "chairs",
         "contextOnly": false
@@ -739,7 +739,7 @@
         "german": "frei",
         "english": "available / free",
         "form": "frei",
-        "example": "Heute sind zwölf Personen im Deutschkurs. Eine neue Studentin kommt. Sie heißt Nora. Sie studiert Biologie. Alle Stühle sind besetzt. Nur der Stuhl neben Sam ist frei.",
+        "example": "Nur der Stuhl neben Sam ist frei.",
         "headword": "frei",
         "headwordEnglish": "available / free",
         "contextOnly": false
@@ -748,7 +748,7 @@
         "german": "Blätter",
         "english": "sheets of paper",
         "form": "Blätter",
-        "example": "Die Lehrerin verteilt Blätter. Nora hat keinen Stift. Sam hat zwei.",
+        "example": "Die Lehrerin verteilt Blätter.",
         "headword": "das Blatt",
         "headwordEnglish": "sheet of paper",
         "contextOnly": false
@@ -757,7 +757,7 @@
         "german": "bereit",
         "english": "ready",
         "form": "bereit",
-        "example": "Nora lächelt. „Danke. Jetzt bin ich bereit!“",
+        "example": "Jetzt bin ich bereit!“",
         "headword": "bereit",
         "headwordEnglish": "ready",
         "contextOnly": false
@@ -821,7 +821,7 @@
         "german": "Jacke",
         "english": "jacket",
         "form": "Jacke",
-        "example": "Mia braucht eine Jacke. Im Geschäft sieht sie eine blaue Jacke und einen gelben Mantel. Die Jacke kostet vierzig Euro. Der Mantel kostet sechzig Euro.",
+        "example": "Mia braucht eine Jacke.",
         "headword": "Jacke",
         "headwordEnglish": "jacket",
         "contextOnly": false
@@ -830,7 +830,7 @@
         "german": "Mantel",
         "english": "coat",
         "form": "Mantel",
-        "example": "Mia braucht eine Jacke. Im Geschäft sieht sie eine blaue Jacke und einen gelben Mantel. Die Jacke kostet vierzig Euro. Der Mantel kostet sechzig Euro.",
+        "example": "Im Geschäft sieht sie eine blaue Jacke und einen gelben Mantel.",
         "headword": "Mantel",
         "headwordEnglish": "coat",
         "contextOnly": false
@@ -839,7 +839,7 @@
         "german": "zu klein",
         "english": "too small",
         "form": "zu klein",
-        "example": "„Ich nehme die Jacke“, sagt Mia. Aber die Jacke ist zu klein.",
+        "example": "Aber die Jacke ist zu klein.",
         "headword": "klein",
         "headwordEnglish": "small",
         "contextOnly": false
@@ -848,7 +848,7 @@
         "german": "passt",
         "english": "fits",
         "form": "passt",
-        "example": "Die Verkäuferin bringt eine andere Jacke. Sie ist gelb und passt gut. Sie kostet auch vierzig Euro.",
+        "example": "Sie ist gelb und passt gut.",
         "headword": "passen",
         "headwordEnglish": "to fit",
         "contextOnly": false
@@ -857,7 +857,7 @@
         "german": "Verkäuferin",
         "english": "shop assistant",
         "form": "Verkäuferin",
-        "example": "Die Verkäuferin bringt eine andere Jacke. Sie ist gelb und passt gut. Sie kostet auch vierzig Euro.",
+        "example": "Die Verkäuferin bringt eine andere Jacke.",
         "headword": "Verkäuferin",
         "headwordEnglish": "shop assistant",
         "contextOnly": false
@@ -919,7 +919,7 @@
         "german": "meine Schwester",
         "english": "my sister",
         "form": "meine Schwester",
-        "example": "Mia zeigt Sam ein Foto. „Das ist meine Schwester. Sie heißt Lea. Sie ist achtzehn Jahre alt.“",
+        "example": "„Das ist meine Schwester.",
         "headword": "die Schwester",
         "headwordEnglish": "sister",
         "contextOnly": false
@@ -928,7 +928,7 @@
         "german": "unser Vater",
         "english": "our father",
         "form": "unser Vater",
-        "example": "„Das ist unser Vater. Er kocht gern.“",
+        "example": "„Das ist unser Vater.",
         "headword": "der Vater",
         "headwordEnglish": "father",
         "contextOnly": false
@@ -937,7 +937,7 @@
         "german": "gern",
         "english": "like doing something",
         "form": "gern",
-        "example": "„Das ist unser Vater. Er kocht gern.“",
+        "example": "Er kocht gern.“",
         "headword": "gern",
         "headwordEnglish": "like doing something",
         "contextOnly": false
@@ -988,7 +988,7 @@
         "german": "danach",
         "english": "afterwards",
         "form": "danach",
-        "example": "Am Mittwoch arbeitet Sam bis zwei Uhr. Danach fährt er mit dem Bus nach Hause. Er isst eine Suppe und ruft Mia an.",
+        "example": "Danach fährt er mit dem Bus nach Hause.",
         "headword": "danach",
         "headwordEnglish": "afterwards",
         "contextOnly": false
@@ -997,7 +997,7 @@
         "german": "erst um fünf",
         "english": "not until five",
         "form": "erst um fünf",
-        "example": "„Ja, aber erst um fünf. Ich habe noch einen Kurs.“",
+        "example": "„Ja, aber erst um fünf.",
         "headword": "erst",
         "headwordEnglish": "not until / only",
         "contextOnly": false
@@ -1006,7 +1006,7 @@
         "german": "trifft",
         "english": "meets",
         "form": "trifft",
-        "example": "Sam möchte nicht drei Stunden warten. Er geht zuerst in den Park und liest dort sein Buch. Um fünf trifft er Mia am Café.",
+        "example": "Um fünf trifft er Mia am Café.",
         "headword": "trifft",
         "headwordEnglish": "meets",
         "contextOnly": false
@@ -1070,7 +1070,7 @@
         "german": "Nachricht",
         "english": "message / note",
         "form": "Nachricht",
-        "example": "Am Kühlschrank hängt eine Nachricht:",
+        "example": "Am Kühlschrank hängt eine Nachricht:\n\n„Hallo Lea!",
         "headword": "Nachricht",
         "headwordEnglish": "message / note",
         "contextOnly": false
@@ -1079,7 +1079,7 @@
         "german": "Kühlschrank",
         "english": "fridge",
         "form": "Kühlschrank",
-        "example": "Am Kühlschrank hängt eine Nachricht:",
+        "example": "Am Kühlschrank hängt eine Nachricht:\n\n„Hallo Lea!",
         "headword": "Kühlschrank",
         "headwordEnglish": "fridge",
         "contextOnly": false
@@ -1088,7 +1088,7 @@
         "german": "zehn vor vier",
         "english": "ten minutes before four",
         "form": "zehn vor vier",
-        "example": "Lea schaut auf die Uhr. Es ist zehn vor vier. Sie nimmt ein Glas Saft und wartet. Den Kuchen lässt sie auf dem Tisch.",
+        "example": "Es ist zehn vor vier.",
         "headword": "vor",
         "headwordEnglish": "before",
         "contextOnly": false
@@ -1146,7 +1146,7 @@
         "german": "gegenüber",
         "english": "opposite",
         "form": "gegenüber",
-        "example": "Sie fragen den Fahrer nach dem Schwimmbad. Er zeigt auf die Haltestelle gegenüber.",
+        "example": "Er zeigt auf die Haltestelle gegenüber.",
         "headword": "gegenüber",
         "headwordEnglish": "opposite",
         "contextOnly": false
@@ -1155,7 +1155,7 @@
         "german": "steigen ein",
         "english": "get on",
         "form": "steigen ein",
-        "example": "Mia und Sam gehen über die Straße. Dort kommt ihr Bus gerade an. Sie steigen ein und finden zwei Plätze. Sam schaut auf den Plan. „Nächstes Mal lese ich auch die Richtung!“",
+        "example": "Sie steigen ein und finden zwei Plätze.",
         "headword": "einsteigen",
         "headwordEnglish": "to get on",
         "contextOnly": false
@@ -1164,7 +1164,7 @@
         "german": "Richtung",
         "english": "direction",
         "form": "Richtung",
-        "example": "Mia und Sam gehen über die Straße. Dort kommt ihr Bus gerade an. Sie steigen ein und finden zwei Plätze. Sam schaut auf den Plan. „Nächstes Mal lese ich auch die Richtung!“",
+        "example": "„Nächstes Mal lese ich auch die Richtung!“",
         "headword": "die Richtung",
         "headwordEnglish": "direction",
         "contextOnly": false
@@ -1221,14 +1221,14 @@
     "section": 3,
     "title": "Ein Tisch für drei",
     "goal": "Understand a restaurant conversation.",
-    "text": "Lea hat Geburtstag. Mia und Sam laden sie zum Essen ein. Im Restaurant möchten sie draußen sitzen. Aber draußen sind alle Tische voll. „Haben Sie drinnen noch einen Tisch?“, fragt Mia.\n\n„Drinnen ist noch ein Tisch am Fenster frei“, sagt der Kellner.\n\nDie drei setzen sich. Lea möchte eine Suppe ohne Fleisch. Mia bestellt Nudeln und Sam eine Pizza. Zum Trinken nehmen alle Wasser.\n\nNach dem Essen bringt der Kellner einen kleinen Kuchen. Auf dem Kuchen steht eine Kerze.\n\n„Für mich?“, fragt Lea.\n\n„Ja, alles Gute!“, sagen Mia und Sam. Lea lacht. „Zum Glück ist der Tisch drinnen. Draußen ist es sehr windig!“\n\nLea pustet die Kerze aus. „Ich wünsche mir etwas“, sagt sie.\n\n„Was denn?“, fragt Sam.\n\n„Das sage ich nicht!“\n\nDer Kellner bringt drei kleine Teller. Mia schneidet den Kuchen. Ein Stück bleibt übrig. Lea möchte es mit nach Hause nehmen.\n\n„Können Sie das bitte einpacken?“, fragt sie.\n\n„Natürlich.“ Der Kellner bringt eine kleine Schachtel.\n\nDann fragt Mia nach der Rechnung. Sie und Sam bezahlen zusammen. Lea zieht ihre Jacke an und nimmt den Kuchen.\n\nVor dem Restaurant machen die drei ein Foto. Lea hält die Schachtel in der Hand. „Ein schönes Geschenk für morgen“, sagt sie. „Dann habe ich noch einmal Geburtstag beim Frühstück.“",
+    "text": "Lea hat Geburtstag. Mia und Sam laden sie zum Essen ein. Im Restaurant möchten sie draußen sitzen. Aber draußen sind alle Tische voll. „Haben Sie drinnen noch einen Tisch?“, fragt Mia.\n\n„Drinnen ist noch ein Tisch am Fenster frei“, sagt der Kellner.\n\nLea möchte eine Suppe ohne Fleisch. Mia bestellt Nudeln und Sam eine Pizza. \n\nNach dem Essen bringt der Kellner einen kleinen Kuchen. Auf dem Kuchen steht eine Kerze.\n\n„Für mich?“, fragt Lea.\n\n„Ja, alles Gute!“, sagen Mia und Sam. Lea lacht. „Zum Glück ist der Tisch drinnen. Draußen ist es sehr windig!“\n\nLea pustet die Kerze aus. „Ich wünsche mir etwas“, sagt sie.\n\n„Was denn?“, fragt Sam.\n\n„Das sage ich nicht!“\n\nDer Kellner bringt drei kleine Teller. Mia schneidet den Kuchen. Ein Stück bleibt übrig. Lea möchte es mit nach Hause nehmen.\n\n„Können Sie das bitte einpacken?“, fragt sie.\n\n„Natürlich.“ Der Kellner bringt eine kleine Schachtel.\n\nDann fragt Mia nach der Rechnung. Sie und Sam bezahlen zusammen. Lea zieht ihre Jacke an und nimmt den Kuchen.\n\nVor dem Restaurant machen die drei ein Foto. Lea hält die Schachtel in der Hand. „Ein schönes Geschenk für morgen“, sagt sie. „Dann habe ich noch einmal Geburtstag beim Frühstück.“",
     "english": "For Lea’s birthday, Mia and Sam take her to a restaurant. Outside is full, so they sit by a window inside. Lea orders meat-free soup. After the meal, a small cake with a candle arrives. Lea is glad they are inside because it is windy. They share the birthday cake, ask to take the last piece home and pay the bill together.",
     "words": [
       {
         "german": "laden ein",
         "english": "invite / treat",
         "form": "laden sie zum Essen ein",
-        "example": "Lea hat Geburtstag. Mia und Sam laden sie zum Essen ein. Im Restaurant möchten sie draußen sitzen. Aber draußen sind alle Tische voll. „Haben Sie drinnen noch einen Tisch?“, fragt Mia.",
+        "example": "Mia und Sam laden sie zum Essen ein.",
         "headword": "einladen",
         "headwordEnglish": "to invite",
         "contextOnly": false
@@ -1237,7 +1237,7 @@
         "german": "ohne Fleisch",
         "english": "without meat",
         "form": "ohne Fleisch",
-        "example": "Die drei setzen sich. Lea möchte eine Suppe ohne Fleisch. Mia bestellt Nudeln und Sam eine Pizza. Zum Trinken nehmen alle Wasser.",
+        "example": "Lea möchte eine Suppe ohne Fleisch.",
         "headword": "das Fleisch",
         "headwordEnglish": "meat",
         "contextOnly": false
@@ -1246,7 +1246,7 @@
         "german": "Kerze",
         "english": "candle",
         "form": "Kerze",
-        "example": "Nach dem Essen bringt der Kellner einen kleinen Kuchen. Auf dem Kuchen steht eine Kerze.",
+        "example": "Auf dem Kuchen steht eine Kerze.",
         "headword": "die Kerze",
         "headwordEnglish": "candle",
         "contextOnly": false
@@ -1307,7 +1307,7 @@
         "german": "Zimmer",
         "english": "room",
         "form": "Zimmer",
-        "example": "Lea sucht ein Zimmer. Sie liest eine Anzeige:",
+        "example": "Lea sucht ein Zimmer.",
         "headword": "Zimmer",
         "headwordEnglish": "room",
         "contextOnly": false
@@ -1316,7 +1316,7 @@
         "german": "Miete",
         "english": "rent",
         "form": "Miete",
-        "example": "„Zimmer in Bonn. Achtzehn Quadratmeter. Ein Bett, ein Schrank und ein Schreibtisch sind da. Küche und Bad sind für alle. Die Miete kostet vierhundert Euro im Monat.“",
+        "example": "Die Miete kostet vierhundert Euro im Monat.“",
         "headword": "Miete",
         "headwordEnglish": "rent",
         "contextOnly": false
@@ -1325,7 +1325,7 @@
         "german": "Schrank",
         "english": "wardrobe",
         "form": "Schrank",
-        "example": "„Zimmer in Bonn. Achtzehn Quadratmeter. Ein Bett, ein Schrank und ein Schreibtisch sind da. Küche und Bad sind für alle. Die Miete kostet vierhundert Euro im Monat.“",
+        "example": "Ein Bett, ein Schrank und ein Schreibtisch sind da.",
         "headword": "der Schrank",
         "headwordEnglish": "wardrobe",
         "contextOnly": false
@@ -1334,7 +1334,7 @@
         "german": "Waschmaschine",
         "english": "washing machine",
         "form": "Waschmaschine",
-        "example": "Lea ruft an. „Gibt es auch eine Waschmaschine?“",
+        "example": "„Gibt es auch eine Waschmaschine?“",
         "headword": "Waschmaschine",
         "headwordEnglish": "washing machine",
         "contextOnly": false
@@ -1407,7 +1407,7 @@
         "german": "zieht sich an",
         "english": "gets dressed",
         "form": "zieht sich an",
-        "example": "Lea steht jeden Morgen um sieben Uhr auf. Sie duscht sich, zieht sich an und frühstückt. Um acht fährt sie mit dem Fahrrad zur Arbeit.",
+        "example": "Sie duscht sich, zieht sich an und frühstückt.",
         "headword": "sich anziehen",
         "headwordEnglish": "to get dressed",
         "contextOnly": false
@@ -1416,7 +1416,7 @@
         "german": "Wecker",
         "english": "alarm clock",
         "form": "Wecker",
-        "example": "Heute ist alles anders. Ihr Wecker klingelt nicht. Es ist schon halb acht! Lea wäscht sich schnell das Gesicht. Dann sucht sie ihre Schuhe.",
+        "example": "Ihr Wecker klingelt nicht.",
         "headword": "der Wecker",
         "headwordEnglish": "alarm clock",
         "contextOnly": false
@@ -1425,7 +1425,7 @@
         "german": "Gesicht",
         "english": "face",
         "form": "Gesicht",
-        "example": "Heute ist alles anders. Ihr Wecker klingelt nicht. Es ist schon halb acht! Lea wäscht sich schnell das Gesicht. Dann sucht sie ihre Schuhe.",
+        "example": "Lea wäscht sich schnell das Gesicht.",
         "headword": "Gesicht",
         "headwordEnglish": "face",
         "contextOnly": false
@@ -1434,7 +1434,7 @@
         "german": "halb acht",
         "english": "half past seven",
         "form": "halb acht",
-        "example": "Heute ist alles anders. Ihr Wecker klingelt nicht. Es ist schon halb acht! Lea wäscht sich schnell das Gesicht. Dann sucht sie ihre Schuhe.",
+        "example": "Es ist schon halb acht!",
         "headword": "halb",
         "headwordEnglish": "half",
         "contextOnly": false
@@ -1443,7 +1443,7 @@
         "german": "zieht aus",
         "english": "takes off",
         "form": "zieht die Schuhe wieder aus",
-        "example": "Lea zieht die Schuhe wieder aus. „Erst einmal setze ich mich hin“, sagt sie. „Heute habe ich Zeit für einen zweiten Tee.“",
+        "example": "Lea zieht die Schuhe wieder aus.",
         "headword": "ausziehen",
         "headwordEnglish": "to take off",
         "contextOnly": false
@@ -1504,14 +1504,14 @@
     "section": 4,
     "title": "Tee statt Training",
     "goal": "Understand a simple message about feeling unwell.",
-    "text": "Sam hat heute Halsschmerzen. Er möchte zum Sport gehen, aber er ist sehr müde. Er schreibt seinem Trainer:\n\n„Hallo Ben, ich komme heute nicht zum Training. Mir geht es nicht gut. Bis nächste Woche! Sam“\n\nAm Telefon fragt Sam in der Praxis: „Haben Sie morgen einen Termin?“\n\n„Ja, um zehn Uhr.“\n\nDann ruft Mia an. Sie möchte mit ihm zu Abend essen. Sam erklärt: „Heute bleibe ich lieber zu Hause.“\n\nEine Stunde später klingelt es. Mia steht vor der Tür. In ihrer Tasche sind Suppe und ein Buch.\n\n„Kein Training heute“, sagt sie. „Aber eine Geschichte geht vielleicht.“ Sam lächelt. Sie essen Suppe. Danach liest Mia die erste Seite vor.\n\nAm nächsten Morgen steht Sam um acht Uhr auf. Er frühstückt und trinkt Wasser. Dann sucht er seine Karte für die Praxis. Sie liegt in seinem Geldbeutel.\n\nUm zehn sitzt er im Wartezimmer. Die Ärztin fragt: „Seit wann haben Sie Schmerzen?“\n\n„Seit gestern.“\n\nSam erzählt auch von der Müdigkeit. Die Ärztin untersucht ihn und erklärt ihm, was er jetzt machen soll. Sam fragt nach, denn ein Wort versteht er nicht. Sie erklärt es noch einmal langsam.\n\nZu Hause schreibt Sam an Mia: „Danke für gestern. Ich ruhe mich heute aus.“\n\nMia antwortet: „Gern. Dein Buch wartet auf dich.“ Sam legt das Handy weg und öffnet das Buch.",
+    "text": "Sam hat heute Halsschmerzen. Er möchte zum Sport gehen, aber er ist sehr müde. Er schreibt seinem Trainer:\n\n„Hallo Ben, ich komme heute nicht zum Training. Mir geht es nicht gut. Bis nächste Woche! Sam“\n\nAm Telefon fragt Sam in der Praxis: „Haben Sie morgen einen Termin?“\n\n„Ja, um zehn Uhr.“\n\nDann ruft Mia an. Sie möchte mit ihm zu Abend essen. Sam erklärt: „Heute bleibe ich lieber zu Hause.“\n\nEine Stunde später klingelt es. Mia steht vor der Tür. In ihrer Tasche sind Suppe und ein Buch.\n\n„Kein Training heute“, sagt sie. „Aber eine Geschichte geht vielleicht.“ Sam lächelt. Sie essen Suppe. Danach liest Mia die erste Seite vor.\n\nAm nächsten Morgen steht Sam um acht Uhr auf. Um zehn sitzt er im Wartezimmer. Die Ärztin fragt: „Seit wann haben Sie Schmerzen?“\n\n„Seit gestern.“\n\nSam erzählt auch von der Müdigkeit. Die Ärztin untersucht ihn und erklärt ihm, was er jetzt machen soll. Sam fragt nach, denn ein Wort versteht er nicht. Sie erklärt es noch einmal langsam.\n\nZu Hause schreibt Sam an Mia: „Danke für gestern. Ich ruhe mich heute aus.“\n\nMia antwortet: „Gern. Dein Buch wartet auf dich.“ Sam legt das Handy weg und öffnet das Buch.",
     "english": "Sam has a sore throat and is tired. He cancels training and dinner with Mia. Later, Mia brings soup and a book. They eat, then she reads the first page aloud. Sam attends his appointment, asks the doctor to explain an unfamiliar word and rests at home with the book.",
     "words": [
       {
         "german": "Halsschmerzen",
         "english": "sore throat",
         "form": "Halsschmerzen",
-        "example": "Sam hat heute Halsschmerzen. Er möchte zum Sport gehen, aber er ist sehr müde. Er schreibt seinem Trainer:",
+        "example": "Sam hat heute Halsschmerzen.",
         "headword": "Halsschmerzen",
         "headwordEnglish": "sore throat",
         "contextOnly": false
@@ -1520,7 +1520,7 @@
         "german": "lieber",
         "english": "rather",
         "form": "lieber",
-        "example": "Dann ruft Mia an. Sie möchte mit ihm zu Abend essen. Sam erklärt: „Heute bleibe ich lieber zu Hause.“",
+        "example": "Sam erklärt: „Heute bleibe ich lieber zu Hause.“",
         "headword": "lieber",
         "headwordEnglish": "rather",
         "contextOnly": false
@@ -1529,7 +1529,7 @@
         "german": "liest vor",
         "english": "reads aloud",
         "form": "liest Mia die erste Seite vor",
-        "example": "„Kein Training heute“, sagt sie. „Aber eine Geschichte geht vielleicht.“ Sam lächelt. Sie essen Suppe. Danach liest Mia die erste Seite vor.",
+        "example": "Danach liest Mia die erste Seite vor.",
         "headword": "vorlesen",
         "headwordEnglish": "to read aloud",
         "contextOnly": false
@@ -1590,7 +1590,7 @@
         "german": "hin und zurück",
         "english": "return / round trip",
         "form": "hin und zurück",
-        "example": "„Nur hin oder hin und zurück?“, fragt der Mitarbeiter.",
+        "example": "„Nur hin oder hin und zurück?“",
         "headword": "zurück",
         "headwordEnglish": "back",
         "contextOnly": false
@@ -1599,7 +1599,7 @@
         "german": "Gleis",
         "english": "platform track",
         "form": "Gleis",
-        "example": "Der Zug fährt um neun Uhr von Gleis vier ab. Sam möchte noch ein Brötchen kaufen. Mia wartet bei den Koffern.",
+        "example": "Der Zug fährt um neun Uhr von Gleis vier ab.",
         "headword": "Gleis",
         "headwordEnglish": "platform track",
         "contextOnly": false
@@ -1608,7 +1608,7 @@
         "german": "Koffer",
         "english": "suitcase",
         "form": "Koffer",
-        "example": "Der Zug fährt um neun Uhr von Gleis vier ab. Sam möchte noch ein Brötchen kaufen. Mia wartet bei den Koffern.",
+        "example": "Mia wartet bei den Koffern.",
         "headword": "Koffer",
         "headwordEnglish": "suitcase",
         "contextOnly": false
@@ -1617,7 +1617,7 @@
         "german": "Abfahrt",
         "english": "departure",
         "form": "Abfahrt",
-        "example": "Sie steigen ein. Sam sitzt am Fenster. Das dritte Brötchen isst er schon vor der Abfahrt.",
+        "example": "Das dritte Brötchen isst er schon vor der Abfahrt.",
         "headword": "Abfahrt",
         "headwordEnglish": "departure",
         "contextOnly": false
@@ -1690,7 +1690,7 @@
         "german": "Sofa",
         "english": "sofa",
         "form": "Sofa",
-        "example": "Lea wohnt jetzt in ihrer neuen Wohnung. Das Sofa steht am Fenster. Neben dem Sofa steht eine Lampe. Der Teppich liegt unter dem Tisch.",
+        "example": "Das Sofa steht am Fenster.",
         "headword": "Sofa",
         "headwordEnglish": "sofa",
         "contextOnly": false
@@ -1699,7 +1699,7 @@
         "german": "Teppich",
         "english": "rug",
         "form": "Teppich",
-        "example": "Lea wohnt jetzt in ihrer neuen Wohnung. Das Sofa steht am Fenster. Neben dem Sofa steht eine Lampe. Der Teppich liegt unter dem Tisch.",
+        "example": "Der Teppich liegt unter dem Tisch.",
         "headword": "Teppich",
         "headwordEnglish": "rug",
         "contextOnly": false
@@ -1708,7 +1708,7 @@
         "german": "unter",
         "english": "under",
         "form": "unter",
-        "example": "Lea wohnt jetzt in ihrer neuen Wohnung. Das Sofa steht am Fenster. Neben dem Sofa steht eine Lampe. Der Teppich liegt unter dem Tisch.",
+        "example": "Der Teppich liegt unter dem Tisch.",
         "headword": "unter",
         "headwordEnglish": "under",
         "contextOnly": false
@@ -1717,7 +1717,7 @@
         "german": "neben",
         "english": "next to",
         "form": "neben",
-        "example": "Lea wohnt jetzt in ihrer neuen Wohnung. Das Sofa steht am Fenster. Neben dem Sofa steht eine Lampe. Der Teppich liegt unter dem Tisch.",
+        "example": "Neben dem Sofa steht eine Lampe.",
         "headword": "neben",
         "headwordEnglish": "next to",
         "contextOnly": false
@@ -1726,7 +1726,7 @@
         "german": "Brille",
         "english": "glasses",
         "form": "Brille",
-        "example": "„Hier ist es! Und meine Brille?“",
+        "example": "Und meine Brille?“",
         "headword": "Brille",
         "headwordEnglish": "glasses",
         "contextOnly": false
@@ -1784,7 +1784,7 @@
         "german": "Nachricht",
         "english": "message",
         "form": "Nachricht",
-        "example": "Lea schreibt eine Nachricht an ihre Freunde:",
+        "example": "Lea schreibt eine Nachricht an ihre Freunde:\n\n„Am Freitag, dem zwölften Juni, feiere ich meinen Geburtstag.",
         "headword": "Nachricht",
         "headwordEnglish": "message",
         "contextOnly": false
@@ -1793,7 +1793,7 @@
         "german": "feiere",
         "english": "celebrate",
         "form": "feiere",
-        "example": "„Am Freitag, dem zwölften Juni, feiere ich meinen Geburtstag. Kommt um achtzehn Uhr zu mir! Es gibt Pizza und Musik. Bringt bitte etwas zu trinken mit. Meine Adresse ist Gartenstraße acht. Bis Freitag!“",
+        "example": "Lea schreibt eine Nachricht an ihre Freunde:\n\n„Am Freitag, dem zwölften Juni, feiere ich meinen Geburtstag.",
         "headword": "feiern",
         "headwordEnglish": "to celebrate",
         "contextOnly": false
@@ -1802,7 +1802,7 @@
         "german": "Adresse",
         "english": "address",
         "form": "Adresse",
-        "example": "„Am Freitag, dem zwölften Juni, feiere ich meinen Geburtstag. Kommt um achtzehn Uhr zu mir! Es gibt Pizza und Musik. Bringt bitte etwas zu trinken mit. Meine Adresse ist Gartenstraße acht. Bis Freitag!“",
+        "example": "Meine Adresse ist Gartenstraße acht.",
         "headword": "Adresse",
         "headwordEnglish": "address",
         "contextOnly": false
@@ -1820,7 +1820,7 @@
         "german": "Schüssel",
         "english": "bowl",
         "form": "Schüssel",
-        "example": "Lea gibt ihm eine Schüssel. „Gut. Dann machst du den Salat!“",
+        "example": "Lea gibt ihm eine Schüssel.",
         "headword": "die Schüssel",
         "headwordEnglish": "bowl",
         "contextOnly": false
@@ -1884,7 +1884,7 @@
         "german": "Wetterbericht",
         "english": "weather forecast",
         "form": "Wetterbericht",
-        "example": "Am Samstag wollen Mia und Sam wandern. In Bonn scheint die Sonne, aber in den Bergen regnet es. Mia sieht den Wetterbericht.",
+        "example": "Mia sieht den Wetterbericht.",
         "headword": "Wetterbericht",
         "headwordEnglish": "weather forecast",
         "contextOnly": false
@@ -1893,7 +1893,7 @@
         "german": "Berge",
         "english": "mountains",
         "form": "Berge",
-        "example": "Am Samstag wollen Mia und Sam wandern. In Bonn scheint die Sonne, aber in den Bergen regnet es. Mia sieht den Wetterbericht.",
+        "example": "In Bonn scheint die Sonne, aber in den Bergen regnet es.",
         "headword": "der Berg",
         "headwordEnglish": "mountain",
         "contextOnly": false
@@ -1902,7 +1902,7 @@
         "german": "Wolken",
         "english": "clouds",
         "form": "Wolken",
-        "example": "Sam schaut aus dem Fenster. Jetzt kommen auch in Bonn dunkle Wolken.",
+        "example": "Jetzt kommen auch in Bonn dunkle Wolken.",
         "headword": "die Wolke",
         "headwordEnglish": "cloud",
         "contextOnly": false
@@ -1911,7 +1911,7 @@
         "german": "Schirm",
         "english": "umbrella",
         "form": "Schirm",
-        "example": "Mia ist einverstanden. Sie nehmen einen Schirm mit. Vor dem Museum fängt es an zu regnen. Unter dem Schirm ist Platz für zwei.",
+        "example": "Sie nehmen einen Schirm mit.",
         "headword": "Schirm",
         "headwordEnglish": "umbrella",
         "contextOnly": false
@@ -1920,7 +1920,7 @@
         "german": "denn",
         "english": "because",
         "form": "denn",
-        "example": "Mia hat keine Regenjacke. Sie möchte lieber in Bonn bleiben, denn sie will nicht nass werden.",
+        "example": "Sie möchte lieber in Bonn bleiben, denn sie will nicht nass werden.",
         "headword": "denn",
         "headwordEnglish": "because",
         "contextOnly": false
@@ -1981,14 +1981,14 @@
     "section": 4,
     "title": "Ein anderer Sonntag",
     "goal": "Follow a short sequence of past events.",
-    "text": "Am Sonntag hat es geregnet. Mia, Sam und Lea wollten in den Park gehen. Aber der Plan hat nicht funktioniert.\n\nLea hatte eine Idee: „Wir können zu Hause ein Picknick machen!“\n\nSam hat Brot gekauft. Mia hat Tomaten und Käse auf den Tisch gestellt. Lea hat eine Decke auf den Boden gelegt. Dann haben alle im Wohnzimmer gegessen.\n\nNach dem Essen haben sie Karten gespielt. Sam hat zweimal gewonnen. Um fünf Uhr hat der Regen aufgehört. Die drei sind noch kurz spazieren gegangen.\n\nAm Abend hat Mia ein Foto an ihre Mutter geschickt. Darauf sitzen drei Menschen im Wohnzimmer auf einer Decke. „Unser Picknick“, hat sie geschrieben. „Ganz ohne nasse Schuhe!“\n\nIhre Mutter hat sofort geantwortet: „Das sieht gemütlich aus! So ein Picknick möchte ich auch machen.“\n\nMia hat ihr erzählt, was sie gegessen haben. Dann hat sie Sam und Lea die Nachricht gezeigt. Die beiden haben gelacht.\n\nAm Montag hat Mia im Kurs von ihrem Sonntag erzählt. Zuerst hat sie auf ein Blatt geschaut. Dort standen fünf Wörter: Regen, Decke, Essen, Karten, Spaziergang.\n\nDann hat sie das Blatt weggelegt und das Foto gezeigt. Die anderen haben Fragen gestellt. „Wer hat gewonnen?“ „Was habt ihr gekocht?“ Mia hat langsam geantwortet.\n\nNach dem Kurs hat sie Sam geschrieben: „Unsere Geschichte hat allen gefallen.“ Er hat geantwortet: „Nächsten Sonntag machen wir ein neues Abenteuer. Vielleicht draußen!“",
+    "text": "Am Sonntag hat es geregnet. Mia, Sam und Lea wollten in den Park gehen. Aber der Plan hat nicht funktioniert.\n\nLea hatte eine Idee: „Wir können zu Hause ein Picknick machen!“\n\nSam hat Brot gekauft. Mia hat Tomaten und Käse auf den Tisch gestellt. Lea hat eine Decke auf den Boden gelegt. Dann haben alle im Wohnzimmer gegessen.\n\nNach dem Essen haben sie Karten gespielt. Sam hat zweimal gewonnen. Um fünf Uhr hat der Regen aufgehört. Die drei sind noch kurz spazieren gegangen.\n\nAm Abend hat Mia ein Foto an ihre Mutter geschickt. Darauf sitzen drei Menschen im Wohnzimmer auf einer Decke. „Unser Picknick“, hat sie geschrieben. „Ganz ohne nasse Schuhe!“\n\nAm Montag hat Mia im Kurs von ihrem Sonntag erzählt. Zuerst hat sie auf ein Blatt geschaut. Dort standen fünf Wörter: Regen, Decke, Essen, Karten, Spaziergang.\n\nDann hat sie das Blatt weggelegt und das Foto gezeigt. Die anderen haben Fragen gestellt. „Wer hat gewonnen?“ „Was habt ihr gekocht?“ Mia hat langsam geantwortet.\n\nNach dem Kurs hat sie Sam geschrieben: „Unsere Geschichte hat allen gefallen.“ Er hat geantwortet: „Nächsten Sonntag machen wir ein neues Abenteuer. Vielleicht draußen!“",
     "english": "Rain changes the friends’ Sunday plan. They have a picnic on a blanket in the living room, then play cards. When the rain stops at five, they take a short walk. Mia sends her mother a photo of their dry indoor picnic. Mia later tells her class about the indoor picnic using a few keywords and the photo, and answers their questions.",
     "words": [
       {
         "german": "hat geregnet",
         "english": "rained",
         "form": "hat es geregnet",
-        "example": "Am Sonntag hat es geregnet. Mia, Sam und Lea wollten in den Park gehen. Aber der Plan hat nicht funktioniert.",
+        "example": "Am Sonntag hat es geregnet.",
         "headword": "regnen",
         "headwordEnglish": "to rain",
         "contextOnly": false
@@ -1997,7 +1997,7 @@
         "german": "haben gegessen",
         "english": "ate / have eaten",
         "form": "haben alle im Wohnzimmer gegessen",
-        "example": "Sam hat Brot gekauft. Mia hat Tomaten und Käse auf den Tisch gestellt. Lea hat eine Decke auf den Boden gelegt. Dann haben alle im Wohnzimmer gegessen.",
+        "example": "Dann haben alle im Wohnzimmer gegessen.",
         "headword": "essen",
         "headwordEnglish": "to eat",
         "contextOnly": false
@@ -2006,7 +2006,7 @@
         "german": "aufgehört",
         "english": "stopped",
         "form": "aufgehört",
-        "example": "Nach dem Essen haben sie Karten gespielt. Sam hat zweimal gewonnen. Um fünf Uhr hat der Regen aufgehört. Die drei sind noch kurz spazieren gegangen.",
+        "example": "Um fünf Uhr hat der Regen aufgehört.",
         "headword": "aufhören",
         "headwordEnglish": "to stop",
         "contextOnly": false
@@ -2060,14 +2060,14 @@
     "level": "A2",
     "title": "Ein Paket für die Nachbarin",
     "goal": "Understand a neighbour’s request and follow-up.",
-    "text": "Sam kommt nach Hause. Vor der Tür steht Frau Roth mit einer schweren Tasche. Er hilft ihr mit der Tasche. Im Treppenhaus gibt sie ihm einen Zettel.\n\n„Morgen kommt ein Paket für mich. Kannst du es bitte annehmen? Ich bin beim Zahnarzt.“\n\nAm nächsten Tag klingelt der Paketbote. Sam nimmt das Paket und stellt es neben seine Tür. Später bringt er es der Nachbarin.\n\nFrau Roth öffnet die Schachtel. Darin liegen kleine Pflanzen. Eine schenkt sie Sam.\n\n„Für deine Hilfe!“\n\nSam stellt sie ans Fenster. Jetzt muss er nur noch ans Gießen denken.\n\nAm Abend liest Sam das kleine Schild an der Pflanze. Sie braucht Licht, aber nicht jeden Tag Wasser. Das hat er bei seiner letzten Pflanze falsch gemacht.\n\nAm Samstag trifft er Frau Roth im Hof. „Wie oft gießt du deine Pflanzen?“, fragt er.\n\n„Das ist verschieden. Fühl zuerst die Erde“, erklärt sie. Sam probiert es aus. Die Erde in seinem Topf ist noch feucht.\n\nFrau Roth fährt nächste Woche zu ihrer Tochter. Diesmal fragt Sam von sich aus, ob er helfen kann. Sie gibt ihm einen Schlüssel und zeigt ihm ihre Blumen. Sam macht sich für jede Pflanze eine kurze Notiz.",
+    "text": "Sam kommt nach Hause. Vor der Tür steht Frau Roth mit einer schweren Tasche. Er hilft ihr mit der Tasche. Im Treppenhaus gibt sie ihm einen Zettel.\n\n„Morgen kommt ein Paket für mich. Kannst du es bitte annehmen? Ich bin beim Zahnarzt.“\n\nAm nächsten Tag klingelt der Paketbote. Sam nimmt das Paket und stellt es neben seine Tür. Später bringt er es der Nachbarin.\n\nFrau Roth öffnet die Schachtel. Darin liegen kleine Pflanzen. Eine schenkt sie Sam.\n\n„Für deine Hilfe!“\n\nSam stellt sie ans Fenster. Jetzt muss er nur noch ans Gießen denken.\n\nAm Abend liest Sam das kleine Schild an der Pflanze. Sie braucht Licht, aber nicht jeden Tag Wasser. Das hat er bei seiner letzten Pflanze falsch gemacht.\n\nAm Samstag trifft er Frau Roth im Hof. „Wie oft gießt du deine Pflanzen?“, fragt er.\n\n„Das ist verschieden. Fühl zuerst die Erde“, erklärt sie. Sam probiert es aus. Die Erde in seinem Topf ist noch feucht.\n\nFrau Roth fährt nächste Woche zu ihrer Tochter. Diesmal fragt Sam von sich aus, ob er helfen kann. Sie gibt ihm einen Schlüssel und zeigt ihm ihre Blumen. Sam macht sich für jede Pflanze eine kurze Notiz. Diesmal will er nichts verwechseln: Auf seinem Zettel stehen auch die Tage, an denen Frau Roth wieder zu Hause ist.",
     "english": "Sam accepts a parcel while his neighbour is at the dentist. She gives him one of the plants inside as a thank-you. Sam learns how to care for the plant and offers to water his neighbour’s flowers while she is away.",
     "words": [
       {
         "german": "Nachbarin",
         "english": "female neighbour",
         "form": "Nachbarin",
-        "example": "Am nächsten Tag klingelt der Paketbote. Sam nimmt das Paket und stellt es neben seine Tür. Später bringt er es der Nachbarin.",
+        "example": "Später bringt er es der Nachbarin.",
         "headword": "Nachbarin",
         "headwordEnglish": "female neighbour",
         "contextOnly": false
@@ -2076,7 +2076,7 @@
         "german": "annehmen",
         "english": "accept",
         "form": "annehmen",
-        "example": "„Morgen kommt ein Paket für mich. Kannst du es bitte annehmen? Ich bin beim Zahnarzt.“",
+        "example": "Kannst du es bitte annehmen?",
         "headword": "annehmen",
         "headwordEnglish": "accept",
         "contextOnly": false
@@ -2085,7 +2085,7 @@
         "german": "Paketbote",
         "english": "parcel delivery worker",
         "form": "Paketbote",
-        "example": "Am nächsten Tag klingelt der Paketbote. Sam nimmt das Paket und stellt es neben seine Tür. Später bringt er es der Nachbarin.",
+        "example": "Am nächsten Tag klingelt der Paketbote.",
         "headword": "der Paketbote",
         "headwordEnglish": "parcel delivery worker",
         "contextOnly": false
@@ -2094,7 +2094,7 @@
         "german": "Schachtel",
         "english": "box",
         "form": "Schachtel",
-        "example": "Frau Roth öffnet die Schachtel. Darin liegen kleine Pflanzen. Eine schenkt sie Sam.",
+        "example": "Frau Roth öffnet die Schachtel.",
         "headword": "die Schachtel",
         "headwordEnglish": "box",
         "contextOnly": false
@@ -2103,7 +2103,7 @@
         "german": "gießen",
         "english": "water plants",
         "form": "gießen",
-        "example": "Sam stellt sie ans Fenster. Jetzt muss er nur noch ans Gießen denken.",
+        "example": "Jetzt muss er nur noch ans Gießen denken.",
         "headword": "gießen",
         "headwordEnglish": "to water plants",
         "contextOnly": false
@@ -2160,14 +2160,14 @@
     "level": "A2",
     "title": "Ein Regal zieht um",
     "goal": "Follow directions while moving furniture.",
-    "text": "Lea möchte ihr Zimmer verändern. Das Regal steht neben der Tür, aber dort ist wenig Platz. Sam hilft ihr beim Umstellen.\n\n„Stellen wir es an die andere Wand“, schlägt er vor.\n\nSie nehmen die Bücher aus dem Regal. Dann schieben sie es vorsichtig durch das Zimmer. Jetzt steht es zwischen dem Fenster und dem Schreibtisch.\n\nLea legt die Bücher wieder ins Regal. Ein Foto fällt heraus. Es zeigt ihre erste Wohnung. Auf dem Foto steht das gleiche Regal neben einer Tür.\n\n„Manche Dinge bleiben lange bei uns“, sagt Lea. „Nur der Platz ändert sich.“\n\nBeim Einräumen merkt Lea, dass sie viele Bücher nicht mehr liest. Einige braucht sie für ihre Ausbildung. Andere hat sie seit Jahren nicht geöffnet.\n\nSie macht drei kleine Stapel: behalten, verschenken und zurückgeben. Zwei Bücher gehören Mia. Sam findet ein Kochbuch und blättert darin. „Das würde ich gern ausleihen.“\n\nLea schreibt seinen Namen und den Titel in ihr Heft. Diesmal möchte sie wissen, wo ihre Bücher sind. Danach stellen sie nur die übrigen Bücher ins Regal. Auf einem Fach bleibt Platz für die Pflanze am Fenster.\n\nAm Abend sieht das Zimmer größer aus, obwohl die Möbel dieselben sind.",
+    "text": "Lea möchte ihr Zimmer verändern. Das Regal steht neben der Tür, aber dort ist wenig Platz. Sam hilft ihr beim Umstellen.\n\n„Stellen wir es an die andere Wand“, schlägt er vor.\n\nSie nehmen die Bücher aus dem Regal. Dann schieben sie es vorsichtig durch das Zimmer. Jetzt steht es zwischen dem Fenster und dem Schreibtisch.\n\nLea legt die Bücher wieder ins Regal. Ein Foto fällt heraus. Es zeigt ihre erste Wohnung. Auf dem Foto steht das gleiche Regal neben einer Tür.\n\n„Manche Dinge bleiben lange bei uns“, sagt Lea. „Nur der Platz ändert sich.“\n\nBeim Einräumen merkt Lea, dass sie viele Bücher nicht mehr liest. Einige braucht sie für ihre Ausbildung. Andere hat sie seit Jahren nicht geöffnet.\n\nSie macht drei kleine Stapel: behalten, verschenken und zurückgeben. Zwei Bücher gehören Mia. Sam findet ein Kochbuch und blättert darin. „Das würde ich gern ausleihen.“\n\nLea schreibt seinen Namen und den Titel in ihr Heft. Diesmal möchte sie wissen, wo ihre Bücher sind. Danach stellen sie nur die übrigen Bücher ins Regal. Auf einem Fach bleibt Platz für die Pflanze am Fenster.\n\nAm Abend sieht das Zimmer größer aus, obwohl die Möbel dieselben sind. Lea setzt sich an den Schreibtisch und kann zum ersten Mal bequem die Tür öffnen.",
     "english": "Lea and Sam move a shelf to make more room. An old photo reveals the shelf in her first flat. While sorting the books, Lea decides what to keep, give away and return. The same room feels more spacious.",
     "words": [
       {
         "german": "Regal",
         "english": "shelf / bookcase",
         "form": "Regal",
-        "example": "Lea möchte ihr Zimmer verändern. Das Regal steht neben der Tür, aber dort ist wenig Platz. Sam hilft ihr beim Umstellen.",
+        "example": "Das Regal steht neben der Tür, aber dort ist wenig Platz.",
         "headword": "Regal",
         "headwordEnglish": "shelf / bookcase",
         "contextOnly": false
@@ -2176,7 +2176,7 @@
         "german": "umstellen",
         "english": "rearrange",
         "form": "umstellen",
-        "example": "Lea möchte ihr Zimmer verändern. Das Regal steht neben der Tür, aber dort ist wenig Platz. Sam hilft ihr beim Umstellen.",
+        "example": "Sam hilft ihr beim Umstellen.",
         "headword": "umstellen",
         "headwordEnglish": "to rearrange",
         "contextOnly": false
@@ -2185,7 +2185,7 @@
         "german": "schieben",
         "english": "push",
         "form": "schieben",
-        "example": "Sie nehmen die Bücher aus dem Regal. Dann schieben sie es vorsichtig durch das Zimmer. Jetzt steht es zwischen dem Fenster und dem Schreibtisch.",
+        "example": "Dann schieben sie es vorsichtig durch das Zimmer.",
         "headword": "schieben",
         "headwordEnglish": "push",
         "contextOnly": false
@@ -2194,7 +2194,7 @@
         "german": "vorsichtig",
         "english": "carefully",
         "form": "vorsichtig",
-        "example": "Sie nehmen die Bücher aus dem Regal. Dann schieben sie es vorsichtig durch das Zimmer. Jetzt steht es zwischen dem Fenster und dem Schreibtisch.",
+        "example": "Dann schieben sie es vorsichtig durch das Zimmer.",
         "headword": "vorsichtig",
         "headwordEnglish": "carefully",
         "contextOnly": false
@@ -2203,7 +2203,7 @@
         "german": "zwischen",
         "english": "between",
         "form": "zwischen",
-        "example": "Sie nehmen die Bücher aus dem Regal. Dann schieben sie es vorsichtig durch das Zimmer. Jetzt steht es zwischen dem Fenster und dem Schreibtisch.",
+        "example": "Jetzt steht es zwischen dem Fenster und dem Schreibtisch.",
         "headword": "zwischen",
         "headwordEnglish": "between",
         "contextOnly": false
@@ -2267,7 +2267,7 @@
         "german": "Handys",
         "english": "mobile phones",
         "form": "Handys",
-        "example": "Mia plant einen Spieleabend für ihre Freunde. Auf der Einladung steht: „Am Samstag um sieben. Ohne Handys, aber mit Snacks!“",
+        "example": "Ohne Handys, aber mit Snacks!“",
         "headword": "das Handy",
         "headwordEnglish": "mobile phone",
         "contextOnly": false
@@ -2276,7 +2276,7 @@
         "german": "Brettspiel",
         "english": "board game",
         "form": "Brettspiel",
-        "example": "Sam findet die Idee gut. Er bringt Karten mit. Lea möchte lieber ein Brettspiel spielen. Sie legt es auf den Tisch. Die Regeln sind einfach: Man muss gemeinsam einen Weg durch eine Stadt finden.",
+        "example": "Lea möchte lieber ein Brettspiel spielen.",
         "headword": "Brettspiel",
         "headwordEnglish": "board game",
         "contextOnly": false
@@ -2285,7 +2285,7 @@
         "german": "Regeln",
         "english": "rules",
         "form": "Regeln",
-        "example": "Sam findet die Idee gut. Er bringt Karten mit. Lea möchte lieber ein Brettspiel spielen. Sie legt es auf den Tisch. Die Regeln sind einfach: Man muss gemeinsam einen Weg durch eine Stadt finden.",
+        "example": "Die Regeln sind einfach: Man muss gemeinsam einen Weg durch eine Stadt finden.",
         "headword": "Regeln",
         "headwordEnglish": "rules",
         "contextOnly": false
@@ -2294,7 +2294,7 @@
         "german": "gemeinsam",
         "english": "together",
         "form": "gemeinsam",
-        "example": "Sam findet die Idee gut. Er bringt Karten mit. Lea möchte lieber ein Brettspiel spielen. Sie legt es auf den Tisch. Die Regeln sind einfach: Man muss gemeinsam einen Weg durch eine Stadt finden.",
+        "example": "Die Regeln sind einfach: Man muss gemeinsam einen Weg durch eine Stadt finden.",
         "headword": "gemeinsam",
         "headwordEnglish": "together",
         "contextOnly": false
@@ -2303,7 +2303,7 @@
         "german": "Spielplan",
         "english": "game board",
         "form": "Spielplan",
-        "example": "Sie schauen noch einmal auf den Spielplan. Lea findet den Weg. Zum Schluss machen sie doch ein Foto: drei Freunde und ein gewonnenes Spiel.",
+        "example": "Sie schauen noch einmal auf den Spielplan.",
         "headword": "der Spielplan",
         "headwordEnglish": "game board",
         "contextOnly": false
@@ -2367,7 +2367,7 @@
         "german": "Bürgerbüro",
         "english": "municipal service office",
         "form": "Bürgerbüro",
-        "example": "Sam wartet auf einen Termin beim Bürgerbüro. Er muss seine neue Adresse anmelden. Auf der Webseite findet er nur einen Termin am Vormittag. Dann arbeitet er aber im Café.",
+        "example": "Sam wartet auf einen Termin beim Bürgerbüro.",
         "headword": "das Bürgerbüro",
         "headwordEnglish": "municipal service office",
         "contextOnly": false
@@ -2376,7 +2376,7 @@
         "german": "anmelden",
         "english": "register",
         "form": "anmelden",
-        "example": "Sam wartet auf einen Termin beim Bürgerbüro. Er muss seine neue Adresse anmelden. Auf der Webseite findet er nur einen Termin am Vormittag. Dann arbeitet er aber im Café.",
+        "example": "Er muss seine neue Adresse anmelden.",
         "headword": "anmelden",
         "headwordEnglish": "to register",
         "contextOnly": false
@@ -2385,7 +2385,7 @@
         "german": "Unterlagen",
         "english": "documents",
         "form": "Unterlagen",
-        "example": "Sam freut sich über den neuen Termin. Er fragt auch nach den Unterlagen. Sie nennt ihm die Dokumente und schickt ihm eine Liste.",
+        "example": "Er fragt auch nach den Unterlagen.",
         "headword": "Unterlagen",
         "headwordEnglish": "documents",
         "contextOnly": false
@@ -2394,7 +2394,7 @@
         "german": "Mappe",
         "english": "folder",
         "form": "Mappe",
-        "example": "Am Dienstag kommt Sam mit seiner Mappe. Diesmal denkt er sogar an seine Brille. Nur die Hausnummer muss er noch einmal nachsehen.",
+        "example": "Am Dienstag kommt Sam mit seiner Mappe.",
         "headword": "die Mappe",
         "headwordEnglish": "folder",
         "contextOnly": false
@@ -2403,7 +2403,7 @@
         "german": "nachsehen",
         "english": "check / look up",
         "form": "nachsehen",
-        "example": "Am Dienstag kommt Sam mit seiner Mappe. Diesmal denkt er sogar an seine Brille. Nur die Hausnummer muss er noch einmal nachsehen.",
+        "example": "Nur die Hausnummer muss er noch einmal nachsehen.",
         "headword": "nachsehen",
         "headwordEnglish": "check / look up",
         "contextOnly": false
@@ -2460,14 +2460,14 @@
     "level": "A2",
     "title": "Wem gehört der Schal?",
     "goal": "Track possessions without repeating names.",
-    "text": "Nach der Feier liegen drei Schals im Flur. Einer ist rot, einer ist grün und einer ist grau. Lea schreibt in die Gruppe: „Wem gehören die Schals?“\n\nMia antwortet: „Der rote ist meiner. Der grüne gehört meinem Bruder. Das ist Toms Schal.“\n\nSam schreibt: „Meiner ist blau. Ich habe ihn noch.“\n\nLea hängt die Schals an die Garderobe. Am Abend kommt Frau Roth. Sie sucht ihren grauen Schal.\n\n„Der ist hier!“, ruft Lea.\n\nFrau Roth lacht. „Ich vergesse immer etwas.“ Sie nimmt den Schal und geht. Auf dem Tisch bleibt ihre Einkaufstasche stehen.\n\nLea sieht die Tasche erst beim Aufräumen. Darin liegen Brot und ein Glas Honig. Sie nimmt die Tasche und geht zu Frau Roth. Die Nachbarin wohnt nur eine Treppe höher.\n\n„Heute bringe ich lieber alles selbst zurück“, sagt Lea lächelnd.\n\nFrau Roth lädt sie auf einen Tee ein. Sie erzählen einander, welche Dinge sie schon vergessen haben. Lea hat einmal ihre Sportschuhe im Bus liegen lassen. Zum Glück hat sie sie im Fundbüro wiedergefunden.\n\nAm nächsten Morgen holt Mia die anderen beiden Schals ab. Lea schaut noch kurz zur Garderobe. Diesmal hängt dort nur ihre eigene Jacke.",
+    "text": "Nach der Feier liegen drei Schals im Flur. Einer ist rot, einer ist grün und einer ist grau. Lea schreibt in die Gruppe: „Wem gehören die Schals?“\n\nMia antwortet: „Der rote ist meiner. Der grüne gehört meinem Bruder. Das ist Toms Schal.“\n\nSam schreibt: „Meiner ist blau. Ich habe ihn noch.“\n\nLea hängt die Schals an die Garderobe. Am Abend kommt Frau Roth. Sie sucht ihren grauen Schal.\n\n„Der ist hier!“, ruft Lea.\n\nFrau Roth lacht. „Ich vergesse immer etwas.“ Sie nimmt den Schal und geht. Auf dem Tisch bleibt ihre Einkaufstasche stehen.\n\nLea sieht die Tasche erst beim Aufräumen. Darin liegen Brot und ein Glas Honig. Sie nimmt die Tasche und geht zu Frau Roth. Die Nachbarin wohnt nur eine Treppe höher.\n\n„Heute bringe ich lieber alles selbst zurück“, sagt Lea lächelnd.\n\nFrau Roth lädt sie auf einen Tee ein. Sie erzählen einander, welche Dinge sie schon vergessen haben. Lea hat einmal ihre Sportschuhe im Bus liegen lassen. Zum Glück hat sie sie im Fundbüro wiedergefunden.\n\nAm nächsten Morgen holt Mia die anderen beiden Schals ab. Lea schaut noch kurz zur Garderobe. Diesmal hängt dort nur ihre eigene Jacke. Sie schickt der Gruppe ein Foto von der Garderobe und schreibt: „Alle Schals sind wieder zu Hause.“",
     "english": "Lea identifies three scarves left after a party. The owner of the grey one collects it but leaves her shopping bag behind. Lea returns the shopping bag and exchanges stories about lost belongings with Frau Roth. Mia collects the remaining scarves.",
     "words": [
       {
         "german": "Schal",
         "english": "scarf",
         "form": "Schal",
-        "example": "Nach der Feier liegen drei Schals im Flur. Einer ist rot, einer ist grün und einer ist grau. Lea schreibt in die Gruppe: „Wem gehören die Schals?“",
+        "example": "Nach der Feier liegen drei Schals im Flur.",
         "headword": "der Schal",
         "headwordEnglish": "scarf",
         "contextOnly": false
@@ -2476,7 +2476,7 @@
         "german": "gehören",
         "english": "belong",
         "form": "gehören",
-        "example": "Nach der Feier liegen drei Schals im Flur. Einer ist rot, einer ist grün und einer ist grau. Lea schreibt in die Gruppe: „Wem gehören die Schals?“",
+        "example": "Lea schreibt in die Gruppe: „Wem gehören die Schals?“",
         "headword": "gehören",
         "headwordEnglish": "belong",
         "contextOnly": false
@@ -2485,7 +2485,7 @@
         "german": "meiner",
         "english": "mine (masculine)",
         "form": "meiner",
-        "example": "Mia antwortet: „Der rote ist meiner. Der grüne gehört meinem Bruder. Das ist Toms Schal.“",
+        "example": "Mia antwortet: „Der rote ist meiner.",
         "headword": "mein",
         "headwordEnglish": "my",
         "contextOnly": false
@@ -2494,7 +2494,7 @@
         "german": "Garderobe",
         "english": "coat rack",
         "form": "Garderobe",
-        "example": "Lea hängt die Schals an die Garderobe. Am Abend kommt Frau Roth. Sie sucht ihren grauen Schal.",
+        "example": "Lea hängt die Schals an die Garderobe.",
         "headword": "die Garderobe",
         "headwordEnglish": "coat rack",
         "contextOnly": false
@@ -2503,7 +2503,7 @@
         "german": "vergessen",
         "english": "forget",
         "form": "vergesse",
-        "example": "Frau Roth lacht. „Ich vergesse immer etwas.“ Sie nimmt den Schal und geht. Auf dem Tisch bleibt ihre Einkaufstasche stehen.",
+        "example": "„Ich vergesse immer etwas.“",
         "headword": "vergessen",
         "headwordEnglish": "to forget",
         "contextOnly": false
@@ -2561,7 +2561,7 @@
         "german": "jeder",
         "english": "everyone / each person",
         "form": "jeder",
-        "example": "Am Sonntag kochen die Nachbarn zusammen. Jeder bringt etwas mit. Sam hat Kartoffeln, Mia hat Möhren und Lea bringt Brot. Niemand hat an einen großen Topf gedacht.",
+        "example": "Jeder bringt etwas mit.",
         "headword": "jeder",
         "headwordEnglish": "everyone / each person",
         "contextOnly": false
@@ -2570,7 +2570,7 @@
         "german": "niemand",
         "english": "nobody",
         "form": "niemand",
-        "example": "Am Sonntag kochen die Nachbarn zusammen. Jeder bringt etwas mit. Sam hat Kartoffeln, Mia hat Möhren und Lea bringt Brot. Niemand hat an einen großen Topf gedacht.",
+        "example": "Niemand hat an einen großen Topf gedacht.",
         "headword": "niemand",
         "headwordEnglish": "nobody",
         "contextOnly": false
@@ -2579,7 +2579,7 @@
         "german": "Topf",
         "english": "pot",
         "form": "Topf",
-        "example": "Am Sonntag kochen die Nachbarn zusammen. Jeder bringt etwas mit. Sam hat Kartoffeln, Mia hat Möhren und Lea bringt Brot. Niemand hat an einen großen Topf gedacht.",
+        "example": "Niemand hat an einen großen Topf gedacht.",
         "headword": "der Topf",
         "headwordEnglish": "pot",
         "contextOnly": false
@@ -2588,7 +2588,7 @@
         "german": "Sahne",
         "english": "cream",
         "form": "Sahne",
-        "example": "Alle schneiden das frische Gemüse. Sam möchte Sahne in die Suppe geben. Lea isst aber keine Milchprodukte. Deshalb stellen sie die Sahne extra auf den Tisch. Jeder kann selbst entscheiden.",
+        "example": "Sam möchte Sahne in die Suppe geben.",
         "headword": "die Sahne",
         "headwordEnglish": "cream",
         "contextOnly": false
@@ -2597,7 +2597,7 @@
         "german": "spülen",
         "english": "wash dishes",
         "form": "spülen",
-        "example": "„Setz dich“, sagt Mia. „Wir haben genug. Aber beim Spülen brauchen wir noch jemanden!“",
+        "example": "Aber beim Spülen brauchen wir noch jemanden!“",
         "headword": "spülen",
         "headwordEnglish": "to wash dishes",
         "contextOnly": false
@@ -2661,7 +2661,7 @@
         "german": "Praktikum",
         "english": "internship",
         "form": "Praktikum",
-        "example": "Lea hat bald ein Gespräch für ein Praktikum. Sie sucht ein passendes Hemd. Im Schaufenster sieht sie ein weißes Hemd mit kleinen blauen Punkten. Daneben hängt ein dunkelblaues Hemd.",
+        "example": "Lea hat bald ein Gespräch für ein Praktikum.",
         "headword": "Praktikum",
         "headwordEnglish": "internship",
         "contextOnly": false
@@ -2670,7 +2670,7 @@
         "german": "Stoff",
         "english": "fabric",
         "form": "Stoff",
-        "example": "Das weiße Hemd gefällt ihr, aber der Stoff ist sehr dünn. Das blaue Hemd fühlt sich angenehmer an. Im Spiegel sieht Lea sich lange an.",
+        "example": "Das weiße Hemd gefällt ihr, aber der Stoff ist sehr dünn.",
         "headword": "der Stoff",
         "headwordEnglish": "fabric",
         "contextOnly": false
@@ -2679,7 +2679,7 @@
         "german": "dünn",
         "english": "thin",
         "form": "dünn",
-        "example": "Das weiße Hemd gefällt ihr, aber der Stoff ist sehr dünn. Das blaue Hemd fühlt sich angenehmer an. Im Spiegel sieht Lea sich lange an.",
+        "example": "Das weiße Hemd gefällt ihr, aber der Stoff ist sehr dünn.",
         "headword": "dünn",
         "headwordEnglish": "thin",
         "contextOnly": false
@@ -2688,7 +2688,7 @@
         "german": "angenehm",
         "english": "comfortable / pleasant",
         "form": "angenehm",
-        "example": "Das weiße Hemd gefällt ihr, aber der Stoff ist sehr dünn. Das blaue Hemd fühlt sich angenehmer an. Im Spiegel sieht Lea sich lange an.",
+        "example": "Das blaue Hemd fühlt sich angenehmer an.",
         "headword": "angenehm",
         "headwordEnglish": "comfortable / pleasant",
         "contextOnly": false
@@ -2697,7 +2697,7 @@
         "german": "Schaufenster",
         "english": "shop window",
         "form": "Schaufenster",
-        "example": "Lea hat bald ein Gespräch für ein Praktikum. Sie sucht ein passendes Hemd. Im Schaufenster sieht sie ein weißes Hemd mit kleinen blauen Punkten. Daneben hängt ein dunkelblaues Hemd.",
+        "example": "Im Schaufenster sieht sie ein weißes Hemd mit kleinen blauen Punkten.",
         "headword": "Schaufenster",
         "headwordEnglish": "shop window",
         "contextOnly": false
@@ -2761,7 +2761,7 @@
         "german": "gebraucht",
         "english": "second-hand",
         "form": "gebraucht",
-        "example": "Sam sucht ein gebrauchtes Fahrrad. Ein Nachbar verkauft zwei Räder. Das rote Rad ist fast neu, aber ziemlich groß. Das kleine schwarze Rad ist älter.",
+        "example": "Sam sucht ein gebrauchtes Fahrrad.",
         "headword": "gebraucht",
         "headwordEnglish": "second-hand",
         "contextOnly": false
@@ -2770,7 +2770,7 @@
         "german": "erreichen",
         "english": "reach",
         "form": "erreicht",
-        "example": "Sam fährt mit beiden eine kurze Runde. Auf dem großen Rad erreicht er den Boden kaum. Das kleine Rad passt besser. Allerdings funktioniert das Licht nicht.",
+        "example": "Auf dem großen Rad erreicht er den Boden kaum.",
         "headword": "erreichen",
         "headwordEnglish": "reach",
         "contextOnly": false
@@ -2779,7 +2779,7 @@
         "german": "Boden",
         "english": "ground",
         "form": "Boden",
-        "example": "Sam fährt mit beiden eine kurze Runde. Auf dem großen Rad erreicht er den Boden kaum. Das kleine Rad passt besser. Allerdings funktioniert das Licht nicht.",
+        "example": "Auf dem großen Rad erreicht er den Boden kaum.",
         "headword": "Boden",
         "headwordEnglish": "ground",
         "contextOnly": false
@@ -2788,7 +2788,7 @@
         "german": "Schloss",
         "english": "lock",
         "form": "Schloss",
-        "example": "„Jetzt fehlt nur noch ein gutes Schloss“, sagt der Nachbar. Er zeigt auf Sams dünnes Kabel. Sam schreibt „Schloss“ auf seinen Einkaufszettel. Ein passendes Rad hat er jetzt schon.",
+        "example": "„Jetzt fehlt nur noch ein gutes Schloss“, sagt der Nachbar.",
         "headword": "das Schloss",
         "headwordEnglish": "lock",
         "contextOnly": false
@@ -2797,7 +2797,7 @@
         "german": "Lampe",
         "english": "lamp",
         "form": "Lampe",
-        "example": "Der Nachbar bietet an, die Lampe zu wechseln. Sam wartet im Hof und trinkt einen Tee. Nach zehn Minuten leuchtet das Licht wieder.",
+        "example": "Der Nachbar bietet an, die Lampe zu wechseln.",
         "headword": "Lampe",
         "headwordEnglish": "lamp",
         "contextOnly": false
@@ -2861,7 +2861,7 @@
         "german": "Zutatenliste",
         "english": "ingredient list",
         "form": "Zutatenliste",
-        "example": "Ein Kunde möchte dunkles Brot ohne Nüsse. Mia liest die Zutatenliste und zeigt ihm ein passendes Brot. Eine Frau fragt nach der Marmelade. „Welche möchten Sie? Diese hier?“ Sie möchte kein ganzes Glas kaufen, bevor sie den Geschmack kennt. Mia gibt ihr einen kleinen Löffel zum Probieren.",
+        "example": "Mia liest die Zutatenliste und zeigt ihm ein passendes Brot.",
         "headword": "die Zutatenliste",
         "headwordEnglish": "ingredient list",
         "contextOnly": false
@@ -2870,7 +2870,7 @@
         "german": "Nüsse",
         "english": "nuts",
         "form": "Nüsse",
-        "example": "Ein Kunde möchte dunkles Brot ohne Nüsse. Mia liest die Zutatenliste und zeigt ihm ein passendes Brot. Eine Frau fragt nach der Marmelade. „Welche möchten Sie? Diese hier?“ Sie möchte kein ganzes Glas kaufen, bevor sie den Geschmack kennt. Mia gibt ihr einen kleinen Löffel zum Probieren.",
+        "example": "Ein Kunde möchte dunkles Brot ohne Nüsse.",
         "headword": "die Nuss",
         "headwordEnglish": "nut",
         "contextOnly": false
@@ -2879,7 +2879,7 @@
         "german": "Geschmack",
         "english": "taste",
         "form": "Geschmack",
-        "example": "Ein Kunde möchte dunkles Brot ohne Nüsse. Mia liest die Zutatenliste und zeigt ihm ein passendes Brot. Eine Frau fragt nach der Marmelade. „Welche möchten Sie? Diese hier?“ Sie möchte kein ganzes Glas kaufen, bevor sie den Geschmack kennt. Mia gibt ihr einen kleinen Löffel zum Probieren.",
+        "example": "Sie möchte kein ganzes Glas kaufen, bevor sie den Geschmack kennt.",
         "headword": "Geschmack",
         "headwordEnglish": "taste",
         "contextOnly": false
@@ -2888,7 +2888,7 @@
         "german": "übrig",
         "english": "left over",
         "form": "übrig",
-        "example": "Kurz vor Schluss bleibt noch etwas Brot übrig. Mia packt es in kleine Tüten. Die Nachbarn freuen sich über das Abendessen.",
+        "example": "Kurz vor Schluss bleibt noch etwas Brot übrig.",
         "headword": "übrig",
         "headwordEnglish": "left over",
         "contextOnly": false
@@ -2897,7 +2897,7 @@
         "german": "aufgehoben",
         "english": "saved / kept",
         "form": "aufgehoben",
-        "example": "Zu Hause merkt Mia, dass sie selbst nichts mitgenommen hat. Sam klingelt. Er hält eine Tüte hoch. „Für dich habe ich extra eine aufgehoben.“",
+        "example": "„Für dich habe ich extra eine aufgehoben.“",
         "headword": "aufheben",
         "headwordEnglish": "to keep / pick up",
         "contextOnly": false
@@ -2961,7 +2961,7 @@
         "german": "Gerät",
         "english": "device",
         "form": "Gerät",
-        "example": "Im Geschäft vergleicht sie zwei Geräte. Das größere Tablet ist leichter als das kleinere, aber es kostet viel mehr. Der Verkäufer zeigt ihr auch einen Ständer, der für ihr Handy passt.",
+        "example": "Im Geschäft vergleicht sie zwei Geräte.",
         "headword": "Gerät",
         "headwordEnglish": "device",
         "contextOnly": false
@@ -2970,7 +2970,7 @@
         "german": "leichter",
         "english": "lighter",
         "form": "leichter",
-        "example": "Im Geschäft vergleicht sie zwei Geräte. Das größere Tablet ist leichter als das kleinere, aber es kostet viel mehr. Der Verkäufer zeigt ihr auch einen Ständer, der für ihr Handy passt.",
+        "example": "Das größere Tablet ist leichter als das kleinere, aber es kostet viel mehr.",
         "headword": "leicht",
         "headwordEnglish": "light / easy",
         "contextOnly": false
@@ -2979,7 +2979,7 @@
         "german": "Ständer",
         "english": "stand",
         "form": "Ständer",
-        "example": "Im Geschäft vergleicht sie zwei Geräte. Das größere Tablet ist leichter als das kleinere, aber es kostet viel mehr. Der Verkäufer zeigt ihr auch einen Ständer, der für ihr Handy passt.",
+        "example": "Der Verkäufer zeigt ihr auch einen Ständer, der für ihr Handy passt.",
         "headword": "Ständer",
         "headwordEnglish": "stand",
         "contextOnly": false
@@ -2988,7 +2988,7 @@
         "german": "deutlich",
         "english": "clear",
         "form": "deutlich",
-        "example": "Am Abend stellt Lea das Handy auf den Ständer und ruft ihre Großmutter an. Das Bild ist klein, aber deutlich. Beide können sich gut hören. Die Großmutter zeigt ihr sogar den neuen Garten.",
+        "example": "Das Bild ist klein, aber deutlich.",
         "headword": "deutlich",
         "headwordEnglish": "clear",
         "contextOnly": false
@@ -2997,7 +2997,7 @@
         "german": "zurücklegen",
         "english": "put aside / save",
         "form": "legt sie für einen Besuch zurück",
-        "example": "Lea behält ihr Handy. Das gesparte Geld legt sie für einen Besuch zurück.",
+        "example": "Das gesparte Geld legt sie für einen Besuch zurück.",
         "headword": "zurücklegen",
         "headwordEnglish": "to put aside / save",
         "contextOnly": false
@@ -3061,7 +3061,7 @@
         "german": "Rucksack",
         "english": "backpack",
         "form": "Rucksack",
-        "example": "Sam hat seine Schulfreundin Nora lange nicht gesehen. Sie treffen sich am Bahnhof. Nora schreibt: „Ich bin die Frau, die einen roten Rucksack trägt. Ich warte vor der Bäckerei.“",
+        "example": "Nora schreibt: „Ich bin die Frau, die einen roten Rucksack trägt.",
         "headword": "der Rucksack",
         "headwordEnglish": "backpack",
         "contextOnly": false
@@ -3070,7 +3070,7 @@
         "german": "begrüßen",
         "english": "greet",
         "form": "begrüßen",
-        "example": "Am Bahnhof sieht Sam zwei Frauen mit roten Rucksäcken. Eine telefoniert, die andere liest. Er möchte nicht die falsche Person begrüßen. Also ruft er Nora an.",
+        "example": "Er möchte nicht die falsche Person begrüßen.",
         "headword": "begrüßen",
         "headwordEnglish": "greet",
         "contextOnly": false
@@ -3079,7 +3079,7 @@
         "german": "winken",
         "english": "wave",
         "form": "winkt",
-        "example": "Die Frau mit dem Buch nimmt ihr Telefon heraus. Sam winkt. Nora winkt zurück.",
+        "example": "Sam winkt.",
         "headword": "winken",
         "headwordEnglish": "to wave",
         "contextOnly": false
@@ -3088,7 +3088,7 @@
         "german": "Klassenfoto",
         "english": "class photo",
         "form": "Klassenfoto",
-        "example": "Im Café erzählen sie von ihrer Schulzeit. Nora zeigt ihm ein altes Klassenfoto, das sie gestern gefunden hat.",
+        "example": "Nora zeigt ihm ein altes Klassenfoto, das sie gestern gefunden hat.",
         "headword": "das Klassenfoto",
         "headwordEnglish": "class photo",
         "contextOnly": false
@@ -3097,7 +3097,7 @@
         "german": "erkennen",
         "english": "recognise",
         "form": "erkennt",
-        "example": "„Da bist du!“, sagt sie. Sam erkennt seinen alten Pullover sofort. „Gut, dass ich den nicht mehr trage. Sonst erkennst du mich immer nur an meiner Kleidung.“",
+        "example": "Sam erkennt seinen alten Pullover sofort.",
         "headword": "erkennen",
         "headwordEnglish": "recognise",
         "contextOnly": false
@@ -3161,7 +3161,7 @@
         "german": "Lauftreff",
         "english": "running group",
         "form": "Lauftreff",
-        "example": "Mia meldet sich für einen Lauftreff an. Vor dem ersten Training fühlt sie sich nervös. Sie bewegt sich zwar gern, läuft aber selten.",
+        "example": "Mia meldet sich für einen Lauftreff an.",
         "headword": "der Lauftreff",
         "headwordEnglish": "running group",
         "contextOnly": false
@@ -3170,7 +3170,7 @@
         "german": "außer Atem",
         "english": "out of breath",
         "form": "außer Atem",
-        "example": "Der Trainer fragt nach ihren Erfahrungen. Mia erklärt, dass sie schnell außer Atem kommt. Er zeigt ihr die langsame Gruppe. Dort wechseln sich Laufen und Gehen ab.",
+        "example": "Mia erklärt, dass sie schnell außer Atem kommt.",
         "headword": "der Atem",
         "headwordEnglish": "breath",
         "contextOnly": false
@@ -3179,7 +3179,7 @@
         "german": "abwechseln",
         "english": "alternate",
         "form": "wechseln sich Laufen und Gehen ab",
-        "example": "Der Trainer fragt nach ihren Erfahrungen. Mia erklärt, dass sie schnell außer Atem kommt. Er zeigt ihr die langsame Gruppe. Dort wechseln sich Laufen und Gehen ab.",
+        "example": "Dort wechseln sich Laufen und Gehen ab.",
         "headword": "abwechseln",
         "headwordEnglish": "to alternate",
         "contextOnly": false
@@ -3188,7 +3188,7 @@
         "german": "Tempo",
         "english": "pace",
         "form": "Tempo",
-        "example": "Nach einer Runde möchte Mia schneller werden. Neben ihr läuft ein älterer Mann ganz ruhig weiter. „Ich konzentriere mich heute auf ein gutes Tempo“, sagt er. „Morgen möchte ich mich noch bewegen können.“",
+        "example": "„Ich konzentriere mich heute auf ein gutes Tempo“, sagt er.",
         "headword": "Tempo",
         "headwordEnglish": "pace",
         "contextOnly": false
@@ -3197,7 +3197,7 @@
         "german": "sich vergleichen",
         "english": "compare oneself",
         "form": "vergleicht sich",
-        "example": "Am Ende hat Mia zwanzig Minuten mitgemacht. Sie vergleicht sich nicht mehr mit der schnellsten Gruppe. Sie freut sich auf nächsten Dienstag. Für heute reicht die kleine Runde.",
+        "example": "Sie vergleicht sich nicht mehr mit der schnellsten Gruppe.",
         "headword": "sich vergleichen",
         "headwordEnglish": "to compare oneself",
         "contextOnly": false
@@ -3261,7 +3261,7 @@
         "german": "Werkstatt",
         "english": "workshop",
         "form": "Werkstatt",
-        "example": "„Heute habe ich in der Fahrradwerkstatt angefangen. Zuerst hat mir meine Kollegin die Räume gezeigt. Dann habe ich die Werkzeuge sortiert und zwei Kunden begrüßt. Ein Mann ist mit einem kaputten Fahrrad gekommen. Ich habe seinen Namen und seine Telefonnummer aufgeschrieben.",
+        "example": "Lea schreibt Sam nach ihrem ersten Praktikumstag:\n\n„Heute habe ich in der Fahrradwerkstatt angefangen.",
         "headword": "Werkstatt",
         "headwordEnglish": "workshop",
         "contextOnly": false
@@ -3270,7 +3270,7 @@
         "german": "Werkzeuge",
         "english": "tools",
         "form": "Werkzeuge",
-        "example": "„Heute habe ich in der Fahrradwerkstatt angefangen. Zuerst hat mir meine Kollegin die Räume gezeigt. Dann habe ich die Werkzeuge sortiert und zwei Kunden begrüßt. Ein Mann ist mit einem kaputten Fahrrad gekommen. Ich habe seinen Namen und seine Telefonnummer aufgeschrieben.",
+        "example": "Dann habe ich die Werkzeuge sortiert und zwei Kunden begrüßt.",
         "headword": "das Werkzeug",
         "headwordEnglish": "tool",
         "contextOnly": false
@@ -3279,7 +3279,7 @@
         "german": "Reparatur",
         "english": "repair",
         "form": "Reparatur",
-        "example": "Nach der Pause habe ich bei einer Reparatur zugesehen. Meine Kollegin hat alles langsam erklärt. Später durfte ich selbst einen Reifen aufpumpen. Das war leichter als erwartet.",
+        "example": "Nach der Pause habe ich bei einer Reparatur zugesehen.",
         "headword": "Reparatur",
         "headwordEnglish": "repair",
         "contextOnly": false
@@ -3288,7 +3288,7 @@
         "german": "aufpumpen",
         "english": "pump up",
         "form": "aufpumpen",
-        "example": "Nach der Pause habe ich bei einer Reparatur zugesehen. Meine Kollegin hat alles langsam erklärt. Später durfte ich selbst einen Reifen aufpumpen. Das war leichter als erwartet.",
+        "example": "Später durfte ich selbst einen Reifen aufpumpen.",
         "headword": "aufpumpen",
         "headwordEnglish": "to pump up",
         "contextOnly": false
@@ -3297,7 +3297,7 @@
         "german": "Fleck",
         "english": "stain",
         "form": "Fleck",
-        "example": "Ich bin mit schwarzen Händen, aber guter Laune nach Hause gefahren. Morgen nehme ich eine andere Hose mit. Meine helle Hose hat jetzt einen großen dunklen Fleck!",
+        "example": "Meine helle Hose hat jetzt einen großen dunklen Fleck!",
         "headword": "der Fleck",
         "headwordEnglish": "stain",
         "contextOnly": false
@@ -3361,7 +3361,7 @@
         "german": "früher",
         "english": "in the past",
         "form": "früher",
-        "example": "Vor dem Gebäude trifft Nora ihren früheren Lehrer. Sie sprechen über den Schulweg. Nora musste jeden Morgen vierzig Minuten mit dem Bus fahren. Sie konnte im Bus lesen, aber oft war es zu laut.",
+        "example": "Vor dem Gebäude trifft Nora ihren früheren Lehrer.",
         "headword": "früher",
         "headwordEnglish": "in the past",
         "contextOnly": false
@@ -3370,7 +3370,7 @@
         "german": "Sporthalle",
         "english": "sports hall",
         "form": "Sporthalle",
-        "example": "Nora besucht ihre alte Schule. Heute gibt es dort eine neue Sporthalle und einen Computerraum. Als sie Schülerin war, hatten sie nur eine kleine Halle. Computer standen damals in der Bibliothek.",
+        "example": "Heute gibt es dort eine neue Sporthalle und einen Computerraum.",
         "headword": "die Sporthalle",
         "headwordEnglish": "sports hall",
         "contextOnly": false
@@ -3379,7 +3379,7 @@
         "german": "Berufsschule",
         "english": "vocational school",
         "form": "Berufsschule",
-        "example": "Heute wohnt sie zehn Minuten von ihrer Berufsschule entfernt. Trotzdem kommt sie manchmal knapp an.",
+        "example": "Heute wohnt sie zehn Minuten von ihrer Berufsschule entfernt.",
         "headword": "die Berufsschule",
         "headwordEnglish": "vocational school",
         "contextOnly": false
@@ -3388,7 +3388,7 @@
         "german": "entfernt",
         "english": "away / distant",
         "form": "entfernt",
-        "example": "Heute wohnt sie zehn Minuten von ihrer Berufsschule entfernt. Trotzdem kommt sie manchmal knapp an.",
+        "example": "Heute wohnt sie zehn Minuten von ihrer Berufsschule entfernt.",
         "headword": "entfernt",
         "headwordEnglish": "away / distant",
         "contextOnly": false
@@ -3461,7 +3461,7 @@
         "german": "möbliert",
         "english": "furnished",
         "form": "möbliert",
-        "example": "Er sucht ein Zimmer für vier Wochen. Ein Hotel ist ihm zu teuer. Schließlich findet er ein möbliertes Zimmer bei einer Studentin. Sie besucht in dieser Zeit ihre Eltern.",
+        "example": "Schließlich findet er ein möbliertes Zimmer bei einer Studentin.",
         "headword": "möbliert",
         "headwordEnglish": "furnished",
         "contextOnly": false
@@ -3470,7 +3470,7 @@
         "german": "Schlüsselübergabe",
         "english": "key handover",
         "form": "Schlüsselübergabe",
-        "example": "Am Telefon besprechen sie die Schlüsselübergabe. Sam kommt am Sonntag mit dem Zug. Die Studentin wird bis zum Nachmittag warten.",
+        "example": "Am Telefon besprechen sie die Schlüsselübergabe.",
         "headword": "die Schlüsselübergabe",
         "headwordEnglish": "key handover",
         "contextOnly": false
@@ -3479,7 +3479,7 @@
         "german": "hoffentlich",
         "english": "hopefully",
         "form": "hoffentlich",
-        "example": "Sam lächelt. „Bis dahin kenne ich hoffentlich mehr als den Weg zum Café.“ Er schreibt drei Orte auf, die er an seinen freien Tagen sehen möchte.",
+        "example": "„Bis dahin kenne ich hoffentlich mehr als den Weg zum Café.“",
         "headword": "hoffentlich",
         "headwordEnglish": "hopefully",
         "contextOnly": false
@@ -3488,7 +3488,7 @@
         "german": "organisieren",
         "english": "organise",
         "form": "organisieren",
-        "example": "Im Sommer wird Sam einen Monat in Hamburg arbeiten. Ein Freund braucht Hilfe in seinem Café. Sam freut sich auf die neue Stadt, aber er muss zuerst einiges organisieren.",
+        "example": "Sam freut sich auf die neue Stadt, aber er muss zuerst einiges organisieren.",
         "headword": "organisieren",
         "headwordEnglish": "organise",
         "contextOnly": false
@@ -3497,7 +3497,7 @@
         "german": "besprechen",
         "english": "discuss",
         "form": "besprechen",
-        "example": "Am Telefon besprechen sie die Schlüsselübergabe. Sam kommt am Sonntag mit dem Zug. Die Studentin wird bis zum Nachmittag warten.",
+        "example": "Am Telefon besprechen sie die Schlüsselübergabe.",
         "headword": "besprechen",
         "headwordEnglish": "discuss",
         "contextOnly": false
@@ -3562,7 +3562,7 @@
         "german": "enttäuscht",
         "english": "disappointed",
         "form": "enttäuscht",
-        "example": "Lea ist enttäuscht. Mia ist nicht zu ihrem kleinen Konzert gekommen. Am nächsten Morgen schreibt Mia:",
+        "example": "Lea ist enttäuscht.",
         "headword": "enttäuscht",
         "headwordEnglish": "disappointed",
         "contextOnly": false
@@ -3571,7 +3571,7 @@
         "german": "Bescheid sagen",
         "english": "let someone know",
         "form": "Bescheid gesagt",
-        "example": "„Es tut mir leid, dass ich gestern gefehlt habe. Ich musste länger arbeiten, weil meine Kollegin krank war. Ich wollte dir eine Nachricht schicken, aber mein Akku war leer. Das erklärt meine Abwesenheit, aber ich habe leider nicht rechtzeitig Bescheid gesagt.“",
+        "example": "Das erklärt meine Abwesenheit, aber ich habe leider nicht rechtzeitig Bescheid gesagt.“",
         "headword": "Bescheid sagen",
         "headwordEnglish": "to let someone know",
         "contextOnly": true
@@ -3580,7 +3580,7 @@
         "german": "Abwesenheit",
         "english": "absence",
         "form": "Abwesenheit",
-        "example": "„Es tut mir leid, dass ich gestern gefehlt habe. Ich musste länger arbeiten, weil meine Kollegin krank war. Ich wollte dir eine Nachricht schicken, aber mein Akku war leer. Das erklärt meine Abwesenheit, aber ich habe leider nicht rechtzeitig Bescheid gesagt.“",
+        "example": "Das erklärt meine Abwesenheit, aber ich habe leider nicht rechtzeitig Bescheid gesagt.“",
         "headword": "Abwesenheit",
         "headwordEnglish": "absence",
         "contextOnly": false
@@ -3589,7 +3589,7 @@
         "german": "Erklärung",
         "english": "explanation",
         "form": "Erklärung",
-        "example": "Lea liest die Nachricht zweimal. Sie war vor allem traurig, weil sie nicht wusste, was passiert war. Sie antwortet: „Danke für deine Erklärung. Nächstes Mal sag bitte früher Bescheid. Das Konzert war schön. Sam hat ein kurzes Video gemacht.“",
+        "example": "Sie antwortet: „Danke für deine Erklärung.",
         "headword": "Erklärung",
         "headwordEnglish": "explanation",
         "contextOnly": false
@@ -3598,7 +3598,7 @@
         "german": "Akku",
         "english": "battery",
         "form": "Akku",
-        "example": "„Es tut mir leid, dass ich gestern gefehlt habe. Ich musste länger arbeiten, weil meine Kollegin krank war. Ich wollte dir eine Nachricht schicken, aber mein Akku war leer. Das erklärt meine Abwesenheit, aber ich habe leider nicht rechtzeitig Bescheid gesagt.“",
+        "example": "Ich wollte dir eine Nachricht schicken, aber mein Akku war leer.",
         "headword": "Akku",
         "headwordEnglish": "battery",
         "contextOnly": false
@@ -3662,7 +3662,7 @@
         "german": "normalerweise",
         "english": "usually",
         "form": "normalerweise",
-        "example": "Wenn Sams Eltern ihn besuchen, kocht er normalerweise selbst. Seine Mutter bringt dann immer einen Kuchen mit. Dieses Mal möchte Sam etwas Neues ausprobieren. Er reserviert einen Tisch in einem kleinen Restaurant.",
+        "example": "Wenn Sams Eltern ihn besuchen, kocht er normalerweise selbst.",
         "headword": "normalerweise",
         "headwordEnglish": "usually",
         "contextOnly": false
@@ -3671,7 +3671,7 @@
         "german": "reservieren",
         "english": "reserve",
         "form": "reserviert",
-        "example": "Wenn Sams Eltern ihn besuchen, kocht er normalerweise selbst. Seine Mutter bringt dann immer einen Kuchen mit. Dieses Mal möchte Sam etwas Neues ausprobieren. Er reserviert einen Tisch in einem kleinen Restaurant.",
+        "example": "Er reserviert einen Tisch in einem kleinen Restaurant.",
         "headword": "reservieren",
         "headwordEnglish": "reserve",
         "contextOnly": false
@@ -3680,7 +3680,7 @@
         "german": "Gericht",
         "english": "dish / meal",
         "form": "Gericht",
-        "example": "Als seine Eltern am Samstag ankommen, regnet es stark. Alle sind froh über den warmen Platz am Fenster. Sam empfiehlt die Suppe. Sein Vater bestellt ein Gericht mit Fisch und fragt nach den Zutaten.",
+        "example": "Sein Vater bestellt ein Gericht mit Fisch und fragt nach den Zutaten.",
         "headword": "Gericht",
         "headwordEnglish": "dish / meal",
         "contextOnly": false
@@ -3689,7 +3689,7 @@
         "german": "Zutaten",
         "english": "ingredients",
         "form": "Zutaten",
-        "example": "Als seine Eltern am Samstag ankommen, regnet es stark. Alle sind froh über den warmen Platz am Fenster. Sam empfiehlt die Suppe. Sein Vater bestellt ein Gericht mit Fisch und fragt nach den Zutaten.",
+        "example": "Sein Vater bestellt ein Gericht mit Fisch und fragt nach den Zutaten.",
         "headword": "die Zutat",
         "headwordEnglish": "ingredient",
         "contextOnly": false
@@ -3698,7 +3698,7 @@
         "german": "Dose",
         "english": "tin / container",
         "form": "Dose",
-        "example": "Nach dem Essen gehen sie nach Hause. Im Koffer seiner Mutter ist eine Dose. Natürlich hat sie auch diesmal einen Kuchen mitgebracht.",
+        "example": "Im Koffer seiner Mutter ist eine Dose.",
         "headword": "die Dose",
         "headwordEnglish": "tin / container",
         "contextOnly": false
@@ -3762,7 +3762,7 @@
         "german": "umsteigen",
         "english": "change trains",
         "form": "umsteigen",
-        "example": "Die Mitarbeiterin erklärt, dass auf der Strecke gebaut wird. Mia muss einmal umsteigen. Sie zeigt ihr eine Verbindung mit nur sechs Minuten Zeit zum Umsteigen.",
+        "example": "Mia muss einmal umsteigen.",
         "headword": "umsteigen",
         "headwordEnglish": "change trains",
         "contextOnly": false
@@ -3771,7 +3771,7 @@
         "german": "Verbindung",
         "english": "connection",
         "form": "Verbindung",
-        "example": "Die Mitarbeiterin erklärt, dass auf der Strecke gebaut wird. Mia muss einmal umsteigen. Sie zeigt ihr eine Verbindung mit nur sechs Minuten Zeit zum Umsteigen.",
+        "example": "Sie zeigt ihr eine Verbindung mit nur sechs Minuten Zeit zum Umsteigen.",
         "headword": "Verbindung",
         "headwordEnglish": "connection",
         "contextOnly": false
@@ -3780,7 +3780,7 @@
         "german": "Strecke",
         "english": "route",
         "form": "Strecke",
-        "example": "Die Mitarbeiterin erklärt, dass auf der Strecke gebaut wird. Mia muss einmal umsteigen. Sie zeigt ihr eine Verbindung mit nur sechs Minuten Zeit zum Umsteigen.",
+        "example": "Die Mitarbeiterin erklärt, dass auf der Strecke gebaut wird.",
         "headword": "Strecke",
         "headwordEnglish": "route",
         "contextOnly": false
@@ -3789,7 +3789,7 @@
         "german": "Ankunftszeit",
         "english": "arrival time",
         "form": "Ankunftszeit",
-        "example": "Mia entscheidet sich dafür. Sie schreibt ihrer Freundin die neue Ankunftszeit. Dann fragt sie noch, von welchem Gleis der Zug abfährt. Auf dem Weg zum Gleis kauft sie ein Brötchen. Heute hat sie sogar Zeit, es im Sitzen zu essen.",
+        "example": "Sie schreibt ihrer Freundin die neue Ankunftszeit.",
         "headword": "Ankunftszeit",
         "headwordEnglish": "arrival time",
         "contextOnly": false
@@ -3798,7 +3798,7 @@
         "german": "ausreichen",
         "english": "be enough",
         "form": "das reicht",
-        "example": "„Wissen Sie, ob das reicht? Ich kenne den Bahnhof nicht.“",
+        "example": "„Wissen Sie, ob das reicht?",
         "headword": "ausreichen",
         "headwordEnglish": "be enough",
         "contextOnly": false
@@ -3862,7 +3862,7 @@
         "german": "Abendkurs",
         "english": "evening course",
         "form": "Abendkurs",
-        "example": "Nora beginnt neben ihrer Arbeit einen Abendkurs. Sie versucht, jeden Tag zwei Stunden zu lernen. Schon nach drei Tagen ist sie erschöpft. Im Unterricht kann sie sich kaum konzentrieren.",
+        "example": "Nora beginnt neben ihrer Arbeit einen Abendkurs.",
         "headword": "der Abendkurs",
         "headwordEnglish": "evening course",
         "contextOnly": false
@@ -3871,7 +3871,7 @@
         "german": "erschöpft",
         "english": "exhausted",
         "form": "erschöpft",
-        "example": "Nora beginnt neben ihrer Arbeit einen Abendkurs. Sie versucht, jeden Tag zwei Stunden zu lernen. Schon nach drei Tagen ist sie erschöpft. Im Unterricht kann sie sich kaum konzentrieren.",
+        "example": "Schon nach drei Tagen ist sie erschöpft.",
         "headword": "erschöpft",
         "headwordEnglish": "exhausted",
         "contextOnly": false
@@ -3880,7 +3880,7 @@
         "german": "regelmäßig",
         "english": "regularly",
         "form": "regelmäßig",
-        "example": "Nach zwei Wochen schaut Nora in ihr Heft. Nicht jeder Tag ist vollständig, aber sie hat regelmäßig gelernt. Besonders die Gespräche fallen ihr leichter.",
+        "example": "Nicht jeder Tag ist vollständig, aber sie hat regelmäßig gelernt.",
         "headword": "regelmäßig",
         "headwordEnglish": "regularly",
         "contextOnly": false
@@ -3889,7 +3889,7 @@
         "german": "beschließen",
         "english": "decide",
         "form": "beschließt",
-        "example": "Sie beschließt, den kleinen Plan zu behalten. Neben „Deutsch lernen“ schreibt sie noch einen Punkt: „Pausen machen“. Den streicht sie nicht mehr. Für das nächste Gespräch sammelt sie schon Wörter aus ihrer Arbeit.",
+        "example": "Sie beschließt, den kleinen Plan zu behalten.",
         "headword": "beschließen",
         "headwordEnglish": "decide",
         "contextOnly": false
@@ -3898,7 +3898,7 @@
         "german": "wiederholen",
         "english": "review / repeat",
         "form": "wiederholen",
-        "example": "Ihre Kursleiterin empfiehlt, kleinere Schritte zu planen. Nora entscheidet sich, morgens zehn Minuten Wörter zu wiederholen. Zweimal pro Woche liest sie einen kurzen Text. Am Sonntag übt sie mit einer Freundin ein Gespräch.",
+        "example": "Nora entscheidet sich, morgens zehn Minuten Wörter zu wiederholen.",
         "headword": "wiederholen",
         "headwordEnglish": "review / repeat",
         "contextOnly": false
@@ -3962,7 +3962,7 @@
         "german": "Hof",
         "english": "courtyard",
         "form": "Hof",
-        "example": "Die Nachbarn möchten im Hof mehr Zeit zusammen verbringen. Bisher gibt es dort nur Mülltonnen und Fahrräder. Lea schlägt eine Bank vor, damit auch ältere Nachbarn bequem sitzen können.",
+        "example": "Die Nachbarn möchten im Hof mehr Zeit zusammen verbringen.",
         "headword": "Hof",
         "headwordEnglish": "courtyard",
         "contextOnly": false
@@ -3971,7 +3971,7 @@
         "german": "Mülltonne",
         "english": "rubbish bin",
         "form": "Mülltonne",
-        "example": "Die Nachbarn möchten im Hof mehr Zeit zusammen verbringen. Bisher gibt es dort nur Mülltonnen und Fahrräder. Lea schlägt eine Bank vor, damit auch ältere Nachbarn bequem sitzen können.",
+        "example": "Bisher gibt es dort nur Mülltonnen und Fahrräder.",
         "headword": "Mülltonne",
         "headwordEnglish": "rubbish bin",
         "contextOnly": false
@@ -3980,7 +3980,7 @@
         "german": "Erlaubnis",
         "english": "permission",
         "form": "Erlaubnis",
-        "example": "Sam fragt den Vermieter um Erlaubnis. Mia sucht im Internet nach einer gebrauchten Bank, um Geld zu sparen. Sie findet eine aus Holz. Die Farbe ist alt, aber die Bank ist stabil.",
+        "example": "Sam fragt den Vermieter um Erlaubnis.",
         "headword": "Erlaubnis",
         "headwordEnglish": "permission",
         "contextOnly": false
@@ -3989,7 +3989,7 @@
         "german": "stabil",
         "english": "sturdy",
         "form": "stabil",
-        "example": "Sam fragt den Vermieter um Erlaubnis. Mia sucht im Internet nach einer gebrauchten Bank, um Geld zu sparen. Sie findet eine aus Holz. Die Farbe ist alt, aber die Bank ist stabil.",
+        "example": "Die Farbe ist alt, aber die Bank ist stabil.",
         "headword": "stabil",
         "headwordEnglish": "sturdy",
         "contextOnly": false
@@ -3998,7 +3998,7 @@
         "german": "streichen",
         "english": "paint",
         "form": "streichen",
-        "example": "Am Samstag schleifen und streichen die Nachbarn das Holz. Zwei Kinder malen kleine Blumen auf die Seiten. Danach muss die Farbe trocknen.",
+        "example": "Am Samstag schleifen und streichen die Nachbarn das Holz.",
         "headword": "streichen",
         "headwordEnglish": "paint",
         "contextOnly": false
@@ -4062,7 +4062,7 @@
         "german": "einpacken",
         "english": "wrap",
         "form": "packt es ein",
-        "example": "Sam kauft seiner Schwester ein Buch zum Geburtstag. Er packt es ein und schreibt ihr eine Karte. Weil sie in einer anderen Stadt wohnt, schickt er ihr beides mit der Post.",
+        "example": "Er packt es ein und schreibt ihr eine Karte.",
         "headword": "einpacken",
         "headwordEnglish": "to wrap",
         "contextOnly": false
@@ -4071,7 +4071,7 @@
         "german": "beides",
         "english": "both things",
         "form": "beides",
-        "example": "Sam kauft seiner Schwester ein Buch zum Geburtstag. Er packt es ein und schreibt ihr eine Karte. Weil sie in einer anderen Stadt wohnt, schickt er ihr beides mit der Post.",
+        "example": "Weil sie in einer anderen Stadt wohnt, schickt er ihr beides mit der Post.",
         "headword": "beides",
         "headwordEnglish": "both things",
         "contextOnly": false
@@ -4080,7 +4080,7 @@
         "german": "Exemplar",
         "english": "copy of a book",
         "form": "Exemplar",
-        "example": "Nun liest jeder sein Exemplar. Jeden Sonntag erzählen sie einander am Telefon, welche Stelle sie besonders schön finden. Am Ende war das doppelte Geschenk doch eine gute Idee.",
+        "example": "Nun liest jeder sein Exemplar.",
         "headword": "Exemplar",
         "headwordEnglish": "copy of a book",
         "contextOnly": false
@@ -4089,7 +4089,7 @@
         "german": "unabhängig",
         "english": "independently",
         "form": "unabhängig",
-        "example": "Sam ruft sie an. Beide lachen lange. Sie haben sich unabhängig voneinander das gleiche Geschenk ausgesucht.",
+        "example": "Sie haben sich unabhängig voneinander das gleiche Geschenk ausgesucht.",
         "headword": "unabhängig",
         "headwordEnglish": "independently",
         "contextOnly": false
@@ -4098,7 +4098,7 @@
         "german": "einander",
         "english": "each other",
         "form": "einander",
-        "example": "Sam ruft sie an. Beide lachen lange. Sie haben sich unabhängig voneinander das gleiche Geschenk ausgesucht.",
+        "example": "Sie haben sich unabhängig voneinander das gleiche Geschenk ausgesucht.",
         "headword": "einander",
         "headwordEnglish": "each other",
         "contextOnly": false
@@ -4162,7 +4162,7 @@
         "german": "Haupteingang",
         "english": "main entrance",
         "form": "Haupteingang",
-        "example": "Mia und Nora möchten nach der Arbeit ein Konzert besuchen. Nora schreibt: „Ich fahre heute um sechs mit der Straßenbahn zur Halle. Treffen wir uns vor dem Haupteingang?“",
+        "example": "Treffen wir uns vor dem Haupteingang?“",
         "headword": "der Haupteingang",
         "headwordEnglish": "main entrance",
         "contextOnly": false
@@ -4171,7 +4171,7 @@
         "german": "Eintrittskarte",
         "english": "admission ticket",
         "form": "Eintrittskarte",
-        "example": "Mia muss länger im Büro bleiben. Sie kann erst um halb sieben losfahren. Deshalb schlägt sie vor, sich direkt an ihren Plätzen zu treffen. Beide haben ihre Eintrittskarten auf dem Handy.",
+        "example": "Beide haben ihre Eintrittskarten auf dem Handy.",
         "headword": "Eintrittskarte",
         "headwordEnglish": "admission ticket",
         "contextOnly": false
@@ -4180,7 +4180,7 @@
         "german": "ausdrucken",
         "english": "print out",
         "form": "ausgedruckt",
-        "example": "Mia kommt kurz vor Beginn. Sie hat ihre Karte zusätzlich ausgedruckt. Nora zeigt auf das Papier. „Nächstes Mal mache ich das auch.“",
+        "example": "Sie hat ihre Karte zusätzlich ausgedruckt.",
         "headword": "ausdrucken",
         "headwordEnglish": "to print out",
         "contextOnly": false
@@ -4189,7 +4189,7 @@
         "german": "Beginn",
         "english": "start",
         "form": "Beginn",
-        "example": "Mia kommt kurz vor Beginn. Sie hat ihre Karte zusätzlich ausgedruckt. Nora zeigt auf das Papier. „Nächstes Mal mache ich das auch.“",
+        "example": "Mia kommt kurz vor Beginn.",
         "headword": "der Beginn",
         "headwordEnglish": "start",
         "contextOnly": false
@@ -4198,7 +4198,7 @@
         "german": "zusätzlich",
         "english": "additionally",
         "form": "zusätzlich",
-        "example": "Mia kommt kurz vor Beginn. Sie hat ihre Karte zusätzlich ausgedruckt. Nora zeigt auf das Papier. „Nächstes Mal mache ich das auch.“",
+        "example": "Sie hat ihre Karte zusätzlich ausgedruckt.",
         "headword": "zusätzlich",
         "headwordEnglish": "additionally",
         "contextOnly": false
@@ -4263,7 +4263,7 @@
         "german": "absagen",
         "english": "cancel",
         "form": "sagen ab",
-        "example": "„Wir sagen ab“, meint ein Nachbar. Lea möchte trotzdem feiern. Im Gemeinschaftsraum ist Platz, aber dort stehen noch viele Kartons. Deshalb müssen zuerst alle mithelfen.",
+        "example": "„Wir sagen ab“, meint ein Nachbar.",
         "headword": "absagen",
         "headwordEnglish": "cancel",
         "contextOnly": false
@@ -4272,7 +4272,7 @@
         "german": "stattfinden",
         "english": "take place",
         "form": "findet statt",
-        "example": "Sam schreibt in die Gruppe: „Das Fest findet statt. Bringt bitte trockene Schuhe mit, sonst wird der Boden ganz nass.“",
+        "example": "Sam schreibt in die Gruppe: „Das Fest findet statt.",
         "headword": "stattfinden",
         "headwordEnglish": "take place",
         "contextOnly": false
@@ -4281,7 +4281,7 @@
         "german": "Gemeinschaftsraum",
         "english": "shared room",
         "form": "Gemeinschaftsraum",
-        "example": "„Wir sagen ab“, meint ein Nachbar. Lea möchte trotzdem feiern. Im Gemeinschaftsraum ist Platz, aber dort stehen noch viele Kartons. Deshalb müssen zuerst alle mithelfen.",
+        "example": "Im Gemeinschaftsraum ist Platz, aber dort stehen noch viele Kartons.",
         "headword": "der Gemeinschaftsraum",
         "headwordEnglish": "shared room",
         "contextOnly": false
@@ -4290,7 +4290,7 @@
         "german": "Karton",
         "english": "cardboard box",
         "form": "Karton",
-        "example": "„Wir sagen ab“, meint ein Nachbar. Lea möchte trotzdem feiern. Im Gemeinschaftsraum ist Platz, aber dort stehen noch viele Kartons. Deshalb müssen zuerst alle mithelfen.",
+        "example": "Im Gemeinschaftsraum ist Platz, aber dort stehen noch viele Kartons.",
         "headword": "der Karton",
         "headwordEnglish": "cardboard box",
         "contextOnly": false
@@ -4299,7 +4299,7 @@
         "german": "abbauen",
         "english": "take down",
         "form": "abbauen",
-        "example": "Am Abend hört der Regen auf. Niemand möchte die Stadt aus Kartons abbauen. Deshalb machen sie noch ein Foto. Das nächste Fest planen die Kinder schon mit einem Dach.",
+        "example": "Niemand möchte die Stadt aus Kartons abbauen.",
         "headword": "abbauen",
         "headwordEnglish": "take down",
         "contextOnly": false
@@ -4363,7 +4363,7 @@
         "german": "Reißverschluss",
         "english": "zipper",
         "form": "Reißverschluss",
-        "example": "Mia bringt ihre gelbe Jacke mit. Der Reißverschluss ist kaputt. Eine Helferin schaut ihn an. Die ganze Jacke muss nicht ersetzt werden. Zuerst wird der alte Verschluss vorsichtig entfernt. Dann wird ein neuer eingenäht. Mia darf beim Festhalten helfen.",
+        "example": "Der Reißverschluss ist kaputt.",
         "headword": "Reißverschluss",
         "headwordEnglish": "zipper",
         "contextOnly": false
@@ -4372,7 +4372,7 @@
         "german": "ersetzen",
         "english": "replace",
         "form": "ersetzt",
-        "example": "Mia bringt ihre gelbe Jacke mit. Der Reißverschluss ist kaputt. Eine Helferin schaut ihn an. Die ganze Jacke muss nicht ersetzt werden. Zuerst wird der alte Verschluss vorsichtig entfernt. Dann wird ein neuer eingenäht. Mia darf beim Festhalten helfen.",
+        "example": "Die ganze Jacke muss nicht ersetzt werden.",
         "headword": "ersetzen",
         "headwordEnglish": "replace",
         "contextOnly": false
@@ -4381,7 +4381,7 @@
         "german": "entfernen",
         "english": "remove",
         "form": "entfernt",
-        "example": "Mia bringt ihre gelbe Jacke mit. Der Reißverschluss ist kaputt. Eine Helferin schaut ihn an. Die ganze Jacke muss nicht ersetzt werden. Zuerst wird der alte Verschluss vorsichtig entfernt. Dann wird ein neuer eingenäht. Mia darf beim Festhalten helfen.",
+        "example": "Zuerst wird der alte Verschluss vorsichtig entfernt.",
         "headword": "entfernen",
         "headwordEnglish": "remove",
         "contextOnly": false
@@ -4390,7 +4390,7 @@
         "german": "einnähen",
         "english": "sew in",
         "form": "eingenäht",
-        "example": "Mia bringt ihre gelbe Jacke mit. Der Reißverschluss ist kaputt. Eine Helferin schaut ihn an. Die ganze Jacke muss nicht ersetzt werden. Zuerst wird der alte Verschluss vorsichtig entfernt. Dann wird ein neuer eingenäht. Mia darf beim Festhalten helfen.",
+        "example": "Dann wird ein neuer eingenäht.",
         "headword": "einnähen",
         "headwordEnglish": "to sew in",
         "contextOnly": false
@@ -4399,7 +4399,7 @@
         "german": "Material",
         "english": "material",
         "form": "Material",
-        "example": "Zum Schluss bezahlt Mia nur das neue Material. Für die Hilfe stellt sie einen Kuchen auf den gemeinsamen Tisch.",
+        "example": "Zum Schluss bezahlt Mia nur das neue Material.",
         "headword": "Material",
         "headwordEnglish": "material",
         "contextOnly": false

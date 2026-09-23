@@ -56,9 +56,40 @@ try {
   assert.ok(keys && value);
   for (const key of keys.split(',')) extraGlosses[key] = value;
  }
+ Object.assign(extraGlosses, JSON.parse(readFileSync('content/reading/generated-glosses.json', 'utf8')));
+ Object.assign(extraGlosses, JSON.parse(readFileSync('content/reading/manual-glosses.json', 'utf8')));
  writeFileSync('content/reading/glosses.json', JSON.stringify(extraGlosses, null, 2) + '\n');
  const stories = [], sections = {}, counts = {}, missing = new Map();
  const old = JSON.parse(readFileSync('app/lib/reading-path-data.json', 'utf8'));
+ const long = JSON.parse(readFileSync('content/reading/long-stories.json', 'utf8'));
+ // B1 drafts remain private to editorial review until explicitly included.
+ const includeB1Drafts = process.argv.includes('--include-b1-drafts');
+ const editorialFixes = JSON.parse(readFileSync('content/reading/editorial-fixes.json', 'utf8'));
+ const editedText = (id, raw) => {
+  let text = raw.replaceAll('**', '').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n');
+  for (const [from, to] of editorialFixes[id] ?? []) {
+   assert.equal(text.split(from).length, 2, `${id}: editorial correction must match exactly once: ${from}`);
+   text = text.replace(from, to);
+  }
+  return text;
+ };
+ const sentenceFor = (text, form) => (text.match(/[^.!?]+[.!?]+[“”]?/gu) ?? [text]).find(part => part.toLowerCase().includes(form.toLowerCase()))?.trim();
+ for (const story of old) {
+  if (!long[story.id] || (!includeB1Drafts && story.level === 'B1')) continue;
+  story.text = editedText(story.id, long[story.id].text);
+  story.words = story.words.filter(word => sentenceFor(story.text, word.form || word.german)).map(word => ({ ...word, example: sentenceFor(story.text, word.form || word.german) }));
+  for (const token of new Set(story.text.match(/[\p{L}]+(?:[-’'][\p{L}]+)*/gu) ?? [])) {
+   if (story.words.length >= 3) break;
+   const key = cleanWord(token);
+   const gloss = extraGlosses[key] || existingGlosses[key] || meaningFor(token);
+   if (token.length < 6 || !gloss || /personal name|surname|given name/.test(gloss) || story.words.some(word => word.form?.toLowerCase() === token.toLowerCase())) continue;
+   story.words.push({ german: token, english: gloss, form: token, example: sentenceFor(story.text, token), headword: token, headwordEnglish: gloss, contextOnly: true });
+  }
+  for (const token of new Set(story.text.match(/[\p{L}]+(?:[-’'][\p{L}]+)*/gu) ?? [])) {
+   const key = cleanWord(token);
+   if (!extraGlosses[key] && !existingGlosses[key] && !meaningFor(token)) missing.set(key, [...(missing.get(key) ?? []), story.title]);
+  }
+ }
  for (const level of ['A1', 'A2', 'B1']) {
   const lines = readFileSync(`content/reading/${level.toLowerCase()}.psv`, 'utf8').trim().split('\n');
   const topicOrder = [...new Set(lines.map(line => line.split('|')[0].split(',')[0]))];
@@ -72,11 +103,14 @@ try {
    assert.ok(storyTopics.every(key => topics[key]));
    assert.ok(topics[topic] && grammar[focus], `${title}: topic/grammar`);
    const anchors = [...marked.matchAll(/~([^~=]+)=([^~]+)~/g)].map(([, form, english]) => ({ form, english }));
-   const text = marked.replace(/~([^~=]+)=[^~]+~/g, '$1').replaceAll(' // ', '\n\n');
+   const number = index + 25;
+   const id = `reading-${level.toLowerCase()}-${String(number).padStart(2,'0')}-v1`;
+   const text = long[id] && (includeB1Drafts || level !== 'B1')
+    ? editedText(id, long[id].text) : marked.replace(/~([^~=]+)=[^~]+~/g, '$1').replaceAll(' // ', '\n\n');
    assert.ok(!text.includes('~'), title);
    const wordGlosses = {};
    for (const { form, english } of anchors) if (!/\s/.test(form)) wordGlosses[cleanWord(form)] = english;
-   const words = anchors.filter(({ form }) => form.length > 2).map(({ form, english }) => ({ german: form, english, form, example: (text.match(/[^.!?]+[.!?]+[“”]?/gu) ?? [text]).find(p => p.includes(form))?.trim() ?? text, headword: form, headwordEnglish: english, contextOnly: true }));
+   const words = anchors.filter(({ form }) => form.length > 2 && sentenceFor(text, form)).map(({ form, english }) => ({ german: form, english, form, example: sentenceFor(text, form), headword: form, headwordEnglish: english, contextOnly: true }));
    const tokens = [...new Set(text.match(/[\p{L}]+(?:[-’'][\p{L}]+)*/gu) ?? [])];
    for (const token of tokens) {
     const key = cleanWord(token);
@@ -84,11 +118,10 @@ try {
     if (!gloss) missing.set(key, [...(missing.get(key) ?? []), title]);
     // Choose additional contextual forms, not invented dictionary headwords.
     if (words.length < 4 && token.length >= 7 && gloss && !/personal name|surname|given name/.test(gloss) && !words.some(w => w.form.toLowerCase() === token.toLowerCase())) {
-     words.push({ german: token, english: gloss, form: token, example: (text.match(/[^.!?]+[.!?]+[“”]?/gu) ?? [text]).find(p => p.includes(token))?.trim() ?? text, headword: token, headwordEnglish: gloss, contextOnly: true });
+     words.push({ german: token, english: gloss, form: token, example: sentenceFor(text, token) ?? text, headword: token, headwordEnglish: gloss, contextOnly: true });
     }
    }
-   const number = index + 25;
-   return { id: `reading-${level.toLowerCase()}-${String(number).padStart(2,'0')}-v1`, level, number, section: topicOrder.indexOf(topic) + 5, title,
+   return { id, level, number, section: topicOrder.indexOf(topic) + 5, title,
     goal: `Read about ${topics[topic].toLowerCase()}: ${title}.`, text, english: `${beginning} ${ending}`, words,
     questions: [], grammar: grammar[focus], grammarFocus: focus, topics: storyTopics, courseChapter: null, revisit: [], wordGlosses,
     beginning, ending,
@@ -115,8 +148,20 @@ try {
  assert.ok(counts.A1 >= 100 && counts.A2 >= 150 && counts.B1 >= 200);
  assert.equal(new Set([...old, ...stories].map(s=>s.id)).size, old.length + stories.length);
  assert.equal(new Set(stories.map(s=>s.text)).size, stories.length);
+ const draft = process.argv.includes('--draft');
+ if (!draft) assert.equal(Object.keys(long).length, old.length + stories.length, 'Every story must have an expanded authored draft');
+ for (const story of [...old, ...stories]) {
+  if (!draft) assert.ok(long[story.id], `${story.id}: missing long story`);
+  if (!draft || story.level !== 'B1') {
+   const words = (story.text.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
+   const [min, max] = { A1: [70, 200], A2: [200, 400], B1: [400, 800] }[story.level];
+   assert.ok(words >= min && words <= max, `${story.id}: ${words} words outside ${min}–${max}`);
+   assert.doesNotMatch(story.text, /\*\*|(?:^|\n)Szene\s*\d+/i, `${story.id}: prose must have no headings`);
+  }
+ }
+ writeFileSync('app/lib/reading-path-data.json', JSON.stringify(old, null, 2) + '\n');
  writeFileSync('/tmp/leselaut-missing-glosses.json', JSON.stringify(Object.fromEntries([...missing].sort()), null, 2));
- assert.equal(missing.size, 0, 'Add explicit glosses before publishing; see /tmp/leselaut-missing-glosses.json');
+ if (!draft) assert.equal(missing.size, 0, 'Add explicit glosses before publishing; see /tmp/leselaut-missing-glosses.json');
  writeFileSync('app/lib/reading-expanded-data.json', JSON.stringify(stories));
  writeFileSync('app/lib/reading-topics.json', JSON.stringify(topics, null, 2) + '\n');
  writeFileSync('app/lib/reading-expanded-sections.json', JSON.stringify(sections, null, 2) + '\n');
