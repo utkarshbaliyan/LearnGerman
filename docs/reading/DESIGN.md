@@ -1,5 +1,7 @@
 # Reading path, edition 1
 
+**Current library:** 454 stories (104 A1, 150 A2, 200 B1). The 72-story guided strand described below remains unchanged; 382 short topical scenes supplement it. See [expansion design and limitations](EXPANSION.md).
+
 The default Stories route is an original 72-story reading strand: 24 stories each at A1, A2 and B1. All 72 course chapters use the same corresponding story text, useful phrases and meaning questions. The previous 440-story library remains at `/stories/previous`; it is not presented as the new graded path.
 
 ## Progression

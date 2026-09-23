@@ -19,12 +19,12 @@ test('graded stories have complete vocabulary support, meaningful questions and 
    assert.ok(row.after >= row.before * 1.9 && row.after <= row.before * 2.1, `${row.storyId}: approximately double the original length`);
   }
   const ids = new Set(stories.map(story=>story.id));
-  assert.equal(ids.size,72);
-  assert.equal(getReadingStory('reading-a1-25-v1'),undefined);
+  assert.equal(ids.size,454);
+  assert.equal(getReadingStory('reading-a1-999-v1'),undefined);
   assert.equal(getReadingStory('a1-1'),undefined);
   assert.ok(readingWordCount(stories[0].text)<=60);
   for(const level of ['A1','A2','B1']) {
-   const group=stories.filter(s=>s.level===level);assert.equal(group.length,24);
+   const group=stories.filter(s=>s.level===level && s.courseChapter !== null);assert.equal(group.length,24);
    const means=[1,2,3,4].map(section=>{
     const part=group.filter(s=>s.section===section);assert.equal(part.length,6);
     return part.reduce((sum,s)=>sum+readingWordCount(s.text),0)/6;
@@ -32,12 +32,14 @@ test('graded stories have complete vocabulary support, meaningful questions and 
    for(let i=1;i<means.length;i++)assert.ok(means[i]>means[i-1],`${level} section progression`);
   }
   for(const story of stories){
+   if (story.courseChapter !== null) {
    const chapter=getCourseChapter(story.level,story.number);
    assert.equal(chapter.story.id,story.id);assert.equal(chapter.story.text,story.text);
    assert.equal(chapter.story.audioReady,false,'old recording cannot represent new text');
    assert.equal(chapter.vocabulary.length,story.words.filter(word=>!word.contextOnly).length);
-   assert.equal(story.questions.length,2);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
    assert.notEqual(chapter.listening[0].prompt,chapter.reading[0].prompt);
+   }
+   assert.equal(story.questions.length,2);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
    for(const q of story.questions){assert.equal(new Set(q.options).size,3);assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<3);assert.ok(q.explanation.length>15);}
    for(const word of story.words){assert.ok(story.text.includes(word.example),`${story.id}: source example`);assert.ok(word.example.toLowerCase().includes(word.form.toLowerCase()),`${story.id}: ${word.german}`);}
    for(const link of story.revisit){assert.ok(ids.has(link.storyId));assert.ok(stories.findIndex(s=>s.id===link.storyId)<stories.indexOf(story));assert.ok(story.text.toLowerCase().includes(link.german.toLowerCase()));}

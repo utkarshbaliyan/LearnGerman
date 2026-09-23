@@ -1,3 +1,5 @@
+> Coverage: the original 72 guided stories have recordings. The 382 new topical scenes are text-only until media storage is expanded.
+
 # Graded story narration
 
 The browser's sentence-by-sentence device voice was replaced on 2026-09-16 with continuous recorded German narration for all 72 current graded stories and their course chapters. The legacy story library and practical reception pilot keep their separate recordings.

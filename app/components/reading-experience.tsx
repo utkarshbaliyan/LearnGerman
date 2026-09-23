@@ -23,7 +23,7 @@ export function ReadingText({ story, glosses }: { story: ReadingStory; glosses: 
     </article></TooltipProvider>
     <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>
     <details className="reading-support"><summary>{story.words.length} useful words & phrases</summary><dl>{story.words.map(word => <div key={word.german}><dt lang="de">{word.german}</dt><dd>{word.english}</dd><blockquote lang="de">{word.example}</blockquote></div>)}</dl>{story.revisit.length > 0 && <div className="reading-revisit"><strong>Words you have met before</strong>{story.revisit.map(word => <p key={word.german}><span lang="de">{word.german}</span> · {word.english} <Link href={`/stories/${word.storyId}`}>Earlier story: {word.title}</Link></p>)}</div>}</details>
-    <details className="reading-support"><summary>Notice the grammar</summary><p>{story.grammar}</p><Link href={`/grammar?lesson=${story.level.toLowerCase()}-${Math.ceil(story.courseChapter / 6)}-${((story.courseChapter - 1) % 6) + 1}#lesson`}>Practice this grammar <ArrowRight size={15} /></Link></details>
+    <details className="reading-support"><summary>Notice the grammar</summary><p>{story.grammar}</p><Link href={story.courseChapter ? `/grammar?lesson=${story.level.toLowerCase()}-${Math.ceil(story.courseChapter / 6)}-${((story.courseChapter - 1) % 6) + 1}#lesson` : '/grammar/cheat-sheets'}>{story.courseChapter ? 'Practice this grammar' : 'Open grammar recall tables'} <ArrowRight size={15} /></Link></details>
   </div>;
 }
 

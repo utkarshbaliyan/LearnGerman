@@ -1873,6 +1873,13 @@ html[data-theme="dark"] :where(.course-mastery-card, .a1-module header, .resourc
 .account-data-export { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
 .account-data-export h2 { margin: 0 0 8px; font: 750 14px/1.4 var(--font-ui); }
 .account-data-export p { color: var(--ink-soft); font: 550 12px/1.6 var(--font-ui); }
+.reading-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 14px; margin: 24px 0 12px; }
+.reading-filters label { display: grid; gap: 7px; color: var(--ink-soft); font: 650 12px/1.5 var(--font-ui); }
+.reading-filters label:first-child { flex: 1 1 220px; }
+.reading-filters input[type="search"], .reading-filters select { min-width: 0; max-width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--white); color: var(--ink); font: 500 14px/1.4 var(--font-ui); }
+.reading-filters .reading-audio-filter { display: flex; align-items: center; align-self: center; gap: 8px; }
+.reading-filters button { border: 1px solid var(--line); padding: 10px; border-radius: 9px; color: var(--ink); background: var(--white); cursor: pointer; }
+.reading-filter-count, .reading-empty { color: var(--ink-soft); font: 500 13px/1.6 var(--font-ui); }
 .account-signup { text-align: center; }
 .account-signup > svg { width: 42px; height: 42px; color: var(--blue); }
 .account-signup h2 { margin: 15px 0 8px; font: 700 30px/1.1 Georgia,serif; }

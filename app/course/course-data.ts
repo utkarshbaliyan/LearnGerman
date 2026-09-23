@@ -1,6 +1,6 @@
 import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
-import { getChapterReading } from "@/app/lib/reading-path";
-import { readingGlosses } from "@/app/lib/reading-content";
+import { getChapterReading } from "@/app/lib/reading-course";
+import { readingGlosses } from "@/app/lib/reading-glossary";
 import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
 import type { ChapterQuestion, ChapterVocabulary } from "@/app/course/a1/chapter-one";
 import { getCurriculum, courseVocabularyMeaningFor, type Story } from "@/app/curriculum";

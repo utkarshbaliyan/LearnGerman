@@ -1,0 +1,626 @@
+{
+  "counts": {
+    "A1": 104,
+    "A2": 150,
+    "B1": 200
+  },
+  "added": 382,
+  "topics": [
+    {
+      "id": "home",
+      "label": "Home & housing",
+      "A1": [
+        "reading-a1-25-v1",
+        "reading-a1-26-v1",
+        "reading-a1-27-v1",
+        "reading-a1-28-v1",
+        "reading-a1-29-v1",
+        "reading-a1-30-v1"
+      ],
+      "A2": [
+        "reading-a2-25-v1",
+        "reading-a2-26-v1",
+        "reading-a2-27-v1",
+        "reading-a2-28-v1",
+        "reading-a2-29-v1",
+        "reading-a2-30-v1",
+        "reading-a2-31-v1",
+        "reading-a2-32-v1"
+      ],
+      "B1": [
+        "reading-b1-25-v1",
+        "reading-b1-26-v1",
+        "reading-b1-27-v1",
+        "reading-b1-28-v1",
+        "reading-b1-29-v1",
+        "reading-b1-30-v1",
+        "reading-b1-31-v1",
+        "reading-b1-32-v1",
+        "reading-b1-33-v1",
+        "reading-b1-34-v1",
+        "reading-b1-35-v1"
+      ]
+    },
+    {
+      "id": "family",
+      "label": "Family & relationships",
+      "A1": [
+        "reading-a1-31-v1",
+        "reading-a1-32-v1",
+        "reading-a1-33-v1",
+        "reading-a1-34-v1",
+        "reading-a1-35-v1"
+      ],
+      "A2": [
+        "reading-a2-33-v1",
+        "reading-a2-34-v1",
+        "reading-a2-35-v1",
+        "reading-a2-36-v1",
+        "reading-a2-37-v1",
+        "reading-a2-38-v1",
+        "reading-a2-39-v1"
+      ],
+      "B1": [
+        "reading-b1-36-v1",
+        "reading-b1-37-v1",
+        "reading-b1-38-v1",
+        "reading-b1-39-v1",
+        "reading-b1-40-v1",
+        "reading-b1-41-v1",
+        "reading-b1-42-v1",
+        "reading-b1-43-v1",
+        "reading-b1-44-v1",
+        "reading-b1-45-v1",
+        "reading-b1-46-v1"
+      ]
+    },
+    {
+      "id": "school",
+      "label": "School & learning",
+      "A1": [
+        "reading-a1-36-v1",
+        "reading-a1-37-v1",
+        "reading-a1-38-v1",
+        "reading-a1-39-v1",
+        "reading-a1-40-v1",
+        "reading-a1-41-v1"
+      ],
+      "A2": [
+        "reading-a2-40-v1",
+        "reading-a2-41-v1",
+        "reading-a2-42-v1",
+        "reading-a2-43-v1",
+        "reading-a2-44-v1",
+        "reading-a2-45-v1",
+        "reading-a2-46-v1",
+        "reading-a2-47-v1"
+      ],
+      "B1": [
+        "reading-b1-47-v1",
+        "reading-b1-48-v1",
+        "reading-b1-49-v1",
+        "reading-b1-50-v1",
+        "reading-b1-51-v1",
+        "reading-b1-52-v1",
+        "reading-b1-53-v1",
+        "reading-b1-54-v1",
+        "reading-b1-55-v1",
+        "reading-b1-56-v1",
+        "reading-b1-57-v1"
+      ]
+    },
+    {
+      "id": "health",
+      "label": "Health, illness & hospital",
+      "A1": [
+        "reading-a1-42-v1",
+        "reading-a1-43-v1",
+        "reading-a1-44-v1",
+        "reading-a1-45-v1",
+        "reading-a1-46-v1",
+        "reading-a1-47-v1"
+      ],
+      "A2": [
+        "reading-a2-48-v1",
+        "reading-a2-49-v1",
+        "reading-a2-50-v1",
+        "reading-a2-51-v1",
+        "reading-a2-52-v1",
+        "reading-a2-53-v1",
+        "reading-a2-54-v1",
+        "reading-a2-55-v1"
+      ],
+      "B1": [
+        "reading-b1-58-v1",
+        "reading-b1-59-v1",
+        "reading-b1-60-v1",
+        "reading-b1-61-v1",
+        "reading-b1-62-v1",
+        "reading-b1-63-v1",
+        "reading-b1-64-v1",
+        "reading-b1-65-v1",
+        "reading-b1-66-v1",
+        "reading-b1-67-v1",
+        "reading-b1-68-v1"
+      ]
+    },
+    {
+      "id": "travel",
+      "label": "Travel & transport",
+      "A1": [
+        "reading-a1-48-v1",
+        "reading-a1-49-v1",
+        "reading-a1-50-v1",
+        "reading-a1-51-v1",
+        "reading-a1-52-v1",
+        "reading-a1-53-v1"
+      ],
+      "A2": [
+        "reading-a2-56-v1",
+        "reading-a2-57-v1",
+        "reading-a2-58-v1",
+        "reading-a2-59-v1",
+        "reading-a2-60-v1",
+        "reading-a2-61-v1",
+        "reading-a2-62-v1",
+        "reading-a2-63-v1"
+      ],
+      "B1": [
+        "reading-b1-69-v1",
+        "reading-b1-70-v1",
+        "reading-b1-71-v1",
+        "reading-b1-72-v1",
+        "reading-b1-73-v1",
+        "reading-b1-74-v1",
+        "reading-b1-75-v1",
+        "reading-b1-76-v1",
+        "reading-b1-77-v1",
+        "reading-b1-78-v1",
+        "reading-b1-79-v1"
+      ]
+    },
+    {
+      "id": "work",
+      "label": "Office & working life",
+      "A1": [
+        "reading-a1-54-v1",
+        "reading-a1-55-v1",
+        "reading-a1-56-v1",
+        "reading-a1-57-v1",
+        "reading-a1-58-v1"
+      ],
+      "A2": [
+        "reading-a2-64-v1",
+        "reading-a2-65-v1",
+        "reading-a2-66-v1",
+        "reading-a2-67-v1",
+        "reading-a2-68-v1",
+        "reading-a2-69-v1",
+        "reading-a2-70-v1",
+        "reading-a2-71-v1"
+      ],
+      "B1": [
+        "reading-b1-80-v1",
+        "reading-b1-81-v1",
+        "reading-b1-82-v1",
+        "reading-b1-83-v1",
+        "reading-b1-84-v1",
+        "reading-b1-85-v1",
+        "reading-b1-86-v1",
+        "reading-b1-87-v1",
+        "reading-b1-88-v1",
+        "reading-b1-89-v1",
+        "reading-b1-90-v1"
+      ]
+    },
+    {
+      "id": "cafe",
+      "label": "Cafés & restaurants",
+      "A1": [
+        "reading-a1-59-v1",
+        "reading-a1-60-v1",
+        "reading-a1-61-v1",
+        "reading-a1-62-v1",
+        "reading-a1-63-v1"
+      ],
+      "A2": [
+        "reading-a2-72-v1",
+        "reading-a2-73-v1",
+        "reading-a2-74-v1",
+        "reading-a2-75-v1",
+        "reading-a2-76-v1",
+        "reading-a2-77-v1",
+        "reading-a2-78-v1"
+      ],
+      "B1": [
+        "reading-b1-91-v1",
+        "reading-b1-92-v1",
+        "reading-b1-93-v1",
+        "reading-b1-94-v1",
+        "reading-b1-95-v1",
+        "reading-b1-96-v1",
+        "reading-b1-97-v1",
+        "reading-b1-98-v1",
+        "reading-b1-99-v1",
+        "reading-b1-100-v1",
+        "reading-b1-101-v1"
+      ]
+    },
+    {
+      "id": "shopping",
+      "label": "Shopping & money",
+      "A1": [
+        "reading-a1-64-v1",
+        "reading-a1-65-v1",
+        "reading-a1-66-v1",
+        "reading-a1-67-v1",
+        "reading-a1-68-v1"
+      ],
+      "A2": [
+        "reading-a2-79-v1",
+        "reading-a2-80-v1",
+        "reading-a2-81-v1",
+        "reading-a2-82-v1",
+        "reading-a2-83-v1",
+        "reading-a2-84-v1",
+        "reading-a2-85-v1",
+        "reading-a2-86-v1"
+      ],
+      "B1": [
+        "reading-b1-102-v1",
+        "reading-b1-103-v1",
+        "reading-b1-104-v1",
+        "reading-b1-105-v1",
+        "reading-b1-106-v1",
+        "reading-b1-107-v1",
+        "reading-b1-108-v1",
+        "reading-b1-109-v1",
+        "reading-b1-110-v1",
+        "reading-b1-111-v1",
+        "reading-b1-112-v1"
+      ]
+    },
+    {
+      "id": "colours",
+      "label": "Colours & descriptions",
+      "A1": [
+        "reading-a1-27-v1",
+        "reading-a1-50-v1",
+        "reading-a1-57-v1",
+        "reading-a1-64-v1",
+        "reading-a1-69-v1",
+        "reading-a1-70-v1",
+        "reading-a1-71-v1",
+        "reading-a1-72-v1",
+        "reading-a1-82-v1"
+      ],
+      "A2": [
+        "reading-a2-87-v1",
+        "reading-a2-88-v1",
+        "reading-a2-89-v1",
+        "reading-a2-90-v1",
+        "reading-a2-91-v1"
+      ],
+      "B1": [
+        "reading-b1-78-v1",
+        "reading-b1-100-v1",
+        "reading-b1-111-v1"
+      ]
+    },
+    {
+      "id": "animals",
+      "label": "Animals & pets",
+      "A1": [
+        "reading-a1-73-v1",
+        "reading-a1-74-v1",
+        "reading-a1-75-v1",
+        "reading-a1-76-v1",
+        "reading-a1-77-v1"
+      ],
+      "A2": [
+        "reading-a2-92-v1",
+        "reading-a2-93-v1",
+        "reading-a2-94-v1",
+        "reading-a2-95-v1",
+        "reading-a2-96-v1",
+        "reading-a2-97-v1",
+        "reading-a2-98-v1"
+      ],
+      "B1": [
+        "reading-b1-113-v1",
+        "reading-b1-114-v1",
+        "reading-b1-115-v1",
+        "reading-b1-116-v1",
+        "reading-b1-117-v1",
+        "reading-b1-118-v1",
+        "reading-b1-119-v1",
+        "reading-b1-120-v1",
+        "reading-b1-121-v1",
+        "reading-b1-122-v1",
+        "reading-b1-123-v1"
+      ]
+    },
+    {
+      "id": "nature",
+      "label": "Nature & outdoors",
+      "A1": [
+        "reading-a1-78-v1",
+        "reading-a1-79-v1",
+        "reading-a1-80-v1",
+        "reading-a1-81-v1",
+        "reading-a1-82-v1"
+      ],
+      "A2": [
+        "reading-a2-99-v1",
+        "reading-a2-100-v1",
+        "reading-a2-101-v1",
+        "reading-a2-102-v1",
+        "reading-a2-103-v1",
+        "reading-a2-104-v1",
+        "reading-a2-105-v1",
+        "reading-a2-106-v1"
+      ],
+      "B1": [
+        "reading-b1-124-v1",
+        "reading-b1-125-v1",
+        "reading-b1-126-v1",
+        "reading-b1-127-v1",
+        "reading-b1-128-v1",
+        "reading-b1-129-v1",
+        "reading-b1-130-v1",
+        "reading-b1-131-v1",
+        "reading-b1-132-v1",
+        "reading-b1-133-v1",
+        "reading-b1-134-v1"
+      ]
+    },
+    {
+      "id": "weather",
+      "label": "Weather & seasons",
+      "A1": [
+        "reading-a1-63-v1",
+        "reading-a1-83-v1",
+        "reading-a1-84-v1"
+      ],
+      "A2": [
+        "reading-a2-58-v1",
+        "reading-a2-103-v1",
+        "reading-a2-107-v1",
+        "reading-a2-108-v1",
+        "reading-a2-109-v1",
+        "reading-a2-110-v1",
+        "reading-a2-136-v1"
+      ],
+      "B1": [
+        "reading-b1-77-v1",
+        "reading-b1-129-v1",
+        "reading-b1-133-v1"
+      ]
+    },
+    {
+      "id": "food",
+      "label": "Food & cooking",
+      "A1": [
+        "reading-a1-85-v1",
+        "reading-a1-86-v1",
+        "reading-a1-87-v1",
+        "reading-a1-88-v1"
+      ],
+      "A2": [
+        "reading-a2-111-v1",
+        "reading-a2-112-v1",
+        "reading-a2-113-v1",
+        "reading-a2-114-v1",
+        "reading-a2-115-v1",
+        "reading-a2-116-v1",
+        "reading-a2-117-v1",
+        "reading-a2-118-v1"
+      ],
+      "B1": [
+        "reading-b1-135-v1",
+        "reading-b1-136-v1",
+        "reading-b1-137-v1",
+        "reading-b1-138-v1",
+        "reading-b1-139-v1",
+        "reading-b1-140-v1",
+        "reading-b1-141-v1",
+        "reading-b1-142-v1",
+        "reading-b1-143-v1",
+        "reading-b1-144-v1",
+        "reading-b1-145-v1"
+      ]
+    },
+    {
+      "id": "leisure",
+      "label": "Hobbies & free time",
+      "A1": [
+        "reading-a1-89-v1",
+        "reading-a1-90-v1",
+        "reading-a1-91-v1",
+        "reading-a1-92-v1"
+      ],
+      "A2": [
+        "reading-a2-119-v1",
+        "reading-a2-120-v1",
+        "reading-a2-121-v1",
+        "reading-a2-122-v1",
+        "reading-a2-123-v1",
+        "reading-a2-124-v1",
+        "reading-a2-125-v1",
+        "reading-a2-126-v1"
+      ],
+      "B1": [
+        "reading-b1-146-v1",
+        "reading-b1-147-v1",
+        "reading-b1-148-v1",
+        "reading-b1-149-v1",
+        "reading-b1-150-v1",
+        "reading-b1-151-v1",
+        "reading-b1-152-v1",
+        "reading-b1-153-v1",
+        "reading-b1-154-v1",
+        "reading-b1-155-v1",
+        "reading-b1-156-v1"
+      ]
+    },
+    {
+      "id": "town",
+      "label": "Town & neighbourhood",
+      "A1": [
+        "reading-a1-93-v1",
+        "reading-a1-94-v1",
+        "reading-a1-95-v1",
+        "reading-a1-96-v1"
+      ],
+      "A2": [
+        "reading-a2-127-v1",
+        "reading-a2-128-v1",
+        "reading-a2-129-v1",
+        "reading-a2-130-v1",
+        "reading-a2-131-v1",
+        "reading-a2-132-v1",
+        "reading-a2-133-v1",
+        "reading-a2-134-v1"
+      ],
+      "B1": [
+        "reading-b1-157-v1",
+        "reading-b1-158-v1",
+        "reading-b1-159-v1",
+        "reading-b1-160-v1",
+        "reading-b1-161-v1",
+        "reading-b1-162-v1",
+        "reading-b1-163-v1",
+        "reading-b1-164-v1",
+        "reading-b1-165-v1",
+        "reading-b1-166-v1",
+        "reading-b1-167-v1"
+      ]
+    },
+    {
+      "id": "time",
+      "label": "Time & appointments",
+      "A1": [
+        "reading-a1-97-v1",
+        "reading-a1-98-v1"
+      ],
+      "A2": [
+        "reading-a2-139-v1",
+        "reading-a2-140-v1"
+      ],
+      "B1": []
+    },
+    {
+      "id": "clothes",
+      "label": "Clothes & appearance",
+      "A1": [
+        "reading-a1-99-v1",
+        "reading-a1-100-v1"
+      ],
+      "A2": [
+        "reading-a2-135-v1",
+        "reading-a2-136-v1",
+        "reading-a2-137-v1",
+        "reading-a2-138-v1"
+      ],
+      "B1": []
+    },
+    {
+      "id": "plans",
+      "label": "Plans & experiences",
+      "A1": [
+        "reading-a1-101-v1",
+        "reading-a1-102-v1",
+        "reading-a1-103-v1",
+        "reading-a1-104-v1"
+      ],
+      "A2": [
+        "reading-a2-141-v1",
+        "reading-a2-142-v1",
+        "reading-a2-143-v1"
+      ],
+      "B1": []
+    },
+    {
+      "id": "technology",
+      "label": "Technology & communication",
+      "A1": [],
+      "A2": [
+        "reading-a2-144-v1",
+        "reading-a2-145-v1"
+      ],
+      "B1": [
+        "reading-b1-168-v1",
+        "reading-b1-169-v1",
+        "reading-b1-170-v1",
+        "reading-b1-171-v1",
+        "reading-b1-172-v1",
+        "reading-b1-173-v1",
+        "reading-b1-174-v1",
+        "reading-b1-175-v1",
+        "reading-b1-176-v1",
+        "reading-b1-177-v1",
+        "reading-b1-178-v1"
+      ]
+    },
+    {
+      "id": "sport",
+      "label": "Sport & clubs",
+      "A1": [
+        "reading-a1-90-v1"
+      ],
+      "A2": [
+        "reading-a2-91-v1",
+        "reading-a2-122-v1",
+        "reading-a2-146-v1",
+        "reading-a2-147-v1"
+      ],
+      "B1": [
+        "reading-b1-146-v1",
+        "reading-b1-152-v1",
+        "reading-b1-155-v1"
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Everyday services",
+      "A1": [],
+      "A2": [
+        "reading-a2-148-v1",
+        "reading-a2-149-v1",
+        "reading-a2-150-v1"
+      ],
+      "B1": [
+        "reading-b1-179-v1",
+        "reading-b1-180-v1",
+        "reading-b1-181-v1",
+        "reading-b1-182-v1",
+        "reading-b1-183-v1",
+        "reading-b1-184-v1",
+        "reading-b1-185-v1",
+        "reading-b1-186-v1",
+        "reading-b1-187-v1",
+        "reading-b1-188-v1",
+        "reading-b1-189-v1"
+      ]
+    },
+    {
+      "id": "culture",
+      "label": "Culture & encounters",
+      "A1": [],
+      "A2": [],
+      "B1": [
+        "reading-b1-190-v1",
+        "reading-b1-191-v1",
+        "reading-b1-192-v1",
+        "reading-b1-193-v1",
+        "reading-b1-194-v1",
+        "reading-b1-195-v1",
+        "reading-b1-196-v1",
+        "reading-b1-197-v1",
+        "reading-b1-198-v1",
+        "reading-b1-199-v1",
+        "reading-b1-200-v1"
+      ]
+    }
+  ]
+}

@@ -17,15 +17,16 @@ export default async function StoryPage({ params }: { params: Promise<{ storyId:
   const { story, glosses } = content;
   const companion = RECEPTION_CATALOG.find(item => item.level === story.level && item.chapter === story.courseChapter);
   const next = READING_STORIES[READING_STORIES.findIndex(item => item.id === story.id) + 1];
+  const total = READING_STORIES.filter(item => item.level === story.level).length;
   return <div className="site-shell"><SiteHeader active="stories" /><main className="reading-reader" key={story.id}>
     <Link className="reading-back" href={`/stories?level=${story.level}`}><ArrowLeft size={17} />{story.level} stories</Link>
-    <header><span className="reading-eyebrow">{story.level} · {READING_SECTIONS[story.level][story.section - 1]} · {story.number}/24</span><h1 lang="de">{story.title}</h1><p>{story.goal} <span className="reading-length">{readingWordCount(story.text)} words</span></p></header>
+    <header><span className="reading-eyebrow">{story.level} · {READING_SECTIONS[story.level][story.section - 1]} · {story.number}/{total}</span><h1 lang="de">{story.title}</h1><p>{story.goal} <span className="reading-length">{readingWordCount(story.text)} words</span></p></header>
     <ReadingNarrationProvider key={story.id}>
     <ReadingAudio storyId={story.id} />
     <ReadingText story={story} glosses={glosses} />
     </ReadingNarrationProvider>
     <ReadingCheck key={story.id} story={story} />
     {companion && <section className="reception-teaser"><h2>Use this in everyday life</h2><Link href={`/stories/practice/${companion.id}`}>Try a practical reading and listening task →</Link></section>}
-    <nav className="reading-reader-next" aria-label="Continue learning"><Link href={`/stories?level=${story.level}`}>{story.level} stories <ArrowRight size={17} /></Link>{next && <Link className="reading-primary" href={`/stories/${next.id}`}>{next.level !== story.level ? `Try the first ${next.level} story` : story.number % 6 === 0 ? 'Start the next section' : 'Next story'} <ArrowRight size={17} /></Link>}</nav>
+    <nav className="reading-reader-next" aria-label="Continue learning"><Link href={`/stories?level=${story.level}`}>{story.level} stories <ArrowRight size={17} /></Link>{next && <Link className="reading-primary" href={`/stories/${next.id}`}>{next.level !== story.level ? `Try the first ${next.level} story` : next.section !== story.section ? 'Start the next section' : 'Next story'} <ArrowRight size={17} /></Link>}</nav>
   </main></div>;
 }

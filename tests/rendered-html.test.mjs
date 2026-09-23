@@ -129,7 +129,17 @@ test("renders the graded reading path and independent story pages", async () => 
     assert.match(html, /data-reading-word="0"/);
     assert.doesNotMatch(html, /Device voice/);
   }
-  assert.equal((await renderRoute('/stories/reading-a1-25-v1')).status, 404);
+  for (const [level, total] of [['a1',104],['a2',150],['b1',200]]) {
+    const response = await renderRoute(`/stories/reading-${level}-${total}-v1`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /What happened/);
+    assert.match(html, /Open grammar recall tables/);
+    assert.match(html, /Narration is unavailable/);
+    assert.doesNotMatch(html, /<audio/);
+    assert.ok(html.replace(/<!--.*?-->/gs, "").includes(`${total}/${total}`));
+  }
+  assert.equal((await renderRoute('/stories/reading-a1-999-v1')).status, 404);
 });
 
 test('practical reading and listening samples are linked and render accessible first activities', async()=>{
