@@ -44,6 +44,12 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // Server builds default to unminified output. Keep both Worker bundles
+    // compact so the expanded archive has room for the reading collection.
+    environments: {
+      rsc: { build: { minify: true } },
+      ssr: { build: { minify: true } },
+    },
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],
