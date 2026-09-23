@@ -1,11 +1,11 @@
 level,section,story,title,course_chapter,words,topics,grammar,focus_expressions,earlier_context_links
-A1,1,reading-a1-01-v1,"Hallo, Mia!",1,52,identity; greetings; town,Personal pronouns and introductions,ich heiße; wohne; ich auch,
-A1,1,reading-a1-02-v1,Sam hat heute frei,2,66,work; leisure; learning,"Present tense: arbeiten, lernen, bringen",arbeitet; heute; zusammen; Bücher,
+A1,1,reading-a1-01-v1,"Hallo, Mia!",1,77,identity; greetings; town,Personal pronouns and introductions,ich heiße; wohne; ich auch,
+A1,1,reading-a1-02-v1,Sam hat heute frei,2,86,work; leisure; learning,"Present tense: arbeiten, lernen, bringen",arbeitet; heute; zusammen; Bücher,
 A1,1,reading-a1-03-v1,Die Zeitung beim Frühstück,3,71,media; food; culture,"Irregular present: essen, lesen, sehen",isst; liest; Zeitung; Brot,
 A1,1,reading-a1-04-v1,Das neue Namensschild,4,89,identity; learning; town,Main-clause order,Namensschild; aber; stimmt,reading-a1-03-v1; reading-a1-01-v1
 A1,1,reading-a1-05-v1,Wo ist die Bibliothek?,5,70,town; services; time,W-questions and yes/no questions; location as a phrase,wo; links; offen; bis,reading-a1-02-v1
 A1,1,reading-a1-06-v1,Keine Milch mehr,6,70,shopping; food; household,nicht and kein,keine; Milch; Eier; Tasche,reading-a1-04-v1; reading-a1-03-v1
-A1,2,reading-a1-07-v1,Zwei Tassen,7,65,food; café; preferences,"Definite articles: der Tee, der Kaffee",bitte; heiß; kalt,
+A1,2,reading-a1-07-v1,Zwei Tassen,7,83,food; café; preferences,"Definite articles: der Tee, der Kaffee",bitte; heiß; kalt,
 A1,2,reading-a1-08-v1,Der Schlüssel im Schuh,8,113,possessions; clothes; home,Indefinite articles: ein Buch,Schlüssel; sucht; Schuh,reading-a1-06-v1; reading-a1-06-v1
 A1,2,reading-a1-09-v1,Äpfel für den Kuchen,9,159,shopping; food; numbers; money,Plurals and quantities,brauchen; bezahlt; je einen,reading-a1-06-v1
 A1,2,reading-a1-10-v1,Ein Platz im Kurs,10,125,school; college; classroom,Subjects and nominative articles,Personen; Stühle; frei; Blätter; bereit,reading-a1-07-v1; reading-a1-02-v1
@@ -14,20 +14,20 @@ A1,2,reading-a1-12-v1,Ein Foto für Sam,12,102,family; hobbies; descriptions,Pos
 A1,3,reading-a1-13-v1,Ein freier Nachmittag,13,146,leisure; work; learning,Ability and wishes with modal verbs,danach; erst um fünf; trifft,reading-a1-04-v1; reading-a1-03-v1
 A1,3,reading-a1-14-v1,Die Nachricht am Kühlschrank,14,131,routine; messages; shopping,Separable verbs and short messages,Nachricht; Kühlschrank; zehn vor vier,reading-a1-08-v1
 A1,3,reading-a1-15-v1,Der Bus zum Schwimmbad,15,183,transport; directions; sport,Short instructions and directions,gegenüber; steigen ein; Richtung,reading-a1-04-v1; reading-a1-01-v1
-A1,3,reading-a1-16-v1,Ein Tisch für drei,16,207,restaurant; celebrations; food,möchten and polite ordering,laden ein; ohne Fleisch; Kerze,reading-a1-10-v1; reading-a1-04-v1
+A1,3,reading-a1-16-v1,Ein Tisch für drei,16,198,restaurant; celebrations; food,möchten and polite ordering,laden ein; ohne Fleisch; Kerze,reading-a1-10-v1; reading-a1-04-v1
 A1,3,reading-a1-17-v1,Ein Zimmer für Lea,17,172,housing; furniture; money,es gibt and haben; housing nouns,Zimmer; Miete; Schrank; Waschmaschine; Garten,reading-a1-08-v1; reading-a1-04-v1
 A1,3,reading-a1-18-v1,Zehn Minuten für mich,18,174,routine; work; time; body,Reflexive daily routines,zieht sich an; Wecker; Gesicht; halb acht; zieht aus,reading-a1-08-v1; reading-a1-02-v1
-A1,4,reading-a1-19-v1,Tee statt Training,19,217,health; appointments; friendship,"Dative phrases: mir geht es, seinem Trainer",Halsschmerzen; lieber; liest vor,reading-a1-13-v1; reading-a1-06-v1
+A1,4,reading-a1-19-v1,Tee statt Training,19,199,health; appointments; friendship,"Dative phrases: mir geht es, seinem Trainer",Halsschmerzen; lieber; liest vor,reading-a1-13-v1; reading-a1-06-v1
 A1,4,reading-a1-20-v1,Mit dem Zug ans Meer,20,198,travel; transport; tickets,"mit, bei and time expressions",hin und zurück; Gleis; Koffer; Abfahrt; später,reading-a1-15-v1; reading-a1-07-v1
 A1,4,reading-a1-21-v1,Das Sofa am Fenster,21,184,housing; furniture; possessions,Two-way prepositions with location,Sofa; Teppich; unter; neben; Brille,reading-a1-08-v1
 A1,4,reading-a1-22-v1,Die Einladung für Freitag,22,192,celebrations; invitations; family,Dates and time expressions,Nachricht; feiere; Adresse; zu früh; Schüssel,reading-a1-13-v1; reading-a1-07-v1
 A1,4,reading-a1-23-v1,Sonne oder Regen?,23,200,weather; nature; leisure; culture,"und, aber, oder, denn",Wetterbericht; Berge; Wolken; Schirm; denn,reading-a1-21-v1; reading-a1-19-v1
-A1,4,reading-a1-24-v1,Ein anderer Sonntag,24,224,weather; leisure; past events,Perfect tense in a short report,hat geregnet; haben gegessen; aufgehört,reading-a1-04-v1; reading-a1-03-v1
-A2,1,reading-a2-01-v1,Ein Paket für die Nachbarin,1,194,neighbours; health; services,"Dative recipients: ihr helfen, der Nachbarin bringen",Nachbarin; annehmen; Paketbote; Schachtel; gießen,reading-a1-21-v1; reading-a1-20-v1
-A2,1,reading-a2-02-v1,Ein Regal zieht um,2,192,housing; furniture; memories,Location versus destination: an die Wand / an der Wand,Regal; umstellen; schieben; vorsichtig; zwischen,reading-a1-21-v1; reading-a1-17-v1
+A1,4,reading-a1-24-v1,Ein anderer Sonntag,24,187,weather; leisure; past events,Perfect tense in a short report,hat geregnet; haben gegessen; aufgehört,reading-a1-04-v1; reading-a1-03-v1
+A2,1,reading-a2-01-v1,Ein Paket für die Nachbarin,1,214,neighbours; health; services,"Dative recipients: ihr helfen, der Nachbarin bringen",Nachbarin; annehmen; Paketbote; Schachtel; gießen,reading-a1-21-v1; reading-a1-20-v1
+A2,1,reading-a2-02-v1,Ein Regal zieht um,2,207,housing; furniture; memories,Location versus destination: an die Wand / an der Wand,Regal; umstellen; schieben; vorsichtig; zwischen,reading-a1-21-v1; reading-a1-17-v1
 A2,1,reading-a2-03-v1,Ein Abend ohne Bildschirm,3,201,media; leisure; friendship,"für, ohne, durch with accusative",Handys; Brettspiel; Regeln; gemeinsam; Spielplan,reading-a1-19-v1; reading-a1-06-v1
 A2,1,reading-a2-04-v1,Warten auf den Termin,4,202,administration; appointments; work,"Dative prepositions: beim Bürgerbüro, nach einem Termin, mit seiner Mappe",Bürgerbüro; anmelden; Unterlagen; Mappe; nachsehen,reading-a1-22-v1; reading-a1-21-v1
-A2,1,reading-a2-05-v1,Wem gehört der Schal?,5,190,possessions; family; clothes,"Ownership with von, possessives and names: Toms Schal",Schal; gehören; meiner; Garderobe; vergessen,reading-a1-08-v1
+A2,1,reading-a2-05-v1,Wem gehört der Schal?,5,207,possessions; family; clothes,"Ownership with von, possessives and names: Toms Schal",Schal; gehören; meiner; Garderobe; vergessen,reading-a1-08-v1
 A2,1,reading-a2-06-v1,Die Suppe ist für alle,6,203,food; neighbours; cooperation,"Adjectives with definite articles: der große Topf, das frische Gemüse",jeder; niemand; Topf; Sahne; spülen,reading-a1-09-v1; reading-a1-06-v1
 A2,2,reading-a2-07-v1,Ein Hemd fürs Gespräch,7,203,work; clothes; shopping,Adjectives after indefinite articles,Praktikum; Stoff; dünn; angenehm; Schaufenster,reading-a1-11-v1; reading-a1-08-v1
 A2,2,reading-a2-08-v1,Das kleine Fahrrad,8,202,transport; shopping; repairs,"Comparisons: kleiner, älter, besser",gebraucht; erreichen; Boden; Schloss; Lampe,reading-a1-11-v1; reading-a1-08-v1

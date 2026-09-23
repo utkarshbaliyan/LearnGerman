@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the current graded stories with Piper 1.4.2 + Thorsten high.
 
-Requires piper-tts, onnx and macOS afconvert. Model stays outside the repo.
+Requires piper-tts, onnx and imageio-ffmpeg. Model stays outside the repo.
 Usage: python scripts/generate-reading-audio.py --model /path/to/model.onnx
 """
 import argparse
@@ -16,6 +16,7 @@ from pathlib import Path
 
 import onnx
 import onnxruntime
+from imageio_ffmpeg import get_ffmpeg_exe
 from piper import PiperVoice, SynthesisConfig
 from piper.config import PiperConfig
 
@@ -29,11 +30,17 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True, type=Path)
     parser.add_argument("--only", help="Render one story for preview")
+    parser.add_argument("--level", choices=["A1", "A2", "B1"], help="Render one level without writing the combined manifest")
+    parser.add_argument("--start-number", type=int, default=1, help="First story number in the selected level")
+    parser.add_argument("--end-number", type=int, default=100000, help="Last story number in the selected level")
     parser.add_argument("--threads", type=int, default=4, help="Bound CPU concurrency during inference")
     args = parser.parse_args()
     stories = json.loads((ROOT / "app/lib/reading-path-data.json").read_text())
+    stories += json.loads((ROOT / "app/lib/reading-expanded-data.json").read_text())
     output = ROOT / "public/audio/reading"
     output.mkdir(parents=True, exist_ok=True)
+    manifest_path = ROOT / "app/lib/reading-audio-manifest.json"
+    previous_manifest = json.loads(manifest_path.read_text())
     # Released Piper 1.4.2 needs an explicit duration output on older models.
     model = onnx.load(str(args.model))
     ceil_outputs = [node.output[0] for node in model.graph.node if node.op_type == "Ceil"]
@@ -58,10 +65,22 @@ def main():
     for story in stories:
         if args.only and story["id"] != args.only:
             continue
+        if args.level and story["level"] != args.level:
+            continue
+        if args.level and not args.start_number <= story["number"] <= args.end_number:
+            continue
         digest = hashlib.sha256(story["text"].encode()).hexdigest()
-        name = f'{story["id"]}-{digest[:12]}-aac38'
-        audio_path = output / f"{name}.m4a"
+        name = f'{story["id"]}-{digest[:12]}-opus16'
+        audio_path = output / f"{name}.webm"
         timing_path = output / f"{name}.json"
+        previous = previous_manifest.get(story["id"])
+        if (not args.only and not args.level and not audio_path.exists() and previous
+                and previous.get("textHash") == digest
+                and (ROOT / "public" / previous["src"].lstrip("/")).exists()
+                and (ROOT / "public" / previous["timingSrc"].lstrip("/")).exists()):
+            manifest[story["id"]] = previous
+            print(f'{story["id"]}: reused current narration', flush=True)
+            continue
         if not (audio_path.exists() and timing_path.exists()):
             phonemes = []
             samples = 0
@@ -84,13 +103,13 @@ def main():
                 expected = sum(bool(re.search(r"[A-Za-zÄÖÜäöüßÉé0-9]", token)) for token in story["text"].split())
                 if len(starts) != expected or any(b <= a for a, b in zip(starts, starts[1:])):
                     raise RuntimeError(f'Invalid word timings: {story["id"]}')
-                subprocess.run(["afconvert", str(wav_path), str(audio_path), "-f", "m4af", "-d", "aac", "-b", "38000"], check=True)
+                subprocess.run([get_ffmpeg_exe(), "-hide_banner", "-loglevel", "error", "-y", "-i", str(wav_path), "-c:a", "libopus", "-b:a", "16k", "-vbr", "on", "-application", "voip", str(audio_path)], check=True)
                 timing_path.write_text(json.dumps({"textHash": digest, "starts": [round(n / voice.config.sample_rate, 4) for n in starts], "duration": round(samples / voice.config.sample_rate, 4)}, separators=(",", ":")))
         timing = json.loads(timing_path.read_text())
-        manifest[story["id"]] = {"src": f"/audio/reading/{name}.m4a", "timingSrc": f"/audio/reading/{name}.json", "textHash": digest, "wordCount": len(timing["starts"]), "duration": timing["duration"]}
+        manifest[story["id"]] = {"src": f"/audio/reading/{name}.webm", "timingSrc": f"/audio/reading/{name}.json", "textHash": digest, "wordCount": len(timing["starts"]), "duration": timing["duration"]}
         print(f'{story["id"]}: {len(timing["starts"])} words, {timing["duration"]:.1f}s', flush=True)
-    if not args.only:
-        (ROOT / "app/lib/reading-audio-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    if not args.only and not args.level:
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 if __name__ == "__main__":

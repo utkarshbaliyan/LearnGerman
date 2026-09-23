@@ -232,8 +232,6 @@ export function getCourseChapter(level: string, number: number) {
     levelCopy: LEVEL_COPY[normalizedLevel],
     curriculum: {
       id: curriculum.id,
-      audioBasePath: curriculum.audioBasePath,
-      audioVersion: curriculum.audioVersion,
     },
     story,
     receptionLessonId: RECEPTION_CATALOG.find(item => item.level === normalizedLevel && item.chapter === number)?.id,

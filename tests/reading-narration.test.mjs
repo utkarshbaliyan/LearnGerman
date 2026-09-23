@@ -25,17 +25,17 @@ test('narration renders accessible native controls, available speeds and slower 
 });
 
 test('every graded story has a current recording and one validated timing per visible word', async () => {
-  const stories = await json('../app/lib/reading-path-data.json');
+  const stories = [...await json('../app/lib/reading-path-data.json'), ...await json('../app/lib/reading-expanded-data.json')];
   const manifest = await json('../app/lib/reading-audio-manifest.json');
   const vite = await createServer({ configFile: false, server: { middlewareMode: true, ws: false } });
   try {
     const { narrationTokens, validNarrationTiming } = await vite.ssrLoadModule('/app/lib/reading-narration.ts');
-    assert.equal(Object.keys(manifest).length, 72);
+    assert.equal(Object.keys(manifest).length, 454);
     for (const story of stories) {
       const asset = manifest[story.id];
       assert.ok(asset, story.id);
       assert.equal(asset.textHash, createHash('sha256').update(story.text).digest('hex'), `${story.id}: exact current text`);
-      assert.match(asset.src, /^\/audio\/reading\/reading-[a-z0-9-]+\.m4a$/);
+      assert.match(asset.src, /^\/audio\/reading\/reading-[a-z0-9-]+\.(?:webm|m4a)$/);
       const timing = await json(`../public${asset.timingSrc}`);
       assert.ok(validNarrationTiming(timing, asset), `${story.id}: finite, increasing timings within recording`);
       const paragraphs = narrationTokens(story.text);
@@ -43,7 +43,9 @@ test('every graded story has a current recording and one validated timing per vi
       assert.deepEqual(paragraphs.flat().filter(t => t.wordIndex !== null).map(t => t.wordIndex), Array.from({ length: asset.wordCount }, (_, i) => i));
       const audio = new URL(`../public${asset.src}`, import.meta.url);
       assert.ok((await stat(audio)).size > 10000, `${story.id}: nonempty recording`);
-      assert.equal((await readFile(audio)).subarray(4, 8).toString(), 'ftyp', 'portable MPEG-4 audio');
+      const header = (await readFile(audio)).subarray(0, 8);
+      if (asset.src.endsWith('.webm')) assert.equal(header.subarray(0, 4).toString('hex'), '1a45dfa3', 'WebM audio');
+      else assert.equal(header.subarray(4, 8).toString(), 'ftyp', 'AAC audio');
     }
   } finally { await vite.close(); }
 });
