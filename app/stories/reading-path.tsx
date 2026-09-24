@@ -29,6 +29,7 @@ export function ReadingPath({ stories, sections, goals, initialLevel }: {
   return <div className="site-shell"><SiteHeader active="stories" /><main className="reading-path">
     <header className="reading-heading"><div><span className="reading-eyebrow">Read a little. Discover more.</span><h1>Stories</h1><p>Grow from simple scenes to connected German stories.</p><p>{stories.length} stories about everyday life. Start with the guided path or explore a situation below.</p></div><BookOpen aria-hidden="true" /></header>
     <Tabs value={level} onValueChange={value => { setLevel(value as ReadingLevel); setTopic('all'); }}><TabsList aria-label="Story level">{(['A1', 'A2', 'B1'] as const).map(item => <TabsTrigger key={item} value={item}>{item} · {stories.filter(story => story.level === item).length}</TabsTrigger>)}</TabsList></Tabs>
+    {level === 'A1' && <p className="book-from-stories">Ready for a longer read? <Link href="/books">Explore the A1 book · 200 pages <ArrowRight size={16} /></Link></p>}
     <div className="reading-filters" role="search" aria-label="Find a story">
       <label>Search stories<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="House, hospital, dative, café…" /></label>
       <label>Situation<select value={topic} onChange={event => setTopic(event.target.value)}><option value="all">All situations</option>{topics.map(item => <option key={item} value={item}>{topicLabel(item)}</option>)}</select></label>
