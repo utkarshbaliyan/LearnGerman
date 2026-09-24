@@ -51,7 +51,7 @@ test("A1 Books keeps the source page format with four audio controls and no ques
     assert.equal((html.match(/<audio /g) ?? []).length, 4, `page ${page}: one player per paragraph`);
     assert.equal((html.match(/class="book-paragraph"/g) ?? []).length, 4);
     assert.equal((html.match(/class="book-paragraph-summary"/g) ?? []).length, 4, `page ${page}: one English summary per paragraph`);
-    assert.match(html, /In English ·/);
+    assert.doesNotMatch(html, /In English ·/);
     assert.match(html, /Hover over or tap a word for its English meaning/);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
   }

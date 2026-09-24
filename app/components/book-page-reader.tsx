@@ -48,7 +48,7 @@ function BookParagraph({ number, text, summary, glosses, asset, onPlay }: {
         const meaning = glosses[wordKey(token)];
         return meaning ? <Tooltip key={tokenIndex}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={tokenIndex}>{token}</span>;
       })}</span>)}</p>
-    <p lang="en" className="book-paragraph-summary"><span>In English · </span>{summary}</p>
+    <p lang="en" className="book-paragraph-summary">{summary}</p>
   </section>;
 }
 
