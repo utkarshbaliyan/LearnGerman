@@ -47,6 +47,21 @@ test('every book word has a tap or hover meaning', async () => {
   } finally { await vite.close(); }
 });
 
+test('every book paragraph has a concise English summary', async () => {
+  const summaries = await readJson('../app/lib/book-summaries.json');
+  const source = await readFile(new URL('../content/books/paragraph-summaries.psv', import.meta.url), 'utf8');
+  assert.equal(summaries.length, 200);
+  assert.equal(source.trim().split('\n').length, 200);
+  for (const [pageIndex, row] of summaries.entries()) {
+    assert.equal(row.length, 4, `page ${pageIndex + 1}`);
+    for (const [paragraphIndex, summary] of row.entries()) {
+      assert.ok(summary.split(' ').length >= 4 && summary.split(' ').length <= 25,
+        `page ${pageIndex + 1}, paragraph ${paragraphIndex + 1}`);
+    }
+    assert.equal(source.trim().split('\n')[pageIndex], `${pageIndex + 1}|${row.join('|')}`);
+  }
+});
+
 test('each of the 800 book paragraphs has its own matching recording and word timings', async () => {
   const book = await readJson('../app/lib/book-data.json');
   const manifest = await readJson('../app/lib/book-audio-manifest.json');

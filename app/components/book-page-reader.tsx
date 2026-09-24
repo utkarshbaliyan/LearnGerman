@@ -6,9 +6,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 const wordKey = (word: string) => word.toLowerCase().replace(/[^a-zäöüßé]/g, '');
 
-function BookParagraph({ number, text, glosses, asset, onPlay }: {
+function BookParagraph({ number, text, summary, glosses, asset, onPlay }: {
   number: number;
   text: string;
+  summary: string;
   glosses: Record<string, string>;
   asset?: NarrationAsset;
   onPlay: (player: HTMLAudioElement) => void;
@@ -47,18 +48,20 @@ function BookParagraph({ number, text, glosses, asset, onPlay }: {
         const meaning = glosses[wordKey(token)];
         return meaning ? <Tooltip key={tokenIndex}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={tokenIndex}>{token}</span>;
       })}</span>)}</p>
+    <p lang="en" className="book-paragraph-summary"><span>In English · </span>{summary}</p>
   </section>;
 }
 
-export function BookPageReader({ paragraphs, glosses, audio }: {
+export function BookPageReader({ paragraphs, summaries, glosses, audio }: {
   paragraphs: string[];
+  summaries: string[];
   glosses: Record<string, string>;
   audio: NarrationAsset[];
 }) {
   const playing = useRef<HTMLAudioElement | null>(null);
   return <TooltipProvider delayDuration={100}><div className="book-page-sheet">
     <p className="reading-help">Hover over or tap a word for its English meaning. Each paragraph has its own recording.</p>
-    {paragraphs.map((paragraph, index) => <BookParagraph key={index} number={index + 1} text={paragraph} glosses={glosses} asset={audio[index]}
+    {paragraphs.map((paragraph, index) => <BookParagraph key={index} number={index + 1} text={paragraph} summary={summaries[index]} glosses={glosses} asset={audio[index]}
       onPlay={player => { if (playing.current && playing.current !== player) playing.current.pause(); playing.current = player; }} />)}
   </div></TooltipProvider>;
 }

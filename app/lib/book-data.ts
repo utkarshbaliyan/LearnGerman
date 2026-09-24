@@ -1,6 +1,7 @@
 import book from './book-data.json';
 import bookGlosses from './book-glosses.json';
 import audio from './book-audio-manifest.json';
+import summaries from './book-summaries.json';
 import { glossesForText } from './reading-glossary';
 
 export const A1_BOOK = book;
@@ -18,5 +19,6 @@ export function getBookPage(pageNumber: number) {
     ...page,
     glosses: glossesForText(page.paragraphs.join(' '), bookGlosses),
     audio: BOOK_AUDIO[String(pageNumber)] ?? [],
+    summaries: summaries[pageNumber - 1],
   };
 }
