@@ -39,7 +39,7 @@ test("A1 Books keeps the source page format with four audio controls and no ques
   assert.equal(index.status, 200);
   const indexHtml = await index.text();
   assert.match(indexHtml, /Unser Leben in Lindenstadt/);
-  assert.match(indexHtml, /200 pages/);
+  assert.doesNotMatch(indexHtml, /200 pages · 10 chapters/);
   assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/1"/);
   assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/21"/);
   assert.equal((indexHtml.match(/class="book-chapter-item"/g) ?? []).length, 10);
