@@ -41,6 +41,9 @@ test("A1 Books keeps the source page format with four audio controls and no ques
   assert.match(indexHtml, /Unser Leben in Lindenstadt/);
   assert.match(indexHtml, /200 pages/);
   assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/1"/);
+  assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/21"/);
+  assert.equal((indexHtml.match(/class="book-chapter-item"/g) ?? []).length, 10);
+  assert.doesNotMatch(indexHtml, /Read a whole book in German|Follow Mia and her family through 200 pages|Die neue Straße/);
   for (const page of [1, 200]) {
     const response = await renderRoute(`/books/a1/unser-leben-in-lindenstadt/${page}`);
     assert.equal(response.status, 200);
