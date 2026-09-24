@@ -39,6 +39,7 @@ test("A1 Books keeps the source page format with four audio controls and no ques
   assert.equal(index.status, 200);
   const indexHtml = await index.text();
   assert.match(indexHtml, /Der Schlüssel im blauen Korb/);
+  assert.match(indexHtml, /Start reading/);
   assert.doesNotMatch(indexHtml, /200 pages · 10 chapters/);
   assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/1"/);
   assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/21"/);
@@ -51,6 +52,7 @@ test("A1 Books keeps the source page format with four audio controls and no ques
     assert.equal((html.match(/<audio /g) ?? []).length, 4, `page ${page}: one player per paragraph`);
     assert.equal((html.match(/class="book-paragraph"/g) ?? []).length, 4);
     assert.equal((html.match(/class="book-paragraph-summary"/g) ?? []).length, 4, `page ${page}: one English summary per paragraph`);
+    assert.match(html, /Bookmark this page/);
     assert.doesNotMatch(html, /In English ·/);
     assert.match(html, /Hover over or tap a word for its English meaning/);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);

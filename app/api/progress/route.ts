@@ -6,7 +6,7 @@ import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
 import { getDb } from "@/db";
 import { userProgress } from "@/db/schema";
 
-const SCOPES = ["course", "stories", "grammar", "vocabulary"] as const;
+const SCOPES = ["course", "stories", "grammar", "vocabulary", "books"] as const;
 type ProgressScope = (typeof SCOPES)[number];
 
 function isScope(value: unknown): value is ProgressScope {

@@ -4,7 +4,7 @@ import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_STORAGE_KEYS, PROGRESS_SYNCED_EVENT } from "./cloud-progress-keys";
 import { mergeProgress } from "./progress-merge";
 
-export type CloudProgressScope = "course" | "stories" | "grammar" | "vocabulary";
+export type CloudProgressScope = "course" | "stories" | "grammar" | "vocabulary" | "books";
 
 type PendingProgress = { data: unknown; revision: number; owner: string | null };
 

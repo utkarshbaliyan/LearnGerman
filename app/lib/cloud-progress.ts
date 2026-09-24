@@ -15,6 +15,7 @@ import {
   type CloudProgressScope,
 } from "@/app/lib/cloud-progress-save";
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
+import { BOOK_BOOKMARK_STORAGE_KEY } from './book-bookmark';
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { mergeProgress } from "./progress-merge";
 
@@ -25,6 +26,7 @@ const STORAGE_KEYS: Record<CloudProgressScope, string> = {
   stories: STORY_PROGRESS_STORAGE_KEY,
   grammar: GRAMMAR_PROGRESS_STORAGE_KEY,
   vocabulary: VOCABULARY_PROGRESS_STORAGE_KEY,
+  books: BOOK_BOOKMARK_STORAGE_KEY,
 };
 
 export { mergeProgress } from "./progress-merge";

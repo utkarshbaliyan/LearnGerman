@@ -22,7 +22,7 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     save = await vite.ssrLoadModule("/app/lib/cloud-progress-save.ts");
     const { synchronizeCloudProgress } = await vite.ssrLoadModule("/app/lib/cloud-progress.ts");
     const a = { german: "lernen", english: "to learn" }, b = { german: "gehen", english: "to go" };
-    let remote = { vocabulary: p.setVocabularyStatus(p.emptyVocabularyProgress(), a, "learned", 100), stories: ["remote-story"] };
+    let remote = { vocabulary: p.setVocabularyStatus(p.emptyVocabularyProgress(), a, "learned", 100), stories: ["remote-story"], books: { page: 27, updatedAt: 100 } };
     let injected = false, puts = 0;
     localStorage.setItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY, "alice");
     save.setCloudAuthenticated(false);
@@ -47,6 +47,10 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     assert.equal(p.isVocabularyReview(synced, b), true);
     assert.equal(p.isVocabularyReview(remote.vocabulary, b), true);
     assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.stories)).entries["remote-story"].completed, true);
+    assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.books)).page, 27);
+    save.queueCloudProgress("books", { page: 13, updatedAt: 200 });
+    await save.flushCloudProgress("books");
+    assert.equal(remote.books.page, 13, "a newer page bookmark syncs to D1");
     const unchanged = JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.course));
     save.queueCloudProgress("course", unchanged);
     await save.flushCloudProgress("course");
@@ -60,6 +64,7 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     await synchronizeCloudProgress();
     assert.equal(localStorage.getItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY), "bob");
     assert.equal(p.isVocabularyLearned(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.vocabulary)), a), false);
+    assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.books)).page ?? null, null, "the previous account's bookmark is cleared");
   } finally {
     save?.setCloudAuthenticated(false);
     save?.clearPendingProgress();
