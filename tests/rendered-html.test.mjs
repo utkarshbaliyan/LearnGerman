@@ -34,6 +34,25 @@ test("opens Stories as home while the integrated course is paused", async () => 
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
 
+test("A1 Books keeps the source page format with four audio controls and no questions", async () => {
+  const index = await renderRoute('/books');
+  assert.equal(index.status, 200);
+  const indexHtml = await index.text();
+  assert.match(indexHtml, /Unser Leben in Lindenstadt/);
+  assert.match(indexHtml, /200 pages/);
+  assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/1"/);
+  for (const page of [1, 200]) {
+    const response = await renderRoute(`/books/a1/unser-leben-in-lindenstadt/${page}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.equal((html.match(/<audio /g) ?? []).length, 4, `page ${page}: one player per paragraph`);
+    assert.equal((html.match(/class="book-paragraph"/g) ?? []).length, 4);
+    assert.match(html, /Hover over or tap a word for its English meaning/);
+    assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
+  }
+  assert.equal((await renderRoute('/books/a1/unser-leben-in-lindenstadt/201')).status, 404);
+});
+
 test("old chapter bookmarks open their matching stories", async () => {
   for (const pathname of [
     "/course/a1/chapter-1",
