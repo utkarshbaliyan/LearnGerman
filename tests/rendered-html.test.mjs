@@ -38,14 +38,14 @@ test("A1 Books keeps the source page format with four audio controls and no ques
   const index = await renderRoute('/books');
   assert.equal(index.status, 200);
   const indexHtml = await index.text();
-  assert.match(indexHtml, /Unser Leben in Lindenstadt/);
+  assert.match(indexHtml, /Der Schlüssel im blauen Korb/);
   assert.doesNotMatch(indexHtml, /200 pages · 10 chapters/);
-  assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/1"/);
-  assert.match(indexHtml, /href="\/books\/a1\/unser-leben-in-lindenstadt\/21"/);
+  assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/1"/);
+  assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/21"/);
   assert.equal((indexHtml.match(/class="book-chapter-item"/g) ?? []).length, 10);
   assert.doesNotMatch(indexHtml, /Read a whole book in German|Follow Mia and her family through 200 pages|Die neue Straße/);
   for (const page of [1, 200]) {
-    const response = await renderRoute(`/books/a1/unser-leben-in-lindenstadt/${page}`);
+    const response = await renderRoute(`/books/a1/der-schluessel-im-blauen-korb/${page}`);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.equal((html.match(/<audio /g) ?? []).length, 4, `page ${page}: one player per paragraph`);
@@ -53,7 +53,10 @@ test("A1 Books keeps the source page format with four audio controls and no ques
     assert.match(html, /Hover over or tap a word for its English meaning/);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
   }
-  assert.equal((await renderRoute('/books/a1/unser-leben-in-lindenstadt/201')).status, 404);
+  assert.equal((await renderRoute('/books/a1/der-schluessel-im-blauen-korb/201')).status, 404);
+  const oldPage = await renderRoute('/books/a1/unser-leben-in-lindenstadt/21');
+  assert.equal(oldPage.status, 307);
+  assert.equal(new URL(oldPage.headers.get('location'), 'http://localhost').pathname, '/books/a1/der-schluessel-im-blauen-korb/21');
 });
 
 test("old chapter bookmarks open their matching stories", async () => {

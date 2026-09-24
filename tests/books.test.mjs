@@ -7,23 +7,24 @@ import { createServer } from 'vite';
 const readJson = async path => JSON.parse(await readFile(new URL(path, import.meta.url), 'utf8'));
 
 test('the A1 book preserves all 200 source pages and four paragraphs per page', async () => {
-  const source = await readFile(new URL('../content/books/unser-leben-in-lindenstadt.txt', import.meta.url), 'utf8');
+  const source = await readFile(new URL('../content/books/der-schluessel-im-blauen-korb.txt', import.meta.url), 'utf8');
   const book = await readJson('../app/lib/book-data.json');
-  const headings = [...source.matchAll(/^Kapitel (\d+) · (.+?) · (\d+)\/(\d+)$/gm)];
-  assert.equal(book.title, 'Unser Leben in Lindenstadt');
-  assert.equal(book.subtitle, 'Eine fortlaufende Geschichte auf Deutsch – Niveau A1');
+  const headings = [...source.matchAll(/^Seite (\d+) — ([^\n]+)$/gm)];
+  const chapters = [...source.matchAll(/^KAPITEL (\d+): ([^\n]+)$/gm)];
+  assert.equal(book.title, 'Der Schlüssel im blauen Korb');
+  assert.equal(book.subtitle, 'Eine leichte Geschichte auf Deutsch – Niveau A1');
   assert.equal(book.level, 'A1');
   assert.equal(headings.length, 200);
+  assert.equal(chapters.length, 10);
   assert.equal(book.pages.length, 200);
   for (const [index, match] of headings.entries()) {
     const page = book.pages[index];
-    const body = source.slice(match.index + match[0].length, headings[index + 1]?.index ?? source.length).trim();
-    const [title, ...paragraphs] = body.split(/\n\s*\n/).map(part => part.trim()).filter(Boolean);
+    const body = source.slice(match.index + match[0].length, headings[index + 1]?.index ?? source.length).split(/^KAPITEL \d+: /m)[0].trim();
+    const paragraphs = body.split(/\n\s*\n/).map(part => part.trim()).filter(Boolean);
     assert.equal(page.number, index + 1);
     assert.equal(page.chapter, Math.floor(index / 20) + 1);
     assert.equal(page.chapterPage, index % 20 + 1);
-    assert.equal(page.chapterTitle, match[2]);
-    assert.equal(page.title, title);
+    assert.equal(page.title, match[2]);
     assert.equal(paragraphs.length, 4);
     assert.deepEqual(page.paragraphs, paragraphs, `page ${index + 1} text remains exact`);
   }
@@ -68,4 +69,9 @@ test('each of the 800 book paragraphs has its own matching recording and word ti
       }
     }
   } finally { await vite.close(); }
+});
+
+test('the previous book media and manuscript are absent from the active site', async () => {
+  await assert.rejects(stat(new URL('../public/audio/books/unser-leben-in-lindenstadt', import.meta.url)), { code: 'ENOENT' });
+  await assert.rejects(stat(new URL('../content/books/unser-leben-in-lindenstadt.txt', import.meta.url)), { code: 'ENOENT' });
 });
