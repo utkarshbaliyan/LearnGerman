@@ -25,6 +25,7 @@ function sentenceNarrationTokens(paragraphs: ReadingSentenceTranslation[][]) {
 
 export function ReadingText({ story, glosses, sentenceTranslations }: { story: ReadingStory; glosses: Record<string, string>; sentenceTranslations?: ReadingSentenceTranslation[][] | null }) {
   const { activeWord } = useReadingNarration();
+  const [showTranslations, setShowTranslations] = useState(false);
   const sentenceRows = useMemo(() => story.level === 'A1' && sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
     [story.level, sentenceTranslations]);
   const renderWords = (parts: { text: string; wordIndex: number | null }[]) => parts.map((part, k) =>
@@ -33,16 +34,17 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
       return meaning ? <Tooltip key={j}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
     })}</span>);
   return <div className="reading-content">
-    <p className="reading-help">Tap a word for its meaning.{sentenceRows ? ' Open English beneath any sentence when you need it.' : ''}</p>
+    <p className="reading-help">Tap a word for its meaning.</p>
+    {sentenceRows && <button type="button" className="reading-translation-toggle" aria-pressed={showTranslations} onClick={() => setShowTranslations(value => !value)}>{showTranslations ? 'Hide English translations' : 'Show English translations'}</button>}
     <TooltipProvider delayDuration={100}><article lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
       {sentenceRows ? sentenceRows.map((paragraph, index) => <div className="reading-sentence-paragraph" key={index}>
         {paragraph.map((sentence, sentenceIndex) => <div className="reading-sentence" key={sentenceIndex}>
           <p lang="de">{renderWords(sentence.parts)}</p>
-          <details className="reading-sentence-translation"><summary lang="en" aria-label={`Show English translation for sentence ${sentenceIndex + 1} in paragraph ${index + 1}`}>English translation</summary><p lang="en">{sentence.en}</p></details>
+          {showTranslations && <p className="reading-sentence-translation" lang="en">{sentence.en}</p>}
         </div>)}
       </div>) : narrationTokens(story.text).map((paragraph, index) => <p key={index}>{renderWords(paragraph)}</p>)}
     </article></TooltipProvider>
-    <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>
+    {!sentenceRows && <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>}
     <details className="reading-support"><summary>{story.words.length} useful words & phrases</summary><dl>{story.words.map(word => <div key={word.german}><dt lang="de">{word.german}</dt><dd>{word.english}</dd><blockquote lang="de">{word.example}</blockquote></div>)}</dl>{story.revisit.length > 0 && <div className="reading-revisit"><strong>Words you have met before</strong>{story.revisit.map(word => <p key={word.german}><span lang="de">{word.german}</span> · {word.english} <Link href={`/stories/${word.storyId}`}>Earlier story: {word.title}</Link></p>)}</div>}</details>
     <details className="reading-support"><summary>Notice the grammar</summary><p>{story.grammar}</p><Link href={story.courseChapter ? `/grammar?lesson=${story.level.toLowerCase()}-${Math.ceil(story.courseChapter / 6)}-${((story.courseChapter - 1) % 6) + 1}#lesson` : '/grammar/cheat-sheets'}>{story.courseChapter ? 'Practice this grammar' : 'Open grammar recall tables'} <ArrowRight size={15} /></Link></details>
   </div>;
