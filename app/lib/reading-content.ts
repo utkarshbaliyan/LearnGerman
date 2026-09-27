@@ -1,7 +1,8 @@
 import { getReadingStory } from './reading-path';
 import { readingGlosses } from './reading-glossary';
+import { getA1SentenceTranslations } from './reading-sentence-translations';
 export { readingGlosses } from './reading-glossary';
 export function getReadingContent(id: string) {
   const story = getReadingStory(id);
-  return story ? { story, glosses: readingGlosses(story) } : null;
+  return story ? { story, glosses: readingGlosses(story), sentenceTranslations: getA1SentenceTranslations(story) } : null;
 }

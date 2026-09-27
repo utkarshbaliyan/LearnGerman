@@ -34,6 +34,19 @@ test("opens Stories as home while the integrated course is paused", async () => 
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
 
+test('A1 stories reveal English separately beneath each sentence', async () => {
+  const a1 = await renderRoute('/stories/reading-a1-01-v1');
+  assert.equal(a1.status, 200);
+  const html = await a1.text();
+  assert.match(html, /class="reading-sentence-translation"/);
+  assert.match(html, /English translation/);
+  assert.match(html, /My name is Mia\./);
+  assert.ok((html.match(/class="reading-sentence-translation"/g) ?? []).length > 20);
+  const a2 = await renderRoute('/stories/reading-a2-01-v1');
+  assert.equal(a2.status, 200);
+  assert.doesNotMatch(await a2.text(), /class="reading-sentence-translation"/);
+});
+
 test("A1 Books keeps the source page format with four audio controls and no questions", async () => {
   const index = await renderRoute('/books');
   assert.equal(index.status, 200);

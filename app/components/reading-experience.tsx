@@ -1,8 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { narrationTokens } from '@/app/lib/reading-narration';
+import type { ReadingSentenceTranslation } from '@/app/lib/reading-sentence-translations';
 import { useReadingNarration } from '@/app/components/reading-narration';
 import type { ReadingStory } from '@/app/lib/reading-path';
 import { useStoryProgress } from '@/app/hooks/use-story-progress';
@@ -11,15 +12,35 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 const wordKey = (word: string) => word.toLowerCase().replace(/[^a-zäöüßé]/g, '');
 
-export function ReadingText({ story, glosses }: { story: ReadingStory; glosses: Record<string, string> }) {
+function sentenceNarrationTokens(paragraphs: ReadingSentenceTranslation[][]) {
+  let nextWord = 0;
+  return paragraphs.map(paragraph => paragraph.map(sentence => ({
+    ...sentence,
+    parts: narrationTokens(sentence.de)[0].map(part => ({
+      text: part.text,
+      wordIndex: part.wordIndex === null ? null : nextWord++,
+    })),
+  })));
+}
+
+export function ReadingText({ story, glosses, sentenceTranslations }: { story: ReadingStory; glosses: Record<string, string>; sentenceTranslations?: ReadingSentenceTranslation[][] | null }) {
   const { activeWord } = useReadingNarration();
+  const sentenceRows = useMemo(() => story.level === 'A1' && sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
+    [story.level, sentenceTranslations]);
+  const renderWords = (parts: { text: string; wordIndex: number | null }[]) => parts.map((part, k) =>
+    <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
+      const meaning = glosses[wordKey(token)];
+      return meaning ? <Tooltip key={j}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
+    })}</span>);
   return <div className="reading-content">
-    <p className="reading-help">Tap a word for its meaning.</p>
+    <p className="reading-help">Tap a word for its meaning.{sentenceRows ? ' Open English beneath any sentence when you need it.' : ''}</p>
     <TooltipProvider delayDuration={100}><article lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
-      {narrationTokens(story.text).map((paragraph, index) => <p key={index}>{paragraph.map((part, k) => <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
-        const meaning = glosses[wordKey(token)];
-        return meaning ? <Tooltip key={j}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
-      })}</span>)}</p>)}
+      {sentenceRows ? sentenceRows.map((paragraph, index) => <div className="reading-sentence-paragraph" key={index}>
+        {paragraph.map((sentence, sentenceIndex) => <div className="reading-sentence" key={sentenceIndex}>
+          <p lang="de">{renderWords(sentence.parts)}</p>
+          <details className="reading-sentence-translation"><summary lang="en" aria-label={`Show English translation for sentence ${sentenceIndex + 1} in paragraph ${index + 1}`}>English translation</summary><p lang="en">{sentence.en}</p></details>
+        </div>)}
+      </div>) : narrationTokens(story.text).map((paragraph, index) => <p key={index}>{renderWords(paragraph)}</p>)}
     </article></TooltipProvider>
     <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>
     <details className="reading-support"><summary>{story.words.length} useful words & phrases</summary><dl>{story.words.map(word => <div key={word.german}><dt lang="de">{word.german}</dt><dd>{word.english}</dd><blockquote lang="de">{word.example}</blockquote></div>)}</dl>{story.revisit.length > 0 && <div className="reading-revisit"><strong>Words you have met before</strong>{story.revisit.map(word => <p key={word.german}><span lang="de">{word.german}</span> · {word.english} <Link href={`/stories/${word.storyId}`}>Earlier story: {word.title}</Link></p>)}</div>}</details>

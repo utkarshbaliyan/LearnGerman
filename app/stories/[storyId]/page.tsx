@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ storyId: 
 export default async function StoryPage({ params }: { params: Promise<{ storyId: string }> }) {
   const content = getReadingContent((await params).storyId);
   if (!content) notFound();
-  const { story, glosses } = content;
+  const { story, glosses, sentenceTranslations } = content;
   const companion = RECEPTION_CATALOG.find(item => item.level === story.level && item.chapter === story.courseChapter);
   const next = READING_STORIES[READING_STORIES.findIndex(item => item.id === story.id) + 1];
   const total = READING_STORIES.filter(item => item.level === story.level).length;
@@ -23,7 +23,7 @@ export default async function StoryPage({ params }: { params: Promise<{ storyId:
     <header><span className="reading-eyebrow">{story.level} · {READING_SECTIONS[story.level][story.section - 1]} · {story.number}/{total}</span><h1 lang="de">{story.title}</h1><p>{story.goal} <span className="reading-length">{readingWordCount(story.text)} words</span></p></header>
     <ReadingNarrationProvider key={story.id}>
     <ReadingAudio storyId={story.id} />
-    <ReadingText story={story} glosses={glosses} />
+    <ReadingText story={story} glosses={glosses} sentenceTranslations={sentenceTranslations} />
     </ReadingNarrationProvider>
     <ReadingCheck key={story.id} story={story} />
     {companion && <section className="reception-teaser"><h2>Use this in everyday life</h2><Link href={`/stories/practice/${companion.id}`}>Try a practical reading and listening task →</Link></section>}
