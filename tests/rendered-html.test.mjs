@@ -34,17 +34,16 @@ test("opens Stories as home while the integrated course is paused", async () => 
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
 
-test('A1 stories offer one toggle for all sentence translations', async () => {
-  const a1 = await renderRoute('/stories/reading-a1-01-v1');
-  assert.equal(a1.status, 200);
-  const html = await a1.text();
-  assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
-  assert.match(html, /Show English translations/);
-  assert.doesNotMatch(html, /class="reading-sentence-translation"/);
-  assert.doesNotMatch(html, /Need the gist in English/);
-  const a2 = await renderRoute('/stories/reading-a2-01-v1');
-  assert.equal(a2.status, 200);
-  assert.doesNotMatch(await a2.text(), /class="reading-translation-toggle"/);
+test('all story levels offer one toggle for all sentence translations', async () => {
+  for (const level of ['a1', 'a2', 'b1']) {
+    const response = await renderRoute(`/stories/reading-${level}-01-v1`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
+    assert.match(html, /Show English translations/);
+    assert.doesNotMatch(html, /class="reading-sentence-translation"/);
+    assert.doesNotMatch(html, /Need the gist in English/);
+  }
 });
 
 test("A1 Books keeps the source page format with four audio controls and no questions", async () => {
@@ -160,7 +159,8 @@ test("renders the graded reading path and independent story pages", async () => 
   for (const id of ["reading-a1-01-v1", "reading-a2-18-v1", "reading-b1-24-v1"]) {
     const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /What happened/); assert.match(html, /Need the gist in English/);
+    assert.match(html, /What happened/); assert.match(html, /Show English translations/);
+    assert.doesNotMatch(html, /Need the gist in English/);
     assert.match(html, /Check my answers/); assert.match(html, /Practice this grammar/);
     assert.match(html, /href="\/grammar\?lesson=/);
     assert.doesNotMatch(html, /src=["'][^"']*story-\d+\.webm/);

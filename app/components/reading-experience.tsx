@@ -26,8 +26,8 @@ function sentenceNarrationTokens(paragraphs: ReadingSentenceTranslation[][]) {
 export function ReadingText({ story, glosses, sentenceTranslations }: { story: ReadingStory; glosses: Record<string, string>; sentenceTranslations?: ReadingSentenceTranslation[][] | null }) {
   const { activeWord } = useReadingNarration();
   const [showTranslations, setShowTranslations] = useState(false);
-  const sentenceRows = useMemo(() => story.level === 'A1' && sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
-    [story.level, sentenceTranslations]);
+  const sentenceRows = useMemo(() => sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
+    [sentenceTranslations]);
   const renderWords = (parts: { text: string; wordIndex: number | null }[]) => parts.map((part, k) =>
     <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
       const meaning = glosses[wordKey(token)];

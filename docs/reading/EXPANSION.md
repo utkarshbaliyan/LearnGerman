@@ -34,12 +34,20 @@ hypothetical choices. A note identifies something to notice; it does not certify
 mastery. New library scenes link to recall tables, not unrelated course chapters.
 
 Each story has word tooltips, contextual vocabulary forms with exact source
-examples, a two-sentence English **gist** (not a full translation), and two
+examples, sentence-aligned English translations controlled by one story-wide
+button, and two
 comprehension questions. Authored English situation/outcome statements form the
 correct answers. Distractors are drawn from other scenes in the same level,
 preferentially the same topic. These are basic recognition checks, not a measure
 of independent production. Wrong-answer and naturalness review by a German
 teacher remains necessary before making learning-effectiveness claims.
+
+Sentence translations preserve the German paragraphs and narration word order.
+They are machine-assisted reading support, with editorial corrections; they
+have not had a complete bilingual teacher review. The existing English gist
+remains in the source records as a fallback if a story changes before its
+sentence translations are updated. Local translation models and dependencies
+are excluded from the website and Git repository.
 
 ## Authoring and verification
 
