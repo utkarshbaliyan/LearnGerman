@@ -1,1402 +1,1402 @@
 {
   "1": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p001-page-1a6ad65abb64.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p001-page-1a6ad65abb64.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p001-page-1a6ad65abb64-e51bf24a-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p001-page-1a6ad65abb64-e51bf24a-qwen-dialogue-opus24.json",
     "textHash": "1a6ad65abb64f570968f1beef2a5f97bc9f3d75185e072e9e86922d36267de8a",
     "wordCount": 71,
-    "duration": 25.5185
+    "duration": 28.64
   },
   "2": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p002-page-698b8dc716de.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p002-page-698b8dc716de.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p002-page-698b8dc716de-e82bbea9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p002-page-698b8dc716de-e82bbea9-qwen-dialogue-opus24.json",
     "textHash": "698b8dc716de49f7eabb2088579581d4e6c0b5a858583b3d373b6db58bb302e2",
     "wordCount": 79,
-    "duration": 27.5368
+    "duration": 30.04
   },
   "3": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p003-page-abda050ae9fc.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p003-page-abda050ae9fc.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p003-page-abda050ae9fc-a1e95881-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p003-page-abda050ae9fc-a1e95881-qwen-dialogue-opus24.json",
     "textHash": "abda050ae9fc94621128c9d62679ac1490f96730787237630977acd2e8b22217",
     "wordCount": 77,
-    "duration": 25.8097
+    "duration": 28.16
   },
   "4": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p004-page-e7b9b9dab65f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p004-page-e7b9b9dab65f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p004-page-e7b9b9dab65f-33f8d4e1-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p004-page-e7b9b9dab65f-33f8d4e1-qwen-dialogue-opus24.json",
     "textHash": "e7b9b9dab65faa646ba37a69db11eb5d1219277b9f0029c32b32edb0b603105d",
     "wordCount": 69,
-    "duration": 23.8476
+    "duration": 26.88
   },
   "5": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p005-page-96ab1b469703.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p005-page-96ab1b469703.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p005-page-96ab1b469703-0b611063-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p005-page-96ab1b469703-0b611063-qwen-dialogue-opus24.json",
     "textHash": "96ab1b4697038bf3c1bf18cda12e18e7e8744b29b15eb0f644921c5cda9047a4",
     "wordCount": 77,
-    "duration": 27.6752
+    "duration": 31.32
   },
   "6": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p006-page-cb7a9f7c1f21.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p006-page-cb7a9f7c1f21.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p006-page-cb7a9f7c1f21-8264d09b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p006-page-cb7a9f7c1f21-8264d09b-qwen-dialogue-opus24.json",
     "textHash": "cb7a9f7c1f2185bbd0599a15341664bf1cbc9400dfdb9b82f6209ce5a00b2544",
     "wordCount": 76,
-    "duration": 28.7201
+    "duration": 33.72
   },
   "7": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p007-page-17570ed88c66.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p007-page-17570ed88c66.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p007-page-17570ed88c66-66c6ebaa-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p007-page-17570ed88c66-66c6ebaa-qwen-dialogue-opus24.json",
     "textHash": "17570ed88c6644822d481762efe52cc9ffe1803c93b111e30f8b65a9cadebb3a",
     "wordCount": 78,
-    "duration": 25.1131
+    "duration": 27.2
   },
   "8": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p008-page-842ff18bcc07.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p008-page-842ff18bcc07.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p008-page-842ff18bcc07-257babac-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p008-page-842ff18bcc07-257babac-qwen-dialogue-opus24.json",
     "textHash": "842ff18bcc07dea7a1f536967e31db1d032984636fedd0945c534f7f5cad7258",
     "wordCount": 71,
-    "duration": 25.2496
+    "duration": 30.96
   },
   "9": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p009-page-206f3bd3a51f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p009-page-206f3bd3a51f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p009-page-206f3bd3a51f-8f7eb210-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p009-page-206f3bd3a51f-8f7eb210-qwen-dialogue-opus24.json",
     "textHash": "206f3bd3a51f5ab9f21d22a7ba3c39c9703e667a81c421201b716cd6e7e59f6e",
     "wordCount": 75,
-    "duration": 27.9423
+    "duration": 31.04
   },
   "10": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p010-page-2be7f3e92ba3.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p010-page-2be7f3e92ba3.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p010-page-2be7f3e92ba3-01cb6576-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p010-page-2be7f3e92ba3-01cb6576-qwen-dialogue-opus24.json",
     "textHash": "2be7f3e92ba359c4b378286b86a5885631ffef7c733f692712db44726eb8c956",
     "wordCount": 76,
-    "duration": 24.67
+    "duration": 29.2955
   },
   "11": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p011-page-8a65b828070a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p011-page-8a65b828070a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p011-page-8a65b828070a-459fae69-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p011-page-8a65b828070a-459fae69-qwen-dialogue-opus24.json",
     "textHash": "8a65b828070a35cdacacd5347a6614f962d804c4ae7dd6b1fcdf30a32520f5b3",
     "wordCount": 73,
-    "duration": 24.7737
+    "duration": 29.68
   },
   "12": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p012-page-bef56a0ea166.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p012-page-bef56a0ea166.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p012-page-bef56a0ea166-daf3a60b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p012-page-bef56a0ea166-daf3a60b-qwen-dialogue-opus24.json",
     "textHash": "bef56a0ea1668e4c927d1e0a53f002d7122134143bc728925b1426f0986d9156",
     "wordCount": 71,
-    "duration": 24.7736
+    "duration": 29.84
   },
   "13": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p013-page-0c23f6036c12.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p013-page-0c23f6036c12.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p013-page-0c23f6036c12-081664da-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p013-page-0c23f6036c12-081664da-qwen-dialogue-opus24.json",
     "textHash": "0c23f6036c12d12e35f12f780c730d9fe24c99a426fde6776911d6b6f91a08e1",
     "wordCount": 75,
-    "duration": 26.9795
+    "duration": 31.76
   },
   "14": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p014-page-abcea4910a2f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p014-page-abcea4910a2f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p014-page-abcea4910a2f-057c47eb-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p014-page-abcea4910a2f-057c47eb-qwen-dialogue-opus24.json",
     "textHash": "abcea4910a2fe8c765ad71c66689c3c255fb626bf95b6548f6a489008bd1d266",
     "wordCount": 67,
-    "duration": 24.0681
+    "duration": 27.44
   },
   "15": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p015-page-b66e673a8d05.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p015-page-b66e673a8d05.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p015-page-b66e673a8d05-d118c151-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p015-page-b66e673a8d05-d118c151-qwen-dialogue-opus24.json",
     "textHash": "b66e673a8d05a8af890e2eca262fc4e238e3a0c2720f105a9a71a4127175459c",
     "wordCount": 74,
-    "duration": 24.5075
+    "duration": 25.52
   },
   "16": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p016-page-ef7a134a9806.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p016-page-ef7a134a9806.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p016-page-ef7a134a9806-82631615-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p016-page-ef7a134a9806-82631615-qwen-dialogue-opus24.json",
     "textHash": "ef7a134a9806b12f05f54724b5eeea6a662c44e4ed7176d1c09c27f975b761ba",
     "wordCount": 70,
-    "duration": 25.0871
+    "duration": 30.0
   },
   "17": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p017-page-6307a8715f56.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p017-page-6307a8715f56.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p017-page-6307a8715f56-6a8a3a63-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p017-page-6307a8715f56-6a8a3a63-qwen-dialogue-opus24.json",
     "textHash": "6307a8715f568e0f7d99d5eade5fae45cab87fcaa25dae9585ddcc3736e6d1fc",
     "wordCount": 71,
-    "duration": 23.7787
+    "duration": 29.0
   },
   "18": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p018-page-42e90500cbc9.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p018-page-42e90500cbc9.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p018-page-42e90500cbc9-6e68cbd2-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p018-page-42e90500cbc9-6e68cbd2-qwen-dialogue-opus24.json",
     "textHash": "42e90500cbc9ce9201d197057dcbd78a16e8c851308c44a6b83179dd1d97384b",
     "wordCount": 66,
-    "duration": 23.4653
+    "duration": 27.96
   },
   "19": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p019-page-43ea67acec10.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p019-page-43ea67acec10.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p019-page-43ea67acec10-a9d5ca44-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p019-page-43ea67acec10-a9d5ca44-qwen-dialogue-opus24.json",
     "textHash": "43ea67acec10bad842708e1f11f63409c11f2da258b1d16b9b2fb80885b139b6",
     "wordCount": 69,
-    "duration": 24.8433
+    "duration": 30.58
   },
   "20": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p020-page-c8b4931c4925.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p020-page-c8b4931c4925.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p020-page-c8b4931c4925-568abb25-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p020-page-c8b4931c4925-568abb25-qwen-dialogue-opus24.json",
     "textHash": "c8b4931c4925d8bcbacccc2deda7cf07d7b64596e974439e4cf77aa21a9b1364",
     "wordCount": 81,
-    "duration": 26.3553
+    "duration": 29.36
   },
   "21": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p021-page-ffedbd178f2a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p021-page-ffedbd178f2a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p021-page-ffedbd178f2a-fc66e620-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p021-page-ffedbd178f2a-fc66e620-qwen-dialogue-opus24.json",
     "textHash": "ffedbd178f2a17ba2e8fcb71836a17cc168020064eef72e86aa81ee41f67fb60",
     "wordCount": 108,
-    "duration": 37.4044
+    "duration": 42.76
   },
   "22": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p022-page-5a40bb155c64.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p022-page-5a40bb155c64.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p022-page-5a40bb155c64-d82707c7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p022-page-5a40bb155c64-d82707c7-qwen-dialogue-opus24.json",
     "textHash": "5a40bb155c64de1cee79c832b0a3ec31dcfcada6a8017c57996e2114993ae2f1",
     "wordCount": 97,
-    "duration": 34.142
+    "duration": 38.92
   },
   "23": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p023-page-94fbd1fca4a8.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p023-page-94fbd1fca4a8.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p023-page-94fbd1fca4a8-e2ec23fb-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p023-page-94fbd1fca4a8-e2ec23fb-qwen-dialogue-opus24.json",
     "textHash": "94fbd1fca4a85943fcfe08aeafac1b56c2dc8adb319ea3321076b608f67d21a4",
     "wordCount": 94,
-    "duration": 31.3091
+    "duration": 35.59767
   },
   "24": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p024-page-229e0cd467ff.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p024-page-229e0cd467ff.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p024-page-229e0cd467ff-f6f5e817-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p024-page-229e0cd467ff-f6f5e817-qwen-dialogue-opus24.json",
     "textHash": "229e0cd467ffccd2f78d3f7c8472979541b3df74412863948169920597b2eb0c",
     "wordCount": 107,
-    "duration": 38.7029
+    "duration": 42.21612
   },
   "25": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p025-page-f43bcc407353.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p025-page-f43bcc407353.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p025-page-f43bcc407353-29d45bee-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p025-page-f43bcc407353-29d45bee-qwen-dialogue-opus24.json",
     "textHash": "f43bcc4073537471ec6f4ca05436b8ab87d9aeb931944bfabcd7ef001be8e255",
     "wordCount": 102,
-    "duration": 34.0947
+    "duration": 35.04
   },
   "26": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p026-page-d61c0e221f85.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p026-page-d61c0e221f85.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p026-page-d61c0e221f85-cb6dc79e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p026-page-d61c0e221f85-cb6dc79e-qwen-dialogue-opus24.json",
     "textHash": "d61c0e221f85b23184492228104655fd0288432c4020227c035cd7b4e2e0045c",
     "wordCount": 110,
-    "duration": 36.3809
+    "duration": 40.72
   },
   "27": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p027-page-10d39e41991a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p027-page-10d39e41991a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p027-page-10d39e41991a-ed253cd8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p027-page-10d39e41991a-ed253cd8-qwen-dialogue-opus24.json",
     "textHash": "10d39e41991afe12986481f73cd777ff3bd490a8f15f433ba28b55da819fbcfc",
     "wordCount": 106,
-    "duration": 37.7518
+    "duration": 43.08004
   },
   "28": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p028-page-2e2d03574627.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p028-page-2e2d03574627.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p028-page-2e2d03574627-36c153e7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p028-page-2e2d03574627-36c153e7-qwen-dialogue-opus24.json",
     "textHash": "2e2d03574627ea4ec9934f904fdf5572fdd5252972b40974a1e7126d2ed09f00",
     "wordCount": 109,
-    "duration": 36.2559
+    "duration": 40.36
   },
   "29": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p029-page-640738afbd70.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p029-page-640738afbd70.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p029-page-640738afbd70-5e259c1b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p029-page-640738afbd70-5e259c1b-qwen-dialogue-opus24.json",
     "textHash": "640738afbd703df28908be67c56897ad201e3585ed2b96f2975ec636cea060e4",
     "wordCount": 108,
-    "duration": 38.0903
+    "duration": 41.76
   },
   "30": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p030-page-4dbfb4cd43f9.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p030-page-4dbfb4cd43f9.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p030-page-4dbfb4cd43f9-b46946d5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p030-page-4dbfb4cd43f9-b46946d5-qwen-dialogue-opus24.json",
     "textHash": "4dbfb4cd43f913f8d3a05a5bd6134c0246e7164733bdf460ac77a0699dd1d907",
     "wordCount": 100,
-    "duration": 36.4059
+    "duration": 39.36
   },
   "31": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p031-page-210ea3a52441.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p031-page-210ea3a52441.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p031-page-210ea3a52441-75fce90e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p031-page-210ea3a52441-75fce90e-qwen-dialogue-opus24.json",
     "textHash": "210ea3a5244128289fceb6a2031c0e7077196b613a0e7b9b353ec38eb3a39a8a",
     "wordCount": 103,
-    "duration": 35.4566
+    "duration": 45.6
   },
   "32": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p032-page-052d374689a0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p032-page-052d374689a0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p032-page-052d374689a0-7e63d72c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p032-page-052d374689a0-7e63d72c-qwen-dialogue-opus24.json",
     "textHash": "052d374689a0bec5a7e5bf4ed7f614190571a2316c2573334d3169567d0b3ad2",
     "wordCount": 106,
-    "duration": 36.1505
+    "duration": 42.4
   },
   "33": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p033-page-27bde20ea5cc.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p033-page-27bde20ea5cc.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p033-page-27bde20ea5cc-6b508654-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p033-page-27bde20ea5cc-6b508654-qwen-dialogue-opus24.json",
     "textHash": "27bde20ea5cc322d5a4ff51847e14049f40b2bc8a0eb81c026805bce6f7c441e",
     "wordCount": 109,
-    "duration": 36.4398
+    "duration": 39.68
   },
   "34": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p034-page-9ad94dbcc5fd.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p034-page-9ad94dbcc5fd.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p034-page-9ad94dbcc5fd-23167db3-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p034-page-9ad94dbcc5fd-23167db3-qwen-dialogue-opus24.json",
     "textHash": "9ad94dbcc5fdaf98221f540d870ad53b91c101bcda89b8c29e9e84fc3c393ea6",
     "wordCount": 103,
-    "duration": 35.8942
+    "duration": 39.36
   },
   "35": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p035-page-c98627786666.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p035-page-c98627786666.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p035-page-c98627786666-d28b7e67-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p035-page-c98627786666-d28b7e67-qwen-dialogue-opus24.json",
     "textHash": "c98627786666953cd7f926c282ab06d64584f1add62fb50ce3356629f5030462",
     "wordCount": 100,
-    "duration": 34.4081
+    "duration": 43.16004
   },
   "36": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p036-page-ec164862df9b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p036-page-ec164862df9b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p036-page-ec164862df9b-716b71d7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p036-page-ec164862df9b-716b71d7-qwen-dialogue-opus24.json",
     "textHash": "ec164862df9b2f7071e625e1f5371ac2f555513b53368d3d3bfe3d6a390f20d3",
     "wordCount": 104,
-    "duration": 34.3278
+    "duration": 39.12
   },
   "37": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p037-page-164df5443e8a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p037-page-164df5443e8a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p037-page-164df5443e8a-f39580ce-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p037-page-164df5443e8a-f39580ce-qwen-dialogue-opus24.json",
     "textHash": "164df5443e8a1c1ddba7713ca83e60fe070999400fc433b553577fca591dfd44",
     "wordCount": 104,
-    "duration": 35.9996
+    "duration": 40.72
   },
   "38": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p038-page-e37793614a0c.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p038-page-e37793614a0c.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p038-page-e37793614a0c-0fad67b8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p038-page-e37793614a0c-0fad67b8-qwen-dialogue-opus24.json",
     "textHash": "e37793614a0cde6bbdffaa455ae3214b2012fc455b54696d2e7b0ff39e2ecddc",
     "wordCount": 102,
-    "duration": 34.9431
+    "duration": 38.81229
   },
   "39": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p039-page-bb20e861fdf2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p039-page-bb20e861fdf2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p039-page-bb20e861fdf2-1f49760b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p039-page-bb20e861fdf2-1f49760b-qwen-dialogue-opus24.json",
     "textHash": "bb20e861fdf2529e7a70a9ba906fa9a45888c80389e1fe3c662e8a8eb752920e",
     "wordCount": 97,
-    "duration": 33.7133
+    "duration": 38.04
   },
   "40": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p040-page-2fca2e8adaa0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p040-page-2fca2e8adaa0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p040-page-2fca2e8adaa0-4078d3c2-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p040-page-2fca2e8adaa0-4078d3c2-qwen-dialogue-opus24.json",
     "textHash": "2fca2e8adaa0a8a27c4adc32f30fba165884ba513c85963579d03de13d9ce235",
     "wordCount": 111,
-    "duration": 37.4401
+    "duration": 44.96
   },
   "41": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p041-page-77da5db81f5d.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p041-page-77da5db81f5d.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p041-page-77da5db81f5d-212d0f7c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p041-page-77da5db81f5d-212d0f7c-qwen-dialogue-opus24.json",
     "textHash": "77da5db81f5d4e75ee5f1ff292c965c5523585f895ba2b767ee42fed82fe0eac",
     "wordCount": 110,
-    "duration": 34.827
+    "duration": 39.8
   },
   "42": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p042-page-7bbe87870dc7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p042-page-7bbe87870dc7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p042-page-7bbe87870dc7-38062e0a-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p042-page-7bbe87870dc7-38062e0a-qwen-dialogue-opus24.json",
     "textHash": "7bbe87870dc7d5575e4a58bcd6c0e4ba489ecad4743e0fac10347a1fc4747fd3",
     "wordCount": 99,
-    "duration": 31.7638
+    "duration": 37.12
   },
   "43": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p043-page-465993d7980a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p043-page-465993d7980a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p043-page-465993d7980a-df37ac0e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p043-page-465993d7980a-df37ac0e-qwen-dialogue-opus24.json",
     "textHash": "465993d7980ab3ca1ca167be50422f7a1616ef0f4d39a665dc68a03bac2493c2",
     "wordCount": 108,
-    "duration": 36.998
+    "duration": 44.36004
   },
   "44": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p044-page-011644498821.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p044-page-011644498821.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p044-page-011644498821-5d945558-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p044-page-011644498821-5d945558-qwen-dialogue-opus24.json",
     "textHash": "011644498821875cbb5d85880ff4ab06b368d1d8ff03658744e7c02297147d28",
     "wordCount": 105,
-    "duration": 36.0683
+    "duration": 43.36
   },
   "45": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p045-page-d40dad560d67.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p045-page-d40dad560d67.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p045-page-d40dad560d67-658bb5e2-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p045-page-d40dad560d67-658bb5e2-qwen-dialogue-opus24.json",
     "textHash": "d40dad560d67be132a6ac06f1231fc3b94e405bc785df3ee6a187b347720e4af",
     "wordCount": 101,
-    "duration": 34.7225
+    "duration": 39.88
   },
   "46": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p046-page-5281fdaf079a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p046-page-5281fdaf079a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p046-page-5281fdaf079a-55d3260b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p046-page-5281fdaf079a-55d3260b-qwen-dialogue-opus24.json",
     "textHash": "5281fdaf079a8653ced7d4e89b53b186f26d6771d31dbbf4533e68164f6c05b8",
     "wordCount": 104,
-    "duration": 35.5245
+    "duration": 40.64
   },
   "47": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p047-page-245b6e9d351a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p047-page-245b6e9d351a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p047-page-245b6e9d351a-33bf60a9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p047-page-245b6e9d351a-33bf60a9-qwen-dialogue-opus24.json",
     "textHash": "245b6e9d351a7f42569812e97989aedd3d08b42c4337130f0a02fb779fbaca67",
     "wordCount": 106,
-    "duration": 37.6947
+    "duration": 43.64
   },
   "48": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p048-page-cbf66edf5dfe.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p048-page-cbf66edf5dfe.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p048-page-cbf66edf5dfe-77e2e34d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p048-page-cbf66edf5dfe-77e2e34d-qwen-dialogue-opus24.json",
     "textHash": "cbf66edf5dfed6973e0aed0c2ef9dae818006be51fcdaa35e7d94e6de6e7eee9",
     "wordCount": 102,
-    "duration": 34.317
+    "duration": 41.16
   },
   "49": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p049-page-1a843fd128f8.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p049-page-1a843fd128f8.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p049-page-1a843fd128f8-8e1beb23-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p049-page-1a843fd128f8-8e1beb23-qwen-dialogue-opus24.json",
     "textHash": "1a843fd128f8abf0eb80d1530accc4d13a417b1fcba1dee07c51d86b9e0e6f93",
     "wordCount": 103,
-    "duration": 36.8462
+    "duration": 41.36004
   },
   "50": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p050-page-353a649ab7b5.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p050-page-353a649ab7b5.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p050-page-353a649ab7b5-82a301ca-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p050-page-353a649ab7b5-82a301ca-qwen-dialogue-opus24.json",
     "textHash": "353a649ab7b5d1dd6b1886df4cb4ba62dba7c1c24289e0e308d84081ffc008d6",
     "wordCount": 96,
-    "duration": 35.7549
+    "duration": 43.88
   },
   "51": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p051-page-823d17e27a25.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p051-page-823d17e27a25.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p051-page-823d17e27a25-35ffdf27-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p051-page-823d17e27a25-35ffdf27-qwen-dialogue-opus24.json",
     "textHash": "823d17e27a25fcd7f823f4860c71a26dba47ee6e4b54a289477dfcb11646bfb0",
     "wordCount": 100,
-    "duration": 37.1007
+    "duration": 38.48
   },
   "52": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p052-page-8000619e8caf.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p052-page-8000619e8caf.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p052-page-8000619e8caf-2293187f-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p052-page-8000619e8caf-2293187f-qwen-dialogue-opus24.json",
     "textHash": "8000619e8cafed02a0385147f69c03ee95da3469a7b504bed84c26532a2d133d",
     "wordCount": 106,
-    "duration": 38.0893
+    "duration": 40.44
   },
   "53": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p053-page-744e58ad34f0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p053-page-744e58ad34f0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p053-page-744e58ad34f0-2731e97d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p053-page-744e58ad34f0-2731e97d-qwen-dialogue-opus24.json",
     "textHash": "744e58ad34f0f8bf08c8cc309b23cc2f0ca6d72745cba049bbdb6123581087c2",
     "wordCount": 103,
-    "duration": 36.2443
+    "duration": 39.76
   },
   "54": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p054-page-7d49079476d9.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p054-page-7d49079476d9.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p054-page-7d49079476d9-c5826ab9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p054-page-7d49079476d9-c5826ab9-qwen-dialogue-opus24.json",
     "textHash": "7d49079476d9bf9dec40ad40f09edda3d903c47ec025bfe226ba4ee8a5e45f88",
     "wordCount": 105,
-    "duration": 36.5703
+    "duration": 38.56
   },
   "55": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p055-page-36df1b92be62.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p055-page-36df1b92be62.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p055-page-36df1b92be62-0120d8db-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p055-page-36df1b92be62-0120d8db-qwen-dialogue-opus24.json",
     "textHash": "36df1b92be62efc2720e4c906aae0a75414579f179b464c57a1c5dbcd0baa14f",
     "wordCount": 98,
-    "duration": 35.0467
+    "duration": 38.16
   },
   "56": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p056-page-33d0810e1d0d.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p056-page-33d0810e1d0d.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p056-page-33d0810e1d0d-df172089-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p056-page-33d0810e1d0d-df172089-qwen-dialogue-opus24.json",
     "textHash": "33d0810e1d0d3f3528f6a8819bd36e8e0ca8e120b049fe96169ef971c3d5da7f",
     "wordCount": 99,
-    "duration": 36.5944
+    "duration": 37.52
   },
   "57": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p057-page-e22942497129.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p057-page-e22942497129.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p057-page-e22942497129-b5434906-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p057-page-e22942497129-b5434906-qwen-dialogue-opus24.json",
     "textHash": "e22942497129eceebce2aaa32970aefaed966c231609fad0fc7a4bb19fa0d5d9",
     "wordCount": 100,
-    "duration": 33.5498
+    "duration": 37.76
   },
   "58": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p058-page-9b986988ac5b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p058-page-9b986988ac5b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p058-page-9b986988ac5b-04577dd3-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p058-page-9b986988ac5b-04577dd3-qwen-dialogue-opus24.json",
     "textHash": "9b986988ac5bb52fbef20393fb4b260796184377645bddba0db7492e4b529a44",
     "wordCount": 104,
-    "duration": 34.109
+    "duration": 36.44
   },
   "59": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p059-page-1087ddb8fc39.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p059-page-1087ddb8fc39.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p059-page-1087ddb8fc39-c434a2b7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p059-page-1087ddb8fc39-c434a2b7-qwen-dialogue-opus24.json",
     "textHash": "1087ddb8fc39781b421ec14f54df29c0d1d407db9ac2d062e7881c6647bf38b1",
     "wordCount": 106,
-    "duration": 34.7118
+    "duration": 42.32
   },
   "60": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p060-page-4d0d447d4e00.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p060-page-4d0d447d4e00.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p060-page-4d0d447d4e00-8ce5313e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p060-page-4d0d447d4e00-8ce5313e-qwen-dialogue-opus24.json",
     "textHash": "4d0d447d4e0073ac5953449fd0d0f15c9fe4996f227e1c766851ab51d1a3e3ed",
     "wordCount": 111,
-    "duration": 35.1547
+    "duration": 35.44
   },
   "61": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p061-page-0261a5adfd1a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p061-page-0261a5adfd1a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p061-page-0261a5adfd1a-1f80ea85-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p061-page-0261a5adfd1a-1f80ea85-qwen-dialogue-opus24.json",
     "textHash": "0261a5adfd1a3aa0d6d4777d26cd67d7b3f877a61675cd9a08a18909ce0f8bce",
     "wordCount": 93,
-    "duration": 32.288
+    "duration": 35.2
   },
   "62": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p062-page-aef36b29042e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p062-page-aef36b29042e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p062-page-aef36b29042e-dc583945-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p062-page-aef36b29042e-dc583945-qwen-dialogue-opus24.json",
     "textHash": "aef36b29042e0f6156c5b7cd05c7a7e0d81224151faf5b345cc4ef7f7f57e4a2",
     "wordCount": 105,
-    "duration": 39.1584
+    "duration": 43.56
   },
   "63": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p063-page-24fd031cec62.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p063-page-24fd031cec62.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p063-page-24fd031cec62-3c26dc27-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p063-page-24fd031cec62-3c26dc27-qwen-dialogue-opus24.json",
     "textHash": "24fd031cec62736441ed60bd6feeba397258608705a78933e678a07253a0b55b",
     "wordCount": 106,
-    "duration": 37.1597
+    "duration": 41.96004
   },
   "64": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p064-page-b0aea75756f6.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p064-page-b0aea75756f6.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p064-page-b0aea75756f6-9eb97acf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p064-page-b0aea75756f6-9eb97acf-qwen-dialogue-opus24.json",
     "textHash": "b0aea75756f6585c3c8ab84947cb7b7be9e4f9f252c1affa47867f2b34243434",
     "wordCount": 93,
-    "duration": 34.6305
+    "duration": 37.8
   },
   "65": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p065-page-9cc4e72ba986.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p065-page-9cc4e72ba986.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p065-page-9cc4e72ba986-457b2708-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p065-page-9cc4e72ba986-457b2708-qwen-dialogue-opus24.json",
     "textHash": "9cc4e72ba9865362221c4e1447a69b1ec14eddd23a87f8c493e9bcbb28192d21",
     "wordCount": 94,
-    "duration": 34.0509
+    "duration": 38.88
   },
   "66": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p066-page-4204a85a9a74.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p066-page-4204a85a9a74.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p066-page-4204a85a9a74-a10df9c1-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p066-page-4204a85a9a74-a10df9c1-qwen-dialogue-opus24.json",
     "textHash": "4204a85a9a743afe9e7f4cf22eb150e6273ba315709c42bc6b5f108e3402b408",
     "wordCount": 99,
-    "duration": 35.4799
+    "duration": 38.88
   },
   "67": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p067-page-03e028fb9270.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p067-page-03e028fb9270.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p067-page-03e028fb9270-515fa17d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p067-page-03e028fb9270-515fa17d-qwen-dialogue-opus24.json",
     "textHash": "03e028fb9270f4e03a619e2945174f945a828075d6113f448e3a4c69762d77ae",
     "wordCount": 102,
-    "duration": 35.478
+    "duration": 38.28
   },
   "68": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p068-page-f650028af99e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p068-page-f650028af99e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p068-page-f650028af99e-7410d2d6-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p068-page-f650028af99e-7410d2d6-qwen-dialogue-opus24.json",
     "textHash": "f650028af99e4daa2dd9392a9acb5234afddbb7ae01324aabe816c2830210637",
     "wordCount": 98,
-    "duration": 34.376
+    "duration": 37.04
   },
   "69": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p069-page-bcfc70e99c9b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p069-page-bcfc70e99c9b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p069-page-bcfc70e99c9b-9a1a15ae-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p069-page-bcfc70e99c9b-9a1a15ae-qwen-dialogue-opus24.json",
     "textHash": "bcfc70e99c9b50902d84510a0c30fd0ff63c3e86d1a7ab34ab8a9d6cc05295f6",
     "wordCount": 92,
-    "duration": 33.7598
+    "duration": 36.56
   },
   "70": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p070-page-f2f362a71deb.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p070-page-f2f362a71deb.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p070-page-f2f362a71deb-f4f9fa25-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p070-page-f2f362a71deb-f4f9fa25-qwen-dialogue-opus24.json",
     "textHash": "f2f362a71deb7327b9d23fbc6d7f44908fe5c56c237f7eb27ba9efa55960eaae",
     "wordCount": 95,
-    "duration": 31.7405
+    "duration": 36.88
   },
   "71": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p071-page-3f03d4d0064e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p071-page-3f03d4d0064e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p071-page-3f03d4d0064e-155e10ec-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p071-page-3f03d4d0064e-155e10ec-qwen-dialogue-opus24.json",
     "textHash": "3f03d4d0064e2a9d02bec3b503da7f132bb3a46f9c17cdd580a9763bba9ef5fb",
     "wordCount": 100,
-    "duration": 33.841
+    "duration": 37.44
   },
   "72": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p072-page-388a4f5cde53.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p072-page-388a4f5cde53.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p072-page-388a4f5cde53-b979e43e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p072-page-388a4f5cde53-b979e43e-qwen-dialogue-opus24.json",
     "textHash": "388a4f5cde538a9f42598d6418465a28a739b5069c366dac11f5316a88f28acf",
     "wordCount": 98,
-    "duration": 34.4564
+    "duration": 35.36
   },
   "73": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p073-page-aaba93609beb.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p073-page-aaba93609beb.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p073-page-aaba93609beb-fa6df402-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p073-page-aaba93609beb-fa6df402-qwen-dialogue-opus24.json",
     "textHash": "aaba93609bebe3e69b0e59e49c081ecdf9a42c4fd636b59100a129fac6088513",
     "wordCount": 98,
-    "duration": 32.5425
+    "duration": 33.76
   },
   "74": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p074-page-3700f9ae195b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p074-page-3700f9ae195b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p074-page-3700f9ae195b-86f5db22-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p074-page-3700f9ae195b-86f5db22-qwen-dialogue-opus24.json",
     "textHash": "3700f9ae195b3d3bc2fc1468926c9d498b1e6ff9d4b4961da8deaf53be3bc57a",
     "wordCount": 101,
-    "duration": 34.1563
+    "duration": 37.16
   },
   "75": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p075-page-ffd94b47db0b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p075-page-ffd94b47db0b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p075-page-ffd94b47db0b-4643a82b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p075-page-ffd94b47db0b-4643a82b-qwen-dialogue-opus24.json",
     "textHash": "ffd94b47db0b549dd00bf597fb8a174992796f5b08908c294f69e8bbc2e37290",
     "wordCount": 97,
-    "duration": 35.4896
+    "duration": 36.72
   },
   "76": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p076-page-b2f399ecb26d.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p076-page-b2f399ecb26d.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p076-page-b2f399ecb26d-ed32a33c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p076-page-b2f399ecb26d-ed32a33c-qwen-dialogue-opus24.json",
     "textHash": "b2f399ecb26dbfb6feb954b1e5d1bd9b828317a8c306445827823a350b9276ed",
     "wordCount": 98,
-    "duration": 35.3986
+    "duration": 36.32
   },
   "77": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p077-page-910846424b3b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p077-page-910846424b3b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p077-page-910846424b3b-3bdf82a5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p077-page-910846424b3b-3bdf82a5-qwen-dialogue-opus24.json",
     "textHash": "910846424b3b717d1d55c7f860d4bf805d9e0c1eb62cd8ab999f1fea6a381645",
     "wordCount": 101,
-    "duration": 35.9559
+    "duration": 39.8
   },
   "78": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p078-page-21c432d50e2f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p078-page-21c432d50e2f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p078-page-21c432d50e2f-6f356ae0-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p078-page-21c432d50e2f-6f356ae0-qwen-dialogue-opus24.json",
     "textHash": "21c432d50e2f22bbc66bf0e3bec655e0b7cdb3f263cfed6e9953b01d3002e27d",
     "wordCount": 102,
-    "duration": 35.6075
+    "duration": 37.04
   },
   "79": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p079-page-f91e51f2b0cc.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p079-page-f91e51f2b0cc.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p079-page-f91e51f2b0cc-337a17ee-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p079-page-f91e51f2b0cc-337a17ee-qwen-dialogue-opus24.json",
     "textHash": "f91e51f2b0ccff83f27b09b71e21161425bb83535805289cb2c9833fcd345c60",
     "wordCount": 100,
-    "duration": 33.8312
+    "duration": 38.84
   },
   "80": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p080-page-31e74d71eed7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p080-page-31e74d71eed7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p080-page-31e74d71eed7-f9838f14-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p080-page-31e74d71eed7-f9838f14-qwen-dialogue-opus24.json",
     "textHash": "31e74d71eed7a9e067aa7619f68571b9534f9d6adef907a70311b7e21e62cf16",
     "wordCount": 106,
-    "duration": 35.7808
+    "duration": 40.88
   },
   "81": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p081-page-a5febaa96384.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p081-page-a5febaa96384.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p081-page-a5febaa96384-e9cfca9a-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p081-page-a5febaa96384-e9cfca9a-qwen-dialogue-opus24.json",
     "textHash": "a5febaa9638442e7d15e8ec90438f7a4108b9dafc191321d3dfdbd8dca6f2afc",
     "wordCount": 109,
-    "duration": 35.9773
+    "duration": 36.96
   },
   "82": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p082-page-3cb1ee76ab98.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p082-page-3cb1ee76ab98.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p082-page-3cb1ee76ab98-6826c51e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p082-page-3cb1ee76ab98-6826c51e-qwen-dialogue-opus24.json",
     "textHash": "3cb1ee76ab98a378f083c9dbf1a2941625c6ee0ccc1bfe67e4bde9fc8ecf7762",
     "wordCount": 100,
-    "duration": 35.1762
+    "duration": 38.08
   },
   "83": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p083-page-8c40e7bfd462.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p083-page-8c40e7bfd462.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p083-page-8c40e7bfd462-8a1bfc57-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p083-page-8c40e7bfd462-8a1bfc57-qwen-dialogue-opus24.json",
     "textHash": "8c40e7bfd46201487ea21feb0bc498de3566fcd3f442ff582a5521b107571409",
     "wordCount": 99,
-    "duration": 35.1673
+    "duration": 38.88
   },
   "84": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p084-page-7dc9efda3ee2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p084-page-7dc9efda3ee2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p084-page-7dc9efda3ee2-eddc7661-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p084-page-7dc9efda3ee2-eddc7661-qwen-dialogue-opus24.json",
     "textHash": "7dc9efda3ee2f91c12c18e05bd19777ebc38e500e1f78442ea18917f5c37a7e4",
     "wordCount": 90,
-    "duration": 32.1362
+    "duration": 33.6
   },
   "85": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p085-page-6d5d1861b11f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p085-page-6d5d1861b11f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p085-page-6d5d1861b11f-8df0a7ee-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p085-page-6d5d1861b11f-8df0a7ee-qwen-dialogue-opus24.json",
     "textHash": "6d5d1861b11fa321c14908fe66c82f60213f370dd7c6e7cef05bb962b0ab959b",
     "wordCount": 94,
-    "duration": 34.5144
+    "duration": 38.64
   },
   "86": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p086-page-b134f4e93969.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p086-page-b134f4e93969.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p086-page-b134f4e93969-c20ed06c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p086-page-b134f4e93969-c20ed06c-qwen-dialogue-opus24.json",
     "textHash": "b134f4e93969e7d65fa11b9fcacfc7f0118d83176365430bfa84e96eb96f9e3e",
     "wordCount": 90,
-    "duration": 32.831
+    "duration": 37.88
   },
   "87": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p087-page-759f07258777.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p087-page-759f07258777.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p087-page-759f07258777-afe784a5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p087-page-759f07258777-afe784a5-qwen-dialogue-opus24.json",
     "textHash": "759f07258777d747789ce40b2446c59a22c03114fe1abe2ebc729a962eaefe18",
     "wordCount": 95,
-    "duration": 30.6153
+    "duration": 32.4
   },
   "88": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p088-page-8f04ec003321.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p088-page-8f04ec003321.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p088-page-8f04ec003321-fc2d325e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p088-page-8f04ec003321-fc2d325e-qwen-dialogue-opus24.json",
     "textHash": "8f04ec003321338419605d62afb86a604b0b054c14a0095800179415c2133f0d",
     "wordCount": 93,
-    "duration": 31.01
+    "duration": 34.4
   },
   "89": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p089-page-298c1168dc0e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p089-page-298c1168dc0e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p089-page-298c1168dc0e-22d38b87-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p089-page-298c1168dc0e-22d38b87-qwen-dialogue-opus24.json",
     "textHash": "298c1168dc0e9f12916d2291106cec617e9ccaa29a28db571ad4db23243820f0",
     "wordCount": 91,
-    "duration": 30.3367
+    "duration": 35.48
   },
   "90": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p090-page-1bc90f0706d6.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p090-page-1bc90f0706d6.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p090-page-1bc90f0706d6-ebe233e4-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p090-page-1bc90f0706d6-ebe233e4-qwen-dialogue-opus24.json",
     "textHash": "1bc90f0706d6b1d6b28a5786b965544bc14d8dc8cd076831f4765b9025ba4875",
     "wordCount": 95,
-    "duration": 32.6935
+    "duration": 34.56
   },
   "91": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p091-page-66427ac7270d.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p091-page-66427ac7270d.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p091-page-66427ac7270d-b74693f2-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p091-page-66427ac7270d-b74693f2-qwen-dialogue-opus24.json",
     "textHash": "66427ac7270d10304e91c0658a7a5fef1a48ee508030f73ee2000f7a148be353",
     "wordCount": 107,
-    "duration": 36.0247
+    "duration": 40.76
   },
   "92": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p092-page-bdeb0d9698d8.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p092-page-bdeb0d9698d8.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p092-page-bdeb0d9698d8-78d4d08c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p092-page-bdeb0d9698d8-78d4d08c-qwen-dialogue-opus24.json",
     "textHash": "bdeb0d9698d870916e9e38588f7571371d0a6dd20e8334aab337d96cee8613b9",
     "wordCount": 92,
-    "duration": 31.6271
+    "duration": 32.0
   },
   "93": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p093-page-4e3930d97706.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p093-page-4e3930d97706.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p093-page-4e3930d97706-e12b5840-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p093-page-4e3930d97706-e12b5840-qwen-dialogue-opus24.json",
     "textHash": "4e3930d977065dd3b51f5d50445890761d72dfd1abc0b0b97e9284da23ba9a17",
     "wordCount": 104,
-    "duration": 37.2883
+    "duration": 40.0
   },
   "94": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p094-page-1deb03108b68.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p094-page-1deb03108b68.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p094-page-1deb03108b68-dfdf3d56-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p094-page-1deb03108b68-dfdf3d56-qwen-dialogue-opus24.json",
     "textHash": "1deb03108b6884838e3d8e2bfa2aac7c623f030d1e9fb131ec6a4fdef70d651e",
     "wordCount": 91,
-    "duration": 32.0675
+    "duration": 37.2
   },
   "95": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p095-page-d8f560b3692a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p095-page-d8f560b3692a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p095-page-d8f560b3692a-4264eb1a-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p095-page-d8f560b3692a-4264eb1a-qwen-dialogue-opus24.json",
     "textHash": "d8f560b3692a798d01a9d6afb1e8e44b06145fc810a79c7f80a6b3ef62775c4d",
     "wordCount": 107,
-    "duration": 35.5835
+    "duration": 38.4
   },
   "96": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p096-page-d5229fbd7898.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p096-page-d5229fbd7898.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p096-page-d5229fbd7898-840c27ee-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p096-page-d5229fbd7898-840c27ee-qwen-dialogue-opus24.json",
     "textHash": "d5229fbd7898dbb4473827e61280bf9a670e9c83bcec6de36748874bc2e6a134",
     "wordCount": 91,
-    "duration": 31.4744
+    "duration": 35.08
   },
   "97": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p097-page-e5146cd7f036.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p097-page-e5146cd7f036.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p097-page-e5146cd7f036-5c185940-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p097-page-e5146cd7f036-5c185940-qwen-dialogue-opus24.json",
     "textHash": "e5146cd7f036914d5ea7997372cca150fff252663a1240e21217b72fa8876b66",
     "wordCount": 105,
-    "duration": 38.3243
+    "duration": 41.04
   },
   "98": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p098-page-a9effff76527.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p098-page-a9effff76527.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p098-page-a9effff76527-b60fce86-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p098-page-a9effff76527-b60fce86-qwen-dialogue-opus24.json",
     "textHash": "a9effff76527c18199ed5bd135b2909ca8a11c2a5dd7604ec5fc7b96a045d966",
     "wordCount": 92,
-    "duration": 29.2801
+    "duration": 33.36
   },
   "99": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p099-page-996764e25bb5.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p099-page-996764e25bb5.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p099-page-996764e25bb5-a7a1fe35-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p099-page-996764e25bb5-a7a1fe35-qwen-dialogue-opus24.json",
     "textHash": "996764e25bb5d66a599c45ab0a2ce8d2e98e785bc86fafdeae54492dad3b9a1c",
     "wordCount": 91,
-    "duration": 31.8923
+    "duration": 33.68
   },
   "100": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p100-page-586cb523bb70.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p100-page-586cb523bb70.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p100-page-586cb523bb70-d09869e7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p100-page-586cb523bb70-d09869e7-qwen-dialogue-opus24.json",
     "textHash": "586cb523bb70d47da276f39959200eab011719401729f33c16b933c0a136584c",
     "wordCount": 107,
-    "duration": 37.4178
+    "duration": 41.44
   },
   "101": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p101-page-917b45064ebd.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p101-page-917b45064ebd.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p101-page-917b45064ebd-f9e33a22-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p101-page-917b45064ebd-f9e33a22-qwen-dialogue-opus24.json",
     "textHash": "917b45064ebd1772be4cbcb17579004696de20ac7a50f1c4287762d46378ec82",
     "wordCount": 135,
-    "duration": 46.3878
+    "duration": 52.64
   },
   "102": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p102-page-8b6bcb569701.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p102-page-8b6bcb569701.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p102-page-8b6bcb569701-d129dfd7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p102-page-8b6bcb569701-d129dfd7-qwen-dialogue-opus24.json",
     "textHash": "8b6bcb5697016d2332d615c3183921259e4687bb13a74190541d9dea39151921",
     "wordCount": 139,
-    "duration": 44.9142
+    "duration": 46.32
   },
   "103": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p103-page-246c5052746c.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p103-page-246c5052746c.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p103-page-246c5052746c-9ec2c6b6-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p103-page-246c5052746c-9ec2c6b6-qwen-dialogue-opus24.json",
     "textHash": "246c5052746c6200cf73cd77a3edf21ef2ef4e7f97e674fb45d93275ee73a50f",
     "wordCount": 124,
-    "duration": 42.9405
+    "duration": 46.72
   },
   "104": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p104-page-5df00aceb578.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p104-page-5df00aceb578.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p104-page-5df00aceb578-36e63893-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p104-page-5df00aceb578-36e63893-qwen-dialogue-opus24.json",
     "textHash": "5df00aceb578f1f6087e18299dec87bfc66c08c2a614fa74cea5c8a8c186f97c",
     "wordCount": 122,
-    "duration": 40.3533
+    "duration": 47.0
   },
   "105": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p105-page-315597cb7f81.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p105-page-315597cb7f81.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p105-page-315597cb7f81-e3a7dd45-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p105-page-315597cb7f81-e3a7dd45-qwen-dialogue-opus24.json",
     "textHash": "315597cb7f81d5dcf6eb5199d03186df852f97756bc9afb1fa3a385727cacfb3",
     "wordCount": 121,
-    "duration": 43.964
+    "duration": 50.24
   },
   "106": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p106-page-32a5b64a59c6.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p106-page-32a5b64a59c6.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p106-page-32a5b64a59c6-ba19453b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p106-page-32a5b64a59c6-ba19453b-qwen-dialogue-opus24.json",
     "textHash": "32a5b64a59c603e50c620c8e38c820cfd60f7b4ec17149d8cda574d8a223e1a6",
     "wordCount": 115,
-    "duration": 41.083
+    "duration": 49.24
   },
   "107": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p107-page-26a7e1e91f42.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p107-page-26a7e1e91f42.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p107-page-26a7e1e91f42-bc6b882d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p107-page-26a7e1e91f42-bc6b882d-qwen-dialogue-opus24.json",
     "textHash": "26a7e1e91f426734224513b6e80f7804e0649dfe61339ed6057e720678927c87",
     "wordCount": 116,
-    "duration": 39.4826
+    "duration": 40.88
   },
   "108": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p108-page-59ae4dab32b7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p108-page-59ae4dab32b7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p108-page-59ae4dab32b7-01894399-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p108-page-59ae4dab32b7-01894399-qwen-dialogue-opus24.json",
     "textHash": "59ae4dab32b73049baef9eaa7133957be49697301c40b3ee98804a994bb798eb",
     "wordCount": 124,
-    "duration": 42.7459
+    "duration": 43.12
   },
   "109": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p109-page-d87e2d009e0f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p109-page-d87e2d009e0f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p109-page-d87e2d009e0f-823a1b57-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p109-page-d87e2d009e0f-823a1b57-qwen-dialogue-opus24.json",
     "textHash": "d87e2d009e0f2fa56bd1d1e1688f60251c32105ff4a2b1c52b43f162736731c0",
     "wordCount": 119,
-    "duration": 43.7077
+    "duration": 48.0
   },
   "110": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p110-page-eefed7dd2fe3.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p110-page-eefed7dd2fe3.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p110-page-eefed7dd2fe3-f3a8cbd7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p110-page-eefed7dd2fe3-f3a8cbd7-qwen-dialogue-opus24.json",
     "textHash": "eefed7dd2fe30eed902e15110f96ca68d909b71b862dd03cca241ff3b12486f3",
     "wordCount": 119,
-    "duration": 41.6447
+    "duration": 45.12
   },
   "111": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p111-page-a38cf9b53844.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p111-page-a38cf9b53844.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p111-page-a38cf9b53844-94b12b9c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p111-page-a38cf9b53844-94b12b9c-qwen-dialogue-opus24.json",
     "textHash": "a38cf9b538446fbe9377c553cbd66c82ef9f942bbf9ac3f51b223ccb596d6a11",
     "wordCount": 114,
-    "duration": 40.9589
+    "duration": 46.2
   },
   "112": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p112-page-b05a320e5405.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p112-page-b05a320e5405.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p112-page-b05a320e5405-90575c46-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p112-page-b05a320e5405-90575c46-qwen-dialogue-opus24.json",
     "textHash": "b05a320e54059b0241c12adbe0d861e912fa58b5a8930b803931a550c8bd6123",
     "wordCount": 112,
-    "duration": 39.1691
+    "duration": 40.96
   },
   "113": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p113-page-7ff852a33a62.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p113-page-7ff852a33a62.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p113-page-7ff852a33a62-b72c2742-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p113-page-7ff852a33a62-b72c2742-qwen-dialogue-opus24.json",
     "textHash": "7ff852a33a62c5b4b744b0ad8497460f8a09e78ceb37bdc1d90c83dbb1c6158e",
     "wordCount": 116,
-    "duration": 39.4835
+    "duration": 46.28
   },
   "114": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p114-page-d68c44d52209.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p114-page-d68c44d52209.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p114-page-d68c44d52209-605c0872-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p114-page-d68c44d52209-605c0872-qwen-dialogue-opus24.json",
     "textHash": "d68c44d522093c1bf70119a34040448a87aac249b2b4e154f03ac05fd003c742",
     "wordCount": 115,
-    "duration": 39.0539
+    "duration": 46.52
   },
   "115": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p115-page-61f2283a9fba.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p115-page-61f2283a9fba.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p115-page-61f2283a9fba-6327777e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p115-page-61f2283a9fba-6327777e-qwen-dialogue-opus24.json",
     "textHash": "61f2283a9fba67fd6910e808436fe983111725f3af736e7c7e33c9fe0e0796d9",
     "wordCount": 117,
-    "duration": 40.3426
+    "duration": 45.16
   },
   "116": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p116-page-b04b42f60d4e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p116-page-b04b42f60d4e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p116-page-b04b42f60d4e-d144c7d9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p116-page-b04b42f60d4e-d144c7d9-qwen-dialogue-opus24.json",
     "textHash": "b04b42f60d4e6d079b079c32e44319893dd7dec0d17b11b1d5fc58614f57fe45",
     "wordCount": 120,
-    "duration": 41.434
+    "duration": 42.08
   },
   "117": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p117-page-47b646acbdb7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p117-page-47b646acbdb7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p117-page-47b646acbdb7-c9f18796-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p117-page-47b646acbdb7-c9f18796-qwen-dialogue-opus24.json",
     "textHash": "47b646acbdb7e1f52171c986089bd25db72317dd1b86480edc5b290a7d1af08c",
     "wordCount": 102,
-    "duration": 36.548
+    "duration": 39.92
   },
   "118": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p118-page-414727380774.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p118-page-414727380774.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p118-page-414727380774-5151bbfc-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p118-page-414727380774-5151bbfc-qwen-dialogue-opus24.json",
     "textHash": "414727380774c9ea592fa0efdc73a93476825579c34e99ba25180bd3409f9ae5",
     "wordCount": 118,
-    "duration": 41.9922
+    "duration": 50.24
   },
   "119": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p119-page-0648ab15b042.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p119-page-0648ab15b042.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p119-page-0648ab15b042-869ac86e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p119-page-0648ab15b042-869ac86e-qwen-dialogue-opus24.json",
     "textHash": "0648ab15b0422250395cd37daa7fa393cb1786053f545492378f1c999153d64d",
     "wordCount": 112,
-    "duration": 37.7536
+    "duration": 43.44
   },
   "120": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p120-page-69ccc259f1c2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p120-page-69ccc259f1c2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p120-page-69ccc259f1c2-3448aba1-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p120-page-69ccc259f1c2-3448aba1-qwen-dialogue-opus24.json",
     "textHash": "69ccc259f1c2f80b96495bb87625853dcc1dcfeede465aa3adbf4d27a090be41",
     "wordCount": 112,
-    "duration": 37.6295
+    "duration": 39.6
   },
   "121": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p121-page-4cc25d550686.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p121-page-4cc25d550686.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p121-page-4cc25d550686-05ebb76b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p121-page-4cc25d550686-05ebb76b-qwen-dialogue-opus24.json",
     "textHash": "4cc25d55068631effc6d7ddab467fbb76368b9366fa3579a8139cf848da22951",
     "wordCount": 157,
-    "duration": 52.3571
+    "duration": 59.74
   },
   "122": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p122-page-7f2b9e735dbd.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p122-page-7f2b9e735dbd.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p122-page-7f2b9e735dbd-dc87b2dc-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p122-page-7f2b9e735dbd-dc87b2dc-qwen-dialogue-opus24.json",
     "textHash": "7f2b9e735dbddac85831b4dd301f0b574ea40b8f58fa615856d0d9175c17d4f0",
     "wordCount": 147,
-    "duration": 49.8735
+    "duration": 55.36
   },
   "123": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p123-page-19e67fc4b494.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p123-page-19e67fc4b494.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p123-page-19e67fc4b494-ba0321c7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p123-page-19e67fc4b494-ba0321c7-qwen-dialogue-opus24.json",
     "textHash": "19e67fc4b494906084deaff921d88be36301c11d3df243e670fa9ef21128079c",
     "wordCount": 134,
-    "duration": 45.1027
+    "duration": 50.04
   },
   "124": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p124-page-a8f5c1a7c596.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p124-page-a8f5c1a7c596.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p124-page-a8f5c1a7c596-c2938753-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p124-page-a8f5c1a7c596-c2938753-qwen-dialogue-opus24.json",
     "textHash": "a8f5c1a7c596a8fe6728062a239cd9bfaca062872fb1044d4e06cdcaba4c2516",
     "wordCount": 135,
-    "duration": 47.8641
+    "duration": 54.64
   },
   "125": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p125-page-26d83044e88a.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p125-page-26d83044e88a.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p125-page-26d83044e88a-8ea565bf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p125-page-26d83044e88a-8ea565bf-qwen-dialogue-opus24.json",
     "textHash": "26d83044e88ae7ae914770e8e55d2c8c124638d08e40aa61809b3884c79b0679",
     "wordCount": 126,
-    "duration": 42.1859
+    "duration": 42.8
   },
   "126": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p126-page-933cd593fb33.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p126-page-933cd593fb33.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p126-page-933cd593fb33-aade6c4c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p126-page-933cd593fb33-aade6c4c-qwen-dialogue-opus24.json",
     "textHash": "933cd593fb33fc822addadba4c21549dd89dcf8e40dd6b7f1cdeb66e05ca492a",
     "wordCount": 126,
-    "duration": 46.077
+    "duration": 50.32
   },
   "127": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p127-page-2ce60e94fdab.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p127-page-2ce60e94fdab.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p127-page-2ce60e94fdab-55ae019e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p127-page-2ce60e94fdab-55ae019e-qwen-dialogue-opus24.json",
     "textHash": "2ce60e94fdabfdebd19b06e65861ca795059307fce7405c693d44570a6f7c55d",
     "wordCount": 132,
-    "duration": 44.975
+    "duration": 48.0
   },
   "128": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p128-page-6beea5b7e5b0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p128-page-6beea5b7e5b0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p128-page-6beea5b7e5b0-d9aad03b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p128-page-6beea5b7e5b0-d9aad03b-qwen-dialogue-opus24.json",
     "textHash": "6beea5b7e5b0823f008430bc6aa79e6178b968e262880074c5fd0b6edb196029",
     "wordCount": 132,
-    "duration": 43.8381
+    "duration": 53.8
   },
   "129": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p129-page-dbe24a2b6471.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p129-page-dbe24a2b6471.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p129-page-dbe24a2b6471-74d0cfbd-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p129-page-dbe24a2b6471-74d0cfbd-qwen-dialogue-opus24.json",
     "textHash": "dbe24a2b6471fd5aa454b49a535cec328e7403515c198708b4b0bda9d606592a",
     "wordCount": 121,
-    "duration": 43.221
+    "duration": 46.48
   },
   "130": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p130-page-e2f59b8fdd33.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p130-page-e2f59b8fdd33.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p130-page-e2f59b8fdd33-47f60753-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p130-page-e2f59b8fdd33-47f60753-qwen-dialogue-opus24.json",
     "textHash": "e2f59b8fdd33a028338d068735b14ab3814aad813e151f915612ae61aa8b1fb9",
     "wordCount": 116,
-    "duration": 39.2513
+    "duration": 39.36
   },
   "131": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p131-page-95dd5c14bc57.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p131-page-95dd5c14bc57.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p131-page-95dd5c14bc57-11786cea-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p131-page-95dd5c14bc57-11786cea-qwen-dialogue-opus24.json",
     "textHash": "95dd5c14bc571b9d9f48ac11cc394f0f0f7d7f906a32b19b750598d6529eb8d0",
     "wordCount": 118,
-    "duration": 39.6112
+    "duration": 38.8
   },
   "132": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p132-page-f8ff982e5d28.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p132-page-f8ff982e5d28.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p132-page-f8ff982e5d28-f96cd8de-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p132-page-f8ff982e5d28-f96cd8de-qwen-dialogue-opus24.json",
     "textHash": "f8ff982e5d28b5f46bab12e26bac2a6c2b376fffcb25e2ec955d67b735d81859",
     "wordCount": 119,
-    "duration": 39.5898
+    "duration": 41.84
   },
   "133": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p133-page-a09785f09854.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p133-page-a09785f09854.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p133-page-a09785f09854-b4d81d98-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p133-page-a09785f09854-b4d81d98-qwen-dialogue-opus24.json",
     "textHash": "a09785f09854c0b04194a39eb23fb862f6b1a4ea597f51c64350439b5f96864b",
     "wordCount": 123,
-    "duration": 41.5723
+    "duration": 44.56
   },
   "134": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p134-page-85f0b0113614.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p134-page-85f0b0113614.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p134-page-85f0b0113614-62d2f048-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p134-page-85f0b0113614-62d2f048-qwen-dialogue-opus24.json",
     "textHash": "85f0b0113614a1a646eedc8de182c4394e1509d6303567ad75a9ed8967f6c3ab",
     "wordCount": 120,
-    "duration": 39.4478
+    "duration": 44.28
   },
   "135": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p135-page-30347ddd4500.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p135-page-30347ddd4500.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p135-page-30347ddd4500-a5accb89-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p135-page-30347ddd4500-a5accb89-qwen-dialogue-opus24.json",
     "textHash": "30347ddd450072a6269600d509a696b27cb902096d52436e4b6ecd83e18ac944",
     "wordCount": 116,
-    "duration": 39.2263
+    "duration": 45.44004
   },
   "136": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p136-page-177fc2ba1d94.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p136-page-177fc2ba1d94.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p136-page-177fc2ba1d94-df6caceb-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p136-page-177fc2ba1d94-df6caceb-qwen-dialogue-opus24.json",
     "textHash": "177fc2ba1d94005ac5729cae04f6d2e422f040d9d899f49279ae30204fc6f05b",
     "wordCount": 120,
-    "duration": 38.2403
+    "duration": 44.16
   },
   "137": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p137-page-634eb063c9f2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p137-page-634eb063c9f2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p137-page-634eb063c9f2-e6242201-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p137-page-634eb063c9f2-e6242201-qwen-dialogue-opus24.json",
     "textHash": "634eb063c9f2bd90133dc98b57ae3b736be0320cffada72016bc59a70474d917",
     "wordCount": 115,
-    "duration": 38.3475
+    "duration": 44.76
   },
   "138": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p138-page-e59fd25a924b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p138-page-e59fd25a924b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p138-page-e59fd25a924b-4d008caf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p138-page-e59fd25a924b-4d008caf-qwen-dialogue-opus24.json",
     "textHash": "e59fd25a924bc76fbb3e455ef23cc587e91d25e1748ee9a4aec264fb62b5fa16",
     "wordCount": 117,
-    "duration": 38.6851
+    "duration": 43.6
   },
   "139": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p139-page-2ea1bfbe3eb0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p139-page-2ea1bfbe3eb0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p139-page-2ea1bfbe3eb0-47afcbad-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p139-page-2ea1bfbe3eb0-47afcbad-qwen-dialogue-opus24.json",
     "textHash": "2ea1bfbe3eb079750afefebba9d6fb94f05126fc9d0add6504b9d8db8be9d484",
     "wordCount": 117,
-    "duration": 39.5977
+    "duration": 45.60004
   },
   "140": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p140-page-e23cd566eb63.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p140-page-e23cd566eb63.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p140-page-e23cd566eb63-3cc7223f-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p140-page-e23cd566eb63-3cc7223f-qwen-dialogue-opus24.json",
     "textHash": "e23cd566eb633e2565b372bbb349bea9db20adfe26f614d09183b3419d4127f8",
     "wordCount": 118,
-    "duration": 40.6213
+    "duration": 42.16
   },
   "141": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p141-page-cbaeceec49a3.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p141-page-cbaeceec49a3.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p141-page-cbaeceec49a3-888adee4-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p141-page-cbaeceec49a3-888adee4-qwen-dialogue-opus24.json",
     "textHash": "cbaeceec49a3bd7454d971687929f51be321e9c05565798ca2c3193678c6ff77",
     "wordCount": 142,
-    "duration": 50.4977
+    "duration": 55.28
   },
   "142": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p142-page-014ee26926c0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p142-page-014ee26926c0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p142-page-014ee26926c0-54a15275-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p142-page-014ee26926c0-54a15275-qwen-dialogue-opus24.json",
     "textHash": "014ee26926c022ec860e84dd94087dedfebc7c32817c5896a60d6b657f861004",
     "wordCount": 136,
-    "duration": 47.4569
+    "duration": 53.72
   },
   "143": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p143-page-58a32ac9701e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p143-page-58a32ac9701e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p143-page-58a32ac9701e-8d8458a5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p143-page-58a32ac9701e-8d8458a5-qwen-dialogue-opus24.json",
     "textHash": "58a32ac9701e8ca6dd54b30cef01564d0d7dce9c9f96217fb7570399ded08c39",
     "wordCount": 123,
-    "duration": 42.9549
+    "duration": 42.4
   },
   "144": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p144-page-35418ad4e471.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p144-page-35418ad4e471.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p144-page-35418ad4e471-3f3cd0b8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p144-page-35418ad4e471-3f3cd0b8-qwen-dialogue-opus24.json",
     "textHash": "35418ad4e47119144dfb81d158cdcfd3af0d8a3c700011f5d440f6afe6f64b32",
     "wordCount": 131,
-    "duration": 46.2387
+    "duration": 49.32
   },
   "145": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p145-page-2c3d9f2e4f03.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p145-page-2c3d9f2e4f03.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p145-page-2c3d9f2e4f03-b183c4b0-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p145-page-2c3d9f2e4f03-b183c4b0-qwen-dialogue-opus24.json",
     "textHash": "2c3d9f2e4f03fbeba4cce4eed1cc64cb93067b41df35b3ad2bdf050f68da2510",
     "wordCount": 114,
-    "duration": 42.8039
+    "duration": 48.2
   },
   "146": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p146-page-0597fd46c781.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p146-page-0597fd46c781.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p146-page-0597fd46c781-7439e37b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p146-page-0597fd46c781-7439e37b-qwen-dialogue-opus24.json",
     "textHash": "0597fd46c781d2b676e645ad994d473750abc8b93ecf5d494dc8b7698a1ac868",
     "wordCount": 113,
-    "duration": 41.0982
+    "duration": 43.28
   },
   "147": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p147-page-bfa63b77cb3b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p147-page-bfa63b77cb3b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p147-page-bfa63b77cb3b-8dd69508-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p147-page-bfa63b77cb3b-8dd69508-qwen-dialogue-opus24.json",
     "textHash": "bfa63b77cb3b508410b8b143c391df7cf1b589585c76bf357d7728b8274ebf4b",
     "wordCount": 118,
-    "duration": 41.4223
+    "duration": 45.28
   },
   "148": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p148-page-a98d58c92a2c.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p148-page-a98d58c92a2c.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p148-page-a98d58c92a2c-7a75163d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p148-page-a98d58c92a2c-7a75163d-qwen-dialogue-opus24.json",
     "textHash": "a98d58c92a2c5620aceb54ed26d6c2050f48ff138790f89c3daf3a2cf12926d0",
     "wordCount": 120,
-    "duration": 40.1694
+    "duration": 38.64
   },
   "149": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p149-page-0060d2456f45.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p149-page-0060d2456f45.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p149-page-0060d2456f45-54996ff0-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p149-page-0060d2456f45-54996ff0-qwen-dialogue-opus24.json",
     "textHash": "0060d2456f455c14c955fe70779b1beb5776a53c8ae2a39ad093c398746fc440",
     "wordCount": 121,
-    "duration": 40.1095
+    "duration": 43.84
   },
   "150": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p150-page-58eea0c7a0b7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p150-page-58eea0c7a0b7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p150-page-58eea0c7a0b7-bfd36ae4-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p150-page-58eea0c7a0b7-bfd36ae4-qwen-dialogue-opus24.json",
     "textHash": "58eea0c7a0b7c9f4e2017a112440b73ffcd9059cda031f215a2f80f28b1080cc",
     "wordCount": 106,
-    "duration": 35.295
+    "duration": 35.68
   },
   "151": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p151-page-d2bf5d931568.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p151-page-d2bf5d931568.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p151-page-d2bf5d931568-6f3bf2c7-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p151-page-d2bf5d931568-6f3bf2c7-qwen-dialogue-opus24.json",
     "textHash": "d2bf5d931568f178fdb8ed25678c60bad7f70e63ec2c4c75b24d79d7e39de587",
     "wordCount": 121,
-    "duration": 43.9872
+    "duration": 47.48
   },
   "152": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p152-page-8e39dd44bb67.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p152-page-8e39dd44bb67.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p152-page-8e39dd44bb67-b1327ecf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p152-page-8e39dd44bb67-b1327ecf-qwen-dialogue-opus24.json",
     "textHash": "8e39dd44bb67e249c941faac72be9dcc6507852fbb851efb47660784bab3f232",
     "wordCount": 113,
-    "duration": 42.5351
+    "duration": 46.48
   },
   "153": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p153-page-6c269fd7d6ac.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p153-page-6c269fd7d6ac.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p153-page-6c269fd7d6ac-af2d7e52-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p153-page-6c269fd7d6ac-af2d7e52-qwen-dialogue-opus24.json",
     "textHash": "6c269fd7d6acd3b2ab284ef73bde2ce989b8e814557f39b9b23034af0fac0887",
     "wordCount": 116,
-    "duration": 38.9825
+    "duration": 38.96
   },
   "154": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p154-page-6c17317b4618.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p154-page-6c17317b4618.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p154-page-6c17317b4618-b4c2ff58-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p154-page-6c17317b4618-b4c2ff58-qwen-dialogue-opus24.json",
     "textHash": "6c17317b4618237d57daf3644806996da678f9f233349e1ed94394b9f170a2e1",
     "wordCount": 111,
-    "duration": 38.5565
+    "duration": 38.48
   },
   "155": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p155-page-adc8b16582bc.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p155-page-adc8b16582bc.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p155-page-adc8b16582bc-5e1ed038-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p155-page-adc8b16582bc-5e1ed038-qwen-dialogue-opus24.json",
     "textHash": "adc8b16582bcf048af07d693f6f13a37633f26834edefa048c0e1515f5e452f5",
     "wordCount": 115,
-    "duration": 41.0285
+    "duration": 43.12
   },
   "156": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p156-page-11fe3a879974.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p156-page-11fe3a879974.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p156-page-11fe3a879974-7c4ce45b-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p156-page-11fe3a879974-7c4ce45b-qwen-dialogue-opus24.json",
     "textHash": "11fe3a8799742d6bc1ec733d0413db121582d86d0aa8d640c4a4f918eb7b4c4d",
     "wordCount": 106,
-    "duration": 37.533
+    "duration": 38.32
   },
   "157": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p157-page-2513a635d493.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p157-page-2513a635d493.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p157-page-2513a635d493-3e6b33e8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p157-page-2513a635d493-3e6b33e8-qwen-dialogue-opus24.json",
     "textHash": "2513a635d49331c8965f267fb576686fcb8210da667ccbe7aa819cf9b1f261a2",
     "wordCount": 122,
-    "duration": 43.6747
+    "duration": 42.96
   },
   "158": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p158-page-1deace59bcba.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p158-page-1deace59bcba.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p158-page-1deace59bcba-4b51003f-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p158-page-1deace59bcba-4b51003f-qwen-dialogue-opus24.json",
     "textHash": "1deace59bcba4c5cbe8cd29e27f224d0d9cb5ae60fb032356f88c795c41fd6f9",
     "wordCount": 125,
-    "duration": 43.279
+    "duration": 42.08
   },
   "159": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p159-page-6b2cef546c27.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p159-page-6b2cef546c27.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p159-page-6b2cef546c27-ff8b31bf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p159-page-6b2cef546c27-ff8b31bf-qwen-dialogue-opus24.json",
     "textHash": "6b2cef546c27523ca3ecddbc3401cc08878c43d4ac6515fd12a3493a9bad50e2",
     "wordCount": 125,
-    "duration": 44.2212
+    "duration": 44.96
   },
   "160": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p160-page-efb861f1fefc.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p160-page-efb861f1fefc.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p160-page-efb861f1fefc-db644e69-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p160-page-efb861f1fefc-db644e69-qwen-dialogue-opus24.json",
     "textHash": "efb861f1fefc0f0a794ddc7bf2d27be370ed5f79b981629debd8ceaaa4afa713",
     "wordCount": 122,
-    "duration": 44.023
+    "duration": 48.12
   },
   "161": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p161-page-2c47deee0ef4.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p161-page-2c47deee0ef4.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p161-page-2c47deee0ef4-f8d14156-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p161-page-2c47deee0ef4-f8d14156-qwen-dialogue-opus24.json",
     "textHash": "2c47deee0ef42891162140512b9a6be4028193a9593fa08b399d0b16ada868c6",
     "wordCount": 145,
-    "duration": 50.3853
+    "duration": 52.32
   },
   "162": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p162-page-b4172c36dadb.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p162-page-b4172c36dadb.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p162-page-b4172c36dadb-5c33495d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p162-page-b4172c36dadb-5c33495d-qwen-dialogue-opus24.json",
     "textHash": "b4172c36dadba99d10329ee8b8ba4e243bd4f4ba23f4e96a853885c2e9d99494",
     "wordCount": 136,
-    "duration": 45.1697
+    "duration": 51.28
   },
   "163": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p163-page-39a85df9bcbb.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p163-page-39a85df9bcbb.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p163-page-39a85df9bcbb-3f89ebcf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p163-page-39a85df9bcbb-3f89ebcf-qwen-dialogue-opus24.json",
     "textHash": "39a85df9bcbba88cccda72418382a4bde015b857de4fc6741ccbd27c51c9567e",
     "wordCount": 129,
-    "duration": 47.8534
+    "duration": 46.88
   },
   "164": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p164-page-5a601e77b7c6.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p164-page-5a601e77b7c6.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p164-page-5a601e77b7c6-2565ec33-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p164-page-5a601e77b7c6-2565ec33-qwen-dialogue-opus24.json",
     "textHash": "5a601e77b7c61e287d83ee2aa61f91830980501f5fa243d86da2877dcb1fd330",
     "wordCount": 123,
-    "duration": 41.7572
+    "duration": 46.0
   },
   "165": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p165-page-c5eb6cd34861.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p165-page-c5eb6cd34861.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p165-page-c5eb6cd34861-be2d2884-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p165-page-c5eb6cd34861-be2d2884-qwen-dialogue-opus24.json",
     "textHash": "c5eb6cd3486132e13aab398ea2d5593482ddaa172fdd200bf722da89ad338b89",
     "wordCount": 118,
-    "duration": 42.5708
+    "duration": 50.44
   },
   "166": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p166-page-75382f7e7d00.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p166-page-75382f7e7d00.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p166-page-75382f7e7d00-992cbecb-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p166-page-75382f7e7d00-992cbecb-qwen-dialogue-opus24.json",
     "textHash": "75382f7e7d0067452bc30c28de95f8bfafc00fae0d34df882c57a5cff6b4d6d3",
     "wordCount": 126,
-    "duration": 47.4694
+    "duration": 51.36
   },
   "167": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p167-page-fea3b1adf5d2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p167-page-fea3b1adf5d2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p167-page-fea3b1adf5d2-3385b091-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p167-page-fea3b1adf5d2-3385b091-qwen-dialogue-opus24.json",
     "textHash": "fea3b1adf5d2361357daa9d4e5d13583dcffd44988dae66fa9977f3f1a46bd06",
     "wordCount": 120,
-    "duration": 42.8986
+    "duration": 45.12
   },
   "168": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p168-page-3df53d4dce24.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p168-page-3df53d4dce24.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p168-page-3df53d4dce24-9e8db3d2-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p168-page-3df53d4dce24-9e8db3d2-qwen-dialogue-opus24.json",
     "textHash": "3df53d4dce241a335f6dc1b3e10086124e96e8a3dfbd8ec652408798cb715a67",
     "wordCount": 122,
-    "duration": 45.9502
+    "duration": 46.41054
   },
   "169": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p169-page-936f4b6cb831.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p169-page-936f4b6cb831.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p169-page-936f4b6cb831-37504f0e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p169-page-936f4b6cb831-37504f0e-qwen-dialogue-opus24.json",
     "textHash": "936f4b6cb83166509439bfa6512c9b400d9e3b438cf4e3c6afb57a75d1e8f9ca",
     "wordCount": 121,
-    "duration": 43.3621
+    "duration": 46.52
   },
   "170": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p170-page-dddcbf1fffd5.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p170-page-dddcbf1fffd5.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p170-page-dddcbf1fffd5-84b470d9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p170-page-dddcbf1fffd5-84b470d9-qwen-dialogue-opus24.json",
     "textHash": "dddcbf1fffd5ce93d7df9d4b947eb2ab170ad630cdc146b478ecf8e609e3a86f",
     "wordCount": 114,
-    "duration": 40.4936
+    "duration": 47.92
   },
   "171": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p171-page-73c35f4be7e8.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p171-page-73c35f4be7e8.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p171-page-73c35f4be7e8-2220b4dc-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p171-page-73c35f4be7e8-2220b4dc-qwen-dialogue-opus24.json",
     "textHash": "73c35f4be7e8e29af81eb1363a43b693aa730360aa994eefd58a1a3a8997567f",
     "wordCount": 123,
-    "duration": 48.1329
+    "duration": 48.0
   },
   "172": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p172-page-7ed8c32e75b9.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p172-page-7ed8c32e75b9.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p172-page-7ed8c32e75b9-43e10db9-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p172-page-7ed8c32e75b9-43e10db9-qwen-dialogue-opus24.json",
     "textHash": "7ed8c32e75b982823c6a9c71c00e4bda4f3a6c0269746f120011140af45d6b60",
     "wordCount": 113,
-    "duration": 38.7172
+    "duration": 42.00004
   },
   "173": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p173-page-95375726e682.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p173-page-95375726e682.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p173-page-95375726e682-e9c8a530-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p173-page-95375726e682-e9c8a530-qwen-dialogue-opus24.json",
     "textHash": "95375726e6827eb5382aca6c1fdc8114da6c214c6083bb7057c81aaed7d790b1",
     "wordCount": 120,
-    "duration": 39.3888
+    "duration": 46.16004
   },
   "174": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p174-page-640676b854fe.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p174-page-640676b854fe.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p174-page-640676b854fe-b1073498-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p174-page-640676b854fe-b1073498-qwen-dialogue-opus24.json",
     "textHash": "640676b854fe900952bc0a7d1684a4c5ea07e6943f9ec1aa5dc9b7a62b34c2bb",
     "wordCount": 115,
-    "duration": 39.7961
+    "duration": 42.08
   },
   "175": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p175-page-e54e96059c65.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p175-page-e54e96059c65.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p175-page-e54e96059c65-4f01612f-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p175-page-e54e96059c65-4f01612f-qwen-dialogue-opus24.json",
     "textHash": "e54e96059c65d8e996692ca1fa665cc3c95ef0e48f9d92d6e8a4c3d4fde091e6",
     "wordCount": 120,
-    "duration": 42.9879
+    "duration": 48.64
   },
   "176": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p176-page-74428ba66a76.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p176-page-74428ba66a76.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p176-page-74428ba66a76-6d8d2fab-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p176-page-74428ba66a76-6d8d2fab-qwen-dialogue-opus24.json",
     "textHash": "74428ba66a76635cbe017fa076a262fb1c89553f7faf3d33ecde20ea15fdad5f",
     "wordCount": 120,
-    "duration": 44.0578
+    "duration": 45.6
   },
   "177": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p177-page-f37689b2d0c2.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p177-page-f37689b2d0c2.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p177-page-f37689b2d0c2-04f185b3-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p177-page-f37689b2d0c2-04f185b3-qwen-dialogue-opus24.json",
     "textHash": "f37689b2d0c247cdd18174f39d446fe2e8408eebbf26280784752255a55815ec",
     "wordCount": 111,
-    "duration": 39.8104
+    "duration": 39.92
   },
   "178": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p178-page-fc0a347126cf.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p178-page-fc0a347126cf.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p178-page-fc0a347126cf-d6f320a5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p178-page-fc0a347126cf-d6f320a5-qwen-dialogue-opus24.json",
     "textHash": "fc0a347126cf75a9e9c4e9d9c9f3baf76863b9b167216c12a5e048cf74d5f19c",
     "wordCount": 122,
-    "duration": 40.9918
+    "duration": 40.72
   },
   "179": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p179-page-8d6c0397751e.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p179-page-8d6c0397751e.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p179-page-8d6c0397751e-fcac2568-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p179-page-8d6c0397751e-fcac2568-qwen-dialogue-opus24.json",
     "textHash": "8d6c0397751e1de9fe198542d6aeb5f90df917b704f2afe3c33a83b332a9362d",
     "wordCount": 114,
-    "duration": 40.8186
+    "duration": 44.56
   },
   "180": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p180-page-0ee1d2d85b94.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p180-page-0ee1d2d85b94.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p180-page-0ee1d2d85b94-52dbde5d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p180-page-0ee1d2d85b94-52dbde5d-qwen-dialogue-opus24.json",
     "textHash": "0ee1d2d85b944c7a00f352eb99c7eed889a7eeb59ba61530c52da1610a36232b",
     "wordCount": 115,
-    "duration": 38.0349
+    "duration": 38.48
   },
   "181": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p181-page-737bb66d0620.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p181-page-737bb66d0620.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p181-page-737bb66d0620-491af784-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p181-page-737bb66d0620-491af784-qwen-dialogue-opus24.json",
     "textHash": "737bb66d06203ec9580cae24e863038b5494864a75b158e0aae18d6f2cfdeb08",
     "wordCount": 137,
-    "duration": 49.202
+    "duration": 48.0
   },
   "182": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p182-page-f74c07508e64.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p182-page-f74c07508e64.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p182-page-f74c07508e64-e65a71a5-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p182-page-f74c07508e64-e65a71a5-qwen-dialogue-opus24.json",
     "textHash": "f74c07508e64fc0fc43d7f1f4f604fab320ca171b127492c52870810f963a8ab",
     "wordCount": 128,
-    "duration": 41.1098
+    "duration": 48.68
   },
   "183": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p183-page-92baf407b2d1.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p183-page-92baf407b2d1.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p183-page-92baf407b2d1-6d5257c8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p183-page-92baf407b2d1-6d5257c8-qwen-dialogue-opus24.json",
     "textHash": "92baf407b2d139ed306e11ac9724bc3354796fdc37308bbc9d841d861c4133f5",
     "wordCount": 139,
-    "duration": 45.7636
+    "duration": 50.32
   },
   "184": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p184-page-e8280f1da172.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p184-page-e8280f1da172.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p184-page-e8280f1da172-4a8e24f8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p184-page-e8280f1da172-4a8e24f8-qwen-dialogue-opus24.json",
     "textHash": "e8280f1da172281ef1909a2abb498430a3064cd2cdbe0b3a75be0cd77e85cc79",
     "wordCount": 134,
-    "duration": 47.0657
+    "duration": 49.12
   },
   "185": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p185-page-cd6a1f51f6c4.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p185-page-cd6a1f51f6c4.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p185-page-cd6a1f51f6c4-a9f8ea29-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p185-page-cd6a1f51f6c4-a9f8ea29-qwen-dialogue-opus24.json",
     "textHash": "cd6a1f51f6c40ffa7c5e4977a459f9b5f56f022f73dfa71c777e65660810d61a",
     "wordCount": 128,
-    "duration": 44.7633
+    "duration": 50.28
   },
   "186": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p186-page-117755f1d8f7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p186-page-117755f1d8f7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p186-page-117755f1d8f7-cd675c06-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p186-page-117755f1d8f7-cd675c06-qwen-dialogue-opus24.json",
     "textHash": "117755f1d8f736b0695d2877d206efad4331078e4e8515ec1f80fe8e07b14a47",
     "wordCount": 129,
-    "duration": 44.1954
+    "duration": 53.12
   },
   "187": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p187-page-1cc788cbf7a0.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p187-page-1cc788cbf7a0.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p187-page-1cc788cbf7a0-ae969e71-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p187-page-1cc788cbf7a0-ae969e71-qwen-dialogue-opus24.json",
     "textHash": "1cc788cbf7a0c6fea5dcd0f24897ae64d9aaa3d5c0e633f6ccab0a4763dd0592",
     "wordCount": 128,
-    "duration": 45.2634
+    "duration": 45.76
   },
   "188": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p188-page-b5fde710be4b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p188-page-b5fde710be4b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p188-page-b5fde710be4b-a0c1c83d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p188-page-b5fde710be4b-a0c1c83d-qwen-dialogue-opus24.json",
     "textHash": "b5fde710be4b63bcfa66d3fff757b6d931ed78d7337c5e238f91c9347e2bf783",
     "wordCount": 129,
-    "duration": 43.2442
+    "duration": 48.32
   },
   "189": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p189-page-7480d68d3817.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p189-page-7480d68d3817.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p189-page-7480d68d3817-f60f4852-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p189-page-7480d68d3817-f60f4852-qwen-dialogue-opus24.json",
     "textHash": "7480d68d3817e467e6584e2b6303b2c6e946a0ed639de01b739f5cd33a7b31ea",
     "wordCount": 106,
-    "duration": 34.017
+    "duration": 42.64004
   },
   "190": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p190-page-e215ab85018f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p190-page-e215ab85018f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p190-page-e215ab85018f-1222410d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p190-page-e215ab85018f-1222410d-qwen-dialogue-opus24.json",
     "textHash": "e215ab85018f761388a55cc05d05959c65ca9caefb6a525942a0280610d2542e",
     "wordCount": 119,
-    "duration": 39.1227
+    "duration": 42.76
   },
   "191": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p191-page-fea3ea1f797b.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p191-page-fea3ea1f797b.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p191-page-fea3ea1f797b-a58f8d51-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p191-page-fea3ea1f797b-a58f8d51-qwen-dialogue-opus24.json",
     "textHash": "fea3ea1f797b8d1cc1c0d4c48f91d428f6e0b886fb308de74e69ccd0c6838995",
     "wordCount": 112,
-    "duration": 38.1028
+    "duration": 41.4
   },
   "192": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p192-page-578d624a30db.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p192-page-578d624a30db.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p192-page-578d624a30db-a5b55e8d-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p192-page-578d624a30db-a5b55e8d-qwen-dialogue-opus24.json",
     "textHash": "578d624a30db302182998be211fa0896accafb70f442cfb6ab6a0d8bcc6282f2",
     "wordCount": 111,
-    "duration": 39.7737
+    "duration": 45.48
   },
   "193": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p193-page-1edf5090830f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p193-page-1edf5090830f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p193-page-1edf5090830f-26fab4ee-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p193-page-1edf5090830f-26fab4ee-qwen-dialogue-opus24.json",
     "textHash": "1edf5090830f43362de4b9e1164b4a83e36e5afc9904267a5b98448f21fa1ab2",
     "wordCount": 119,
-    "duration": 42.3637
+    "duration": 44.24
   },
   "194": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p194-page-7e977e94df18.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p194-page-7e977e94df18.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p194-page-7e977e94df18-6437523c-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p194-page-7e977e94df18-6437523c-qwen-dialogue-opus24.json",
     "textHash": "7e977e94df188817598cb9657ef12ee127994015066eba1068d988f60749f138",
     "wordCount": 110,
-    "duration": 38.5662
+    "duration": 42.56
   },
   "195": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p195-page-2436522489cd.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p195-page-2436522489cd.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p195-page-2436522489cd-2cd15fb8-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p195-page-2436522489cd-2cd15fb8-qwen-dialogue-opus24.json",
     "textHash": "2436522489cd198afd284dce9a9afd3230f74689ec53869b96b19f4eec98fa97",
     "wordCount": 115,
-    "duration": 38.1841
+    "duration": 44.72
   },
   "196": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p196-page-4c4396c19253.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p196-page-4c4396c19253.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p196-page-4c4396c19253-3ebaa1cf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p196-page-4c4396c19253-3ebaa1cf-qwen-dialogue-opus24.json",
     "textHash": "4c4396c192539b06a2f628350566c09ca89eccde5c19fb380edeac0e09648282",
     "wordCount": 125,
-    "duration": 41.8761
+    "duration": 42.72
   },
   "197": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p197-page-ad1235d2227f.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p197-page-ad1235d2227f.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p197-page-ad1235d2227f-07f36eaf-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p197-page-ad1235d2227f-07f36eaf-qwen-dialogue-opus24.json",
     "textHash": "ad1235d2227f37c53e7700117b8b645bf70ba102be3dc479cd7d54fb13e3e690",
     "wordCount": 115,
-    "duration": 41.166
+    "duration": 46.76
   },
   "198": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p198-page-880e7602c983.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p198-page-880e7602c983.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p198-page-880e7602c983-2e835736-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p198-page-880e7602c983-2e835736-qwen-dialogue-opus24.json",
     "textHash": "880e7602c983c083adf9c7c21a672b517db29b6284ca903fcb56326360214aa2",
     "wordCount": 122,
-    "duration": 42.119
+    "duration": 44.48
   },
   "199": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p199-page-6de6af6d7e18.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p199-page-6de6af6d7e18.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p199-page-6de6af6d7e18-1797163a-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p199-page-6de6af6d7e18-1797163a-qwen-dialogue-opus24.json",
     "textHash": "6de6af6d7e18c597c45bb8d83e4277b52cfbbebe809754e7120522d50f81686b",
     "wordCount": 133,
-    "duration": 42.3967
+    "duration": 50.96004
   },
   "200": {
-    "src": "/audio/books/der-schluessel-im-blauen-korb/p200-page-b4b9221beae7.webm",
-    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p200-page-b4b9221beae7.json",
+    "src": "/audio/books/der-schluessel-im-blauen-korb/p200-page-b4b9221beae7-cee9e66e-qwen-dialogue-opus24.webm",
+    "timingSrc": "/audio/books/der-schluessel-im-blauen-korb/p200-page-b4b9221beae7-cee9e66e-qwen-dialogue-opus24.json",
     "textHash": "b4b9221beae73c3b36ce7877b2e08364f72b70d2488c2ced3b87cc206bf9328d",
     "wordCount": 115,
-    "duration": 39.1853
+    "duration": 43.92
   }
 }

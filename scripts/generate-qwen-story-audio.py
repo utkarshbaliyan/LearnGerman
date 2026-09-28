@@ -28,20 +28,26 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--models', type=Path, required=True)
 parser.add_argument('--ffmpeg', required=True)
 parser.add_argument('--only')
+parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
-parser.add_argument('--prepared-only', action='store_true')
+mode=parser.add_mutually_exclusive_group()
+mode.add_argument('--prepared-only', action='store_true')
+mode.add_argument('--follow-plans', action='store_true', help='Wait for speaker plans being prepared in parallel')
 parser.add_argument('--checkpoint', type=Path, default=ROOT/'.local-piper/qwen-stories')
 args=parser.parse_args()
 args.checkpoint.mkdir(parents=True,exist_ok=True)
 source = subprocess.check_output(['node','--input-type=module','-e',"""
-import fs from 'node:fs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
-const stories=['reading-path-data','reading-expanded-data'].flatMap(n=>JSON.parse(fs.readFileSync(`app/lib/${n}.json`)));
+import {narrationSources} from './scripts/lib/narration-sources.mjs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
+const stories=narrationSources(process.argv[1]);
 console.log(JSON.stringify(stories.map(s=>({...s,paragraphSentences:s.text.split('\\n\\n').map(readingSentences)}))));
-"""],cwd=ROOT)
+""",args.collection],cwd=ROOT)
 stories=json.loads(source)
 if args.only:stories=[s for s in stories if s['id']==args.only]
 if not stories:raise ValueError('No matching stories')
-output=ROOT/'public/audio/reading';output.mkdir(exist_ok=True)
+book_mode=args.collection=='book'
+book=json.loads((ROOT/'app/lib/book-data.json').read_text()) if book_mode else None
+public_prefix=f"/audio/books/{book['id']}" if book_mode else '/audio/reading'
+output=ROOT/'public'/public_prefix.lstrip('/');output.mkdir(parents=True,exist_ok=True)
 metadata=json.loads((ROOT/'docs/audio-samples/qwen-samples.json').read_text())
 reference_text=metadata['text']
 references={v:ROOT/f'docs/audio-samples/qwen-german-{v}.wav' for v in ['male','female']}
@@ -51,13 +57,14 @@ if plans is not None:
     if args.prepared_only:stories=[story for story in stories if story['id'] in plans]
     for story in stories:
         plan=plans.get(story['id'])
+        if not plan and args.follow_plans:continue
         assert plan and plan['textHash']==hashlib.sha256(story['text'].encode()).hexdigest(), f"Missing or stale speaker plan: {story['id']}"
         assert ''.join(segment['text'] for segment in plan['segments'])==story['text'], 'Speaker plan changes story text'
         assert all(segment['voice'] in ['male','female'] for segment in plan['segments']), 'Unknown character voice'
 tts=load_model(str(args.models/'tts'))
 asr=load_stt(str(args.models/'asr'))
 aligner=load_stt(str(args.models/'aligner'))
-paths={'dialogue':ROOT/'app/lib/reading-audio-manifest.json'}
+paths={'dialogue':ROOT/('app/lib/book-audio-manifest.json' if book_mode else 'app/lib/reading-audio-manifest.json')}
 manifests={v:json.loads(p.read_text()) if p.exists() else {} for v,p in paths.items()}
 def save_json(path,data):
     temporary=path.with_suffix('.tmp')
@@ -89,10 +96,23 @@ failures=[];completed=0;started=time.monotonic()
 for story in stories:
  for voice in voices:
     digest=hashlib.sha256(story['text'].encode()).hexdigest()
+    if args.follow_plans:
+        deadline=time.monotonic()+600
+        while True:
+            plans=json.loads(args.dialogue_plan.read_text())
+            plan=plans.get(story['id'])
+            if plan:
+                assert plan['textHash']==digest and ''.join(s['text'] for s in plan['segments'])==story['text'], 'Stale speaker plan'
+                assert all(s['voice'] in ['male','female'] for s in plan['segments']), 'Unknown character voice'
+                break
+            assert time.monotonic()<deadline, f"Speaker plan not ready: {story['id']}"
+            print(f"Waiting for speaker plan: {story['id']}",flush=True)
+            time.sleep(15)
     plan_hash=''
     if plans is not None:
         plan_hash='-'+hashlib.sha256(json.dumps([(segment['voice'],segment['text']) for segment in plans[story['id']]['segments']],ensure_ascii=False).encode()).hexdigest()[:8]
-    name=f"{story['id']}-{digest[:12]}{plan_hash}-qwen-{voice}-opus24"
+    prefix=f"p{int(story['id']):03d}-page" if book_mode else story['id']
+    name=f"{prefix}-{digest[:12]}{plan_hash}-qwen-{voice}-opus24"
     target=output/(name+'.webm');sidecar=output/(name+'.json')
     old=manifests[voice].get(story['id'])
     if old and old['src'].endswith(name+'.webm') and old['textHash']==digest and target.exists() and sidecar.exists() and (plans is None or (args.checkpoint/(name+'-transcript.json')).exists()):
@@ -100,7 +120,7 @@ for story in stories:
     try:
         frames=[];starts=[];offset=0;reports=[]
         story_chunks=chunks(story,voice)
-        story_hotwords=sorted({assignment['speaker'] for assignment in plans[story['id']]['assignments'] if assignment['voice']!='narrator' and len(assignment['speaker'].split())==1}) if plans is not None else []
+        story_hotwords=sorted(set(story.get('hotwords',[])) | {assignment['speaker'] for assignment in plans[story['id']]['assignments'] if assignment['voice']!='narrator' and len(assignment['speaker'].split())==1}) if plans is not None else []
         for chunk_index,(selected_voice,text) in enumerate(story_chunks):
             fingerprint=hashlib.sha256((selected_voice+text+hashlib.sha256(references[selected_voice].read_bytes()).hexdigest()).encode()).hexdigest()[:20]
             wav=args.checkpoint/(fingerprint+'.wav');check=args.checkpoint/(fingerprint+'.json')
@@ -178,7 +198,7 @@ for story in stories:
             assert temporary.stat().st_size>10000
             temporary.replace(target)
         save_json(sidecar,{'textHash':digest,'starts':starts,'duration':duration})
-        manifests[voice][story['id']]={'src':'/audio/reading/'+target.name,'timingSrc':'/audio/reading/'+sidecar.name,'textHash':digest,'wordCount':len(starts),'duration':duration}
+        manifests[voice][story['id']]={'src':public_prefix+'/'+target.name,'timingSrc':public_prefix+'/'+sidecar.name,'textHash':digest,'wordCount':len(starts),'duration':duration}
         save_json(paths[voice],manifests[voice])
         completed+=1
         print(f"Completed {completed}/{len(stories)*len(voices)}: {story['id']} {voice} ({duration:.1f}s)",flush=True)
