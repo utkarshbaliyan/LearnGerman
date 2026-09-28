@@ -1,0 +1,22 @@
+{
+  "model": "Qwen3-TTS-12Hz-1.7B-VoiceDesign (MLX 4-bit)",
+  "language": "German",
+  "source": "Book page 1, paragraph 1",
+  "text": "Mila sitzt am Fenster im Zug. Draußen sieht sie Felder und kleine Häuser. Heute fährt sie nach Lindenstadt.",
+  "samples": [
+    {
+      "voice": "male",
+      "instruction": "A native German male narrator, adult, warm and clear voice, standard German pronunciation. Read calmly at a slightly slower pace for a beginner learning German, with natural short pauses between sentences. Neutral storytelling, no dramatic acting.",
+      "file": "qwen-german-male.wav",
+      "seconds": 9.6,
+      "generation_seconds": 8.08
+    },
+    {
+      "voice": "female",
+      "instruction": "A native German female narrator, adult, warm and clear voice, standard German pronunciation. Read calmly at a slightly slower pace for a beginner learning German, with natural short pauses between sentences. Neutral storytelling, no dramatic acting.",
+      "file": "qwen-german-female.wav",
+      "seconds": 7.04,
+      "generation_seconds": 2.96
+    }
+  ]
+}
