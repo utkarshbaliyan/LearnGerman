@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { narrationTokens } from '@/app/lib/reading-narration';
 import type { ReadingSentenceTranslation } from '@/app/lib/reading-sentence-translations';
 import { useReadingNarration } from '@/app/components/reading-narration';
@@ -45,7 +45,6 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
       </div>) : narrationTokens(story.text).map((paragraph, index) => <p key={index}>{renderWords(paragraph)}</p>)}
     </article></TooltipProvider>
     {!sentenceRows && <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>}
-    <details className="reading-support"><summary>Notice the grammar</summary><p>{story.grammar}</p><Link href={story.courseChapter ? `/grammar?lesson=${story.level.toLowerCase()}-${Math.ceil(story.courseChapter / 6)}-${((story.courseChapter - 1) % 6) + 1}#lesson` : '/grammar/cheat-sheets'}>{story.courseChapter ? 'Practice this grammar' : 'Open grammar recall tables'} <ArrowRight size={15} /></Link></details>
   </div>;
 }
 

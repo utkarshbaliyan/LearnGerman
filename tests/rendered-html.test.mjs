@@ -163,8 +163,8 @@ test("renders the graded reading path and independent story pages", async () => 
     const html = await response.text();
     assert.match(html, /What happened/); assert.match(html, /Show English translations/);
     assert.doesNotMatch(html, /Need the gist in English/);
-    assert.match(html, /Check my answers/); assert.match(html, /Practice this grammar/);
-    assert.match(html, /href="\/grammar\?lesson=/);
+    assert.match(html, /Check my answers/);
+    assert.doesNotMatch(html, /Notice the grammar|Practice this grammar|useful words &amp; phrases/);
     assert.doesNotMatch(html, /src=["'][^"']*story-\d+\.webm/);
     assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
     assert.match(html, /aria-label="Narration speed"/);
@@ -176,7 +176,7 @@ test("renders the graded reading path and independent story pages", async () => 
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /What happened/);
-    assert.match(html, /Open grammar recall tables/);
+    assert.doesNotMatch(html, /Notice the grammar|Open grammar recall tables/);
     assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
     assert.doesNotMatch(html, /Narration is unavailable/);
     assert.ok(html.replace(/<!--.*?-->/gs, "").includes(`${total}/${total}`));
