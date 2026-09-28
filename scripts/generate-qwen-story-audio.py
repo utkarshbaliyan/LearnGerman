@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""Render existing character dialogue locally, verify transcripts, and align every word.
+
+Requires mlx-audio and FFmpeg; all model weights/checkpoints stay off the site.
+Run with --models /tmp/leselaut-qwen-models --ffmpeg /absolute/path/to/ffmpeg.
+"""
+import argparse
+from difflib import SequenceMatcher
+import gc
+import io
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+import tempfile
+import time
+import traceback
+
+import mlx.core as mx
+import numpy as np
+from mlx_audio.audio_io import write, read
+from mlx_audio.tts.utils import load_model
+from mlx_audio.stt.utils import load as load_stt
+
+ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('--models', type=Path, required=True)
+parser.add_argument('--ffmpeg', required=True)
+parser.add_argument('--only')
+parser.add_argument('--dialogue-plan', type=Path, required=True)
+parser.add_argument('--prepared-only', action='store_true')
+parser.add_argument('--checkpoint', type=Path, default=ROOT/'.local-piper/qwen-stories')
+args=parser.parse_args()
+args.checkpoint.mkdir(parents=True,exist_ok=True)
+source = subprocess.check_output(['node','--input-type=module','-e',"""
+import fs from 'node:fs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
+const stories=['reading-path-data','reading-expanded-data'].flatMap(n=>JSON.parse(fs.readFileSync(`app/lib/${n}.json`)));
+console.log(JSON.stringify(stories.map(s=>({...s,paragraphSentences:s.text.split('\\n\\n').map(readingSentences)}))));
+"""],cwd=ROOT)
+stories=json.loads(source)
+if args.only:stories=[s for s in stories if s['id']==args.only]
+if not stories:raise ValueError('No matching stories')
+output=ROOT/'public/audio/reading';output.mkdir(exist_ok=True)
+metadata=json.loads((ROOT/'docs/audio-samples/qwen-samples.json').read_text())
+reference_text=metadata['text']
+references={v:ROOT/f'docs/audio-samples/qwen-german-{v}.wav' for v in ['male','female']}
+plans=json.loads(args.dialogue_plan.read_text())
+voices=['dialogue']
+if plans is not None:
+    if args.prepared_only:stories=[story for story in stories if story['id'] in plans]
+    for story in stories:
+        plan=plans.get(story['id'])
+        assert plan and plan['textHash']==hashlib.sha256(story['text'].encode()).hexdigest(), f"Missing or stale speaker plan: {story['id']}"
+        assert ''.join(segment['text'] for segment in plan['segments'])==story['text'], 'Speaker plan changes story text'
+        assert all(segment['voice'] in ['male','female'] for segment in plan['segments']), 'Unknown character voice'
+tts=load_model(str(args.models/'tts'))
+asr=load_stt(str(args.models/'asr'))
+aligner=load_stt(str(args.models/'aligner'))
+paths={'dialogue':ROOT/'app/lib/reading-audio-manifest.json'}
+manifests={v:json.loads(p.read_text()) if p.exists() else {} for v,p in paths.items()}
+def save_json(path,data):
+    temporary=path.with_suffix('.tmp')
+    indent=2 if path in paths.values() else None
+    temporary.write_text(json.dumps(data,ensure_ascii=False,indent=indent,separators=None if indent else (',',':'))+'\n');temporary.replace(path)
+def visible_words(text):return [w for w in text.split() if re.search('[A-Za-zÄÖÜäöüßÉé0-9]',w)]
+NUMBER_WORDS = ['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn']
+TENS = ['', '', 'zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig']
+NUMBER_WORDS += [TENS[n//10] if n%10 == 0 else ('ein' if n%10 == 1 else NUMBER_WORDS[n%10])+'und'+TENS[n//10] for n in range(20,100)]
+NUMBER_NORMAL = {word.replace('ß','ss'):str(n) for n,word in enumerate(NUMBER_WORDS)}
+def normal(text):
+    # ASR writes spoken numbers as digits. Compare their meaning consistently.
+    value=text.casefold().replace('ß','ss').replace('é','e')
+    value=re.sub(r'\bgleis(?=[a-zäöü])','gleis ',value)
+    return [NUMBER_NORMAL.get(word,word) for word in re.findall(r'[a-zäöü]+|[0-9]+',value)]
+def chunks(story,voice):
+    if plans is not None:
+        result=[]
+        for segment in plans[story['id']]['segments']:
+            for text in re.split(r'(?<=[.!?])\s+',segment['text']):
+                text=text.strip()
+                if not visible_words(text):continue
+                selected=segment['voice']
+                if result and result[-1][0]==selected and len(result[-1][1])+len(text)<900:
+                    result[-1]=(selected,result[-1][1]+' '+text)
+                else:result.append((selected,text))
+        return result
+failures=[];completed=0;started=time.monotonic()
+for story in stories:
+ for voice in voices:
+    digest=hashlib.sha256(story['text'].encode()).hexdigest()
+    plan_hash=''
+    if plans is not None:
+        plan_hash='-'+hashlib.sha256(json.dumps([(segment['voice'],segment['text']) for segment in plans[story['id']]['segments']],ensure_ascii=False).encode()).hexdigest()[:8]
+    name=f"{story['id']}-{digest[:12]}{plan_hash}-qwen-{voice}-opus24"
+    target=output/(name+'.webm');sidecar=output/(name+'.json')
+    old=manifests[voice].get(story['id'])
+    if old and old['src'].endswith(name+'.webm') and old['textHash']==digest and target.exists() and sidecar.exists() and (plans is None or (args.checkpoint/(name+'-transcript.json')).exists()):
+        completed+=1;continue
+    try:
+        frames=[];starts=[];offset=0;reports=[]
+        story_chunks=chunks(story,voice)
+        story_hotwords=sorted({assignment['speaker'] for assignment in plans[story['id']]['assignments'] if assignment['voice']!='narrator' and len(assignment['speaker'].split())==1}) if plans is not None else []
+        for chunk_index,(selected_voice,text) in enumerate(story_chunks):
+            fingerprint=hashlib.sha256((selected_voice+text+hashlib.sha256(references[selected_voice].read_bytes()).hexdigest()).encode()).hexdigest()[:20]
+            wav=args.checkpoint/(fingerprint+'.wav');check=args.checkpoint/(fingerprint+'.json')
+            report=json.loads(check.read_text()) if check.exists() else None
+            if report and report['source']==text and wav.exists():
+                audio,rate=read(io.BytesIO(wav.read_bytes()));audio=np.asarray(audio).reshape(-1)
+            else:
+                errors=[]
+                for attempt in range(3):
+                    try:
+                        mx.random.seed(int(fingerprint[:8],16)%2147483647+attempt)
+                        cap=max(350,len(visible_words(text))*16)
+                        results=list(tts.generate(text,ref_audio=str(references[selected_voice]),ref_text=reference_text,lang_code='German',temperature=[.65,.8,.9][attempt],max_tokens=cap,verbose=False))
+                        assert results and sum(r.token_count for r in results)<cap,'Generation reached token limit'
+                        audio=np.concatenate([np.array(r.audio) for r in results]);rate=results[0].sample_rate
+                        assert rate==24000 and np.isfinite(audio).all() and np.max(np.abs(audio))>.01,'Invalid waveform'
+                        duration=len(audio)/rate;count=len(visible_words(text))
+                        assert count*.18<duration<count*1.3+4,'Unexpected duration'
+                        write(str(wav),audio,rate,format='wav')
+                        transcript=None;coverage=None;excess=None
+                        if count>=40 or plans is None:
+                            transcript=asr.generate(str(wav),language='German',hotwords=story_hotwords,max_tokens=max(256,count*4)).text
+                            expected,actual=normal(text),normal(transcript)
+                            matcher=SequenceMatcher(None,expected,actual,autojunk=False)
+                            matched=sum(b.size for b in matcher.get_matching_blocks())
+                            coverage=matched/max(1,len(expected))
+                            excess=(len(actual)-matched)/max(1,len(expected))
+                            assert coverage>=.9 and excess<=.12,f'Transcript differs: coverage={coverage:.2f}, excess={excess:.2f}: {transcript}'
+                        aligned=aligner.generate(str(wav),text=text,language='German').items
+                        assert len(aligned)==count,f'Alignment count {len(aligned)} != {count}'
+                        local=[];nudged=0
+                        for item in aligned:
+                            value=item.start_time
+                            assert np.isfinite(value) and -.05<=value<duration+.2,'Alignment outside recording'
+                            value=max(0,min(value,duration-.01))
+                            if local and value<=local[-1]:value=local[-1]+.005;nudged+=1
+                            assert value<duration,'Alignment ended outside recording'
+                            local.append(round(value,5))
+                        assert nudged<=max(2,count*.12),'Too many uncertain word boundaries'
+                        report={'source':text,'starts':local,'seconds':duration,'transcript':transcript,'coverage':coverage,'excess':excess,'attempt':attempt+1}
+                        save_json(check,report);break
+                    except Exception as e:
+                        errors.append(str(e));print(f"Retry {story['id']} {voice} chunk {chunk_index+1}: {e}",flush=True)
+                else:raise RuntimeError('; '.join(errors))
+            starts.extend(round(offset+t,5) for t in report['starts']);frames.append(audio)
+            offset+=len(audio)/rate
+            if chunk_index<len(story_chunks)-1:
+                frames.append(np.zeros(7200,dtype=np.float32));offset+=.3
+            reports.append(report)
+        audio=np.concatenate(frames)
+        duration=round(len(audio)/24000,5)
+        assert len(starts)==len(visible_words(story['text']))
+        mx.clear_cache();gc.collect()
+        with tempfile.TemporaryDirectory(prefix='leselaut-qwen-encode-') as temp:
+            combined=Path(temp)/'story.wav';write(str(combined),audio,24000,format='wav')
+            if plans is not None:
+                transcript=asr.generate(str(combined),language='German',hotwords=story_hotwords,chunk_duration=30.0,max_tokens=max(512,len(visible_words(story['text']))*4)).text
+                expected,actual=normal(story['text']),normal(transcript)
+                matcher=SequenceMatcher(None,expected,actual,autojunk=False)
+                matched=sum(block.size for block in matcher.get_matching_blocks())
+                coverage=matched/max(1,len(expected));excess=(len(actual)-matched)/max(1,len(expected))
+                if coverage<.9 or excess>.12:
+                    save_json(args.checkpoint/(name+'-transcript-failed.json'),{'transcript':transcript,'coverage':coverage,'excess':excess})
+                assert coverage>=.9 and excess<=.12,f'Whole-story transcript differs: coverage={coverage:.2f}, excess={excess:.2f}'
+                save_json(args.checkpoint/(name+'-transcript.json'),{'transcript':transcript,'coverage':coverage,'excess':excess})
+                mx.clear_cache();gc.collect()
+            temporary=target.with_suffix('.tmp.webm')
+            command=[args.ffmpeg,'-hide_banner','-loglevel','error','-y','-i',str(combined),'-c:a','libopus','-b:a','24k','-ar','24000','-ac','1',str(temporary)]
+            for encoding_attempt in range(3):
+                try:
+                    subprocess.run(command,check=True);break
+                except subprocess.CalledProcessError as error:
+                    if error.returncode != -9 or encoding_attempt == 2:raise
+                    mx.clear_cache();gc.collect();time.sleep(1)
+            assert temporary.stat().st_size>10000
+            temporary.replace(target)
+        save_json(sidecar,{'textHash':digest,'starts':starts,'duration':duration})
+        manifests[voice][story['id']]={'src':'/audio/reading/'+target.name,'timingSrc':'/audio/reading/'+sidecar.name,'textHash':digest,'wordCount':len(starts),'duration':duration}
+        save_json(paths[voice],manifests[voice])
+        completed+=1
+        print(f"Completed {completed}/{len(stories)*len(voices)}: {story['id']} {voice} ({duration:.1f}s)",flush=True)
+        mx.clear_cache()
+    except Exception as e:
+        traceback.print_exc()
+        failures.append({'story':story['id'],'voice':voice,'error':str(e)})
+        save_json(args.checkpoint/'failures.json',failures)
+        print(f"FAILED {story['id']} {voice}: {e}",flush=True)
+print(f'Rendered {completed} recordings in {time.monotonic()-started:.0f}s; failures={len(failures)}',flush=True)
+save_json(args.checkpoint/'failures.json',failures)
+if failures:raise SystemExit(1)

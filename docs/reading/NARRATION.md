@@ -2,19 +2,24 @@
 
 # Graded story narration
 
-The browser's sentence-by-sentence device voice was replaced on 2026-09-16 with continuous recorded German narration for the guided stories and their course chapters. The 382 topical scenes now use the same voice and player. The practical reception pilot keeps its separate recordings.
+All 454 graded stories now use continuous character narration. The female reference narrates and voices female characters; the male reference voices identified male characters. Story text, translations and progress IDs are unchanged. The practical reception pilot and books keep their own recordings.
 
-## Production
-
-- Engine: [Piper 1.4.2](https://github.com/OHF-Voice/piper1-gpl), local inference; no provider API or student data involved.
-- Voice: [de_DE-thorsten-high](https://huggingface.co/rhasspy/piper-voices/blob/v1.0.0/de/de_DE/thorsten/high/MODEL_CARD), trained on Thorsten Voice (CC0 dataset; model repository MIT). Synthetic single-speaker German, 22,050 Hz.
-- Length scale 1.0; 150 ms of inserted silence between synthesis chunks; mono Opus in WebM with a 16 kb/s target for new recordings. Current AAC recordings are retained when their text hash still matches, especially in the B1 guided strand. The full recording plays continuously, without starting a new browser utterance at every sentence. WebM/Opus playback is supported by current Chromium and Firefox and by [Safari 17.4+ on iOS/iPadOS](https://webkit.org/blog/15063/webkit-features-in-safari-17-4/) and [Safari 17+ on macOS](https://webkit.org/blog/14445/webkit-features-in-safari-17-0/); older Safari versions may not play this compact format.
-- `scripts/generate-reading-audio.py` reads the exact current story text, generates phoneme alignments, maps spoken whitespace tokens to word starts, and encodes with FFmpeg. Requires `piper-tts==1.4.2`, `onnx`, and `imageio-ffmpeg`. Pass `--model /absolute/path/de_DE-thorsten-high.onnx`; optional `--only reading-a1-25-v1` renders a sample. The matching `.onnx.json` must be beside the model. Models and temporary WAV files stay out of committed source. Piper 1.4.2 needs the model's phoneme-duration tensor exposed; the script patches a temporary copy.
-- For local parallel rendering, use non-overlapping `--level`, `--start-number`, and `--end-number` batches. Run the command once without those filters afterwards to check every asset and write the combined manifest.
-- Final media and timing sidecars live in `public/audio/reading`; `app/lib/reading-audio-manifest.json` maps each story to them. SHA-256 of the source text forms the asset name and is checked in tests. Reruns retain completed assets. Regenerate after text changes; tests reject missing or stale narration.
+Final media and timing sidecars live in `public/audio/reading`; `app/lib/reading-audio-manifest.json` maps each story to one recording. Asset names include both the source-text hash and the speaker-plan hash. Superseded Piper story recordings have been removed from the published assets. The earlier `scripts/generate-reading-audio.py` pipeline remains in source for local fallback; it is no longer the production narration engine.
 
 ## Player and validation
 
 Native audio controls handle pause/resume and seeking. A1 starts at 0.85×; A2 and B1 start at 1×. Speed stays available while playing and pitch is preserved. A shared narration context connects the player to the standalone or course text, including when the course transcript is opened mid-playback. Highlights use media time, never a timer estimate of words per minute. A failed timing request leaves audio playable and offers a retry; a failed audio request offers reload. Changing story or leaving the player pauses playback and cancels animation work.
 
 Tests cover all 454 text hashes, complete word-index mapping, timing count/order/range, audio container presence, seeking/replay boundaries and representative rendered story pages. Audio is labelled AI voice. These mechanical checks do not certify naturalness or pronunciation: teacher listening review and real-device listening feedback remain necessary.
+
+## Production character voices
+
+Production uses the two synthetic Qwen samples in `docs/audio-samples`: female narration and female characters, with male characters voiced by the male sample. Each story still has one continuous recording and the existing player. There is no narrator-selection dropdown, and the story text, translations and progress are preserved.
+
+`content/reading/dialogue-voices.json` stores source hashes and exact text spans with speaker assignments. Quoted signs and uncertain identities stay with the narrator. `scripts/annotate-story-dialogue.mjs` creates resumable speaker drafts using the existing Groq provider; only the already-public story text is supplied. Assignments require editorial review, particularly unattributed dialogue and short answers. The first story has been manually checked; its sign is narration and Mia answers Sam's “Und du?”. Cross-story name checks detect conflicting voice assignments, and a first-person speaker is not assigned a gender just because a girlfriend is mentioned.
+
+```sh
+python scripts/generate-qwen-story-audio.py --models /tmp/leselaut-qwen-models --dialogue-plan content/reading/dialogue-voices.json --only reading-a1-01-v1 --ffmpeg /absolute/path/to/ffmpeg
+```
+
+The local generator runs on Apple silicon with `mlx-audio==0.5.6` and `mlx==0.32.2`. `scripts/download-local-audio-models.py` downloads the 4-bit MLX models and verifies large weight files against upstream SHA-256 values. It uses Qwen3-TTS 1.7B Base, with Qwen ASR for a complete-story transcript filter and ForcedAligner for word starts. Very short turns are checked within the complete recording, where ASR has conversational context; longer chunks also receive their own transcript check. Full-story ASR processes 30-second chunks; character names are supplied as recognition hints and spoken numbers are normalized before comparison. The filter requires at least 90% source-token coverage and no more than 12% extra tokens. It synthesizes each voice turn, joins them with short pauses, and writes one mono 24 kb/s Opus recording and one timing sidecar. Speaker-plan changes invalidate the final asset, while validated individual chunks can be reused. Checkpoints and superseded trial files stay in the ignored `.local-piper` directory, outside the site archive. Superseded production files are removed only after every replacement passes validation.
