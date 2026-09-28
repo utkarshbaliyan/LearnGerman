@@ -20,7 +20,7 @@ export default async function BookPage({ params }: { params: Promise<{ page: str
   return <div className="site-shell"><SiteHeader active="books" /><main className="book-reader" key={page.number}>
     <Link className="reading-back" href="/books"><ArrowLeft size={17} />A1 books · Contents</Link>
     <header className="book-page-header"><span className="reading-eyebrow">{A1_BOOK.title} · Chapter {page.chapter} of 10</span><p lang="de" className="book-chapter-title">{page.chapterTitle}</p><h1 lang="de">{page.title}</h1><p>Page {page.number} of 200 · Chapter page {page.chapterPage} of 20</p><progress value={page.number} max={200} aria-label={`Page ${page.number} of 200`} /><BookBookmarkButton page={page.number} /></header>
-    <BookPageReader paragraphs={page.paragraphs} summaries={page.summaries} glosses={page.glosses} audio={page.audio} />
+    <BookPageReader paragraphs={page.paragraphs} translations={page.translations} glosses={page.glosses} audio={page.audio} />
     <BookPageNavigation page={page.number} />
   </main></div>;
 }

@@ -46,7 +46,7 @@ test('all story levels offer one toggle for all sentence translations', async ()
   }
 });
 
-test("A1 Books keeps the source page format with four audio controls and no questions", async () => {
+test("A1 Books keeps the source paragraphs with one audio control, one English toggle and no questions", async () => {
   const index = await renderRoute('/books');
   assert.equal(index.status, 200);
   const indexHtml = await index.text();
@@ -61,9 +61,11 @@ test("A1 Books keeps the source page format with four audio controls and no ques
     const response = await renderRoute(`/books/a1/der-schluessel-im-blauen-korb/${page}`);
     assert.equal(response.status, 200);
     const html = await response.text();
-    assert.equal((html.match(/<audio /g) ?? []).length, 4, `page ${page}: one player per paragraph`);
+    assert.equal((html.match(/<audio /g) ?? []).length, 1, `page ${page}: one player for the page`);
     assert.equal((html.match(/class="book-paragraph"/g) ?? []).length, 4);
-    assert.equal((html.match(/class="book-paragraph-summary"/g) ?? []).length, 4, `page ${page}: one English summary per paragraph`);
+    assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
+    assert.match(html, /Show English translations/);
+    assert.doesNotMatch(html, /class="book-paragraph-translation"|class="book-paragraph-summary"/);
     assert.match(html, /Bookmark this page/);
     assert.doesNotMatch(html, /In English ·/);
     assert.match(html, /Hover over or tap a word for its English meaning/);

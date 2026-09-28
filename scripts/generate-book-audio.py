@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render each book paragraph as its own aligned German recording."""
+"""Render each book page as one aligned German recording with paragraph pauses."""
 import argparse
 import hashlib
 import importlib.util
@@ -54,59 +54,65 @@ def main():
     for page in book['pages']:
         if not args.start_page <= page['number'] <= args.end_page:
             continue
-        for index, paragraph in enumerate(page['paragraphs'], 1):
-            digest = hashlib.sha256(paragraph.encode()).hexdigest()
-            name = f"p{page['number']:03d}-paragraph-{index}-{digest[:12]}"
-            audio_path = output / f'{name}.webm'
-            timing_path = output / f'{name}.json'
-            if audio_path.exists() and timing_path.exists():
-                print(f"page {page['number']} paragraph {index}: cached", flush=True)
-                continue
-            phonemes = []
-            samples = 0
-            with tempfile.TemporaryDirectory(prefix='leselaut-book-audio-') as temp:
-                wav_path = Path(temp) / 'voice.wav'
-                with wave.open(str(wav_path), 'wb') as wav:
-                    wav.setparams((1, 2, voice.config.sample_rate, 0, 'NONE', 'not compressed'))
+        text = '\n\n'.join(page['paragraphs'])
+        digest = hashlib.sha256(text.encode()).hexdigest()
+        name = f"p{page['number']:03d}-page-{digest[:12]}"
+        audio_path = output / f'{name}.webm'
+        timing_path = output / f'{name}.json'
+        if audio_path.exists() and timing_path.exists():
+            print(f"page {page['number']}: cached", flush=True)
+            continue
+        starts = []
+        samples = 0
+        with tempfile.TemporaryDirectory(prefix='leselaut-book-audio-') as temp:
+            wav_path = Path(temp) / 'voice.wav'
+            with wave.open(str(wav_path), 'wb') as wav:
+                wav.setparams((1, 2, voice.config.sample_rate, 0, 'NONE', 'not compressed'))
+                for paragraph_index, paragraph in enumerate(page['paragraphs']):
+                    if paragraph_index:
+                        silence = round(voice.config.sample_rate * .3)
+                        wav.writeframes(bytes(silence * 2))
+                        samples += silence
+                    offset = samples
+                    paragraph_samples = 0
+                    phonemes = []
                     for chunk_index, chunk in enumerate(voice.synthesize(paragraph, synthesis, include_alignments=True)):
                         if chunk.phoneme_alignments is None:
                             raise RuntimeError('Narration has no alignment data')
                         if chunk_index:
                             silence = round(voice.config.sample_rate * .15)
                             wav.writeframes(bytes(silence * 2))
-                            samples += silence
-                            phonemes.append(('\0', samples))
-                        phonemes.extend(alignment.aligned_phonemes(chunk.phoneme_alignments, samples))
+                            paragraph_samples += silence
+                            phonemes.append(('\0', paragraph_samples))
+                        phonemes.extend(alignment.aligned_phonemes(chunk.phoneme_alignments, paragraph_samples))
                         wav.writeframes(chunk.audio_int16_bytes)
-                        samples += len(chunk.audio_int16_bytes) // 2
-                starts = alignment.visual_word_starts(voice, paragraph, phonemes)
-                expected = sum(bool(re.search(r'[A-Za-zÄÖÜäöüßÉé0-9]', token)) for token in paragraph.split())
-                if len(starts) != expected or any(b <= a for a, b in zip(starts, starts[1:])):
-                    raise RuntimeError(f"Invalid word timings: page {page['number']} paragraph {index}")
-                subprocess.run([get_ffmpeg_exe(), '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav_path),
-                                '-c:a', 'libopus', '-b:a', '16k', '-vbr', 'on', '-application', 'voip', str(audio_path)], check=True)
-                timing_path.write_text(json.dumps({'textHash': digest, 'starts': [round(n / voice.config.sample_rate, 4) for n in starts],
-                                                   'duration': round(samples / voice.config.sample_rate, 4)}, separators=(',', ':')))
-            print(f"page {page['number']} paragraph {index}: {len(starts)} words", flush=True)
+                        paragraph_samples += len(chunk.audio_int16_bytes) // 2
+                    starts.extend(offset + n for n in alignment.visual_word_starts(voice, paragraph, phonemes))
+                    samples += paragraph_samples
+            expected = sum(bool(re.search(r'[A-Za-zÄÖÜäöüßÉé0-9]', token)) for token in text.split())
+            if len(starts) != expected or any(b <= a for a, b in zip(starts, starts[1:])):
+                raise RuntimeError(f"Invalid word timings: page {page['number']}")
+            subprocess.run([get_ffmpeg_exe(), '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav_path),
+                            '-c:a', 'libopus', '-b:a', '16k', '-vbr', 'on', '-application', 'voip', str(audio_path)], check=True)
+            timing_path.write_text(json.dumps({'textHash': digest, 'starts': [round(n / voice.config.sample_rate, 4) for n in starts],
+                                               'duration': round(samples / voice.config.sample_rate, 4)}, separators=(',', ':')))
+        print(f"page {page['number']}: {len(starts)} words", flush=True)
     if args.start_page == 1 and args.end_page == 200:
         manifest = {}
         for page in book['pages']:
-            entries = []
-            for index, paragraph in enumerate(page['paragraphs'], 1):
-                digest = hashlib.sha256(paragraph.encode()).hexdigest()
-                name = f"p{page['number']:03d}-paragraph-{index}-{digest[:12]}"
-                audio_path = output / f'{name}.webm'
-                timing_path = output / f'{name}.json'
-                if not (audio_path.exists() and timing_path.exists()):
-                    raise RuntimeError(f"Missing narration: page {page['number']} paragraph {index}")
-                timing = json.loads(timing_path.read_text())
-                if timing['textHash'] != digest:
-                    raise RuntimeError(f"Stale narration: page {page['number']} paragraph {index}")
-                entries.append({'src': f"/audio/books/{book['id']}/{name}.webm", 'timingSrc': f"/audio/books/{book['id']}/{name}.json",
-                                'textHash': digest, 'wordCount': len(timing['starts']), 'duration': timing['duration']})
-            manifest[str(page['number'])] = entries
+            digest = hashlib.sha256('\n\n'.join(page['paragraphs']).encode()).hexdigest()
+            name = f"p{page['number']:03d}-page-{digest[:12]}"
+            audio_path = output / f'{name}.webm'
+            timing_path = output / f'{name}.json'
+            if not (audio_path.exists() and timing_path.exists()):
+                raise RuntimeError(f"Missing narration: page {page['number']}")
+            timing = json.loads(timing_path.read_text())
+            if timing['textHash'] != digest:
+                raise RuntimeError(f"Stale narration: page {page['number']}")
+            manifest[str(page['number'])] = {'src': f"/audio/books/{book['id']}/{name}.webm", 'timingSrc': f"/audio/books/{book['id']}/{name}.json",
+                                            'textHash': digest, 'wordCount': len(timing['starts']), 'duration': timing['duration']}
         (ROOT / 'app/lib/book-audio-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
-        print('Manifest contains 200 pages and 800 paragraphs', flush=True)
+        print('Manifest contains 200 page recordings', flush=True)
 
 
 if __name__ == '__main__':
