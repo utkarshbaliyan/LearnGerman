@@ -2,7 +2,6 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { RotateCcw } from 'lucide-react';
-import manifest from '@/app/lib/reading-audio-manifest.json';
 import { spokenWordAt, validNarrationTiming, type NarrationAsset, type NarrationTiming } from '@/app/lib/reading-narration';
 import { Button } from '@/components/ui/button';
 
@@ -15,8 +14,7 @@ export function ReadingNarrationProvider({ children }: { children: ReactNode }) 
 
 export function useReadingNarration() { return useContext(NarrationContext); }
 
-export function ReadingAudio({ storyId, onFinished }: { storyId: string; onFinished?: () => void }) {
-  const asset = (manifest as Record<string, NarrationAsset>)[storyId];
+export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; asset?: NarrationAsset; onFinished?: () => void }) {
   const { setActiveWord } = useReadingNarration();
   const audio = useRef<HTMLAudioElement>(null);
   const timing = useRef<NarrationTiming | null>(null);

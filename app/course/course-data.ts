@@ -1,4 +1,6 @@
 import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
+import audioManifest from '@/app/lib/reading-audio-manifest.json';
+import type { NarrationAsset } from '@/app/lib/reading-narration';
 import { getChapterReading } from "@/app/lib/reading-course";
 import { readingGlosses } from "@/app/lib/reading-glossary";
 import { getChapterOutputTask } from "@/app/lib/chapter-output-tasks";
@@ -236,6 +238,7 @@ export function getCourseChapter(level: string, number: number) {
     story,
     receptionLessonId: RECEPTION_CATALOG.find(item => item.level === normalizedLevel && item.chapter === number)?.id,
     readingStory,
+    readingAudio: (audioManifest as Record<string, NarrationAsset>)[readingStory.id],
     readingGlosses: glosses,
     storyIndex,
     lesson,

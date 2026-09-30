@@ -12,8 +12,10 @@ test('narration renders accessible native controls, available speeds and slower 
   const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false } });
   try {
     const { ReadingAudio, ReadingNarrationProvider } = await vite.ssrLoadModule('/app/components/reading-narration.tsx');
+    const manifest = await json('../app/lib/reading-audio-manifest.json');
     for (const level of ['a1', 'a2', 'b1']) {
-      const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null, React.createElement(ReadingAudio, { storyId: `reading-${level}-02-v1` })));
+      const storyId = `reading-${level}-02-v1`;
+      const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null, React.createElement(ReadingAudio, { storyId, asset: manifest[storyId] })));
       assert.match(html, /<audio[^>]+controls=""[^>]+aria-label="German story narration"/);
       assert.match(html, /<select aria-label="Narration speed">/);
       assert.match(html, new RegExp(`<option value="${level === 'a1' ? '0.85' : '1'}" selected="">`));

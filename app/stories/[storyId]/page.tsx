@@ -22,7 +22,7 @@ export default async function StoryPage({ params }: { params: Promise<{ storyId:
     <Link className="reading-back" href={`/stories?level=${story.level}`}><ArrowLeft size={17} />{story.level} stories</Link>
     <header><span className="reading-eyebrow">{story.level} · {READING_SECTIONS[story.level][story.section - 1]} · {story.number}/{total}</span><h1 lang="de">{story.title}</h1><p>{story.goal} <span className="reading-length">{readingWordCount(story.text)} words</span></p></header>
     <ReadingNarrationProvider key={story.id}>
-    <ReadingAudio storyId={story.id} />
+    <ReadingAudio storyId={story.id} asset={content.audio} />
     <ReadingText story={story} glosses={glosses} sentenceTranslations={sentenceTranslations} />
     </ReadingNarrationProvider>
     <ReadingCheck key={story.id} story={story} />

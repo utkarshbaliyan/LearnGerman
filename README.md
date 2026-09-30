@@ -1,13 +1,18 @@
 # LeseLaut
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+German learning platform with Stories, Books, Active Learning, Vocabulary, Grammar
+and Account. Built with React and vinext, hosted by Sites on Cloudflare Workers.
+Supabase provides authentication; Cloudflare D1 stores learner data.
+
+See [Project structure and performance audit](docs/PROJECT-STRUCTURE-AND-PERFORMANCE.md)
+for the current folder map, storage boundaries, measurements and optimization priorities.
+The feature notes below include historical implementation milestones.
 
 ## Prerequisites
 
 - Node.js `>=22.13.0`
-- Linux with `flock`, `curl`, and GNU `timeout`
+- macOS or Linux for development, builds and tests
+- Linux with `flock`, `curl`, and GNU `timeout` for the optional `install:ci` helper
 
 ## Sites Lifecycle
 
@@ -15,7 +20,7 @@ The Sites lifecycle CLI runs the locked dependency install before returning this
 
 This starter does not use `wrangler.jsonc`.
 
-`install:ci` is intentionally a single, non-retrying `npm ci`. It refuses a concurrent install for the same project, consumes a matching image-seeded npm cache with `--prefer-offline` while retaining registry fallback for a missing cache object, otherwise downloads and verifies the complete vinext tarball recorded in `package-lock.json`, limits npm to one socket, and terminates a stalled install. `build` applies a short timeout. These helpers target Linux and use GNU `timeout`; they are not native macOS scripts.
+`install:ci` is intentionally a single, non-retrying `npm ci`. It refuses a concurrent install for the same project, consumes a matching image-seeded npm cache with `--prefer-offline` while retaining registry fallback for a missing cache object, otherwise downloads and verifies the complete vinext tarball recorded in `package-lock.json`, limits npm to one socket, and terminates a stalled install. `build` applies a portable Node-based timeout (3 minutes by default). Only the install helper requires Linux/GNU tooling.
 
 Scripts that need writable project-scoped home, npm, XDG, and temporary paths use `scripts/sites-env.sh`. The `dev` and `start` scripts honor the caller's runtime environment and keep Wrangler logs inside the checkout. The generated `.sites-runtime/` directory is disposable and ignored by Git.
 
@@ -26,7 +31,7 @@ Scripts that need writable project-scoped home, npm, XDG, and temporary paths us
 - `.openai/hosting.json` declares optional Sites D1 and R2 bindings
 - `vite.config.ts` simulates declared bindings for local development
 - `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
-- `db/schema.ts` starts intentionally empty
+- `db/schema.ts` defines users, progress, tutor sessions and quotas
 - `drizzle.config.ts` supports local migration generation when needed
 
 ## Authentication
@@ -48,7 +53,7 @@ origin configured as Supabase's Site URL.
 - `npm run dev`: start the Vite/Vinext development server
 - `npm run build`: build the deployable Sites artifact
 - `npm run start`: start the built Vinext application
-- `npm test`: build and verify the rendered development-preview metadata
+- `npm test`: build, then run the full content, rendering, persistence and API test suite
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
 Use build commands for targeted diagnosis after a remote failure, not as part of the normal checkpoint path.
@@ -96,8 +101,7 @@ speaking endpoint still has its older IP-based limiter; this release is not a
 monetization-ready tutor backend.
 
 Validation: `npx tsc --noEmit`, `npm run lint`, `npx vinext build`, and
-`node --test tests/*.test.mjs`. The existing `npm test` wrapper requires GNU
-`timeout`; on macOS without it, use the explicit build and test commands above.
+`node --test tests/*.test.mjs`. The `npm test` wrapper builds with a portable Node timeout, then runs the suite.
 Writing API tests use real SQLite queries and mocked authentication/provider
 responses to verify ownership, quotas, concurrency, idempotency, deletion,
 assistance tracking, and feedback redaction. No paid provider calls are used in tests.

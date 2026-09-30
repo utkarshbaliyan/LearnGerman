@@ -213,7 +213,7 @@ export function IntegratedCourseChapter({ content }: { content: CourseChapterCon
       <section className="chapter-learning-section chapter-story-lesson" id="story">
         <div className="chapter-section-copy"><span>01 · Listening and reading</span><h2>One story. Take your time.</h2><p>Try listening first, or open the text whenever you need it.</p></div>
         <ReadingNarrationProvider key={content.story.id}>
-        <ReadingAudio storyId={content.story.id} />
+        <ReadingAudio storyId={content.story.id} asset={content.readingAudio} />
         <QuizBlock questions={content.listening} eyebrow="Listening practice" title="What did you hear?" savedScore={checks.listening?.score ?? 0} onScore={score => saveComprehensionScore("listening", score)} />
         {checks.listening && <p>Latest listening check: {checks.listening.score}% · {checks.listening.usedText ? 'Story text opened for support' : 'Story text not opened in this visit'}</p>}
         <details onToggle={event => { if (event.currentTarget.open) setUsedStoryText(true); }}>

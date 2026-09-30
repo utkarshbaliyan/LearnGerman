@@ -1,0 +1,9 @@
+# These paths contain versioned filenames. New content must get a new filename.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/audio/reading/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/audio/books/der-schluessel-im-blauen-korb/*
+  Cache-Control: public, max-age=31536000, immutable
