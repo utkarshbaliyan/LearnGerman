@@ -27,8 +27,8 @@ export function BookPageNavigation({ page }: { page: number }) {
   const { savePage } = useBookBookmark();
   return <nav className="book-page-navigation" aria-label="Book pages">
     {page > 1 ? <Link href={`${bookPath}/${page - 1}`} onClick={() => savePage(page - 1)}><ArrowLeft size={17} />Previous page</Link> : <span />}
-    <Link href="/books">Contents</Link>
+    <Link href={bookPath}>Contents</Link>
     {page < BOOK_PAGE_COUNT ? <Link className="reading-primary" href={`${bookPath}/${page + 1}`} onClick={() => savePage(page + 1)}>Next page <ArrowRight size={17} /></Link>
-      : <Link className="reading-primary" href="/books">Finish book <ArrowRight size={17} /></Link>}
+      : <Link className="reading-primary" href={bookPath}>Finish book <ArrowRight size={17} /></Link>}
   </nav>;
 }

@@ -1,6 +1,6 @@
 # Der Schlüssel im blauen Korb
 
-The A1 Books section contains the revised 200-page reader in ten chapters. Each page retains four paragraphs, with one continuous German recording per page and word meanings. Books have no comprehension questions or completion grading.
+The A1 Books shelf shows one cover, with its title, and opens `/books/a1/der-schluessel-im-blauen-korb`. The book's own opening page contains the resume link and ten-chapter contents; individual reading pages remain at `/<page>`. Each of the 200 pages retains four paragraphs, with one continuous German recording per page and word meanings. Books have no comprehension questions or completion grading.
 
 `content/books/der-schluessel-im-blauen-korb.txt` is the canonical manuscript. Run `python3 scripts/build-book-data.py` after editing it. The compiler checks page numbering, chapter titles, and paragraph counts, and writes `app/lib/book-data.json`.
 

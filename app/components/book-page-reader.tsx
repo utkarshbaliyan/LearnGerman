@@ -65,7 +65,6 @@ export function BookPageReader({ paragraphs, translations, glosses, audio }: {
     {audioError && <p className="book-audio-error" role="alert">The recording could not load. Please try again.</p>}
     {translations.length === paragraphs.length && <button type="button" className="reading-translation-toggle" aria-pressed={showTranslations} onClick={() => setShowTranslations(value => !value)}>{showTranslations ? 'Hide English translations' : 'Show English translations'}</button>}
     {paragraphs.map((paragraph, index) => <section className="book-paragraph" aria-label={`Paragraph ${index + 1}`} key={index}>
-      <div className="book-paragraph-top"><span>Paragraph {index + 1}</span></div>
       <p lang="de" className="reading-prose reading-prose-a1">{words[index].map((part, partIndex) => <span key={partIndex} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>
         {part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, tokenIndex) => {
           const meaning = glosses[wordKey(token)];

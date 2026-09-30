@@ -51,12 +51,16 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
   assert.equal(index.status, 200);
   const indexHtml = await index.text();
   assert.match(indexHtml, /Der Schlüssel im blauen Korb/);
-  assert.match(indexHtml, /Start reading/);
-  assert.doesNotMatch(indexHtml, /200 pages · 10 chapters/);
-  assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/1"/);
-  assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/21"/);
-  assert.equal((indexHtml.match(/class="book-chapter-item"/g) ?? []).length, 10);
-  assert.doesNotMatch(indexHtml, /Read a whole book in German|Follow Mia and her family through 200 pages|Die neue Straße/);
+  assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb"/);
+  assert.equal((indexHtml.match(/class="book-shelf-item"/g) ?? []).length, 1);
+  assert.doesNotMatch(indexHtml, /Start reading|Continue reading|Chapter 1|Contents|Die Ankunft|book-chapter-item/);
+  const contents = await renderRoute('/books/a1/der-schluessel-im-blauen-korb');
+  assert.equal(contents.status, 200);
+  const contentsHtml = await contents.text();
+  assert.match(contentsHtml, /Start reading/);
+  assert.match(contentsHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/1"/);
+  assert.match(contentsHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb\/21"/);
+  assert.equal((contentsHtml.match(/class="book-chapter-item"/g) ?? []).length, 10);
   for (const page of [1, 200]) {
     const response = await renderRoute(`/books/a1/der-schluessel-im-blauen-korb/${page}`);
     assert.equal(response.status, 200);
@@ -67,6 +71,8 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
     assert.match(html, /Show English translations/);
     assert.doesNotMatch(html, /class="book-paragraph-translation"|class="book-paragraph-summary"/);
     assert.match(html, /Bookmark this page/);
+    assert.match(html, /href="\/books\/a1\/der-schluessel-im-blauen-korb">Contents<\/a>/);
+    assert.match(html, /class="book-volume book-volume--page"/);
     assert.doesNotMatch(html, /In English ·/);
     assert.match(html, /Hover over or tap a word for its English meaning/);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
