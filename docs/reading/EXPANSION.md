@@ -67,6 +67,14 @@ are excluded from the website and Git repository.
   It assembles metadata and questions but does not generate story prose. The resumable
   `generate-long-reading-stories.mjs` helper produced drafts with the existing
   Groq account; future edits should be reviewed as prose, not padded for length.
+- B1 expansion remains unpublished. Run `node scripts/audit-b1-drafts.mjs` to
+  count drafts and machine flags. A generated draft has `reviewStatus: unreviewed`;
+  the compiler now requires every B1 story to be explicitly marked
+  `editorially-accepted` before `--include-b1-drafts` can publish them all. Machine
+  checks catch length, viewpoint changes, repeated sentences and some meta-text,
+  but a person must still check plot continuity, natural German and factual
+  consistency. Fresh sentence translations, word glosses, character plans and
+  matching audio are also required before a live text change.
 - Source line order assigns IDs beginning at 25 in each level. Preserve that
   order; append future stories. Substantial text replacements need an explicit
   new edition ID and progress decision, not silent line insertion or reordering.

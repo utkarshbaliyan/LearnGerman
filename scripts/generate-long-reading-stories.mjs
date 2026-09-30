@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, renameSync } from 'node:fs';
+import { b1DraftIssues, germanWordCount } from './lib/b1-draft-quality.mjs';
 
 // Resumable editorial draft generator. Run with: node --env-file=.env.local scripts/generate-long-reading-stories.mjs
 // Review and compile the resulting content/reading/long-stories.json before publishing.
@@ -16,7 +17,10 @@ for (const level of ['A1', 'A2', 'B1']) {
 for (const story of original) seeds.push({ ...story, beginning: story.english, ending: story.english });
 const ranges = { A1: [85, 135], A2: [220, 300], B1: [400, 800] };
 const maxOutput = { A1: 650, A2: 1050, B1: 1700 };
-const count = text => (text.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
+const count = germanWordCount;
+const only = process.argv.find((argument) => argument.startsWith('--only='))?.slice('--only='.length);
+const maxNew = Number(process.argv.find((argument) => argument.startsWith('--max-new='))?.slice('--max-new='.length) ?? Infinity);
+if (maxNew !== Infinity && (!Number.isInteger(maxNew) || maxNew < 1)) throw new Error('--max-new must be a positive integer');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 function save() {
   writeFileSync(`${destination}.tmp`, JSON.stringify(saved, null, 2) + '\n');
@@ -29,7 +33,7 @@ function requestBody(seed, attempt = 0) {
     ? 'Use mostly present tense, short clauses, common concrete words and basic questions. Keep each sentence understandable to an A1 learner. A little Perfekt is acceptable only if the seed needs it.'
     : seed.level === 'A2'
       ? 'Use clear conversational German with present, Perfekt and simple subordinate clauses. Vary accusative and dative naturally. Avoid rare literary vocabulary.'
-      : 'Use natural B1 prose: varied but readable sentences, dialogue, Perfekt and Präteritum where natural, subordinate and relative clauses, dative and accusative. Write 4–5 paragraphs, each with a new event or exchange. Keep the seed narrator, family relationships, main characters and chronology exactly. Add a concrete obstacle and response, but no new relatives or major events. Never leave a child unsupervised. Check article gender, case and verb agreement before answering. Avoid procedural padding, repeated explanations and generic conclusions.';
+      : 'Use natural B1 prose: varied but readable sentences, dialogue, Perfekt and Präteritum where natural, subordinate and relative clauses, dative and accusative. Write 4–5 paragraphs. Keep the seed narrator, viewpoint, family relationships, main characters and chronology exactly. If the seed is in third person, never switch to an ich narrator. Develop only the obstacle and response already present in the seed. Do not invent a person, relationship, problem, repair, or outcome. Never leave a child unsupervised. Check article gender, case and verb agreement before answering. Avoid procedural padding, grammar explanations, repeated concerns and generic conclusions.';
   return {
       model: 'openai/gpt-oss-120b', reasoning_effort: 'low', temperature: 0.35,
       max_completion_tokens: maxOutput[seed.level],
@@ -61,19 +65,24 @@ async function generate(seed, attempt = 0) {
     .replace(/\n{3,}/g, '\n\n');
   if (!text) throw new Error(`${seed.id}: empty response (${data.choices?.[0]?.finish_reason})`);
   const words = count(text);
-  if (words < min || words > max) {
+  const issues = seed.level === 'B1' ? b1DraftIssues(seed.text, text) : words < min || words > max ? [`${words} words outside ${min}–${max}`] : [];
+  if (issues.length) {
     if (attempt < 2) return generate(seed, attempt + 1);
-    throw new Error(`${seed.id}: ${words} words outside ${min}–${max}`);
+    throw new Error(`${seed.id}: draft failed checks: ${issues.join('; ')}`);
   }
-  return { text, wordCount: words, generatedAt: new Date().toISOString() };
+  return { text, wordCount: words, generatedAt: new Date().toISOString(), reviewStatus: 'unreviewed' };
 }
 if (!process.env.GROQ_API_KEY) throw new Error('GROQ_API_KEY is required');
+let created = 0;
 for (const [index, seed] of seeds.entries()) {
+  if (only && seed.id !== only) continue;
   if (saved[seed.id]) continue;
   try {
     saved[seed.id] = await generate(seed);
     save();
+    created++;
     if ((index + 1) % 10 === 0) console.log(`saved ${index + 1}/${seeds.length} (${seed.id})`);
+    if (created >= maxNew) break;
   } catch (error) {
     console.error(String(error));
     process.exitCode = 1;

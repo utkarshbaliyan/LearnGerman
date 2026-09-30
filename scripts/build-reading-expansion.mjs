@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createServer } from 'vite';
+import { b1DraftIssues } from './lib/b1-draft-quality.mjs';
 
 // Compiles authored scenes; never constructs story prose from recycled templates.
 const topics = {
@@ -46,6 +47,17 @@ const grammar = {
  pastperfect: 'Earlier past: notice hatte or war with a participle for something that happened before another past event.',
 };
 const root = process.cwd();
+const includeB1Drafts = process.argv.includes('--include-b1-drafts');
+if (includeB1Drafts) {
+ const drafts = JSON.parse(readFileSync('content/reading/long-stories.json', 'utf8'));
+ const core = JSON.parse(readFileSync('app/lib/reading-path-data.json', 'utf8')).filter(story => story.level === 'B1');
+ const added = JSON.parse(readFileSync('app/lib/reading-expanded-data.json', 'utf8')).filter(story => story.level === 'B1');
+ for (const story of [...core, ...added]) {
+  const draft = drafts[story.id];
+  assert.equal(draft?.reviewStatus, 'editorially-accepted', `${story.id}: B1 prose must be individually accepted before publication`);
+  assert.deepEqual(b1DraftIssues(story.text, draft.text), [], `${story.id}: accepted B1 prose failed mechanical checks`);
+ }
+}
 const vite = await createServer({ root, configFile: false, appType: 'custom', resolve: { alias: { '@': root } }, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, ws: false } });
 try {
  const { meaningFor, cleanWord } = await vite.ssrLoadModule('/app/curriculum/index.ts');
@@ -63,7 +75,6 @@ try {
  const old = JSON.parse(readFileSync('app/lib/reading-path-data.json', 'utf8'));
  const long = JSON.parse(readFileSync('content/reading/long-stories.json', 'utf8'));
  // B1 drafts remain private to editorial review until explicitly included.
- const includeB1Drafts = process.argv.includes('--include-b1-drafts');
  const editorialFixes = JSON.parse(readFileSync('content/reading/editorial-fixes.json', 'utf8'));
  const editedText = (id, raw) => {
   let text = raw.replaceAll('**', '').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n');
