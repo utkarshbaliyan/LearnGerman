@@ -1,7 +1,7 @@
 export const germanWordCount = (text) => (text.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
 
 const proseOutsideQuotes = (text) => text.replace(/„[^“]*“|«[^»]*»|“[^”]*”|"[^"\n]*"/gu, '');
-const firstPerson = (text) => /\b(?:ich|wir|mich|mir|uns|mein(?:e|em|en|er|es)?|unser(?:e|em|en|er|es)?)\b/iu.test(proseOutsideQuotes(text));
+const firstPerson = (text) => /\b(?:ich|wir|mich|mir|uns|mein(?:e|em|er|es)?|unser(?:e|em|en|er|es)?)\b/iu.test(proseOutsideQuotes(text));
 
 export function b1DraftIssues(seed, draft) {
   const issues = [];
@@ -15,7 +15,7 @@ export function b1DraftIssues(seed, draft) {
   const sourceDays = new Set([...seed.matchAll(weekdays)].map((match) => match[1].toLocaleLowerCase('de-DE')));
   const inventedDays = [...draft.matchAll(weekdays)].filter((match) => !sourceDays.has(match[1].toLocaleLowerCase('de-DE'))).map((match) => match[0]);
   if (inventedDays.length) issues.push(`invented weekday: ${[...new Set(inventedDays)].join(', ')}`);
-  if (/\b(?:passive\s+Form|grammatische(?:n|r|s)?\s+(?:Form|Struktur)|in\s+diesem\s+Text|der\s+Leser)\b/iu.test(draft))
+  if (/\b(?:passive\s+Form|grammatische(?:n|r|s)?\s+(?:Form|Struktur)|in\s+diesem\s+Text)\b/iu.test(draft))
     issues.push('grammar explanation or reader-facing meta-text inside story');
   if (/\b(?:offene[smn]?\s+Ende|Symbol\s+für|diese\s+Geschichte\s+zeigte)\b/iu.test(draft))
     issues.push('meta or symbolic ending');

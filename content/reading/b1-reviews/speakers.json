@@ -43,5 +43,23 @@
   "reading-b1-10-v2": [
     { "quote": "„Wir ernten nicht genug für den ganzen Stadtteil“", "speaker": "Helferin", "voice": "female", "evidence": "The garden helper answers Nora's question; antwortet sie follows both quotes." },
     { "quote": "„Aber wir sprechen jetzt miteinander.“", "speaker": "Helferin", "voice": "female", "evidence": "The same garden helper continues her answer." }
+  ],
+  "reading-b1-13-v2": [
+    { "quote": "„Ich hätte dich vorher fragen müssen. Du hattest klar Nein gesagt. Es tut mir leid.“", "speaker": "Sam", "voice": "male", "evidence": "Sam writes this apology to Lea; schreibt er introduces the quote." },
+    { "quote": "„aber“", "speaker": "Narrator", "voice": "narrator", "evidence": "The narrator refers to a word Sam does not add; it is not spoken dialogue." }
+  ],
+  "reading-b1-15-v2": [
+    { "quote": "„Hier hättest du viel mehr Platz“", "speaker": "Bruder", "voice": "male", "evidence": "Lea's brother points out the nearby house; sagt er follows the quote." }
+  ],
+  "reading-b1-16-v2": [
+    { "quote": "„Ich kann nicht einschlafen, wenn Sie so spät spielen“", "speaker": "Frau Roth", "voice": "female", "evidence": "Frau Roth rings Sam's door and complains; sagte sie follows the quote." },
+    { "quote": "„Entschuldigung, ich höre jetzt auf“", "speaker": "Sam", "voice": "male", "evidence": "Sam notices the agreed quiet time and apologizes; sagte er follows the quote." }
+  ],
+  "reading-b1-18-v2": [
+    { "quote": "„gut“", "speaker": "Narrator", "voice": "narrator", "evidence": "A quoted evaluation word in narration, not spoken dialogue." },
+    { "quote": "„schlecht“", "speaker": "Narrator", "voice": "narrator", "evidence": "A quoted evaluation word in narration, not spoken dialogue." }
+  ],
+  "reading-b1-20-v2": [
+    { "quote": "„Vielleicht wartet sie auf jemanden, der gleich ankommt“", "speaker": "Mia", "voice": "female", "evidence": "Mia offers her interpretation of the museum image; sagt Mia follows the quote." }
   ]
 }

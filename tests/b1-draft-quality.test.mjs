@@ -27,3 +27,15 @@ test('B1 checks allow a weekday already present in another grammatical form', ()
   const draft = 'Am Donnerstag kommen viele Anfragen.';
   assert.ok(!b1DraftIssues(seed, draft).some((issue) => issue.includes('invented weekday')));
 });
+
+test('third-person meinen does not imply first-person narration', () => {
+  const seed = 'Lea und ihr Bruder meinen unterschiedliche Dinge.';
+  const draft = 'Lea und ihr Bruder sprechen über ihre verschiedenen Wünsche.';
+  assert.ok(!b1DraftIssues(seed, draft).some((issue) => issue.includes('first-person')));
+});
+
+test('a reader of an in-story blog is not reader-facing meta-text', () => {
+  const seed = 'Ein Leser kommentiert den Beitrag.';
+  const draft = 'Mia fragt, was der Leser mit seiner Nachricht meint.';
+  assert.ok(!b1DraftIssues(seed, draft).some((issue) => issue.includes('meta-text')));
+});
