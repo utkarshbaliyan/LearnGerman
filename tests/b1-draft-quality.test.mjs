@@ -15,3 +15,9 @@ test('first-person dialogue alone does not change a third-person narrator', () =
   const draft = 'Mira sah die Nebenkosten. „Ich frage später“, sagte sie.\n\nSie nahm die Unterlagen mit.';
   assert.ok(!b1DraftIssues(seed, draft).some((issue) => issue.includes('first-person')));
 });
+
+test('B1 checks reject invented weekdays that can break the original chronology', () => {
+  const seed = 'Mia schreibt dem Hostel. Am Nachmittag kommt die Antwort.';
+  const draft = 'Am Freitagabend schreibt Mia dem Hostel. Am Nachmittag kommt die Antwort.';
+  assert.ok(b1DraftIssues(seed, draft).some((issue) => issue.includes('invented weekday: Freitagabend')));
+});

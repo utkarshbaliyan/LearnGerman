@@ -33,7 +33,7 @@ const server = await createServer({
 try {
   const { ALL_VOCABULARY } = await server.ssrLoadModule('/app/vocabulary/data.ts');
   const { ALL_GRAMMAR_LESSONS } = await server.ssrLoadModule('/app/grammar/course.ts');
-  const ranges = { A1: [70, 200], A2: [200, 400], B1: [400, 800] };
+  const ranges = { A1: [70, 200], A2: [200, 400], B1: [600, 800] };
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
   const storyLevels = Object.fromEntries(levels.map((level) => {
     const [min, max] = ranges[level] ?? [null, null];

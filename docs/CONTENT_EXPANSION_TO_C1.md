@@ -6,7 +6,7 @@ The target is at least **250 new B2 stories**, **300 new C1 stories**, a catalog
 
 Run `node scripts/audit-content-readiness.mjs` before each content release. On 2026-09-30 the catalog has 104 A1, 150 A2 and 200 B1 stories; 4,123 vocabulary cards (871 A1, 1,100 A2, 2,152 B1), representing 4,114 distinct headword–meaning strings before editorial deduplication; 72 released grammar lessons (24 per level); and one 200-page A1 book. There are 454 story audio entries. The source audio directory occupies about 105 MiB. These are inventory counts, not measures of learning or CEFR certification.
 
-All **200 B1 stories** currently fall below the earlier 400-word editorial target; their median length is 68 words. This is a material progression gap. Prioritize revising and reviewing the B1 texts before treating them as a bridge to B2. Preserve existing story IDs and progress; if a revision materially changes a story, version it and explicitly decide how old completion records carry forward.
+All **200 B1 stories** currently fall below the new 600–800-word editorial target; their median length is 68 words. This is a material progression gap. Prioritize revising and reviewing the B1 texts before treating them as a bridge to B2. Preserve existing progress; if a revision materially changes a story, version it and explicitly decide how old completion records carry forward.
 
 ## Release order
 

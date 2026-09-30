@@ -28,6 +28,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--models', type=Path, required=True)
 parser.add_argument('--ffmpeg', required=True)
 parser.add_argument('--only')
+parser.add_argument('--level', choices=['A1', 'A2', 'B1'], help='Limit story narration to one level')
+parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
 mode=parser.add_mutually_exclusive_group()
@@ -42,6 +44,9 @@ const stories=narrationSources(process.argv[1]);
 console.log(JSON.stringify(stories.map(s=>({...s,paragraphSentences:s.text.split('\\n\\n').map(readingSentences)}))));
 """,args.collection],cwd=ROOT)
 stories=json.loads(source)
+if args.level:
+    if args.collection!='stories':raise ValueError('--level applies only to stories')
+    stories=[s for s in stories if s['level']==args.level]
 if args.only:stories=[s for s in stories if s['id']==args.only]
 if not stories:raise ValueError('No matching stories')
 book_mode=args.collection=='book'
@@ -112,7 +117,7 @@ for story in stories:
     if plans is not None:
         plan_hash='-'+hashlib.sha256(json.dumps([(segment['voice'],segment['text']) for segment in plans[story['id']]['segments']],ensure_ascii=False).encode()).hexdigest()[:8]
     prefix=f"p{int(story['id']):03d}-page" if book_mode else story['id']
-    name=f"{prefix}-{digest[:12]}{plan_hash}-qwen-{voice}-opus24"
+    name=f"{prefix}-{digest[:12]}{plan_hash}-qwen-{voice}-opus{args.bitrate_kbps}"
     target=output/(name+'.webm');sidecar=output/(name+'.json')
     old=manifests[voice].get(story['id'])
     if old and old['src'].endswith(name+'.webm') and old['textHash']==digest and target.exists() and sidecar.exists() and (plans is None or (args.checkpoint/(name+'-transcript.json')).exists()):
@@ -188,7 +193,7 @@ for story in stories:
                 save_json(args.checkpoint/(name+'-transcript.json'),{'transcript':transcript,'coverage':coverage,'excess':excess})
                 mx.clear_cache();gc.collect()
             temporary=target.with_suffix('.tmp.webm')
-            command=[args.ffmpeg,'-hide_banner','-loglevel','error','-y','-i',str(combined),'-c:a','libopus','-b:a','24k','-ar','24000','-ac','1',str(temporary)]
+            command=[args.ffmpeg,'-hide_banner','-loglevel','error','-y','-i',str(combined),'-c:a','libopus','-b:a',f'{args.bitrate_kbps}k','-ar','24000','-ac','1',str(temporary)]
             for encoding_attempt in range(3):
                 try:
                     subprocess.run(command,check=True);break

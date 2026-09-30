@@ -15,8 +15,8 @@ for (const level of ['A1', 'A2', 'B1']) {
   }
 }
 for (const story of original) seeds.push({ ...story, beginning: story.english, ending: story.english });
-const ranges = { A1: [85, 135], A2: [220, 300], B1: [400, 800] };
-const maxOutput = { A1: 650, A2: 1050, B1: 1700 };
+const ranges = { A1: [85, 135], A2: [220, 300], B1: [600, 800] };
+const maxOutput = { A1: 650, A2: 1050, B1: 2800 };
 const count = germanWordCount;
 const only = process.argv.find((argument) => argument.startsWith('--only='))?.slice('--only='.length);
 const maxNew = Number(process.argv.find((argument) => argument.startsWith('--max-new='))?.slice('--max-new='.length) ?? Infinity);
@@ -28,7 +28,7 @@ function save() {
 }
 function requestBody(seed, attempt = 0) {
   const [min, max] = ranges[seed.level];
-  const target = seed.level === 'A1' ? '105–125' : seed.level === 'A2' ? '245–280' : '410–450';
+  const target = seed.level === 'A1' ? '105–125' : seed.level === 'A2' ? '245–280' : '650–700';
   const levelGuide = seed.level === 'A1'
     ? 'Use mostly present tense, short clauses, common concrete words and basic questions. Keep each sentence understandable to an A1 learner. A little Perfekt is acceptable only if the seed needs it.'
     : seed.level === 'A2'

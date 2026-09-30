@@ -1,0 +1,9 @@
+# B1 story rewrite
+
+The published 200 B1 stories are still the original short editions. The requested replacement is 600–800 German words per story, with new translations, word meanings, dialogue plans and narration. The live catalog must not be changed until all of those assets match the accepted text.
+
+`content/reading/b1-rewrite-drafts.json` is an unpublished, resumable draft store. Its `automatedReview.pass` field only records a model check; it is **not** editorial acceptance. Generated drafts have shown chronology errors, repeated material and awkward German even when that field is true. Review every story against its original plot, fix the German, and set `reviewStatus` to `editorially-accepted` only after that review. The source hash and `node scripts/audit-b1-drafts.mjs --rewrite` detect stale drafts and mechanical failures.
+
+`node --env-file=.env.local scripts/generate-b1-rewrites.mjs --max-new=10` uses the existing Groq credential to draft and review candidates. It writes atomically after each story and stops on a provider quota error. Never put the credential in this file or the repository. The current plan-first generation path should be piloted again when the provider quota resets before a bulk run.
+
+For release, use new `-v2` story IDs so old `-v1` completion records remain intact, and redirect old story URLs. Generate sentence translations and glosses against the accepted text. Then create exact dialogue plans and Qwen narration for the new IDs, validate text hashes, alignment and coverage, and inspect representative audio. The audio generator supports `--level B1` and `--bitrate-kbps 16`; compare audible quality and the expanded Sites package size before selecting the final bitrate. Run the full test suite and build before publishing. Do not deploy a partial replacement.

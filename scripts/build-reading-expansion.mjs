@@ -165,7 +165,7 @@ try {
   if (!draft) assert.ok(long[story.id], `${story.id}: missing long story`);
   if (!draft || story.level !== 'B1') {
    const words = (story.text.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
-   const [min, max] = { A1: [70, 200], A2: [200, 400], B1: [400, 800] }[story.level];
+   const [min, max] = { A1: [70, 200], A2: [200, 400], B1: [600, 800] }[story.level];
    assert.ok(words >= min && words <= max, `${story.id}: ${words} words outside ${min}–${max}`);
    assert.doesNotMatch(story.text, /\*\*|(?:^|\n)Szene\s*\d+/i, `${story.id}: prose must have no headings`);
   }

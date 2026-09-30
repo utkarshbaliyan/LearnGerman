@@ -15,7 +15,7 @@ completion uses the existing account-synced story ID records. The paused course
 still has exactly 24 chapters per level.
 
 A1 stories have 70–200 German words and A2 stories have 200–400. The B1
-expansion to 400–800 words is still in editorial review; the current B1
+expansion to 600–800 words is still in editorial review; the current B1
 stories remain shorter. Length alone does not establish a CEFR level. A1 uses
 concrete events and short exchanges, while A2 connects practical experiences
 and reasons. Content is not CEFR-certified or independently teacher-reviewed.

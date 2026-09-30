@@ -6,13 +6,19 @@ const firstPerson = (text) => /\b(?:ich|wir|mich|mir|uns|mein(?:e|em|en|er|es)?|
 export function b1DraftIssues(seed, draft) {
   const issues = [];
   const words = germanWordCount(draft);
-  if (words < 400 || words > 800) issues.push(`word count ${words} outside 400–800`);
+  if (words < 600 || words > 800) issues.push(`word count ${words} outside 600–800`);
   const paragraphs = draft.trim().split(/\n\s*\n/u);
-  if (paragraphs.length < 4 || paragraphs.length > 5) issues.push(`${paragraphs.length} paragraphs, expected 4–5`);
+  if (paragraphs.length < 5 || paragraphs.length > 9) issues.push(`${paragraphs.length} paragraphs, expected 5–9`);
   if (!firstPerson(seed) && firstPerson(draft)) issues.push('third-person seed changes to first-person narration');
   if (firstPerson(seed) && !firstPerson(draft)) issues.push('first-person seed loses its narrator');
+  const weekdays = /\b(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonnabend|Sonntag)(?:abend|morgen|mittag|nacht|s)?\b/giu;
+  const sourceDays = new Set([...seed.matchAll(weekdays)].map(([day]) => day.toLocaleLowerCase('de-DE')));
+  const inventedDays = [...draft.matchAll(weekdays)].map(([day]) => day).filter((day) => !sourceDays.has(day.toLocaleLowerCase('de-DE')));
+  if (inventedDays.length) issues.push(`invented weekday: ${[...new Set(inventedDays)].join(', ')}`);
   if (/\b(?:passive\s+Form|grammatische(?:n|r|s)?\s+(?:Form|Struktur)|in\s+diesem\s+Text|der\s+Leser)\b/iu.test(draft))
     issues.push('grammar explanation or reader-facing meta-text inside story');
+  if (/\b(?:offene[smn]?\s+Ende|Symbol\s+für|diese\s+Geschichte\s+zeigte)\b/iu.test(draft))
+    issues.push('meta or symbolic ending');
   const sentences = draft.match(/[^.!?]+[.!?]+/gu) ?? [];
   const normalized = sentences.map((sentence) => sentence.trim().toLocaleLowerCase('de-DE')).filter((sentence) => germanWordCount(sentence) >= 6);
   if (new Set(normalized).size !== normalized.length) issues.push('repeated sentence');
