@@ -32,13 +32,20 @@ parser.add_argument('--level', choices=['A1', 'A2', 'B1'], help='Limit story nar
 parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
+parser.add_argument('--source-json', type=Path, help='Standalone story sources for a staged narration run')
+parser.add_argument('--output-dir', type=Path, help='Staging directory for audio and timing files')
+parser.add_argument('--manifest-path', type=Path, help='Staging manifest path; use with --output-dir')
 mode=parser.add_mutually_exclusive_group()
 mode.add_argument('--prepared-only', action='store_true')
 mode.add_argument('--follow-plans', action='store_true', help='Wait for speaker plans being prepared in parallel')
 parser.add_argument('--checkpoint', type=Path, default=ROOT/'.local-piper/qwen-stories')
 args=parser.parse_args()
+if bool(args.output_dir) != bool(args.manifest_path):
+    parser.error('--output-dir and --manifest-path must be used together')
+if args.source_json and args.collection!='stories':
+    parser.error('--source-json applies only to stories')
 args.checkpoint.mkdir(parents=True,exist_ok=True)
-source = subprocess.check_output(['node','--input-type=module','-e',"""
+source = args.source_json.read_bytes() if args.source_json else subprocess.check_output(['node','--input-type=module','-e',"""
 import {narrationSources} from './scripts/lib/narration-sources.mjs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
 const stories=narrationSources(process.argv[1]);
 console.log(JSON.stringify(stories.map(s=>({...s,paragraphSentences:s.text.split('\\n\\n').map(readingSentences)}))));
@@ -52,7 +59,8 @@ if not stories:raise ValueError('No matching stories')
 book_mode=args.collection=='book'
 book=json.loads((ROOT/'app/lib/book-data.json').read_text()) if book_mode else None
 public_prefix=f"/audio/books/{book['id']}" if book_mode else '/audio/reading'
-output=ROOT/'public'/public_prefix.lstrip('/');output.mkdir(parents=True,exist_ok=True)
+output=args.output_dir if args.output_dir else ROOT/'public'/public_prefix.lstrip('/')
+output.mkdir(parents=True,exist_ok=True)
 metadata=json.loads((ROOT/'docs/audio-samples/qwen-samples.json').read_text())
 reference_text=metadata['text']
 references={v:ROOT/f'docs/audio-samples/qwen-german-{v}.wav' for v in ['male','female']}
@@ -69,7 +77,7 @@ if plans is not None:
 tts=load_model(str(args.models/'tts'))
 asr=load_stt(str(args.models/'asr'))
 aligner=load_stt(str(args.models/'aligner'))
-paths={'dialogue':ROOT/('app/lib/book-audio-manifest.json' if book_mode else 'app/lib/reading-audio-manifest.json')}
+paths={'dialogue':args.manifest_path if args.manifest_path else ROOT/('app/lib/book-audio-manifest.json' if book_mode else 'app/lib/reading-audio-manifest.json')}
 manifests={v:json.loads(p.read_text()) if p.exists() else {} for v,p in paths.items()}
 def save_json(path,data):
     temporary=path.with_suffix('.tmp')

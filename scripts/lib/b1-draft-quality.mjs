@@ -11,9 +11,9 @@ export function b1DraftIssues(seed, draft) {
   if (paragraphs.length < 5 || paragraphs.length > 9) issues.push(`${paragraphs.length} paragraphs, expected 5–9`);
   if (!firstPerson(seed) && firstPerson(draft)) issues.push('third-person seed changes to first-person narration');
   if (firstPerson(seed) && !firstPerson(draft)) issues.push('first-person seed loses its narrator');
-  const weekdays = /\b(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonnabend|Sonntag)(?:abend|morgen|mittag|nacht|s)?\b/giu;
-  const sourceDays = new Set([...seed.matchAll(weekdays)].map(([day]) => day.toLocaleLowerCase('de-DE')));
-  const inventedDays = [...draft.matchAll(weekdays)].map(([day]) => day).filter((day) => !sourceDays.has(day.toLocaleLowerCase('de-DE')));
+  const weekdays = /\b(Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonnabend|Sonntag)[a-zäöüß]*\b/giu;
+  const sourceDays = new Set([...seed.matchAll(weekdays)].map((match) => match[1].toLocaleLowerCase('de-DE')));
+  const inventedDays = [...draft.matchAll(weekdays)].filter((match) => !sourceDays.has(match[1].toLocaleLowerCase('de-DE'))).map((match) => match[0]);
   if (inventedDays.length) issues.push(`invented weekday: ${[...new Set(inventedDays)].join(', ')}`);
   if (/\b(?:passive\s+Form|grammatische(?:n|r|s)?\s+(?:Form|Struktur)|in\s+diesem\s+Text|der\s+Leser)\b/iu.test(draft))
     issues.push('grammar explanation or reader-facing meta-text inside story');

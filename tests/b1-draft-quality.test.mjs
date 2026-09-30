@@ -21,3 +21,9 @@ test('B1 checks reject invented weekdays that can break the original chronology'
   const draft = 'Am Freitagabend schreibt Mia dem Hostel. Am Nachmittag kommt die Antwort.';
   assert.ok(b1DraftIssues(seed, draft).some((issue) => issue.includes('invented weekday: Freitagabend')));
 });
+
+test('B1 checks allow a weekday already present in another grammatical form', () => {
+  const seed = 'An Donnerstagen kommen viele Anfragen.';
+  const draft = 'Am Donnerstag kommen viele Anfragen.';
+  assert.ok(!b1DraftIssues(seed, draft).some((issue) => issue.includes('invented weekday')));
+});
