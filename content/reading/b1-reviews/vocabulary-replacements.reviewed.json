@@ -1,0 +1,1465 @@
+{
+  "reading-b1-01-v1": {
+    "3": {
+      "german": "Zimmerpreis",
+      "form": "Zimmerpreis",
+      "english": "room price",
+      "headword": "Zimmerpreis",
+      "headwordEnglish": "room price"
+    }
+  },
+  "reading-b1-02-v1": {
+    "4": {
+      "german": "Druckkosten",
+      "form": "Druckkosten",
+      "english": "printing costs",
+      "headword": "Druckkosten",
+      "headwordEnglish": "printing costs"
+    }
+  },
+  "reading-b1-03-v1": {
+    "4": {
+      "german": "Lernplatz",
+      "form": "Lernplatz",
+      "english": "place to study",
+      "headword": "Lernplatz",
+      "headwordEnglish": "place to study"
+    }
+  },
+  "reading-b1-04-v1": {
+    "2": {
+      "german": "ausblieb",
+      "form": "ausblieb",
+      "english": "failed to arrive; did not happen",
+      "headword": "ausblieb",
+      "headwordEnglish": "failed to arrive; did not happen"
+    }
+  },
+  "reading-b1-05-v1": {
+    "0": {
+      "german": "Ersparnis",
+      "form": "Ersparnis",
+      "english": "saving; money saved",
+      "headword": "Ersparnis",
+      "headwordEnglish": "saving; money saved"
+    }
+  },
+  "reading-b1-06-v1": {
+    "2": {
+      "german": "Kontaktperson",
+      "form": "Kontaktperson",
+      "english": "contact person",
+      "headword": "Kontaktperson",
+      "headwordEnglish": "contact person"
+    }
+  },
+  "reading-b1-07-v1": {
+    "2": {
+      "german": "Schulfest",
+      "form": "Schulfest",
+      "english": "school celebration",
+      "headword": "Schulfest",
+      "headwordEnglish": "school celebration"
+    }
+  },
+  "reading-b1-08-v1": {
+    "3": {
+      "german": "Reisende",
+      "form": "Reisende",
+      "english": "travellers",
+      "headword": "Reisende",
+      "headwordEnglish": "travellers"
+    },
+    "4": {
+      "german": "Reisezeit",
+      "form": "Reisezeit",
+      "english": "travel time",
+      "headword": "Reisezeit",
+      "headwordEnglish": "travel time"
+    }
+  },
+  "reading-b1-09-v1": {
+    "1": {
+      "german": "Einarbeitung",
+      "form": "Einarbeitung",
+      "english": "induction; familiarisation with a job",
+      "headword": "Einarbeitung",
+      "headwordEnglish": "induction; familiarisation with a job"
+    }
+  },
+  "reading-b1-11-v1": {
+    "0": {
+      "german": "Einbau",
+      "form": "Einbau",
+      "english": "installation",
+      "headword": "Einbau",
+      "headwordEnglish": "installation"
+    },
+    "2": {
+      "german": "auszutauschen",
+      "form": "auszutauschen",
+      "english": "to replace; to exchange",
+      "headword": "auszutauschen",
+      "headwordEnglish": "to replace; to exchange"
+    },
+    "4": {
+      "german": "elektrisches",
+      "form": "elektrisches",
+      "english": "electrical",
+      "headword": "elektrisches",
+      "headwordEnglish": "electrical"
+    }
+  },
+  "reading-b1-12-v1": {
+    "1": {
+      "german": "Aufgabenliste",
+      "form": "Aufgabenliste",
+      "english": "task list",
+      "headword": "Aufgabenliste",
+      "headwordEnglish": "task list"
+    },
+    "3": {
+      "german": "Abschlussgespräch",
+      "form": "Abschlussgespräch",
+      "english": "final discussion",
+      "headword": "Abschlussgespräch",
+      "headwordEnglish": "final discussion"
+    }
+  },
+  "reading-b1-13-v1": {
+    "1": {
+      "german": "übergangen",
+      "form": "übergangen",
+      "english": "overlooked; ignored",
+      "headword": "übergangen",
+      "headwordEnglish": "overlooked; ignored"
+    },
+    "2": {
+      "german": "Verwendung",
+      "form": "Verwendung",
+      "english": "use",
+      "headword": "Verwendung",
+      "headwordEnglish": "use"
+    },
+    "3": {
+      "german": "zugestimmt",
+      "form": "zugestimmt",
+      "english": "agreed; given consent",
+      "headword": "zugestimmt",
+      "headwordEnglish": "agreed; given consent"
+    }
+  },
+  "reading-b1-14-v1": {
+    "2": {
+      "german": "Eintrittspreis",
+      "form": "Eintrittspreis",
+      "english": "admission price",
+      "headword": "Eintrittspreis",
+      "headwordEnglish": "admission price"
+    },
+    "4": {
+      "german": "Gruppenkarte",
+      "form": "Gruppenkarte",
+      "english": "group ticket",
+      "headword": "Gruppenkarte",
+      "headwordEnglish": "group ticket"
+    }
+  },
+  "reading-b1-15-v1": {
+    "0": {
+      "german": "Wohnfläche",
+      "form": "Wohnfläche",
+      "english": "living space",
+      "headword": "Wohnfläche",
+      "headwordEnglish": "living space"
+    },
+    "1": {
+      "german": "zurücklegen",
+      "form": "zurücklegen",
+      "english": "to cover (a distance); to set aside",
+      "headword": "zurücklegen",
+      "headwordEnglish": "to cover (a distance); to set aside"
+    }
+  },
+  "reading-b1-16-v1": {
+    "0": {
+      "german": "Verhältnis",
+      "form": "Verhältnis",
+      "english": "relationship; ratio",
+      "headword": "Verhältnis",
+      "headwordEnglish": "relationship; ratio"
+    }
+  },
+  "reading-b1-17-v1": {
+    "2": {
+      "german": "Beratungsangeboten",
+      "form": "Beratungsangeboten",
+      "english": "advice services",
+      "headword": "Beratungsangeboten",
+      "headwordEnglish": "advice services"
+    },
+    "4": {
+      "german": "Kontaktadresse",
+      "form": "Kontaktadresse",
+      "english": "contact address",
+      "headword": "Kontaktadresse",
+      "headwordEnglish": "contact address"
+    }
+  },
+  "reading-b1-19-v1": {
+    "1": {
+      "german": "Lernzeit",
+      "form": "Lernzeit",
+      "english": "study time",
+      "headword": "Lernzeit",
+      "headwordEnglish": "study time"
+    },
+    "2": {
+      "german": "konzentrierter",
+      "form": "konzentrierter",
+      "english": "more focused",
+      "headword": "konzentrierter",
+      "headwordEnglish": "more focused"
+    },
+    "3": {
+      "german": "Arbeitsalltag",
+      "form": "Arbeitsalltag",
+      "english": "everyday working life",
+      "headword": "Arbeitsalltag",
+      "headwordEnglish": "everyday working life"
+    }
+  },
+  "reading-b1-20-v1": {
+    "0": {
+      "german": "wegfahrenden",
+      "form": "wegfahrenden",
+      "english": "departing",
+      "headword": "wegfahrenden",
+      "headwordEnglish": "departing"
+    },
+    "4": {
+      "german": "Fläche",
+      "form": "Fläche",
+      "english": "area; surface",
+      "headword": "Fläche",
+      "headwordEnglish": "area; surface"
+    }
+  },
+  "reading-b1-21-v1": {
+    "3": {
+      "german": "Gestaltung",
+      "form": "Gestaltung",
+      "english": "design; arrangement",
+      "headword": "Gestaltung",
+      "headwordEnglish": "design; arrangement"
+    },
+    "4": {
+      "german": "Zusicherung",
+      "form": "Zusicherung",
+      "english": "assurance",
+      "headword": "Zusicherung",
+      "headwordEnglish": "assurance"
+    }
+  },
+  "reading-b1-24-v1": {
+    "4": {
+      "german": "leiten",
+      "form": "leiten",
+      "english": "to lead",
+      "headword": "leiten",
+      "headwordEnglish": "to lead"
+    }
+  },
+  "reading-b1-26-v1": {
+    "1": {
+      "german": "Protokolls",
+      "form": "Protokolls",
+      "english": "of the record; of the minutes",
+      "headword": "Protokolls",
+      "headwordEnglish": "of the record; of the minutes"
+    },
+    "2": {
+      "german": "aufgetaucht",
+      "form": "aufgetaucht",
+      "english": "appeared; arisen",
+      "headword": "aufgetaucht",
+      "headwordEnglish": "appeared; arisen"
+    },
+    "3": {
+      "german": "verlängern",
+      "form": "verlängern",
+      "english": "to extend",
+      "headword": "verlängern",
+      "headwordEnglish": "to extend"
+    }
+  },
+  "reading-b1-27-v1": {
+    "1": {
+      "german": "hineingießen",
+      "form": "hineingießen",
+      "english": "to pour in",
+      "headword": "hineingießen",
+      "headwordEnglish": "to pour in"
+    }
+  },
+  "reading-b1-29-v1": {
+    "3": {
+      "german": "Aufzeichnungen",
+      "form": "Aufzeichnungen",
+      "english": "records; notes",
+      "headword": "Aufzeichnungen",
+      "headwordEnglish": "records; notes"
+    }
+  },
+  "reading-b1-34-v1": {
+    "1": {
+      "german": "Schwingungen",
+      "form": "Schwingungen",
+      "english": "vibrations",
+      "headword": "Schwingungen",
+      "headwordEnglish": "vibrations"
+    },
+    "3": {
+      "german": "eingeordnet",
+      "form": "eingeordnet",
+      "english": "classified; interpreted",
+      "headword": "eingeordnet",
+      "headwordEnglish": "classified; interpreted"
+    }
+  },
+  "reading-b1-35-v1": {
+    "2": {
+      "german": "Küchenreinigung",
+      "form": "Küchenreinigung",
+      "english": "kitchen cleaning",
+      "headword": "Küchenreinigung",
+      "headwordEnglish": "kitchen cleaning"
+    },
+    "3": {
+      "german": "Verteilung",
+      "form": "Verteilung",
+      "english": "distribution; allocation",
+      "headword": "Verteilung",
+      "headwordEnglish": "distribution; allocation"
+    }
+  },
+  "reading-b1-36-v1": {
+    "1": {
+      "german": "Warteliste",
+      "form": "Warteliste",
+      "english": "waiting list",
+      "headword": "Warteliste",
+      "headwordEnglish": "waiting list"
+    },
+    "3": {
+      "german": "Schulschluss",
+      "form": "Schulschluss",
+      "english": "end of the school day",
+      "headword": "Schulschluss",
+      "headwordEnglish": "end of the school day"
+    }
+  },
+  "reading-b1-37-v1": {
+    "0": {
+      "german": "Übersetzung",
+      "form": "Übersetzung",
+      "english": "translation",
+      "headword": "Übersetzung",
+      "headwordEnglish": "translation"
+    }
+  },
+  "reading-b1-38-v1": {
+    "1": {
+      "german": "Ablehnung",
+      "form": "Ablehnung",
+      "english": "rejection",
+      "headword": "Ablehnung",
+      "headwordEnglish": "rejection"
+    }
+  },
+  "reading-b1-40-v1": {
+    "0": {
+      "german": "zugesagt",
+      "form": "zugesagt",
+      "english": "promised; agreed to",
+      "headword": "zugesagt",
+      "headwordEnglish": "promised; agreed to"
+    },
+    "1": {
+      "german": "vorbeibringen",
+      "form": "vorbeibringen",
+      "english": "to drop off; to bring round",
+      "headword": "vorbeibringen",
+      "headwordEnglish": "to drop off; to bring round"
+    }
+  },
+  "reading-b1-41-v1": {
+    "3": {
+      "german": "Abfahrtsanzeige",
+      "form": "Abfahrtsanzeige",
+      "english": "departure display",
+      "headword": "Abfahrtsanzeige",
+      "headwordEnglish": "departure display"
+    }
+  },
+  "reading-b1-42-v1": {
+    "0": {
+      "german": "weglegte",
+      "form": "weglegte",
+      "english": "put away",
+      "headword": "weglegte",
+      "headwordEnglish": "put away"
+    }
+  },
+  "reading-b1-43-v1": {
+    "2": {
+      "german": "stornieren",
+      "form": "stornieren",
+      "english": "to cancel (a booking)",
+      "headword": "stornieren",
+      "headwordEnglish": "to cancel (a booking)"
+    },
+    "3": {
+      "german": "Planänderung",
+      "form": "Planänderung",
+      "english": "change of plan",
+      "headword": "Planänderung",
+      "headwordEnglish": "change of plan"
+    }
+  },
+  "reading-b1-44-v1": {
+    "0": {
+      "german": "Abmachung",
+      "form": "Abmachung",
+      "english": "agreement; arrangement",
+      "headword": "Abmachung",
+      "headwordEnglish": "agreement; arrangement"
+    },
+    "3": {
+      "german": "Reisetagebuch",
+      "form": "Reisetagebuch",
+      "english": "travel diary",
+      "headword": "Reisetagebuch",
+      "headwordEnglish": "travel diary"
+    }
+  },
+  "reading-b1-45-v1": {
+    "3": {
+      "german": "Konsistenz",
+      "form": "Konsistenz",
+      "english": "consistency; texture",
+      "headword": "Konsistenz",
+      "headwordEnglish": "consistency; texture"
+    }
+  },
+  "reading-b1-46-v1": {
+    "0": {
+      "german": "Videogespräch",
+      "form": "Videogespräch",
+      "english": "video conversation",
+      "headword": "Videogespräch",
+      "headwordEnglish": "video conversation"
+    }
+  },
+  "reading-b1-47-v1": {
+    "1": {
+      "german": "Gliederung",
+      "form": "Gliederung",
+      "english": "outline; structure",
+      "headword": "Gliederung",
+      "headwordEnglish": "outline; structure"
+    },
+    "3": {
+      "german": "Quellenliste",
+      "form": "Quellenliste",
+      "english": "list of sources",
+      "headword": "Quellenliste",
+      "headwordEnglish": "list of sources"
+    }
+  },
+  "reading-b1-49-v1": {
+    "0": {
+      "german": "Textstelle",
+      "form": "Textstelle",
+      "english": "passage in a text",
+      "headword": "Textstelle",
+      "headwordEnglish": "passage in a text"
+    },
+    "1": {
+      "german": "Denkpause",
+      "form": "Denkpause",
+      "english": "pause to think",
+      "headword": "Denkpause",
+      "headwordEnglish": "pause to think"
+    }
+  },
+  "reading-b1-50-v1": {
+    "1": {
+      "german": "Beschluss",
+      "form": "Beschluss",
+      "english": "decision; resolution",
+      "headword": "Beschluss",
+      "headwordEnglish": "decision; resolution"
+    }
+  },
+  "reading-b1-52-v1": {
+    "1": {
+      "german": "Originalbeleg",
+      "form": "Originalbeleg",
+      "english": "original supporting source",
+      "headword": "Originalbeleg",
+      "headwordEnglish": "original supporting source"
+    }
+  },
+  "reading-b1-53-v1": {
+    "3": {
+      "german": "Begründung",
+      "form": "Begründung",
+      "english": "reason; justification",
+      "headword": "Begründung",
+      "headwordEnglish": "reason; justification"
+    }
+  },
+  "reading-b1-54-v1": {
+    "1": {
+      "german": "Einheit",
+      "form": "Einheit",
+      "english": "unit",
+      "headword": "Einheit",
+      "headwordEnglish": "unit"
+    },
+    "3": {
+      "german": "Messung",
+      "form": "Messung",
+      "english": "measurement",
+      "headword": "Messung",
+      "headwordEnglish": "measurement"
+    }
+  },
+  "reading-b1-56-v1": {
+    "3": {
+      "german": "Wortschatz",
+      "form": "Wortschatz",
+      "english": "vocabulary",
+      "headword": "Wortschatz",
+      "headwordEnglish": "vocabulary"
+    }
+  },
+  "reading-b1-57-v1": {
+    "0": {
+      "german": "Kursbeginn",
+      "form": "Kursbeginn",
+      "english": "start of the class",
+      "headword": "Kursbeginn",
+      "headwordEnglish": "start of the class"
+    }
+  },
+  "reading-b1-58-v1": {
+    "3": {
+      "german": "Kontaktweg",
+      "form": "Kontaktweg",
+      "english": "way of contacting someone",
+      "headword": "Kontaktweg",
+      "headwordEnglish": "way of contacting someone"
+    }
+  },
+  "reading-b1-59-v1": {
+    "1": {
+      "german": "zusammensitzen",
+      "form": "zusammensitzen",
+      "english": "to sit together",
+      "headword": "zusammensitzen",
+      "headwordEnglish": "to sit together"
+    },
+    "3": {
+      "german": "Zeitschrift",
+      "form": "Zeitschrift",
+      "english": "magazine",
+      "headword": "Zeitschrift",
+      "headwordEnglish": "magazine"
+    }
+  },
+  "reading-b1-61-v1": {
+    "0": {
+      "german": "Kontaktmöglichkeiten",
+      "form": "Kontaktmöglichkeiten",
+      "english": "ways of making contact",
+      "headword": "Kontaktmöglichkeiten",
+      "headwordEnglish": "ways of making contact"
+    },
+    "3": {
+      "german": "Abfahrtszeit",
+      "form": "Abfahrtszeit",
+      "english": "departure time",
+      "headword": "Abfahrtszeit",
+      "headwordEnglish": "departure time"
+    }
+  },
+  "reading-b1-62-v1": {
+    "1": {
+      "german": "zugänglich",
+      "form": "zugänglich",
+      "english": "accessible",
+      "headword": "zugänglich",
+      "headwordEnglish": "accessible"
+    }
+  },
+  "reading-b1-64-v1": {
+    "1": {
+      "german": "Entlassungsbericht",
+      "form": "Entlassungsbericht",
+      "english": "hospital discharge report",
+      "headword": "Entlassungsbericht",
+      "headwordEnglish": "hospital discharge report"
+    }
+  },
+  "reading-b1-65-v1": {
+    "1": {
+      "german": "Aufenthaltsort",
+      "form": "Aufenthaltsort",
+      "english": "place to stay; location",
+      "headword": "Aufenthaltsort",
+      "headwordEnglish": "place to stay; location"
+    }
+  },
+  "reading-b1-69-v1": {
+    "1": {
+      "german": "Zeitgewinn",
+      "form": "Zeitgewinn",
+      "english": "time saved",
+      "headword": "Zeitgewinn",
+      "headwordEnglish": "time saved"
+    }
+  },
+  "reading-b1-71-v1": {
+    "1": {
+      "german": "Durchgang",
+      "form": "Durchgang",
+      "english": "passageway",
+      "headword": "Durchgang",
+      "headwordEnglish": "passageway"
+    }
+  },
+  "reading-b1-73-v1": {
+    "1": {
+      "german": "aufhalten",
+      "form": "aufhalten",
+      "english": "to delay; to stop",
+      "headword": "aufhalten",
+      "headwordEnglish": "to delay; to stop"
+    }
+  },
+  "reading-b1-74-v1": {
+    "0": {
+      "german": "Pflichtziele",
+      "form": "Pflichtziele",
+      "english": "places one feels obliged to visit",
+      "headword": "Pflichtziele",
+      "headwordEnglish": "places one feels obliged to visit"
+    },
+    "1": {
+      "german": "Hinterraum",
+      "form": "Hinterraum",
+      "english": "back room",
+      "headword": "Hinterraum",
+      "headwordEnglish": "back room"
+    },
+    "3": {
+      "german": "verirren",
+      "form": "verirren",
+      "english": "to lose one's way",
+      "headword": "verirren",
+      "headwordEnglish": "to lose one's way"
+    }
+  },
+  "reading-b1-75-v1": {
+    "0": {
+      "german": "Marktbesuch",
+      "form": "Marktbesuch",
+      "english": "visit to a market",
+      "headword": "Marktbesuch",
+      "headwordEnglish": "visit to a market"
+    }
+  },
+  "reading-b1-76-v1": {
+    "1": {
+      "german": "Zahlungsbestätigung",
+      "form": "Zahlungsbestätigung",
+      "english": "payment confirmation",
+      "headword": "Zahlungsbestätigung",
+      "headwordEnglish": "payment confirmation"
+    }
+  },
+  "reading-b1-77-v1": {
+    "0": {
+      "german": "Wolkenschicht",
+      "form": "Wolkenschicht",
+      "english": "layer of cloud",
+      "headword": "Wolkenschicht",
+      "headwordEnglish": "layer of cloud"
+    },
+    "2": {
+      "german": "Bergausflug",
+      "form": "Bergausflug",
+      "english": "trip to the mountains",
+      "headword": "Bergausflug",
+      "headwordEnglish": "trip to the mountains"
+    }
+  },
+  "reading-b1-79-v1": {
+    "1": {
+      "german": "Anteil",
+      "form": "Anteil",
+      "english": "share",
+      "headword": "Anteil",
+      "headwordEnglish": "share"
+    }
+  },
+  "reading-b1-80-v1": {
+    "1": {
+      "german": "Vorrang",
+      "form": "Vorrang",
+      "english": "priority",
+      "headword": "Vorrang",
+      "headwordEnglish": "priority"
+    },
+    "3": {
+      "german": "fertigstellen",
+      "form": "fertigstellen",
+      "english": "to complete",
+      "headword": "fertigstellen",
+      "headwordEnglish": "to complete"
+    }
+  },
+  "reading-b1-81-v1": {
+    "1": {
+      "german": "Handbuch",
+      "form": "Handbuch",
+      "english": "manual",
+      "headword": "Handbuch",
+      "headwordEnglish": "manual"
+    }
+  },
+  "reading-b1-82-v1": {
+    "1": {
+      "german": "Weitergabe",
+      "form": "Weitergabe",
+      "english": "passing on; handing over",
+      "headword": "Weitergabe",
+      "headwordEnglish": "passing on; handing over"
+    }
+  },
+  "reading-b1-83-v1": {
+    "1": {
+      "german": "Grundregel",
+      "form": "Grundregel",
+      "english": "basic rule",
+      "headword": "Grundregel",
+      "headwordEnglish": "basic rule"
+    },
+    "3": {
+      "german": "Besprechungsnotizen",
+      "form": "Besprechungsnotizen",
+      "english": "meeting notes",
+      "headword": "Besprechungsnotizen",
+      "headwordEnglish": "meeting notes"
+    }
+  },
+  "reading-b1-84-v1": {
+    "1": {
+      "german": "auffindbar",
+      "form": "auffindbar",
+      "english": "able to be found",
+      "headword": "auffindbar",
+      "headwordEnglish": "able to be found"
+    }
+  },
+  "reading-b1-85-v1": {
+    "2": {
+      "german": "Kalendereintrag",
+      "form": "Kalendereintrag",
+      "english": "calendar entry",
+      "headword": "Kalendereintrag",
+      "headwordEnglish": "calendar entry"
+    }
+  },
+  "reading-b1-86-v1": {
+    "1": {
+      "german": "Zwischenstand",
+      "form": "Zwischenstand",
+      "english": "interim status",
+      "headword": "Zwischenstand",
+      "headwordEnglish": "interim status"
+    }
+  },
+  "reading-b1-87-v1": {
+    "1": {
+      "german": "Selbsteinschätzung",
+      "form": "Selbsteinschätzung",
+      "english": "self-assessment",
+      "headword": "Selbsteinschätzung",
+      "headwordEnglish": "self-assessment"
+    }
+  },
+  "reading-b1-90-v1": {
+    "3": {
+      "german": "Einzelarbeit",
+      "form": "Einzelarbeit",
+      "english": "individual work",
+      "headword": "Einzelarbeit",
+      "headwordEnglish": "individual work"
+    }
+  },
+  "reading-b1-91-v1": {
+    "3": {
+      "german": "Arbeitsbereich",
+      "form": "Arbeitsbereich",
+      "english": "work area",
+      "headword": "Arbeitsbereich",
+      "headwordEnglish": "work area"
+    }
+  },
+  "reading-b1-92-v1": {
+    "1": {
+      "german": "Zusatz",
+      "form": "Zusatz",
+      "english": "addition; extra",
+      "headword": "Zusatz",
+      "headwordEnglish": "addition; extra"
+    }
+  },
+  "reading-b1-93-v1": {
+    "1": {
+      "german": "Rechnungsbetrag",
+      "form": "Rechnungsbetrag",
+      "english": "bill total",
+      "headword": "Rechnungsbetrag",
+      "headwordEnglish": "bill total"
+    }
+  },
+  "reading-b1-95-v1": {
+    "1": {
+      "german": "Eingeständnis",
+      "form": "Eingeständnis",
+      "english": "admission",
+      "headword": "Eingeständnis",
+      "headwordEnglish": "admission"
+    }
+  },
+  "reading-b1-102-v1": {
+    "0": {
+      "german": "Preisunterschied",
+      "form": "Preisunterschied",
+      "english": "price difference",
+      "headword": "Preisunterschied",
+      "headwordEnglish": "price difference"
+    }
+  },
+  "reading-b1-104-v1": {
+    "1": {
+      "german": "Kilopreis",
+      "form": "Kilopreis",
+      "english": "price per kilogram",
+      "headword": "Kilopreis",
+      "headwordEnglish": "price per kilogram"
+    }
+  },
+  "reading-b1-108-v1": {
+    "1": {
+      "german": "Rückgabebeleg",
+      "form": "Rückgabebeleg",
+      "english": "receipt for a return",
+      "headword": "Rückgabebeleg",
+      "headwordEnglish": "receipt for a return"
+    }
+  },
+  "reading-b1-111-v1": {
+    "1": {
+      "german": "Farbangabe",
+      "form": "Farbangabe",
+      "english": "colour description",
+      "headword": "Farbangabe",
+      "headwordEnglish": "colour description"
+    },
+    "2": {
+      "german": "gelieferte",
+      "form": "gelieferte",
+      "english": "delivered",
+      "headword": "gelieferte",
+      "headwordEnglish": "delivered"
+    }
+  },
+  "reading-b1-113-v1": {
+    "3": {
+      "german": "Lebensplan",
+      "form": "Lebensplan",
+      "english": "plan for one's life",
+      "headword": "Lebensplan",
+      "headwordEnglish": "plan for one's life"
+    }
+  },
+  "reading-b1-114-v1": {
+    "3": {
+      "german": "Baumstamm",
+      "form": "Baumstamm",
+      "english": "tree trunk",
+      "headword": "Baumstamm",
+      "headwordEnglish": "tree trunk"
+    }
+  },
+  "reading-b1-115-v1": {
+    "1": {
+      "german": "Vertrautheit",
+      "form": "Vertrautheit",
+      "english": "familiarity",
+      "headword": "Vertrautheit",
+      "headwordEnglish": "familiarity"
+    }
+  },
+  "reading-b1-116-v1": {
+    "3": {
+      "german": "Gegenwart",
+      "form": "Gegenwart",
+      "english": "the present",
+      "headword": "Gegenwart",
+      "headwordEnglish": "the present"
+    }
+  },
+  "reading-b1-118-v1": {
+    "3": {
+      "german": "Umsetzung",
+      "form": "Umsetzung",
+      "english": "implementation",
+      "headword": "Umsetzung",
+      "headwordEnglish": "implementation"
+    }
+  },
+  "reading-b1-120-v1": {
+    "3": {
+      "german": "Ausstattung",
+      "form": "Ausstattung",
+      "english": "facilities; equipment",
+      "headword": "Ausstattung",
+      "headwordEnglish": "facilities; equipment"
+    }
+  },
+  "reading-b1-121-v1": {
+    "1": {
+      "german": "menschlichen",
+      "form": "menschlichen",
+      "english": "human",
+      "headword": "menschlichen",
+      "headwordEnglish": "human"
+    }
+  },
+  "reading-b1-123-v1": {
+    "1": {
+      "german": "wahrzunehmen",
+      "form": "wahrzunehmen",
+      "english": "to notice; to perceive",
+      "headword": "wahrzunehmen",
+      "headwordEnglish": "to notice; to perceive"
+    }
+  },
+  "reading-b1-125-v1": {
+    "3": {
+      "german": "Einsätze",
+      "form": "Einsätze",
+      "english": "work sessions; deployments",
+      "headword": "Einsätze",
+      "headwordEnglish": "work sessions; deployments"
+    }
+  },
+  "reading-b1-126-v1": {
+    "3": {
+      "german": "Platzbedarf",
+      "form": "Platzbedarf",
+      "english": "space required",
+      "headword": "Platzbedarf",
+      "headwordEnglish": "space required"
+    }
+  },
+  "reading-b1-129-v1": {
+    "1": {
+      "german": "Abfolge",
+      "form": "Abfolge",
+      "english": "sequence",
+      "headword": "Abfolge",
+      "headwordEnglish": "sequence"
+    },
+    "3": {
+      "german": "Auskünfte",
+      "form": "Auskünfte",
+      "english": "information; answers",
+      "headword": "Auskünfte",
+      "headwordEnglish": "information; answers"
+    }
+  },
+  "reading-b1-131-v1": {
+    "1": {
+      "german": "Durchmesser",
+      "form": "Durchmesser",
+      "english": "diameter",
+      "headword": "Durchmesser",
+      "headwordEnglish": "diameter"
+    }
+  },
+  "reading-b1-133-v1": {
+    "0": {
+      "german": "Waldstrecke",
+      "form": "Waldstrecke",
+      "english": "route through the woods",
+      "headword": "Waldstrecke",
+      "headwordEnglish": "route through the woods"
+    },
+    "1": {
+      "german": "Freigabe",
+      "form": "Freigabe",
+      "english": "authorisation; clearance",
+      "headword": "Freigabe",
+      "headwordEnglish": "authorisation; clearance"
+    }
+  },
+  "reading-b1-134-v1": {
+    "1": {
+      "german": "Wahrnehmungen",
+      "form": "Wahrnehmungen",
+      "english": "perceptions; observations",
+      "headword": "Wahrnehmungen",
+      "headwordEnglish": "perceptions; observations"
+    }
+  },
+  "reading-b1-135-v1": {
+    "1": {
+      "german": "Trockenheit",
+      "form": "Trockenheit",
+      "english": "dryness",
+      "headword": "Trockenheit",
+      "headwordEnglish": "dryness"
+    }
+  },
+  "reading-b1-136-v1": {
+    "0": {
+      "german": "Gästeliste",
+      "form": "Gästeliste",
+      "english": "guest list",
+      "headword": "Gästeliste",
+      "headwordEnglish": "guest list"
+    },
+    "1": {
+      "german": "Unverträglichkeit",
+      "form": "Unverträglichkeit",
+      "english": "food intolerance",
+      "headword": "Unverträglichkeit",
+      "headwordEnglish": "food intolerance"
+    }
+  },
+  "reading-b1-137-v1": {
+    "1": {
+      "german": "Geruchstest",
+      "form": "Geruchstest",
+      "english": "smell test",
+      "headword": "Geruchstest",
+      "headwordEnglish": "smell test"
+    }
+  },
+  "reading-b1-138-v1": {
+    "0": {
+      "german": "aufwendigen",
+      "form": "aufwendigen",
+      "english": "elaborate; requiring much effort",
+      "headword": "aufwendigen",
+      "headwordEnglish": "elaborate; requiring much effort"
+    },
+    "1": {
+      "german": "Dekoration",
+      "form": "Dekoration",
+      "english": "decoration",
+      "headword": "Dekoration",
+      "headwordEnglish": "decoration"
+    },
+    "2": {
+      "german": "Anrichten",
+      "form": "Anrichten",
+      "english": "to arrange food for serving",
+      "headword": "Anrichten",
+      "headwordEnglish": "to arrange food for serving"
+    }
+  },
+  "reading-b1-139-v1": {
+    "1": {
+      "german": "Wortpaare",
+      "form": "Wortpaare",
+      "english": "word pairs",
+      "headword": "Wortpaare",
+      "headwordEnglish": "word pairs"
+    },
+    "2": {
+      "german": "österreichisches",
+      "form": "österreichisches",
+      "english": "Austrian",
+      "headword": "österreichisches",
+      "headwordEnglish": "Austrian"
+    }
+  },
+  "reading-b1-140-v1": {
+    "1": {
+      "german": "Handschrift",
+      "form": "Handschrift",
+      "english": "handwriting",
+      "headword": "Handschrift",
+      "headwordEnglish": "handwriting"
+    },
+    "3": {
+      "german": "übereingestimmt",
+      "form": "übereingestimmt",
+      "english": "matched; agreed",
+      "headword": "übereingestimmt",
+      "headwordEnglish": "matched; agreed"
+    }
+  },
+  "reading-b1-141-v1": {
+    "0": {
+      "german": "Arbeitstermin",
+      "form": "Arbeitstermin",
+      "english": "work appointment",
+      "headword": "Arbeitstermin",
+      "headwordEnglish": "work appointment"
+    },
+    "2": {
+      "german": "Haltbarkeit",
+      "form": "Haltbarkeit",
+      "english": "shelf life",
+      "headword": "Haltbarkeit",
+      "headwordEnglish": "shelf life"
+    },
+    "3": {
+      "german": "Kochzeiten",
+      "form": "Kochzeiten",
+      "english": "cooking times",
+      "headword": "Kochzeiten",
+      "headwordEnglish": "cooking times"
+    }
+  },
+  "reading-b1-142-v1": {
+    "0": {
+      "german": "Unzufriedenheit",
+      "form": "Unzufriedenheit",
+      "english": "dissatisfaction",
+      "headword": "Unzufriedenheit",
+      "headwordEnglish": "dissatisfaction"
+    },
+    "2": {
+      "german": "Aufenthalt",
+      "form": "Aufenthalt",
+      "english": "stay; visit",
+      "headword": "Aufenthalt",
+      "headwordEnglish": "stay; visit"
+    }
+  },
+  "reading-b1-143-v1": {
+    "1": {
+      "german": "Preisfrage",
+      "form": "Preisfrage",
+      "english": "question about the price",
+      "headword": "Preisfrage",
+      "headwordEnglish": "question about the price"
+    },
+    "3": {
+      "german": "Essgewohnheiten",
+      "form": "Essgewohnheiten",
+      "english": "eating habits",
+      "headword": "Essgewohnheiten",
+      "headwordEnglish": "eating habits"
+    }
+  },
+  "reading-b1-144-v1": {
+    "1": {
+      "german": "Ersatzgewürze",
+      "form": "Ersatzgewürze",
+      "english": "alternative spices",
+      "headword": "Ersatzgewürze",
+      "headwordEnglish": "alternative spices"
+    }
+  },
+  "reading-b1-146-v1": {
+    "0": {
+      "german": "Austritt",
+      "form": "Austritt",
+      "english": "leaving a club; withdrawal",
+      "headword": "Austritt",
+      "headwordEnglish": "leaving a club; withdrawal"
+    },
+    "1": {
+      "german": "Mitgliedschaft",
+      "form": "Mitgliedschaft",
+      "english": "membership",
+      "headword": "Mitgliedschaft",
+      "headwordEnglish": "membership"
+    }
+  },
+  "reading-b1-148-v1": {
+    "1": {
+      "german": "Reaktionen",
+      "form": "Reaktionen",
+      "english": "reactions",
+      "headword": "Reaktionen",
+      "headwordEnglish": "reactions"
+    }
+  },
+  "reading-b1-149-v1": {
+    "1": {
+      "german": "Leseabende",
+      "form": "Leseabende",
+      "english": "evenings spent reading",
+      "headword": "Leseabende",
+      "headwordEnglish": "evenings spent reading"
+    }
+  },
+  "reading-b1-150-v1": {
+    "3": {
+      "german": "Erläuterungen",
+      "form": "Erläuterungen",
+      "english": "explanations",
+      "headword": "Erläuterungen",
+      "headwordEnglish": "explanations"
+    }
+  },
+  "reading-b1-151-v1": {
+    "3": {
+      "german": "Vorstandsmitglied",
+      "form": "Vorstandsmitglied",
+      "english": "board member",
+      "headword": "Vorstandsmitglied",
+      "headwordEnglish": "board member"
+    }
+  },
+  "reading-b1-154-v1": {
+    "0": {
+      "german": "Streitigkeiten",
+      "form": "Streitigkeiten",
+      "english": "disputes",
+      "headword": "Streitigkeiten",
+      "headwordEnglish": "disputes"
+    }
+  },
+  "reading-b1-155-v1": {
+    "1": {
+      "german": "beurteilt",
+      "form": "beurteilt",
+      "english": "judged",
+      "headword": "beurteilt",
+      "headwordEnglish": "judged"
+    }
+  },
+  "reading-b1-156-v1": {
+    "1": {
+      "german": "Auftraggeber",
+      "form": "Auftraggeber",
+      "english": "client; person commissioning work",
+      "headword": "Auftraggeber",
+      "headwordEnglish": "client; person commissioning work"
+    }
+  },
+  "reading-b1-157-v1": {
+    "1": {
+      "german": "Programmplan",
+      "form": "Programmplan",
+      "english": "programme schedule",
+      "headword": "Programmplan",
+      "headwordEnglish": "programme schedule"
+    },
+    "3": {
+      "german": "Anordnungen",
+      "form": "Anordnungen",
+      "english": "arrangements; instructions",
+      "headword": "Anordnungen",
+      "headwordEnglish": "arrangements; instructions"
+    }
+  },
+  "reading-b1-158-v1": {
+    "1": {
+      "german": "Beweglichkeit",
+      "form": "Beweglichkeit",
+      "english": "mobility",
+      "headword": "Beweglichkeit",
+      "headwordEnglish": "mobility"
+    }
+  },
+  "reading-b1-159-v1": {
+    "1": {
+      "german": "Besonderheit",
+      "form": "Besonderheit",
+      "english": "distinctive feature",
+      "headword": "Besonderheit",
+      "headwordEnglish": "distinctive feature"
+    }
+  },
+  "reading-b1-160-v1": {
+    "1": {
+      "german": "Einigung",
+      "form": "Einigung",
+      "english": "agreement",
+      "headword": "Einigung",
+      "headwordEnglish": "agreement"
+    }
+  },
+  "reading-b1-161-v1": {
+    "1": {
+      "german": "Umfrage",
+      "form": "Umfrage",
+      "english": "survey; poll",
+      "headword": "Umfrage",
+      "headwordEnglish": "survey; poll"
+    }
+  },
+  "reading-b1-165-v1": {
+    "2": {
+      "german": "Befestigung",
+      "form": "Befestigung",
+      "english": "fastening",
+      "headword": "Befestigung",
+      "headwordEnglish": "fastening"
+    }
+  },
+  "reading-b1-168-v1": {
+    "1": {
+      "german": "Absender",
+      "form": "Absender",
+      "english": "sender",
+      "headword": "Absender",
+      "headwordEnglish": "sender"
+    },
+    "3": {
+      "german": "Widerspruch",
+      "form": "Widerspruch",
+      "english": "contradiction",
+      "headword": "Widerspruch",
+      "headwordEnglish": "contradiction"
+    }
+  },
+  "reading-b1-169-v1": {
+    "1": {
+      "german": "Arbeitsgrundlage",
+      "form": "Arbeitsgrundlage",
+      "english": "basis for the work",
+      "headword": "Arbeitsgrundlage",
+      "headwordEnglish": "basis for the work"
+    }
+  },
+  "reading-b1-170-v1": {
+    "3": {
+      "german": "Einwände",
+      "form": "Einwände",
+      "english": "objections",
+      "headword": "Einwände",
+      "headwordEnglish": "objections"
+    }
+  },
+  "reading-b1-173-v1": {
+    "1": {
+      "german": "Speicherplatz",
+      "form": "Speicherplatz",
+      "english": "storage space",
+      "headword": "Speicherplatz",
+      "headwordEnglish": "storage space"
+    }
+  },
+  "reading-b1-174-v1": {
+    "1": {
+      "german": "Einteilung",
+      "form": "Einteilung",
+      "english": "division; scheduling",
+      "headword": "Einteilung",
+      "headwordEnglish": "division; scheduling"
+    }
+  },
+  "reading-b1-182-v1": {
+    "1": {
+      "german": "Sachverhalt",
+      "form": "Sachverhalt",
+      "english": "situation; facts of the matter",
+      "headword": "Sachverhalt",
+      "headwordEnglish": "situation; facts of the matter"
+    }
+  },
+  "reading-b1-183-v1": {
+    "1": {
+      "german": "Bestellangaben",
+      "form": "Bestellangaben",
+      "english": "order details",
+      "headword": "Bestellangaben",
+      "headwordEnglish": "order details"
+    }
+  },
+  "reading-b1-185-v1": {
+    "0": {
+      "german": "Ausleihe",
+      "form": "Ausleihe",
+      "english": "borrowing; lending",
+      "headword": "Ausleihe",
+      "headwordEnglish": "borrowing; lending"
+    },
+    "1": {
+      "german": "Anwendung",
+      "form": "Anwendung",
+      "english": "use; application",
+      "headword": "Anwendung",
+      "headwordEnglish": "use; application"
+    }
+  },
+  "reading-b1-186-v1": {
+    "1": {
+      "german": "äußern",
+      "form": "äußern",
+      "english": "to express",
+      "headword": "äußern",
+      "headwordEnglish": "to express"
+    }
+  },
+  "reading-b1-188-v1": {
+    "1": {
+      "german": "Vorgeschichte",
+      "form": "Vorgeschichte",
+      "english": "background story",
+      "headword": "Vorgeschichte",
+      "headwordEnglish": "background story"
+    }
+  },
+  "reading-b1-189-v1": {
+    "1": {
+      "german": "Zahlungsangaben",
+      "form": "Zahlungsangaben",
+      "english": "payment details",
+      "headword": "Zahlungsangaben",
+      "headwordEnglish": "payment details"
+    }
+  },
+  "reading-b1-190-v1": {
+    "0": {
+      "german": "Familienfeiern",
+      "form": "Familienfeiern",
+      "english": "family celebrations",
+      "headword": "Familienfeiern",
+      "headwordEnglish": "family celebrations"
+    }
+  },
+  "reading-b1-197-v1": {
+    "1": {
+      "german": "Anzahl",
+      "form": "Anzahl",
+      "english": "number; quantity",
+      "headword": "Anzahl",
+      "headwordEnglish": "number; quantity"
+    }
+  },
+  "reading-b1-198-v1": {
+    "1": {
+      "german": "Zwischenmahlzeit",
+      "form": "Zwischenmahlzeit",
+      "english": "snack between meals",
+      "headword": "Zwischenmahlzeit",
+      "headwordEnglish": "snack between meals"
+    }
+  }
+}

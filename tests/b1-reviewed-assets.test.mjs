@@ -10,8 +10,8 @@ const digest = (text) => createHash('sha256').update(text).digest('hex');
 const drafts = JSON.parse(read('content/reading/b1-rewrite-drafts.json'));
 const speakers = JSON.parse(read('content/reading/b1-reviews/speakers.json'));
 const audio = JSON.parse(read('content/reading/b1-reviews/audio-manifest.json'));
-const originals = ['reading-path-data', 'reading-expanded-data']
-  .flatMap((name) => JSON.parse(read(`app/lib/${name}.json`)));
+const originals = JSON.parse(read('content/reading/b1-reviews/original-editions.json'));
+assert.equal(originals.length, 200, 'The archived B1 editions must remain complete');
 const byId = new Map(originals.map((story) => [story.id, story]));
 const reviewDirectory = new URL('content/reading/b1-reviews/', root);
 const files = readdirSync(reviewDirectory).filter((name) => /^reading-b1-\d+-v2\.txt$/u.test(name));

@@ -1,0 +1,104 @@
+{
+  "reading-b1-01-v1": {
+    "1": {
+      "german": "Handy",
+      "english": "mobile phone"
+    }
+  },
+  "reading-b1-05-v1": {
+    "0": {
+      "german": "Woche",
+      "english": "week"
+    },
+    "1": {
+      "german": "Schlüssel",
+      "english": "key"
+    }
+  },
+  "reading-b1-06-v1": {
+    "1": {
+      "german": "Nachbarn",
+      "english": "neighbours"
+    }
+  },
+  "reading-b1-07-v1": {
+    "0": {
+      "german": "Termin",
+      "english": "appointment"
+    },
+    "1": {
+      "german": "übernehmen",
+      "english": "to take on"
+    }
+  },
+  "reading-b1-08-v1": {
+    "1": {
+      "german": "Antwort",
+      "english": "answer"
+    }
+  },
+  "reading-b1-12-v1": {
+    "0": {
+      "german": "Stunden",
+      "english": "hours"
+    }
+  },
+  "reading-b1-13-v1": {
+    "0": {
+      "german": "Nachricht",
+      "english": "message"
+    },
+    "1": {
+      "german": "erinnert",
+      "english": "remembers"
+    }
+  },
+  "reading-b1-14-v1": {
+    "0": {
+      "german": "besuchen",
+      "english": "to visit"
+    }
+  },
+  "reading-b1-15-v1": {
+    "0": {
+      "german": "Familie",
+      "english": "family"
+    }
+  },
+  "reading-b1-17-v1": {
+    "0": {
+      "german": "anrufen",
+      "english": "to call"
+    }
+  },
+  "reading-b1-19-v1": {
+    "0": {
+      "german": "Aufgaben",
+      "english": "tasks"
+    }
+  },
+  "reading-b1-22-v1": {
+    "1": {
+      "german": "Fragen",
+      "english": "questions"
+    }
+  },
+  "reading-b1-23-v1": {
+    "1": {
+      "german": "Rückmeldung",
+      "english": "feedback"
+    }
+  },
+  "reading-b1-24-v1": {
+    "1": {
+      "german": "Zweck",
+      "english": "purpose"
+    }
+  },
+  "reading-b1-18-v1": {
+    "1": {
+      "german": "Meinung",
+      "english": "opinion"
+    }
+  }
+}

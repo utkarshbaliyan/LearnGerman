@@ -9,9 +9,8 @@ const directory = 'content/reading/b1-reviews';
 const destination = 'content/reading/b1-rewrite-drafts.json';
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice(7);
 const replace = process.argv.includes('--replace');
-const seeds = ['reading-path-data', 'reading-expanded-data']
-  .flatMap((name) => JSON.parse(readFileSync(`app/lib/${name}.json`, 'utf8')))
-  .filter((story) => story.level === 'B1');
+const seeds = JSON.parse(readFileSync(`${directory}/original-editions.json`, 'utf8'));
+assert.equal(seeds.length, 200, 'The archived B1 editions must remain complete');
 const byId = new Map(seeds.map((seed) => [seed.id, seed]));
 const drafts = JSON.parse(readFileSync(destination, 'utf8'));
 const files = readdirSync(directory).filter((file) => /^reading-b1-\d+-v2\.txt$/u.test(file));

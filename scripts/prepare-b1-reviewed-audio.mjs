@@ -9,8 +9,8 @@ const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice(7)?.re
 assert.ok(output, 'Use --out-dir=/absolute/staging/path');
 const drafts = JSON.parse(readFileSync('content/reading/b1-rewrite-drafts.json', 'utf8'));
 const speakerData = JSON.parse(readFileSync(`${directory}/speakers.json`, 'utf8'));
-const originals = ['reading-path-data', 'reading-expanded-data']
-  .flatMap((name) => JSON.parse(readFileSync(`app/lib/${name}.json`, 'utf8')));
+const originals = JSON.parse(readFileSync(`${directory}/original-editions.json`, 'utf8'));
+assert.equal(originals.length, 200, 'The archived B1 editions must remain complete');
 const byId = new Map(originals.map((story) => [story.id, story]));
 const sources = [];
 const plans = {};

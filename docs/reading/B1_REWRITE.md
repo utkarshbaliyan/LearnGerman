@@ -25,3 +25,13 @@ Editorial fact check for story 139: the regional food terms Topfen/Quark and Mar
 Editorial fact check for story 168: the fictional parcel-message scenario follows [Bundesnetzagentur’s description of SMS spam impersonating parcel providers](https://www.bundesnetzagentur.de/DE/Vportal/TK/Aerger/Faelle/SMSSpam/artikel.html) and [BSI’s incident-response guidance](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/CSN/Leitfaden_VP_VE.pdf?__blob=publicationFile&v=21) to verify a service through its independently known website rather than the message link. No real deceptive link is included.
 
 Editorial fact check for story 198: [Duden’s heuer entry](https://www.duden.de/rechtschreibung/heuer) and [Jause entry](https://www.duden.de/rechtschreibung/Jause) support the two regional terms used in the fictional train conversation. They are vocabulary examples, not a complete dialect description.
+
+## Support and English review
+
+All 200 accepted German editions contain 600–800 words. Their original metadata and text are retained in `content/reading/b1-reviews/original-editions.json` so source hashes and legacy progress remain recoverable after the catalog switches to v2.
+
+`node scripts/prepare-b1-reading-support.mjs` prepares source-matched vocabulary examples, reuse links and per-story hover meanings. The reviewed dictionary contains 3,077 additional forms. All 824 vocabulary examples are exact sentences from the new editions; 173 missing old forms were replaced contextually. Reuse links must contain the linked word in both the new story and the earlier source. Tests check complete hover coverage and catch previously misleading automatic lemma suggestions.
+
+The local Marian German–English model produces sentence and paragraph drafts without provider calls. These drafts are not publication-ready. `sentence-translation-edits.reviewed.json` records ChatGPT's contextual corrections by exact German sentence. `translation-reviews.json` records the German source hash and sentence count only after every sentence in that story has been compared. `node scripts/prepare-b1-sentence-translations.mjs` builds staged output; its `--require-complete` mode rejects publication until all 200 reviews match the current text. A changed source invalidates its review.
+
+At this checkpoint, the first 21 English editions have been reviewed, with 555 corrections. The committed narration manifest contains 86 recordings matching the current editions. Other finished recordings require regeneration after the German revisions; generation continues locally. No B1 replacement has been deployed. The build and all 88 tests passed in the clean validation copy with Node 22.19.0; the translation tests were also rerun after the last two English reviews.

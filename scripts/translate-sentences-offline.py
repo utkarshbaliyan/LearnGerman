@@ -15,7 +15,7 @@ source_path, destination = map(pathlib.Path, sys.argv[1:3])
 mode = sys.argv[3] if len(sys.argv) > 3 else 'sentences'
 model_path = os.environ['TRANSLATION_MODEL_PATH']
 torch.set_num_threads(4)
-device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+device = os.environ.get('TRANSLATION_DEVICE') or ('mps' if torch.backends.mps.is_available() else 'cpu')
 tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_path, local_files_only=True).to(device).eval()
 source = json.loads(source_path.read_text())

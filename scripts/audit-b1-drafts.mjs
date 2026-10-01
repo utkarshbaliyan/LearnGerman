@@ -4,10 +4,7 @@ import { b1DraftIssues } from './lib/b1-draft-quality.mjs';
 
 const path = process.argv.includes('--rewrite') ? 'content/reading/b1-rewrite-drafts.json' : 'content/reading/long-stories.json';
 const drafts = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : {};
-const seeds = [
-  ...JSON.parse(readFileSync('app/lib/reading-path-data.json', 'utf8')),
-  ...JSON.parse(readFileSync('app/lib/reading-expanded-data.json', 'utf8')),
-].filter((story) => story.level === 'B1');
+const seeds = JSON.parse(readFileSync('content/reading/b1-reviews/original-editions.json', 'utf8'));
 const results = seeds.map((seed) => {
   const draft = drafts[seed.id];
   const issues = draft ? b1DraftIssues(seed.text, draft.text) : [];
