@@ -516,5 +516,13 @@
       "voice": "female",
       "evidence": "The narrator’s sister says this during the animal shelter information visit before deciding to wait."
     }
+  ],
+  "reading-b1-119-v2": [
+    {
+      "quote": "„Ich schaue dort gleich nach.“",
+      "speaker": "Besitzerin",
+      "voice": "female",
+      "evidence": "The female owner of the missing dog says this during the call after receiving the narrator’s precise location information."
+    }
   ]
 }
