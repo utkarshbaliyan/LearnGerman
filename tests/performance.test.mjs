@@ -25,7 +25,10 @@ test('long-lived media caching only covers filenames containing source and voice
     assert.ok(headers.includes(`/${directory}/*\n  Cache-Control: public, max-age=31536000, immutable`));
     const files = await readdir(new URL(`../public/${directory}/`, import.meta.url));
     assert.ok(files.length > 0);
-    for (const file of files) assert.match(file, /-[a-f0-9]{12}-[a-f0-9]{8}-qwen-dialogue-opus24\.(webm|json)$/);
+    for (const file of files) {
+      const bitrate = /^reading-b1-\d+-v2-/.test(file) ? '16' : '24';
+      assert.match(file, new RegExp(`-[a-f0-9]{12}-[a-f0-9]{8}-qwen-dialogue-opus${bitrate}\\.(webm|json)$`));
+    }
   }
   assert.doesNotMatch(headers, /^\/api\//m);
 });

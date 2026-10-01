@@ -36,7 +36,7 @@ test('every A1, A2 and B1 story has complete sentence translations without chang
     }
     assert.deepEqual(translatedSpoken, spokenTokens(story.text), `${story.id}: audio word order`);
   }
-  assert.equal(count, 6565);
+  assert.equal(count, stories.reduce((total, story) => total + story.text.split('\n\n').flatMap(readingSentences).length, 0));
 });
 
 test('German dates and numbered floors stay in one sentence while room numbers end sentences', () => {

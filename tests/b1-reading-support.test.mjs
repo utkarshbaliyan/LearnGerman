@@ -10,7 +10,7 @@ const originals = read('content/reading/b1-reviews/original-editions.json');
 const drafts = read('content/reading/b1-rewrite-drafts.json');
 const support = read('content/reading/b1-reviews/reading-support.json');
 const prior = new Map(['reading-path-data', 'reading-expanded-data']
-  .flatMap(name => read(`app/lib/${name}.json`)).map(story => [story.id, story]));
+  .flatMap(name => read(`app/lib/${name}.json`)).concat(originals).map(story => [story.id, story]));
 
 const clean = token => token.toLocaleLowerCase('de-DE').replace(/[^\p{L}\p{N}]/gu, '');
 

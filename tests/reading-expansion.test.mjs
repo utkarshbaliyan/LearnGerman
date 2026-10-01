@@ -6,6 +6,9 @@ import { createServer } from 'vite';
 const original = JSON.parse(readFileSync(new URL('../app/lib/reading-path-data.json', import.meta.url)));
 const added = JSON.parse(readFileSync(new URL('../app/lib/reading-expanded-data.json', import.meta.url)));
 const authored = JSON.parse(readFileSync(new URL('../content/reading/long-stories.json', import.meta.url)));
+const reviews = JSON.parse(readFileSync(new URL('../content/reading/b1-reviews/question-reviews.json', import.meta.url)));
+const drafts = JSON.parse(readFileSync(new URL('../content/reading/b1-rewrite-drafts.json', import.meta.url)));
+const editions = JSON.parse(readFileSync(new URL('../app/lib/reading-editions.json', import.meta.url)));
 
 test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', async () => {
  const vite = await createServer({configFile:false,resolve:{alias:{'@':process.cwd()}},optimizeDeps:{noDiscovery:true,include:[]},server:{middlewareMode:true,ws:false}});
@@ -16,7 +19,9 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
   assert.equal(added.length,382);
   assert.equal(new Set(READING_STORIES.map(s=>s.text)).size,454);
   for (const id of ['reading-b1-34-v1','reading-b1-35-v1','reading-b1-36-v1']) {
-   assert.notEqual(READING_STORIES.find(s=>s.id===id)?.text,authored[id].text,'B1 draft is held for a later reviewed release');
+   const story = READING_STORIES.find(s=>s.id===id.replace(/-v1$/, `-v${editions.B1}`));
+   if (editions.B1 === 2) assert.equal(story.text, drafts[id].text, 'B1 publishes the reviewed rewrite');
+   else assert.notEqual(story.text, authored[id].text, 'B1 drafts are held until the complete release');
   }
   for(const old of original) assert.deepEqual(READING_STORIES.find(s=>s.id===old.id),old);
   const means=[];
@@ -25,7 +30,7 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
    assert.equal(all.length,total);
    assert.deepEqual(all.map(s=>s.number),Array.from({length:total},(_,i)=>i+1));
    assert.equal(all.filter(s=>readingSummary(s).hasAudio).length,total);
-   const range = {A1:[70,200],A2:[200,400]}[level];
+   const range = {A1:[70,200],A2:[200,400], ...(editions.B1 === 2 ? {B1:[600,800]} : {})}[level];
    if (range) for(const story of all) assert.ok(readingWordCount(story.text)>=range[0] && readingWordCount(story.text)<=range[1],`${story.id}: story length`);
    for(const topic of ['home','school','health','travel','work','cafe','family','animals','nature','shopping']) assert.ok(all.filter(s=>s.number>24&&s.topics.includes(topic)).length>=4,`${level}: ${topic}`);
    assert.equal(getChapterReading(level,25),undefined,'library scenes must not create course chapters');
@@ -40,8 +45,14 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
     assert.equal(story.questions.length,2);
     for(const q of story.questions) {
      assert.equal(new Set(q.options).size,3);
-     assert.equal(q.options[q.answer],q.explanation);
-     assert.ok(story.english.includes(q.explanation));
+     if (level === 'B1' && editions.B1 === 2) {
+      const { evidence, ...reviewed } = reviews[story.id].questions.find(question => question.prompt === q.prompt);
+      assert.deepEqual(q, reviewed, 'B1 answers match the source-bound review');
+      assert.ok(evidence.every(sentence => story.text.includes(sentence)));
+     } else {
+      assert.equal(q.options[q.answer],q.explanation);
+      assert.ok(story.english.includes(q.explanation));
+     }
     }
    }
   }

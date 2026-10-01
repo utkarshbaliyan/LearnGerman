@@ -12,6 +12,7 @@ test('graded stories have complete vocabulary support, meaningful questions and 
   const {getCourseChapter} = await vite.ssrLoadModule('/app/course/course-data.ts');
   for (const story of stories.filter(story => story.level === 'A1')) assert.ok(readingWordCount(story.text) >= 70 && readingWordCount(story.text) <= 200, story.id);
   for (const story of stories.filter(story => story.level === 'A2')) assert.ok(readingWordCount(story.text) >= 200 && readingWordCount(story.text) <= 400, story.id);
+  for (const story of stories.filter(story => story.level === 'B1' && story.id.endsWith('-v2'))) assert.ok(readingWordCount(story.text) >= 600 && readingWordCount(story.text) <= 800, story.id);
   const ids = new Set(stories.map(story=>story.id));
   assert.equal(ids.size,454);
   assert.equal(getReadingStory('reading-a1-999-v1'),undefined);

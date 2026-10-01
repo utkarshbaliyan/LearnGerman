@@ -1,3 +1,4 @@
+import { readingEditionId } from '@/app/lib/reading-progress';
 import { notFound, redirect } from "next/navigation";
 
 import { CHAPTERS_PER_LEVEL, COURSE_LEVELS } from "@/app/course/course-data";
@@ -14,5 +15,5 @@ export default async function CourseChapterPage({ params }: { params: Promise<{ 
   const number = parseChapter(rawChapter);
 
   if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();
-  redirect(`/stories/reading-${level.toLowerCase()}-${String(number).padStart(2, "0")}-v1`);
+  redirect(`/stories/${readingEditionId(level, number)}`);
 }

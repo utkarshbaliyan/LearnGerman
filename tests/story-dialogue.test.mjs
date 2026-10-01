@@ -55,7 +55,8 @@ test('every recording belongs to the current character voice plan', () => {
     // Preserve the generator's JSON spacing so both languages hash the same turns.
     const serialized = `[${plan.segments.map(segment => `[${JSON.stringify(segment.voice)}, ${JSON.stringify(segment.text)}]`).join(', ')}]`;
     const planHash = createHash('sha256').update(serialized).digest('hex').slice(0, 8);
-    const name = `${id}-${plan.textHash.slice(0, 12)}-${planHash}-qwen-dialogue-opus24`;
+    const bitrate = /^reading-b1-\d+-v2$/.test(id) ? 16 : 24;
+    const name = `${id}-${plan.textHash.slice(0, 12)}-${planHash}-qwen-dialogue-opus${bitrate}`;
     assert.equal(manifest[id].src, `/audio/reading/${name}.webm`, id);
     assert.equal(manifest[id].timingSrc, `/audio/reading/${name}.json`, id);
   }

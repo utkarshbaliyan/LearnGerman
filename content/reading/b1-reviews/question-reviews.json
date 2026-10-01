@@ -6195,7 +6195,7 @@
   "reading-b1-176-v2": {
     "sourceHash": "345c658380054f94b8faa97a4eea920319e3750f68f7ee9f00db93bb3f3c0027",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.230825+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.146184+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6231,7 +6231,7 @@
   "reading-b1-177-v2": {
     "sourceHash": "cf938f7d370e5cbd6262c40ba6055368d94a5286e66c8ab6c91558d6c1d8ea0c",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.230991+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.147598+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6243,7 +6243,8 @@
         "answer": 2,
         "explanation": "A video meeting starts without sound.",
         "evidence": [
-          "Für die verbleibenden Punkte vereinbarten wir einen schriftlichen Nachtrag."
+          "Ich konnte sie sehen, hörte aber nichts.",
+          "Die kurze Nachricht bestätigte, dass wir uns sehen konnten, aber der Ton nicht funktionierte."
         ]
       },
       {
@@ -6267,7 +6268,7 @@
   "reading-b1-178-v2": {
     "sourceHash": "742ffabc5ed6cdc88293484efeb3f90c26b13d76ead52e849fc925dd7cac2873",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.231196+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.148131+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6304,7 +6305,7 @@
   "reading-b1-179-v2": {
     "sourceHash": "390d8ac553bbf44687271eb21ae5d372603bf44d6b210a67aaee366058a66940",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232136+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.149128+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6340,7 +6341,7 @@
   "reading-b1-180-v2": {
     "sourceHash": "8415edf3c8a7550e6c169b588b0ce4f644170db9dff746e1a9a26a170ddee20a",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232207+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.149599+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6375,7 +6376,7 @@
   "reading-b1-181-v2": {
     "sourceHash": "8885f82b2879790b49ffce2258907575ca128cd64a6f7fc69d9fd4a6e962711e",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232374+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.150112+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6412,7 +6413,7 @@
   "reading-b1-182-v2": {
     "sourceHash": "538620f5bfa2de1388f1a9a211d1eb533bb3dd4c9c69ff2851420d2ecbf31819",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232587+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.150568+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6437,8 +6438,9 @@
         "answer": 2,
         "explanation": "Prompt cancellation allows someone else to use the place.",
         "evidence": [
-          "Der Platz blieb dadurch vorläufig weiter für mich reserviert.",
-          "Den alten freien Platz hatte vielleicht jemand anderes nutzen können; darüber bekam ich keine weitere Nachricht."
+          "Nun konnte die Person am anderen Ende mit der Information arbeiten, statt weiterhin davon auszugehen, dass ich zum vereinbarten Zeitpunkt erscheinen würde.",
+          "Die Mitarbeiterin erklärte, dass es eine wartende Person gebe, der der freie Platz angeboten werden könne.",
+          "Ob diese Person ihn tatsächlich übernehmen würde, wusste sie noch nicht."
         ]
       }
     ]
@@ -6446,7 +6448,7 @@
   "reading-b1-183-v2": {
     "sourceHash": "be14e32719e6cca24f79cec7cb1ea9c7274282cb0b9edc594fcd0dd7ffdd7725",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232774+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.150872+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6481,7 +6483,7 @@
   "reading-b1-184-v2": {
     "sourceHash": "9a2631f7da821fa7f2ee171e7b8f9b4bc2893fe75c707765af7fd61e8c44caae",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.232859+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.151322+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6517,7 +6519,7 @@
   "reading-b1-185-v2": {
     "sourceHash": "380fdf465f85fdefb2c0dc2225d54a7c60198b3c84a4c153083177bf9b70486d",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.233022+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.151603+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6553,7 +6555,7 @@
   "reading-b1-186-v2": {
     "sourceHash": "891c96aaa1ed0b1d29dc3215c2661cbbee8c73a8ccf8dea93220b0a8766b1220",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.233155+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.152020+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6589,7 +6591,7 @@
   "reading-b1-187-v2": {
     "sourceHash": "8e6aeb5ff87b22f99bdc38ee2af85f9edf2d212f615b7a876f58c57e1436154e",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.233249+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.152261+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6626,7 +6628,7 @@
   "reading-b1-188-v2": {
     "sourceHash": "8c04cb4635b73d89a19925851e52429d3c7c506a6dc68577b2ab60a60cb688bf",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.233413+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.152534+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6663,7 +6665,7 @@
   "reading-b1-189-v2": {
     "sourceHash": "db9bcfaa5b18b0a163240784c0805fdf5b0b250451ce7b96afdb4054e8c244de",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.233842+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.152945+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6697,7 +6699,7 @@
   "reading-b1-190-v2": {
     "sourceHash": "d0f26ee627bbbb2318c6cf18c7e4f44c7eb7f3bc188954861fa3e62df4eb0561",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234102+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.153411+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6731,7 +6733,7 @@
   "reading-b1-191-v2": {
     "sourceHash": "80a0319a58e92c0a5233720d8202f7cd1c3518b16337c080a16c58ccebbc1de9",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234276+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.153731+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6758,9 +6760,9 @@
         "answer": 2,
         "explanation": "The two colleagues agree on a date rather than generalising about cultures.",
         "evidence": [
-          "Das erschien mir zu einfach.",
-          "Wir brauchten keine feste Beschreibung ganzer Gruppen, um diese Nachricht zu verstehen.",
-          "Manchmal ergänze ich direkt einen Tag, manchmal sage ich ausdrücklich, dass wir noch etwas vereinbaren müssen."
+          "Ich fragte nach zwei Abenden, an denen ich frei war.",
+          "Danach vereinbarten wir eine Uhrzeit und überlegten, ob wir zusammen etwas essen wollten.",
+          "Wir brauchten keine feste Beschreibung ganzer Gruppen, um diese Nachricht zu verstehen."
         ]
       }
     ]
@@ -6768,7 +6770,7 @@
   "reading-b1-192-v2": {
     "sourceHash": "d9b6a52eb88e4092ac498f978e3396aa5e02e23bd19b18d4a3264dbcc8a8cb08",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234430+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.154126+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6803,7 +6805,7 @@
   "reading-b1-193-v2": {
     "sourceHash": "9aaa248a99be6d8fee138b098825a81afd003b723a4dc1fe73fc247353fb5117",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234603+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.154590+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6829,7 +6831,8 @@
         "explanation": "Checking practical details leads both neighbours to learn about the day.",
         "evidence": [
           "Wir sahen gemeinsam nach den Angaben der Geschäfte, die ich benutzen wollte.",
-          "Dabei blieb die praktische Frage nach den Geschäften von der Bedeutung des Tages unterscheidbar."
+          "Meine Nachbarin bemerkte etwas, das sie früher anders verstanden hatte.",
+          "So lernten wir beide etwas, auch wenn wir mit unterschiedlichem Vorwissen begonnen hatten."
         ]
       }
     ]
@@ -6837,7 +6840,7 @@
   "reading-b1-194-v2": {
     "sourceHash": "eb412c4cb97fca69c62b3af4a564b2efa6d421643b74ab1c3f9cdecab14d67ae",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234773+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.155035+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6873,7 +6876,7 @@
   "reading-b1-195-v2": {
     "sourceHash": "ac6d2d24ecfb0de6433d52a7d1243c652349a7308b17cceb361aa27af2ee3b70",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.234928+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.155612+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6908,7 +6911,7 @@
   "reading-b1-196-v2": {
     "sourceHash": "f6d28190a44d3a8f3c2ce1e3f70c6d141549ebcabb5b7aab771392abe433c705",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.235101+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.156353+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6945,7 +6948,7 @@
   "reading-b1-197-v2": {
     "sourceHash": "f22782f3d563e792e60fdf7dc4fb085167bf3d234868253718aca51da3161217",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.235194+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.156964+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -6983,7 +6986,7 @@
   "reading-b1-198-v2": {
     "sourceHash": "c4364ec69aaaf047a2bb8103ebbc76a182ac2ed5e535cf313526f34848630669",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.235352+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.157437+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -7021,7 +7024,7 @@
   "reading-b1-199-v2": {
     "sourceHash": "605c828e0ee41de1cdfc911c3e43860219a2d0ed5ede68e8d63580bc7e5aed14",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.235532+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.158139+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",
@@ -7059,7 +7062,7 @@
   "reading-b1-200-v2": {
     "sourceHash": "681016edbc7bc9bad167515da1ccc4d17310913cafffa9f31e95510f839020a7",
     "method": "ChatGPT comparison of comprehension answers and explanations against the rewritten German plot",
-    "reviewedAt": "2026-10-01T14:00:46.235677+00:00",
+    "reviewedAt": "2026-10-01T14:18:15.158584+00:00",
     "questions": [
       {
         "prompt": "Which situation is described in this story?",

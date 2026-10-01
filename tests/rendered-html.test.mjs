@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+const editions = JSON.parse(readFileSync(new URL('../app/lib/reading-editions.json', import.meta.url)));
+const editionId = (level, number) => `reading-${level.toLowerCase()}-${String(number).padStart(2, '0')}-v${editions[level.toUpperCase()]}`;
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -36,7 +39,7 @@ test("opens Stories as home while the integrated course is paused", async () => 
 
 test('all story levels offer one toggle for all sentence translations', async () => {
   for (const level of ['a1', 'a2', 'b1']) {
-    const response = await renderRoute(`/stories/reading-${level}-01-v1`);
+    const response = await renderRoute(`/stories/${editionId(level, 1)}`);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
@@ -97,7 +100,7 @@ test("old chapter bookmarks open their matching stories", async () => {
     assert.equal(response.status, 307, pathname);
     const match = /\/course\/(a1|a2|b1)\/chapter-(\d+)/.exec(pathname);
     assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname,
-      `/stories/reading-${match[1]}-${match[2].padStart(2, "0")}-v1`);
+      `/stories/${editionId(match[1], match[2])}`);
   }
 });
 
@@ -162,9 +165,9 @@ test("renders the graded reading path and independent story pages", async () => 
     const response = await renderRoute(`/stories?level=${level}`); assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /Grow from simple scenes to connected German stories/); assert.doesNotMatch(html, /Previous story library/);
-    assert.ok(html.includes(`reading-${level.toLowerCase()}-01-v1`));
+    assert.ok(html.includes(editionId(level, 1)));
   }
-  for (const id of ["reading-a1-01-v1", "reading-a2-18-v1", "reading-b1-24-v1"]) {
+  for (const id of [editionId("A1", 1), editionId("A2", 18), editionId("B1", 24)]) {
     const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /What happened/); assert.match(html, /Show English translations/);
@@ -178,7 +181,7 @@ test("renders the graded reading path and independent story pages", async () => 
     assert.doesNotMatch(html, /Device voice/);
   }
   for (const [level, total] of [['a1',104],['a2',150],['b1',200]]) {
-    const response = await renderRoute(`/stories/reading-${level}-${total}-v1`);
+    const response = await renderRoute(`/stories/${editionId(level, total)}`);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /What happened/);
@@ -198,4 +201,16 @@ test('practical reading and listening samples are linked and render accessible f
  }
  const missing=await renderRoute('/stories/practice/not-a-lesson');assert.equal(missing.status,404);
  const story=await renderRoute('/stories/reading-a2-18-v1');assert.match(await story.text(),/\/stories\/practice\/reception-a2-18-v1/);
+});
+
+
+test('old B1 story bookmarks open the current edition and invalid editions remain unavailable', async () => {
+  if (editions.B1 === 2) for (const number of [1, 24, 200]) {
+    const oldId = `reading-b1-${String(number).padStart(2, '0')}-v1`;
+    const response = await renderRoute(`/stories/${oldId}`);
+    assert.equal(response.status, 307);
+    assert.equal(new URL(response.headers.get('location'), 'http://localhost').pathname, `/stories/${editionId('B1', number)}`);
+  }
+  for (const id of ['reading-b1-999-v1', 'reading-b1-01-v99'])
+    assert.equal((await renderRoute(`/stories/${id}`)).status, 404);
 });

@@ -1,6 +1,7 @@
+import { currentReadingEditionId } from '@/app/lib/reading-progress';
 import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { SiteHeader } from '@/app/components/site-header';
 import { ReadingText, ReadingCheck } from '@/app/components/reading-experience';
@@ -8,11 +9,14 @@ import { ReadingAudio, ReadingNarrationProvider } from '@/app/components/reading
 import { getReadingContent } from '@/app/lib/reading-content';
 import { READING_STORIES, READING_SECTIONS, readingWordCount } from '@/app/lib/reading-path';
 export async function generateMetadata({ params }: { params: Promise<{ storyId: string }> }) {
-  const content = getReadingContent((await params).storyId);
+  const content = getReadingContent(currentReadingEditionId((await params).storyId));
   return content ? { title: `${content.story.title} · ${content.story.level} story · LeseLaut`, description: content.story.goal } : { title: 'Story not found · LeseLaut' };
 }
 export default async function StoryPage({ params }: { params: Promise<{ storyId: string }> }) {
-  const content = getReadingContent((await params).storyId);
+  const { storyId } = await params;
+  const currentId = currentReadingEditionId(storyId);
+  const content = getReadingContent(currentId);
+  if (content && currentId !== storyId) redirect(`/stories/${currentId}`);
   if (!content) notFound();
   const { story, glosses, sentenceTranslations } = content;
   const companion = RECEPTION_CATALOG.find(item => item.level === story.level && item.chapter === story.courseChapter);
