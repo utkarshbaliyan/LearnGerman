@@ -596,5 +596,69 @@
       "voice": "female",
       "evidence": "Lea addresses a female visitor during the open afternoon; erklärte Lea follows the quote."
     }
+  ],
+  "reading-b1-175-v2": [
+    {
+      "quote": "„Hier steht eine andere Uhrzeit als im Original“",
+      "speaker": "Kollegin",
+      "voice": "female",
+      "evidence": "The bilingual female colleague compares the invitation with its original; sagte sie follows the quote."
+    }
+  ],
+  "reading-b1-179-v2": [
+    {
+      "quote": "„Wann haben Sie es zuletzt bemerkt?“",
+      "speaker": "Uhrmacherin",
+      "voice": "female",
+      "evidence": "The female watchmaker asks about the narrator’s observation; fragte die Uhrmacherin follows the question."
+    }
+  ],
+  "reading-b1-181-v2": [
+    {
+      "quote": "„Wissen Sie, wodurch der Fleck entstanden ist?“",
+      "speaker": "Mitarbeiterin in der Reinigung",
+      "voice": "female",
+      "evidence": "The female cleaning-service employee asks what is known about the stain; fragte die Mitarbeiterin follows the question."
+    }
+  ],
+  "reading-b1-184-v2": [
+    {
+      "quote": "„Welche Frage möchten Sie zuerst klären?“",
+      "speaker": "Beraterin",
+      "voice": "female",
+      "evidence": "The female contract adviser asks the narrator which point needs clarification; fragte die Beraterin follows the question."
+    }
+  ],
+  "reading-b1-185-v2": [
+    {
+      "quote": "„Bei welcher Aufgabe möchten Sie das Gerät einsetzen?“",
+      "speaker": "Mitarbeiterin im Nachbarschaftszentrum",
+      "voice": "female",
+      "evidence": "The female lending-desk employee asks about the intended tool task; fragte sie follows the question."
+    }
+  ],
+  "reading-b1-186-v2": [
+    {
+      "quote": "„Meinen Sie diese Stelle über dem Ohr?“",
+      "speaker": "Friseur",
+      "voice": "male",
+      "evidence": "The male hairdresser clarifies the location the narrator points to; fragte der Friseur follows the question."
+    }
+  ],
+  "reading-b1-189-v2": [
+    {
+      "quote": "„Ich komme bei dieser Auswahl nicht weiter“",
+      "speaker": "Mann am Fahrkartenautomaten",
+      "voice": "male",
+      "evidence": "The male customer points to the selection he does not understand; erklärte er follows the quote."
+    }
+  ],
+  "reading-b1-190-v2": [
+    {
+      "quote": "„Frag einfach, wenn du etwas nicht kennst“",
+      "speaker": "Nachbarin",
+      "voice": "female",
+      "evidence": "The female neighbour reassures the invited narrator; sagte sie follows the quote."
+    }
   ]
 }
