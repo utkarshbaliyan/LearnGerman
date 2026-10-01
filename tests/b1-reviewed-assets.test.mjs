@@ -48,6 +48,22 @@ test('every staged B1 recording and timing sidecar matches the reviewed edition'
     const text = read(`content/reading/b1-reviews/${file}`).trim();
     assert.equal(entry.textHash, digest(text), id);
     assert.equal(entry.wordCount, germanWordCount(text), id);
+    const segments = [];
+    let cursor = 0;
+    for (const [i, quote] of [...text.matchAll(/„[^“]+“/gu)].entries()) {
+      if (quote.index > cursor) segments.push(['female', text.slice(cursor, quote.index)]);
+      const assigned = speakers[id][i].voice;
+      segments.push([assigned === 'narrator' ? 'female' : assigned, quote[0]]);
+      cursor = quote.index + quote[0].length;
+    }
+    if (cursor < text.length) segments.push(['female', text.slice(cursor)]);
+    // Match Python's ensure_ascii=False JSON representation used by the renderer.
+    const plan = '[' + segments.map(([voice, segment]) =>
+      '[' + JSON.stringify(voice) + ', ' + JSON.stringify(segment) + ']').join(', ') + ']';
+    const voiceHash = digest(plan).slice(0, 8);
+    assert.ok(entry.src.split('/').at(-1).startsWith(`${id}-${digest(text).slice(0, 12)}-${voiceHash}-qwen-dialogue-opus`),
+      `${id}: recording uses a stale character voice plan`);
+    assert.equal(entry.timingSrc, entry.src.replace(/\.webm$/, '.json'), `${id}: timing belongs to another recording`);
     const sound = new URL(`content/reading/b1-reviews/audio/${entry.src.split('/').at(-1)}`, root);
     const timing = new URL(`content/reading/b1-reviews/audio/${entry.timingSrc.split('/').at(-1)}`, root);
     assert.ok(existsSync(sound) && existsSync(timing), id);
@@ -55,5 +71,8 @@ test('every staged B1 recording and timing sidecar matches the reviewed edition'
     assert.equal(sidecar.textHash, entry.textHash, id);
     assert.equal(sidecar.starts.length, entry.wordCount, id);
     assert.equal(sidecar.duration, entry.duration, id);
+    assert.ok(sidecar.starts.every((start, index) => Number.isFinite(start) && start >= 0 &&
+      start <= sidecar.duration && (index === 0 || start >= sidecar.starts[index - 1])),
+      `${id}: invalid spoken-word timing`);
   }
 });

@@ -17507,7 +17507,7 @@
       "daneben": "next to it / beside it",
       "vor": "before / in front of",
       "letzten": "last",
-      "schluck": "swallow",
+      "schluck": "a sip; a splash of liquid",
       "konsistenz": "consistency; texture",
       "prüfen": "to check",
       "las": "read (past)",
@@ -18003,7 +18003,7 @@
     }
   },
   "reading-b1-47-v2": {
-    "sourceHash": "e969a58713861f7a1e8bf2ab64d22441b8b29e935b3f834feb2e84f060dac497",
+    "sourceHash": "bef09dc036675874b2634a7a9bbd490d3d381aee2118be6b02d19c48e7a80e07",
     "words": [
       {
         "german": "Aufgaben",
@@ -18061,7 +18061,7 @@
       "weiteren": "further / on",
       "mitschülern": "classmates",
       "zusammen": "together",
-      "sie": "she / they / you",
+      "wir": "we",
       "hatten": "had",
       "wochen": "week",
       "zeit": "time",
@@ -18107,6 +18107,7 @@
       "notizen": "notes",
       "nach": "to / after",
       "hause": "home",
+      "sie": "she / they / you",
       "dachte": "thought",
       "jemand": "someone",
       "müsse": "must / had to",
@@ -18122,7 +18123,6 @@
       "gliederung": "outline; structure",
       "den": "the",
       "gruppenchat": "group chat",
-      "wir": "we",
       "anderen": "other",
       "antworteten": "answers",
       "freundlich": "friendly",
@@ -18258,11 +18258,11 @@
       "organisiert": "organised",
       "gemeinsam": "together",
       "sahen": "saw",
+      "uns": "us",
       "offenen": "open",
       "jetzt": "now",
       "kurz": "short",
       "half": "helped",
-      "ihnen": "them / you",
       "allgemeines": "general",
       "versprechen": "to promise",
       "brauchten": "to need",
@@ -19479,7 +19479,7 @@
     }
   },
   "reading-b1-51-v2": {
-    "sourceHash": "d578a817f84bd23dd15f3bfc685a4cccc8c199ae540c079acd61075c7a2f182f",
+    "sourceHash": "250fedc97d322669d7db642bc77b0dbff2f6bbaf9c9bbab7e7da071e5016cc9b",
     "words": [
       {
         "german": "teuer",
@@ -19845,6 +19845,7 @@
       "gemeinsamen": "together",
       "dachte": "thought",
       "erste": "first",
+      "besprechung": "meeting",
       "damals": "back then",
       "ziele": "goals",
       "gesprochen": "spoken",
@@ -19867,7 +19868,7 @@
     }
   },
   "reading-b1-52-v2": {
-    "sourceHash": "ea987bdc4417a48636ad2033b1dcac624f8df4d84acb1a8ad328f3abb0e441bc",
+    "sourceHash": "b4d1475fd9af38a43a4f538f81135da27dfac01cec23b81f518e74c60121f1d8",
     "words": [
       {
         "german": "übernommen",
@@ -20224,7 +20225,6 @@
       "ungeprüft": "unchecked",
       "weil": "because",
       "mehreren": "several",
-      "falsche": "wrong",
       "gezeigt": "shown",
       "leicht": "easy / light",
       "weitergetragen": "passed on",
@@ -22839,7 +22839,7 @@
     }
   },
   "reading-b1-60-v2": {
-    "sourceHash": "e52983beca73329a1eccc5336fc00a28c67b5b1d5f88ce9c6687e1171e1cb03c",
+    "sourceHash": "85916771dd179bfdf0566726cbcfd1b5ee8753ba3a85bf58f34cd72580f6d85c",
     "words": [
       {
         "german": "Beschwerden",
@@ -22965,9 +22965,7 @@
       "an": "at / on",
       "fragte": "to ask / questions",
       "sich": "oneself",
-      "wie": "how / like",
-      "darauf": "on that / afterwards",
-      "gekommen": "come / arrived",
+      "warum": "why",
       "als": "as / than",
       "antwort": "answer",
       "benutzen": "to use",
@@ -23026,6 +23024,7 @@
       "anderen": "other",
       "deutlicher": "clear / clearly",
       "ständig": "constantly",
+      "darauf": "on that / afterwards",
       "geachtet": "paid attention",
       "nun": "now",
       "auch": "also",
@@ -23083,6 +23082,7 @@
       "fragen": "to ask / questions",
       "erklärte": "to explain",
       "dann": "then",
+      "wie": "how / like",
       "nächste": "next",
       "rückmeldung": "feedback",
       "termin": "appointment",
