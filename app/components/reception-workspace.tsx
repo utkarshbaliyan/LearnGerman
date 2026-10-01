@@ -1,5 +1,5 @@
-import { readingEditionId } from '@/app/lib/reading-progress';
 'use client';
+import { readingEditionId } from '@/app/lib/reading-progress';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import type { ReceptionActivity, ReceptionLesson } from '@/app/lib/reception-types';

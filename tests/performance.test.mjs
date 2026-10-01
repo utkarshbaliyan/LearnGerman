@@ -17,6 +17,7 @@ test('story readers receive the selected audio asset without downloading the col
   }
   await inspect('app/components/reading-narration.tsx');
   await inspect('app/components/reading-experience.tsx');
+  await inspect('app/components/reception-workspace.tsx');
 });
 
 test('long-lived media caching only covers filenames containing source and voice-plan hashes', async () => {

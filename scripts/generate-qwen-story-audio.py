@@ -30,6 +30,7 @@ parser.add_argument('--ffmpeg', required=True)
 parser.add_argument('--only')
 parser.add_argument('--level', choices=['A1', 'A2', 'B1'], help='Limit story narration to one level')
 parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
+parser.add_argument('--batch-size', type=int, choices=[1, 2], default=1, help='Generate uncached same-voice chunks together; every chunk still receives the same validation')
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
 parser.add_argument('--source-json', type=Path, help='Standalone story sources for a staged narration run')
@@ -105,6 +106,70 @@ def chunks(story,voice):
                     result[-1]=(selected,result[-1][1]+' '+text)
                 else:result.append((selected,text))
         return result
+def validate_generated_chunk(text,audio,rate,wav,check,hotwords,attempt):
+    assert rate==24000 and np.isfinite(audio).all() and np.max(np.abs(audio))>.01,'Invalid waveform'
+    duration=len(audio)/rate;count=len(visible_words(text))
+    assert count*.18<duration<count*1.3+4,'Unexpected duration'
+    write(str(wav),audio,rate,format='wav')
+    transcript=None;coverage=None;excess=None
+    if count>=40 or plans is None:
+        transcript=asr.generate(str(wav),language='German',hotwords=hotwords,max_tokens=max(256,count*4)).text
+        expected,actual=normal(text),normal(transcript)
+        matcher=SequenceMatcher(None,expected,actual,autojunk=False)
+        matched=sum(b.size for b in matcher.get_matching_blocks())
+        coverage=matched/max(1,len(expected))
+        excess=(len(actual)-matched)/max(1,len(expected))
+        assert coverage>=.9 and excess<=.12,f'Transcript differs: coverage={coverage:.2f}, excess={excess:.2f}: {transcript}'
+    aligned=aligner.generate(str(wav),text=text,language='German').items
+    assert len(aligned)==count,f'Alignment count {len(aligned)} != {count}'
+    local=[];nudged=0
+    for item in aligned:
+        value=item.start_time
+        assert np.isfinite(value) and -.05<=value<duration+.2,'Alignment outside recording'
+        value=max(0,min(value,duration-.01))
+        if local and value<=local[-1]:value=local[-1]+.005;nudged+=1
+        assert value<duration,'Alignment ended outside recording'
+        local.append(round(value,5))
+    assert nudged<=max(2,count*.12),'Too many uncertain word boundaries'
+    report={'source':text,'starts':local,'seconds':duration,'transcript':transcript,'coverage':coverage,'excess':excess,'attempt':attempt+1}
+    save_json(check,report)
+    return report
+
+def prepare_batched_chunks(story,story_chunks,hotwords):
+    if args.batch_size==1:return
+    pending={'male':[],'female':[]}
+    for index,(selected,text) in enumerate(story_chunks):
+        fingerprint=hashlib.sha256((selected+text+hashlib.sha256(references[selected].read_bytes()).hexdigest()).encode()).hexdigest()[:20]
+        wav=args.checkpoint/(fingerprint+'.wav');check=args.checkpoint/(fingerprint+'.json')
+        report=json.loads(check.read_text()) if check.exists() else None
+        if report and report['source']==text and wav.exists():continue
+        pending[selected].append((index,text,fingerprint,wav,check))
+    for selected,rows in pending.items():
+        rows.sort(key=lambda row:len(visible_words(row[1])))
+        for offset in range(0,len(rows),args.batch_size):
+            group=rows[offset:offset+args.batch_size]
+            if len(group)<2:continue
+            counts=[len(visible_words(row[1])) for row in group]
+            if max(counts)>min(counts)*2.5:continue
+            cap=max(350,max(counts)*16)
+            seed=int(hashlib.sha256(''.join(row[2] for row in group).encode()).hexdigest()[:8],16)%2147483647
+            try:
+                mx.random.seed(seed)
+                results=list(tts.batch_generate([row[1] for row in group],ref_audio=str(references[selected]),ref_text=reference_text,
+                    lang_code='German',temperature=.65,max_tokens=cap,verbose=False))
+                assert len(results)==len(group) and sorted(result.sequence_idx for result in results)==list(range(len(group))),'Incomplete batch'
+                for result in results:
+                    index,text,fingerprint,wav,check=group[result.sequence_idx]
+                    try:
+                        assert result.token_count<max(350,len(visible_words(text))*16),'Batch reached token limit'
+                        validate_generated_chunk(text,np.array(result.audio),result.sample_rate,wav,check,hotwords,0)
+                    except Exception as error:
+                        print(f'Batch fallback {story["id"]} chunk {index+1}: {error}',flush=True)
+                mx.clear_cache();gc.collect()
+            except Exception as error:
+                print(f'Batch fallback {story["id"]}: {error}',flush=True)
+    # The original sequential loop retries any chunk without a passing report.
+
 failures=[];completed=0;started=time.monotonic()
 for story in stories:
  for voice in voices:
@@ -134,6 +199,7 @@ for story in stories:
         frames=[];starts=[];offset=0;reports=[]
         story_chunks=chunks(story,voice)
         story_hotwords=sorted(set(story.get('hotwords',[])) | {assignment['speaker'] for assignment in plans[story['id']]['assignments'] if assignment['voice']!='narrator' and len(assignment['speaker'].split())==1}) if plans is not None else []
+        prepare_batched_chunks(story,story_chunks,story_hotwords)
         for chunk_index,(selected_voice,text) in enumerate(story_chunks):
             fingerprint=hashlib.sha256((selected_voice+text+hashlib.sha256(references[selected_voice].read_bytes()).hexdigest()).encode()).hexdigest()[:20]
             wav=args.checkpoint/(fingerprint+'.wav');check=args.checkpoint/(fingerprint+'.json')
@@ -149,32 +215,8 @@ for story in stories:
                         results=list(tts.generate(text,ref_audio=str(references[selected_voice]),ref_text=reference_text,lang_code='German',temperature=[.65,.8,.9][attempt],max_tokens=cap,verbose=False))
                         assert results and sum(r.token_count for r in results)<cap,'Generation reached token limit'
                         audio=np.concatenate([np.array(r.audio) for r in results]);rate=results[0].sample_rate
-                        assert rate==24000 and np.isfinite(audio).all() and np.max(np.abs(audio))>.01,'Invalid waveform'
-                        duration=len(audio)/rate;count=len(visible_words(text))
-                        assert count*.18<duration<count*1.3+4,'Unexpected duration'
-                        write(str(wav),audio,rate,format='wav')
-                        transcript=None;coverage=None;excess=None
-                        if count>=40 or plans is None:
-                            transcript=asr.generate(str(wav),language='German',hotwords=story_hotwords,max_tokens=max(256,count*4)).text
-                            expected,actual=normal(text),normal(transcript)
-                            matcher=SequenceMatcher(None,expected,actual,autojunk=False)
-                            matched=sum(b.size for b in matcher.get_matching_blocks())
-                            coverage=matched/max(1,len(expected))
-                            excess=(len(actual)-matched)/max(1,len(expected))
-                            assert coverage>=.9 and excess<=.12,f'Transcript differs: coverage={coverage:.2f}, excess={excess:.2f}: {transcript}'
-                        aligned=aligner.generate(str(wav),text=text,language='German').items
-                        assert len(aligned)==count,f'Alignment count {len(aligned)} != {count}'
-                        local=[];nudged=0
-                        for item in aligned:
-                            value=item.start_time
-                            assert np.isfinite(value) and -.05<=value<duration+.2,'Alignment outside recording'
-                            value=max(0,min(value,duration-.01))
-                            if local and value<=local[-1]:value=local[-1]+.005;nudged+=1
-                            assert value<duration,'Alignment ended outside recording'
-                            local.append(round(value,5))
-                        assert nudged<=max(2,count*.12),'Too many uncertain word boundaries'
-                        report={'source':text,'starts':local,'seconds':duration,'transcript':transcript,'coverage':coverage,'excess':excess,'attempt':attempt+1}
-                        save_json(check,report);break
+                        report=validate_generated_chunk(text,audio,rate,wav,check,story_hotwords,attempt)
+                        break
                     except Exception as e:
                         errors.append(str(e));print(f"Retry {story['id']} {voice} chunk {chunk_index+1}: {e}",flush=True)
                 else:raise RuntimeError('; '.join(errors))
