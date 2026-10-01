@@ -380,5 +380,109 @@
       "voice": "female",
       "evidence": "The female neighbor Frau Weber says this when thanking the narrator at the grocery handover."
     }
+  ],
+  "reading-b1-71-v2": [
+    {
+      "quote": "„Lasst uns einen Weg suchen, den wir wirklich gehen können.“",
+      "speaker": "Tante",
+      "voice": "female",
+      "evidence": "The narrator’s aunt says this directly after the inaccessible bridge stairs are identified."
+    }
+  ],
+  "reading-b1-73-v2": [
+    {
+      "quote": "„Es hilft mir, wenn ich weiß, wo die Gruppe nicht mehr folgen kann.“",
+      "speaker": "Leiterin",
+      "voice": "female",
+      "evidence": "The female city guide says this when the narrator thanks her after the tour."
+    }
+  ],
+  "reading-b1-75-v2": [
+    {
+      "quote": "„Ich freue mich besonders auf die langen Wege draußen.“",
+      "speaker": "Ben",
+      "voice": "male",
+      "evidence": "Ben explains his own preference while discussing the next day with the narrator."
+    }
+  ],
+  "reading-b1-78-v2": [
+    {
+      "quote": "„Bei diesen Stücken soll man sehen, dass sie von Hand geformt wurden.“",
+      "speaker": "Besitzerin",
+      "voice": "female",
+      "evidence": "The female workshop owner explains her deliberately irregular ceramic designs."
+    }
+  ],
+  "reading-b1-81-v2": [
+    {
+      "quote": "„Dann weiß ich noch nicht, welche Variante ich heute nehmen soll.“",
+      "speaker": "Neue Kollegin",
+      "voice": "female",
+      "evidence": "The new female colleague says this after the team provides conflicting explanations for the table fields."
+    }
+  ],
+  "reading-b1-82-v2": [
+    {
+      "quote": "„Das muss heute fertig werden.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "The first-person narrator’s written email is quoted; the narrator’s gender is unspecified."
+    }
+  ],
+  "reading-b1-83-v2": [
+    {
+      "quote": "„Ich habe weniger geredet und trotzdem mehr verstanden.“",
+      "speaker": "Kollege",
+      "voice": "male",
+      "evidence": "A male colleague gives this feedback during the review of the meeting rule after two weeks."
+    }
+  ],
+  "reading-b1-84-v2": [
+    {
+      "quote": "„Wir sollten auch dafür sorgen, dass die richtige Datei leichter zu finden ist.“",
+      "speaker": "Kollegin",
+      "voice": "female",
+      "evidence": "The narrator’s female colleague says this while reviewing the filing problem after sending the corrected report."
+    }
+  ],
+  "reading-b1-86-v2": [
+    {
+      "quote": "„Ich habe meinen Tag schon um diesen Termin herum geplant.“",
+      "speaker": "Kunde",
+      "voice": "male",
+      "evidence": "The male customer explains his urgency during the first call."
+    }
+  ],
+  "reading-b1-90-v2": [
+    {
+      "quote": "„Die verlässlichen Angaben verdanken wir auch der genauen Arbeit unserer Kollegin.“",
+      "speaker": "Teamleiter",
+      "voice": "male",
+      "evidence": "The male team leader publicly credits the colleague who checked the project information."
+    }
+  ],
+  "reading-b1-92-v2": [
+    {
+      "quote": "„Einen kleinen Braunen, bitte“",
+      "speaker": "Gast",
+      "voice": "male",
+      "evidence": "The male guest says this when ordering coffee from Tessa."
+    }
+  ],
+  "reading-b1-95-v2": [
+    {
+      "quote": "„Ich frage lieber in der Küche nach.“",
+      "speaker": "Bedienung",
+      "voice": "female",
+      "evidence": "The waitress says this after explaining that she is not certain about the cake ingredients."
+    }
+  ],
+  "reading-b1-100-v2": [
+    {
+      "quote": "„Solche Tassen standen früher bei meiner Mutter.“",
+      "speaker": "Ältere Besucherin",
+      "voice": "female",
+      "evidence": "The older female guest recognizes the cup pattern and relates it to her mother’s cups."
+    }
   ]
 }
