@@ -660,5 +660,81 @@
       "voice": "female",
       "evidence": "The female neighbour reassures the invited narrator; sagte sie follows the quote."
     }
+  ],
+  "reading-b1-191-v2": [
+    {
+      "quote": "„Komm doch mal vorbei.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "The first-person narrator quotes their own written invitation; their gender is unspecified."
+    },
+    {
+      "quote": "„An welchem Abend soll ich kommen?“",
+      "speaker": "Kollege",
+      "voice": "male",
+      "evidence": "The new male colleague replies to the invitation; fragte er follows the question."
+    }
+  ],
+  "reading-b1-192-v2": [
+    {
+      "quote": "„Sagst du ihn bitte noch einmal langsam?“",
+      "speaker": "Leiterin",
+      "voice": "female",
+      "evidence": "The female group leader asks the narrator to repeat their name; fragte sie follows the question."
+    }
+  ],
+  "reading-b1-194-v2": [
+    {
+      "quote": "„Haben Sie die Interviews im Nebenraum schon gesehen?“",
+      "speaker": "Mitarbeiterin im Museum",
+      "voice": "female",
+      "evidence": "The female museum employee directs the narrator to the interview collection."
+    }
+  ],
+  "reading-b1-196-v2": [
+    {
+      "quote": "„Mehr Meer wäre mir lieber“",
+      "speaker": "Tim",
+      "voice": "male",
+      "evidence": "Tim repeats his friend’s travel wordplay as an example; sagte Tim follows the quote."
+    }
+  ],
+  "reading-b1-197-v2": [
+    {
+      "quote": "„Mir wäre wichtig, dass wir alle zusammen am Tisch sitzen“",
+      "speaker": "Mutter",
+      "voice": "female",
+      "evidence": "The narrator’s mother explains her priority while the family plans the meal."
+    }
+  ],
+  "reading-b1-198-v2": [
+    {
+      "quote": "„Möchtest du dich hierhin setzen?“",
+      "speaker": "Frau am Fenster",
+      "voice": "female",
+      "evidence": "The woman by the window repeats her seat offer more slowly; fragte sie follows the question."
+    }
+  ],
+  "reading-b1-199-v2": [
+    {
+      "quote": "„Das war bei unserem Ausflug in eine andere Stadt“",
+      "speaker": "Onkel",
+      "voice": "male",
+      "evidence": "The narrator’s uncle corrects the assumed photo location; sagte er follows the quote."
+    }
+  ],
+  "reading-b1-200-v2": [
+    {
+      "quote": "„Mit diesem Schlüssel begann für mich früher fast jeder Arbeitstag“",
+      "speaker": "Matthias",
+      "voice": "male",
+      "evidence": "Matthias presents his old shop key; erklärte er follows the quote."
+    },
+    {
+      "quote": "„Am Anfang habe ich hier jede Haltestelle genau auf der Karte gesucht“",
+      "speaker": "Mira",
+      "voice": "female",
+      "evidence": "Mira presents her bus ticket and describes her first months in the neighbourhood; sagte sie follows the quote."
+    }
   ]
 }

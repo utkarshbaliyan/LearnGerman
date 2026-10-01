@@ -544,5 +544,47 @@
     "textHash": "5dc717c35df40c034f156b133479b95522b4b8e55e0213228b03e8115aa376ba",
     "wordCount": 759,
     "duration": 257.18
+  },
+  "reading-b1-78-v2": {
+    "src": "/audio/reading/reading-b1-78-v2-88d79542f17e-f293f9f6-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-78-v2-88d79542f17e-f293f9f6-qwen-dialogue-opus16.json",
+    "textHash": "88d79542f17e372d669a433daa2bf099c5f623792dbe815f7e6a4625995f0ea4",
+    "wordCount": 746,
+    "duration": 251.1
+  },
+  "reading-b1-79-v2": {
+    "src": "/audio/reading/reading-b1-79-v2-2f73ed4c49f3-f34ae97f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-79-v2-2f73ed4c49f3-f34ae97f-qwen-dialogue-opus16.json",
+    "textHash": "2f73ed4c49f3a9e9cbb4446d287ad74075ee9a84df037606102496a986d3a45a",
+    "wordCount": 740,
+    "duration": 269.98
+  },
+  "reading-b1-80-v2": {
+    "src": "/audio/reading/reading-b1-80-v2-4f75296356a2-33ab9960-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-80-v2-4f75296356a2-33ab9960-qwen-dialogue-opus16.json",
+    "textHash": "4f75296356a226bece66a8ba746d1308a901196686227209ec2347fe8d39c1ef",
+    "wordCount": 731,
+    "duration": 272.47046
+  },
+  "reading-b1-81-v2": {
+    "src": "/audio/reading/reading-b1-81-v2-d8d3ad30eafe-a3a9797d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-81-v2-d8d3ad30eafe-a3a9797d-qwen-dialogue-opus16.json",
+    "textHash": "d8d3ad30eafedc55bed6d33c84d739db7d7909b421c500da11abf4fae01f8f5f",
+    "wordCount": 738,
+    "duration": 267.1
+  },
+  "reading-b1-82-v2": {
+    "src": "/audio/reading/reading-b1-82-v2-40c188062ffb-ea3c74ff-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-82-v2-40c188062ffb-ea3c74ff-qwen-dialogue-opus16.json",
+    "textHash": "40c188062ffbe938b06517a2297be81cd1fa964467fcea9342032419f4f30407",
+    "wordCount": 742,
+    "duration": 269.5
+  },
+  "reading-b1-83-v2": {
+    "src": "/audio/reading/reading-b1-83-v2-841c9a4884fa-2eafa690-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-83-v2-841c9a4884fa-2eafa690-qwen-dialogue-opus16.json",
+    "textHash": "841c9a4884faebf1c61ccb2928ae910d302f5d3203c96ab08d96e31fafbcd110",
+    "wordCount": 718,
+    "duration": 263.3
   }
 }
