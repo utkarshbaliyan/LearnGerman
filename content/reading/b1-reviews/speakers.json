@@ -524,5 +524,13 @@
       "voice": "female",
       "evidence": "The female owner of the missing dog says this during the call after receiving the narrator’s precise location information."
     }
+  ],
+  "reading-b1-130-v2": [
+    {
+      "quote": "„Dann wissen wir später noch, was uns dieses Jahr aufgefallen ist.“",
+      "speaker": "Sohn",
+      "voice": "male",
+      "evidence": "The narrator’s son proposes adding observation notes to the annual tree photographs."
+    }
   ]
 }
