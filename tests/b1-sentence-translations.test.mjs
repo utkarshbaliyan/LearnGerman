@@ -55,6 +55,21 @@ test('reviewed English keeps contextual meanings for bookings, bicycles and plan
   assert.match(find('reading-b1-11-v2', 'lockeren Knopf'), /sew on a loose button/i);
 });
 
+test('reviewed English preserves negatives and avoids unrelated language fragments', () => {
+  const sentence = (id, part) => translations[id].paragraphs.flatMap(p => p.sentences)
+    .find(s => s.de.includes(part))?.en;
+  assert.match(sentence('reading-b1-88-v2', 'nicht erst dann wieder stattfinden'),
+    /not have to wait.*before the induction continued/i);
+  assert.match(sentence('reading-b1-91-v2', 'keine offene Datei mehr beenden'),
+    /no longer.*unfinished file/i);
+  assert.match(sentence('reading-b1-78-v2', 'wie die Schale auf dem Tisch stand'), /bowl/i);
+  for (const id of Object.keys(reviews)) {
+    for (const { en } of translations[id].paragraphs.flatMap(p => p.sentences)) {
+      assert.doesNotMatch(en, /\p{Script=Han}/u, `${id}: unrelated language fragment`);
+    }
+  }
+});
+
 test('publication rejects a B1 collection with any missing English review', () => {
   const result = spawnSync(process.execPath, ['scripts/prepare-b1-sentence-translations.mjs', '--require-complete'],
     { cwd: root, encoding: 'utf8', timeout: 120000 });
