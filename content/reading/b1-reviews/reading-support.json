@@ -49452,7 +49452,7 @@
     }
   },
   "reading-b1-128-v2": {
-    "sourceHash": "bcf7f14ec14aa87692902d9bfcc805ac4e0bb732397a97992782253941e318d8",
+    "sourceHash": "356d72909e24656e2419301362cf80d542cef23133b8e27b58e820060a7c0ef7",
     "words": [
       {
         "german": "Gebiet",
@@ -49752,11 +49752,10 @@
       "erste": "first",
       "ungeduld": "impatience",
       "verständlich": "understandable",
-      "nachträglich": "afterwards; retrospectively",
-      "zur": "to the",
-      "einzigen": "single / only",
-      "möglichen": "possible",
-      "entscheidung": "decision",
+      "gewesen": "been",
+      "gute": "good",
+      "möglichkeit": "possibility",
+      "erwiesen": "proved; turned out to be",
       "suchten": "to search",
       "platz": "place / seat",
       "tranken": "drank",
@@ -49817,6 +49816,7 @@
       "auseinandersetzung": "argument; dispute",
       "ihnen": "them / you",
       "eigene": "own",
+      "entscheidung": "decision",
       "getroffen": "met",
       "weiter": "further / on",
       "bei": "at / with",
@@ -49839,7 +49839,6 @@
       "gewählt": "to choose",
       "vorgesehen": "planned; intended",
       "schön": "beautiful",
-      "gewesen": "been",
       "erinnerte": "remembers",
       "schatten": "shadow",
       "mitgenommen": "taken along",
