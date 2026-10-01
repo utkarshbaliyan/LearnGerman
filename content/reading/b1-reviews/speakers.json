@@ -540,5 +540,61 @@
       "voice": "female",
       "evidence": "The trainer asks the narrator about a concrete improvement; fragte sie follows the question."
     }
+  ],
+  "reading-b1-151-v2": [
+    {
+      "quote": "„Welche Aufgaben kannst du auf Dauer übernehmen?“",
+      "speaker": "Ralf",
+      "voice": "male",
+      "evidence": "Ralf, the chairman, explicitly asks this question; fragte er follows the quote."
+    }
+  ],
+  "reading-b1-152-v2": [
+    {
+      "quote": "„Was haben wir selbst gewählt, bevor es schiefging?“",
+      "speaker": "Partner",
+      "voice": "male",
+      "evidence": "The narrator’s male sports partner asks about their chosen actions; fragte er follows the quote."
+    }
+  ],
+  "reading-b1-153-v2": [
+    {
+      "quote": "„Hilfst du mir, ihn hochzubringen?“",
+      "speaker": "Nichte",
+      "voice": "female",
+      "evidence": "The narrator’s niece carries a kite and asks for help; fragte sie follows the quote."
+    }
+  ],
+  "reading-b1-155-v2": [
+    {
+      "quote": "„Soll ich es erst langsam vormachen?“",
+      "speaker": "Partner",
+      "voice": "male",
+      "evidence": "The narrator asks their male dance partner to demonstrate a move; fragte er follows the quote."
+    }
+  ],
+  "reading-b1-159-v2": [
+    {
+      "quote": "„Darin stehen viele Erinnerungen an meine Mutter“",
+      "speaker": "Besitzerin",
+      "voice": "female",
+      "evidence": "The female owner describes her recovered notebook; sagte sie follows the quote."
+    }
+  ],
+  "reading-b1-162-v2": [
+    {
+      "quote": "„Suchen Sie auch unter dem früheren Namen des Platzes“",
+      "speaker": "Mitarbeiterin im Archiv",
+      "voice": "female",
+      "evidence": "The archive employee gives a search hint; empfahl die Mitarbeiterin follows the quote."
+    }
+  ],
+  "reading-b1-166-v2": [
+    {
+      "quote": "„Zuerst möchten wir wissen, wer den Raum tatsächlich braucht“",
+      "speaker": "Lea",
+      "voice": "female",
+      "evidence": "Lea addresses a female visitor during the open afternoon; erklärte Lea follows the quote."
+    }
   ]
 }
