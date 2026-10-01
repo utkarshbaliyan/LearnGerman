@@ -713,13 +713,6 @@
     "wordCount": 737,
     "duration": 269.5
   },
-  "reading-b1-105-v2": {
-    "src": "/audio/reading/reading-b1-105-v2-322dee458468-5561ee11-qwen-dialogue-opus16.webm",
-    "timingSrc": "/audio/reading/reading-b1-105-v2-322dee458468-5561ee11-qwen-dialogue-opus16.json",
-    "textHash": "322dee4584684ed9b62b48790f93fe08ac491e42a2ac9483f18daf20dd6148a7",
-    "wordCount": 733,
-    "duration": 266.44
-  },
   "reading-b1-106-v2": {
     "src": "/audio/reading/reading-b1-106-v2-3cc08eff5f22-786aaf0b-qwen-dialogue-opus16.webm",
     "timingSrc": "/audio/reading/reading-b1-106-v2-3cc08eff5f22-786aaf0b-qwen-dialogue-opus16.json",
@@ -733,5 +726,26 @@
     "textHash": "5a2010dbf748b90ee435fe96bf250a5670c0a24a17835852cd5c38d29322b5d5",
     "wordCount": 747,
     "duration": 267.26004
+  },
+  "reading-b1-108-v2": {
+    "src": "/audio/reading/reading-b1-108-v2-b8a77bd6127a-2b3843ca-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-108-v2-b8a77bd6127a-2b3843ca-qwen-dialogue-opus16.json",
+    "textHash": "b8a77bd6127aed5e5c67b66a527e8a0b3921bbae73fe296cc6b515e2b3906d87",
+    "wordCount": 713,
+    "duration": 263.26
+  },
+  "reading-b1-109-v2": {
+    "src": "/audio/reading/reading-b1-109-v2-b844ccf3662f-1dc11259-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-109-v2-b844ccf3662f-1dc11259-qwen-dialogue-opus16.json",
+    "textHash": "b844ccf3662f75d53b16e0bdc9ad314bed75c3454539b5d7dac7b352a4b20e47",
+    "wordCount": 732,
+    "duration": 272.47408
+  },
+  "reading-b1-110-v2": {
+    "src": "/audio/reading/reading-b1-110-v2-257cb254dd4d-86a89757-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/reading/reading-b1-110-v2-257cb254dd4d-86a89757-qwen-dialogue-opus16.json",
+    "textHash": "257cb254dd4d473e278b113981120edccf343ee384fdf34389ab69183d06db80",
+    "wordCount": 749,
+    "duration": 261.59046
   }
 }

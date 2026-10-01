@@ -40404,7 +40404,7 @@
     }
   },
   "reading-b1-105-v2": {
-    "sourceHash": "322dee4584684ed9b62b48790f93fe08ac491e42a2ac9483f18daf20dd6148a7",
+    "sourceHash": "4bfe7e4bc935cdd819762f42b647ed25d0f120e3eb8ff66561e94efc35f2ae2a",
     "words": [
       {
         "german": "Besichtigung",
@@ -40622,8 +40622,8 @@
       "metern": "metres",
       "stieg": "climbed / got on or off",
       "ab": "from / off",
-      "ließ": "let (past)",
-      "bequem": "comfortable",
+      "lenker": "handlebars",
+      "pedale": "pedals",
       "erreichen": "reach",
       "sitzposition": "seating position",
       "jedoch": "however",
@@ -40759,6 +40759,7 @@
       "schöne": "beautiful",
       "angebot": "offer / special offer / supply",
       "interessieren": "to interest; to be interested in",
+      "zur": "to the",
       "hinzusehen": "to look closely",
       "beides": "both",
       "ernst": "serious",
@@ -46661,7 +46662,7 @@
     }
   },
   "reading-b1-121-v2": {
-    "sourceHash": "0032ff3a0b3a5a7d904e5c3a900f96a80831297b3caabb770020b6d38bc9920d",
+    "sourceHash": "3e8e3dfd21e3fa830812d85ed7a5ba785bc9f96165d97b564a92177bafad7577",
     "words": [
       {
         "german": "erkenne",
@@ -47054,13 +47055,13 @@
       "diesmal": "this time",
       "große": "big",
       "kleine": "small",
+      "worauf": "what … for / on what",
       "behauptung": "claim",
-      "erkannt": "recognised",
-      "haben": "to have"
+      "gestützt": "supported; based on"
     }
   },
   "reading-b1-122-v2": {
-    "sourceHash": "a3d76e9b32da1694a262e28b7edb97396d4cddb640ed144af76f15b3bd919c1f",
+    "sourceHash": "f1729b85ca0c37bfd7c376d2622690691f0d9abfd6be6bee4c1bdeebb0716aa5",
     "words": [
       {
         "german": "Halsband",
