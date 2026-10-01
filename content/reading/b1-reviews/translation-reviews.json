@@ -875,12 +875,6 @@
     "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
     "reviewedAt": "2026-10-01T13:21:15.378816+00:00"
   },
-  "reading-b1-147-v2": {
-    "sourceHash": "d901b7fa653ae818603876ed5d0189a8f1bb6e35f6be407d238be02bc806d08b",
-    "sentenceCount": 61,
-    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
-    "reviewedAt": "2026-10-01T13:21:57.760059+00:00"
-  },
   "reading-b1-148-v2": {
     "sourceHash": "cc5dce874f5869b6b4a75db3cf6d76be428084c4cf28ad9c194b90a009210add",
     "sentenceCount": 58,
@@ -898,5 +892,311 @@
     "sentenceCount": 64,
     "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
     "reviewedAt": "2026-10-01T13:22:34.040716+00:00"
+  },
+  "reading-b1-151-v2": {
+    "sourceHash": "ca45bc3399c2e0906ab560e3cbf139e125670e31d0dce4db12b9197f3fe653bd",
+    "sentenceCount": 64,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:24:08.506136+00:00"
+  },
+  "reading-b1-152-v2": {
+    "sourceHash": "a467a11132180bda7c3cd9b91023da31dbbe1c536eb514abb0378065e60489b0",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:24:08.649400+00:00"
+  },
+  "reading-b1-153-v2": {
+    "sourceHash": "49d00ba802f2abf57ba23d66fa3617bc13e63859c866dba3fb5601f1445f7785",
+    "sentenceCount": 65,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:24:45.152974+00:00"
+  },
+  "reading-b1-154-v2": {
+    "sourceHash": "60f0240dd10c14322ab1961939da71c57004e734bcc91de9a1e19c98c2834f74",
+    "sentenceCount": 64,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:24:45.210758+00:00"
+  },
+  "reading-b1-155-v2": {
+    "sourceHash": "d4e3bae2c35f138279fb8f0a77dcf7603a9a7a5467f5fcb3818a6ef323ed7efc",
+    "sentenceCount": 66,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:25:26.107789+00:00"
+  },
+  "reading-b1-156-v2": {
+    "sourceHash": "f82ed9ac67219e24457b066522654c2c5055425efbe80a216f3ad7008c33cf96",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:25:26.221113+00:00"
+  },
+  "reading-b1-157-v2": {
+    "sourceHash": "c83c1db665970ade6d9097e4b7c3d01ff1f81a4b1ebeef5d4bd0f9d04b4ce186",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:26:09.055452+00:00"
+  },
+  "reading-b1-158-v2": {
+    "sourceHash": "1a5e1152864ff5302ec37b871002c22877ee79184cc785acb29af414058ee7f6",
+    "sentenceCount": 56,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:26:09.117276+00:00"
+  },
+  "reading-b1-159-v2": {
+    "sourceHash": "b3077982656c8da48bc78618b6218afdc7a36ae9e3917f8f831341d14709aa4b",
+    "sentenceCount": 65,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:26:38.322313+00:00"
+  },
+  "reading-b1-160-v2": {
+    "sourceHash": "c4d3c0040c81a77c0381869155170497b30d69f9a9e99de8ac090931341978cb",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:26:38.466319+00:00"
+  },
+  "reading-b1-161-v2": {
+    "sourceHash": "d38bea98083b2a3b8d20c61ca1dd8dbeb41fbec0805d275c1b10b8420bcbe045",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:27:10.176058+00:00"
+  },
+  "reading-b1-162-v2": {
+    "sourceHash": "85810e71484ca98979c6715497f8a5bd9a55450e33136cf8aa0245dde9ecdd2b",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:27:10.234431+00:00"
+  },
+  "reading-b1-163-v2": {
+    "sourceHash": "b0a8cea1dcb669e8dcd7e168bc0daea66b6deb77af9eea1f0422d5d73912fca8",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:27:42.809762+00:00"
+  },
+  "reading-b1-164-v2": {
+    "sourceHash": "b5c9e4d84eb6462fed959c58cd22aa518ee5957d1bfec8e8ab67dc00739f8d8f",
+    "sentenceCount": 58,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:27:42.926561+00:00"
+  },
+  "reading-b1-165-v2": {
+    "sourceHash": "081979534cdfc8871da75a35a8a742bb7c82f7ab6450e1792c7743a9b07fbe38",
+    "sentenceCount": 56,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:28:18.229933+00:00"
+  },
+  "reading-b1-166-v2": {
+    "sourceHash": "d1e83a30bda4a6f346d4d56c65d4ac6aebb50dd1947b00203dfd21263e9ffe97",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:28:18.365040+00:00"
+  },
+  "reading-b1-167-v2": {
+    "sourceHash": "78ae4b97e762722be390838de1b881c2a68e09ff0f07f39fbadff5cd6c7fda0d",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:28:53.610014+00:00"
+  },
+  "reading-b1-168-v2": {
+    "sourceHash": "2a98965adfee7fbbe049a4922388aaa0dccdc17328b4cc15ad6f991a7d05ee7a",
+    "sentenceCount": 58,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:28:53.681039+00:00"
+  },
+  "reading-b1-169-v2": {
+    "sourceHash": "fb696bb9899b8dd16a8bfaaa0f5661b7302185f30e998465531b522d8419fca7",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:29:19.523713+00:00"
+  },
+  "reading-b1-170-v2": {
+    "sourceHash": "0245fd1bfb317128c1e89a2c54f7ee6c676ee0c978a863e8329e10ab0c437535",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:29:19.667062+00:00"
+  },
+  "reading-b1-171-v2": {
+    "sourceHash": "4e880572e5066dcfdabbc05bb13c83eb234d798b4ec85034204700a8b3173d42",
+    "sentenceCount": 57,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:29:46.417081+00:00"
+  },
+  "reading-b1-172-v2": {
+    "sourceHash": "f9ce3d6b916091a4c7222af2c00cc447fa8d2f04fc933a03cfbc9acd3b47257c",
+    "sentenceCount": 63,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:29:46.473941+00:00"
+  },
+  "reading-b1-173-v2": {
+    "sourceHash": "125a63623a2acca6ea5bc5b98c95cb1fcd774ff500766239cf517d39abc1209e",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:30:12.716141+00:00"
+  },
+  "reading-b1-174-v2": {
+    "sourceHash": "d528e1b6066fb946b53eb69d22b0f6cf9a9c5e97811503bc160ea1597430cdef",
+    "sentenceCount": 63,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:30:12.857914+00:00"
+  },
+  "reading-b1-175-v2": {
+    "sourceHash": "35e0e3a96b26d917cf9194c8d90c073a0d3afddeff2f0193210842bc8414af88",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:30:40.573448+00:00"
+  },
+  "reading-b1-176-v2": {
+    "sourceHash": "345c658380054f94b8faa97a4eea920319e3750f68f7ee9f00db93bb3f3c0027",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:30:40.631949+00:00"
+  },
+  "reading-b1-177-v2": {
+    "sourceHash": "cf938f7d370e5cbd6262c40ba6055368d94a5286e66c8ab6c91558d6c1d8ea0c",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:31:12.225003+00:00"
+  },
+  "reading-b1-178-v2": {
+    "sourceHash": "742ffabc5ed6cdc88293484efeb3f90c26b13d76ead52e849fc925dd7cac2873",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:31:12.377852+00:00"
+  },
+  "reading-b1-179-v2": {
+    "sourceHash": "390d8ac553bbf44687271eb21ae5d372603bf44d6b210a67aaee366058a66940",
+    "sentenceCount": 58,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:31:45.794417+00:00"
+  },
+  "reading-b1-180-v2": {
+    "sourceHash": "8415edf3c8a7550e6c169b588b0ce4f644170db9dff746e1a9a26a170ddee20a",
+    "sentenceCount": 58,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:31:45.859731+00:00"
+  },
+  "reading-b1-181-v2": {
+    "sourceHash": "8885f82b2879790b49ffce2258907575ca128cd64a6f7fc69d9fd4a6e962711e",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:32:17.732313+00:00"
+  },
+  "reading-b1-182-v2": {
+    "sourceHash": "538620f5bfa2de1388f1a9a211d1eb533bb3dd4c9c69ff2851420d2ecbf31819",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:32:17.901590+00:00"
+  },
+  "reading-b1-183-v2": {
+    "sourceHash": "be14e32719e6cca24f79cec7cb1ea9c7274282cb0b9edc594fcd0dd7ffdd7725",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:32:42.940846+00:00"
+  },
+  "reading-b1-184-v2": {
+    "sourceHash": "9a2631f7da821fa7f2ee171e7b8f9b4bc2893fe75c707765af7fd61e8c44caae",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:32:42.998216+00:00"
+  },
+  "reading-b1-185-v2": {
+    "sourceHash": "380fdf465f85fdefb2c0dc2225d54a7c60198b3c84a4c153083177bf9b70486d",
+    "sentenceCount": 58,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:33:17.455306+00:00"
+  },
+  "reading-b1-186-v2": {
+    "sourceHash": "891c96aaa1ed0b1d29dc3215c2661cbbee8c73a8ccf8dea93220b0a8766b1220",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:33:17.604075+00:00"
+  },
+  "reading-b1-187-v2": {
+    "sourceHash": "8e6aeb5ff87b22f99bdc38ee2af85f9edf2d212f615b7a876f58c57e1436154e",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:33:43.945494+00:00"
+  },
+  "reading-b1-188-v2": {
+    "sourceHash": "8c04cb4635b73d89a19925851e52429d3c7c506a6dc68577b2ab60a60cb688bf",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:33:43.997021+00:00"
+  },
+  "reading-b1-189-v2": {
+    "sourceHash": "db9bcfaa5b18b0a163240784c0805fdf5b0b250451ce7b96afdb4054e8c244de",
+    "sentenceCount": 66,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:34:28.027518+00:00"
+  },
+  "reading-b1-190-v2": {
+    "sourceHash": "d0f26ee627bbbb2318c6cf18c7e4f44c7eb7f3bc188954861fa3e62df4eb0561",
+    "sentenceCount": 60,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:34:28.186926+00:00"
+  },
+  "reading-b1-191-v2": {
+    "sourceHash": "80a0319a58e92c0a5233720d8202f7cd1c3518b16337c080a16c58ccebbc1de9",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:34:58.351008+00:00"
+  },
+  "reading-b1-192-v2": {
+    "sourceHash": "d9b6a52eb88e4092ac498f978e3396aa5e02e23bd19b18d4a3264dbcc8a8cb08",
+    "sentenceCount": 62,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:34:58.449630+00:00"
+  },
+  "reading-b1-194-v2": {
+    "sourceHash": "eb412c4cb97fca69c62b3af4a564b2efa6d421643b74ab1c3f9cdecab14d67ae",
+    "sentenceCount": 63,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:36:08.970701+00:00"
+  },
+  "reading-b1-195-v2": {
+    "sourceHash": "ac6d2d24ecfb0de6433d52a7d1243c652349a7308b17cceb361aa27af2ee3b70",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:37:09.984904+00:00"
+  },
+  "reading-b1-196-v2": {
+    "sourceHash": "f6d28190a44d3a8f3c2ce1e3f70c6d141549ebcabb5b7aab771392abe433c705",
+    "sentenceCount": 64,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:37:10.067967+00:00"
+  },
+  "reading-b1-197-v2": {
+    "sourceHash": "f22782f3d563e792e60fdf7dc4fb085167bf3d234868253718aca51da3161217",
+    "sentenceCount": 63,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:37:32.654459+00:00"
+  },
+  "reading-b1-198-v2": {
+    "sourceHash": "c4364ec69aaaf047a2bb8103ebbc76a182ac2ed5e535cf313526f34848630669",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:37:32.802613+00:00"
+  },
+  "reading-b1-147-v2": {
+    "sourceHash": "023a71f812c6e2f0d019f4d7a1c1fe708bf8a7a172ced754e0a766fffd6a21ef",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:42:19.168933+00:00"
+  },
+  "reading-b1-193-v2": {
+    "sourceHash": "9aaa248a99be6d8fee138b098825a81afd003b723a4dc1fe73fc247353fb5117",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:42:19.218934+00:00"
+  },
+  "reading-b1-199-v2": {
+    "sourceHash": "605c828e0ee41de1cdfc911c3e43860219a2d0ed5ede68e8d63580bc7e5aed14",
+    "sentenceCount": 59,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:42:19.266029+00:00"
+  },
+  "reading-b1-200-v2": {
+    "sourceHash": "681016edbc7bc9bad167515da1ccc4d17310913cafffa9f31e95510f839020a7",
+    "sentenceCount": 61,
+    "method": "ChatGPT comparison of every German sentence and English translation; contextual corrections",
+    "reviewedAt": "2026-10-01T13:42:19.313383+00:00"
   }
 }

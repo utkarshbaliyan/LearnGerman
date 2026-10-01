@@ -57195,7 +57195,7 @@
     }
   },
   "reading-b1-147-v2": {
-    "sourceHash": "d901b7fa653ae818603876ed5d0189a8f1bb6e35f6be407d238be02bc806d08b",
+    "sourceHash": "023a71f812c6e2f0d019f4d7a1c1fe708bf8a7a172ced754e0a766fffd6a21ef",
     "words": [
       {
         "german": "Weg",
@@ -57473,8 +57473,8 @@
       "blockieren": "to block",
       "liste": "list",
       "allein": "alone",
-      "unerwartete": "unexpected",
-      "ersetzen": "replace",
+      "ersetzte": "replaced",
+      "unerwarteten": "unexpected",
       "unklare": "unclear",
       "stelle": "place / position; also an office or job",
       "kam": "came",
@@ -76037,7 +76037,7 @@
     }
   },
   "reading-b1-193-v2": {
-    "sourceHash": "b2178602b99808ae739763f500234d20258fda65db688ea597fbc4db355474a0",
+    "sourceHash": "9aaa248a99be6d8fee138b098825a81afd003b723a4dc1fe73fc247353fb5117",
     "words": [
       {
         "german": "Feiertag",
@@ -76337,7 +76337,8 @@
       "improvisieren": "to improvise",
       "weil": "because",
       "einkauf": "shopping / purchase",
-      "spät": "late",
+      "rechtzeitig": "in time",
+      "erledigt": "completed",
       "spazieren": "to walk",
       "fielen": "fell; arose (fielen an)",
       "nun": "now",

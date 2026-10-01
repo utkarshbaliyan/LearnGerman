@@ -63,6 +63,10 @@ test('reviewed English preserves negatives and avoids unrelated language fragmen
   assert.match(sentence('reading-b1-91-v2', 'keine offene Datei mehr beenden'),
     /no longer.*unfinished file/i);
   assert.match(sentence('reading-b1-78-v2', 'wie die Schale auf dem Tisch stand'), /bowl/i);
+  assert.match(sentence('reading-b1-199-v2', 'Eine Person im Hintergrund'),
+    /^My uncle could not name one person/i);
+  assert.match(sentence('reading-b1-200-v2', 'nicht automatisch öffentlich erscheinen'),
+    /not automatically be made public/i);
   for (const id of Object.keys(reviews)) {
     for (const { en } of translations[id].paragraphs.flatMap(p => p.sentences)) {
       assert.doesNotMatch(en, /\p{Script=Han}/u, `${id}: unrelated language fragment`);
@@ -70,7 +74,7 @@ test('reviewed English preserves negatives and avoids unrelated language fragmen
   }
 });
 
-test('publication rejects a B1 collection with any missing English review', () => {
+test('publication requires matching English reviews for the complete B1 collection', () => {
   const result = spawnSync(process.execPath, ['scripts/prepare-b1-sentence-translations.mjs', '--require-complete'],
     { cwd: root, encoding: 'utf8', timeout: 120000 });
   assert.ifError(result.error);
