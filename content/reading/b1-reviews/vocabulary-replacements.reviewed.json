@@ -4,7 +4,7 @@
       "german": "Zimmerpreis",
       "form": "Zimmerpreis",
       "english": "room price",
-      "headword": "Zimmerpreis",
+      "headword": "der Zimmerpreis",
       "headwordEnglish": "room price"
     }
   },
@@ -13,7 +13,7 @@
       "german": "Druckkosten",
       "form": "Druckkosten",
       "english": "printing costs",
-      "headword": "Druckkosten",
+      "headword": "die Druckkosten",
       "headwordEnglish": "printing costs"
     }
   },
@@ -22,7 +22,7 @@
       "german": "Lernplatz",
       "form": "Lernplatz",
       "english": "place to study",
-      "headword": "Lernplatz",
+      "headword": "der Lernplatz",
       "headwordEnglish": "place to study"
     }
   },
@@ -31,8 +31,8 @@
       "german": "ausblieb",
       "form": "ausblieb",
       "english": "failed to arrive; did not happen",
-      "headword": "ausblieb",
-      "headwordEnglish": "failed to arrive; did not happen"
+      "headword": "ausbleiben",
+      "headwordEnglish": "to fail to arrive; to fail to happen"
     }
   },
   "reading-b1-05-v1": {
@@ -40,7 +40,7 @@
       "german": "Ersparnis",
       "form": "Ersparnis",
       "english": "saving; money saved",
-      "headword": "Ersparnis",
+      "headword": "die Ersparnis",
       "headwordEnglish": "saving; money saved"
     }
   },
@@ -58,7 +58,7 @@
       "german": "Schulfest",
       "form": "Schulfest",
       "english": "school celebration",
-      "headword": "Schulfest",
+      "headword": "das Schulfest",
       "headwordEnglish": "school celebration"
     }
   },
@@ -67,14 +67,14 @@
       "german": "Reisende",
       "form": "Reisende",
       "english": "travellers",
-      "headword": "Reisende",
-      "headwordEnglish": "travellers"
+      "headword": "der Reisende",
+      "headwordEnglish": "traveller"
     },
     "4": {
       "german": "Reisezeit",
       "form": "Reisezeit",
       "english": "travel time",
-      "headword": "Reisezeit",
+      "headword": "die Reisezeit",
       "headwordEnglish": "travel time"
     }
   },
@@ -99,15 +99,15 @@
       "german": "auszutauschen",
       "form": "auszutauschen",
       "english": "to replace; to exchange",
-      "headword": "auszutauschen",
-      "headwordEnglish": "to replace; to exchange"
+      "headword": "austauschen",
+      "headwordEnglish": "to exchange"
     },
     "4": {
       "german": "elektrisches",
       "form": "elektrisches",
       "english": "electrical",
-      "headword": "elektrisches",
-      "headwordEnglish": "electrical"
+      "headword": "elektrisch",
+      "headwordEnglish": "electric"
     }
   },
   "reading-b1-12-v1": {
@@ -115,7 +115,7 @@
       "german": "Aufgabenliste",
       "form": "Aufgabenliste",
       "english": "task list",
-      "headword": "Aufgabenliste",
+      "headword": "die Aufgabenliste",
       "headwordEnglish": "task list"
     },
     "3": {
@@ -131,8 +131,8 @@
       "german": "übergangen",
       "form": "übergangen",
       "english": "overlooked; ignored",
-      "headword": "übergangen",
-      "headwordEnglish": "overlooked; ignored"
+      "headword": "übergehen",
+      "headwordEnglish": "to overlook; to ignore"
     },
     "2": {
       "german": "Verwendung",
@@ -145,8 +145,8 @@
       "german": "zugestimmt",
       "form": "zugestimmt",
       "english": "agreed; given consent",
-      "headword": "zugestimmt",
-      "headwordEnglish": "agreed; given consent"
+      "headword": "zustimmen",
+      "headwordEnglish": "to agree"
     }
   },
   "reading-b1-14-v1": {
@@ -161,7 +161,7 @@
       "german": "Gruppenkarte",
       "form": "Gruppenkarte",
       "english": "group ticket",
-      "headword": "Gruppenkarte",
+      "headword": "die Gruppenkarte",
       "headwordEnglish": "group ticket"
     }
   },
@@ -195,14 +195,14 @@
       "german": "Beratungsangeboten",
       "form": "Beratungsangeboten",
       "english": "advice services",
-      "headword": "Beratungsangeboten",
-      "headwordEnglish": "advice services"
+      "headword": "das Beratungsangebot",
+      "headwordEnglish": "advice service"
     },
     "4": {
       "german": "Kontaktadresse",
       "form": "Kontaktadresse",
       "english": "contact address",
-      "headword": "Kontaktadresse",
+      "headword": "die Kontaktadresse",
       "headwordEnglish": "contact address"
     }
   },
@@ -211,21 +211,21 @@
       "german": "Lernzeit",
       "form": "Lernzeit",
       "english": "study time",
-      "headword": "Lernzeit",
+      "headword": "die Lernzeit",
       "headwordEnglish": "study time"
     },
     "2": {
       "german": "konzentrierter",
       "form": "konzentrierter",
       "english": "more focused",
-      "headword": "konzentrierter",
-      "headwordEnglish": "more focused"
+      "headword": "konzentriert",
+      "headwordEnglish": "focused"
     },
     "3": {
       "german": "Arbeitsalltag",
       "form": "Arbeitsalltag",
       "english": "everyday working life",
-      "headword": "Arbeitsalltag",
+      "headword": "der Arbeitsalltag",
       "headwordEnglish": "everyday working life"
     }
   },
@@ -234,8 +234,8 @@
       "german": "wegfahrenden",
       "form": "wegfahrenden",
       "english": "departing",
-      "headword": "wegfahrenden",
-      "headwordEnglish": "departing"
+      "headword": "wegfahren",
+      "headwordEnglish": "to leave; to drive away"
     },
     "4": {
       "german": "Fläche",
@@ -250,14 +250,14 @@
       "german": "Gestaltung",
       "form": "Gestaltung",
       "english": "design; arrangement",
-      "headword": "Gestaltung",
+      "headword": "die Gestaltung",
       "headwordEnglish": "design; arrangement"
     },
     "4": {
       "german": "Zusicherung",
       "form": "Zusicherung",
       "english": "assurance",
-      "headword": "Zusicherung",
+      "headword": "die Zusicherung",
       "headwordEnglish": "assurance"
     }
   },

@@ -1,4 +1,5 @@
 import READING_VOCABULARY from "./reading-data.json";
+import B1_STORY_VOCABULARY from "./b1-story-data.json";
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
@@ -462,6 +463,7 @@ export const CORE_VOCABULARY = removeDuplicateVerbForms([
 const CLEAN_VOCABULARY = applyVocabularyPlacement(removeDuplicateVerbForms([
   ...CORE_VOCABULARY,
   ...EXTENDED_B1_LEXICON,
+  ...B1_STORY_VOCABULARY as VocabularyWord[],
   ...READING_VOCABULARY as VocabularyWord[],
 ]).filter(isStandaloneVocabularyHeadword).map((word) => ({ ...word, wordClass: vocabularyWordClass(word) })));
 

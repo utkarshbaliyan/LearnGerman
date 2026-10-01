@@ -254,9 +254,9 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
-  assert.equal(ALL_VOCABULARY.length, 4123);
+  assert.equal(ALL_VOCABULARY.length, 4142);
   assert.equal(CORE_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 871, A2: 1100, B1: 2152, all: 4123 });
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 871, A2: 1100, B1: 2171, all: 4142 });
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
   assert.ok(ALL_VOCABULARY.every(isStandaloneVocabularyHeadword));
   const headwordKey = (item) => item.german.toLocaleLowerCase("de").replace(/^(?:der|die|das)\s+/, "").trim();
@@ -293,7 +293,7 @@ test("opens vocabulary on focused learning sets with separate library and practi
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /4,123 words/);
+  assert.match(html, /4,142 words/);
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);

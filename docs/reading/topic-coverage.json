@@ -244,9 +244,9 @@
     "level": "B1",
     "domain": "Travel and preferences",
     "storyIds": [
-      "reading-b1-01-v1",
-      "reading-b1-08-v1",
-      "reading-b1-14-v1"
+      "reading-b1-01-v2",
+      "reading-b1-08-v2",
+      "reading-b1-14-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -254,10 +254,10 @@
     "level": "B1",
     "domain": "Consumption, services and advertising",
     "storyIds": [
-      "reading-b1-02-v1",
-      "reading-b1-04-v1",
-      "reading-b1-05-v1",
-      "reading-b1-11-v1"
+      "reading-b1-02-v2",
+      "reading-b1-04-v2",
+      "reading-b1-05-v2",
+      "reading-b1-11-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -265,8 +265,8 @@
     "level": "B1",
     "domain": "Life changes and biographies",
     "storyIds": [
-      "reading-b1-07-v1",
-      "reading-b1-09-v1"
+      "reading-b1-07-v2",
+      "reading-b1-09-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -274,10 +274,10 @@
     "level": "B1",
     "domain": "Employment and applications",
     "storyIds": [
-      "reading-b1-04-v1",
-      "reading-b1-09-v1",
-      "reading-b1-12-v1",
-      "reading-b1-17-v1"
+      "reading-b1-04-v2",
+      "reading-b1-09-v2",
+      "reading-b1-12-v2",
+      "reading-b1-17-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -285,9 +285,9 @@
     "level": "B1",
     "domain": "Environment and practical action",
     "storyIds": [
-      "reading-b1-10-v1",
-      "reading-b1-11-v1",
-      "reading-b1-23-v1"
+      "reading-b1-10-v2",
+      "reading-b1-11-v2",
+      "reading-b1-23-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -295,9 +295,9 @@
     "level": "B1",
     "domain": "Future aims and expectations",
     "storyIds": [
-      "reading-b1-07-v1",
-      "reading-b1-09-v1",
-      "reading-b1-12-v1"
+      "reading-b1-07-v2",
+      "reading-b1-09-v2",
+      "reading-b1-12-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -305,10 +305,10 @@
     "level": "B1",
     "domain": "Friendship and resolving conflict",
     "storyIds": [
-      "reading-b1-13-v1",
-      "reading-b1-15-v1",
-      "reading-b1-16-v1",
-      "reading-b1-17-v1"
+      "reading-b1-13-v2",
+      "reading-b1-15-v2",
+      "reading-b1-16-v2",
+      "reading-b1-17-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -316,8 +316,8 @@
     "level": "B1",
     "domain": "Wellbeing and learning",
     "storyIds": [
-      "reading-b1-17-v1",
-      "reading-b1-19-v1"
+      "reading-b1-17-v2",
+      "reading-b1-19-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -325,9 +325,9 @@
     "level": "B1",
     "domain": "Art and music",
     "storyIds": [
-      "reading-b1-16-v1",
-      "reading-b1-18-v1",
-      "reading-b1-20-v1"
+      "reading-b1-16-v2",
+      "reading-b1-18-v2",
+      "reading-b1-20-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -335,11 +335,11 @@
     "level": "B1",
     "domain": "Participation, institutions and Europe",
     "storyIds": [
-      "reading-b1-03-v1",
-      "reading-b1-06-v1",
-      "reading-b1-10-v1",
-      "reading-b1-21-v1",
-      "reading-b1-24-v1"
+      "reading-b1-03-v2",
+      "reading-b1-06-v2",
+      "reading-b1-10-v2",
+      "reading-b1-21-v2",
+      "reading-b1-24-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -347,9 +347,9 @@
     "level": "B1",
     "domain": "Urban and rural life",
     "storyIds": [
-      "reading-b1-03-v1",
-      "reading-b1-15-v1",
-      "reading-b1-23-v1"
+      "reading-b1-03-v2",
+      "reading-b1-15-v2",
+      "reading-b1-23-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   },
@@ -357,9 +357,9 @@
     "level": "B1",
     "domain": "Money, banking and difficult situations",
     "storyIds": [
-      "reading-b1-02-v1",
-      "reading-b1-05-v1",
-      "reading-b1-22-v1"
+      "reading-b1-02-v2",
+      "reading-b1-05-v2",
+      "reading-b1-22-v2"
     ],
     "scope": "Original scenes covering this broad topic; not exhaustive textbook equivalence."
   }

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "story-b1-zimmerpreis",
+    "german": "der Zimmerpreis",
+    "english": "room price",
+    "category": "Reisen & Unterkunft",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-druckkosten",
+    "german": "die Druckkosten",
+    "english": "printing costs",
+    "category": "Medien & Digitales",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-lernplatz",
+    "german": "der Lernplatz",
+    "english": "place to study",
+    "category": "Schule & Lernen",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-ausbleiben",
+    "german": "ausbleiben",
+    "english": "to fail to arrive; to fail to happen",
+    "category": "Verben",
+    "level": "B1",
+    "wordClass": "verb"
+  },
+  {
+    "id": "story-b1-ersparnis",
+    "german": "die Ersparnis",
+    "english": "saving; money saved",
+    "category": "Einkaufen & Kleidung",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-schulfest",
+    "german": "das Schulfest",
+    "english": "school celebration",
+    "category": "Schule & Lernen",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-reisende",
+    "german": "der Reisende",
+    "english": "traveller",
+    "category": "Reisen & Unterkunft",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-reisezeit",
+    "german": "die Reisezeit",
+    "english": "travel time",
+    "category": "Reisen & Unterkunft",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-aufgabenliste",
+    "german": "die Aufgabenliste",
+    "english": "task list",
+    "category": "Arbeit & Beruf",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-übergehen",
+    "german": "übergehen",
+    "english": "to overlook; to ignore",
+    "category": "Verben",
+    "level": "B1",
+    "wordClass": "verb"
+  },
+  {
+    "id": "story-b1-gruppenkarte",
+    "german": "die Gruppenkarte",
+    "english": "group ticket",
+    "category": "Reisen & Unterkunft",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-beratungsangebot",
+    "german": "das Beratungsangebot",
+    "english": "advice service",
+    "category": "Dienstleistungen & Behörden",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-kontaktadresse",
+    "german": "die Kontaktadresse",
+    "english": "contact address",
+    "category": "Medien & Digitales",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-lernzeit",
+    "german": "die Lernzeit",
+    "english": "study time",
+    "category": "Schule & Lernen",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-konzentriert",
+    "german": "konzentriert",
+    "english": "focused",
+    "category": "Adjektive & Adverbien",
+    "level": "B1",
+    "wordClass": "adjective"
+  },
+  {
+    "id": "story-b1-arbeitsalltag",
+    "german": "der Arbeitsalltag",
+    "english": "everyday working life",
+    "category": "Arbeit & Beruf",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-wegfahren",
+    "german": "wegfahren",
+    "english": "to leave; to drive away",
+    "category": "Verben",
+    "level": "B1",
+    "wordClass": "verb"
+  },
+  {
+    "id": "story-b1-gestaltung",
+    "german": "die Gestaltung",
+    "english": "design; arrangement",
+    "category": "Freizeit, Kultur & Sport",
+    "level": "B1",
+    "wordClass": "noun"
+  },
+  {
+    "id": "story-b1-zusicherung",
+    "german": "die Zusicherung",
+    "english": "assurance",
+    "category": "Grundlagen & Kommunikation",
+    "level": "B1",
+    "wordClass": "noun"
+  }
+]

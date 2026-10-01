@@ -34,7 +34,7 @@
         "english": "room price",
         "form": "Zimmerpreis",
         "example": "Sam schreibt den Zimmerpreis auf, Mia ergänzt die Busfahrten, die beim Gästehaus nötig wären.",
-        "headword": "Zimmerpreis",
+        "headword": "der Zimmerpreis",
         "headwordEnglish": "room price",
         "contextOnly": false
       },
@@ -429,7 +429,7 @@
         "english": "printing costs",
         "form": "Druckkosten",
         "example": "Zu Hause legt sie die Quittung in eine Schublade und beginnt eine Liste ihrer Druckkosten.",
-        "headword": "Druckkosten",
+        "headword": "die Druckkosten",
         "headwordEnglish": "printing costs",
         "contextOnly": false
       }
@@ -802,7 +802,7 @@
         "english": "place to study",
         "form": "Lernplatz",
         "example": "Bald merkt die Gruppe, dass ein einziger Raum nicht gleichzeitig Spielzimmer und stiller Lernplatz sein kann.",
-        "headword": "Lernplatz",
+        "headword": "der Lernplatz",
         "headwordEnglish": "place to study",
         "contextOnly": false
       }
@@ -1209,8 +1209,8 @@
         "english": "failed to arrive; did not happen",
         "form": "ausblieb",
         "example": "Als die Lieferung ausblieb, kümmerte er sich zuerst um andere Räder.",
-        "headword": "ausblieb",
-        "headwordEnglish": "failed to arrive; did not happen",
+        "headword": "ausbleiben",
+        "headwordEnglish": "to fail to arrive; to fail to happen",
         "contextOnly": false
       },
       {
@@ -1584,7 +1584,7 @@
         "english": "saving; money saved",
         "form": "Ersparnis",
         "example": "So könnte seine Ersparnis schnell verschwinden.",
-        "headword": "Ersparnis",
+        "headword": "die Ersparnis",
         "headwordEnglish": "saving; money saved",
         "contextOnly": false
       },
@@ -2368,7 +2368,7 @@
         "english": "school celebration",
         "form": "Schulfest",
         "example": "Sie erzählt von einem Schulfest, bei dem Nora Aufgaben verteilt und dafür gesorgt hatte, dass niemand allein alles vorbereiten musste.",
-        "headword": "Schulfest",
+        "headword": "das Schulfest",
         "headwordEnglish": "school celebration",
         "contextOnly": false
       },
@@ -2769,8 +2769,8 @@
         "english": "travellers",
         "form": "Reisende",
         "example": "Um sie herum schauen viele Reisende auf ihre Handys oder telefonieren.",
-        "headword": "Reisende",
-        "headwordEnglish": "travellers",
+        "headword": "der Reisende",
+        "headwordEnglish": "traveller",
         "contextOnly": false
       },
       {
@@ -2778,7 +2778,7 @@
         "english": "travel time",
         "form": "Reisezeit",
         "example": "Ohne Handy kann Mia die Reisezeit nicht wie sonst mit Nachrichten füllen.",
-        "headword": "Reisezeit",
+        "headword": "die Reisezeit",
         "headwordEnglish": "travel time",
         "contextOnly": false
       }
@@ -3999,8 +3999,8 @@
         "english": "to replace; to exchange",
         "form": "auszutauschen",
         "example": "Sam ist froh, dass sie sich dafür Zeit nimmt, statt sofort etwas auszutauschen.",
-        "headword": "auszutauschen",
-        "headwordEnglish": "to replace; to exchange",
+        "headword": "austauschen",
+        "headwordEnglish": "to exchange",
         "contextOnly": false
       },
       {
@@ -4017,8 +4017,8 @@
         "english": "electrical",
         "form": "elektrisches",
         "example": "Ein elektrisches Gerät nur nach einem kurzen Video zu öffnen, kommt für sie nicht infrage.",
-        "headword": "elektrisches",
-        "headwordEnglish": "electrical",
+        "headword": "elektrisch",
+        "headwordEnglish": "electric",
         "contextOnly": false
       }
     ],
@@ -4373,7 +4373,7 @@
         "english": "task list",
         "form": "Aufgabenliste",
         "example": "Beide prüfen, wann die Nachricht eingegangen ist und was in der Aufgabenliste stand.",
-        "headword": "Aufgabenliste",
+        "headword": "die Aufgabenliste",
         "headwordEnglish": "task list",
         "contextOnly": false
       },
@@ -4764,8 +4764,8 @@
         "english": "overlooked; ignored",
         "form": "übergangen",
         "example": "Ihre Bitte war klar gewesen, und er hat sie beim Veröffentlichen übergangen.",
-        "headword": "übergangen",
-        "headwordEnglish": "overlooked; ignored",
+        "headword": "übergehen",
+        "headwordEnglish": "to overlook; to ignore",
         "contextOnly": false
       },
       {
@@ -4782,8 +4782,8 @@
         "english": "agreed; given consent",
         "form": "zugestimmt",
         "example": "Die Menschen auf dem Bild hatten zugestimmt, für den Bericht fotografiert zu werden.",
-        "headword": "zugestimmt",
-        "headwordEnglish": "agreed; given consent",
+        "headword": "zustimmen",
+        "headwordEnglish": "to agree",
         "contextOnly": false
       },
       {
@@ -5190,7 +5190,7 @@
         "english": "group ticket",
         "form": "Gruppenkarte",
         "example": "Sam bietet an, nach einer Gruppenkarte zu fragen.",
-        "headword": "Gruppenkarte",
+        "headword": "die Gruppenkarte",
         "headwordEnglish": "group ticket",
         "contextOnly": false
       }
@@ -6398,8 +6398,8 @@
         "english": "advice services",
         "form": "Beratungsangeboten",
         "example": "Nora zeigt ihm außerdem, wie er auf den Webseiten der Stadt nach Vereinen, Fahrplänen und Beratungsangeboten sucht.",
-        "headword": "Beratungsangeboten",
-        "headwordEnglish": "advice services",
+        "headword": "das Beratungsangebot",
+        "headwordEnglish": "advice service",
         "contextOnly": false
       },
       {
@@ -6416,7 +6416,7 @@
         "english": "contact address",
         "form": "Kontaktadresse",
         "example": "Sie suchen gemeinsam die offizielle Kontaktadresse auf dem Brief.",
-        "headword": "Kontaktadresse",
+        "headword": "die Kontaktadresse",
         "headwordEnglish": "contact address",
         "contextOnly": false
       }
@@ -7203,7 +7203,7 @@
         "english": "study time",
         "form": "Lernzeit",
         "example": "Sie beschreibt die schlechten Nächte, die lange Lernzeit und ihre Veränderung in der letzten Woche.",
-        "headword": "Lernzeit",
+        "headword": "die Lernzeit",
         "headwordEnglish": "study time",
         "contextOnly": false
       },
@@ -7212,8 +7212,8 @@
         "english": "more focused",
         "form": "konzentrierter",
         "example": "Das Wiederholen ist nicht plötzlich leicht, doch sie kann am nächsten Tag konzentrierter beginnen.",
-        "headword": "konzentrierter",
-        "headwordEnglish": "more focused",
+        "headword": "konzentriert",
+        "headwordEnglish": "focused",
         "contextOnly": false
       },
       {
@@ -7221,7 +7221,7 @@
         "english": "everyday working life",
         "form": "Arbeitsalltag",
         "example": "Nora fragt nach seinem Arbeitsalltag.",
-        "headword": "Arbeitsalltag",
+        "headword": "der Arbeitsalltag",
         "headwordEnglish": "everyday working life",
         "contextOnly": false
       },
@@ -7619,8 +7619,8 @@
         "english": "departing",
         "form": "wegfahrenden",
         "example": "Sam zeigt auf den wegfahrenden Bus.",
-        "headword": "wegfahrenden",
-        "headwordEnglish": "departing",
+        "headword": "wegfahren",
+        "headwordEnglish": "to leave; to drive away",
         "contextOnly": false
       },
       {
@@ -8043,7 +8043,7 @@
         "english": "design; arrangement",
         "form": "Gestaltung",
         "example": "Der Park ist noch nicht fertig, und über seine Gestaltung können die Nachbarn weiter streiten.",
-        "headword": "Gestaltung",
+        "headword": "die Gestaltung",
         "headwordEnglish": "design; arrangement",
         "contextOnly": false
       },
@@ -8052,7 +8052,7 @@
         "english": "assurance",
         "form": "Zusicherung",
         "example": "Die Antwort bleibt damit keine persönliche Zusicherung von Nora, sondern eine kurze Hilfe, um die vorhandenen Informationen gemeinsam zu lesen.",
-        "headword": "Zusicherung",
+        "headword": "die Zusicherung",
         "headwordEnglish": "assurance",
         "contextOnly": false
       }
