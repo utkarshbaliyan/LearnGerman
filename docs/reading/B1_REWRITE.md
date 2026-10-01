@@ -19,3 +19,5 @@ Local full-suite validation currently uses Node 22.19.0. In Node 24.19.0 and 26.
 When concurrent Vite-based tests stall on this local machine, use `node --test --test-concurrency=1 --test-timeout=120000 tests/*.test.mjs` after the build. The isolated Active Learning test and all 81 tests passed with that sequential run; no application assertions or upload limits were removed.
 
 Editorial fact check for story 92: the coffee term is grounded in [Café Central’s own menu](https://cafecentral.wien/wp-content/uploads/cafe-central-kaffeehauskarte.pdf), which describes the Brauner as espresso with cream. The café, characters and events in the story are fictional.
+
+Editorial fact check for story 139: the regional food terms Topfen/Quark and Marille/Aprikose were checked against [Duden’s Austrian German dictionary sample](https://shop.duden.de/media/9e/a9/1c/1687343154/Leseprobe_9783411049851_%C3%96sterreichisches_Deutsch.pdf). The Germany-configured local spelling checker flags Topfen; retain the verified Austrian term. Product variants still require the recipe’s own details.

@@ -532,5 +532,13 @@
       "voice": "male",
       "evidence": "The narrator’s son proposes adding observation notes to the annual tree photographs."
     }
+  ],
+  "reading-b1-146-v2": [
+    {
+      "quote": "„Welche Situation ist dir besser gelungen als im Training davor?“",
+      "speaker": "Trainerin",
+      "voice": "female",
+      "evidence": "The trainer asks the narrator about a concrete improvement; fragte sie follows the question."
+    }
   ]
 }
