@@ -484,5 +484,29 @@
       "voice": "female",
       "evidence": "The older female guest recognizes the cup pattern and relates it to her mother’s cups."
     }
+  ],
+  "reading-b1-105-v2": [
+    {
+      "quote": "„Ich möchte zuerst wissen, was an der Bremse gemacht werden muss.“",
+      "speaker": "Jonas",
+      "voice": "male",
+      "evidence": "Jonas says this when explaining why he wants the bicycle inspected before agreeing to buy it."
+    }
+  ],
+  "reading-b1-107-v2": [
+    {
+      "quote": "„Dann kann ich dir zeigen, was ich tatsächlich benutze.“",
+      "speaker": "Schwester",
+      "voice": "female",
+      "evidence": "The narrator’s sister says this when agreeing to choose her birthday bag together."
+    }
+  ],
+  "reading-b1-110-v2": [
+    {
+      "quote": "„Ich freue mich, wenn der Laden Ihnen im Alltag hilft.“",
+      "speaker": "Besitzerin",
+      "voice": "female",
+      "evidence": "The female shop owner says this when the narrator thanks her again for the earlier practical help."
+    }
   ]
 }
