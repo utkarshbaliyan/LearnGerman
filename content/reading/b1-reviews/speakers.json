@@ -1,80 +1,384 @@
 {
   "reading-b1-01-v2": [
-    { "quote": "„Das klingt nach einem langen Weg, wenn wir müde sind“", "speaker": "Sam", "voice": "male", "evidence": "Sam vergrößert die Karte; sagt er follows the quote." },
-    { "quote": "„Diesmal will ich mich wirklich erholen“", "speaker": "Mia", "voice": "female", "evidence": "Mia recalls her sleepless previous trip; erklärt sie follows the quote." },
-    { "quote": "„Dann nehmen wir das Hostel, wenn das Zimmer wirklich zum Hof geht“", "speaker": "Mia", "voice": "female", "evidence": "Mia's quiet-room condition; sagt Mia follows the quote." },
-    { "quote": "„Gibt es in der Nähe noch etwas zu kaufen?“", "speaker": "Sam", "voice": "male", "evidence": "Sam asks the receptionist after learning the kitchen closes early." },
-    { "quote": "„Könnten Sie bitte die Tür zum Aufenthaltsraum schließen? Wir möchten später schlafen.“", "speaker": "Mia", "voice": "female", "evidence": "Mia goes into the hallway and addresses the loud group." },
-    { "quote": "„Jetzt ja“", "speaker": "Mia", "voice": "female", "evidence": "Sam asks Mia whether the room is quiet; antwortet sie follows the quote." },
-    { "quote": "„Ein Foto hätte uns das alles nicht gesagt“", "speaker": "Mia", "voice": "female", "evidence": "Mia comments on the hotel choice; meint sie follows the quote." }
+    {
+      "quote": "„Das klingt nach einem langen Weg, wenn wir müde sind“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam vergrößert die Karte; sagt er follows the quote."
+    },
+    {
+      "quote": "„Diesmal will ich mich wirklich erholen“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia recalls her sleepless previous trip; erklärt sie follows the quote."
+    },
+    {
+      "quote": "„Dann nehmen wir das Hostel, wenn das Zimmer wirklich zum Hof geht“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia's quiet-room condition; sagt Mia follows the quote."
+    },
+    {
+      "quote": "„Gibt es in der Nähe noch etwas zu kaufen?“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam asks the receptionist after learning the kitchen closes early."
+    },
+    {
+      "quote": "„Könnten Sie bitte die Tür zum Aufenthaltsraum schließen? Wir möchten später schlafen.“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia goes into the hallway and addresses the loud group."
+    },
+    {
+      "quote": "„Jetzt ja“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Sam asks Mia whether the room is quiet; antwortet sie follows the quote."
+    },
+    {
+      "quote": "„Ein Foto hätte uns das alles nicht gesagt“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia comments on the hotel choice; meint sie follows the quote."
+    }
   ],
   "reading-b1-02-v2": [
-    { "quote": "„Kaufen“", "speaker": "Narrator", "voice": "narrator", "evidence": "Text on the purchase button, not spoken dialogue." },
-    { "quote": "„Vergleich nicht nur den Preis auf dem Foto“", "speaker": "Sam", "voice": "male", "evidence": "Sam advises Lea; rät er ihr follows the quote." },
-    { "quote": "„Rechne aus, was du in einem ganzen Jahr ausgeben würdest.“", "speaker": "Sam", "voice": "male", "evidence": "Sam continues his advice in the same exchange." }
+    {
+      "quote": "„Kaufen“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "Text on the purchase button, not spoken dialogue."
+    },
+    {
+      "quote": "„Vergleich nicht nur den Preis auf dem Foto“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam advises Lea; rät er ihr follows the quote."
+    },
+    {
+      "quote": "„Rechne aus, was du in einem ganzen Jahr ausgeben würdest.“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam continues his advice in the same exchange."
+    }
   ],
   "reading-b1-03-v2": [
-    { "quote": "„Vielleicht müssen nicht alle Angebote zur selben Zeit stattfinden“", "speaker": "Nora", "voice": "female", "evidence": "Nora proposes the weekly schedule; sagt Nora follows the quote." },
-    { "quote": "„Woher weiß ich, dass ich hier abends wirklich lernen kann?“", "speaker": "Studentin", "voice": "female", "evidence": "The student raises her hand and asks about quiet study time." }
+    {
+      "quote": "„Vielleicht müssen nicht alle Angebote zur selben Zeit stattfinden“",
+      "speaker": "Nora",
+      "voice": "female",
+      "evidence": "Nora proposes the weekly schedule; sagt Nora follows the quote."
+    },
+    {
+      "quote": "„Woher weiß ich, dass ich hier abends wirklich lernen kann?“",
+      "speaker": "Studentin",
+      "voice": "female",
+      "evidence": "The student raises her hand and asks about quiet study time."
+    }
   ],
   "reading-b1-04-v2": [
-    { "quote": "„Ich prüfe sofort, wie weit die Reparatur ist“", "speaker": "Lea", "voice": "female", "evidence": "Lea answers the upset customer; sagt Lea follows the quote." },
-    { "quote": "„Ich habe versucht, dem Kunden zu helfen“", "speaker": "Kollege", "voice": "male", "evidence": "The colleague speaks during Monday's discussion; sagt er follows the quote." }
+    {
+      "quote": "„Ich prüfe sofort, wie weit die Reparatur ist“",
+      "speaker": "Lea",
+      "voice": "female",
+      "evidence": "Lea answers the upset customer; sagt Lea follows the quote."
+    },
+    {
+      "quote": "„Ich habe versucht, dem Kunden zu helfen“",
+      "speaker": "Kollege",
+      "voice": "male",
+      "evidence": "The colleague speaks during Monday's discussion; sagt er follows the quote."
+    }
   ],
   "reading-b1-05-v2": [
-    { "quote": "„Dann kündige doch die anderen“", "speaker": "Mia", "voice": "female", "evidence": "Mia responds to Sam's list of subscriptions; sagt Mia follows the quote." },
-    { "quote": "„Du kannst nachfragen, auch wenn du nicht jede Folge gesehen hast“", "speaker": "Lea", "voice": "female", "evidence": "Lea gives Sam advice; meint Lea follows the quote." }
+    {
+      "quote": "„Dann kündige doch die anderen“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia responds to Sam's list of subscriptions; sagt Mia follows the quote."
+    },
+    {
+      "quote": "„Du kannst nachfragen, auch wenn du nicht jede Folge gesehen hast“",
+      "speaker": "Lea",
+      "voice": "female",
+      "evidence": "Lea gives Sam advice; meint Lea follows the quote."
+    }
   ],
   "reading-b1-06-v2": [
-    { "quote": "„Bitte den Keller aufräumen.“", "speaker": "Narrator", "voice": "narrator", "evidence": "Writing on the hallway notice, not spoken dialogue." },
-    { "quote": "„Danke an alle, die geholfen haben. Nächster Termin: Samstag um zehn.“", "speaker": "Narrator", "voice": "narrator", "evidence": "Writing on Frau Roth's replacement notice, not spoken dialogue." }
+    {
+      "quote": "„Bitte den Keller aufräumen.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "Writing on the hallway notice, not spoken dialogue."
+    },
+    {
+      "quote": "„Danke an alle, die geholfen haben. Nächster Termin: Samstag um zehn.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "Writing on Frau Roth's replacement notice, not spoken dialogue."
+    }
   ],
   "reading-b1-07-v2": [
-    { "quote": "„Habe ich meine Ziele aufgegeben?“", "speaker": "Nora", "voice": "female", "evidence": "Nora asks Mia about her letter; fragt Nora follows the quote." },
-    { "quote": "„Vielleicht hast du auch neue gefunden.“", "speaker": "Mia", "voice": "female", "evidence": "Mia answers Nora's question." },
-    { "quote": "„Du hast aber auch gern Ausflüge für andere geplant“", "speaker": "Mutter", "voice": "female", "evidence": "Nora's mother recalls her childhood interests; sagt ihre Mutter follows the quote." }
+    {
+      "quote": "„Habe ich meine Ziele aufgegeben?“",
+      "speaker": "Nora",
+      "voice": "female",
+      "evidence": "Nora asks Mia about her letter; fragt Nora follows the quote."
+    },
+    {
+      "quote": "„Vielleicht hast du auch neue gefunden.“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia answers Nora's question."
+    },
+    {
+      "quote": "„Du hast aber auch gern Ausflüge für andere geplant“",
+      "speaker": "Mutter",
+      "voice": "female",
+      "evidence": "Nora's mother recalls her childhood interests; sagt ihre Mutter follows the quote."
+    }
   ],
   "reading-b1-09-v2": [
-    { "quote": "„Du hast Erfahrung und arbeitest zuverlässig“", "speaker": "Sam", "voice": "male", "evidence": "Sam reassures Lea about her application; sagt er follows the quote." },
-    { "quote": "„Ich möchte erst mehr wissen“", "speaker": "Lea", "voice": "female", "evidence": "Lea explains why she has not signed a rental contract; sagt sie follows the quote." },
-    { "quote": "„Siehst du!“", "speaker": "Sam", "voice": "male", "evidence": "Sam reacts to Lea's interview invitation; ruft er follows the quote." },
-    { "quote": "„Ein Gespräch ist noch kein Vertrag.“", "speaker": "Lea", "voice": "female", "evidence": "Lea answers Sam's excitement in the same telephone conversation." }
+    {
+      "quote": "„Du hast Erfahrung und arbeitest zuverlässig“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam reassures Lea about her application; sagt er follows the quote."
+    },
+    {
+      "quote": "„Ich möchte erst mehr wissen“",
+      "speaker": "Lea",
+      "voice": "female",
+      "evidence": "Lea explains why she has not signed a rental contract; sagt sie follows the quote."
+    },
+    {
+      "quote": "„Siehst du!“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam reacts to Lea's interview invitation; ruft er follows the quote."
+    },
+    {
+      "quote": "„Ein Gespräch ist noch kein Vertrag.“",
+      "speaker": "Lea",
+      "voice": "female",
+      "evidence": "Lea answers Sam's excitement in the same telephone conversation."
+    }
   ],
   "reading-b1-10-v2": [
-    { "quote": "„Wir ernten nicht genug für den ganzen Stadtteil“", "speaker": "Helferin", "voice": "female", "evidence": "The garden helper answers Nora's question; antwortet sie follows both quotes." },
-    { "quote": "„Aber wir sprechen jetzt miteinander.“", "speaker": "Helferin", "voice": "female", "evidence": "The same garden helper continues her answer." }
+    {
+      "quote": "„Wir ernten nicht genug für den ganzen Stadtteil“",
+      "speaker": "Helferin",
+      "voice": "female",
+      "evidence": "The garden helper answers Nora's question; antwortet sie follows both quotes."
+    },
+    {
+      "quote": "„Aber wir sprechen jetzt miteinander.“",
+      "speaker": "Helferin",
+      "voice": "female",
+      "evidence": "The same garden helper continues her answer."
+    }
   ],
   "reading-b1-13-v2": [
-    { "quote": "„Ich hätte dich vorher fragen müssen. Du hattest klar Nein gesagt. Es tut mir leid.“", "speaker": "Sam", "voice": "male", "evidence": "Sam writes this apology to Lea; schreibt er introduces the quote." },
-    { "quote": "„aber“", "speaker": "Narrator", "voice": "narrator", "evidence": "The narrator refers to a word Sam does not add; it is not spoken dialogue." }
+    {
+      "quote": "„Ich hätte dich vorher fragen müssen. Du hattest klar Nein gesagt. Es tut mir leid.“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam writes this apology to Lea; schreibt er introduces the quote."
+    },
+    {
+      "quote": "„aber“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "The narrator refers to a word Sam does not add; it is not spoken dialogue."
+    }
   ],
   "reading-b1-15-v2": [
-    { "quote": "„Hier hättest du viel mehr Platz“", "speaker": "Bruder", "voice": "male", "evidence": "Lea's brother points out the nearby house; sagt er follows the quote." }
+    {
+      "quote": "„Hier hättest du viel mehr Platz“",
+      "speaker": "Bruder",
+      "voice": "male",
+      "evidence": "Lea's brother points out the nearby house; sagt er follows the quote."
+    }
   ],
   "reading-b1-16-v2": [
-    { "quote": "„Ich kann nicht einschlafen, wenn Sie so spät spielen“", "speaker": "Frau Roth", "voice": "female", "evidence": "Frau Roth rings Sam's door and complains; sagte sie follows the quote." },
-    { "quote": "„Entschuldigung, ich höre jetzt auf“", "speaker": "Sam", "voice": "male", "evidence": "Sam notices the agreed quiet time and apologizes; sagte er follows the quote." }
+    {
+      "quote": "„Ich kann nicht einschlafen, wenn Sie so spät spielen“",
+      "speaker": "Frau Roth",
+      "voice": "female",
+      "evidence": "Frau Roth rings Sam's door and complains; sagte sie follows the quote."
+    },
+    {
+      "quote": "„Entschuldigung, ich höre jetzt auf“",
+      "speaker": "Sam",
+      "voice": "male",
+      "evidence": "Sam notices the agreed quiet time and apologizes; sagte er follows the quote."
+    }
   ],
   "reading-b1-18-v2": [
-    { "quote": "„gut“", "speaker": "Narrator", "voice": "narrator", "evidence": "A quoted evaluation word in narration, not spoken dialogue." },
-    { "quote": "„schlecht“", "speaker": "Narrator", "voice": "narrator", "evidence": "A quoted evaluation word in narration, not spoken dialogue." }
+    {
+      "quote": "„gut“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "A quoted evaluation word in narration, not spoken dialogue."
+    },
+    {
+      "quote": "„schlecht“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "A quoted evaluation word in narration, not spoken dialogue."
+    }
   ],
   "reading-b1-20-v2": [
-    { "quote": "„Vielleicht wartet sie auf jemanden, der gleich ankommt“", "speaker": "Mia", "voice": "female", "evidence": "Mia offers her interpretation of the museum image; sagt Mia follows the quote." }
+    {
+      "quote": "„Vielleicht wartet sie auf jemanden, der gleich ankommt“",
+      "speaker": "Mia",
+      "voice": "female",
+      "evidence": "Mia offers her interpretation of the museum image; sagt Mia follows the quote."
+    }
   ],
   "reading-b1-24-v2": [
-    { "quote": "„Hallo, wir brauchen samstags einen Raum. Geht das?“", "speaker": "Narrator", "voice": "narrator", "evidence": "This is Sam's written draft request, presented as text rather than spoken dialogue." },
-    { "quote": "„Sehr geehrte Damen und Herren, wir planen einen offenen Gesprächsnachmittag für etwa zwölf Personen. Dafür suchen wir einmal im Monat einen Raum. Wäre eine Nutzung am ersten Samstag möglich? Bitte teilen Sie uns auch mit, welche Kosten und Bedingungen gelten.“", "speaker": "Narrator", "voice": "narrator", "evidence": "This is the written formal email to the center, not spoken dialogue." }
+    {
+      "quote": "„Hallo, wir brauchen samstags einen Raum. Geht das?“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "This is Sam's written draft request, presented as text rather than spoken dialogue."
+    },
+    {
+      "quote": "„Sehr geehrte Damen und Herren, wir planen einen offenen Gesprächsnachmittag für etwa zwölf Personen. Dafür suchen wir einmal im Monat einen Raum. Wäre eine Nutzung am ersten Samstag möglich? Bitte teilen Sie uns auch mit, welche Kosten und Bedingungen gelten.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "This is the written formal email to the center, not spoken dialogue."
+    }
   ],
   "reading-b1-26-v2": [
-    { "quote": "„Dann sollten wir ihn gemeinsam ansehen“", "speaker": "Freundin", "voice": "female", "evidence": "Sam's friend suggests reviewing the protocol together; sagt sie follows the quote." },
-    { "quote": "„Waschbecken beschädigt“", "speaker": "Narrator", "voice": "narrator", "evidence": "Wording in the written handover protocol, not spoken dialogue." }
+    {
+      "quote": "„Dann sollten wir ihn gemeinsam ansehen“",
+      "speaker": "Freundin",
+      "voice": "female",
+      "evidence": "Sam's friend suggests reviewing the protocol together; sagt sie follows the quote."
+    },
+    {
+      "quote": "„Waschbecken beschädigt“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "Wording in the written handover protocol, not spoken dialogue."
+    }
   ],
   "reading-b1-27-v2": [
-    { "quote": "„regelmäßig“", "speaker": "Narrator", "voice": "narrator", "evidence": "The narrator quotes ambiguous wording on a written watering note." },
-    { "quote": "„regelmäßig“", "speaker": "Narrator", "voice": "narrator", "evidence": "The narrator returns to the same wording on the note." }
+    {
+      "quote": "„regelmäßig“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "The narrator quotes ambiguous wording on a written watering note."
+    },
+    {
+      "quote": "„regelmäßig“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "The narrator returns to the same wording on the note."
+    }
   ],
   "reading-b1-30-v2": [
-    { "quote": "„Wie würden Sie sich an meiner Stelle fühlen?“", "speaker": "Nachbarin", "voice": "female", "evidence": "The new neighbor asks the first-person narrator to consider her perspective." }
+    {
+      "quote": "„Wie würden Sie sich an meiner Stelle fühlen?“",
+      "speaker": "Nachbarin",
+      "voice": "female",
+      "evidence": "The new neighbor asks the first-person narrator to consider her perspective."
+    }
+  ],
+  "reading-b1-56-v2": [
+    {
+      "quote": "„Schreib zuerst auf, was du schon sagen kannst. Die fehlenden Wörter kommen danach.“",
+      "speaker": "Lehrerin",
+      "voice": "female",
+      "evidence": "The narrator's female teacher gives this advice directly after reviewing the unfinished draft."
+    }
+  ],
+  "reading-b1-57-v2": [
+    {
+      "quote": "„Bis dahin müssen wir genauer schauen, was Ihnen fehlt.“",
+      "speaker": "Kursleiterin",
+      "voice": "female",
+      "evidence": "The course director returns the narrator's call and says this after explaining the weekend vacancy."
+    }
+  ],
+  "reading-b1-59-v2": [
+    {
+      "quote": "„Kannst du dem Verein schreiben, dass ich beim nächsten Training nicht dabei bin?“",
+      "speaker": "David",
+      "voice": "male",
+      "evidence": "Ben's male friend David makes this request in response to Ben's offer of practical help."
+    }
+  ],
+  "reading-b1-60-v2": [
+    {
+      "quote": "„Beim Treppensteigen zieht es an meinem Knie. Das ist seit einiger Zeit neu.“",
+      "speaker": "Aylin",
+      "voice": "female",
+      "evidence": "Aylin reads her own symptom observations while speaking to the practice employee on the phone."
+    }
+  ],
+  "reading-b1-61-v2": [
+    {
+      "quote": "„Kannst du für etwa eine Stunde bei Emil bleiben und ihn danach zur Betreuung bringen?“",
+      "speaker": "Noor",
+      "voice": "female",
+      "evidence": "Noor calls Lara and makes this specific request after explaining the childcare gap."
+    }
+  ],
+  "reading-b1-62-v2": [
+    {
+      "quote": "„Ihr Termin findet statt. Nur der Eingang hat sich geändert.“",
+      "speaker": "Mitarbeiterin",
+      "voice": "female",
+      "evidence": "The hospital employee checks Karim's appointment and clarifies the letter during the phone call."
+    }
+  ],
+  "reading-b1-63-v2": [
+    {
+      "quote": "„Wir brauchen einen Plan, auf den wir uns verlassen können. Nicht jede Aufgabe muss gleich wieder bei dir liegen.“",
+      "speaker": "Kollegin",
+      "voice": "female",
+      "evidence": "Jana's female colleague says this while discussing Jana's planned first week back."
+    }
+  ],
+  "reading-b1-64-v2": [
+    {
+      "quote": "„Ich möchte klären, wie der nächste Termin vereinbart wird.“",
+      "speaker": "Vater",
+      "voice": "male",
+      "evidence": "The narrator's father leads the call with the practice and asks this question himself."
+    }
+  ],
+  "reading-b1-65-v2": [
+    {
+      "quote": "„Kann ich irgendwo sitzen, wo der Fernseher nicht so laut zu hören ist?“",
+      "speaker": "Elena",
+      "voice": "female",
+      "evidence": "The female patient Elena asks the second employee for a quieter place in the waiting area."
+    }
+  ],
+  "reading-b1-66-v2": [
+    {
+      "quote": "„Was möchten Sie heute zuerst klären?“",
+      "speaker": "Ärztin",
+      "voice": "female",
+      "evidence": "The female doctor asks this after the first-person narrator explains that the prepared question list was left at home."
+    }
+  ],
+  "reading-b1-67-v2": [
+    {
+      "quote": "„Melde dich, wenn du etwas brauchst.“",
+      "speaker": "Narrator",
+      "voice": "narrator",
+      "evidence": "A written message by the first-person narrator, whose gender is unspecified."
+    },
+    {
+      "quote": "„Ich bitte ungern selbst um Hilfe, wenn ich nicht weiß, ob jemand wirklich Zeit hat.“",
+      "speaker": "Frau Weber",
+      "voice": "female",
+      "evidence": "The female neighbor Frau Weber says this when thanking the narrator at the grocery handover."
+    }
   ]
 }
