@@ -57,6 +57,8 @@ test('every A2 book word has a contextual hover meaning and every quote an evide
   assert.deepEqual(plans['100'].assignments.map(a => a.speaker), ['Lea']);
   assert.deepEqual(plans['196'].assignments.map(a => a.voice), ['male', 'female']);
   assert.match(glosses.date, /romantic/); assert.match(glosses.weiterdaten, /dating/);
+  assert.match(glosses.bank, /bench/); assert.match(glosses.feste, /committed/);
+  assert.match(glosses.hände, /hands/); assert.match(glosses.magen, /stomach/);
 });
 
 test('A2 shelf shows only its cover and the contents and page reader stay inside the selected book', async () => {
@@ -84,8 +86,8 @@ test('A2 shelf shows only its cover and the contents and page reader stay inside
 });
 
 test('all 200 A2 book recordings match the final source and voices with complete word timings', () => {
-  const book = json(`${directory}/book.json`), manifest = json(`${directory}/audio-manifest.json`), plans = json(`${directory}/dialogue-voices.json`);
-  assert.equal(Object.keys(manifest).length, 200);
+  const book = json(`${directory}/book.json`), manifest = json(`${directory}/audio-manifest.json`), plans = json(`${directory}/dialogue-voices.json`), receipt = json(`${directory}/release-receipt.json`);
+  assert.equal(Object.keys(manifest).length, 200); assert.equal(Object.keys(receipt.validation).length, 200);
   for (const page of book.pages) {
     const text = page.paragraphs.join('\n\n'), entry = manifest[page.number], plan = plans[page.number];
     const serialized = '[' + plan.segments.map(s => '[' + JSON.stringify(s.voice) + ', ' + JSON.stringify(s.text) + ']').join(', ') + ']';
@@ -98,5 +100,8 @@ test('all 200 A2 book recordings match the final source and voices with complete
     assert.equal(timing.starts.length, entry.wordCount); assert.equal(entry.wordCount, text.split(/\s+/).length);
     assert.ok(timing.starts.every((s, i) => Number.isFinite(s) && s >= 0 && s < entry.duration && (i === 0 || s > timing.starts[i - 1])));
     assert.equal(readFileSync(audio).subarray(0, 4).toString('hex'), '1a45dfa3'); assert.ok(statSync(audio).size > 10000);
+    const checked = receipt.validation[page.number];
+    assert.equal(checked.audioHash, digest(readFileSync(audio)));
+    assert.ok(checked.coverage >= .9 && checked.excess <= .12, `Page ${page.number}: recognition validation`);
   }
 });

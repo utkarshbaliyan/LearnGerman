@@ -11,7 +11,7 @@ const digest = text => createHash('sha256').update(text).digest('hex');
 const book = json(`${base}/book.json`), english = json(`${base}/translations.json`), glosses = json(`${base}/glosses.json`), plans = json(`${base}/dialogue-voices.json`), manifest = json(`${base}/audio-manifest.json`);
 assert.equal(book.pages.length, 200); assert.equal(book.level, 'A2');
 assert.equal(Object.keys(english).length, 200); assert.equal(Object.keys(plans).length, 200);
-const failures = [], valid = []; let bytes = 0;
+const failures = [], valid = [], validation = {}; let bytes = 0;
 for (const page of book.pages) {
   try {
     const text = page.paragraphs.join('\n\n'), hash = digest(text), plan = plans[page.number], audio = manifest[page.number];
@@ -32,6 +32,7 @@ for (const page of book.pages) {
     assert.ok(timing.starts.every((s, i) => Number.isFinite(s) && s >= 0 && s < audio.duration && (i === 0 || s > timing.starts[i - 1])));
     const transcript = JSON.parse(readFileSync(join(checkpoint, `${name}-transcript.json`), 'utf8'));
     assert.ok(transcript.coverage >= .9 && transcript.excess <= .12, 'Transcript validation');
+    validation[page.number] = { audioHash: digest(readFileSync(sound)), coverage: transcript.coverage, excess: transcript.excess };
     bytes += statSync(sound).size + statSync(sidecar).size; valid.push(page.number);
   } catch (e) { failures.push({ page: page.number, reason: e.message }); }
 }
@@ -43,5 +44,5 @@ mkdirSync(join(root, 'public/audio/books', book.id), { recursive: true });
 for (const audio of Object.values(manifest)) for (const path of [audio.src, audio.timingSrc])
   copyFileSync(join(root, base, 'audio', basename(path)), join(root, 'public', path));
 writeFileSync(join(root, base, 'release-receipt.json'), JSON.stringify({ id: book.id, pages: 200, paragraphs: 800, mediaBytes: bytes,
-  sourceHashes: Object.fromEntries(book.pages.map(p => [p.number, digest(p.paragraphs.join('\n\n'))])) }, null, 2) + '\n');
+  validation, sourceHashes: Object.fromEntries(book.pages.map(p => [p.number, digest(p.paragraphs.join('\n\n'))])) }, null, 2) + '\n');
 console.log('All 200 A2 page recordings validated and copied for the complete release. Build and full tests remain required.');

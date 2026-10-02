@@ -1,0 +1,1402 @@
+{
+  "1": {
+    "src": "/audio/books/nicht-nur-ein-profil/p001-page-070c5cd86ac9-f38dae33-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p001-page-070c5cd86ac9-f38dae33-qwen-dialogue-opus16.json",
+    "textHash": "070c5cd86ac95364d1097e537370c038c4f7b3d4490df5069812b3a54480f493",
+    "wordCount": 92,
+    "duration": 31.92
+  },
+  "2": {
+    "src": "/audio/books/nicht-nur-ein-profil/p002-page-adc70dd7c497-7cd98ef6-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p002-page-adc70dd7c497-7cd98ef6-qwen-dialogue-opus16.json",
+    "textHash": "adc70dd7c497847e8f4dba6ff6ecdaf938c72e484657e88bc28a302d03ee7942",
+    "wordCount": 88,
+    "duration": 30.08
+  },
+  "3": {
+    "src": "/audio/books/nicht-nur-ein-profil/p003-page-e9690fdf4130-fdc5d7bd-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p003-page-e9690fdf4130-fdc5d7bd-qwen-dialogue-opus16.json",
+    "textHash": "e9690fdf4130db7ee1beef68de8467bd7f5ebfeb0a2728fb51ce6fdfd0cbdc5c",
+    "wordCount": 87,
+    "duration": 34.72
+  },
+  "4": {
+    "src": "/audio/books/nicht-nur-ein-profil/p004-page-6b7de49b3adf-61ed6b8c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p004-page-6b7de49b3adf-61ed6b8c-qwen-dialogue-opus16.json",
+    "textHash": "6b7de49b3adf00eac9b01d778524c27d2deafc9652c1581165a511fdd72536b8",
+    "wordCount": 95,
+    "duration": 36.6
+  },
+  "5": {
+    "src": "/audio/books/nicht-nur-ein-profil/p005-page-16da23f7f1d9-f51b5a52-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p005-page-16da23f7f1d9-f51b5a52-qwen-dialogue-opus16.json",
+    "textHash": "16da23f7f1d91f5da2af07d9e31431500802d3b55368dd375d392e9b866392f8",
+    "wordCount": 92,
+    "duration": 34.88
+  },
+  "6": {
+    "src": "/audio/books/nicht-nur-ein-profil/p006-page-00a944974857-a636989e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p006-page-00a944974857-a636989e-qwen-dialogue-opus16.json",
+    "textHash": "00a9449748573fc47ff9d77a84be5e7d9b3c028d9e0f4341b7c648434f5b1077",
+    "wordCount": 90,
+    "duration": 33.16
+  },
+  "7": {
+    "src": "/audio/books/nicht-nur-ein-profil/p007-page-ae326e292cb0-1da05f91-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p007-page-ae326e292cb0-1da05f91-qwen-dialogue-opus16.json",
+    "textHash": "ae326e292cb0992a1c30e91dd7e9b1b159a60b75965c625890795dc946088fc0",
+    "wordCount": 95,
+    "duration": 38.04
+  },
+  "8": {
+    "src": "/audio/books/nicht-nur-ein-profil/p008-page-4214a18466e6-bc56688f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p008-page-4214a18466e6-bc56688f-qwen-dialogue-opus16.json",
+    "textHash": "4214a18466e600be7507ebf673d8fa7b11fa21d422aa79d5d167bae5998b6360",
+    "wordCount": 92,
+    "duration": 32.08
+  },
+  "9": {
+    "src": "/audio/books/nicht-nur-ein-profil/p009-page-9879c40acf86-fa3aa456-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p009-page-9879c40acf86-fa3aa456-qwen-dialogue-opus16.json",
+    "textHash": "9879c40acf866596fee1ebc5c595974f0a9d2dba58578f94cca48c44a1a171fc",
+    "wordCount": 95,
+    "duration": 31.44
+  },
+  "10": {
+    "src": "/audio/books/nicht-nur-ein-profil/p010-page-8850544ba8a6-96d90e4e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p010-page-8850544ba8a6-96d90e4e-qwen-dialogue-opus16.json",
+    "textHash": "8850544ba8a616dc8f9005e64848575ae7e196249542bcccf73b9e8c11ef9b17",
+    "wordCount": 92,
+    "duration": 33.44
+  },
+  "11": {
+    "src": "/audio/books/nicht-nur-ein-profil/p011-page-af65321a22a1-3b4b8ab8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p011-page-af65321a22a1-3b4b8ab8-qwen-dialogue-opus16.json",
+    "textHash": "af65321a22a15759db6ec3a697025c71a0eeba9bca49b6e81c85c251c440e81c",
+    "wordCount": 92,
+    "duration": 31.92
+  },
+  "12": {
+    "src": "/audio/books/nicht-nur-ein-profil/p012-page-e17fd224b870-cef3d304-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p012-page-e17fd224b870-cef3d304-qwen-dialogue-opus16.json",
+    "textHash": "e17fd224b870ca4063f303ac947c3a9b0aebdd07774927e206dfc900f0c53917",
+    "wordCount": 95,
+    "duration": 31.36
+  },
+  "13": {
+    "src": "/audio/books/nicht-nur-ein-profil/p013-page-76c06ca6fdf4-a64976e9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p013-page-76c06ca6fdf4-a64976e9-qwen-dialogue-opus16.json",
+    "textHash": "76c06ca6fdf47f8ef03b84e829dcaa8fb26ec565b551d3c2ea7d631b2ca312f3",
+    "wordCount": 93,
+    "duration": 34.72
+  },
+  "14": {
+    "src": "/audio/books/nicht-nur-ein-profil/p014-page-6b0b78ca80dd-470ba520-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p014-page-6b0b78ca80dd-470ba520-qwen-dialogue-opus16.json",
+    "textHash": "6b0b78ca80ddffc3880f34d0d7952cd6f91e9758c2b08adf62da59d509db40e2",
+    "wordCount": 95,
+    "duration": 30.24
+  },
+  "15": {
+    "src": "/audio/books/nicht-nur-ein-profil/p015-page-f38f6ad402fd-71c8cf24-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p015-page-f38f6ad402fd-71c8cf24-qwen-dialogue-opus16.json",
+    "textHash": "f38f6ad402fd2d1814597866488467bb29924ff99e4e864b447cb1accbd8d8e5",
+    "wordCount": 90,
+    "duration": 30.8
+  },
+  "16": {
+    "src": "/audio/books/nicht-nur-ein-profil/p016-page-351292042dea-4cf57558-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p016-page-351292042dea-4cf57558-qwen-dialogue-opus16.json",
+    "textHash": "351292042dea59c3aacddb26c91c17b292c20aefc44ce0e06c9bcfb672d926d2",
+    "wordCount": 94,
+    "duration": 30.96
+  },
+  "17": {
+    "src": "/audio/books/nicht-nur-ein-profil/p017-page-55d7119b0209-44509010-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p017-page-55d7119b0209-44509010-qwen-dialogue-opus16.json",
+    "textHash": "55d7119b0209427ff6abcfc4d9767c0e1098849e04138d9ccdd8779105ef64cc",
+    "wordCount": 96,
+    "duration": 35.68
+  },
+  "18": {
+    "src": "/audio/books/nicht-nur-ein-profil/p018-page-8df10815ae68-40b48e7d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p018-page-8df10815ae68-40b48e7d-qwen-dialogue-opus16.json",
+    "textHash": "8df10815ae68a78165cd511a50068454b249e82ad96c3ab47020b6f3a5f5522c",
+    "wordCount": 90,
+    "duration": 33.56
+  },
+  "19": {
+    "src": "/audio/books/nicht-nur-ein-profil/p019-page-a2db1da06dd0-f2550b3d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p019-page-a2db1da06dd0-f2550b3d-qwen-dialogue-opus16.json",
+    "textHash": "a2db1da06dd0fb06081b7e00692b14f73607867add96743065f783ee0666a104",
+    "wordCount": 95,
+    "duration": 33.12
+  },
+  "20": {
+    "src": "/audio/books/nicht-nur-ein-profil/p020-page-e1bbe0d2190b-773e0ef4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p020-page-e1bbe0d2190b-773e0ef4-qwen-dialogue-opus16.json",
+    "textHash": "e1bbe0d2190bfae7a7e851b64a01f36f933a6411c00fc5df346caf45ccc775bd",
+    "wordCount": 95,
+    "duration": 35.64
+  },
+  "21": {
+    "src": "/audio/books/nicht-nur-ein-profil/p021-page-3a3cd01764df-31529382-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p021-page-3a3cd01764df-31529382-qwen-dialogue-opus16.json",
+    "textHash": "3a3cd01764df15b0e90757735a07212ad07c9dffe701299beb4f516fa853d9e3",
+    "wordCount": 96,
+    "duration": 34.48
+  },
+  "22": {
+    "src": "/audio/books/nicht-nur-ein-profil/p022-page-7af73882789d-22e94b60-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p022-page-7af73882789d-22e94b60-qwen-dialogue-opus16.json",
+    "textHash": "7af73882789d06d22510a9d8baf7bdd7cfcd8cc12a1f51161002fd2b8034eb3d",
+    "wordCount": 92,
+    "duration": 32.0
+  },
+  "23": {
+    "src": "/audio/books/nicht-nur-ein-profil/p023-page-4b6738df66e9-403143a4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p023-page-4b6738df66e9-403143a4-qwen-dialogue-opus16.json",
+    "textHash": "4b6738df66e9e8b6bee82201d296750b9a6e8902b3bc1e1bb63e89cf0f2a39f7",
+    "wordCount": 95,
+    "duration": 34.64
+  },
+  "24": {
+    "src": "/audio/books/nicht-nur-ein-profil/p024-page-007435d3fa4e-83726e77-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p024-page-007435d3fa4e-83726e77-qwen-dialogue-opus16.json",
+    "textHash": "007435d3fa4e2bf7a9ea58918b32585ad2355aef0cf00337690c75b7503fa788",
+    "wordCount": 93,
+    "duration": 34.48
+  },
+  "25": {
+    "src": "/audio/books/nicht-nur-ein-profil/p025-page-e45aaa7e2c48-4718a3a1-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p025-page-e45aaa7e2c48-4718a3a1-qwen-dialogue-opus16.json",
+    "textHash": "e45aaa7e2c48c6587bc8c80c914f9fb79ebfc1d9ce12b54864caa5a51eb05181",
+    "wordCount": 93,
+    "duration": 33.44
+  },
+  "26": {
+    "src": "/audio/books/nicht-nur-ein-profil/p026-page-2994b8b65270-4d338850-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p026-page-2994b8b65270-4d338850-qwen-dialogue-opus16.json",
+    "textHash": "2994b8b65270aa7e78866d010b97365027add3bf31d811934328e610bc503d78",
+    "wordCount": 97,
+    "duration": 36.36
+  },
+  "27": {
+    "src": "/audio/books/nicht-nur-ein-profil/p027-page-c10520c3b064-364c7003-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p027-page-c10520c3b064-364c7003-qwen-dialogue-opus16.json",
+    "textHash": "c10520c3b064d4292739db8e77dc33b1c84877b15fae07059138a133523e22fc",
+    "wordCount": 97,
+    "duration": 31.92
+  },
+  "28": {
+    "src": "/audio/books/nicht-nur-ein-profil/p028-page-2be23f0ee684-7acad9d4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p028-page-2be23f0ee684-7acad9d4-qwen-dialogue-opus16.json",
+    "textHash": "2be23f0ee684726bc9bf50b13f0c3702e015d6e1ba8cb4f84622f00bcaca7a76",
+    "wordCount": 94,
+    "duration": 31.44
+  },
+  "29": {
+    "src": "/audio/books/nicht-nur-ein-profil/p029-page-c62849098d4b-d96b26d0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p029-page-c62849098d4b-d96b26d0-qwen-dialogue-opus16.json",
+    "textHash": "c62849098d4bb76aa5461d6d61d85a5c024bcabbc6bace14a6900396510889fc",
+    "wordCount": 100,
+    "duration": 36.0
+  },
+  "30": {
+    "src": "/audio/books/nicht-nur-ein-profil/p030-page-b65e0d98b223-1e991bae-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p030-page-b65e0d98b223-1e991bae-qwen-dialogue-opus16.json",
+    "textHash": "b65e0d98b223b759ec98272298eabf5359021d82e4b28ff2717ca4827f867680",
+    "wordCount": 93,
+    "duration": 34.72
+  },
+  "31": {
+    "src": "/audio/books/nicht-nur-ein-profil/p031-page-abb844ae3c9e-34bc18aa-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p031-page-abb844ae3c9e-34bc18aa-qwen-dialogue-opus16.json",
+    "textHash": "abb844ae3c9e68c0260c21bd2b07b3c48ff92c729298a18b43625a92610a744f",
+    "wordCount": 99,
+    "duration": 35.6
+  },
+  "32": {
+    "src": "/audio/books/nicht-nur-ein-profil/p032-page-72dd1f5c6a23-6276de45-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p032-page-72dd1f5c6a23-6276de45-qwen-dialogue-opus16.json",
+    "textHash": "72dd1f5c6a23389666c9282a6eaa97be5644a294af80b0085e6c73db14612059",
+    "wordCount": 93,
+    "duration": 39.44
+  },
+  "33": {
+    "src": "/audio/books/nicht-nur-ein-profil/p033-page-a723d2441b17-f511cf43-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p033-page-a723d2441b17-f511cf43-qwen-dialogue-opus16.json",
+    "textHash": "a723d2441b178eecfb64d6010d00a6d886a9dfbef9fc0d7e24bbc1d899d1d492",
+    "wordCount": 94,
+    "duration": 36.56
+  },
+  "34": {
+    "src": "/audio/books/nicht-nur-ein-profil/p034-page-93ee6a627188-ae60f994-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p034-page-93ee6a627188-ae60f994-qwen-dialogue-opus16.json",
+    "textHash": "93ee6a62718886c0603a2280c91c911b6f9c81e2e9f3592b33069c69c3903352",
+    "wordCount": 97,
+    "duration": 36.16
+  },
+  "35": {
+    "src": "/audio/books/nicht-nur-ein-profil/p035-page-eeb345ef88c1-45df0626-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p035-page-eeb345ef88c1-45df0626-qwen-dialogue-opus16.json",
+    "textHash": "eeb345ef88c1423385461a9f04cd7f2806ede79bc95b1a3e617e3850483e921e",
+    "wordCount": 97,
+    "duration": 38.36
+  },
+  "36": {
+    "src": "/audio/books/nicht-nur-ein-profil/p036-page-c6feb446e1d1-c654f3c4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p036-page-c6feb446e1d1-c654f3c4-qwen-dialogue-opus16.json",
+    "textHash": "c6feb446e1d11ceff9e3401275023c417df770c11fdb6165cc92fc8abc76f054",
+    "wordCount": 97,
+    "duration": 36.8
+  },
+  "37": {
+    "src": "/audio/books/nicht-nur-ein-profil/p037-page-f310185493cf-de541051-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p037-page-f310185493cf-de541051-qwen-dialogue-opus16.json",
+    "textHash": "f310185493cf481e6cda106102e32b8c45aaee2db9c1f4a3fb22d1e4c1bb4f39",
+    "wordCount": 99,
+    "duration": 34.16
+  },
+  "38": {
+    "src": "/audio/books/nicht-nur-ein-profil/p038-page-e751affa1158-fe4d62e0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p038-page-e751affa1158-fe4d62e0-qwen-dialogue-opus16.json",
+    "textHash": "e751affa11583a2f0ce727e97bd8c2c7e8b472cc9671fc39c9bee41533c92c41",
+    "wordCount": 96,
+    "duration": 30.4
+  },
+  "39": {
+    "src": "/audio/books/nicht-nur-ein-profil/p039-page-9f168473378a-b5e8ceb9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p039-page-9f168473378a-b5e8ceb9-qwen-dialogue-opus16.json",
+    "textHash": "9f168473378ad2b9ef0da7edba9cbf5b29f3b88a2c4ff85c027d8a30fb185cc2",
+    "wordCount": 101,
+    "duration": 36.72
+  },
+  "40": {
+    "src": "/audio/books/nicht-nur-ein-profil/p040-page-de8edcf10ddc-3e4e6a28-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p040-page-de8edcf10ddc-3e4e6a28-qwen-dialogue-opus16.json",
+    "textHash": "de8edcf10ddcbbc97790a935f5a9a652d68ee30331df4a3e635f81e0289271d7",
+    "wordCount": 101,
+    "duration": 34.0
+  },
+  "41": {
+    "src": "/audio/books/nicht-nur-ein-profil/p041-page-0e578f226879-d497bf6a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p041-page-0e578f226879-d497bf6a-qwen-dialogue-opus16.json",
+    "textHash": "0e578f22687902034b776ee49ccd2f60778670ce2c25146e8c69c169cef82ba7",
+    "wordCount": 96,
+    "duration": 33.68
+  },
+  "42": {
+    "src": "/audio/books/nicht-nur-ein-profil/p042-page-d69ff9d99296-2b59d837-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p042-page-d69ff9d99296-2b59d837-qwen-dialogue-opus16.json",
+    "textHash": "d69ff9d99296bb9ae2afba172f691a02ddedfe1995bebaf82de08ff91e2ed92c",
+    "wordCount": 91,
+    "duration": 37.36
+  },
+  "43": {
+    "src": "/audio/books/nicht-nur-ein-profil/p043-page-e19e4cefaf64-08c3127d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p043-page-e19e4cefaf64-08c3127d-qwen-dialogue-opus16.json",
+    "textHash": "e19e4cefaf64aaadbe5c9b0e0272a20cd64a7fb7d8b42e8745c608dee9a015ef",
+    "wordCount": 99,
+    "duration": 34.24
+  },
+  "44": {
+    "src": "/audio/books/nicht-nur-ein-profil/p044-page-69997accb0ed-7c89aadd-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p044-page-69997accb0ed-7c89aadd-qwen-dialogue-opus16.json",
+    "textHash": "69997accb0eddb69bc57fe6c38e62c7ceb97f3cdd02ee2d68e97bc8a10ad08e2",
+    "wordCount": 101,
+    "duration": 33.2
+  },
+  "45": {
+    "src": "/audio/books/nicht-nur-ein-profil/p045-page-554e85ad3cba-15fbdb57-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p045-page-554e85ad3cba-15fbdb57-qwen-dialogue-opus16.json",
+    "textHash": "554e85ad3cbad4753e8afd2a849946d6ac310463ea330f86504917572c360f93",
+    "wordCount": 101,
+    "duration": 33.84
+  },
+  "46": {
+    "src": "/audio/books/nicht-nur-ein-profil/p046-page-b86b67ff4999-0813abf3-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p046-page-b86b67ff4999-0813abf3-qwen-dialogue-opus16.json",
+    "textHash": "b86b67ff4999287a9d7d4738095ac58433ebf96b94ab83ec9992c7d71194c885",
+    "wordCount": 97,
+    "duration": 38.4
+  },
+  "47": {
+    "src": "/audio/books/nicht-nur-ein-profil/p047-page-04386b1ab60c-10e2be7c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p047-page-04386b1ab60c-10e2be7c-qwen-dialogue-opus16.json",
+    "textHash": "04386b1ab60c4197befddb8b22a34a43d4f70bebe7c26e0a6ac4ec8b28351dc1",
+    "wordCount": 97,
+    "duration": 36.36
+  },
+  "48": {
+    "src": "/audio/books/nicht-nur-ein-profil/p048-page-04e11b54711d-9ca66f15-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p048-page-04e11b54711d-9ca66f15-qwen-dialogue-opus16.json",
+    "textHash": "04e11b54711d76f8a60beeb32a421484cf1a9f68750feaed03d72db26858bd95",
+    "wordCount": 101,
+    "duration": 33.68
+  },
+  "49": {
+    "src": "/audio/books/nicht-nur-ein-profil/p049-page-c16f94107bb0-c2eb061f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p049-page-c16f94107bb0-c2eb061f-qwen-dialogue-opus16.json",
+    "textHash": "c16f94107bb0e561f2dff6451bd775590f0c11733a04f91e3934dbaf985cbc73",
+    "wordCount": 99,
+    "duration": 33.04
+  },
+  "50": {
+    "src": "/audio/books/nicht-nur-ein-profil/p050-page-e2d9df53c914-c6ccd471-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p050-page-e2d9df53c914-c6ccd471-qwen-dialogue-opus16.json",
+    "textHash": "e2d9df53c9143f1900a354d5a9e4811438b71473f75544e415e646021b3d3d31",
+    "wordCount": 100,
+    "duration": 34.24
+  },
+  "51": {
+    "src": "/audio/books/nicht-nur-ein-profil/p051-page-def95ca42d11-0b9930de-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p051-page-def95ca42d11-0b9930de-qwen-dialogue-opus16.json",
+    "textHash": "def95ca42d112a8a25aad925c9efa1ce6b85c5b58628dd9187c7979f8998ba10",
+    "wordCount": 90,
+    "duration": 32.8
+  },
+  "52": {
+    "src": "/audio/books/nicht-nur-ein-profil/p052-page-8362ec30bcf6-f39c2cd9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p052-page-8362ec30bcf6-f39c2cd9-qwen-dialogue-opus16.json",
+    "textHash": "8362ec30bcf6ce6cac9a99847a2828c679b344ddcf89e3154b0b06b45c62560a",
+    "wordCount": 93,
+    "duration": 32.88
+  },
+  "53": {
+    "src": "/audio/books/nicht-nur-ein-profil/p053-page-bdc2e35a91ff-4a5f8906-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p053-page-bdc2e35a91ff-4a5f8906-qwen-dialogue-opus16.json",
+    "textHash": "bdc2e35a91ff8dc6d16b88eb03e0669ec6c1e42d48bb91ce4db004836a20f528",
+    "wordCount": 98,
+    "duration": 33.84
+  },
+  "54": {
+    "src": "/audio/books/nicht-nur-ein-profil/p054-page-3473c25adfdf-625921f2-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p054-page-3473c25adfdf-625921f2-qwen-dialogue-opus16.json",
+    "textHash": "3473c25adfdf3209a6083e6ddc48ecd2e0e3196906e9cb8118e743cee7be2ac6",
+    "wordCount": 95,
+    "duration": 35.24
+  },
+  "55": {
+    "src": "/audio/books/nicht-nur-ein-profil/p055-page-583caec30f8b-5b087fd4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p055-page-583caec30f8b-5b087fd4-qwen-dialogue-opus16.json",
+    "textHash": "583caec30f8bac15c6ebdddb323e739c69d84fcaa412bc053c7cf31f48d0e70f",
+    "wordCount": 94,
+    "duration": 36.8
+  },
+  "57": {
+    "src": "/audio/books/nicht-nur-ein-profil/p057-page-fd6c4dee2263-c781fe28-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p057-page-fd6c4dee2263-c781fe28-qwen-dialogue-opus16.json",
+    "textHash": "fd6c4dee22633922a13eb14273c1ab4e860f7101903e7935f1d9e1c42804a1d9",
+    "wordCount": 96,
+    "duration": 34.08
+  },
+  "58": {
+    "src": "/audio/books/nicht-nur-ein-profil/p058-page-9f849ceefdaf-6ab78835-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p058-page-9f849ceefdaf-6ab78835-qwen-dialogue-opus16.json",
+    "textHash": "9f849ceefdaf3b6d3732c5242e251adef07e6ab1f2714f6088a3b1f495f5df8c",
+    "wordCount": 96,
+    "duration": 34.4
+  },
+  "59": {
+    "src": "/audio/books/nicht-nur-ein-profil/p059-page-0ac0eda00db5-c9469f9a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p059-page-0ac0eda00db5-c9469f9a-qwen-dialogue-opus16.json",
+    "textHash": "0ac0eda00db55b7725381ebd9e146f8a56f943ae090f9659744f7ee0581312ec",
+    "wordCount": 100,
+    "duration": 34.48
+  },
+  "60": {
+    "src": "/audio/books/nicht-nur-ein-profil/p060-page-2d3711c2a6e5-93536247-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p060-page-2d3711c2a6e5-93536247-qwen-dialogue-opus16.json",
+    "textHash": "2d3711c2a6e5a610eef6ca690701f51ea8f61985f383e6a0fd6ce76cc9e20fa0",
+    "wordCount": 95,
+    "duration": 37.32
+  },
+  "61": {
+    "src": "/audio/books/nicht-nur-ein-profil/p061-page-bd9da53dd2a1-83024ba4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p061-page-bd9da53dd2a1-83024ba4-qwen-dialogue-opus16.json",
+    "textHash": "bd9da53dd2a195cac15f32c16c1f70b6c518c77f4752361db8ce1ad49de46ed5",
+    "wordCount": 98,
+    "duration": 33.44
+  },
+  "62": {
+    "src": "/audio/books/nicht-nur-ein-profil/p062-page-f34a24115752-579014f2-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p062-page-f34a24115752-579014f2-qwen-dialogue-opus16.json",
+    "textHash": "f34a24115752d7f8e9ff172c9076930b5e17de57344407ff4f123d43ff4ee877",
+    "wordCount": 97,
+    "duration": 36.0
+  },
+  "63": {
+    "src": "/audio/books/nicht-nur-ein-profil/p063-page-cb5b8b20bce9-d588b5e1-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p063-page-cb5b8b20bce9-d588b5e1-qwen-dialogue-opus16.json",
+    "textHash": "cb5b8b20bce932fb4ddad72a9d248daf9341c29ec228cb07580e5f25d8be58bd",
+    "wordCount": 102,
+    "duration": 37.04
+  },
+  "64": {
+    "src": "/audio/books/nicht-nur-ein-profil/p064-page-19ab706f6935-098294a7-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p064-page-19ab706f6935-098294a7-qwen-dialogue-opus16.json",
+    "textHash": "19ab706f69352be6c72454523355c01d7232eac62ec0d4b3c684bf4f27c1b816",
+    "wordCount": 97,
+    "duration": 36.96
+  },
+  "65": {
+    "src": "/audio/books/nicht-nur-ein-profil/p065-page-d24c263c8d40-f6cf0252-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p065-page-d24c263c8d40-f6cf0252-qwen-dialogue-opus16.json",
+    "textHash": "d24c263c8d400a4e64306321f3b87a1bacdab282dd357bc3911bb61379deb2d5",
+    "wordCount": 99,
+    "duration": 37.12
+  },
+  "66": {
+    "src": "/audio/books/nicht-nur-ein-profil/p066-page-37bd359540c2-3fcc965b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p066-page-37bd359540c2-3fcc965b-qwen-dialogue-opus16.json",
+    "textHash": "37bd359540c2e3cbeaf28d2365e4c458842a292cc1e4e2af50c3a0261c48627d",
+    "wordCount": 101,
+    "duration": 32.96
+  },
+  "67": {
+    "src": "/audio/books/nicht-nur-ein-profil/p067-page-77ebdd24e559-8584b7f0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p067-page-77ebdd24e559-8584b7f0-qwen-dialogue-opus16.json",
+    "textHash": "77ebdd24e55937fa131fbd6162d54a70720ec16478da97bcc9efde376b5e0c7f",
+    "wordCount": 95,
+    "duration": 38.32
+  },
+  "68": {
+    "src": "/audio/books/nicht-nur-ein-profil/p068-page-c21f849958bd-6cd170c0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p068-page-c21f849958bd-6cd170c0-qwen-dialogue-opus16.json",
+    "textHash": "c21f849958bdaa6e83ba2335df6830cd8989279722e4ea08ab6d0bae09a27296",
+    "wordCount": 99,
+    "duration": 34.72
+  },
+  "69": {
+    "src": "/audio/books/nicht-nur-ein-profil/p069-page-67a3e63c809e-7dbcb97b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p069-page-67a3e63c809e-7dbcb97b-qwen-dialogue-opus16.json",
+    "textHash": "67a3e63c809e37ee6cf6ec907421340c10b62d236c377fa21a266bd8ea7fa72d",
+    "wordCount": 98,
+    "duration": 36.32
+  },
+  "70": {
+    "src": "/audio/books/nicht-nur-ein-profil/p070-page-41240239e352-d756a062-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p070-page-41240239e352-d756a062-qwen-dialogue-opus16.json",
+    "textHash": "41240239e3529a37a9dd35948af477a40d02eda4183991c38f717c922226e35e",
+    "wordCount": 102,
+    "duration": 35.44
+  },
+  "71": {
+    "src": "/audio/books/nicht-nur-ein-profil/p071-page-560c799a6235-c7169f11-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p071-page-560c799a6235-c7169f11-qwen-dialogue-opus16.json",
+    "textHash": "560c799a623538f1441bfa2e77940cb4dd1d78aec3850f9b5711c3558e285ef7",
+    "wordCount": 99,
+    "duration": 36.0
+  },
+  "72": {
+    "src": "/audio/books/nicht-nur-ein-profil/p072-page-5590ddce656d-c975e208-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p072-page-5590ddce656d-c975e208-qwen-dialogue-opus16.json",
+    "textHash": "5590ddce656dc3ccc16cb8233af1ada60bc07ebdaca9a03ad92075c057950c80",
+    "wordCount": 100,
+    "duration": 34.72
+  },
+  "73": {
+    "src": "/audio/books/nicht-nur-ein-profil/p073-page-dba9ced8ed5a-dbb88421-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p073-page-dba9ced8ed5a-dbb88421-qwen-dialogue-opus16.json",
+    "textHash": "dba9ced8ed5a3e586e80f4e94e6feb0730625303195266fb00e474293e570dbb",
+    "wordCount": 97,
+    "duration": 32.64
+  },
+  "74": {
+    "src": "/audio/books/nicht-nur-ein-profil/p074-page-cbcbe3c3e0a9-9a0cd6fe-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p074-page-cbcbe3c3e0a9-9a0cd6fe-qwen-dialogue-opus16.json",
+    "textHash": "cbcbe3c3e0a918e77a7318616e9b0f923cf3d9c22b2396c4180bebe2892a4f3c",
+    "wordCount": 103,
+    "duration": 37.12
+  },
+  "75": {
+    "src": "/audio/books/nicht-nur-ein-profil/p075-page-249f93b9569c-30fe8510-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p075-page-249f93b9569c-30fe8510-qwen-dialogue-opus16.json",
+    "textHash": "249f93b9569cbf18c3c7b337f83655c2b03f104a61bc5a1c81b0ca8f2e228a72",
+    "wordCount": 98,
+    "duration": 33.68
+  },
+  "76": {
+    "src": "/audio/books/nicht-nur-ein-profil/p076-page-e1d741137045-02a9b43a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p076-page-e1d741137045-02a9b43a-qwen-dialogue-opus16.json",
+    "textHash": "e1d74113704533ee76f7db972e7a91c5a9802f17667c0d77eea7996ba824ed51",
+    "wordCount": 99,
+    "duration": 35.76
+  },
+  "77": {
+    "src": "/audio/books/nicht-nur-ein-profil/p077-page-e414991b3375-c2a2fb54-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p077-page-e414991b3375-c2a2fb54-qwen-dialogue-opus16.json",
+    "textHash": "e414991b33751baafe94c60d668aaf84622f0f4ec120286115a9fa43f65c98db",
+    "wordCount": 103,
+    "duration": 36.0
+  },
+  "78": {
+    "src": "/audio/books/nicht-nur-ein-profil/p078-page-fef30aaa5985-7194123e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p078-page-fef30aaa5985-7194123e-qwen-dialogue-opus16.json",
+    "textHash": "fef30aaa5985329d60a5c7ab46a28a15db6d14c44a4906064dbf9847ed3169de",
+    "wordCount": 103,
+    "duration": 37.48
+  },
+  "79": {
+    "src": "/audio/books/nicht-nur-ein-profil/p079-page-71eb1a5e09fa-3a2d614a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p079-page-71eb1a5e09fa-3a2d614a-qwen-dialogue-opus16.json",
+    "textHash": "71eb1a5e09fa76e0b4fb587fa8684016456dac0a8790a458677bf3ab8c2bebbb",
+    "wordCount": 100,
+    "duration": 34.8
+  },
+  "80": {
+    "src": "/audio/books/nicht-nur-ein-profil/p080-page-18e014bc2cea-14f0a58f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p080-page-18e014bc2cea-14f0a58f-qwen-dialogue-opus16.json",
+    "textHash": "18e014bc2ceaafd92652b80077bfa1abd0177cef3b2a1a313331f1cb51910f37",
+    "wordCount": 100,
+    "duration": 33.84
+  },
+  "81": {
+    "src": "/audio/books/nicht-nur-ein-profil/p081-page-b4f9d42e9d0f-c0bd6a68-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p081-page-b4f9d42e9d0f-c0bd6a68-qwen-dialogue-opus16.json",
+    "textHash": "b4f9d42e9d0f0388864d8483be063dc31e95195c06f3ed5806354a98a91f8f25",
+    "wordCount": 104,
+    "duration": 36.88
+  },
+  "82": {
+    "src": "/audio/books/nicht-nur-ein-profil/p082-page-4cd08670265a-69f8a497-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p082-page-4cd08670265a-69f8a497-qwen-dialogue-opus16.json",
+    "textHash": "4cd08670265a5b0e1cff3fbdd191867252eda28a381cd15d806387fd55f742ef",
+    "wordCount": 100,
+    "duration": 33.84
+  },
+  "83": {
+    "src": "/audio/books/nicht-nur-ein-profil/p083-page-2467350209b5-22a9e899-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p083-page-2467350209b5-22a9e899-qwen-dialogue-opus16.json",
+    "textHash": "2467350209b53c574d1b795db87248591fe723697789cb908be200f4469369ea",
+    "wordCount": 101,
+    "duration": 36.8
+  },
+  "84": {
+    "src": "/audio/books/nicht-nur-ein-profil/p084-page-5ec3477e6932-51498ea1-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p084-page-5ec3477e6932-51498ea1-qwen-dialogue-opus16.json",
+    "textHash": "5ec3477e6932c1d7eab7c0479064265021eff157fe519089526ac5723c3ca21a",
+    "wordCount": 98,
+    "duration": 36.08
+  },
+  "85": {
+    "src": "/audio/books/nicht-nur-ein-profil/p085-page-30c2a3a31a34-6ebc4f6b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p085-page-30c2a3a31a34-6ebc4f6b-qwen-dialogue-opus16.json",
+    "textHash": "30c2a3a31a3465faba6361114a85464103cc0a1ff7e340b3b9e51e988bd54529",
+    "wordCount": 97,
+    "duration": 32.8
+  },
+  "86": {
+    "src": "/audio/books/nicht-nur-ein-profil/p086-page-1c1520f8c912-50c14311-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p086-page-1c1520f8c912-50c14311-qwen-dialogue-opus16.json",
+    "textHash": "1c1520f8c9121e72f06ac6a01cc123eab334ad9ed17dfc893cf7ce7b3824ecce",
+    "wordCount": 97,
+    "duration": 31.6
+  },
+  "87": {
+    "src": "/audio/books/nicht-nur-ein-profil/p087-page-309eec518214-7d3531e9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p087-page-309eec518214-7d3531e9-qwen-dialogue-opus16.json",
+    "textHash": "309eec518214d7144e49ea104a84709c10832fc001a46a1374016aa369530bf3",
+    "wordCount": 104,
+    "duration": 38.16
+  },
+  "88": {
+    "src": "/audio/books/nicht-nur-ein-profil/p088-page-e272e9b74c06-a9eeaa05-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p088-page-e272e9b74c06-a9eeaa05-qwen-dialogue-opus16.json",
+    "textHash": "e272e9b74c06259d3587ffc349183eb441904c1cdffd4f3306d47fb763e5e8cf",
+    "wordCount": 97,
+    "duration": 33.84
+  },
+  "89": {
+    "src": "/audio/books/nicht-nur-ein-profil/p089-page-53ba4ac80f54-3921926d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p089-page-53ba4ac80f54-3921926d-qwen-dialogue-opus16.json",
+    "textHash": "53ba4ac80f540f80d47e1083eac9cc9186dfcb2f6a85f49b22ea6e2fc5709481",
+    "wordCount": 106,
+    "duration": 37.04
+  },
+  "90": {
+    "src": "/audio/books/nicht-nur-ein-profil/p090-page-6db8c4279b0f-8dfe765d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p090-page-6db8c4279b0f-8dfe765d-qwen-dialogue-opus16.json",
+    "textHash": "6db8c4279b0fdc520429f1e828c539062d720d2d9a084298884b2c70b0161c5b",
+    "wordCount": 102,
+    "duration": 38.92
+  },
+  "91": {
+    "src": "/audio/books/nicht-nur-ein-profil/p091-page-4c34f7a9ccf5-dd5e1b41-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p091-page-4c34f7a9ccf5-dd5e1b41-qwen-dialogue-opus16.json",
+    "textHash": "4c34f7a9ccf5efd4b5746395af8742e07e9fb23b1bdecdb990748d2accc45bee",
+    "wordCount": 107,
+    "duration": 35.44
+  },
+  "92": {
+    "src": "/audio/books/nicht-nur-ein-profil/p092-page-2747f10c5b74-66ca0ea9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p092-page-2747f10c5b74-66ca0ea9-qwen-dialogue-opus16.json",
+    "textHash": "2747f10c5b74b8d148893318c3c6cb163a6b9cf503c24673e5603b680979054f",
+    "wordCount": 101,
+    "duration": 33.44
+  },
+  "93": {
+    "src": "/audio/books/nicht-nur-ein-profil/p093-page-4bcb27e30f4b-a37761a5-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p093-page-4bcb27e30f4b-a37761a5-qwen-dialogue-opus16.json",
+    "textHash": "4bcb27e30f4bde70328849d3d5bec33b6a59c4c954a35ecfb492c61fccc18ff1",
+    "wordCount": 96,
+    "duration": 34.8
+  },
+  "94": {
+    "src": "/audio/books/nicht-nur-ein-profil/p094-page-ddd75fd9efc5-a4ecde3e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p094-page-ddd75fd9efc5-a4ecde3e-qwen-dialogue-opus16.json",
+    "textHash": "ddd75fd9efc54058338a7811a75dbedde4638d64bb116e1c55c06cf9090d8e0e",
+    "wordCount": 101,
+    "duration": 34.24
+  },
+  "95": {
+    "src": "/audio/books/nicht-nur-ein-profil/p095-page-9c219ee7478b-3f53736d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p095-page-9c219ee7478b-3f53736d-qwen-dialogue-opus16.json",
+    "textHash": "9c219ee7478b12a8b46be1a2b9020b5f10bd75f40165ca358c422603c5123755",
+    "wordCount": 108,
+    "duration": 36.32
+  },
+  "96": {
+    "src": "/audio/books/nicht-nur-ein-profil/p096-page-a9acf5acb585-076b7215-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p096-page-a9acf5acb585-076b7215-qwen-dialogue-opus16.json",
+    "textHash": "a9acf5acb5858c853c6aed108c25fad230ddc712a3db72434a62477496820c7d",
+    "wordCount": 98,
+    "duration": 34.4
+  },
+  "97": {
+    "src": "/audio/books/nicht-nur-ein-profil/p097-page-b95352c544d1-79a76def-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p097-page-b95352c544d1-79a76def-qwen-dialogue-opus16.json",
+    "textHash": "b95352c544d10caa6d4e1b86b12ddfc57a260ec095db4277ff687908d9b86dd9",
+    "wordCount": 96,
+    "duration": 33.84
+  },
+  "98": {
+    "src": "/audio/books/nicht-nur-ein-profil/p098-page-d108eb0ad806-eebc264f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p098-page-d108eb0ad806-eebc264f-qwen-dialogue-opus16.json",
+    "textHash": "d108eb0ad80673c5366904344d6a19035ab3c8ffc1fbd0e6cb02aadecd79f05e",
+    "wordCount": 102,
+    "duration": 36.8
+  },
+  "99": {
+    "src": "/audio/books/nicht-nur-ein-profil/p099-page-c66f86d24209-5597b691-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p099-page-c66f86d24209-5597b691-qwen-dialogue-opus16.json",
+    "textHash": "c66f86d24209aa9a8232929db38410ecb358c315457f9f89b9a9cd3d498c67a1",
+    "wordCount": 103,
+    "duration": 36.16
+  },
+  "100": {
+    "src": "/audio/books/nicht-nur-ein-profil/p100-page-a2bd2f1dec75-c45345e8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p100-page-a2bd2f1dec75-c45345e8-qwen-dialogue-opus16.json",
+    "textHash": "a2bd2f1dec75f271807f62115d6f44eee353708fa1e245969e29cbbe272f6e81",
+    "wordCount": 101,
+    "duration": 37.04
+  },
+  "56": {
+    "src": "/audio/books/nicht-nur-ein-profil/p056-page-92ace14cdb6d-9aab030e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p056-page-92ace14cdb6d-9aab030e-qwen-dialogue-opus16.json",
+    "textHash": "92ace14cdb6d2c03942ae3dd6022c5632237801916bb3f1a2f6963e69f5cabd1",
+    "wordCount": 98,
+    "duration": 34.96
+  },
+  "101": {
+    "src": "/audio/books/nicht-nur-ein-profil/p101-page-9314777c02d9-63d0de26-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p101-page-9314777c02d9-63d0de26-qwen-dialogue-opus16.json",
+    "textHash": "9314777c02d913f1da13b8f2c4e8e01aa539dc1ecadb7cb0969de61ebaaaeaa9",
+    "wordCount": 102,
+    "duration": 36.16
+  },
+  "102": {
+    "src": "/audio/books/nicht-nur-ein-profil/p102-page-a3e1e448bc6f-09d5ab2b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p102-page-a3e1e448bc6f-09d5ab2b-qwen-dialogue-opus16.json",
+    "textHash": "a3e1e448bc6fb2b9bd63d567d92a9aca1a7380c67007c8cc34e880f7273b0d9e",
+    "wordCount": 102,
+    "duration": 34.0
+  },
+  "103": {
+    "src": "/audio/books/nicht-nur-ein-profil/p103-page-427477955ea2-f78fa727-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p103-page-427477955ea2-f78fa727-qwen-dialogue-opus16.json",
+    "textHash": "427477955ea275fe7f6e8d0e85d58ab639d2ff39d3f31341e8b263c06c2c7eb1",
+    "wordCount": 102,
+    "duration": 35.69317
+  },
+  "104": {
+    "src": "/audio/books/nicht-nur-ein-profil/p104-page-0e58b6c20c95-57cf2840-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p104-page-0e58b6c20c95-57cf2840-qwen-dialogue-opus16.json",
+    "textHash": "0e58b6c20c95d86cd08c03a4ab9330c20915444174383c5ab3fc2b929ca9936a",
+    "wordCount": 98,
+    "duration": 35.36
+  },
+  "105": {
+    "src": "/audio/books/nicht-nur-ein-profil/p105-page-fd23aa3dd2a6-237a723c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p105-page-fd23aa3dd2a6-237a723c-qwen-dialogue-opus16.json",
+    "textHash": "fd23aa3dd2a613236128fdfd21e4409aaae24627958f94f6d1914171ee63d20f",
+    "wordCount": 101,
+    "duration": 35.04
+  },
+  "106": {
+    "src": "/audio/books/nicht-nur-ein-profil/p106-page-d5b90b0f5c98-b0c4dd4b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p106-page-d5b90b0f5c98-b0c4dd4b-qwen-dialogue-opus16.json",
+    "textHash": "d5b90b0f5c98c2d738b158bf555acdf3f58e6fe8f61067ae720546c2ceef3282",
+    "wordCount": 101,
+    "duration": 35.36
+  },
+  "107": {
+    "src": "/audio/books/nicht-nur-ein-profil/p107-page-a63e28ff9f19-6ec53344-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p107-page-a63e28ff9f19-6ec53344-qwen-dialogue-opus16.json",
+    "textHash": "a63e28ff9f19080eca7b30a0700c6d9769f4df72a408559fe484007656dff071",
+    "wordCount": 97,
+    "duration": 36.08
+  },
+  "108": {
+    "src": "/audio/books/nicht-nur-ein-profil/p108-page-1717bef74224-3c890b12-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p108-page-1717bef74224-3c890b12-qwen-dialogue-opus16.json",
+    "textHash": "1717bef74224c6c53a8dcb7fd1b0dd4558c55904c726ea9750aa234ef7e94da7",
+    "wordCount": 100,
+    "duration": 37.2
+  },
+  "109": {
+    "src": "/audio/books/nicht-nur-ein-profil/p109-page-a3d34f9267ff-911406b0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p109-page-a3d34f9267ff-911406b0-qwen-dialogue-opus16.json",
+    "textHash": "a3d34f9267ff91d6d7c0affbf52a3f32af4fbb935a24d53e28718569c6d009f6",
+    "wordCount": 102,
+    "duration": 34.16
+  },
+  "110": {
+    "src": "/audio/books/nicht-nur-ein-profil/p110-page-81d21ce4d182-f5713b13-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p110-page-81d21ce4d182-f5713b13-qwen-dialogue-opus16.json",
+    "textHash": "81d21ce4d182a536a0a98f20798779ff616e082509538f38d77ce73260604f95",
+    "wordCount": 99,
+    "duration": 36.08
+  },
+  "111": {
+    "src": "/audio/books/nicht-nur-ein-profil/p111-page-ab73fb6de493-f51f8452-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p111-page-ab73fb6de493-f51f8452-qwen-dialogue-opus16.json",
+    "textHash": "ab73fb6de4931efe2ffd0d57c5f544ce7275f61060eb9200dbf22c1d4fc4a5e4",
+    "wordCount": 110,
+    "duration": 39.88
+  },
+  "112": {
+    "src": "/audio/books/nicht-nur-ein-profil/p112-page-3d7fb5b66718-6f6bbcea-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p112-page-3d7fb5b66718-6f6bbcea-qwen-dialogue-opus16.json",
+    "textHash": "3d7fb5b667187cba5066dbd2426d80301ecddf58def3341fa07f3da381de790f",
+    "wordCount": 103,
+    "duration": 37.2
+  },
+  "113": {
+    "src": "/audio/books/nicht-nur-ein-profil/p113-page-87ef8c219f1d-23d71162-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p113-page-87ef8c219f1d-23d71162-qwen-dialogue-opus16.json",
+    "textHash": "87ef8c219f1d5d3cb95b579a74538a0473efc1781f4e7c685b509d2022fcfaf5",
+    "wordCount": 104,
+    "duration": 34.4
+  },
+  "114": {
+    "src": "/audio/books/nicht-nur-ein-profil/p114-page-f42a101f3faa-d89b046b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p114-page-f42a101f3faa-d89b046b-qwen-dialogue-opus16.json",
+    "textHash": "f42a101f3faad436d9d44cf3e51ffdee6fc1b5aaa23e3b458233931f4351b04e",
+    "wordCount": 96,
+    "duration": 36.08
+  },
+  "115": {
+    "src": "/audio/books/nicht-nur-ein-profil/p115-page-46ce975e6f87-e49c83d5-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p115-page-46ce975e6f87-e49c83d5-qwen-dialogue-opus16.json",
+    "textHash": "46ce975e6f874298edfa9546d6032f869271bc5efb51b557d88962415207a882",
+    "wordCount": 100,
+    "duration": 35.68
+  },
+  "116": {
+    "src": "/audio/books/nicht-nur-ein-profil/p116-page-d9ebf4c8650d-24c55ae3-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p116-page-d9ebf4c8650d-24c55ae3-qwen-dialogue-opus16.json",
+    "textHash": "d9ebf4c8650d4987555a565ff94b000ee3617c65dd64698c342b56b16698f1de",
+    "wordCount": 104,
+    "duration": 35.92
+  },
+  "117": {
+    "src": "/audio/books/nicht-nur-ein-profil/p117-page-a291934b5067-b7c72d10-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p117-page-a291934b5067-b7c72d10-qwen-dialogue-opus16.json",
+    "textHash": "a291934b5067fe775bf4a553a93e440f8869f3e0042355cde6c2ee7e6f7fd65f",
+    "wordCount": 102,
+    "duration": 34.96
+  },
+  "118": {
+    "src": "/audio/books/nicht-nur-ein-profil/p118-page-dbd746d84e34-65333b42-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p118-page-dbd746d84e34-65333b42-qwen-dialogue-opus16.json",
+    "textHash": "dbd746d84e348bf4749ccdc976a2d1ef72cb66db17f7639e6e705953f21854d2",
+    "wordCount": 103,
+    "duration": 36.64
+  },
+  "119": {
+    "src": "/audio/books/nicht-nur-ein-profil/p119-page-2303923a39fa-3e63efd4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p119-page-2303923a39fa-3e63efd4-qwen-dialogue-opus16.json",
+    "textHash": "2303923a39fad8a6079f53f48115c1b5b2ff0befa9be76188f58cdaa5af91dbd",
+    "wordCount": 104,
+    "duration": 35.36
+  },
+  "120": {
+    "src": "/audio/books/nicht-nur-ein-profil/p120-page-1051d91ae1f4-6a3ef39e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p120-page-1051d91ae1f4-6a3ef39e-qwen-dialogue-opus16.json",
+    "textHash": "1051d91ae1f412ef4fdf620dcdc7cfc9b367bac0d1350a3adba15b11b7782961",
+    "wordCount": 101,
+    "duration": 34.24
+  },
+  "121": {
+    "src": "/audio/books/nicht-nur-ein-profil/p121-page-9cf143d323f0-3d12d16d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p121-page-9cf143d323f0-3d12d16d-qwen-dialogue-opus16.json",
+    "textHash": "9cf143d323f024c82e912d4217f104c4f4614f0092356c1d2d557d077a4eb894",
+    "wordCount": 103,
+    "duration": 35.44
+  },
+  "122": {
+    "src": "/audio/books/nicht-nur-ein-profil/p122-page-699742d2dafe-b4e0c366-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p122-page-699742d2dafe-b4e0c366-qwen-dialogue-opus16.json",
+    "textHash": "699742d2dafe930df1657e374ce791327c11bb997f757fc84c324d9b4429686b",
+    "wordCount": 102,
+    "duration": 35.8
+  },
+  "123": {
+    "src": "/audio/books/nicht-nur-ein-profil/p123-page-ae2b39b7dc50-14c3f81d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p123-page-ae2b39b7dc50-14c3f81d-qwen-dialogue-opus16.json",
+    "textHash": "ae2b39b7dc50484980a9814b70c3d26832dcd8c443af489c1285589ecb0d05bf",
+    "wordCount": 99,
+    "duration": 32.88
+  },
+  "124": {
+    "src": "/audio/books/nicht-nur-ein-profil/p124-page-d17aa6eda759-2dc010d8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p124-page-d17aa6eda759-2dc010d8-qwen-dialogue-opus16.json",
+    "textHash": "d17aa6eda759fcc9f43001c95375d884e2f3ef4b927f262d558fee9ab4ae2662",
+    "wordCount": 104,
+    "duration": 36.08
+  },
+  "125": {
+    "src": "/audio/books/nicht-nur-ein-profil/p125-page-57acb3384dd9-6550b69b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p125-page-57acb3384dd9-6550b69b-qwen-dialogue-opus16.json",
+    "textHash": "57acb3384dd933db6a2ed46b2e9be303d445acca493ed627520be99975de5766",
+    "wordCount": 101,
+    "duration": 37.4
+  },
+  "126": {
+    "src": "/audio/books/nicht-nur-ein-profil/p126-page-894253836396-85650ac5-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p126-page-894253836396-85650ac5-qwen-dialogue-opus16.json",
+    "textHash": "8942538363968d0cceec69e276c9844cce3bcaafdcd78a26bede27372fd9aeb5",
+    "wordCount": 106,
+    "duration": 35.36
+  },
+  "127": {
+    "src": "/audio/books/nicht-nur-ein-profil/p127-page-6606a835fd7d-17ccec6a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p127-page-6606a835fd7d-17ccec6a-qwen-dialogue-opus16.json",
+    "textHash": "6606a835fd7db8ae029104277fc4bc3c06fffebcbe14aaaacb7ebec8a36ea18a",
+    "wordCount": 103,
+    "duration": 36.0
+  },
+  "128": {
+    "src": "/audio/books/nicht-nur-ein-profil/p128-page-2448b6fa6b94-b771b755-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p128-page-2448b6fa6b94-b771b755-qwen-dialogue-opus16.json",
+    "textHash": "2448b6fa6b946321349faef67f86b4467051a82f656c50296073134e44511fe5",
+    "wordCount": 99,
+    "duration": 36.08
+  },
+  "129": {
+    "src": "/audio/books/nicht-nur-ein-profil/p129-page-7e6d4d40d2f2-8bc2b846-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p129-page-7e6d4d40d2f2-8bc2b846-qwen-dialogue-opus16.json",
+    "textHash": "7e6d4d40d2f2064a7526a4ec13718f7e36b305284f117309f5be245c27c6b41e",
+    "wordCount": 99,
+    "duration": 36.8
+  },
+  "130": {
+    "src": "/audio/books/nicht-nur-ein-profil/p130-page-02f3bb9d99c8-88592d61-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p130-page-02f3bb9d99c8-88592d61-qwen-dialogue-opus16.json",
+    "textHash": "02f3bb9d99c83f8a7cfad115e8aef487de72ba117c90e36f01331c8b567d9ab7",
+    "wordCount": 104,
+    "duration": 35.6
+  },
+  "131": {
+    "src": "/audio/books/nicht-nur-ein-profil/p131-page-c52c88a68420-3da36c98-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p131-page-c52c88a68420-3da36c98-qwen-dialogue-opus16.json",
+    "textHash": "c52c88a684208ae0a6b0ffeba1b119f514074efc15b5ba5366c4761347b88fbb",
+    "wordCount": 103,
+    "duration": 39.04
+  },
+  "132": {
+    "src": "/audio/books/nicht-nur-ein-profil/p132-page-c8f22873b245-533e73cb-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p132-page-c8f22873b245-533e73cb-qwen-dialogue-opus16.json",
+    "textHash": "c8f22873b24569d693c5c6852d7dff9e1a5e7b44faf4c42f0bfd5a3983c89605",
+    "wordCount": 104,
+    "duration": 34.32
+  },
+  "133": {
+    "src": "/audio/books/nicht-nur-ein-profil/p133-page-ceb340bd031a-3786adad-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p133-page-ceb340bd031a-3786adad-qwen-dialogue-opus16.json",
+    "textHash": "ceb340bd031a9983ccd3574ca42f1de805975c9e3adbc9d328fabc95f56ef264",
+    "wordCount": 103,
+    "duration": 34.88
+  },
+  "134": {
+    "src": "/audio/books/nicht-nur-ein-profil/p134-page-5a612496359c-6092df49-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p134-page-5a612496359c-6092df49-qwen-dialogue-opus16.json",
+    "textHash": "5a612496359c035cd7b611d40ae30dd43bb9ebdc82539eade4095d7a90d8be84",
+    "wordCount": 101,
+    "duration": 40.56
+  },
+  "135": {
+    "src": "/audio/books/nicht-nur-ein-profil/p135-page-aad3083d6cab-ebb3e353-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p135-page-aad3083d6cab-ebb3e353-qwen-dialogue-opus16.json",
+    "textHash": "aad3083d6cab51b952a6cce4be1b7793a16d81bbbf9c24a2e8a64dad2461c52e",
+    "wordCount": 105,
+    "duration": 38.48
+  },
+  "136": {
+    "src": "/audio/books/nicht-nur-ein-profil/p136-page-94e882ee53ac-d44dbac1-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p136-page-94e882ee53ac-d44dbac1-qwen-dialogue-opus16.json",
+    "textHash": "94e882ee53ac775453b827d40a63ed7d3f5b3ec082072757cbf284e690c1d799",
+    "wordCount": 109,
+    "duration": 34.72
+  },
+  "137": {
+    "src": "/audio/books/nicht-nur-ein-profil/p137-page-8ffd54e41a92-b3eeeb3c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p137-page-8ffd54e41a92-b3eeeb3c-qwen-dialogue-opus16.json",
+    "textHash": "8ffd54e41a922ccbe17d487819f65b44192546585ecced1f786c5e30842e7722",
+    "wordCount": 100,
+    "duration": 34.88
+  },
+  "138": {
+    "src": "/audio/books/nicht-nur-ein-profil/p138-page-c0bc1d51f1e2-3336f156-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p138-page-c0bc1d51f1e2-3336f156-qwen-dialogue-opus16.json",
+    "textHash": "c0bc1d51f1e2b7d1789d054bfabc8f947de97332f2a65f9d4e66979cd1b6cf4c",
+    "wordCount": 98,
+    "duration": 35.36
+  },
+  "139": {
+    "src": "/audio/books/nicht-nur-ein-profil/p139-page-cd3a8a870e7d-b02767eb-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p139-page-cd3a8a870e7d-b02767eb-qwen-dialogue-opus16.json",
+    "textHash": "cd3a8a870e7da06c74f8d75200363a731c2726d6c3e01e26cfc43d2068752f58",
+    "wordCount": 107,
+    "duration": 39.44
+  },
+  "140": {
+    "src": "/audio/books/nicht-nur-ein-profil/p140-page-38b4197c54f5-beddc398-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p140-page-38b4197c54f5-beddc398-qwen-dialogue-opus16.json",
+    "textHash": "38b4197c54f50af6e8061e6dc498b8f7ed8f38fd87acd670a5735eab170be560",
+    "wordCount": 102,
+    "duration": 35.6
+  },
+  "141": {
+    "src": "/audio/books/nicht-nur-ein-profil/p141-page-3e07715af307-d60f2be8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p141-page-3e07715af307-d60f2be8-qwen-dialogue-opus16.json",
+    "textHash": "3e07715af307321701321650ca411b308e70f2850c43b197587e969ceadd8840",
+    "wordCount": 98,
+    "duration": 31.28
+  },
+  "142": {
+    "src": "/audio/books/nicht-nur-ein-profil/p142-page-68ac83dc426c-02f4dd89-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p142-page-68ac83dc426c-02f4dd89-qwen-dialogue-opus16.json",
+    "textHash": "68ac83dc426cac37c62ee974f8e15ba7ba163e97ccbc59db6cb6d05cfeea441f",
+    "wordCount": 103,
+    "duration": 36.56
+  },
+  "143": {
+    "src": "/audio/books/nicht-nur-ein-profil/p143-page-097e4aff68b8-3f5ced15-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p143-page-097e4aff68b8-3f5ced15-qwen-dialogue-opus16.json",
+    "textHash": "097e4aff68b89f33bcb713296e4e80f6076496eb31e4c2680254e833548db0c5",
+    "wordCount": 103,
+    "duration": 37.28
+  },
+  "144": {
+    "src": "/audio/books/nicht-nur-ein-profil/p144-page-2efcbb8b5446-07724ef9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p144-page-2efcbb8b5446-07724ef9-qwen-dialogue-opus16.json",
+    "textHash": "2efcbb8b5446c610d8b47bd285a4d928d67f3f4aa3a1510233e3457f9c0b5083",
+    "wordCount": 96,
+    "duration": 37.36
+  },
+  "145": {
+    "src": "/audio/books/nicht-nur-ein-profil/p145-page-3cc0bcdc35aa-6922aa17-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p145-page-3cc0bcdc35aa-6922aa17-qwen-dialogue-opus16.json",
+    "textHash": "3cc0bcdc35aa8753c7591a32a2e2eff378d0e878250a44c1cfad6e2105146015",
+    "wordCount": 102,
+    "duration": 39.44
+  },
+  "146": {
+    "src": "/audio/books/nicht-nur-ein-profil/p146-page-74ccf1d91300-24074a72-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p146-page-74ccf1d91300-24074a72-qwen-dialogue-opus16.json",
+    "textHash": "74ccf1d913009551e097cb9cd8673e5113b27d441a219dd9e90c36bdb2a3fb96",
+    "wordCount": 103,
+    "duration": 35.68
+  },
+  "147": {
+    "src": "/audio/books/nicht-nur-ein-profil/p147-page-d0e246947db9-d34ecd29-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p147-page-d0e246947db9-d34ecd29-qwen-dialogue-opus16.json",
+    "textHash": "d0e246947db99487bae84a76d08b70e67dee51caad201d800fcded594c0786df",
+    "wordCount": 103,
+    "duration": 40.16
+  },
+  "148": {
+    "src": "/audio/books/nicht-nur-ein-profil/p148-page-fed342e370a8-f79b3d4a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p148-page-fed342e370a8-f79b3d4a-qwen-dialogue-opus16.json",
+    "textHash": "fed342e370a860dfc229a5459f483e0e6b57ba80ce81b4328409050c411a6840",
+    "wordCount": 100,
+    "duration": 36.08
+  },
+  "149": {
+    "src": "/audio/books/nicht-nur-ein-profil/p149-page-88405dd6ff22-232a0ad4-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p149-page-88405dd6ff22-232a0ad4-qwen-dialogue-opus16.json",
+    "textHash": "88405dd6ff22b645e223d89b3a390f7ddcd70aa975d1f51c622737e843ef7de0",
+    "wordCount": 98,
+    "duration": 34.08
+  },
+  "150": {
+    "src": "/audio/books/nicht-nur-ein-profil/p150-page-5c9158626018-413afd98-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p150-page-5c9158626018-413afd98-qwen-dialogue-opus16.json",
+    "textHash": "5c915862601888ef685d0a323338988219d3d74ef2bd68cd4977e23cd781cf87",
+    "wordCount": 99,
+    "duration": 34.16
+  },
+  "151": {
+    "src": "/audio/books/nicht-nur-ein-profil/p151-page-41e04413c7b6-d831154f-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p151-page-41e04413c7b6-d831154f-qwen-dialogue-opus16.json",
+    "textHash": "41e04413c7b65067ffcc1bb9afbbdb4af16b8f7cdd6c094de4813e96b1050d60",
+    "wordCount": 101,
+    "duration": 37.04
+  },
+  "152": {
+    "src": "/audio/books/nicht-nur-ein-profil/p152-page-f1627cd2df90-85d556ca-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p152-page-f1627cd2df90-85d556ca-qwen-dialogue-opus16.json",
+    "textHash": "f1627cd2df906b4ef92d86457eeca6c38950a2606ad3a54ff739b062e3b37716",
+    "wordCount": 99,
+    "duration": 35.36
+  },
+  "153": {
+    "src": "/audio/books/nicht-nur-ein-profil/p153-page-78d9fc8bdf9f-cb9fea38-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p153-page-78d9fc8bdf9f-cb9fea38-qwen-dialogue-opus16.json",
+    "textHash": "78d9fc8bdf9f979a9b2ba503b304c4bb720b571a343d6b9a36a871459af4fb06",
+    "wordCount": 99,
+    "duration": 36.24
+  },
+  "154": {
+    "src": "/audio/books/nicht-nur-ein-profil/p154-page-2d71cbc32eb5-3e6449ce-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p154-page-2d71cbc32eb5-3e6449ce-qwen-dialogue-opus16.json",
+    "textHash": "2d71cbc32eb538c0a4cd534a00cc1d4fb411e6a12d834ef37768acbb176eced4",
+    "wordCount": 104,
+    "duration": 38.16
+  },
+  "155": {
+    "src": "/audio/books/nicht-nur-ein-profil/p155-page-53fa403e1178-df2ca4f2-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p155-page-53fa403e1178-df2ca4f2-qwen-dialogue-opus16.json",
+    "textHash": "53fa403e1178c2a757a97f7b17d5208f4cd4a9a28d2f731946e2e30edb38092f",
+    "wordCount": 99,
+    "duration": 37.84
+  },
+  "156": {
+    "src": "/audio/books/nicht-nur-ein-profil/p156-page-760f79c104c1-3d5a40b3-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p156-page-760f79c104c1-3d5a40b3-qwen-dialogue-opus16.json",
+    "textHash": "760f79c104c10889d3ce065380c7d1722f48ca1c3480d19fa43492075ff09a59",
+    "wordCount": 103,
+    "duration": 35.2
+  },
+  "157": {
+    "src": "/audio/books/nicht-nur-ein-profil/p157-page-c77a8e83e309-d0249745-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p157-page-c77a8e83e309-d0249745-qwen-dialogue-opus16.json",
+    "textHash": "c77a8e83e309d35ba07d2166209a77ef0b26c7dfa63f73dbb6fa35e176cfddf6",
+    "wordCount": 103,
+    "duration": 36.48
+  },
+  "158": {
+    "src": "/audio/books/nicht-nur-ein-profil/p158-page-44e195147438-0776de0e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p158-page-44e195147438-0776de0e-qwen-dialogue-opus16.json",
+    "textHash": "44e1951474385262ca88b2c1a17c51207622bd4a7b95450b14aa51545b911dd7",
+    "wordCount": 106,
+    "duration": 35.76
+  },
+  "159": {
+    "src": "/audio/books/nicht-nur-ein-profil/p159-page-24563d2a4283-1e5f14c6-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p159-page-24563d2a4283-1e5f14c6-qwen-dialogue-opus16.json",
+    "textHash": "24563d2a428378b4a5f93f593eee897618ff882da0094a8328a3c542b6d98e13",
+    "wordCount": 102,
+    "duration": 35.28
+  },
+  "160": {
+    "src": "/audio/books/nicht-nur-ein-profil/p160-page-b15b234b5919-868b4d42-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p160-page-b15b234b5919-868b4d42-qwen-dialogue-opus16.json",
+    "textHash": "b15b234b59196243b2f9a23f3ccd117537c89ed644b1801accb8de422be7f305",
+    "wordCount": 103,
+    "duration": 36.72
+  },
+  "161": {
+    "src": "/audio/books/nicht-nur-ein-profil/p161-page-c972c9116172-87e058a8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p161-page-c972c9116172-87e058a8-qwen-dialogue-opus16.json",
+    "textHash": "c972c9116172f0b7adff312194dcb14b8f15493da0c567675d9688e531689849",
+    "wordCount": 103,
+    "duration": 36.72
+  },
+  "162": {
+    "src": "/audio/books/nicht-nur-ein-profil/p162-page-320e7a56fd69-1f728e0e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p162-page-320e7a56fd69-1f728e0e-qwen-dialogue-opus16.json",
+    "textHash": "320e7a56fd6962cd5afaff2b980ed62ee2121f97c81285cd85d46b4bd4789a7a",
+    "wordCount": 97,
+    "duration": 34.48
+  },
+  "163": {
+    "src": "/audio/books/nicht-nur-ein-profil/p163-page-7f13b325f1b0-30ecf31b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p163-page-7f13b325f1b0-30ecf31b-qwen-dialogue-opus16.json",
+    "textHash": "7f13b325f1b0c5b72bc4b2e5f2203130e2662c4947ddeba8cf4156b515513da1",
+    "wordCount": 105,
+    "duration": 38.96
+  },
+  "164": {
+    "src": "/audio/books/nicht-nur-ein-profil/p164-page-fea3eb7cd5d2-3678b02d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p164-page-fea3eb7cd5d2-3678b02d-qwen-dialogue-opus16.json",
+    "textHash": "fea3eb7cd5d27899f09f0b73c9723c200064f6c83d0ef80338181e7cec2bac2e",
+    "wordCount": 102,
+    "duration": 38.24
+  },
+  "165": {
+    "src": "/audio/books/nicht-nur-ein-profil/p165-page-2353a15aba40-47f86764-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p165-page-2353a15aba40-47f86764-qwen-dialogue-opus16.json",
+    "textHash": "2353a15aba40b2d6f84232ce18b1e9edc1527d0efde0a3c8e897fb393958c646",
+    "wordCount": 102,
+    "duration": 38.64
+  },
+  "166": {
+    "src": "/audio/books/nicht-nur-ein-profil/p166-page-3c199c9193e0-efcc467a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p166-page-3c199c9193e0-efcc467a-qwen-dialogue-opus16.json",
+    "textHash": "3c199c9193e06549d8ef505199e032eadf368124480c38e6e225e1916252d320",
+    "wordCount": 108,
+    "duration": 36.48
+  },
+  "167": {
+    "src": "/audio/books/nicht-nur-ein-profil/p167-page-ab1fc0d7c60f-22e427aa-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p167-page-ab1fc0d7c60f-22e427aa-qwen-dialogue-opus16.json",
+    "textHash": "ab1fc0d7c60f1bf718e556498550378fef4153b42e47281e5e1cd0675d9eb372",
+    "wordCount": 104,
+    "duration": 37.04
+  },
+  "168": {
+    "src": "/audio/books/nicht-nur-ein-profil/p168-page-216698d7a041-dad1d9be-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p168-page-216698d7a041-dad1d9be-qwen-dialogue-opus16.json",
+    "textHash": "216698d7a041a6b37a5d76da628481348dc8c98ae077eec33abd17f10bfda864",
+    "wordCount": 101,
+    "duration": 37.04
+  },
+  "169": {
+    "src": "/audio/books/nicht-nur-ein-profil/p169-page-a5df6b2e1665-936f0402-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p169-page-a5df6b2e1665-936f0402-qwen-dialogue-opus16.json",
+    "textHash": "a5df6b2e1665de526443a0a2a0791f7d17d475d5bee1f68b7be1932bda76e2db",
+    "wordCount": 97,
+    "duration": 36.64
+  },
+  "170": {
+    "src": "/audio/books/nicht-nur-ein-profil/p170-page-fd8e9f651090-48a5d797-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p170-page-fd8e9f651090-48a5d797-qwen-dialogue-opus16.json",
+    "textHash": "fd8e9f6510903b890fd18e19672a8e7f9ed6832e8d102d0e4bd81a569cc84d7e",
+    "wordCount": 108,
+    "duration": 37.2
+  },
+  "171": {
+    "src": "/audio/books/nicht-nur-ein-profil/p171-page-c32ea5bb93e0-ac050185-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p171-page-c32ea5bb93e0-ac050185-qwen-dialogue-opus16.json",
+    "textHash": "c32ea5bb93e036e2e36ce833ea868e621ff3ecca5e37bf863c14d2a19faa3136",
+    "wordCount": 108,
+    "duration": 38.64
+  },
+  "172": {
+    "src": "/audio/books/nicht-nur-ein-profil/p172-page-7f6b9a004353-15c1143b-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p172-page-7f6b9a004353-15c1143b-qwen-dialogue-opus16.json",
+    "textHash": "7f6b9a004353bb0a204922f41e65ef1b84ecd2c50583faf7a2826dcaabf93472",
+    "wordCount": 97,
+    "duration": 37.12
+  },
+  "173": {
+    "src": "/audio/books/nicht-nur-ein-profil/p173-page-df29e96859b3-55e96a34-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p173-page-df29e96859b3-55e96a34-qwen-dialogue-opus16.json",
+    "textHash": "df29e96859b33ca195e7bb43a402790dcbd620750f0e47029ccbd45b827ab218",
+    "wordCount": 97,
+    "duration": 34.24
+  },
+  "174": {
+    "src": "/audio/books/nicht-nur-ein-profil/p174-page-7c66df0a98cd-ef66ada1-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p174-page-7c66df0a98cd-ef66ada1-qwen-dialogue-opus16.json",
+    "textHash": "7c66df0a98cdf459ac416dbd9e75c30b33b05e99fbae81c790f58dd2742cedef",
+    "wordCount": 102,
+    "duration": 35.12
+  },
+  "175": {
+    "src": "/audio/books/nicht-nur-ein-profil/p175-page-19b7feb3f991-f9474dc8-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p175-page-19b7feb3f991-f9474dc8-qwen-dialogue-opus16.json",
+    "textHash": "19b7feb3f99180d19e34cfe08c00ed4f23a75c671decc83309dc7b40abc01ee1",
+    "wordCount": 98,
+    "duration": 34.0
+  },
+  "176": {
+    "src": "/audio/books/nicht-nur-ein-profil/p176-page-52551446a0d1-af1b873d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p176-page-52551446a0d1-af1b873d-qwen-dialogue-opus16.json",
+    "textHash": "52551446a0d108a000cb94d0d6296519afade13e00cd86d34a4d9d4202901600",
+    "wordCount": 100,
+    "duration": 36.08
+  },
+  "177": {
+    "src": "/audio/books/nicht-nur-ein-profil/p177-page-029f7eeadc04-9842ead2-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p177-page-029f7eeadc04-9842ead2-qwen-dialogue-opus16.json",
+    "textHash": "029f7eeadc04df77016f98945ff557748afdb1621537399f1413dde0d12de675",
+    "wordCount": 102,
+    "duration": 41.84
+  },
+  "178": {
+    "src": "/audio/books/nicht-nur-ein-profil/p178-page-f3765da993a5-655951e9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p178-page-f3765da993a5-655951e9-qwen-dialogue-opus16.json",
+    "textHash": "f3765da993a5608d58843e9e390c5ba46dfee952d05abd91464789e42f5bacaa",
+    "wordCount": 101,
+    "duration": 37.52
+  },
+  "179": {
+    "src": "/audio/books/nicht-nur-ein-profil/p179-page-220fc6f0e003-c72b9f58-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p179-page-220fc6f0e003-c72b9f58-qwen-dialogue-opus16.json",
+    "textHash": "220fc6f0e0033f80ca33663c0b5fb18d57eaff7f8eb240bb45a35761b8312539",
+    "wordCount": 103,
+    "duration": 34.8
+  },
+  "180": {
+    "src": "/audio/books/nicht-nur-ein-profil/p180-page-f216c713859b-6acd5f0c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p180-page-f216c713859b-6acd5f0c-qwen-dialogue-opus16.json",
+    "textHash": "f216c713859bd267545ae2f1ea7b828cddce8c774c98824880f932a7179ae362",
+    "wordCount": 100,
+    "duration": 35.84
+  },
+  "181": {
+    "src": "/audio/books/nicht-nur-ein-profil/p181-page-650599e2faa8-7adb7806-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p181-page-650599e2faa8-7adb7806-qwen-dialogue-opus16.json",
+    "textHash": "650599e2faa8c3dbae3764ea7f59ef963c7ef59bd0e6e7f1c39b87b184577944",
+    "wordCount": 102,
+    "duration": 33.92
+  },
+  "182": {
+    "src": "/audio/books/nicht-nur-ein-profil/p182-page-1da342482293-dab94db3-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p182-page-1da342482293-dab94db3-qwen-dialogue-opus16.json",
+    "textHash": "1da3424822935926edfb826b37c257b74368ee17a08eb79cd82f07950f055233",
+    "wordCount": 108,
+    "duration": 39.2
+  },
+  "183": {
+    "src": "/audio/books/nicht-nur-ein-profil/p183-page-14afaf1d1ed1-87f44ee0-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p183-page-14afaf1d1ed1-87f44ee0-qwen-dialogue-opus16.json",
+    "textHash": "14afaf1d1ed18ea51569789dd93ac846c740847eac526c6260001711668c5afd",
+    "wordCount": 101,
+    "duration": 36.32
+  },
+  "184": {
+    "src": "/audio/books/nicht-nur-ein-profil/p184-page-4acf4d2eede5-a0c5325d-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p184-page-4acf4d2eede5-a0c5325d-qwen-dialogue-opus16.json",
+    "textHash": "4acf4d2eede5df2b25ea40d59cd284c83251f17bd9b1d2f681293cd86f9a6fd8",
+    "wordCount": 102,
+    "duration": 35.76
+  },
+  "185": {
+    "src": "/audio/books/nicht-nur-ein-profil/p185-page-492406ab459d-73be8234-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p185-page-492406ab459d-73be8234-qwen-dialogue-opus16.json",
+    "textHash": "492406ab459dc52fe99ad2baaa0752c7917c987f01c0087bb8d7b4272e82d8f7",
+    "wordCount": 106,
+    "duration": 36.0
+  },
+  "186": {
+    "src": "/audio/books/nicht-nur-ein-profil/p186-page-1d51a7cfaf9e-908c6fae-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p186-page-1d51a7cfaf9e-908c6fae-qwen-dialogue-opus16.json",
+    "textHash": "1d51a7cfaf9e3d75dedbb964a525c810be912e5dd108976d376760b1150fb8c4",
+    "wordCount": 103,
+    "duration": 35.76
+  },
+  "187": {
+    "src": "/audio/books/nicht-nur-ein-profil/p187-page-2a7f2271e1e9-d9fefe9c-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p187-page-2a7f2271e1e9-d9fefe9c-qwen-dialogue-opus16.json",
+    "textHash": "2a7f2271e1e9f8cea81f7fc67d92e0b0e4a984cb63f9f60899c463b027080912",
+    "wordCount": 104,
+    "duration": 37.28
+  },
+  "188": {
+    "src": "/audio/books/nicht-nur-ein-profil/p188-page-ad0661519d6b-f4968e2e-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p188-page-ad0661519d6b-f4968e2e-qwen-dialogue-opus16.json",
+    "textHash": "ad0661519d6bfa62fdd6115a7a26fdb44ca319ea6728063a6e136c37786e4437",
+    "wordCount": 98,
+    "duration": 37.2
+  },
+  "189": {
+    "src": "/audio/books/nicht-nur-ein-profil/p189-page-60cd545ee0dc-a9b1c182-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p189-page-60cd545ee0dc-a9b1c182-qwen-dialogue-opus16.json",
+    "textHash": "60cd545ee0dc5d24303879ce559fb6cce29dfcc50f5a43d9267fff3455123a10",
+    "wordCount": 105,
+    "duration": 36.16
+  },
+  "190": {
+    "src": "/audio/books/nicht-nur-ein-profil/p190-page-59e6b49850f7-23e61fca-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p190-page-59e6b49850f7-23e61fca-qwen-dialogue-opus16.json",
+    "textHash": "59e6b49850f7b4aae9ff2ec5f6ea13cde613c81bb275f26efe7db30234e97b7a",
+    "wordCount": 103,
+    "duration": 36.88
+  },
+  "191": {
+    "src": "/audio/books/nicht-nur-ein-profil/p191-page-81a28d359f6d-7f8c7cac-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p191-page-81a28d359f6d-7f8c7cac-qwen-dialogue-opus16.json",
+    "textHash": "81a28d359f6d5f7ab6dcb8ce3ac8ab5a5cfaadf57fc08c89ef7e49ca10b84931",
+    "wordCount": 98,
+    "duration": 34.4
+  },
+  "192": {
+    "src": "/audio/books/nicht-nur-ein-profil/p192-page-fb400cb3e819-997b0d90-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p192-page-fb400cb3e819-997b0d90-qwen-dialogue-opus16.json",
+    "textHash": "fb400cb3e819e70e97652780c7bf91ade9185aa47813308643ea8b2b93a07e4b",
+    "wordCount": 104,
+    "duration": 38.4
+  },
+  "193": {
+    "src": "/audio/books/nicht-nur-ein-profil/p193-page-473cf237da05-dcf6fd09-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p193-page-473cf237da05-dcf6fd09-qwen-dialogue-opus16.json",
+    "textHash": "473cf237da0519777ef9013dffc7d9b9de89656c9dbe8c7a5350bc3fdfb97ebd",
+    "wordCount": 107,
+    "duration": 37.04
+  },
+  "194": {
+    "src": "/audio/books/nicht-nur-ein-profil/p194-page-92f355b627ac-19f40eea-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p194-page-92f355b627ac-19f40eea-qwen-dialogue-opus16.json",
+    "textHash": "92f355b627acd1e2b6ad901b5f1343ed82afcdffda826ac2f68bada848c8986e",
+    "wordCount": 109,
+    "duration": 36.0
+  },
+  "195": {
+    "src": "/audio/books/nicht-nur-ein-profil/p195-page-ef21501e53f1-f9c316e9-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p195-page-ef21501e53f1-f9c316e9-qwen-dialogue-opus16.json",
+    "textHash": "ef21501e53f13245b832879d976a55ebf00457383319f6bf58b0baddca174d69",
+    "wordCount": 106,
+    "duration": 34.4
+  },
+  "196": {
+    "src": "/audio/books/nicht-nur-ein-profil/p196-page-699620512dff-b66f1838-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p196-page-699620512dff-b66f1838-qwen-dialogue-opus16.json",
+    "textHash": "699620512dff31d33a30f1324b4760a0c0b2483b0cd5b5cc8dd16daaa374f813",
+    "wordCount": 104,
+    "duration": 37.8
+  },
+  "197": {
+    "src": "/audio/books/nicht-nur-ein-profil/p197-page-f1cd5e6afcba-97a16e2a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p197-page-f1cd5e6afcba-97a16e2a-qwen-dialogue-opus16.json",
+    "textHash": "f1cd5e6afcba106702b5d6e189601c8fa1c5d44fa193f43a27996bdadf77f5f9",
+    "wordCount": 109,
+    "duration": 36.16
+  },
+  "198": {
+    "src": "/audio/books/nicht-nur-ein-profil/p198-page-0b453c6a4000-eff839fa-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p198-page-0b453c6a4000-eff839fa-qwen-dialogue-opus16.json",
+    "textHash": "0b453c6a4000a64dec546812d240dfd4d07f5e2caf2d6bacea17fc81b5138739",
+    "wordCount": 107,
+    "duration": 40.48
+  },
+  "199": {
+    "src": "/audio/books/nicht-nur-ein-profil/p199-page-7d466fa03ca7-b2d71b4a-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p199-page-7d466fa03ca7-b2d71b4a-qwen-dialogue-opus16.json",
+    "textHash": "7d466fa03ca75ce455bbb1f806eb8cdae1621fb6025f62e5999f100dedbb673c",
+    "wordCount": 107,
+    "duration": 35.6
+  },
+  "200": {
+    "src": "/audio/books/nicht-nur-ein-profil/p200-page-c62074f9a4e5-0b3205d5-qwen-dialogue-opus16.webm",
+    "timingSrc": "/audio/books/nicht-nur-ein-profil/p200-page-c62074f9a4e5-0b3205d5-qwen-dialogue-opus16.json",
+    "textHash": "c62074f9a4e53cb8226c9edfc4c1d70cdc7deec93199876b119a5b63dabaeab2",
+    "wordCount": 107,
+    "duration": 36.96
+  }
+}
