@@ -1381,8 +1381,8 @@
       "en": "Ben talks about his village and its little cinema. He misses some people, but not everything. By now he knows more than three streets in Lindenstadt."
     },
     {
-      "source": "An der Brücke halten sie an. Unten fährt ein Boot vorbei. Lea bleibt neben ihm stehen, obwohl ihr Heimweg schon an der letzten Ecke abgebogen ist.",
-      "en": "They stop at the bridge. A boat passes below. Lea stays beside him even though her route home turned off at the last corner."
+      "source": "An der Brücke halten sie an. Unten fährt ein Boot vorbei. Lea bleibt neben ihm stehen, obwohl der Weg zu ihrer Wohnung in die andere Richtung führt.",
+      "en": "They stop at the bridge. A boat passes below. Lea stays beside him even though the way to her flat leads in the other direction."
     }
   ],
   "78": [
@@ -2157,6 +2157,1446 @@
     {
       "source": "Am Ende legen sie die Handys weg. Ben ist froh über den Plan. Er weiß noch nicht, dass schon am nächsten Abend ein anderes Gespräch nötig sein wird.",
       "en": "In the end they put away their phones. Ben is happy with the plan. He does not yet know that another conversation will be needed the very next evening."
+    }
+  ],
+  "121": [
+    {
+      "source": "Am Freitagvormittag bekommt Lea einen Anruf aus dem Krankenhaus. Eine Kollegin ist krank. Die Leitung fragt, ob Lea am Samstag einige Stunden übernehmen kann.",
+      "en": "On Friday morning Lea receives a call from the hospital. A colleague is ill. The manager asks whether Lea can cover a few hours on Saturday."
+    },
+    {
+      "source": "Lea denkt an den Ausflug. Trotzdem sagt sie zu. Sie möchte das Team nicht allein lassen. Erst danach merkt sie, dass sie Ben vorher nicht gefragt hat.",
+      "en": "Lea thinks about the trip. Still, she agrees. She does not want to leave the team without help. Only afterwards does she notice she did not speak to Ben first."
+    },
+    {
+      "source": "Sie schreibt ihm sofort und erklärt den Anruf. Ben liest die Nachricht zwischen zwei Kunden. Er hat die Zugverbindung schon gespeichert und das Zimmer gebucht.",
+      "en": "She writes to him straight away and explains the call. Ben reads the message between two customers. He has already saved the train connection and booked the room."
+    },
+    {
+      "source": "Für einen Moment sieht er nur den abgesagten Samstag. Er liest Leas Erklärung nicht noch einmal. Dann beginnt er eine Antwort, obwohl er noch sehr ärgerlich ist.",
+      "en": "For a moment he only sees the cancelled Saturday. He does not reread Lea's explanation. Then he starts a reply even though he is still very angry."
+    }
+  ],
+  "122": [
+    {
+      "source": "Ben schreibt: „Du hast nie Zeit für uns.“ Er schickt die Nachricht sofort ab. Danach sieht er das Wort nie noch einmal auf dem Bildschirm.",
+      "en": "Ben writes, “You never have time for us.” He sends the message immediately. Afterwards he sees the word never on the screen again."
+    },
+    {
+      "source": "Das stimmt nicht. Lea war am Donnerstag bei ihm, und sie haben mehrere Abende zusammen verbracht. Trotzdem fühlt sich der Satz gerade richtig an.",
+      "en": "That is not true. Lea was at his place on Thursday, and they have spent several evenings together. Still, the sentence feels right to him at that moment."
+    },
+    {
+      "source": "Lea antwortet zunächst nicht. Ben schreibt noch eine Nachricht über das Zimmer. Er nennt den Preis und fragt, wer sich jetzt um die Absage kümmern soll.",
+      "en": "Lea does not reply at first. Ben writes another message about the room. He gives the price and asks who will deal with cancelling it now."
+    },
+    {
+      "source": "Dann ruft ein Kunde an. Ben legt das Handy weg. Er hilft dem Kunden, aber seine Gedanken bleiben bei der Nachricht. Das Wort nie wird nicht kleiner.",
+      "en": "Then a customer calls. Ben puts away his phone. He helps the customer, but his thoughts stay with the message. The word never does not get any smaller."
+    }
+  ],
+  "123": [
+    {
+      "source": "In ihrer Pause liest Lea beide Nachrichten. Sie weiß, dass sie den Plan zu schnell geändert hat. Trotzdem tut ihr Bens erster Satz weh.",
+      "en": "During her break Lea reads both messages. She knows she changed the plan too quickly. Still, Ben's first sentence hurts her."
+    },
+    {
+      "source": "Lea schreibt: „Ich verstehe, dass du enttäuscht bist. Aber ich habe Zeit mit dir verbracht. Lass uns heute Abend richtig sprechen.“ Danach legt sie das Handy weg.",
+      "en": "Lea writes, “I understand that you're disappointed. But I have spent time with you. Let's talk properly this evening.” Afterwards she puts down her phone."
+    },
+    {
+      "source": "Ben liest die Antwort mehrmals. Er möchte sofort erklären, was er gemeint hat. Aber zwischen zwei Kundengesprächen kann er das nicht gut tun.",
+      "en": "Ben reads the reply several times. He wants to explain immediately what he meant. But between two calls with customers he cannot do that well."
+    },
+    {
+      "source": "Er antwortet, dass er ab sieben Zeit hat. Dann schreibt er keine weitere lange Nachricht. Für den restlichen Nachmittag stellt er das Handy auf leise.",
+      "en": "He replies that he is free from seven. Then he does not send another long message. For the rest of the afternoon he puts his phone on silent."
+    }
+  ],
+  "124": [
+    {
+      "source": "Nach der Arbeit trifft Ben Nora im Park. Er erzählt ihr von dem abgesagten Ausflug und seiner Nachricht. Nora hört zuerst nur zu.",
+      "en": "After work Ben meets Nora in the park. He tells her about the cancelled trip and his message. Nora first just listens."
+    },
+    {
+      "source": "Ben fragt, ob sie ihn versteht. Nora versteht seine Enttäuschung. Trotzdem findet sie den Satz mit nie unfair. Ben hat ihr selbst von den schönen Abenden erzählt.",
+      "en": "Ben asks whether she understands him. Nora understands his disappointment. Still, she finds the sentence with never unfair. Ben himself told her about the lovely evenings."
+    },
+    {
+      "source": "Das möchte Ben nicht gern hören. Er geht ein Stück schneller. Dann wird er wieder langsamer. Nora muss ihm nicht immer recht geben, um seine Freundin zu sein.",
+      "en": "Ben does not like hearing that. He walks a little faster. Then he slows down again. Nora does not have to agree with him all the time to be his friend."
+    },
+    {
+      "source": "An der nächsten Bank bleiben sie stehen. Ben nimmt sein Handy heraus und liest die Nachricht noch einmal. Nun möchte er sich für den Satz entschuldigen.",
+      "en": "They stop at the next bench. Ben takes out his phone and reads the message again. Now he wants to apologise for the sentence."
+    }
+  ],
+  "125": [
+    {
+      "source": "Um sieben ruft Ben Lea an. Beide sind zu Hause. Ben fragt zuerst, ob sie genug Zeit haben. Lea kann eine halbe Stunde ruhig sprechen.",
+      "en": "At seven Ben calls Lea. Both are at home. Ben first asks whether they have enough time. Lea can talk quietly for half an hour."
+    },
+    {
+      "source": "Ben sagt: „Mein Satz war unfair. Es tut mir leid.“ Er fügt nicht sofort ein Aber hinzu. Lea hört seine Entschuldigung und bedankt sich dafür.",
+      "en": "Ben says, “My sentence was unfair. I'm sorry.” He does not immediately add a but. Lea hears his apology and thanks him for it."
+    },
+    {
+      "source": "Dann erklärt Ben seine Enttäuschung. Er hatte sich auf zwei freie Tage gefreut. Außerdem wusste er nicht, ob der gemeinsame Plan für Lea genauso wichtig war.",
+      "en": "Then Ben explains his disappointment. He was looking forward to two days off together. Also, he did not know whether their shared plan mattered just as much to Lea."
+    },
+    {
+      "source": "Lea sagt, dass der Ausflug ihr wichtig ist. Bei dem Anruf hat sie zu schnell zugesagt. Beim nächsten Mal möchte sie vorher mit ihm sprechen.",
+      "en": "Lea says the trip matters to her. During the call she agreed too quickly. Next time she wants to speak to him beforehand."
+    }
+  ],
+  "126": [
+    {
+      "source": "Lea erklärt, dass sie ihren Beruf ernst nimmt. Wenn das Team Hilfe braucht, möchte sie oft helfen. Doch manchmal sagt sie schneller Ja, als ihr guttut.",
+      "en": "Lea explains that she takes her profession seriously. When the team needs help, she often wants to help. But sometimes she says yes sooner than is good for her."
+    },
+    {
+      "source": "Ben möchte nicht, dass sie wegen ihm ihre Arbeit schlecht macht. Er möchte aber wissen, wann ein gemeinsamer Termin wirklich fest ist. Darüber können sie reden.",
+      "en": "Ben does not want her to do her work badly because of him. But he wants to know when an appointment together is really fixed. They can talk about that."
+    },
+    {
+      "source": "Sie überlegen, was beim nächsten Anruf anders gehen kann. Lea möchte nicht sofort antworten, wenn ein privater Plan betroffen ist. Sie kann um ein paar Minuten bitten.",
+      "en": "They think about what can be different with the next call. Lea does not want to reply immediately when a personal plan is affected. She can ask for a few minutes."
+    },
+    {
+      "source": "Ben möchte Ärger nicht mehr als Vorwurf verschicken. Er kann sagen, dass er enttäuscht ist, und nach einer Zeit für ein Gespräch fragen. Lea findet das besser.",
+      "en": "Ben does not want to send his anger as an accusation again. He can say he is disappointed and ask for a time to talk. Lea thinks that is better."
+    }
+  ],
+  "127": [
+    {
+      "source": "Nach dem Gespräch schauen beide auf die Buchung. Das Zimmer lässt sich heute noch ohne Kosten absagen. Ben hat diese Information vorher nicht genau gelesen.",
+      "en": "After their conversation both look at the booking. The room can still be cancelled today without a charge. Ben did not read this information carefully before."
+    },
+    {
+      "source": "Sie sagen das Zimmer gemeinsam ab. Ben erhält eine Bestätigung. Die Zugkarten hatten sie noch nicht gekauft. Deshalb verlieren sie für diesen Plan kein Geld.",
+      "en": "They cancel the room together. Ben receives a confirmation. They had not yet bought train tickets. So they lose no money on this plan."
+    },
+    {
+      "source": "Trotzdem ist die Enttäuschung nicht sofort weg. Lea muss am Samstag arbeiten. Ben kann den freien Tag anders nutzen. Sie brauchen nicht schnell eine perfekte neue Lösung.",
+      "en": "Still, the disappointment does not disappear immediately. Lea has to work on Saturday. Ben can use his free day differently. They do not need a perfect new solution right away."
+    },
+    {
+      "source": "Am Ende fragen sie, ob ein kurzer Sonntagsausflug möglich ist. Der See liegt auch ohne Übernachtung nah genug. Beide möchten darüber nach einer Nacht Schlaf entscheiden.",
+      "en": "In the end they ask whether a short Sunday trip is possible. The lake is close enough even without an overnight stay. Both want to decide after a night's sleep."
+    }
+  ],
+  "128": [
+    {
+      "source": "Am Samstag schläft Ben etwas länger. Danach putzt er sein Fahrrad und bringt ein Paket zur Post. Der freie Tag ist anders als geplant, aber nicht leer.",
+      "en": "On Saturday Ben sleeps a little longer. Afterwards he cleans his bicycle and takes a parcel to the post office. The free day is different from planned but not empty."
+    },
+    {
+      "source": "Lea schreibt in ihrer Pause eine kurze Nachricht. Ben antwortet freundlich. Er fragt nicht alle zehn Minuten, ob sie wirklich noch im Krankenhaus ist.",
+      "en": "Lea sends a brief message during her break. Ben replies kindly. He does not ask every ten minutes whether she is really still at the hospital."
+    },
+    {
+      "source": "Am Nachmittag trifft er Pavel am Fluss. Sie fahren eine kleine Runde. Ben erzählt von dem Gespräch, ohne Leas private Nachrichten vorzulesen.",
+      "en": "In the afternoon he meets Pavel by the river. They go for a short ride. Ben talks about their conversation without reading out Lea's private messages."
+    },
+    {
+      "source": "Abends fragt Lea nach dem Sonntag. Sie fühlt sich fit genug für den See. Ben schaut nach einem späteren Zug, damit beide in Ruhe frühstücken können.",
+      "en": "In the evening Lea asks about Sunday. She feels well enough to go to the lake. Ben looks for a later train so both can have breakfast without rushing."
+    }
+  ],
+  "129": [
+    {
+      "source": "Am Sonntag treffen Ben und Lea sich am Bahnhof. Ben hat die Verbindung auf seinem Handy. Lea bringt belegte Brote und zwei Äpfel mit.",
+      "en": "On Sunday Ben and Lea meet at the station. Ben has the connection on his phone. Lea brings sandwiches and two apples."
+    },
+    {
+      "source": "Der Regionalzug ist nicht voll. Sie finden zwei Plätze nebeneinander am Fenster. Ben stellt die Tasche unter den Sitz. Lea öffnet ihre Wasserflasche.",
+      "en": "The regional train is not crowded. They find two seats side by side by the window. Ben puts the bag under the seat. Lea opens her water bottle."
+    },
+    {
+      "source": "Zuerst sprechen sie wenig. Dann erzählt Lea von einem freien Nachmittag bei ihrer Tante. Ben beschreibt seinen Samstag mit Pavel. Das Gespräch beginnt wieder leicht.",
+      "en": "At first they say little. Then Lea talks about an afternoon off at her aunt's. Ben describes his Saturday with Pavel. The conversation becomes easy again."
+    },
+    {
+      "source": "Als der Zug an einem Feld vorbeifährt, nimmt Lea seine Hand. Ihr Streit ist nicht vergessen. Aber sie haben eine Möglichkeit gefunden, nach dem Streit zusammen weiterzugehen.",
+      "en": "As the train passes a field, Lea takes his hand. Their argument is not forgotten. But they have found a way to continue together after it."
+    }
+  ],
+  "130": [
+    {
+      "source": "Vom kleinen Bahnhof gehen sie zwanzig Minuten zum See. Das Wasser ist grau, und der Wind bewegt die Schilfpflanzen am Ufer. Ben zieht seine Jacke zu.",
+      "en": "From the small station they walk twenty minutes to the lake. The water is grey, and the wind moves the reeds on the bank. Ben fastens his jacket."
+    },
+    {
+      "source": "Lea hat eine Mütze dabei. Sie setzt sie auf und sucht eine Bank hinter einem Baum. Dort ist es etwas ruhiger. Ben holt die Brote heraus.",
+      "en": "Lea has a hat with her. She puts it on and looks for a bench behind a tree. It is a little calmer there. Ben takes out the sandwiches."
+    },
+    {
+      "source": "Sie teilen die Äpfel und schauen auf ein Boot. Es ist kein sonniges Urlaubsfoto. Lea hat rote Wangen vom Wind, und Ben hat Brotkrümel auf der Hose.",
+      "en": "They share the apples and watch a boat. It is not a sunny holiday photo. Lea's cheeks are red from the wind, and Ben has breadcrumbs on his trousers."
+    },
+    {
+      "source": "Trotzdem gefällt ihnen der Platz. Lea fragt, ob Ben ihr ein Foto machen kann. Er fragt danach, ob er es behalten darf. Lea sagt Ja.",
+      "en": "Still, they like the spot. Lea asks whether Ben can take a photo of her. Afterwards he asks whether he may keep it. Lea says yes."
+    }
+  ],
+  "131": [
+    {
+      "source": "Auf dem Rückweg spricht Lea noch einmal über Samstag. Sie möchte öfter prüfen, ob sie einen zusätzlichen Dienst wirklich übernehmen kann. Auch ihre freien Tage sind wichtig.",
+      "en": "On the way back Lea talks about Saturday again. She wants to check more often whether she can really take an extra shift. Her days off matter too."
+    },
+    {
+      "source": "Ben erzählt, dass er im Büro ebenfalls manchmal zu schnell Hilfe anbietet. Danach bleibt er länger, obwohl er schon einen Termin hat. Lea kennt dieses Problem.",
+      "en": "Ben says he also sometimes offers help too quickly at the office. Afterwards he stays late even though he already has plans. Lea knows this problem."
+    },
+    {
+      "source": "Beide können nicht alles gleichzeitig machen. Sie möchten ihre Arbeit gut machen und füreinander Zeit haben. Ein Kalender allein entscheidet das nicht für sie.",
+      "en": "Neither can do everything at once. They want to do their work well and have time for each other. A calendar alone does not decide that for them."
+    },
+    {
+      "source": "Am Bahnhof kaufen sie Tee für die Rückfahrt. Lea hält beide Becher, während Ben die Karten kontrolliert. Heute fährt der Zug pünktlich, und niemand muss rennen.",
+      "en": "At the station they buy tea for the return journey. Lea holds both cups while Ben checks the tickets. Today the train is on time, and neither has to run."
+    }
+  ],
+  "132": [
+    {
+      "source": "Im Zug lehnt Lea den Kopf kurz an Bens Schulter. Sie ist nun doch müde. Ben schiebt seine Tasche zur Seite, damit sie bequem sitzen kann.",
+      "en": "On the train Lea rests her head briefly on Ben's shoulder. Now she is tired after all. Ben moves his bag aside so she can sit comfortably."
+    },
+    {
+      "source": "Er schaut aus dem Fenster und denkt an die Nachricht vom Freitag. Einige Wörter können schnell viel kaputtmachen. Er möchte beim nächsten Ärger langsamer sein.",
+      "en": "He looks out of the window and thinks about Friday's message. A few words can quickly cause damage. He wants to slow down the next time he is angry."
+    },
+    {
+      "source": "Lea schläft nicht, sondern schaut ebenfalls hinaus. Nach einer Weile fragt sie nach dem nächsten Kochabend mit der Gruppe. Kurt hat eine E-Mail geschickt.",
+      "en": "Lea is not asleep; she is looking out too. After a while she asks about the next cooking evening with the group. Kurt sent an email."
+    },
+    {
+      "source": "Ben hat sie noch nicht gelesen. Zu Hause möchte er antworten. Für eine Beziehung brauchen sie Zeit zu zweit, aber auch die Menschen, durch die sie sich kennengelernt haben.",
+      "en": "Ben has not read it yet. He wants to reply at home. For a relationship they need time together, but also the people through whom they met."
+    }
+  ],
+  "133": [
+    {
+      "source": "Zwei Wochen später trifft sich die Kochgruppe erneut im Nachbarschaftshaus. Frau Berg öffnet die Küche. Diesmal haben die Teilnehmer selbst die Zutatenliste geplant.",
+      "en": "Two weeks later the cooking group meets again at the neighbourhood centre. Mrs Berg opens the kitchen. This time the participants planned the ingredient list themselves."
+    },
+    {
+      "source": "Kurt möchte ein Gericht aus seiner Kindheit machen. Aylin bringt die richtige Menge Salz mit und lacht über die kleine Dose. Ben trägt eine große Tasche Gemüse.",
+      "en": "Kurt wants to make a dish from his childhood. Aylin brings the right quantity of salt and laughs about the small tin. Ben carries a large bag of vegetables."
+    },
+    {
+      "source": "Lea kommt später direkt von der Arbeit. Die anderen haben den Teig schon vorbereitet. Niemand verlangt, dass sie den ganzen Abend erklärt, warum sie später ist.",
+      "en": "Lea arrives later directly from work. The others have already prepared the dough. Nobody expects her to spend the whole evening explaining why she is late."
+    },
+    {
+      "source": "Beim Essen erzählt Kurt eine Geschichte von seiner Mutter. Ben und Lea hören zu. Sie sitzen nicht nebeneinander, aber unter dem Tisch berühren sich kurz ihre Schuhe.",
+      "en": "During dinner Kurt tells a story about his mother. Ben and Lea listen. They do not sit beside each other, but under the table their shoes briefly touch."
+    }
+  ],
+  "134": [
+    {
+      "source": "Bens Schwester hat Geburtstag. Ben möchte am nächsten Wochenende ins Dorf fahren. Er fragt Lea, ob sie mitkommen möchte. Sie hat an diesem Tag frei.",
+      "en": "Ben's sister has a birthday. Ben wants to travel to the village next weekend. He asks Lea whether she would like to come. She has that day off."
+    },
+    {
+      "source": "Lea möchte seine Familie kennenlernen, aber sie ist auch nervös. Ben erzählt ihr, wer da sein wird. Es sind nicht zwanzig Menschen, sondern nur fünf.",
+      "en": "Lea wants to meet his family, but she is nervous too. Ben tells her who will be there. There will not be twenty people, only five."
+    },
+    {
+      "source": "Sie fahren am Vormittag und bleiben bis zum Abend. Ben schlägt nicht sofort ein ganzes Wochenende bei seiner Mutter vor. Lea findet den kürzeren Besuch angenehmer.",
+      "en": "They travel in the morning and stay until the evening. Ben does not immediately suggest a whole weekend at his mother's. Lea finds the shorter visit more comfortable."
+    },
+    {
+      "source": "Seine Schwester freut sich über die Nachricht. Sie fragt, ob Lea etwas nicht essen kann. Ben fragt Lea zuerst selbst, bevor er für sie antwortet.",
+      "en": "His sister is pleased with the news. She asks whether there is anything Lea cannot eat. Ben asks Lea herself first before answering for her."
+    }
+  ],
+  "135": [
+    {
+      "source": "Am Samstag steigen Ben und Lea am kleinen Bahnhof aus. Seine Schwester wartet mit einem Auto. Sie begrüßt Lea und zeigt auf den freien Platz vorne.",
+      "en": "On Saturday Ben and Lea get off at the small station. His sister is waiting with a car. She greets Lea and points to the empty front seat."
+    },
+    {
+      "source": "Im Haus riecht es nach Kuchen. Bens Mutter kommt aus der Küche und umarmt ihren Sohn. Lea gibt ihr die Blumen, die sie zusammen gekauft haben.",
+      "en": "The house smells of cake. Ben's mother comes out of the kitchen and hugs her son. Lea gives her the flowers they bought together."
+    },
+    {
+      "source": "Beim Essen fragt seine Mutter nach Leas Arbeit. Lea erzählt von den unterschiedlichen Diensten. Ben ergänzt nicht jeden Satz. Lea kann ihre eigene Geschichte erzählen.",
+      "en": "During the meal his mother asks about Lea's work. Lea talks about the different shifts. Ben does not add to every sentence. Lea can tell her own story."
+    },
+    {
+      "source": "Nach dem Kuchen holt Bens Schwester alte Fotos. Auf einem trägt Ben viel zu große Schuhe. Lea lacht mit ihm, nicht über ihn. Der Besuch wird langsam leichter.",
+      "en": "After cake Ben's sister gets old photos. In one Ben is wearing shoes much too big for him. Lea laughs with him, not at him. The visit gradually gets easier."
+    }
+  ],
+  "136": [
+    {
+      "source": "Auf der Rückfahrt fragt Ben, wie Lea den Besuch fand. Sie mochte seine Familie, sagt sie. Trotzdem ist sie froh, am Abend wieder nach Hause zu fahren.",
+      "en": "On the way back Ben asks how Lea found the visit. She liked his family, she says. Still, she is glad to go home again that evening."
+    },
+    {
+      "source": "Ben versteht das. Auch für ihn war der Tag voll. Er fragt, ob sie nächste Woche lieber einen ruhigen Abend ohne weitere Menschen verbringen möchten.",
+      "en": "Ben understands. The day was busy for him too. He asks whether next week they would rather have a quiet evening without other people."
+    },
+    {
+      "source": "Lea nickt. Dann schaut sie noch einmal auf das Foto mit den großen Schuhen. Bens Schwester hat es ihr geschickt. Ben bittet sie, es nicht ins Internet zu stellen.",
+      "en": "Lea nods. Then she looks again at the photo with the big shoes. Ben's sister sent it to her. Ben asks her not to post it online."
+    },
+    {
+      "source": "Lea legt das Handy weg und nimmt seine Hand. Die Bitte ist leicht zu verstehen. Über manche Dinge können beide inzwischen sprechen, ohne lange nach Worten zu suchen.",
+      "en": "Lea puts away her phone and takes his hand. The request is easy to understand. By now both can talk about some things without searching long for words."
+    }
+  ],
+  "137": [
+    {
+      "source": "In der nächsten Woche schaut Lea öfter in ihre E-Mails. Sie hat sich für eine Fortbildung beworben. Dabei kann sie neue Aufgaben für ihre Arbeit lernen.",
+      "en": "The following week Lea checks her emails more often. She has applied for further training. There she can learn new tasks for her work."
+    },
+    {
+      "source": "Die Fortbildung dauert sechs Wochen und findet in Hamburg statt. Lea hat Ben davon erzählt, aber bisher weiß sie nicht, ob sie einen Platz bekommt.",
+      "en": "The training lasts six weeks and takes place in Hamburg. Lea has told Ben about it, but so far she does not know whether she will get a place."
+    },
+    {
+      "source": "Ben wünscht ihr, dass es klappt. Gleichzeitig denkt er an sechs Wochen ohne ihre gemeinsamen Abende. Er möchte diese beiden Gefühle nicht miteinander verwechseln.",
+      "en": "Ben hopes it works out for her. At the same time he thinks of six weeks without their evenings together. He does not want to confuse these two feelings."
+    },
+    {
+      "source": "Beim Abendessen fragt er, wann die Antwort kommen soll. Lea erwartet sie bis Freitag. Danach schiebt sie das Handy weg und fragt nach seiner Woche.",
+      "en": "During dinner he asks when the reply should arrive. Lea expects it by Friday. Afterwards she pushes aside her phone and asks about his week."
+    }
+  ],
+  "138": [
+    {
+      "source": "Am Freitag bekommt Lea die E-Mail. Sie hat einen Platz. Für die sechs Wochen gibt es ein kleines Zimmer in der Nähe des Unterrichtsgebäudes.",
+      "en": "On Friday Lea receives the email. She has a place. For the six weeks there is a small room near the teaching building."
+    },
+    {
+      "source": "Lea ruft Ben an und erzählt ihm alles. Ihre Stimme klingt hell und schnell. Ben freut sich für sie. Er möchte hören, wann es losgeht.",
+      "en": "Lea calls Ben and tells him everything. Her voice sounds bright and quick. Ben is happy for her. He wants to hear when it starts."
+    },
+    {
+      "source": "Der erste Tag ist in drei Wochen. Sie muss einige Papiere ausfüllen und ihren Dienstplan ändern lassen. Die Fahrt kann sie danach buchen.",
+      "en": "The first day is in three weeks. She has to complete some forms and arrange a change to her shift schedule. She can book the journey afterwards."
+    },
+    {
+      "source": "Ben sagt, dass sie am Wochenende darauf anstoßen können. Dafür brauchen sie kein teures Restaurant. Lea schlägt Tee und ihren Lieblingskuchen vor. Ben kennt ihn inzwischen.",
+      "en": "Ben says they can celebrate it at the weekend. They do not need an expensive restaurant for that. Lea suggests tea and her favourite cake. By now Ben knows it."
+    }
+  ],
+  "139": [
+    {
+      "source": "Am Samstag sitzen sie mit Kuchen am Tisch. Lea zeigt Ben die Termine. Sechs Wochen sehen auf einem Blatt länger aus als in einem kurzen Satz.",
+      "en": "On Saturday they sit at the table with cake. Lea shows Ben the dates. Six weeks look longer on a sheet than in a brief sentence."
+    },
+    {
+      "source": "Ben fragt, ob sie sich zwischendurch sehen können. Lea möchte das gern. Aber sie kennt den genauen Plan noch nicht und will nichts zu früh versprechen.",
+      "en": "Ben asks whether they can see each other during that time. Lea would like that. But she does not know the exact schedule yet and does not want to promise too soon."
+    },
+    {
+      "source": "Ben nickt, auch wenn er gern sofort eine feste Antwort hätte. Sie können die Frage später noch einmal besprechen. Heute soll Lea sich über den Platz freuen.",
+      "en": "Ben nods, even though he would like a firm answer straight away. They can discuss the question again later. Today Lea should enjoy getting the place."
+    },
+    {
+      "source": "Nach dem Essen gehen sie spazieren. Lea erzählt, was sie lernen möchte. Ben hört zu und fragt nach. Ihre Beziehung ist wichtig, und Leas Arbeit ist es ebenfalls.",
+      "en": "After eating they go for a walk. Lea talks about what she wants to learn. Ben listens and asks questions. Their relationship matters, and Lea's work matters too."
+    }
+  ],
+  "140": [
+    {
+      "source": "In den nächsten Tagen sammelt Lea ihre Unterlagen. Ben hilft ihr, einige Seiten auszudrucken. Er liest nicht jedes private Papier, sondern fragt, welche Seiten sie braucht.",
+      "en": "Over the next few days Lea collects her documents. Ben helps her print some pages. He does not read every private paper but asks which pages she needs."
+    },
+    {
+      "source": "Lea sucht auch eine kleine Reisetasche. Die große ist zu schwer für die vielen Treppen am Bahnhof. Eva leiht ihr eine Tasche mit Rollen.",
+      "en": "Lea also looks for a small travel bag. The large one is too heavy for the many steps at the station. Eva lends her a bag with wheels."
+    },
+    {
+      "source": "Ben schaut nach der Zugverbindung. Sie planen einen Abschied ohne Zeitdruck. Lea möchte vor der Fahrt noch frühstücken und nicht mit leerem Magen im Zug sitzen.",
+      "en": "Ben looks up the train connection. They plan a goodbye without rushing. Lea wants breakfast before the journey and does not want to sit on the train hungry."
+    },
+    {
+      "source": "Am Ende des Abends steht die Tasche neben der Tür. Noch ist Lea da. Ben nimmt ihre Hand und fragt, was sie morgen zusammen kochen möchten.",
+      "en": "At the end of the evening the bag stands beside the door. Lea is still here. Ben takes her hand and asks what they would like to cook together tomorrow."
+    }
+  ],
+  "141": [
+    {
+      "source": "Drei Wochen später steht Lea mit ihrer Tasche am Bahnhof. Ben hat Brötchen und Tee mitgebracht. Sie frühstücken auf einer Bank vor dem Bahnsteig.",
+      "en": "Three weeks later Lea stands at the station with her bag. Ben has brought bread rolls and tea. They have breakfast on a bench beside the platform."
+    },
+    {
+      "source": "Lea prüft noch einmal ihre Fahrkarte. In der kleinen Tasche liegen die Unterlagen und das Ladekabel. Eva hat am Morgen eine gute Reise gewünscht.",
+      "en": "Lea checks her ticket once more. Her documents and charging cable are in the small bag. Eva wished her a good journey that morning."
+    },
+    {
+      "source": "Ben schaut auf die Anzeige. Der Zug kommt pünktlich. Er möchte Lea noch viel sagen, aber ihm fällt zuerst nur ein, dass sie das Brötchen mitnehmen soll.",
+      "en": "Ben looks at the display. The train is on time. He wants to say many things to Lea, but first he can only think to tell her to take the bread roll."
+    },
+    {
+      "source": "Lea steckt es ein und umarmt ihn. Danach steigt sie in den Zug. Ben wartet, bis er fährt. Die sechs Wochen haben begonnen.",
+      "en": "Lea puts it in her bag and hugs him. Afterwards she gets on the train. Ben waits until it leaves. The six weeks have begun."
+    }
+  ],
+  "142": [
+    {
+      "source": "In Hamburg sucht Lea zuerst ihr Zimmer. Eine Mitarbeiterin gibt ihr den Schlüssel und zeigt ihr den Weg. Das Gebäude hat vier Stockwerke und einen kleinen Aufzug.",
+      "en": "In Hamburg Lea first looks for her room. A staff member gives her the key and shows her the way. The building has four floors and a small lift."
+    },
+    {
+      "source": "Das Zimmer ist einfach. Es gibt ein Bett, einen Schreibtisch und einen Schrank. Durch das Fenster sieht Lea ein Dach und ein Stück Himmel.",
+      "en": "The room is simple. There is a bed, a desk and a cupboard. Through the window Lea sees a roof and a patch of sky."
+    },
+    {
+      "source": "Sie stellt ihre Tasche neben das Bett und ruft Ben kurz an. Er möchte wissen, ob die Reise gut war. Lea erzählt von der langen Zugfahrt.",
+      "en": "She puts her bag beside the bed and calls Ben briefly. He wants to know whether the journey went well. Lea tells him about the long train ride."
+    },
+    {
+      "source": "Dann muss sie den Treffpunkt für den ersten Abend suchen. Ben wünscht ihr viel Spaß. Lea legt ihre Unterlagen auf den Tisch und geht wieder hinaus.",
+      "en": "Then she has to find the meeting point for the first evening. Ben wishes her a good time. Lea puts her documents on the table and goes outside again."
+    }
+  ],
+  "143": [
+    {
+      "source": "Auf dem Flur trifft Lea zwei andere Teilnehmer. Sie zeigen ihr die gemeinsame Küche. Jeder hat ein kleines Fach im Kühlschrank und ein Regal für Lebensmittel.",
+      "en": "In the corridor Lea meets two other participants. They show her the shared kitchen. Everyone has a small space in the fridge and a shelf for food."
+    },
+    {
+      "source": "Lea schreibt ihren Namen auf ein Stück Papier und legt es in ihr Fach. Danach geht sie mit den beiden zum nächsten Geschäft.",
+      "en": "Lea writes her name on a piece of paper and puts it in her space. Afterwards she goes with the two of them to the nearest shop."
+    },
+    {
+      "source": "Sie kauft Brot, Käse, Äpfel und Tee. Für das erste Frühstück reicht das. Ein richtiges Gericht möchte sie erst machen, wenn sie die Küche besser kennt.",
+      "en": "She buys bread, cheese, apples and tea. That is enough for the first breakfast. She wants to make a proper meal only once she knows the kitchen better."
+    },
+    {
+      "source": "Am Abend sitzen mehrere Menschen am Tisch. Lea erzählt von Lindenstadt und dem Kochkurs. Zum ersten Mal an diesem Tag fühlt sich der fremde Ort etwas vertrauter an.",
+      "en": "In the evening several people sit at the table. Lea talks about Lindenstadt and the cooking class. For the first time that day the unfamiliar place feels a little more familiar."
+    }
+  ],
+  "144": [
+    {
+      "source": "In Lindenstadt macht Ben am Montagabend seine Suppe. Lea hat gerade Unterricht, deshalb telefonieren sie nicht. Er stellt eine Schüssel auf den Tisch.",
+      "en": "In Lindenstadt Ben makes his soup on Monday evening. Lea is in class, so they do not call. He puts one bowl on the table."
+    },
+    {
+      "source": "Die Wohnung ist dieselbe wie früher. Trotzdem ist der leere Stuhl jetzt anders. Ben wartet nicht auf irgendeine Person. Er vermisst einen bestimmten Menschen.",
+      "en": "The flat is the same as before. Still, the empty chair is different now. Ben is not waiting for just anyone. He misses a particular person."
+    },
+    {
+      "source": "Er isst und liest danach sein Buch. Später kommt eine Nachricht von Lea. Sie schickt kein langes Gespräch, sondern ein Foto ihrer Teetasse im neuen Zimmer.",
+      "en": "He eats and afterwards reads his book. Later a message arrives from Lea. She does not send a long conversation, just a photo of her teacup in the new room."
+    },
+    {
+      "source": "Ben schickt ihr ein Foto seiner Suppe. Zwei verschiedene Tische gehören heute zu ihrem Abend. Danach schläft er, bevor Lea noch einmal antwortet.",
+      "en": "Ben sends her a photo of his soup. Two different tables are part of their evening today. Afterwards he falls asleep before Lea replies again."
+    }
+  ],
+  "145": [
+    {
+      "source": "Am Dienstag versuchen sie, sich am Telefon zu erreichen. Ben ruft an, während Lea noch in einer Gruppe arbeitet. Lea ruft zurück, als Ben Fahrrad fährt.",
+      "en": "On Tuesday they try to reach each other by phone. Ben calls while Lea is still working in a group. Lea calls back while Ben is cycling."
+    },
+    {
+      "source": "Beide verpassen den anderen. Am Abend schreiben sie deshalb eine feste Zeit auf. Donnerstag um acht passt meistens. Wenn etwas anders ist, möchten sie vorher Bescheid sagen.",
+      "en": "Both miss the other. So in the evening they write down a fixed time. Thursday at eight usually works. If something changes, they want to let each other know beforehand."
+    },
+    {
+      "source": "Lea möchte trotzdem nicht jeden Abend einen langen Anruf planen. Sie muss lernen und möchte die anderen Teilnehmer kennenlernen. Ben findet das vernünftig.",
+      "en": "Still, Lea does not want to arrange a long call every evening. She has to study and wants to get to know the other participants. Ben finds that reasonable."
+    },
+    {
+      "source": "Er möchte auch seine Freunde sehen und nicht nur auf den Bildschirm warten. Sie suchen eine gemeinsame Zeit, ohne alle anderen Stunden für sich zu verlangen.",
+      "en": "He also wants to see his friends and not just wait in front of a screen. They find time together without claiming every other hour for themselves."
+    }
+  ],
+  "146": [
+    {
+      "source": "Am Mittwoch schickt Lea ein Bild von einem Spaziergang. Neben ihr stehen drei andere Teilnehmer. Im Hintergrund sieht man das Wasser und ein großes Schiff.",
+      "en": "On Wednesday Lea sends a picture from a walk. Three other participants stand beside her. In the background there is water and a large ship."
+    },
+    {
+      "source": "Ben freut sich zuerst über ihr Lächeln. Dann schaut er auf einen Mann neben ihr. Er kennt dessen Namen nicht und merkt eine kleine Unsicherheit.",
+      "en": "At first Ben enjoys seeing her smile. Then he looks at a man beside her. He does not know his name and notices a little insecurity."
+    },
+    {
+      "source": "Lea schreibt die Namen gleich dazu. Der Mann heißt Timo und wohnt im selben Gebäude. Die Gruppe hat nach dem Unterricht einen kurzen Spaziergang gemacht.",
+      "en": "Lea includes their names straight away. The man is called Timo and lives in the same building. The group took a short walk after class."
+    },
+    {
+      "source": "Ben fragt nach dem Schiff und dem neuen Weg. Er muss aus seiner Unsicherheit kein Verhör machen. Lea hat einen neuen Alltag, den sie mit ihm teilen möchte.",
+      "en": "Ben asks about the ship and the new route. He does not have to turn his insecurity into an interrogation. Lea has a new daily life she wants to share with him."
+    }
+  ],
+  "147": [
+    {
+      "source": "Am Donnerstag sitzen Ben und Lea um acht vor ihren Handys. Lea stellt ihres gegen einen Bücherstapel. Ben lehnt seines an eine Tasse auf dem Küchentisch.",
+      "en": "On Thursday at eight Ben and Lea sit in front of their phones. Lea props hers against a pile of books. Ben leans his against a cup on the kitchen table."
+    },
+    {
+      "source": "Beim Videoanruf sehen sie einander zum ersten Mal seit der Abfahrt. Lea erzählt vom Unterricht. Ben berichtet von einer neuen Aufgabe im Büro.",
+      "en": "During the video call they see each other for the first time since she left. Lea talks about class. Ben describes a new task at the office."
+    },
+    {
+      "source": "Das Bild bleibt einmal stehen. Ben kann Lea hören, aber ihr Gesicht bewegt sich nicht mehr. Beide lachen über den seltsamen Blick auf dem Bildschirm.",
+      "en": "The picture freezes once. Ben can hear Lea, but her face no longer moves. Both laugh at the strange expression on the screen."
+    },
+    {
+      "source": "Nach einer halben Stunde verabschieden sie sich. Lea muss noch etwas lesen. Ben macht sein Handy dunkel und bleibt kurz sitzen. Er ist froh, ihre Stimme gehört zu haben.",
+      "en": "After half an hour they say goodbye. Lea still has some reading to do. Ben turns off his phone screen and stays seated for a moment. He is glad he heard her voice."
+    }
+  ],
+  "148": [
+    {
+      "source": "Am Freitag lädt Kurt einige Menschen aus der Kochgruppe zu sich ein. Ben kommt mit einer Schüssel Salat. Aylin bringt selbst gebackenes Brot mit.",
+      "en": "On Friday Kurt invites some people from the cooking group to his home. Ben comes with a bowl of salad. Aylin brings homemade bread."
+    },
+    {
+      "source": "Kurt hat seinen Tisch ausgezogen, damit alle Platz haben. Er kocht das Gericht seiner Mutter und zeigt stolz den Topf. Das Essen riecht gut.",
+      "en": "Kurt has extended his table so everyone has room. He cooks his mother's dish and proudly shows the pot. The food smells good."
+    },
+    {
+      "source": "Ben erzählt, dass Lea in Hamburg ist. Die Gruppe möchte ihr einen Gruß schicken. Ben fragt vorher, ob alle auf einem gemeinsamen Foto sein möchten.",
+      "en": "Ben says Lea is in Hamburg. The group wants to send her greetings. Ben first asks whether everyone wants to be in a shared photo."
+    },
+    {
+      "source": "Später sieht Lea vier lachende Menschen und den großen Topf. Sie antwortet mit einem Foto ihrer eigenen Schüssel. Der Kurs ist vorbei, aber die Gruppe bleibt verbunden.",
+      "en": "Later Lea sees four laughing people and the large pot. She replies with a photo of her own bowl. The class is over, but the group stays connected."
+    }
+  ],
+  "149": [
+    {
+      "source": "In der zweiten Woche wird Leas Unterricht anstrengender. Sie muss mehr lesen und für eine kleine Aufgabe mit anderen zusammenarbeiten. Ihre Nachrichten werden kürzer.",
+      "en": "In the second week Lea's classes become more demanding. She has to read more and work with others on a small task. Her messages become shorter."
+    },
+    {
+      "source": "Ben merkt das. Er möchte sofort wissen, ob etwas zwischen ihnen anders ist. Dann erinnert er sich daran, dass Lea ihren neuen Plan schon erklärt hat.",
+      "en": "Ben notices. He immediately wants to know whether something between them has changed. Then he remembers Lea already explained her new schedule."
+    },
+    {
+      "source": "Er fragt einmal, ob sie am Wochenende telefonieren möchten. Lea sagt zu und nennt eine Uhrzeit. Das reicht Ben für diesen Abend.",
+      "en": "He asks once whether they would like to call at the weekend. Lea agrees and gives a time. That is enough for Ben that evening."
+    },
+    {
+      "source": "Danach geht er mit Nora zum Markt. Er findet dieselben Äpfel wie bei seinem ersten Besuch. Diesmal möchte er sie kaufen, um einen Kuchen zu backen.",
+      "en": "Afterwards he goes to the market with Nora. He finds the same apples as on his first visit. This time he wants to buy them to bake a cake."
+    }
+  ],
+  "150": [
+    {
+      "source": "Am Sonntag erklärt Lea ihren Plan für die nächsten Wochen. Am dritten Wochenende ist sie frei. Ben kann am Freitag nach der Arbeit zu ihr fahren.",
+      "en": "On Sunday Lea explains her schedule for the coming weeks. She is free on the third weekend. Ben can travel to her after work on Friday."
+    },
+    {
+      "source": "In ihrem Gebäude dürfen Gäste nicht übernachten. Deshalb suchen sie eine kleine Unterkunft in der Nähe. Ben prüft die Kosten, bevor er etwas bucht.",
+      "en": "Guests cannot stay overnight in her building. So they look for a small place nearby. Ben checks the costs before booking anything."
+    },
+    {
+      "source": "Lea möchte einen Teil bezahlen. Ben sagt, dass sie darüber nach den genauen Preisen sprechen können. Beide möchten keine teure Überraschung am Ende.",
+      "en": "Lea wants to pay part of it. Ben says they can discuss that once they know the exact prices. Neither wants an expensive surprise at the end."
+    },
+    {
+      "source": "Nach dem Anruf trägt Ben die Fahrt ein. Noch drei Arbeitstage, dann ein weiterer. Die Woche wirkt nun nicht kürzer, aber sie hat ein klares Ziel.",
+      "en": "After the call Ben enters the journey in his calendar. Three more working days, then another. The week does not seem shorter now, but it has a clear destination."
+    }
+  ],
+  "151": [
+    {
+      "source": "Am Freitagabend steigt Ben in Hamburg aus dem Zug. Auf dem Bahnsteig warten viele Menschen. Dann sieht er Lea zwischen zwei großen Koffern vorbeikommen.",
+      "en": "On Friday evening Ben gets off the train in Hamburg. Many people are waiting on the platform. Then he sees Lea coming past two large suitcases."
+    },
+    {
+      "source": "Sie umarmen sich lange. Ben stellt seine Tasche erst danach ab. Leas Haare sind etwas anders als beim Videoanruf. Sie fühlt sich vertraut und gleichzeitig neu an.",
+      "en": "They hug for a long time. Ben only puts down his bag afterwards. Lea's hair looks a little different from on the video call. She feels familiar and new at once."
+    },
+    {
+      "source": "Lea zeigt ihm den Weg zur Unterkunft. Ben möchte zuerst seine Tasche abstellen. Danach suchen sie gemeinsam einen Ort, an dem sie noch etwas essen können.",
+      "en": "Lea shows him the way to his accommodation. Ben first wants to put down his bag. Afterwards they look for somewhere they can still get something to eat."
+    },
+    {
+      "source": "Im kleinen Restaurant reden beide durcheinander. Es gibt so viel vom Tag zu erzählen. Dann hören sie abwechselnd zu und teilen eine Portion Kartoffeln.",
+      "en": "In the small restaurant both talk at once. There is so much to say about the day. Then they take turns listening and share a portion of potatoes."
+    }
+  ],
+  "152": [
+    {
+      "source": "Am Samstag zeigt Lea Ben ihren Weg zum Unterrichtsgebäude. Sie kennt inzwischen die richtige Haltestelle und den kleinen Laden, der morgens früh öffnet.",
+      "en": "On Saturday Lea shows Ben her route to the teaching building. By now she knows the right stop and the little shop that opens early in the morning."
+    },
+    {
+      "source": "Ben sieht Orte, von denen sie am Telefon erzählt hat. Der Bücherstapel in ihrem Zimmer ist größer, als er auf dem Bildschirm ausgesehen hat.",
+      "en": "Ben sees places she told him about on the phone. The pile of books in her room is bigger than it looked on screen."
+    },
+    {
+      "source": "Lea stellt ihn zwei Teilnehmern vor. Timo fragt nach Lindenstadt. Ben erzählt vom Fluss und der Kochgruppe. Das Gespräch ist ganz einfach.",
+      "en": "Lea introduces him to two participants. Timo asks about Lindenstadt. Ben talks about the river and the cooking group. The conversation is very simple."
+    },
+    {
+      "source": "Später gehen Ben und Lea allein weiter. Er ist froh, dass er ihren neuen Alltag sehen konnte. Nun gehört der Name Timo zu einem Menschen, nicht nur zu einem Foto.",
+      "en": "Later Ben and Lea walk on alone. He is glad he could see her new daily life. Now the name Timo belongs to a person, not just a photo."
+    }
+  ],
+  "153": [
+    {
+      "source": "Am Nachmittag gehen sie am Wasser entlang. Lea kennt den Weg schon von ihrem ersten Gruppenfoto. Ben sieht die großen Schiffe und bleibt oft stehen.",
+      "en": "In the afternoon they walk beside the water. Lea already knows the route from her first group photo. Ben sees the large ships and often stops."
+    },
+    {
+      "source": "Sie kaufen zwei warme Getränke und suchen einen Platz mit wenig Wind. Ben möchte ein Foto machen, fragt aber zuerst Lea. Sie möchte gern eines zusammen.",
+      "en": "They buy two warm drinks and look for somewhere less windy. Ben wants to take a photo but asks Lea first. She would like one together."
+    },
+    {
+      "source": "Ein anderer Besucher hilft ihnen kurz. Auf dem Bild stehen beide schief, weil der Wind gerade stark bläst. Lea mag das Foto trotzdem.",
+      "en": "Another visitor briefly helps them. In the picture both lean sideways because the wind is blowing strongly. Lea likes the photo anyway."
+    },
+    {
+      "source": "Ben speichert es für sich. Es soll kein Beweis für eine perfekte Beziehung sein. Er möchte sich später an diesen windigen Nachmittag mit Lea erinnern.",
+      "en": "Ben saves it for himself. It is not meant to prove they have a perfect relationship. He wants to remember this windy afternoon with Lea later."
+    }
+  ],
+  "154": [
+    {
+      "source": "Am Sonntag frühstücken Ben und Lea noch zusammen. Danach muss Ben zum Bahnhof. Lea möchte später für ihre Aufgabe lernen. Der Besuch kann nicht einfach länger werden.",
+      "en": "On Sunday Ben and Lea have breakfast together again. Afterwards Ben has to go to the station. Lea wants to study for her task later. The visit cannot simply be extended."
+    },
+    {
+      "source": "Der Abschied fällt diesmal schwerer. Sie haben sich gerade wieder an die Nähe gewöhnt. Lea begleitet Ben bis zum Bahnsteig und trägt seine leere Wasserflasche.",
+      "en": "Saying goodbye is harder this time. They have just got used to being close again. Lea accompanies Ben to the platform and carries his empty water bottle."
+    },
+    {
+      "source": "Ben verspricht nicht, schon nächste Woche wieder zu kommen. Die Fahrt kostet Geld und Zeit. Sie möchten später prüfen, wann ein weiterer Besuch möglich ist.",
+      "en": "Ben does not promise to come again next week. The journey costs money and time. They want to check later when another visit is possible."
+    },
+    {
+      "source": "Im Zug schreibt Ben, dass er gut sitzt. Lea antwortet erst, als sie wieder zu Hause ist. Zwischen ihnen liegen neue Kilometer, aber auch ein gemeinsames Wochenende.",
+      "en": "On the train Ben writes that he has a good seat. Lea only replies when she is home again. There are new kilometres between them, but also a shared weekend."
+    }
+  ],
+  "155": [
+    {
+      "source": "In der vierten Woche bleibt Ben am Donnerstag länger im Büro. Ein wichtiges Problem ist noch nicht gelöst. Er vergisst, Lea wegen ihres Anrufs Bescheid zu sagen.",
+      "en": "In the fourth week Ben stays late at the office on Thursday. An important problem is not yet solved. He forgets to let Lea know about their call."
+    },
+    {
+      "source": "Um acht wartet Lea vor ihrem Handy. Ben antwortet erst eine halbe Stunde später. Sie ist enttäuscht. Auch sie hat sich diesen Abend freigehalten.",
+      "en": "At eight Lea waits in front of her phone. Ben only replies half an hour later. She is disappointed. She also kept that evening free."
+    },
+    {
+      "source": "Ben erklärt die Arbeit, aber er entschuldigt sich auch für die fehlende Nachricht. Er erwartet nicht, dass Lea nun beliebig lange wach bleibt.",
+      "en": "Ben explains about work, but also apologises for not sending a message. He does not expect Lea to stay awake as long as he wants now."
+    },
+    {
+      "source": "Sie sprechen zehn Minuten und verabreden einen neuen Anruf für Samstag. Ben trägt diesmal eine Erinnerung ein. Nicht nur Lea muss gemeinsame Zeiten ernst nehmen.",
+      "en": "They talk for ten minutes and arrange another call for Saturday. This time Ben sets a reminder. Lea is not the only one who has to take their time together seriously."
+    }
+  ],
+  "156": [
+    {
+      "source": "Am Samstag findet Ben eine Karte im Briefkasten. Lea hat darauf einen kleinen Topf gezeichnet. Daneben stehen wenige Sätze über ihr Zimmer und ihr Frühstück.",
+      "en": "On Saturday Ben finds a card in his letterbox. Lea has drawn a little pot on it. Beside it are a few sentences about her room and her breakfast."
+    },
+    {
+      "source": "Sie hat die Karte in einer Pause gekauft. Ben legt sie ans Küchenfenster und ruft sie zur vereinbarten Zeit an. Diesmal beginnt das Gespräch pünktlich.",
+      "en": "She bought the card during a break. Ben puts it by the kitchen window and calls her at the agreed time. This time the conversation starts on time."
+    },
+    {
+      "source": "Er bedankt sich für den Topf. Lea fragt, ob er noch die Dose mit dem falschen Deckel kennt. Beide lachen über die alte Nachricht aus dem Kochkurs.",
+      "en": "He thanks her for the pot. Lea asks whether he still remembers the container with the wrong lid. Both laugh about the old message from the cooking class."
+    },
+    {
+      "source": "Später schreibt Ben selbst eine Karte. Darauf steht keine große Erklärung über Liebe. Er erzählt von seinem Samstag und davon, dass er Lea beim Kochen vermisst.",
+      "en": "Later Ben writes a card himself. There is no grand declaration of love on it. He talks about his Saturday and how he misses Lea while cooking."
+    }
+  ],
+  "157": [
+    {
+      "source": "In der fünften Woche gibt es keinen Besuch. Ben hat viel Arbeit, und Lea bereitet die letzte Aufgabe vor. Sie schreiben meist nur kurz.",
+      "en": "In the fifth week there is no visit. Ben has a lot of work, and Lea is preparing the final task. They mostly write briefly."
+    },
+    {
+      "source": "Lea schickt ein Foto ihres Schreibtischs. Zwischen den Büchern liegt Bens Karte. Er freut sich, dass sie angekommen ist. Die Post war langsamer als eine Nachricht.",
+      "en": "Lea sends a photo of her desk. Ben's card lies between the books. He is pleased it arrived. The post was slower than a message."
+    },
+    {
+      "source": "Ben trifft seine Schwester am Wochenende. Sie kommt diesmal nach Lindenstadt. Er zeigt ihr die kleine Brücke und die Bäckerei, in der er mit Lea Tee getrunken hat.",
+      "en": "Ben meets his sister at the weekend. This time she comes to Lindenstadt. He shows her the small bridge and the bakery where he had tea with Lea."
+    },
+    {
+      "source": "Am Abend erzählt er Lea von dem Besuch. Seine Tage haben eigene Geschichten. Sie muss nicht jede Stunde dabei gewesen sein, um später daran teilzunehmen.",
+      "en": "In the evening he tells Lea about the visit. His days have their own stories. She does not have to have been there every hour to share in them later."
+    }
+  ],
+  "158": [
+    {
+      "source": "Am Montag der sechsten Woche arbeitet Lea mit ihrer Gruppe an der letzten Aufgabe. Alle haben einen Teil vorbereitet. Nun müssen sie gemeinsam erklären, was sie gelernt haben.",
+      "en": "On Monday of the sixth week Lea works with her group on the final task. Everyone has prepared one part. Now they have to explain together what they learned."
+    },
+    {
+      "source": "Lea ist vor dem Gespräch nervös. Ben hat ihr am Morgen viel Erfolg gewünscht. Danach hat er nicht ständig nach dem Ergebnis gefragt.",
+      "en": "Lea is nervous before the discussion. Ben wished her good luck that morning. Afterwards he did not keep asking for the result."
+    },
+    {
+      "source": "Am Nachmittag schreibt Lea, dass die Aufgabe gut gelaufen ist. Ben freut sich und ruft erst an, als sie Zeit hat. Er möchte ihre ganze Geschichte hören.",
+      "en": "In the afternoon Lea writes that the task went well. Ben is delighted and only calls when she has time. He wants to hear the whole story."
+    },
+    {
+      "source": "Lea erzählt auch von einem Fehler, den die Gruppe noch korrigieren musste. Das gute Ergebnis macht den Fehler nicht unsichtbar. Ben hört beides und ist stolz auf sie.",
+      "en": "Lea also talks about a mistake the group still had to correct. The good result does not hide the mistake. Ben hears both parts and is proud of her."
+    }
+  ],
+  "159": [
+    {
+      "source": "Am Donnerstag packt Lea ihre Tasche. Die Unterlagen brauchen mehr Platz als vorher. Sie faltet ihre Kleidung kleiner und legt die Karten zwischen zwei Bücher.",
+      "en": "On Thursday Lea packs her bag. Her documents take up more space than before. She folds her clothes smaller and puts the cards between two books."
+    },
+    {
+      "source": "In der gemeinsamen Küche räumt sie ihr Fach aus. Einige Lebensmittel schenkt sie den anderen Teilnehmern. Den Tee nimmt sie mit nach Lindenstadt.",
+      "en": "In the shared kitchen she empties her fridge space. She gives some food to the other participants. She takes the tea back to Lindenstadt."
+    },
+    {
+      "source": "Am Abend essen sie zum Abschied zusammen. Lea tauscht E-Mail-Adressen mit einigen Menschen aus. Die sechs Wochen sollen nicht nur in ihren Unterlagen bleiben.",
+      "en": "In the evening they have a farewell meal together. Lea exchanges email addresses with some people. The six weeks should not only remain in her documents."
+    },
+    {
+      "source": "Später schickt sie Ben die Zugzeit. Er möchte sie am Bahnhof abholen. Lea legt das Handy auf den Tisch und schaut ein letztes Mal auf das Dach vor ihrem Fenster.",
+      "en": "Later she sends Ben the train time. He wants to meet her at the station. Lea puts her phone on the table and looks one last time at the roof outside her window."
+    }
+  ],
+  "160": [
+    {
+      "source": "Am Freitag steht Ben am Bahnhof in Lindenstadt. Diesmal wartet er auf einen ankommenden Zug. In seiner Tasche liegen keine großen Geschenke, sondern zwei Brötchen.",
+      "en": "On Friday Ben stands at the station in Lindenstadt. This time he is waiting for an arriving train. There are no large gifts in his bag, just two bread rolls."
+    },
+    {
+      "source": "Lea steigt aus und sucht ihn zwischen den Menschen. Als sie ihn sieht, stellt sie die Tasche sofort ab. Ben geht die letzten Schritte schnell.",
+      "en": "Lea gets off and looks for him among the people. When she sees him, she immediately puts down her bag. Ben takes the last few steps quickly."
+    },
+    {
+      "source": "Sie umarmen sich lange. Lea legt ihre Hände auf seinen Rücken. Ben hält sie fest und lässt erst los, als sie nach ihrer Tasche greift.",
+      "en": "They hug for a long time. Lea places her hands on his back. Ben holds her and only lets go when she reaches for her bag."
+    },
+    {
+      "source": "Gemeinsam verlassen sie den Bahnsteig. Lea möchte zuerst nach Hause und die Sachen abstellen. Ben geht mit. Sechs Wochen enden nicht mit einem Foto, sondern mit diesem Weg.",
+      "en": "Together they leave the platform. Lea first wants to go home and put down her things. Ben goes with her. Six weeks end not with a photo but with this walk."
+    }
+  ],
+  "161": [
+    {
+      "source": "In Leas Wohnung riecht es noch nach den Kräutern am Fenster. Einige Blätter sind trocken. Eva hat gegossen, aber eine Pflanze braucht trotzdem neues Wasser.",
+      "en": "Lea's flat still smells of the herbs by the window. Some leaves are dry. Eva watered them, but one plant still needs fresh water."
+    },
+    {
+      "source": "Lea stellt den Koffer neben den Schrank. Ben holt Wasser und fragt, wo er das Glas abstellen soll. Nicht alles steht genau wie vor ihrer Reise.",
+      "en": "Lea puts the suitcase beside the cupboard. Ben fetches water and asks where to put the glass. Not everything is exactly where it was before her journey."
+    },
+    {
+      "source": "Sie setzt sich aufs Sofa und zieht die Schuhe aus. Ben würde gern lange bleiben, aber Lea ist müde. Das Wiedersehen braucht nicht sofort einen großen Abend.",
+      "en": "She sits on the sofa and takes off her shoes. Ben would like to stay a long time, but Lea is tired. Their reunion does not immediately need a big evening."
+    },
+    {
+      "source": "Sie essen die Brötchen vom Bahnhof. Danach fragt Ben, ob sie lieber schlafen möchte. Lea nickt und küsst ihn. Für morgen verabreden sie ein Frühstück.",
+      "en": "They eat the bread rolls from the station. Afterwards Ben asks whether she would rather sleep. Lea nods and kisses him. They arrange breakfast for tomorrow."
+    }
+  ],
+  "162": [
+    {
+      "source": "Am Samstag kommt Ben mit frischem Brot. Lea hat ausgeschlafen und Tee gemacht. Auf dem Tisch liegt eine Mappe mit ihren Unterlagen aus Hamburg.",
+      "en": "On Saturday Ben arrives with fresh bread. Lea has had a good sleep and made tea. A folder with her documents from Hamburg lies on the table."
+    },
+    {
+      "source": "Sie zeigt ihm einige Bilder vom Unterrichtsgebäude. Dann erzählt sie von den Menschen, mit denen sie gelernt hat. Ben kennt jetzt mehrere Namen.",
+      "en": "She shows him some pictures of the teaching building. Then she talks about the people she studied with. Ben now knows several names."
+    },
+    {
+      "source": "Ben erzählt von seiner Schwester und Kurts Abendessen. Nicht jede Geschichte hat schon am Telefon Platz gehabt. Jetzt können sie dabei das Brot teilen.",
+      "en": "Ben talks about his sister and Kurt's dinner. Not every story fitted into their phone calls. Now they can share bread while talking."
+    },
+    {
+      "source": "Nach dem Frühstück stellt Lea die Mappe in den Schrank. Sie möchte auch wieder draußen in Lindenstadt sein. Ben schlägt den alten Weg zur Brücke vor.",
+      "en": "After breakfast Lea puts the folder in the cupboard. She also wants to be outside in Lindenstadt again. Ben suggests their old route to the bridge."
+    }
+  ],
+  "163": [
+    {
+      "source": "Am Fluss gehen Ben und Lea langsam nebeneinander. Die Brücke sieht genauso aus wie vorher. Nur am Ufer stehen jetzt andere Blumen als bei ihrem ersten Spaziergang.",
+      "en": "Beside the river Ben and Lea walk slowly side by side. The bridge looks the same as before. Only the flowers along the bank are different from their first walk."
+    },
+    {
+      "source": "Lea bleibt am Geländer stehen und schaut nach unten. Ben stellt sich neben sie. Sie erinnern sich an den kleinen Schirm und den Regen im Park.",
+      "en": "Lea stops at the railing and looks down. Ben stands beside her. They remember the little umbrella and the rain in the park."
+    },
+    {
+      "source": "Ben hatte damals nicht gewusst, ob sie ihn als Freund sieht. Lea erzählt, dass sie selbst ebenfalls unsicher war. Sie wollte ihn erst in Ruhe kennenlernen.",
+      "en": "Back then Ben did not know whether she saw him as a friend. Lea says she was unsure herself too. She first wanted time to get to know him."
+    },
+    {
+      "source": "Jetzt nimmt sie seine Hand. Das Wasser fließt weiter unter ihnen. Sie bleiben noch einen Moment, bevor sie in Richtung Markt gehen. Lea möchte Äpfel kaufen.",
+      "en": "Now she takes his hand. The water keeps flowing beneath them. They stay a moment longer before walking towards the market. Lea wants to buy apples."
+    }
+  ],
+  "164": [
+    {
+      "source": "In der folgenden Woche beginnt Lea wieder im Krankenhaus. Nach der Fortbildung bekommt sie einige neue Aufgaben. Sie freut sich darauf und ist gleichzeitig nervös.",
+      "en": "The following week Lea starts back at the hospital. After her training she gets some new tasks. She looks forward to them and is nervous at the same time."
+    },
+    {
+      "source": "Ben fragt am Abend, wie der erste Tag war. Lea braucht etwas Zeit, um zu antworten. Sie musste viel erklären und danach selbst noch lernen.",
+      "en": "In the evening Ben asks how the first day was. Lea needs a little time to reply. She had to explain a lot and afterwards still had to learn herself."
+    },
+    {
+      "source": "Er bietet an, Essen mitzubringen. Lea möchte lieber zuerst allein nach Hause gehen. Später ruft sie ihn an. Ben nimmt ihre Antwort nicht als Ablehnung seiner ganzen Hilfe.",
+      "en": "He offers to bring food. Lea would rather first go home alone. Later she calls him. Ben does not treat her answer as a rejection of all his help."
+    },
+    {
+      "source": "Beim Telefonat erzählt sie von einem gelungenen Gespräch mit dem Team. Ben hört zu. Morgen können sie zusammen kochen, wenn beide weniger müde sind.",
+      "en": "During the call she talks about a successful discussion with the team. Ben listens. Tomorrow they can cook together when both are less tired."
+    }
+  ],
+  "165": [
+    {
+      "source": "Für Samstag hat Lea sich mit Eva verabredet. Ben hatte gehofft, den Tag mit ihr zu verbringen. Sie haben aber keinen festen gemeinsamen Termin gemacht.",
+      "en": "For Saturday Lea has arranged to meet Eva. Ben hoped to spend the day with her. But they had not made a firm plan together."
+    },
+    {
+      "source": "Lea möchte ihre Freundin seit der Rückkehr endlich länger sehen. Ben versteht das. Trotzdem darf er sagen, dass er sich auf Zeit mit Lea gefreut hat.",
+      "en": "Lea finally wants to spend more time with her friend since returning. Ben understands. Still, he can say he was looking forward to time with Lea."
+    },
+    {
+      "source": "Sie finden einen freien Sonntagvormittag. Ben plant seinen Samstag mit Pavel. Er möchte nicht erst warten, bis Lea alle anderen Dinge erledigt hat.",
+      "en": "They find a free Sunday morning. Ben plans his Saturday with Pavel. He does not want to wait until Lea has finished everything else."
+    },
+    {
+      "source": "Am Sonntag erzählen sie einander von ihren Tagen. Lea und Eva waren in einem Museum. Ben und Pavel haben einen langen Fahrradweg gefunden. Beide bringen etwas Neues mit.",
+      "en": "On Sunday they tell each other about their days. Lea and Eva went to a museum. Ben and Pavel found a long cycling route. Both bring something new."
+    }
+  ],
+  "166": [
+    {
+      "source": "Einige Wochen später gibt Lea Ben einen zweiten Schlüssel. Er soll ihn benutzen, wenn sie gemeinsam etwas planen und sie später nach Hause kommt.",
+      "en": "A few weeks later Lea gives Ben a spare key. He can use it when they make plans together and she comes home later."
+    },
+    {
+      "source": "Ben freut sich über das Vertrauen. Er fragt trotzdem, ob er vorher Bescheid sagen soll. Lea möchte das gern. Ein Schlüssel bedeutet nicht, dass jeder Besuch automatisch passt.",
+      "en": "Ben is pleased by her trust. Still, he asks whether he should let her know first. Lea would like that. A key does not mean every visit automatically suits her."
+    },
+    {
+      "source": "Auch Ben gibt ihr einen Schlüssel zu seiner Wohnung. Beide hängen sie an ihren eigenen Ring. Zwischen Leas Fahrradschlüssel und dem neuen liegt ein kleiner gelber Anhänger.",
+      "en": "Ben also gives her a key to his flat. Both put them on their own rings. Between Lea's bicycle key and the new one is a little yellow keyring."
+    },
+    {
+      "source": "Am Abend stellt Ben den zweiten Teller hin. Lea kommt später direkt von der Arbeit. Sie schreibt vor dem Besuch eine kurze Nachricht, obwohl sie den Schlüssel schon hat.",
+      "en": "In the evening Ben sets out the second plate. Lea arrives later directly from work. She sends a brief message before visiting even though she already has the key."
+    }
+  ],
+  "167": [
+    {
+      "source": "Im Büro bekommt Ben ein Angebot. Er kann mehr Verantwortung übernehmen und ein kleines Team unterstützen. Dafür muss er manchmal früher beginnen, aber nicht in eine andere Stadt ziehen.",
+      "en": "At the office Ben receives an offer. He can take on more responsibility and support a small team. For that he sometimes has to start earlier, but he does not have to move to another town."
+    },
+    {
+      "source": "Er liest die Beschreibung und fragt nach den Arbeitszeiten. Das höhere Gehalt ist interessant. Doch Ben möchte auch wissen, wie oft längere Tage nötig sind.",
+      "en": "He reads the description and asks about the working hours. The higher pay is interesting. But Ben also wants to know how often longer days are needed."
+    },
+    {
+      "source": "Am Abend erzählt er Lea davon. Sie entscheidet nicht für ihn. Sie fragt, welche Aufgaben ihm gefallen und wovor er sich Sorgen macht.",
+      "en": "In the evening he tells Lea about it. She does not decide for him. She asks which tasks he likes and what worries him."
+    },
+    {
+      "source": "Ben schreibt zwei Listen. Danach möchte er noch einmal mit seinem Chef sprechen. Eine gute Nachricht kann trotzdem Fragen offenlassen. Lea setzt inzwischen Wasser für Tee auf.",
+      "en": "Ben writes two lists. Afterwards he wants to speak to his boss again. Good news can still leave questions open. Meanwhile Lea puts on water for tea."
+    }
+  ],
+  "168": [
+    {
+      "source": "Nach dem zweiten Gespräch nimmt Ben das Angebot an. Die Arbeitszeiten sind klarer, und er darf neue Aufgaben langsam lernen. Martin wird ihm am Anfang helfen.",
+      "en": "After the second discussion Ben accepts the offer. The working hours are clearer, and he can learn his new tasks gradually. Martin will help him at first."
+    },
+    {
+      "source": "Ben ruft Lea in ihrer Pause an. Sie freut sich und schlägt vor, abends gemeinsam zu essen. Diesmal möchte sie für ihn kochen.",
+      "en": "Ben calls Lea during her break. She is pleased and suggests dinner together in the evening. This time she wants to cook for him."
+    },
+    {
+      "source": "Als Ben kommt, stehen Kartoffeln und Gemüse auf dem Herd. Lea hat keine große Feier vorbereitet. Auf dem Tisch liegt aber eine Karte mit einem kleinen Computer.",
+      "en": "When Ben arrives, potatoes and vegetables are cooking. Lea has not prepared a big party. But there is a card on the table with a little computer on it."
+    },
+    {
+      "source": "Ben legt die Karte später neben den gezeichneten Topf aus Hamburg. Zwei kleine Bilder stehen jetzt am Fenster. Beide erzählen etwas aus ihrem gemeinsamen Leben.",
+      "en": "Later Ben puts the card beside the pot she drew in Hamburg. Two little pictures now stand by the window. Both tell something about their life together."
+    }
+  ],
+  "169": [
+    {
+      "source": "Im Herbst sind Ben und Lea seit mehreren Monaten zusammen. Sie verbringen viele Abende abwechselnd in ihren Wohnungen. Manchmal liegt das nötige Ladekabel in der falschen.",
+      "en": "In autumn Ben and Lea have been together for several months. They spend many evenings alternating between their flats. Sometimes the charging cable they need is in the wrong one."
+    },
+    {
+      "source": "Eines Abends sucht Ben ein sauberes Hemd bei Lea. Es liegt zu Hause in seinem Schrank. Beide lachen zuerst, dann werden sie stiller.",
+      "en": "One evening Ben looks for a clean shirt at Lea's place. It is at home in his cupboard. Both laugh at first, then grow quieter."
+    },
+    {
+      "source": "Ben fragt, ob sie irgendwann zusammenwohnen möchte. Er sagt nicht, dass sie es sofort tun müssen. Lea möchte über die Frage nachdenken.",
+      "en": "Ben asks whether she would like to live together sometime. He does not say they have to do it immediately. Lea wants to think about the question."
+    },
+    {
+      "source": "Sie sprechen an diesem Abend nur kurz darüber. Danach gehen sie spazieren. Eine gemeinsame Wohnung soll eine Entscheidung sein, kein schneller Weg zu einem fehlenden Hemd.",
+      "en": "They only talk briefly about it that evening. Afterwards they go for a walk. A shared flat should be a decision, not a quick way to find a missing shirt."
+    }
+  ],
+  "170": [
+    {
+      "source": "Ein paar Tage später fragt Lea selbst nach der Wohnung. Sie kann sich vorstellen, mit Ben zu leben. Trotzdem möchte sie weiterhin manchmal Ruhe und Zeit allein haben.",
+      "en": "A few days later Lea herself asks about the flat. She can imagine living with Ben. Still, she wants quiet and time alone sometimes."
+    },
+    {
+      "source": "Ben möchte einen Platz zum Arbeiten und einen Tisch für Freunde. Beide möchten gut zur Arbeit kommen. Leas frühe Dienste sollen nicht mit einer langen Fahrt beginnen.",
+      "en": "Ben wants a place to work and a table for friends. Both want easy journeys to work. Lea's early shifts should not start with a long journey."
+    },
+    {
+      "source": "Ihre jetzigen Wohnungen sind für zwei Menschen auf Dauer etwas klein. Sie könnten aber vorerst in einer bleiben, wenn die Suche länger dauert. Niemand muss sofort umziehen.",
+      "en": "Their current flats are a little small for two people in the long run. But they could stay in one for now if the search takes longer. Nobody has to move immediately."
+    },
+    {
+      "source": "Sie schreiben ihre Wünsche auf und vergleichen sie. Ein Balkon wäre schön, eine gute Verbindung ist wichtiger. Der große Tisch bekommt auf beiden Listen einen Platz.",
+      "en": "They write down their wishes and compare them. A balcony would be nice; a good transport connection matters more. The big table gets a place on both lists."
+    }
+  ],
+  "171": [
+    {
+      "source": "Am Sonntag setzen Ben und Lea sich mit Papier an den Küchentisch. Sie möchten wissen, wie viel Miete sie gemeinsam bezahlen können. Beide nennen ihre monatlichen Kosten.",
+      "en": "On Sunday Ben and Lea sit at the kitchen table with paper. They want to know how much rent they can afford together. Both list their monthly expenses."
+    },
+    {
+      "source": "Ben verdient nach der neuen Aufgabe etwas mehr. Lea möchte trotzdem ihren eigenen Teil bezahlen und Geld für sich behalten. Sie sprechen offen über eine passende Verteilung.",
+      "en": "Ben earns a little more after taking the new role. Lea still wants to pay her own share and keep money for herself. They talk openly about a suitable split."
+    },
+    {
+      "source": "Sie rechnen auch Strom, Heizung und Internet dazu. Eine Wohnung darf nicht nur auf dem Foto gut aussehen. Am Monatsende brauchen sie noch Geld für Essen und andere Dinge.",
+      "en": "They also include electricity, heating and internet. A flat should not just look good in a photo. At the end of the month they still need money for food and other things."
+    },
+    {
+      "source": "Nach einer Stunde steht eine Grenze auf dem Papier. Sie ist niedriger als Bens erster Wunsch. Trotzdem fühlen sich beide mit der klaren Zahl sicherer.",
+      "en": "After an hour a limit is written on the paper. It is lower than Ben's first wish. Still, both feel more secure with a clear figure."
+    }
+  ],
+  "172": [
+    {
+      "source": "Bei der Wohnungssuche sehen Ben und Lea viele helle Zimmer. Manche Fotos zeigen nur einen kleinen Teil. Bei anderen fehlt die Küche ganz.",
+      "en": "While looking for a flat Ben and Lea see many bright rooms. Some photos only show a small section. In others the kitchen is completely missing."
+    },
+    {
+      "source": "Ben möchte sofort mehrere Nachrichten schicken. Lea liest zuerst die Lage und die Kosten. Eine besonders schöne Wohnung liegt weit entfernt von ihrer Arbeit.",
+      "en": "Ben wants to send several messages immediately. Lea first reads the location and costs. One especially lovely flat is far away from her work."
+    },
+    {
+      "source": "Sie schließen diese Anzeige wieder. Ben ist enttäuscht, aber er möchte nicht nur wegen eines Fotos täglich viel länger fahren. Beide suchen weiter.",
+      "en": "They close that listing again. Ben is disappointed, but he does not want a much longer daily journey just because of a photo. Both keep looking."
+    },
+    {
+      "source": "Am Ende haben sie drei passende Adressen. Sie schreiben kurze Anfragen und legen das Handy weg. Die Antworten brauchen Zeit, genau wie am Anfang ihrer anderen Suche.",
+      "en": "In the end they have three suitable addresses. They write brief enquiries and put away the phone. Replies take time, just as at the start of their other search."
+    }
+  ],
+  "173": [
+    {
+      "source": "Am Donnerstag besuchen sie eine Wohnung über einem Geschäft. Die Zimmer sind hell, und das Wohnzimmer hat genug Platz für einen großen Tisch.",
+      "en": "On Thursday they visit a flat above a shop. The rooms are bright, and the living room has enough space for a big table."
+    },
+    {
+      "source": "Eine Mitarbeiterin zeigt ihnen das Bad und die Küche. Ben schaut nach Steckdosen. Lea öffnet mit Erlaubnis ein Fenster und hört den Verkehr.",
+      "en": "A staff member shows them the bathroom and kitchen. Ben looks for sockets. With permission Lea opens a window and listens to the traffic."
+    },
+    {
+      "source": "Vor dem Haus halten viele Busse. Für die Fahrt ist das praktisch. Zum Schlafen nach einem späten Dienst könnte es aber schwierig sein.",
+      "en": "Many buses stop outside the building. That is practical for travelling. But sleeping after a late shift could be difficult."
+    },
+    {
+      "source": "Nach der Besichtigung bleiben beide vor der Tür stehen. Die Wohnung hat Vorteile, aber auch einen lauten Alltag. Sie möchten erst die andere Adresse sehen, bevor sie zusagen.",
+      "en": "After the viewing both stand outside the door. The flat has advantages but also a noisy daily life. They want to see the other address before agreeing."
+    }
+  ],
+  "174": [
+    {
+      "source": "Am nächsten Tag ruft der zweite Vermieter an. Die Wohnung ist bereits vergeben. Ben hatte sich den kleinen Balkon auf dem Foto oft angesehen.",
+      "en": "The following day the second landlord calls. The flat has already been taken. Ben had often looked at the small balcony in the photo."
+    },
+    {
+      "source": "Er ist enttäuscht und erzählt es Lea. Sie hatte den Balkon auch gemocht. Trotzdem müssen sie nicht herausfinden, warum jemand anderes die Wohnung bekommen hat.",
+      "en": "He is disappointed and tells Lea. She liked the balcony too. Still, they do not have to find out why someone else got the flat."
+    },
+    {
+      "source": "Sie haben noch einen Termin am Samstag. Lea erinnert Ben daran, dass sie genug Zeit haben. Die Schlüssel ihrer jetzigen Wohnungen liegen weiterhin sicher in ihren Taschen.",
+      "en": "They still have an appointment on Saturday. Lea reminds Ben they have enough time. The keys to their current flats are still safe in their bags."
+    },
+    {
+      "source": "Am Abend kochen sie in Leas Küche. Das fehlende neue Zuhause macht die jetzige Küche nicht plötzlich wertlos. Ben wäscht Gemüse und erzählt von seinem Arbeitstag.",
+      "en": "In the evening they cook in Lea's kitchen. Not having a new home does not suddenly make the present kitchen worthless. Ben washes vegetables and talks about his working day."
+    }
+  ],
+  "175": [
+    {
+      "source": "Am Samstag kommen sie zu einem Haus mit einem kleinen Innenhof. Dort stehen zwei Bäume und mehrere Fahrräder. Die Wohnung liegt im ersten Stock.",
+      "en": "On Saturday they reach a house with a small courtyard. There are two trees and several bicycles. The flat is on the first floor."
+    },
+    {
+      "source": "Die Vermieterin öffnet die Tür. Es gibt ein Schlafzimmer, ein Wohnzimmer und ein kleines zusätzliches Zimmer. Die Küche ist nicht neu, aber sauber.",
+      "en": "The landlady opens the door. There is a bedroom, a living room and one small extra room. The kitchen is not new but clean."
+    },
+    {
+      "source": "Lea schaut auf den Hof. Ben misst mit Schritten, ob sein Schreibtisch in das kleine Zimmer passt. Beide stellen Fragen, bevor sie wieder hinausgehen.",
+      "en": "Lea looks into the courtyard. Ben measures with his footsteps whether his desk fits in the little room. Both ask questions before going outside again."
+    },
+    {
+      "source": "Die Fahrt zur Arbeit ist für beide möglich. Die Miete liegt innerhalb ihrer Grenze. Auf dem Heimweg reden sie länger über diese Wohnung als über die anderen.",
+      "en": "The journey to work is manageable for both. The rent is within their limit. On the way home they talk longer about this flat than the others."
+    }
+  ],
+  "176": [
+    {
+      "source": "Ben möchte der Vermieterin sofort zusagen. Lea möchte noch eine Nacht darüber schlafen. Sie müssen zuerst prüfen, welche Dinge sie wirklich mitnehmen können.",
+      "en": "Ben wants to agree to the flat immediately. Lea wants to sleep on it for one more night. They first have to check which things they can really take with them."
+    },
+    {
+      "source": "Zu Hause zeichnet Ben die Zimmer auf ein Blatt. Lea legt kleine Zettel für Bett, Tisch und Schreibtisch darauf. Der große Tisch braucht besonders viel Platz.",
+      "en": "At home Ben draws the rooms on a sheet. Lea places small notes for the bed, table and desk on it. The big table needs especially much space."
+    },
+    {
+      "source": "Sie verschieben die Zettel und lachen über einen Schrank, der auf dem Papier die Tür blockiert. Danach schreiben sie die offenen Fragen an die Vermieterin auf.",
+      "en": "They move the notes and laugh at a cupboard that blocks the door on paper. Afterwards they write down their remaining questions for the landlady."
+    },
+    {
+      "source": "Am nächsten Morgen fühlen sich beide noch gut mit der Wohnung. Sie haben in Ruhe entschieden. Ben ist froh darüber, und Lea nimmt das Telefon.",
+      "en": "The following morning both still feel good about the flat. They made their decision calmly. Ben is glad about that, and Lea picks up the phone."
+    }
+  ],
+  "177": [
+    {
+      "source": "Die Vermieterin beantwortet ihre letzten Fragen. Danach sagen Ben und Lea gemeinsam zu. Sie bekommen die Unterlagen und lesen sie am nächsten Abend in Ruhe.",
+      "en": "The landlady answers their remaining questions. Afterwards Ben and Lea agree together. They receive the documents and read them carefully the following evening."
+    },
+    {
+      "source": "Beide möchten verstehen, welche Kosten dazugehören und wann sie einziehen können. Unklare Stellen schreiben sie auf. Sie fragen nach, bevor sie etwas unterschreiben.",
+      "en": "Both want to understand which costs are included and when they can move in. They note down unclear parts. They ask before signing anything."
+    },
+    {
+      "source": "Der Einzug ist in zwei Monaten möglich. Das gibt ihnen Zeit, ihre bisherigen Wohnungen und den Umzug zu organisieren. Sie informieren zuerst ihre Familien und Freunde.",
+      "en": "They can move in two months later. That gives them time to organise their current flats and the move. They first tell their families and friends."
+    },
+    {
+      "source": "Nora bietet Hilfe mit den Kartons an. Pavel möchte den großen Tisch tragen. Eva bringt ihre Tasche mit Werkzeug mit. Ben und Lea schreiben eine Liste für alle.",
+      "en": "Nora offers to help with the boxes. Pavel wants to carry the big table. Eva brings her bag of tools. Ben and Lea write a list for everyone."
+    }
+  ],
+  "178": [
+    {
+      "source": "In den nächsten Wochen sortieren Ben und Lea ihre Sachen. Beide haben zu viele Tassen und einige Kleidungsstücke, die sie lange nicht getragen haben.",
+      "en": "Over the next few weeks Ben and Lea sort their things. Both have too many cups and some clothes they have not worn for a long time."
+    },
+    {
+      "source": "Ben möchte nicht einfach Leas alte Dinge weggeben. Lea entscheidet selbst, was sie behalten will. Auch sein altes Kinoticket darf in seiner Schublade bleiben.",
+      "en": "Ben does not want to simply give away Lea's old things. Lea decides herself what to keep. His old cinema ticket can stay in his drawer too."
+    },
+    {
+      "source": "Sie suchen gemeinsam aus, welche Möbel in die neue Wohnung passen. Ein kleiner Tisch bleibt übrig. Kurt kann ihn brauchen und holt ihn mit seiner Tochter ab.",
+      "en": "Together they choose which furniture fits in the new flat. One small table is left over. Kurt can use it and collects it with his daughter."
+    },
+    {
+      "source": "Nach dem Besuch stehen weniger Dinge im Flur. Ben fühlt sich kurz seltsam. Seine Wohnung war der Anfang in Lindenstadt. Nun beginnt dort langsam der Abschied.",
+      "en": "After the visit fewer things stand in the corridor. Ben briefly feels strange. His flat was his beginning in Lindenstadt. Now saying goodbye to it is slowly starting."
+    }
+  ],
+  "179": [
+    {
+      "source": "Ben schreibt Küche auf den ersten Karton. Lea schreibt Bücher auf den zweiten. Die Wörter sollen helfen, beim Umzug nicht jede Kiste im falschen Zimmer zu öffnen.",
+      "en": "Ben writes kitchen on the first box. Lea writes books on the second. The words should help them avoid opening every box in the wrong room during the move."
+    },
+    {
+      "source": "In einen kleinen Karton legt Lea die Karten aus Hamburg. Ben packt das Rezeptblatt vom ersten Spaziergang dazu. Beide möchten diese Papiere nicht zwischen alte Rechnungen legen.",
+      "en": "Lea puts the cards from Hamburg in a small box. Ben adds the recipe sheet from their first walk. Neither wants to put these papers among old bills."
+    },
+    {
+      "source": "Danach finden sie die Dose mit dem falschen Deckel. Lea hat inzwischen eine passende, aber die alte Dose benutzt sie für kleine Werkzeuge.",
+      "en": "Afterwards they find the container with the wrong lid. Lea now has a matching one, but she uses the old container for small tools."
+    },
+    {
+      "source": "Ben stellt sie oben auf einen Karton. Manche Dinge müssen nicht perfekt zusammenpassen, um nützlich zu sein. Lea reicht ihm das Klebeband, und sie packen weiter.",
+      "en": "Ben places it on top of a box. Some things do not have to match perfectly to be useful. Lea hands him the tape, and they keep packing."
+    }
+  ],
+  "180": [
+    {
+      "source": "Am Tag vor dem Umzug holen Ben und Lea die neuen Schlüssel ab. Die Vermieterin zeigt ihnen noch einmal die Wohnung und die Plätze für ihre Fahrräder.",
+      "en": "The day before the move Ben and Lea collect the new keys. The landlady shows them the flat again and the spaces for their bicycles."
+    },
+    {
+      "source": "Die Zimmer sind leer. Jeder Schritt klingt laut. Ben stellt sich an das Küchenfenster. Lea öffnet die Tür zum kleinen zusätzlichen Zimmer.",
+      "en": "The rooms are empty. Every footstep sounds loud. Ben stands by the kitchen window. Lea opens the door to the small extra room."
+    },
+    {
+      "source": "Sie haben noch keine feste Ordnung für ihr gemeinsames Leben. Der Schlüssel löst nicht alle Fragen. Aber beide haben sich Zeit genommen, um hierherzukommen.",
+      "en": "They do not yet have a fixed way of arranging their life together. The key does not solve every question. But both have taken their time getting here."
+    },
+    {
+      "source": "Bevor sie gehen, legt Lea ihre Hand in Bens. Morgen werden hier Kartons, Freunde und zwei verschiedene Teekannen stehen. Heute schließen sie zum ersten Mal gemeinsam ab.",
+      "en": "Before they leave, Lea puts her hand in Ben's. Tomorrow boxes, friends and two different teapots will be here. Today they lock up together for the first time."
+    }
+  ],
+  "181": [
+    {
+      "source": "Am Samstagmorgen stehen Nora, Pavel und Eva vor Bens alter Wohnung. Es gibt Kaffee in Pappbechern und eine Liste mit Möbeln und Kartons.",
+      "en": "On Saturday morning Nora, Pavel and Eva stand outside Ben's old flat. There is coffee in paper cups and a list of furniture and boxes."
+    },
+    {
+      "source": "Pavel und Ben tragen zuerst den Tisch. Er ist schwerer, als Pavel erwartet hat. Nora öffnet die Türen und zeigt ihnen den Weg zum gemieteten Wagen.",
+      "en": "Pavel and Ben carry the table first. It is heavier than Pavel expected. Nora opens the doors and shows them the way to the hired van."
+    },
+    {
+      "source": "Lea und Eva holen die Kartons aus ihrer Wohnung. Jede Kiste hat einen Namen. Trotzdem kommt eine mit Büchern zuerst in die neue Küche.",
+      "en": "Lea and Eva collect the boxes from her flat. Each box has a label. Still, one containing books first ends up in the new kitchen."
+    },
+    {
+      "source": "Alle lachen und tragen sie weiter. Der Tag ist laut und anstrengend. Ben schaut einmal zu Lea. Sie wischt sich die Haare aus dem Gesicht und winkt ihm zu.",
+      "en": "Everyone laughs and carries it on. The day is noisy and tiring. Ben looks over at Lea once. She pushes her hair out of her face and waves to him."
+    }
+  ],
+  "182": [
+    {
+      "source": "Am Nachmittag steht der große Tisch im Wohnzimmer. Es gibt noch keine passende Lampe darüber. Trotzdem finden alle einen Stuhl oder eine stabile Kiste zum Sitzen.",
+      "en": "In the afternoon the big table stands in the living room. There is no suitable light above it yet. Still, everyone finds a chair or a sturdy box to sit on."
+    },
+    {
+      "source": "Ben und Lea haben Brot, Käse und Gemüse gekauft. Nach den vielen Treppen möchten sie heute nicht lange kochen. Eva stellt alles auf den Tisch.",
+      "en": "Ben and Lea bought bread, cheese and vegetables. After all the stairs they do not want to cook for long today. Eva puts everything on the table."
+    },
+    {
+      "source": "Pavel sucht Messer und findet zuerst die grüne Schürze. Nora öffnet den richtigen Karton. Bald essen sie aus verschiedenen Tellern, genau wie beim ersten Besuch bei Ben.",
+      "en": "Pavel looks for knives and first finds the green apron. Nora opens the right box. Soon they eat from different plates, just like on their first visit to Ben's."
+    },
+    {
+      "source": "Ben bedankt sich bei allen. Ohne ihre Hilfe wären noch viele Möbel in den alten Wohnungen. Lea hebt ihr Glas Wasser. Dann beginnt jemand nach dem verlorenen Klebeband zu suchen.",
+      "en": "Ben thanks everyone. Without their help many pieces of furniture would still be in the old flats. Lea raises her glass of water. Then someone starts looking for the lost tape."
+    }
+  ],
+  "183": [
+    {
+      "source": "Am Abend gehen die Freunde nach Hause. Ben und Lea stehen zwischen Kartons. Das Bett ist aufgebaut, aber die Bettwäsche liegt noch irgendwo in einer Tasche.",
+      "en": "In the evening their friends go home. Ben and Lea stand among boxes. The bed is assembled, but the bedding is still somewhere in a bag."
+    },
+    {
+      "source": "Sie finden die Tasche hinter dem Sofa. Lea bezieht das Bett, während Ben nach den Zahnbürsten sucht. Im Badezimmer gibt es bisher nur einen kleinen Spiegel.",
+      "en": "They find the bag behind the sofa. Lea makes the bed while Ben looks for the toothbrushes. So far there is only a small mirror in the bathroom."
+    },
+    {
+      "source": "Beide sind müde. Sie müssen heute nicht jede Kiste öffnen. Ben schließt das Wohnzimmerfenster, und Lea prüft, ob die Wohnungstür abgeschlossen ist.",
+      "en": "Both are tired. They do not have to open every box today. Ben closes the living-room window, and Lea checks that the flat door is locked."
+    },
+    {
+      "source": "Im Bett hören sie ein neues Geräusch aus dem Hof. Ein Fahrrad wird abgestellt. Lea nimmt Bens Hand unter der Decke. Für diese Nacht sind sie angekommen.",
+      "en": "In bed they hear a new noise from the courtyard. Someone parks a bicycle. Lea takes Ben's hand under the blanket. For this night they have arrived."
+    }
+  ],
+  "184": [
+    {
+      "source": "Am nächsten Morgen macht Ben Tee. Lea sucht die Tassen und findet zwei, die sie beide behalten wollten. Sie stellt sie neben die Kanne.",
+      "en": "The following morning Ben makes tea. Lea looks for the cups and finds two they both wanted to keep. She puts them beside the pot."
+    },
+    {
+      "source": "Durch das Küchenfenster sehen sie die Bäume im Hof. Eine Nachbarin gießt Blumen auf ihrem Balkon. Lea winkt, und die Frau winkt zurück.",
+      "en": "Through the kitchen window they see the courtyard trees. A neighbour is watering flowers on her balcony. Lea waves, and the woman waves back."
+    },
+    {
+      "source": "Beim Frühstück schreiben sie auf, was noch fehlt. Eine Lampe, ein Regal für das Bad und ein Platz für die leeren Kartons stehen auf der Liste.",
+      "en": "During breakfast they write down what is still missing. A lamp, a bathroom shelf and a place for the empty boxes are on the list."
+    },
+    {
+      "source": "Ben möchte gleich ins Geschäft. Lea möchte zuerst die Küche ordnen. Sie entscheiden, eine Stunde auszupacken und danach gemeinsam zu gehen. Der erste gemeinsame Morgen bekommt einen einfachen Plan.",
+      "en": "Ben wants to go to the shop straight away. Lea wants to organise the kitchen first. They decide to unpack for an hour and then go together. Their first shared morning gets a simple plan."
+    }
+  ],
+  "185": [
+    {
+      "source": "In der folgenden Woche geben Ben und Lea ihre bisherigen Wohnungsschlüssel zurück. Ben schaut noch einmal in die leere Küche mit dem großen Fenster.",
+      "en": "The following week Ben and Lea return their old flat keys. Ben looks once more at the empty kitchen with the large window."
+    },
+    {
+      "source": "Hier hat er Nudeln allein gegessen und Nachrichten von Jana gelesen. Hier haben Nora und Pavel gesessen. Hier hat Lea die Zwiebeln für ihre erste gemeinsame Suppe geschnitten.",
+      "en": "Here he ate pasta alone and read messages from Jana. Here Nora and Pavel sat. Here Lea cut onions for their first soup together."
+    },
+    {
+      "source": "Ben macht ein letztes Foto vom leeren Raum. Er muss ihn nicht schlecht finden, um gehen zu können. Die Wohnung hat zu seinem Leben gehört.",
+      "en": "Ben takes one final photo of the empty room. He does not have to dislike it to be able to leave. The flat was part of his life."
+    },
+    {
+      "source": "Vor dem Haus wartet Lea. Auch sie hat ihre alte Tür heute abgeschlossen. Gemeinsam fahren sie mit dem Bus nach Hause. Diesmal meinen sie mit diesem Wort denselben Ort.",
+      "en": "Lea waits outside the building. She also locked her old door today. Together they take the bus home. This time they mean the same place by that word."
+    }
+  ],
+  "186": [
+    {
+      "source": "Nach einigen Wochen liegt morgens oft Geschirr im Spülbecken. Ben lässt seine Teetasse stehen, weil er schnell zur Arbeit muss. Lea findet sie später beim Frühstück.",
+      "en": "After a few weeks there are often dishes in the sink in the morning. Ben leaves his teacup because he has to hurry to work. Lea finds it later at breakfast."
+    },
+    {
+      "source": "Sie räumt sie einmal weg, dann noch einmal. Beim dritten Mal ist sie ärgerlich. Sie möchte nicht automatisch für alle kleinen Dinge zuständig sein.",
+      "en": "She puts it away once, then again. By the third time she is annoyed. She does not want to be automatically responsible for all the little things."
+    },
+    {
+      "source": "Am Abend sagt sie Ben, was sie stört. Ben möchte zuerst erklären, wie eilig er es hat. Dann hört er weiter zu und schaut auf die Tasse.",
+      "en": "In the evening she tells Ben what bothers her. At first Ben wants to explain how rushed he is. Then he keeps listening and looks at the cup."
+    },
+    {
+      "source": "Die gemeinsame Wohnung macht solche Aufgaben nicht unsichtbar. Sie schreiben auf, wer einkauft, kocht und aufräumt. Die Liste ist kein Liebesbrief, aber sie hilft ihrem Alltag.",
+      "en": "Their shared flat does not make tasks like that invisible. They write down who shops, cooks and tidies up. The list is not a love letter, but it helps their everyday life."
+    }
+  ],
+  "187": [
+    {
+      "source": "Am Kühlschrank hängt nun ein Wochenplan. Er zeigt keine festen Rollen für immer. Wenn Lea spät arbeitet, übernimmt Ben das Essen. Wenn Ben länger bleibt, sprechen sie neu darüber.",
+      "en": "A weekly plan now hangs on the fridge. It does not show fixed roles forever. When Lea works late, Ben handles dinner. When Ben stays late, they discuss it again."
+    },
+    {
+      "source": "Am Donnerstag vergisst Ben trotzdem den Einkauf. Als Lea nach Hause kommt, fehlen Brot und Milch. Ben entschuldigt sich und geht noch einmal los.",
+      "en": "On Thursday Ben still forgets the shopping. When Lea comes home, there is no bread or milk. Ben apologises and goes out again."
+    },
+    {
+      "source": "Er bringt nicht nur Blumen statt des Einkaufs mit. Lea braucht das Brot für ihr Frühstück. Ben erledigt die Aufgabe, die er übernommen hat.",
+      "en": "He does not just bring flowers instead of the shopping. Lea needs bread for her breakfast. Ben does the task he agreed to do."
+    },
+    {
+      "source": "Später essen sie zusammen und ändern die Erinnerung im Kalender. Kleine Fehler werden weiter passieren. Aber niemand muss so tun, als wären sie allein für alles verantwortlich.",
+      "en": "Later they eat together and change the reminder in the calendar. Small mistakes will keep happening. But neither has to act as if they are responsible for everything alone."
+    }
+  ],
+  "188": [
+    {
+      "source": "Im kleinen zusätzlichen Zimmer steht Bens Schreibtisch. Lea hat dort ebenfalls ein Regal und einen bequemen Stuhl. Manchmal möchte sie dort allein lesen.",
+      "en": "Ben's desk is in the small extra room. Lea also has a shelf and a comfortable chair there. Sometimes she wants to read there alone."
+    },
+    {
+      "source": "Ben klopft, bevor er hineingeht. Lea macht dasselbe, wenn Ben arbeitet. Eine geschlossene Tür bedeutet nicht, dass jemand den anderen aus seinem Leben ausschließt.",
+      "en": "Ben knocks before going in. Lea does the same when Ben is working. A closed door does not mean someone is shutting the other out of their life."
+    },
+    {
+      "source": "Am Sonntag liest Lea eine Stunde, während Ben zu Pavel geht. Danach kochen sie gemeinsam. Beide haben etwas von ihrem eigenen Nachmittag zu erzählen.",
+      "en": "On Sunday Lea reads for an hour while Ben goes to see Pavel. Afterwards they cook together. Both have something to say about their own afternoon."
+    },
+    {
+      "source": "Die neue Wohnung ist ein gemeinsamer Ort. Trotzdem müssen sie nicht jede Minute am selben Platz sein. Lea stellt ihr Buch zurück, und Ben öffnet das Küchenfenster.",
+      "en": "The new flat is a shared place. Still, they do not have to be in the same spot every minute. Lea puts away her book, and Ben opens the kitchen window."
+    }
+  ],
+  "189": [
+    {
+      "source": "Eines Abends kommt Ben sehr spät nach Hause. Bei der Arbeit ist etwas schiefgegangen. Er hat einen Fehler gemacht und ihn vor dem Team erklären müssen.",
+      "en": "One evening Ben gets home very late. Something went wrong at work. He made a mistake and had to explain it in front of the team."
+    },
+    {
+      "source": "Lea fragt, ob er reden oder zuerst essen möchte. Ben möchte reden, aber nicht sofort Lösungen hören. Er sagt ihr das, bevor er beginnt.",
+      "en": "Lea asks whether he wants to talk or eat first. Ben wants to talk but not hear solutions immediately. He tells her that before beginning."
+    },
+    {
+      "source": "Lea hört zu. Sie sagt nicht, dass der Fehler sicher egal ist. Sie fragt, was morgen nötig wird. Ben hat schon einen Plan zur Korrektur.",
+      "en": "Lea listens. She does not say the mistake definitely does not matter. She asks what needs to happen tomorrow. Ben already has a plan to correct it."
+    },
+    {
+      "source": "Nach dem Gespräch essen sie. Der Fehler ist noch da, aber Ben sitzt nicht allein damit in der Küche. Lea reicht ihm das Brot und erzählt später von ihrem Tag.",
+      "en": "After the conversation they eat. The mistake is still there, but Ben is not sitting alone with it in the kitchen. Lea passes him the bread and later talks about her day."
+    }
+  ],
+  "190": [
+    {
+      "source": "Am Wochenende ist Lea müde und hat eine Erkältung. Sie möchte zu Hause bleiben. Den geplanten Besuch bei Eva sagt sie rechtzeitig ab.",
+      "en": "At the weekend Lea is tired and has a cold. She wants to stay home. She cancels the planned visit to Eva in good time."
+    },
+    {
+      "source": "Ben fragt, was sie braucht. Lea möchte Tee und Ruhe. Er holt beides, ohne den ganzen Tag über ihr Bett zu reden oder sie ständig nach ihrem Befinden zu fragen.",
+      "en": "Ben asks what she needs. Lea wants tea and quiet. He brings both without talking beside her bed all day or constantly asking how she feels."
+    },
+    {
+      "source": "Am Nachmittag liest Ben im Wohnzimmer. Lea schläft. Ihre Wohnung ist heute still, aber die Stille gehört zu beiden. Niemand muss daraus ein besonderes Erlebnis machen.",
+      "en": "In the afternoon Ben reads in the living room. Lea sleeps. Their flat is quiet today, but the quiet belongs to both of them. Neither has to turn it into a special experience."
+    },
+    {
+      "source": "Später kommt Lea mit einer Decke aufs Sofa. Ben rückt zur Seite. Sie schaut kurz mit ihm einen Film, bevor sie wieder schlafen möchte.",
+      "en": "Later Lea comes to the sofa with a blanket. Ben moves over. She watches a film with him briefly before she wants to sleep again."
+    }
+  ],
+  "191": [
+    {
+      "source": "Im Frühjahr schickt Frau Berg eine Einladung. Vor einem Jahr hat ihre Kochgruppe begonnen. Sie möchte die Teilnehmer zu einem gemeinsamen Abend wiedersehen.",
+      "en": "In spring Mrs Berg sends an invitation. Her cooking group started a year ago. She would like to see the participants again for an evening together."
+    },
+    {
+      "source": "Ben schaut Lea an, als er die Nachricht liest. Es war nicht gleich der Anfang ihrer Beziehung. Aber dort haben sie sich zum ersten Mal vorgestellt.",
+      "en": "Ben looks at Lea as he reads the message. It was not immediately the start of their relationship. But there they first introduced themselves."
+    },
+    {
+      "source": "Lea holt die gelbe Schürze aus dem Schrank. Der kleine Fleck ist noch da. Ben nimmt die grüne. Beide möchten etwas für die Gruppe kochen.",
+      "en": "Lea takes the yellow apron out of the cupboard. The little stain is still there. Ben takes the green one. Both want to cook something for the group."
+    },
+    {
+      "source": "Sie wählen die ersten Gemüsepfannkuchen. Diesmal wissen sie, wie viel Öl und Salz nötig sind. Trotzdem legen sie das alte Rezept neben die Schüssel.",
+      "en": "They choose the first vegetable pancakes. This time they know how much oil and salt they need. Still, they put the old recipe beside the bowl."
+    }
+  ],
+  "192": [
+    {
+      "source": "Im Nachbarschaftshaus begrüßt Kurt sie mit einer großen Dose. Aylin bringt Brot und erzählt von einer neuen Prüfung. Frau Berg zeigt auf den vertrauten Tisch.",
+      "en": "At the neighbourhood centre Kurt greets them with a large container. Aylin brings bread and talks about a new exam. Mrs Berg points to the familiar table."
+    },
+    {
+      "source": "Die Gruppe spricht über das vergangene Jahr. Es gab Umzüge, neue Arbeit und schwierige Tage. Ben und Lea erzählen von ihrer gemeinsamen Wohnung.",
+      "en": "The group talks about the past year. There were moves, new jobs and difficult days. Ben and Lea talk about their shared flat."
+    },
+    {
+      "source": "Kurt erzählt von dem kleinen Tisch aus Bens Wohnung. Er steht jetzt in seiner Küche. Ben freut sich, dass er weiter benutzt wird.",
+      "en": "Kurt talks about the little table from Ben's flat. It now stands in his kitchen. Ben is pleased it is still being used."
+    },
+    {
+      "source": "Beim Essen schaut Ben einmal quer über den Tisch. Lea lacht gerade mit Aylin. Er erinnert sich an ihren Fahrradhelm unter dem Arm. Damals kannte er sie noch nicht. Heute leben sie zusammen.",
+      "en": "During dinner Ben looks across the table once. Lea is laughing with Aylin. He remembers her bicycle helmet under her arm. Back then he did not know her yet. Today they live together."
+    }
+  ],
+  "193": [
+    {
+      "source": "Ein paar Wochen später wird Ben dreißig. Lea hat Freunde zum Frühstück eingeladen. Auf dem Tisch stehen Brot, Obst und ein kleiner Kuchen mit einer Kerze.",
+      "en": "A few weeks later Ben turns thirty. Lea invited friends for breakfast. Bread, fruit and a little cake with one candle stand on the table."
+    },
+    {
+      "source": "Nora schenkt ihm ein Foto vom ersten Marktbesuch. Darauf hält er den Apfel vor den Blumen. Ben erkennt das Bild, das er damals für sein Profil benutzt hat.",
+      "en": "Nora gives him a photo from their first market visit. In it he holds the apple in front of the flowers. Ben recognises the picture he used for his profile back then."
+    },
+    {
+      "source": "Er zeigt es Lea und erzählt die Geschichte. Jana und Sofia müssen darin nicht verschwinden. Die Treffen und Gespräche haben zu diesem Jahr gehört.",
+      "en": "He shows it to Lea and tells the story. Jana and Sofia do not have to disappear from it. Those meetings and conversations were part of this year."
+    },
+    {
+      "source": "Lea stellt das Foto später ins Regal. Es zeigt Ben, nicht nur einen Menschen auf einer App. Danach schneiden sie den Kuchen auf, und Pavel nimmt das erste Stück.",
+      "en": "Lea later puts the photo on the shelf. It shows Ben, not just a person on an app. Afterwards they cut the cake, and Pavel takes the first piece."
+    }
+  ],
+  "194": [
+    {
+      "source": "Im Sommer möchten Ben und Lea eine Woche Urlaub machen. Diesmal beginnt die Planung früh. Lea prüft ihren Dienstplan, und Ben fragt im Büro nach freien Tagen.",
+      "en": "In summer Ben and Lea want a week's holiday. This time planning starts early. Lea checks her shift schedule, and Ben asks at the office about days off."
+    },
+    {
+      "source": "Sie überlegen, ob sie ans Meer oder zu Bens altem See fahren. Beides ist möglich, aber die Kosten sind verschieden. Ein teurer Urlaub ist nicht nötig.",
+      "en": "They consider going to the seaside or to Ben's old lake. Both are possible, but the costs differ. An expensive holiday is not necessary."
+    },
+    {
+      "source": "Lea möchte den See kennenlernen, von dem Ben so oft erzählt hat. Sie wählen ein kleines Zimmer in der Nähe und planen auch Zeit ohne feste Termine.",
+      "en": "Lea wants to get to know the lake Ben has talked about so often. They choose a small room nearby and also plan time without fixed appointments."
+    },
+    {
+      "source": "Ben freut sich auf die Woche. Er möchte Lea zeigen, wo er als Kind gespielt hat. Danach können sie gemeinsam neue Wege suchen, die noch keiner von beiden kennt.",
+      "en": "Ben looks forward to the week. He wants to show Lea where he played as a child. Afterwards they can find new paths together that neither knows yet."
+    }
+  ],
+  "195": [
+    {
+      "source": "Am ersten Urlaubstag sitzen Ben und Lea am See. Die Sonne ist warm, aber unter den Bäumen gibt es Schatten. Ben zieht seine Schuhe aus.",
+      "en": "On the first day of their holiday Ben and Lea sit beside the lake. The sun is warm, but there is shade beneath the trees. Ben takes off his shoes."
+    },
+    {
+      "source": "Er zeigt Lea die Stelle, an der er mit seiner Schwester ins Wasser gegangen ist. Die alte Bank steht noch da. Auf dem Weg wachsen hohe Gräser.",
+      "en": "He shows Lea the spot where he went into the water with his sister. The old bench is still there. Tall grasses grow along the path."
+    },
+    {
+      "source": "Lea nimmt seine Hand. Sie fragt, ob er vor einem Jahr gedacht hat, heute hier mit ihr zu sitzen. Ben schüttelt den Kopf und lächelt.",
+      "en": "Lea takes his hand. She asks whether a year ago he thought he would be sitting here with her today. Ben shakes his head and smiles."
+    },
+    {
+      "source": "Er hatte gehofft, jemanden zu finden. Doch Lea ist nicht einfach die Antwort auf eine alte Frage. Er kennt inzwischen ihr Lachen, ihre Arbeit, ihre Müdigkeit und ihre Wünsche.",
+      "en": "He hoped to find someone. But Lea is not simply the answer to an old question. By now he knows her laugh, her work, her tiredness and her wishes."
+    }
+  ],
+  "196": [
+    {
+      "source": "Ben schaut auf das Wasser. Er möchte Lea etwas sagen, ohne dass es wie ein fertiger Satz aus einem Film klingt. Deshalb spricht er langsam.",
+      "en": "Ben looks at the water. He wants to say something to Lea without it sounding like a ready-made line from a film. So he speaks slowly."
+    },
+    {
+      "source": "Ben sagt: „Ich möchte mein Leben mit dir teilen. Auch die Tage, an denen nicht alles gut läuft.“ Lea bleibt still und hört bis zum Ende zu.",
+      "en": "Ben says, “I want to share my life with you. Even the days when not everything goes well.” Lea stays quiet and listens until he finishes."
+    },
+    {
+      "source": "Dann sagt Lea: „Ich möchte das auch. Aber lass uns weiter miteinander reden, wenn etwas schwierig ist.“ Ben nickt. Diese Bitte kennt er inzwischen gut.",
+      "en": "Then Lea says, “I want that too. But let's keep talking to each other when something is difficult.” Ben nods. By now he knows this request well."
+    },
+    {
+      "source": "Sie brauchen an diesem Nachmittag keine große Feier. Lea lehnt sich an ihn. Ben hält ihre Hand. Vor ihnen bewegt der Wind kleine Wellen über den See.",
+      "en": "They do not need a big celebration that afternoon. Lea leans against him. Ben holds her hand. Before them the wind moves little waves across the lake."
+    }
+  ],
+  "197": [
+    {
+      "source": "Später gehen sie um den See. Ben kennt nur die erste Hälfte des Weges. Dahinter ist er als Kind nie weitergegangen. Lea möchte sehen, was dort liegt.",
+      "en": "Later they walk around the lake. Ben only knows the first half of the path. As a child he never went beyond it. Lea wants to see what is there."
+    },
+    {
+      "source": "Sie finden eine kleine Brücke aus Holz und einen Platz mit zwei Bänken. Ben macht ein Foto vom Wasser. Lea sucht im Schatten nach einer Stelle zum Sitzen.",
+      "en": "They find a little wooden bridge and a spot with two benches. Ben takes a photo of the water. Lea looks in the shade for somewhere to sit."
+    },
+    {
+      "source": "Am Abend möchte sie lesen, während Ben etwas zu essen holt. Sie müssen auch im Urlaub nicht jede Minute dasselbe tun. Danach essen sie wieder zusammen.",
+      "en": "In the evening she wants to read while Ben gets something to eat. Even on holiday they do not have to do the same thing every minute. Afterwards they eat together again."
+    },
+    {
+      "source": "Ben fragt nach ihrem Buch, Lea nach seinem Spaziergang zum Geschäft. Ihr gemeinsamer Weg besteht aus solchen Gesprächen. Er fühlt sich heute nicht mehr allein auf der Suche.",
+      "en": "Ben asks about her book; Lea asks about his walk to the shop. Their shared path consists of conversations like these. Today he no longer feels alone in his search."
+    }
+  ],
+  "198": [
+    {
+      "source": "Nach der Urlaubswoche fahren Ben und Lea nach Lindenstadt zurück. Im Zug schauen sie ihre Fotos an. Das schönste ist nicht besonders scharf, aber beide lachen darauf.",
+      "en": "After their holiday week Ben and Lea travel back to Lindenstadt. On the train they look at their photos. The nicest is not especially sharp, but both are laughing in it."
+    },
+    {
+      "source": "Lea fragt, ob sie es ausdrucken möchten. Ben sagt Ja. Es soll neben dem Bild vom Markt stehen, nicht als Nachricht für die ganze Welt.",
+      "en": "Lea asks whether they would like to print it. Ben says yes. It should stand beside the market picture, not serve as a message to the whole world."
+    },
+    {
+      "source": "Zu Hause warten Wäsche und ein leerer Kühlschrank. Lea öffnet die Fenster, während Ben die Taschen abstellt. Der Urlaub ist vorbei, aber die Nähe muss nicht dort bleiben.",
+      "en": "At home washing and an empty fridge are waiting. Lea opens the windows while Ben puts down the bags. The holiday is over, but their closeness does not have to stay there."
+    },
+    {
+      "source": "Sie schreiben eine Einkaufsliste. Brot, Milch, Tomaten und Tee stehen darauf. Ben nimmt die Tasche. Lea holt den Schlüssel. Gemeinsam gehen sie zum Laden an der Ecke.",
+      "en": "They write a shopping list. Bread, milk, tomatoes and tea are on it. Ben takes the bag. Lea gets the key. Together they go to the shop on the corner."
+    }
+  ],
+  "199": [
+    {
+      "source": "Einige Tage später kommt Ben vor Lea nach Hause. Er stellt Wasser auf den Herd und beginnt, Gemüse zu schneiden. Auf dem Kühlschrank hängt ihr Wochenplan.",
+      "en": "A few days later Ben gets home before Lea. He puts water on the hob and starts chopping vegetables. Their weekly plan hangs on the fridge."
+    },
+    {
+      "source": "Lea schreibt, dass sie ein paar Minuten später kommt. Ben antwortet, dass das Essen noch nicht fertig ist. Niemand muss daraus einen langen Streit machen.",
+      "en": "Lea writes that she will be a few minutes late. Ben replies that dinner is not ready yet. Neither has to turn this into a long argument."
+    },
+    {
+      "source": "Als Lea die Tür öffnet, legt sie ihre Tasche ab und kommt in die Küche. Sie fragt nach seinem Tag. Ben erzählt, während sie das Brot schneidet.",
+      "en": "When Lea opens the door, she puts down her bag and comes into the kitchen. She asks about his day. Ben talks while she slices the bread."
+    },
+    {
+      "source": "Dann ist sie dran. Ben hört von einer neuen Aufgabe, einer müden Kollegin und dem Wind auf ihrem Heimweg. Er kennt nicht jede Antwort. Aber er möchte weiter zuhören.",
+      "en": "Then it is her turn. Ben hears about a new task, a tired colleague and the wind on her way home. He does not know every answer. But he wants to keep listening."
+    }
+  ],
+  "200": [
+    {
+      "source": "Ben stellt zwei Teller auf den Tisch. Lea bringt die Gläser und setzt sich. Durch das offene Fenster hören sie ein Fahrrad im Hof und Stimmen von der Straße.",
+      "en": "Ben puts two plates on the table. Lea brings the glasses and sits down. Through the open window they hear a bicycle in the courtyard and voices from the street."
+    },
+    {
+      "source": "Vor langer Zeit hat Ben in seiner Küche oft allein gegessen. Er hat auf Nachrichten gewartet und sich gefragt, ob jemand zu ihm passen kann.",
+      "en": "A long time ago Ben often ate alone in his kitchen. He waited for messages and wondered whether anyone could be right for him."
+    },
+    {
+      "source": "Jetzt sitzt Lea ihm gegenüber. Sie ist nicht immer derselben Meinung und nicht jeden Tag fröhlich. Trotzdem möchte er genau mit ihr sein Leben teilen.",
+      "en": "Now Lea sits opposite him. She does not always agree with him and is not cheerful every day. Still, it is with her that he wants to share his life."
+    },
+    {
+      "source": "Lea reicht ihm das Brot und beginnt zu erzählen. Ben hört zu. Der zweite Teller bleibt nicht mehr im Schrank. Ihr gemeinsames Leben geht nach diesem Abend weiter.",
+      "en": "Lea passes him the bread and starts talking. Ben listens. The second plate no longer stays in the cupboard. Their life together continues beyond this evening."
     }
   ]
 }

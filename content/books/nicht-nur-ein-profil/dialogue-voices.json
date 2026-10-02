@@ -1119,11 +1119,11 @@
     ]
   },
   "77": {
-    "textHash": "94ff524da52e351246c4f297c9e53a272f623def89bcda6eba8efec061da93cc",
+    "textHash": "e414991b33751baafe94c60d668aaf84622f0f4ec120286115a9fa43f65c98db",
     "assignments": [],
     "segments": [
       {
-        "text": "Nach dem Kurs schiebt Lea ihr Fahrrad neben Ben. Sie fahren heute nicht in verschiedene Richtungen. Ben möchte bis zur Brücke laufen, bevor er den Bus nimmt.\n\nSie erzählt, dass sie Lindenstadt als Kind oft besucht hat. Ihre Tante hat hier gewohnt. Als Erwachsene ist Lea für die Arbeit hierhergezogen.\n\nBen erzählt von seinem Dorf und dem kleinen Kino dort. Er vermisst einige Menschen, aber nicht alles. In Lindenstadt kennt er inzwischen mehr als drei Straßen.\n\nAn der Brücke halten sie an. Unten fährt ein Boot vorbei. Lea bleibt neben ihm stehen, obwohl ihr Heimweg schon an der letzten Ecke abgebogen ist.",
+        "text": "Nach dem Kurs schiebt Lea ihr Fahrrad neben Ben. Sie fahren heute nicht in verschiedene Richtungen. Ben möchte bis zur Brücke laufen, bevor er den Bus nimmt.\n\nSie erzählt, dass sie Lindenstadt als Kind oft besucht hat. Ihre Tante hat hier gewohnt. Als Erwachsene ist Lea für die Arbeit hierhergezogen.\n\nBen erzählt von seinem Dorf und dem kleinen Kino dort. Er vermisst einige Menschen, aber nicht alles. In Lindenstadt kennt er inzwischen mehr als drei Straßen.\n\nAn der Brücke halten sie an. Unten fährt ein Boot vorbei. Lea bleibt neben ihm stehen, obwohl der Weg zu ihrer Wohnung in die andere Richtung führt.",
         "voice": "female",
         "speaker": "Narrator"
       }
@@ -1713,6 +1713,970 @@
     "segments": [
       {
         "text": "Für das nächste Wochenende planen Ben und Lea einen Ausflug. Sie möchten mit dem Zug zu einem See fahren. Beide haben Samstag und Sonntag frei.\n\nBen sucht die Verbindung, Lea eine günstige Unterkunft. Sie wollen nur eine Nacht bleiben. Ein kleines Zimmer und ein gemeinsames Frühstück reichen ihnen.\n\nSie vergleichen die Preise und teilen die Kosten. Ben trägt alles in seinen Kalender ein. Lea möchte am Freitag noch einmal nach dem Wetter schauen.\n\nAm Ende legen sie die Handys weg. Ben ist froh über den Plan. Er weiß noch nicht, dass schon am nächsten Abend ein anderes Gespräch nötig sein wird.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "121": {
+    "textHash": "9cf143d323f024c82e912d4217f104c4f4614f0092356c1d2d557d077a4eb894",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Freitagvormittag bekommt Lea einen Anruf aus dem Krankenhaus. Eine Kollegin ist krank. Die Leitung fragt, ob Lea am Samstag einige Stunden übernehmen kann.\n\nLea denkt an den Ausflug. Trotzdem sagt sie zu. Sie möchte das Team nicht allein lassen. Erst danach merkt sie, dass sie Ben vorher nicht gefragt hat.\n\nSie schreibt ihm sofort und erklärt den Anruf. Ben liest die Nachricht zwischen zwei Kunden. Er hat die Zugverbindung schon gespeichert und das Zimmer gebucht.\n\nFür einen Moment sieht er nur den abgesagten Samstag. Er liest Leas Erklärung nicht noch einmal. Dann beginnt er eine Antwort, obwohl er noch sehr ärgerlich ist.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "122": {
+    "textHash": "699742d2dafe930df1657e374ce791327c11bb997f757fc84c324d9b4429686b",
+    "assignments": [
+      {
+        "index": 0,
+        "speaker": "Ben",
+        "voice": "male",
+        "evidence": "Ben introduces the exact quote on page 122: „Du hast nie Zeit für uns.“"
+      }
+    ],
+    "segments": [
+      {
+        "text": "Ben schreibt: ",
+        "voice": "female",
+        "speaker": "Narrator"
+      },
+      {
+        "text": "„Du hast nie Zeit für uns.“",
+        "voice": "male",
+        "speaker": "Ben"
+      },
+      {
+        "text": " Er schickt die Nachricht sofort ab. Danach sieht er das Wort nie noch einmal auf dem Bildschirm.\n\nDas stimmt nicht. Lea war am Donnerstag bei ihm, und sie haben mehrere Abende zusammen verbracht. Trotzdem fühlt sich der Satz gerade richtig an.\n\nLea antwortet zunächst nicht. Ben schreibt noch eine Nachricht über das Zimmer. Er nennt den Preis und fragt, wer sich jetzt um die Absage kümmern soll.\n\nDann ruft ein Kunde an. Ben legt das Handy weg. Er hilft dem Kunden, aber seine Gedanken bleiben bei der Nachricht. Das Wort nie wird nicht kleiner.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "123": {
+    "textHash": "ae2b39b7dc50484980a9814b70c3d26832dcd8c443af489c1285589ecb0d05bf",
+    "assignments": [
+      {
+        "index": 0,
+        "speaker": "Lea",
+        "voice": "female",
+        "evidence": "Lea introduces the exact quote on page 123: „Ich verstehe, dass du enttäuscht bist. Aber ich habe Zeit mit dir verbracht. Lass uns heute Abend richtig sprechen.“"
+      }
+    ],
+    "segments": [
+      {
+        "text": "In ihrer Pause liest Lea beide Nachrichten. Sie weiß, dass sie den Plan zu schnell geändert hat. Trotzdem tut ihr Bens erster Satz weh.\n\nLea schreibt: ",
+        "voice": "female",
+        "speaker": "Narrator"
+      },
+      {
+        "text": "„Ich verstehe, dass du enttäuscht bist. Aber ich habe Zeit mit dir verbracht. Lass uns heute Abend richtig sprechen.“",
+        "voice": "female",
+        "speaker": "Lea"
+      },
+      {
+        "text": " Danach legt sie das Handy weg.\n\nBen liest die Antwort mehrmals. Er möchte sofort erklären, was er gemeint hat. Aber zwischen zwei Kundengesprächen kann er das nicht gut tun.\n\nEr antwortet, dass er ab sieben Zeit hat. Dann schreibt er keine weitere lange Nachricht. Für den restlichen Nachmittag stellt er das Handy auf leise.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "124": {
+    "textHash": "d17aa6eda759fcc9f43001c95375d884e2f3ef4b927f262d558fee9ab4ae2662",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Nach der Arbeit trifft Ben Nora im Park. Er erzählt ihr von dem abgesagten Ausflug und seiner Nachricht. Nora hört zuerst nur zu.\n\nBen fragt, ob sie ihn versteht. Nora versteht seine Enttäuschung. Trotzdem findet sie den Satz mit nie unfair. Ben hat ihr selbst von den schönen Abenden erzählt.\n\nDas möchte Ben nicht gern hören. Er geht ein Stück schneller. Dann wird er wieder langsamer. Nora muss ihm nicht immer recht geben, um seine Freundin zu sein.\n\nAn der nächsten Bank bleiben sie stehen. Ben nimmt sein Handy heraus und liest die Nachricht noch einmal. Nun möchte er sich für den Satz entschuldigen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "125": {
+    "textHash": "57acb3384dd933db6a2ed46b2e9be303d445acca493ed627520be99975de5766",
+    "assignments": [
+      {
+        "index": 0,
+        "speaker": "Ben",
+        "voice": "male",
+        "evidence": "Ben introduces the exact quote on page 125: „Mein Satz war unfair. Es tut mir leid.“"
+      }
+    ],
+    "segments": [
+      {
+        "text": "Um sieben ruft Ben Lea an. Beide sind zu Hause. Ben fragt zuerst, ob sie genug Zeit haben. Lea kann eine halbe Stunde ruhig sprechen.\n\nBen sagt: ",
+        "voice": "female",
+        "speaker": "Narrator"
+      },
+      {
+        "text": "„Mein Satz war unfair. Es tut mir leid.“",
+        "voice": "male",
+        "speaker": "Ben"
+      },
+      {
+        "text": " Er fügt nicht sofort ein Aber hinzu. Lea hört seine Entschuldigung und bedankt sich dafür.\n\nDann erklärt Ben seine Enttäuschung. Er hatte sich auf zwei freie Tage gefreut. Außerdem wusste er nicht, ob der gemeinsame Plan für Lea genauso wichtig war.\n\nLea sagt, dass der Ausflug ihr wichtig ist. Bei dem Anruf hat sie zu schnell zugesagt. Beim nächsten Mal möchte sie vorher mit ihm sprechen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "126": {
+    "textHash": "8942538363968d0cceec69e276c9844cce3bcaafdcd78a26bede27372fd9aeb5",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Lea erklärt, dass sie ihren Beruf ernst nimmt. Wenn das Team Hilfe braucht, möchte sie oft helfen. Doch manchmal sagt sie schneller Ja, als ihr guttut.\n\nBen möchte nicht, dass sie wegen ihm ihre Arbeit schlecht macht. Er möchte aber wissen, wann ein gemeinsamer Termin wirklich fest ist. Darüber können sie reden.\n\nSie überlegen, was beim nächsten Anruf anders gehen kann. Lea möchte nicht sofort antworten, wenn ein privater Plan betroffen ist. Sie kann um ein paar Minuten bitten.\n\nBen möchte Ärger nicht mehr als Vorwurf verschicken. Er kann sagen, dass er enttäuscht ist, und nach einer Zeit für ein Gespräch fragen. Lea findet das besser.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "127": {
+    "textHash": "6606a835fd7db8ae029104277fc4bc3c06fffebcbe14aaaacb7ebec8a36ea18a",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Nach dem Gespräch schauen beide auf die Buchung. Das Zimmer lässt sich heute noch ohne Kosten absagen. Ben hat diese Information vorher nicht genau gelesen.\n\nSie sagen das Zimmer gemeinsam ab. Ben erhält eine Bestätigung. Die Zugkarten hatten sie noch nicht gekauft. Deshalb verlieren sie für diesen Plan kein Geld.\n\nTrotzdem ist die Enttäuschung nicht sofort weg. Lea muss am Samstag arbeiten. Ben kann den freien Tag anders nutzen. Sie brauchen nicht schnell eine perfekte neue Lösung.\n\nAm Ende fragen sie, ob ein kurzer Sonntagsausflug möglich ist. Der See liegt auch ohne Übernachtung nah genug. Beide möchten darüber nach einer Nacht Schlaf entscheiden.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "128": {
+    "textHash": "2448b6fa6b946321349faef67f86b4467051a82f656c50296073134e44511fe5",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag schläft Ben etwas länger. Danach putzt er sein Fahrrad und bringt ein Paket zur Post. Der freie Tag ist anders als geplant, aber nicht leer.\n\nLea schreibt in ihrer Pause eine kurze Nachricht. Ben antwortet freundlich. Er fragt nicht alle zehn Minuten, ob sie wirklich noch im Krankenhaus ist.\n\nAm Nachmittag trifft er Pavel am Fluss. Sie fahren eine kleine Runde. Ben erzählt von dem Gespräch, ohne Leas private Nachrichten vorzulesen.\n\nAbends fragt Lea nach dem Sonntag. Sie fühlt sich fit genug für den See. Ben schaut nach einem späteren Zug, damit beide in Ruhe frühstücken können.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "129": {
+    "textHash": "7e6d4d40d2f2064a7526a4ec13718f7e36b305284f117309f5be245c27c6b41e",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Sonntag treffen Ben und Lea sich am Bahnhof. Ben hat die Verbindung auf seinem Handy. Lea bringt belegte Brote und zwei Äpfel mit.\n\nDer Regionalzug ist nicht voll. Sie finden zwei Plätze nebeneinander am Fenster. Ben stellt die Tasche unter den Sitz. Lea öffnet ihre Wasserflasche.\n\nZuerst sprechen sie wenig. Dann erzählt Lea von einem freien Nachmittag bei ihrer Tante. Ben beschreibt seinen Samstag mit Pavel. Das Gespräch beginnt wieder leicht.\n\nAls der Zug an einem Feld vorbeifährt, nimmt Lea seine Hand. Ihr Streit ist nicht vergessen. Aber sie haben eine Möglichkeit gefunden, nach dem Streit zusammen weiterzugehen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "130": {
+    "textHash": "02f3bb9d99c83f8a7cfad115e8aef487de72ba117c90e36f01331c8b567d9ab7",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Vom kleinen Bahnhof gehen sie zwanzig Minuten zum See. Das Wasser ist grau, und der Wind bewegt die Schilfpflanzen am Ufer. Ben zieht seine Jacke zu.\n\nLea hat eine Mütze dabei. Sie setzt sie auf und sucht eine Bank hinter einem Baum. Dort ist es etwas ruhiger. Ben holt die Brote heraus.\n\nSie teilen die Äpfel und schauen auf ein Boot. Es ist kein sonniges Urlaubsfoto. Lea hat rote Wangen vom Wind, und Ben hat Brotkrümel auf der Hose.\n\nTrotzdem gefällt ihnen der Platz. Lea fragt, ob Ben ihr ein Foto machen kann. Er fragt danach, ob er es behalten darf. Lea sagt Ja.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "131": {
+    "textHash": "c52c88a684208ae0a6b0ffeba1b119f514074efc15b5ba5366c4761347b88fbb",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Auf dem Rückweg spricht Lea noch einmal über Samstag. Sie möchte öfter prüfen, ob sie einen zusätzlichen Dienst wirklich übernehmen kann. Auch ihre freien Tage sind wichtig.\n\nBen erzählt, dass er im Büro ebenfalls manchmal zu schnell Hilfe anbietet. Danach bleibt er länger, obwohl er schon einen Termin hat. Lea kennt dieses Problem.\n\nBeide können nicht alles gleichzeitig machen. Sie möchten ihre Arbeit gut machen und füreinander Zeit haben. Ein Kalender allein entscheidet das nicht für sie.\n\nAm Bahnhof kaufen sie Tee für die Rückfahrt. Lea hält beide Becher, während Ben die Karten kontrolliert. Heute fährt der Zug pünktlich, und niemand muss rennen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "132": {
+    "textHash": "c8f22873b24569d693c5c6852d7dff9e1a5e7b44faf4c42f0bfd5a3983c89605",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Zug lehnt Lea den Kopf kurz an Bens Schulter. Sie ist nun doch müde. Ben schiebt seine Tasche zur Seite, damit sie bequem sitzen kann.\n\nEr schaut aus dem Fenster und denkt an die Nachricht vom Freitag. Einige Wörter können schnell viel kaputtmachen. Er möchte beim nächsten Ärger langsamer sein.\n\nLea schläft nicht, sondern schaut ebenfalls hinaus. Nach einer Weile fragt sie nach dem nächsten Kochabend mit der Gruppe. Kurt hat eine E-Mail geschickt.\n\nBen hat sie noch nicht gelesen. Zu Hause möchte er antworten. Für eine Beziehung brauchen sie Zeit zu zweit, aber auch die Menschen, durch die sie sich kennengelernt haben.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "133": {
+    "textHash": "ceb340bd031a9983ccd3574ca42f1de805975c9e3adbc9d328fabc95f56ef264",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Zwei Wochen später trifft sich die Kochgruppe erneut im Nachbarschaftshaus. Frau Berg öffnet die Küche. Diesmal haben die Teilnehmer selbst die Zutatenliste geplant.\n\nKurt möchte ein Gericht aus seiner Kindheit machen. Aylin bringt die richtige Menge Salz mit und lacht über die kleine Dose. Ben trägt eine große Tasche Gemüse.\n\nLea kommt später direkt von der Arbeit. Die anderen haben den Teig schon vorbereitet. Niemand verlangt, dass sie den ganzen Abend erklärt, warum sie später ist.\n\nBeim Essen erzählt Kurt eine Geschichte von seiner Mutter. Ben und Lea hören zu. Sie sitzen nicht nebeneinander, aber unter dem Tisch berühren sich kurz ihre Schuhe.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "134": {
+    "textHash": "5a612496359c035cd7b611d40ae30dd43bb9ebdc82539eade4095d7a90d8be84",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Bens Schwester hat Geburtstag. Ben möchte am nächsten Wochenende ins Dorf fahren. Er fragt Lea, ob sie mitkommen möchte. Sie hat an diesem Tag frei.\n\nLea möchte seine Familie kennenlernen, aber sie ist auch nervös. Ben erzählt ihr, wer da sein wird. Es sind nicht zwanzig Menschen, sondern nur fünf.\n\nSie fahren am Vormittag und bleiben bis zum Abend. Ben schlägt nicht sofort ein ganzes Wochenende bei seiner Mutter vor. Lea findet den kürzeren Besuch angenehmer.\n\nSeine Schwester freut sich über die Nachricht. Sie fragt, ob Lea etwas nicht essen kann. Ben fragt Lea zuerst selbst, bevor er für sie antwortet.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "135": {
+    "textHash": "aad3083d6cab51b952a6cce4be1b7793a16d81bbbf9c24a2e8a64dad2461c52e",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag steigen Ben und Lea am kleinen Bahnhof aus. Seine Schwester wartet mit einem Auto. Sie begrüßt Lea und zeigt auf den freien Platz vorne.\n\nIm Haus riecht es nach Kuchen. Bens Mutter kommt aus der Küche und umarmt ihren Sohn. Lea gibt ihr die Blumen, die sie zusammen gekauft haben.\n\nBeim Essen fragt seine Mutter nach Leas Arbeit. Lea erzählt von den unterschiedlichen Diensten. Ben ergänzt nicht jeden Satz. Lea kann ihre eigene Geschichte erzählen.\n\nNach dem Kuchen holt Bens Schwester alte Fotos. Auf einem trägt Ben viel zu große Schuhe. Lea lacht mit ihm, nicht über ihn. Der Besuch wird langsam leichter.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "136": {
+    "textHash": "94e882ee53ac775453b827d40a63ed7d3f5b3ec082072757cbf284e690c1d799",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Auf der Rückfahrt fragt Ben, wie Lea den Besuch fand. Sie mochte seine Familie, sagt sie. Trotzdem ist sie froh, am Abend wieder nach Hause zu fahren.\n\nBen versteht das. Auch für ihn war der Tag voll. Er fragt, ob sie nächste Woche lieber einen ruhigen Abend ohne weitere Menschen verbringen möchten.\n\nLea nickt. Dann schaut sie noch einmal auf das Foto mit den großen Schuhen. Bens Schwester hat es ihr geschickt. Ben bittet sie, es nicht ins Internet zu stellen.\n\nLea legt das Handy weg und nimmt seine Hand. Die Bitte ist leicht zu verstehen. Über manche Dinge können beide inzwischen sprechen, ohne lange nach Worten zu suchen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "137": {
+    "textHash": "8ffd54e41a922ccbe17d487819f65b44192546585ecced1f786c5e30842e7722",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der nächsten Woche schaut Lea öfter in ihre E-Mails. Sie hat sich für eine Fortbildung beworben. Dabei kann sie neue Aufgaben für ihre Arbeit lernen.\n\nDie Fortbildung dauert sechs Wochen und findet in Hamburg statt. Lea hat Ben davon erzählt, aber bisher weiß sie nicht, ob sie einen Platz bekommt.\n\nBen wünscht ihr, dass es klappt. Gleichzeitig denkt er an sechs Wochen ohne ihre gemeinsamen Abende. Er möchte diese beiden Gefühle nicht miteinander verwechseln.\n\nBeim Abendessen fragt er, wann die Antwort kommen soll. Lea erwartet sie bis Freitag. Danach schiebt sie das Handy weg und fragt nach seiner Woche.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "138": {
+    "textHash": "c0bc1d51f1e2b7d1789d054bfabc8f947de97332f2a65f9d4e66979cd1b6cf4c",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Freitag bekommt Lea die E-Mail. Sie hat einen Platz. Für die sechs Wochen gibt es ein kleines Zimmer in der Nähe des Unterrichtsgebäudes.\n\nLea ruft Ben an und erzählt ihm alles. Ihre Stimme klingt hell und schnell. Ben freut sich für sie. Er möchte hören, wann es losgeht.\n\nDer erste Tag ist in drei Wochen. Sie muss einige Papiere ausfüllen und ihren Dienstplan ändern lassen. Die Fahrt kann sie danach buchen.\n\nBen sagt, dass sie am Wochenende darauf anstoßen können. Dafür brauchen sie kein teures Restaurant. Lea schlägt Tee und ihren Lieblingskuchen vor. Ben kennt ihn inzwischen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "139": {
+    "textHash": "cd3a8a870e7da06c74f8d75200363a731c2726d6c3e01e26cfc43d2068752f58",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag sitzen sie mit Kuchen am Tisch. Lea zeigt Ben die Termine. Sechs Wochen sehen auf einem Blatt länger aus als in einem kurzen Satz.\n\nBen fragt, ob sie sich zwischendurch sehen können. Lea möchte das gern. Aber sie kennt den genauen Plan noch nicht und will nichts zu früh versprechen.\n\nBen nickt, auch wenn er gern sofort eine feste Antwort hätte. Sie können die Frage später noch einmal besprechen. Heute soll Lea sich über den Platz freuen.\n\nNach dem Essen gehen sie spazieren. Lea erzählt, was sie lernen möchte. Ben hört zu und fragt nach. Ihre Beziehung ist wichtig, und Leas Arbeit ist es ebenfalls.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "140": {
+    "textHash": "38b4197c54f50af6e8061e6dc498b8f7ed8f38fd87acd670a5735eab170be560",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In den nächsten Tagen sammelt Lea ihre Unterlagen. Ben hilft ihr, einige Seiten auszudrucken. Er liest nicht jedes private Papier, sondern fragt, welche Seiten sie braucht.\n\nLea sucht auch eine kleine Reisetasche. Die große ist zu schwer für die vielen Treppen am Bahnhof. Eva leiht ihr eine Tasche mit Rollen.\n\nBen schaut nach der Zugverbindung. Sie planen einen Abschied ohne Zeitdruck. Lea möchte vor der Fahrt noch frühstücken und nicht mit leerem Magen im Zug sitzen.\n\nAm Ende des Abends steht die Tasche neben der Tür. Noch ist Lea da. Ben nimmt ihre Hand und fragt, was sie morgen zusammen kochen möchten.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "141": {
+    "textHash": "3e07715af307321701321650ca411b308e70f2850c43b197587e969ceadd8840",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Drei Wochen später steht Lea mit ihrer Tasche am Bahnhof. Ben hat Brötchen und Tee mitgebracht. Sie frühstücken auf einer Bank vor dem Bahnsteig.\n\nLea prüft noch einmal ihre Fahrkarte. In der kleinen Tasche liegen die Unterlagen und das Ladekabel. Eva hat am Morgen eine gute Reise gewünscht.\n\nBen schaut auf die Anzeige. Der Zug kommt pünktlich. Er möchte Lea noch viel sagen, aber ihm fällt zuerst nur ein, dass sie das Brötchen mitnehmen soll.\n\nLea steckt es ein und umarmt ihn. Danach steigt sie in den Zug. Ben wartet, bis er fährt. Die sechs Wochen haben begonnen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "142": {
+    "textHash": "68ac83dc426cac37c62ee974f8e15ba7ba163e97ccbc59db6cb6d05cfeea441f",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In Hamburg sucht Lea zuerst ihr Zimmer. Eine Mitarbeiterin gibt ihr den Schlüssel und zeigt ihr den Weg. Das Gebäude hat vier Stockwerke und einen kleinen Aufzug.\n\nDas Zimmer ist einfach. Es gibt ein Bett, einen Schreibtisch und einen Schrank. Durch das Fenster sieht Lea ein Dach und ein Stück Himmel.\n\nSie stellt ihre Tasche neben das Bett und ruft Ben kurz an. Er möchte wissen, ob die Reise gut war. Lea erzählt von der langen Zugfahrt.\n\nDann muss sie den Treffpunkt für den ersten Abend suchen. Ben wünscht ihr viel Spaß. Lea legt ihre Unterlagen auf den Tisch und geht wieder hinaus.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "143": {
+    "textHash": "097e4aff68b89f33bcb713296e4e80f6076496eb31e4c2680254e833548db0c5",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Auf dem Flur trifft Lea zwei andere Teilnehmer. Sie zeigen ihr die gemeinsame Küche. Jeder hat ein kleines Fach im Kühlschrank und ein Regal für Lebensmittel.\n\nLea schreibt ihren Namen auf ein Stück Papier und legt es in ihr Fach. Danach geht sie mit den beiden zum nächsten Geschäft.\n\nSie kauft Brot, Käse, Äpfel und Tee. Für das erste Frühstück reicht das. Ein richtiges Gericht möchte sie erst machen, wenn sie die Küche besser kennt.\n\nAm Abend sitzen mehrere Menschen am Tisch. Lea erzählt von Lindenstadt und dem Kochkurs. Zum ersten Mal an diesem Tag fühlt sich der fremde Ort etwas vertrauter an.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "144": {
+    "textHash": "2efcbb8b5446c610d8b47bd285a4d928d67f3f4aa3a1510233e3457f9c0b5083",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In Lindenstadt macht Ben am Montagabend seine Suppe. Lea hat gerade Unterricht, deshalb telefonieren sie nicht. Er stellt eine Schüssel auf den Tisch.\n\nDie Wohnung ist dieselbe wie früher. Trotzdem ist der leere Stuhl jetzt anders. Ben wartet nicht auf irgendeine Person. Er vermisst einen bestimmten Menschen.\n\nEr isst und liest danach sein Buch. Später kommt eine Nachricht von Lea. Sie schickt kein langes Gespräch, sondern ein Foto ihrer Teetasse im neuen Zimmer.\n\nBen schickt ihr ein Foto seiner Suppe. Zwei verschiedene Tische gehören heute zu ihrem Abend. Danach schläft er, bevor Lea noch einmal antwortet.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "145": {
+    "textHash": "3cc0bcdc35aa8753c7591a32a2e2eff378d0e878250a44c1cfad6e2105146015",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Dienstag versuchen sie, sich am Telefon zu erreichen. Ben ruft an, während Lea noch in einer Gruppe arbeitet. Lea ruft zurück, als Ben Fahrrad fährt.\n\nBeide verpassen den anderen. Am Abend schreiben sie deshalb eine feste Zeit auf. Donnerstag um acht passt meistens. Wenn etwas anders ist, möchten sie vorher Bescheid sagen.\n\nLea möchte trotzdem nicht jeden Abend einen langen Anruf planen. Sie muss lernen und möchte die anderen Teilnehmer kennenlernen. Ben findet das vernünftig.\n\nEr möchte auch seine Freunde sehen und nicht nur auf den Bildschirm warten. Sie suchen eine gemeinsame Zeit, ohne alle anderen Stunden für sich zu verlangen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "146": {
+    "textHash": "74ccf1d913009551e097cb9cd8673e5113b27d441a219dd9e90c36bdb2a3fb96",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Mittwoch schickt Lea ein Bild von einem Spaziergang. Neben ihr stehen drei andere Teilnehmer. Im Hintergrund sieht man das Wasser und ein großes Schiff.\n\nBen freut sich zuerst über ihr Lächeln. Dann schaut er auf einen Mann neben ihr. Er kennt dessen Namen nicht und merkt eine kleine Unsicherheit.\n\nLea schreibt die Namen gleich dazu. Der Mann heißt Timo und wohnt im selben Gebäude. Die Gruppe hat nach dem Unterricht einen kurzen Spaziergang gemacht.\n\nBen fragt nach dem Schiff und dem neuen Weg. Er muss aus seiner Unsicherheit kein Verhör machen. Lea hat einen neuen Alltag, den sie mit ihm teilen möchte.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "147": {
+    "textHash": "d0e246947db99487bae84a76d08b70e67dee51caad201d800fcded594c0786df",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Donnerstag sitzen Ben und Lea um acht vor ihren Handys. Lea stellt ihres gegen einen Bücherstapel. Ben lehnt seines an eine Tasse auf dem Küchentisch.\n\nBeim Videoanruf sehen sie einander zum ersten Mal seit der Abfahrt. Lea erzählt vom Unterricht. Ben berichtet von einer neuen Aufgabe im Büro.\n\nDas Bild bleibt einmal stehen. Ben kann Lea hören, aber ihr Gesicht bewegt sich nicht mehr. Beide lachen über den seltsamen Blick auf dem Bildschirm.\n\nNach einer halben Stunde verabschieden sie sich. Lea muss noch etwas lesen. Ben macht sein Handy dunkel und bleibt kurz sitzen. Er ist froh, ihre Stimme gehört zu haben.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "148": {
+    "textHash": "fed342e370a860dfc229a5459f483e0e6b57ba80ce81b4328409050c411a6840",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Freitag lädt Kurt einige Menschen aus der Kochgruppe zu sich ein. Ben kommt mit einer Schüssel Salat. Aylin bringt selbst gebackenes Brot mit.\n\nKurt hat seinen Tisch ausgezogen, damit alle Platz haben. Er kocht das Gericht seiner Mutter und zeigt stolz den Topf. Das Essen riecht gut.\n\nBen erzählt, dass Lea in Hamburg ist. Die Gruppe möchte ihr einen Gruß schicken. Ben fragt vorher, ob alle auf einem gemeinsamen Foto sein möchten.\n\nSpäter sieht Lea vier lachende Menschen und den großen Topf. Sie antwortet mit einem Foto ihrer eigenen Schüssel. Der Kurs ist vorbei, aber die Gruppe bleibt verbunden.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "149": {
+    "textHash": "88405dd6ff22b645e223d89b3a390f7ddcd70aa975d1f51c622737e843ef7de0",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der zweiten Woche wird Leas Unterricht anstrengender. Sie muss mehr lesen und für eine kleine Aufgabe mit anderen zusammenarbeiten. Ihre Nachrichten werden kürzer.\n\nBen merkt das. Er möchte sofort wissen, ob etwas zwischen ihnen anders ist. Dann erinnert er sich daran, dass Lea ihren neuen Plan schon erklärt hat.\n\nEr fragt einmal, ob sie am Wochenende telefonieren möchten. Lea sagt zu und nennt eine Uhrzeit. Das reicht Ben für diesen Abend.\n\nDanach geht er mit Nora zum Markt. Er findet dieselben Äpfel wie bei seinem ersten Besuch. Diesmal möchte er sie kaufen, um einen Kuchen zu backen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "150": {
+    "textHash": "5c915862601888ef685d0a323338988219d3d74ef2bd68cd4977e23cd781cf87",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Sonntag erklärt Lea ihren Plan für die nächsten Wochen. Am dritten Wochenende ist sie frei. Ben kann am Freitag nach der Arbeit zu ihr fahren.\n\nIn ihrem Gebäude dürfen Gäste nicht übernachten. Deshalb suchen sie eine kleine Unterkunft in der Nähe. Ben prüft die Kosten, bevor er etwas bucht.\n\nLea möchte einen Teil bezahlen. Ben sagt, dass sie darüber nach den genauen Preisen sprechen können. Beide möchten keine teure Überraschung am Ende.\n\nNach dem Anruf trägt Ben die Fahrt ein. Noch drei Arbeitstage, dann ein weiterer. Die Woche wirkt nun nicht kürzer, aber sie hat ein klares Ziel.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "151": {
+    "textHash": "41e04413c7b65067ffcc1bb9afbbdb4af16b8f7cdd6c094de4813e96b1050d60",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Freitagabend steigt Ben in Hamburg aus dem Zug. Auf dem Bahnsteig warten viele Menschen. Dann sieht er Lea zwischen zwei großen Koffern vorbeikommen.\n\nSie umarmen sich lange. Ben stellt seine Tasche erst danach ab. Leas Haare sind etwas anders als beim Videoanruf. Sie fühlt sich vertraut und gleichzeitig neu an.\n\nLea zeigt ihm den Weg zur Unterkunft. Ben möchte zuerst seine Tasche abstellen. Danach suchen sie gemeinsam einen Ort, an dem sie noch etwas essen können.\n\nIm kleinen Restaurant reden beide durcheinander. Es gibt so viel vom Tag zu erzählen. Dann hören sie abwechselnd zu und teilen eine Portion Kartoffeln.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "152": {
+    "textHash": "f1627cd2df906b4ef92d86457eeca6c38950a2606ad3a54ff739b062e3b37716",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag zeigt Lea Ben ihren Weg zum Unterrichtsgebäude. Sie kennt inzwischen die richtige Haltestelle und den kleinen Laden, der morgens früh öffnet.\n\nBen sieht Orte, von denen sie am Telefon erzählt hat. Der Bücherstapel in ihrem Zimmer ist größer, als er auf dem Bildschirm ausgesehen hat.\n\nLea stellt ihn zwei Teilnehmern vor. Timo fragt nach Lindenstadt. Ben erzählt vom Fluss und der Kochgruppe. Das Gespräch ist ganz einfach.\n\nSpäter gehen Ben und Lea allein weiter. Er ist froh, dass er ihren neuen Alltag sehen konnte. Nun gehört der Name Timo zu einem Menschen, nicht nur zu einem Foto.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "153": {
+    "textHash": "78d9fc8bdf9f979a9b2ba503b304c4bb720b571a343d6b9a36a871459af4fb06",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Nachmittag gehen sie am Wasser entlang. Lea kennt den Weg schon von ihrem ersten Gruppenfoto. Ben sieht die großen Schiffe und bleibt oft stehen.\n\nSie kaufen zwei warme Getränke und suchen einen Platz mit wenig Wind. Ben möchte ein Foto machen, fragt aber zuerst Lea. Sie möchte gern eines zusammen.\n\nEin anderer Besucher hilft ihnen kurz. Auf dem Bild stehen beide schief, weil der Wind gerade stark bläst. Lea mag das Foto trotzdem.\n\nBen speichert es für sich. Es soll kein Beweis für eine perfekte Beziehung sein. Er möchte sich später an diesen windigen Nachmittag mit Lea erinnern.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "154": {
+    "textHash": "2d71cbc32eb538c0a4cd534a00cc1d4fb411e6a12d834ef37768acbb176eced4",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Sonntag frühstücken Ben und Lea noch zusammen. Danach muss Ben zum Bahnhof. Lea möchte später für ihre Aufgabe lernen. Der Besuch kann nicht einfach länger werden.\n\nDer Abschied fällt diesmal schwerer. Sie haben sich gerade wieder an die Nähe gewöhnt. Lea begleitet Ben bis zum Bahnsteig und trägt seine leere Wasserflasche.\n\nBen verspricht nicht, schon nächste Woche wieder zu kommen. Die Fahrt kostet Geld und Zeit. Sie möchten später prüfen, wann ein weiterer Besuch möglich ist.\n\nIm Zug schreibt Ben, dass er gut sitzt. Lea antwortet erst, als sie wieder zu Hause ist. Zwischen ihnen liegen neue Kilometer, aber auch ein gemeinsames Wochenende.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "155": {
+    "textHash": "53fa403e1178c2a757a97f7b17d5208f4cd4a9a28d2f731946e2e30edb38092f",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der vierten Woche bleibt Ben am Donnerstag länger im Büro. Ein wichtiges Problem ist noch nicht gelöst. Er vergisst, Lea wegen ihres Anrufs Bescheid zu sagen.\n\nUm acht wartet Lea vor ihrem Handy. Ben antwortet erst eine halbe Stunde später. Sie ist enttäuscht. Auch sie hat sich diesen Abend freigehalten.\n\nBen erklärt die Arbeit, aber er entschuldigt sich auch für die fehlende Nachricht. Er erwartet nicht, dass Lea nun beliebig lange wach bleibt.\n\nSie sprechen zehn Minuten und verabreden einen neuen Anruf für Samstag. Ben trägt diesmal eine Erinnerung ein. Nicht nur Lea muss gemeinsame Zeiten ernst nehmen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "156": {
+    "textHash": "760f79c104c10889d3ce065380c7d1722f48ca1c3480d19fa43492075ff09a59",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag findet Ben eine Karte im Briefkasten. Lea hat darauf einen kleinen Topf gezeichnet. Daneben stehen wenige Sätze über ihr Zimmer und ihr Frühstück.\n\nSie hat die Karte in einer Pause gekauft. Ben legt sie ans Küchenfenster und ruft sie zur vereinbarten Zeit an. Diesmal beginnt das Gespräch pünktlich.\n\nEr bedankt sich für den Topf. Lea fragt, ob er noch die Dose mit dem falschen Deckel kennt. Beide lachen über die alte Nachricht aus dem Kochkurs.\n\nSpäter schreibt Ben selbst eine Karte. Darauf steht keine große Erklärung über Liebe. Er erzählt von seinem Samstag und davon, dass er Lea beim Kochen vermisst.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "157": {
+    "textHash": "c77a8e83e309d35ba07d2166209a77ef0b26c7dfa63f73dbb6fa35e176cfddf6",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der fünften Woche gibt es keinen Besuch. Ben hat viel Arbeit, und Lea bereitet die letzte Aufgabe vor. Sie schreiben meist nur kurz.\n\nLea schickt ein Foto ihres Schreibtischs. Zwischen den Büchern liegt Bens Karte. Er freut sich, dass sie angekommen ist. Die Post war langsamer als eine Nachricht.\n\nBen trifft seine Schwester am Wochenende. Sie kommt diesmal nach Lindenstadt. Er zeigt ihr die kleine Brücke und die Bäckerei, in der er mit Lea Tee getrunken hat.\n\nAm Abend erzählt er Lea von dem Besuch. Seine Tage haben eigene Geschichten. Sie muss nicht jede Stunde dabei gewesen sein, um später daran teilzunehmen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "158": {
+    "textHash": "44e1951474385262ca88b2c1a17c51207622bd4a7b95450b14aa51545b911dd7",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Montag der sechsten Woche arbeitet Lea mit ihrer Gruppe an der letzten Aufgabe. Alle haben einen Teil vorbereitet. Nun müssen sie gemeinsam erklären, was sie gelernt haben.\n\nLea ist vor dem Gespräch nervös. Ben hat ihr am Morgen viel Erfolg gewünscht. Danach hat er nicht ständig nach dem Ergebnis gefragt.\n\nAm Nachmittag schreibt Lea, dass die Aufgabe gut gelaufen ist. Ben freut sich und ruft erst an, als sie Zeit hat. Er möchte ihre ganze Geschichte hören.\n\nLea erzählt auch von einem Fehler, den die Gruppe noch korrigieren musste. Das gute Ergebnis macht den Fehler nicht unsichtbar. Ben hört beides und ist stolz auf sie.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "159": {
+    "textHash": "24563d2a428378b4a5f93f593eee897618ff882da0094a8328a3c542b6d98e13",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Donnerstag packt Lea ihre Tasche. Die Unterlagen brauchen mehr Platz als vorher. Sie faltet ihre Kleidung kleiner und legt die Karten zwischen zwei Bücher.\n\nIn der gemeinsamen Küche räumt sie ihr Fach aus. Einige Lebensmittel schenkt sie den anderen Teilnehmern. Den Tee nimmt sie mit nach Lindenstadt.\n\nAm Abend essen sie zum Abschied zusammen. Lea tauscht E-Mail-Adressen mit einigen Menschen aus. Die sechs Wochen sollen nicht nur in ihren Unterlagen bleiben.\n\nSpäter schickt sie Ben die Zugzeit. Er möchte sie am Bahnhof abholen. Lea legt das Handy auf den Tisch und schaut ein letztes Mal auf das Dach vor ihrem Fenster.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "160": {
+    "textHash": "b15b234b59196243b2f9a23f3ccd117537c89ed644b1801accb8de422be7f305",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Freitag steht Ben am Bahnhof in Lindenstadt. Diesmal wartet er auf einen ankommenden Zug. In seiner Tasche liegen keine großen Geschenke, sondern zwei Brötchen.\n\nLea steigt aus und sucht ihn zwischen den Menschen. Als sie ihn sieht, stellt sie die Tasche sofort ab. Ben geht die letzten Schritte schnell.\n\nSie umarmen sich lange. Lea legt ihre Hände auf seinen Rücken. Ben hält sie fest und lässt erst los, als sie nach ihrer Tasche greift.\n\nGemeinsam verlassen sie den Bahnsteig. Lea möchte zuerst nach Hause und die Sachen abstellen. Ben geht mit. Sechs Wochen enden nicht mit einem Foto, sondern mit diesem Weg.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "161": {
+    "textHash": "c972c9116172f0b7adff312194dcb14b8f15493da0c567675d9688e531689849",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In Leas Wohnung riecht es noch nach den Kräutern am Fenster. Einige Blätter sind trocken. Eva hat gegossen, aber eine Pflanze braucht trotzdem neues Wasser.\n\nLea stellt den Koffer neben den Schrank. Ben holt Wasser und fragt, wo er das Glas abstellen soll. Nicht alles steht genau wie vor ihrer Reise.\n\nSie setzt sich aufs Sofa und zieht die Schuhe aus. Ben würde gern lange bleiben, aber Lea ist müde. Das Wiedersehen braucht nicht sofort einen großen Abend.\n\nSie essen die Brötchen vom Bahnhof. Danach fragt Ben, ob sie lieber schlafen möchte. Lea nickt und küsst ihn. Für morgen verabreden sie ein Frühstück.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "162": {
+    "textHash": "320e7a56fd6962cd5afaff2b980ed62ee2121f97c81285cd85d46b4bd4789a7a",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag kommt Ben mit frischem Brot. Lea hat ausgeschlafen und Tee gemacht. Auf dem Tisch liegt eine Mappe mit ihren Unterlagen aus Hamburg.\n\nSie zeigt ihm einige Bilder vom Unterrichtsgebäude. Dann erzählt sie von den Menschen, mit denen sie gelernt hat. Ben kennt jetzt mehrere Namen.\n\nBen erzählt von seiner Schwester und Kurts Abendessen. Nicht jede Geschichte hat schon am Telefon Platz gehabt. Jetzt können sie dabei das Brot teilen.\n\nNach dem Frühstück stellt Lea die Mappe in den Schrank. Sie möchte auch wieder draußen in Lindenstadt sein. Ben schlägt den alten Weg zur Brücke vor.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "163": {
+    "textHash": "7f13b325f1b0c5b72bc4b2e5f2203130e2662c4947ddeba8cf4156b515513da1",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Fluss gehen Ben und Lea langsam nebeneinander. Die Brücke sieht genauso aus wie vorher. Nur am Ufer stehen jetzt andere Blumen als bei ihrem ersten Spaziergang.\n\nLea bleibt am Geländer stehen und schaut nach unten. Ben stellt sich neben sie. Sie erinnern sich an den kleinen Schirm und den Regen im Park.\n\nBen hatte damals nicht gewusst, ob sie ihn als Freund sieht. Lea erzählt, dass sie selbst ebenfalls unsicher war. Sie wollte ihn erst in Ruhe kennenlernen.\n\nJetzt nimmt sie seine Hand. Das Wasser fließt weiter unter ihnen. Sie bleiben noch einen Moment, bevor sie in Richtung Markt gehen. Lea möchte Äpfel kaufen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "164": {
+    "textHash": "fea3eb7cd5d27899f09f0b73c9723c200064f6c83d0ef80338181e7cec2bac2e",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der folgenden Woche beginnt Lea wieder im Krankenhaus. Nach der Fortbildung bekommt sie einige neue Aufgaben. Sie freut sich darauf und ist gleichzeitig nervös.\n\nBen fragt am Abend, wie der erste Tag war. Lea braucht etwas Zeit, um zu antworten. Sie musste viel erklären und danach selbst noch lernen.\n\nEr bietet an, Essen mitzubringen. Lea möchte lieber zuerst allein nach Hause gehen. Später ruft sie ihn an. Ben nimmt ihre Antwort nicht als Ablehnung seiner ganzen Hilfe.\n\nBeim Telefonat erzählt sie von einem gelungenen Gespräch mit dem Team. Ben hört zu. Morgen können sie zusammen kochen, wenn beide weniger müde sind.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "165": {
+    "textHash": "2353a15aba40b2d6f84232ce18b1e9edc1527d0efde0a3c8e897fb393958c646",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Für Samstag hat Lea sich mit Eva verabredet. Ben hatte gehofft, den Tag mit ihr zu verbringen. Sie haben aber keinen festen gemeinsamen Termin gemacht.\n\nLea möchte ihre Freundin seit der Rückkehr endlich länger sehen. Ben versteht das. Trotzdem darf er sagen, dass er sich auf Zeit mit Lea gefreut hat.\n\nSie finden einen freien Sonntagvormittag. Ben plant seinen Samstag mit Pavel. Er möchte nicht erst warten, bis Lea alle anderen Dinge erledigt hat.\n\nAm Sonntag erzählen sie einander von ihren Tagen. Lea und Eva waren in einem Museum. Ben und Pavel haben einen langen Fahrradweg gefunden. Beide bringen etwas Neues mit.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "166": {
+    "textHash": "3c199c9193e06549d8ef505199e032eadf368124480c38e6e225e1916252d320",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Einige Wochen später gibt Lea Ben einen zweiten Schlüssel. Er soll ihn benutzen, wenn sie gemeinsam etwas planen und sie später nach Hause kommt.\n\nBen freut sich über das Vertrauen. Er fragt trotzdem, ob er vorher Bescheid sagen soll. Lea möchte das gern. Ein Schlüssel bedeutet nicht, dass jeder Besuch automatisch passt.\n\nAuch Ben gibt ihr einen Schlüssel zu seiner Wohnung. Beide hängen sie an ihren eigenen Ring. Zwischen Leas Fahrradschlüssel und dem neuen liegt ein kleiner gelber Anhänger.\n\nAm Abend stellt Ben den zweiten Teller hin. Lea kommt später direkt von der Arbeit. Sie schreibt vor dem Besuch eine kurze Nachricht, obwohl sie den Schlüssel schon hat.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "167": {
+    "textHash": "ab1fc0d7c60f1bf718e556498550378fef4153b42e47281e5e1cd0675d9eb372",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Büro bekommt Ben ein Angebot. Er kann mehr Verantwortung übernehmen und ein kleines Team unterstützen. Dafür muss er manchmal früher beginnen, aber nicht in eine andere Stadt ziehen.\n\nEr liest die Beschreibung und fragt nach den Arbeitszeiten. Das höhere Gehalt ist interessant. Doch Ben möchte auch wissen, wie oft längere Tage nötig sind.\n\nAm Abend erzählt er Lea davon. Sie entscheidet nicht für ihn. Sie fragt, welche Aufgaben ihm gefallen und wovor er sich Sorgen macht.\n\nBen schreibt zwei Listen. Danach möchte er noch einmal mit seinem Chef sprechen. Eine gute Nachricht kann trotzdem Fragen offenlassen. Lea setzt inzwischen Wasser für Tee auf.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "168": {
+    "textHash": "216698d7a041a6b37a5d76da628481348dc8c98ae077eec33abd17f10bfda864",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Nach dem zweiten Gespräch nimmt Ben das Angebot an. Die Arbeitszeiten sind klarer, und er darf neue Aufgaben langsam lernen. Martin wird ihm am Anfang helfen.\n\nBen ruft Lea in ihrer Pause an. Sie freut sich und schlägt vor, abends gemeinsam zu essen. Diesmal möchte sie für ihn kochen.\n\nAls Ben kommt, stehen Kartoffeln und Gemüse auf dem Herd. Lea hat keine große Feier vorbereitet. Auf dem Tisch liegt aber eine Karte mit einem kleinen Computer.\n\nBen legt die Karte später neben den gezeichneten Topf aus Hamburg. Zwei kleine Bilder stehen jetzt am Fenster. Beide erzählen etwas aus ihrem gemeinsamen Leben.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "169": {
+    "textHash": "a5df6b2e1665de526443a0a2a0791f7d17d475d5bee1f68b7be1932bda76e2db",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Herbst sind Ben und Lea seit mehreren Monaten zusammen. Sie verbringen viele Abende abwechselnd in ihren Wohnungen. Manchmal liegt das nötige Ladekabel in der falschen.\n\nEines Abends sucht Ben ein sauberes Hemd bei Lea. Es liegt zu Hause in seinem Schrank. Beide lachen zuerst, dann werden sie stiller.\n\nBen fragt, ob sie irgendwann zusammenwohnen möchte. Er sagt nicht, dass sie es sofort tun müssen. Lea möchte über die Frage nachdenken.\n\nSie sprechen an diesem Abend nur kurz darüber. Danach gehen sie spazieren. Eine gemeinsame Wohnung soll eine Entscheidung sein, kein schneller Weg zu einem fehlenden Hemd.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "170": {
+    "textHash": "fd8e9f6510903b890fd18e19672a8e7f9ed6832e8d102d0e4bd81a569cc84d7e",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Ein paar Tage später fragt Lea selbst nach der Wohnung. Sie kann sich vorstellen, mit Ben zu leben. Trotzdem möchte sie weiterhin manchmal Ruhe und Zeit allein haben.\n\nBen möchte einen Platz zum Arbeiten und einen Tisch für Freunde. Beide möchten gut zur Arbeit kommen. Leas frühe Dienste sollen nicht mit einer langen Fahrt beginnen.\n\nIhre jetzigen Wohnungen sind für zwei Menschen auf Dauer etwas klein. Sie könnten aber vorerst in einer bleiben, wenn die Suche länger dauert. Niemand muss sofort umziehen.\n\nSie schreiben ihre Wünsche auf und vergleichen sie. Ein Balkon wäre schön, eine gute Verbindung ist wichtiger. Der große Tisch bekommt auf beiden Listen einen Platz.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "171": {
+    "textHash": "c32ea5bb93e036e2e36ce833ea868e621ff3ecca5e37bf863c14d2a19faa3136",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Sonntag setzen Ben und Lea sich mit Papier an den Küchentisch. Sie möchten wissen, wie viel Miete sie gemeinsam bezahlen können. Beide nennen ihre monatlichen Kosten.\n\nBen verdient nach der neuen Aufgabe etwas mehr. Lea möchte trotzdem ihren eigenen Teil bezahlen und Geld für sich behalten. Sie sprechen offen über eine passende Verteilung.\n\nSie rechnen auch Strom, Heizung und Internet dazu. Eine Wohnung darf nicht nur auf dem Foto gut aussehen. Am Monatsende brauchen sie noch Geld für Essen und andere Dinge.\n\nNach einer Stunde steht eine Grenze auf dem Papier. Sie ist niedriger als Bens erster Wunsch. Trotzdem fühlen sich beide mit der klaren Zahl sicherer.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "172": {
+    "textHash": "7f6b9a004353bb0a204922f41e65ef1b84ecd2c50583faf7a2826dcaabf93472",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Bei der Wohnungssuche sehen Ben und Lea viele helle Zimmer. Manche Fotos zeigen nur einen kleinen Teil. Bei anderen fehlt die Küche ganz.\n\nBen möchte sofort mehrere Nachrichten schicken. Lea liest zuerst die Lage und die Kosten. Eine besonders schöne Wohnung liegt weit entfernt von ihrer Arbeit.\n\nSie schließen diese Anzeige wieder. Ben ist enttäuscht, aber er möchte nicht nur wegen eines Fotos täglich viel länger fahren. Beide suchen weiter.\n\nAm Ende haben sie drei passende Adressen. Sie schreiben kurze Anfragen und legen das Handy weg. Die Antworten brauchen Zeit, genau wie am Anfang ihrer anderen Suche.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "173": {
+    "textHash": "df29e96859b33ca195e7bb43a402790dcbd620750f0e47029ccbd45b827ab218",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Donnerstag besuchen sie eine Wohnung über einem Geschäft. Die Zimmer sind hell, und das Wohnzimmer hat genug Platz für einen großen Tisch.\n\nEine Mitarbeiterin zeigt ihnen das Bad und die Küche. Ben schaut nach Steckdosen. Lea öffnet mit Erlaubnis ein Fenster und hört den Verkehr.\n\nVor dem Haus halten viele Busse. Für die Fahrt ist das praktisch. Zum Schlafen nach einem späten Dienst könnte es aber schwierig sein.\n\nNach der Besichtigung bleiben beide vor der Tür stehen. Die Wohnung hat Vorteile, aber auch einen lauten Alltag. Sie möchten erst die andere Adresse sehen, bevor sie zusagen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "174": {
+    "textHash": "7c66df0a98cdf459ac416dbd9e75c30b33b05e99fbae81c790f58dd2742cedef",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am nächsten Tag ruft der zweite Vermieter an. Die Wohnung ist bereits vergeben. Ben hatte sich den kleinen Balkon auf dem Foto oft angesehen.\n\nEr ist enttäuscht und erzählt es Lea. Sie hatte den Balkon auch gemocht. Trotzdem müssen sie nicht herausfinden, warum jemand anderes die Wohnung bekommen hat.\n\nSie haben noch einen Termin am Samstag. Lea erinnert Ben daran, dass sie genug Zeit haben. Die Schlüssel ihrer jetzigen Wohnungen liegen weiterhin sicher in ihren Taschen.\n\nAm Abend kochen sie in Leas Küche. Das fehlende neue Zuhause macht die jetzige Küche nicht plötzlich wertlos. Ben wäscht Gemüse und erzählt von seinem Arbeitstag.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "175": {
+    "textHash": "19b7feb3f99180d19e34cfe08c00ed4f23a75c671decc83309dc7b40abc01ee1",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstag kommen sie zu einem Haus mit einem kleinen Innenhof. Dort stehen zwei Bäume und mehrere Fahrräder. Die Wohnung liegt im ersten Stock.\n\nDie Vermieterin öffnet die Tür. Es gibt ein Schlafzimmer, ein Wohnzimmer und ein kleines zusätzliches Zimmer. Die Küche ist nicht neu, aber sauber.\n\nLea schaut auf den Hof. Ben misst mit Schritten, ob sein Schreibtisch in das kleine Zimmer passt. Beide stellen Fragen, bevor sie wieder hinausgehen.\n\nDie Fahrt zur Arbeit ist für beide möglich. Die Miete liegt innerhalb ihrer Grenze. Auf dem Heimweg reden sie länger über diese Wohnung als über die anderen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "176": {
+    "textHash": "52551446a0d108a000cb94d0d6296519afade13e00cd86d34a4d9d4202901600",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Ben möchte der Vermieterin sofort zusagen. Lea möchte noch eine Nacht darüber schlafen. Sie müssen zuerst prüfen, welche Dinge sie wirklich mitnehmen können.\n\nZu Hause zeichnet Ben die Zimmer auf ein Blatt. Lea legt kleine Zettel für Bett, Tisch und Schreibtisch darauf. Der große Tisch braucht besonders viel Platz.\n\nSie verschieben die Zettel und lachen über einen Schrank, der auf dem Papier die Tür blockiert. Danach schreiben sie die offenen Fragen an die Vermieterin auf.\n\nAm nächsten Morgen fühlen sich beide noch gut mit der Wohnung. Sie haben in Ruhe entschieden. Ben ist froh darüber, und Lea nimmt das Telefon.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "177": {
+    "textHash": "029f7eeadc04df77016f98945ff557748afdb1621537399f1413dde0d12de675",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Die Vermieterin beantwortet ihre letzten Fragen. Danach sagen Ben und Lea gemeinsam zu. Sie bekommen die Unterlagen und lesen sie am nächsten Abend in Ruhe.\n\nBeide möchten verstehen, welche Kosten dazugehören und wann sie einziehen können. Unklare Stellen schreiben sie auf. Sie fragen nach, bevor sie etwas unterschreiben.\n\nDer Einzug ist in zwei Monaten möglich. Das gibt ihnen Zeit, ihre bisherigen Wohnungen und den Umzug zu organisieren. Sie informieren zuerst ihre Familien und Freunde.\n\nNora bietet Hilfe mit den Kartons an. Pavel möchte den großen Tisch tragen. Eva bringt ihre Tasche mit Werkzeug mit. Ben und Lea schreiben eine Liste für alle.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "178": {
+    "textHash": "f3765da993a5608d58843e9e390c5ba46dfee952d05abd91464789e42f5bacaa",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In den nächsten Wochen sortieren Ben und Lea ihre Sachen. Beide haben zu viele Tassen und einige Kleidungsstücke, die sie lange nicht getragen haben.\n\nBen möchte nicht einfach Leas alte Dinge weggeben. Lea entscheidet selbst, was sie behalten will. Auch sein altes Kinoticket darf in seiner Schublade bleiben.\n\nSie suchen gemeinsam aus, welche Möbel in die neue Wohnung passen. Ein kleiner Tisch bleibt übrig. Kurt kann ihn brauchen und holt ihn mit seiner Tochter ab.\n\nNach dem Besuch stehen weniger Dinge im Flur. Ben fühlt sich kurz seltsam. Seine Wohnung war der Anfang in Lindenstadt. Nun beginnt dort langsam der Abschied.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "179": {
+    "textHash": "220fc6f0e0033f80ca33663c0b5fb18d57eaff7f8eb240bb45a35761b8312539",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Ben schreibt Küche auf den ersten Karton. Lea schreibt Bücher auf den zweiten. Die Wörter sollen helfen, beim Umzug nicht jede Kiste im falschen Zimmer zu öffnen.\n\nIn einen kleinen Karton legt Lea die Karten aus Hamburg. Ben packt das Rezeptblatt vom ersten Spaziergang dazu. Beide möchten diese Papiere nicht zwischen alte Rechnungen legen.\n\nDanach finden sie die Dose mit dem falschen Deckel. Lea hat inzwischen eine passende, aber die alte Dose benutzt sie für kleine Werkzeuge.\n\nBen stellt sie oben auf einen Karton. Manche Dinge müssen nicht perfekt zusammenpassen, um nützlich zu sein. Lea reicht ihm das Klebeband, und sie packen weiter.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "180": {
+    "textHash": "f216c713859bd267545ae2f1ea7b828cddce8c774c98824880f932a7179ae362",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Tag vor dem Umzug holen Ben und Lea die neuen Schlüssel ab. Die Vermieterin zeigt ihnen noch einmal die Wohnung und die Plätze für ihre Fahrräder.\n\nDie Zimmer sind leer. Jeder Schritt klingt laut. Ben stellt sich an das Küchenfenster. Lea öffnet die Tür zum kleinen zusätzlichen Zimmer.\n\nSie haben noch keine feste Ordnung für ihr gemeinsames Leben. Der Schlüssel löst nicht alle Fragen. Aber beide haben sich Zeit genommen, um hierherzukommen.\n\nBevor sie gehen, legt Lea ihre Hand in Bens. Morgen werden hier Kartons, Freunde und zwei verschiedene Teekannen stehen. Heute schließen sie zum ersten Mal gemeinsam ab.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "181": {
+    "textHash": "650599e2faa8c3dbae3764ea7f59ef963c7ef59bd0e6e7f1c39b87b184577944",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Samstagmorgen stehen Nora, Pavel und Eva vor Bens alter Wohnung. Es gibt Kaffee in Pappbechern und eine Liste mit Möbeln und Kartons.\n\nPavel und Ben tragen zuerst den Tisch. Er ist schwerer, als Pavel erwartet hat. Nora öffnet die Türen und zeigt ihnen den Weg zum gemieteten Wagen.\n\nLea und Eva holen die Kartons aus ihrer Wohnung. Jede Kiste hat einen Namen. Trotzdem kommt eine mit Büchern zuerst in die neue Küche.\n\nAlle lachen und tragen sie weiter. Der Tag ist laut und anstrengend. Ben schaut einmal zu Lea. Sie wischt sich die Haare aus dem Gesicht und winkt ihm zu.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "182": {
+    "textHash": "1da3424822935926edfb826b37c257b74368ee17a08eb79cd82f07950f055233",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Nachmittag steht der große Tisch im Wohnzimmer. Es gibt noch keine passende Lampe darüber. Trotzdem finden alle einen Stuhl oder eine stabile Kiste zum Sitzen.\n\nBen und Lea haben Brot, Käse und Gemüse gekauft. Nach den vielen Treppen möchten sie heute nicht lange kochen. Eva stellt alles auf den Tisch.\n\nPavel sucht Messer und findet zuerst die grüne Schürze. Nora öffnet den richtigen Karton. Bald essen sie aus verschiedenen Tellern, genau wie beim ersten Besuch bei Ben.\n\nBen bedankt sich bei allen. Ohne ihre Hilfe wären noch viele Möbel in den alten Wohnungen. Lea hebt ihr Glas Wasser. Dann beginnt jemand nach dem verlorenen Klebeband zu suchen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "183": {
+    "textHash": "14afaf1d1ed18ea51569789dd93ac846c740847eac526c6260001711668c5afd",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Abend gehen die Freunde nach Hause. Ben und Lea stehen zwischen Kartons. Das Bett ist aufgebaut, aber die Bettwäsche liegt noch irgendwo in einer Tasche.\n\nSie finden die Tasche hinter dem Sofa. Lea bezieht das Bett, während Ben nach den Zahnbürsten sucht. Im Badezimmer gibt es bisher nur einen kleinen Spiegel.\n\nBeide sind müde. Sie müssen heute nicht jede Kiste öffnen. Ben schließt das Wohnzimmerfenster, und Lea prüft, ob die Wohnungstür abgeschlossen ist.\n\nIm Bett hören sie ein neues Geräusch aus dem Hof. Ein Fahrrad wird abgestellt. Lea nimmt Bens Hand unter der Decke. Für diese Nacht sind sie angekommen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "184": {
+    "textHash": "4acf4d2eede5df2b25ea40d59cd284c83251f17bd9b1d2f681293cd86f9a6fd8",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am nächsten Morgen macht Ben Tee. Lea sucht die Tassen und findet zwei, die sie beide behalten wollten. Sie stellt sie neben die Kanne.\n\nDurch das Küchenfenster sehen sie die Bäume im Hof. Eine Nachbarin gießt Blumen auf ihrem Balkon. Lea winkt, und die Frau winkt zurück.\n\nBeim Frühstück schreiben sie auf, was noch fehlt. Eine Lampe, ein Regal für das Bad und ein Platz für die leeren Kartons stehen auf der Liste.\n\nBen möchte gleich ins Geschäft. Lea möchte zuerst die Küche ordnen. Sie entscheiden, eine Stunde auszupacken und danach gemeinsam zu gehen. Der erste gemeinsame Morgen bekommt einen einfachen Plan.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "185": {
+    "textHash": "492406ab459dc52fe99ad2baaa0752c7917c987f01c0087bb8d7b4272e82d8f7",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "In der folgenden Woche geben Ben und Lea ihre bisherigen Wohnungsschlüssel zurück. Ben schaut noch einmal in die leere Küche mit dem großen Fenster.\n\nHier hat er Nudeln allein gegessen und Nachrichten von Jana gelesen. Hier haben Nora und Pavel gesessen. Hier hat Lea die Zwiebeln für ihre erste gemeinsame Suppe geschnitten.\n\nBen macht ein letztes Foto vom leeren Raum. Er muss ihn nicht schlecht finden, um gehen zu können. Die Wohnung hat zu seinem Leben gehört.\n\nVor dem Haus wartet Lea. Auch sie hat ihre alte Tür heute abgeschlossen. Gemeinsam fahren sie mit dem Bus nach Hause. Diesmal meinen sie mit diesem Wort denselben Ort.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "186": {
+    "textHash": "1d51a7cfaf9e3d75dedbb964a525c810be912e5dd108976d376760b1150fb8c4",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Nach einigen Wochen liegt morgens oft Geschirr im Spülbecken. Ben lässt seine Teetasse stehen, weil er schnell zur Arbeit muss. Lea findet sie später beim Frühstück.\n\nSie räumt sie einmal weg, dann noch einmal. Beim dritten Mal ist sie ärgerlich. Sie möchte nicht automatisch für alle kleinen Dinge zuständig sein.\n\nAm Abend sagt sie Ben, was sie stört. Ben möchte zuerst erklären, wie eilig er es hat. Dann hört er weiter zu und schaut auf die Tasse.\n\nDie gemeinsame Wohnung macht solche Aufgaben nicht unsichtbar. Sie schreiben auf, wer einkauft, kocht und aufräumt. Die Liste ist kein Liebesbrief, aber sie hilft ihrem Alltag.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "187": {
+    "textHash": "2a7f2271e1e9f8cea81f7fc67d92e0b0e4a984cb63f9f60899c463b027080912",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Kühlschrank hängt nun ein Wochenplan. Er zeigt keine festen Rollen für immer. Wenn Lea spät arbeitet, übernimmt Ben das Essen. Wenn Ben länger bleibt, sprechen sie neu darüber.\n\nAm Donnerstag vergisst Ben trotzdem den Einkauf. Als Lea nach Hause kommt, fehlen Brot und Milch. Ben entschuldigt sich und geht noch einmal los.\n\nEr bringt nicht nur Blumen statt des Einkaufs mit. Lea braucht das Brot für ihr Frühstück. Ben erledigt die Aufgabe, die er übernommen hat.\n\nSpäter essen sie zusammen und ändern die Erinnerung im Kalender. Kleine Fehler werden weiter passieren. Aber niemand muss so tun, als wären sie allein für alles verantwortlich.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "188": {
+    "textHash": "ad0661519d6bfa62fdd6115a7a26fdb44ca319ea6728063a6e136c37786e4437",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im kleinen zusätzlichen Zimmer steht Bens Schreibtisch. Lea hat dort ebenfalls ein Regal und einen bequemen Stuhl. Manchmal möchte sie dort allein lesen.\n\nBen klopft, bevor er hineingeht. Lea macht dasselbe, wenn Ben arbeitet. Eine geschlossene Tür bedeutet nicht, dass jemand den anderen aus seinem Leben ausschließt.\n\nAm Sonntag liest Lea eine Stunde, während Ben zu Pavel geht. Danach kochen sie gemeinsam. Beide haben etwas von ihrem eigenen Nachmittag zu erzählen.\n\nDie neue Wohnung ist ein gemeinsamer Ort. Trotzdem müssen sie nicht jede Minute am selben Platz sein. Lea stellt ihr Buch zurück, und Ben öffnet das Küchenfenster.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "189": {
+    "textHash": "60cd545ee0dc5d24303879ce559fb6cce29dfcc50f5a43d9267fff3455123a10",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Eines Abends kommt Ben sehr spät nach Hause. Bei der Arbeit ist etwas schiefgegangen. Er hat einen Fehler gemacht und ihn vor dem Team erklären müssen.\n\nLea fragt, ob er reden oder zuerst essen möchte. Ben möchte reden, aber nicht sofort Lösungen hören. Er sagt ihr das, bevor er beginnt.\n\nLea hört zu. Sie sagt nicht, dass der Fehler sicher egal ist. Sie fragt, was morgen nötig wird. Ben hat schon einen Plan zur Korrektur.\n\nNach dem Gespräch essen sie. Der Fehler ist noch da, aber Ben sitzt nicht allein damit in der Küche. Lea reicht ihm das Brot und erzählt später von ihrem Tag.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "190": {
+    "textHash": "59e6b49850f7b4aae9ff2ec5f6ea13cde613c81bb275f26efe7db30234e97b7a",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am Wochenende ist Lea müde und hat eine Erkältung. Sie möchte zu Hause bleiben. Den geplanten Besuch bei Eva sagt sie rechtzeitig ab.\n\nBen fragt, was sie braucht. Lea möchte Tee und Ruhe. Er holt beides, ohne den ganzen Tag über ihr Bett zu reden oder sie ständig nach ihrem Befinden zu fragen.\n\nAm Nachmittag liest Ben im Wohnzimmer. Lea schläft. Ihre Wohnung ist heute still, aber die Stille gehört zu beiden. Niemand muss daraus ein besonderes Erlebnis machen.\n\nSpäter kommt Lea mit einer Decke aufs Sofa. Ben rückt zur Seite. Sie schaut kurz mit ihm einen Film, bevor sie wieder schlafen möchte.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "191": {
+    "textHash": "81a28d359f6d5f7ab6dcb8ce3ac8ab5a5cfaadf57fc08c89ef7e49ca10b84931",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Frühjahr schickt Frau Berg eine Einladung. Vor einem Jahr hat ihre Kochgruppe begonnen. Sie möchte die Teilnehmer zu einem gemeinsamen Abend wiedersehen.\n\nBen schaut Lea an, als er die Nachricht liest. Es war nicht gleich der Anfang ihrer Beziehung. Aber dort haben sie sich zum ersten Mal vorgestellt.\n\nLea holt die gelbe Schürze aus dem Schrank. Der kleine Fleck ist noch da. Ben nimmt die grüne. Beide möchten etwas für die Gruppe kochen.\n\nSie wählen die ersten Gemüsepfannkuchen. Diesmal wissen sie, wie viel Öl und Salz nötig sind. Trotzdem legen sie das alte Rezept neben die Schüssel.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "192": {
+    "textHash": "fb400cb3e819e70e97652780c7bf91ade9185aa47813308643ea8b2b93a07e4b",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Nachbarschaftshaus begrüßt Kurt sie mit einer großen Dose. Aylin bringt Brot und erzählt von einer neuen Prüfung. Frau Berg zeigt auf den vertrauten Tisch.\n\nDie Gruppe spricht über das vergangene Jahr. Es gab Umzüge, neue Arbeit und schwierige Tage. Ben und Lea erzählen von ihrer gemeinsamen Wohnung.\n\nKurt erzählt von dem kleinen Tisch aus Bens Wohnung. Er steht jetzt in seiner Küche. Ben freut sich, dass er weiter benutzt wird.\n\nBeim Essen schaut Ben einmal quer über den Tisch. Lea lacht gerade mit Aylin. Er erinnert sich an ihren Fahrradhelm unter dem Arm. Damals kannte er sie noch nicht. Heute leben sie zusammen.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "193": {
+    "textHash": "473cf237da0519777ef9013dffc7d9b9de89656c9dbe8c7a5350bc3fdfb97ebd",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Ein paar Wochen später wird Ben dreißig. Lea hat Freunde zum Frühstück eingeladen. Auf dem Tisch stehen Brot, Obst und ein kleiner Kuchen mit einer Kerze.\n\nNora schenkt ihm ein Foto vom ersten Marktbesuch. Darauf hält er den Apfel vor den Blumen. Ben erkennt das Bild, das er damals für sein Profil benutzt hat.\n\nEr zeigt es Lea und erzählt die Geschichte. Jana und Sofia müssen darin nicht verschwinden. Die Treffen und Gespräche haben zu diesem Jahr gehört.\n\nLea stellt das Foto später ins Regal. Es zeigt Ben, nicht nur einen Menschen auf einer App. Danach schneiden sie den Kuchen auf, und Pavel nimmt das erste Stück.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "194": {
+    "textHash": "92f355b627acd1e2b6ad901b5f1343ed82afcdffda826ac2f68bada848c8986e",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Im Sommer möchten Ben und Lea eine Woche Urlaub machen. Diesmal beginnt die Planung früh. Lea prüft ihren Dienstplan, und Ben fragt im Büro nach freien Tagen.\n\nSie überlegen, ob sie ans Meer oder zu Bens altem See fahren. Beides ist möglich, aber die Kosten sind verschieden. Ein teurer Urlaub ist nicht nötig.\n\nLea möchte den See kennenlernen, von dem Ben so oft erzählt hat. Sie wählen ein kleines Zimmer in der Nähe und planen auch Zeit ohne feste Termine.\n\nBen freut sich auf die Woche. Er möchte Lea zeigen, wo er als Kind gespielt hat. Danach können sie gemeinsam neue Wege suchen, die noch keiner von beiden kennt.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "195": {
+    "textHash": "ef21501e53f13245b832879d976a55ebf00457383319f6bf58b0baddca174d69",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Am ersten Urlaubstag sitzen Ben und Lea am See. Die Sonne ist warm, aber unter den Bäumen gibt es Schatten. Ben zieht seine Schuhe aus.\n\nEr zeigt Lea die Stelle, an der er mit seiner Schwester ins Wasser gegangen ist. Die alte Bank steht noch da. Auf dem Weg wachsen hohe Gräser.\n\nLea nimmt seine Hand. Sie fragt, ob er vor einem Jahr gedacht hat, heute hier mit ihr zu sitzen. Ben schüttelt den Kopf und lächelt.\n\nEr hatte gehofft, jemanden zu finden. Doch Lea ist nicht einfach die Antwort auf eine alte Frage. Er kennt inzwischen ihr Lachen, ihre Arbeit, ihre Müdigkeit und ihre Wünsche.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "196": {
+    "textHash": "699620512dff31d33a30f1324b4760a0c0b2483b0cd5b5cc8dd16daaa374f813",
+    "assignments": [
+      {
+        "index": 0,
+        "speaker": "Ben",
+        "voice": "male",
+        "evidence": "Ben introduces the exact quote on page 196: „Ich möchte mein Leben mit dir teilen. Auch die Tage, an denen nicht alles gut läuft.“"
+      },
+      {
+        "index": 1,
+        "speaker": "Lea",
+        "voice": "female",
+        "evidence": "Lea introduces the exact quote on page 196: „Ich möchte das auch. Aber lass uns weiter miteinander reden, wenn etwas schwierig ist.“"
+      }
+    ],
+    "segments": [
+      {
+        "text": "Ben schaut auf das Wasser. Er möchte Lea etwas sagen, ohne dass es wie ein fertiger Satz aus einem Film klingt. Deshalb spricht er langsam.\n\nBen sagt: ",
+        "voice": "female",
+        "speaker": "Narrator"
+      },
+      {
+        "text": "„Ich möchte mein Leben mit dir teilen. Auch die Tage, an denen nicht alles gut läuft.“",
+        "voice": "male",
+        "speaker": "Ben"
+      },
+      {
+        "text": " Lea bleibt still und hört bis zum Ende zu.\n\nDann sagt Lea: ",
+        "voice": "female",
+        "speaker": "Narrator"
+      },
+      {
+        "text": "„Ich möchte das auch. Aber lass uns weiter miteinander reden, wenn etwas schwierig ist.“",
+        "voice": "female",
+        "speaker": "Lea"
+      },
+      {
+        "text": " Ben nickt. Diese Bitte kennt er inzwischen gut.\n\nSie brauchen an diesem Nachmittag keine große Feier. Lea lehnt sich an ihn. Ben hält ihre Hand. Vor ihnen bewegt der Wind kleine Wellen über den See.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "197": {
+    "textHash": "f1cd5e6afcba106702b5d6e189601c8fa1c5d44fa193f43a27996bdadf77f5f9",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Später gehen sie um den See. Ben kennt nur die erste Hälfte des Weges. Dahinter ist er als Kind nie weitergegangen. Lea möchte sehen, was dort liegt.\n\nSie finden eine kleine Brücke aus Holz und einen Platz mit zwei Bänken. Ben macht ein Foto vom Wasser. Lea sucht im Schatten nach einer Stelle zum Sitzen.\n\nAm Abend möchte sie lesen, während Ben etwas zu essen holt. Sie müssen auch im Urlaub nicht jede Minute dasselbe tun. Danach essen sie wieder zusammen.\n\nBen fragt nach ihrem Buch, Lea nach seinem Spaziergang zum Geschäft. Ihr gemeinsamer Weg besteht aus solchen Gesprächen. Er fühlt sich heute nicht mehr allein auf der Suche.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "198": {
+    "textHash": "0b453c6a4000a64dec546812d240dfd4d07f5e2caf2d6bacea17fc81b5138739",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Nach der Urlaubswoche fahren Ben und Lea nach Lindenstadt zurück. Im Zug schauen sie ihre Fotos an. Das schönste ist nicht besonders scharf, aber beide lachen darauf.\n\nLea fragt, ob sie es ausdrucken möchten. Ben sagt Ja. Es soll neben dem Bild vom Markt stehen, nicht als Nachricht für die ganze Welt.\n\nZu Hause warten Wäsche und ein leerer Kühlschrank. Lea öffnet die Fenster, während Ben die Taschen abstellt. Der Urlaub ist vorbei, aber die Nähe muss nicht dort bleiben.\n\nSie schreiben eine Einkaufsliste. Brot, Milch, Tomaten und Tee stehen darauf. Ben nimmt die Tasche. Lea holt den Schlüssel. Gemeinsam gehen sie zum Laden an der Ecke.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "199": {
+    "textHash": "7d466fa03ca75ce455bbb1f806eb8cdae1621fb6025f62e5999f100dedbb673c",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Einige Tage später kommt Ben vor Lea nach Hause. Er stellt Wasser auf den Herd und beginnt, Gemüse zu schneiden. Auf dem Kühlschrank hängt ihr Wochenplan.\n\nLea schreibt, dass sie ein paar Minuten später kommt. Ben antwortet, dass das Essen noch nicht fertig ist. Niemand muss daraus einen langen Streit machen.\n\nAls Lea die Tür öffnet, legt sie ihre Tasche ab und kommt in die Küche. Sie fragt nach seinem Tag. Ben erzählt, während sie das Brot schneidet.\n\nDann ist sie dran. Ben hört von einer neuen Aufgabe, einer müden Kollegin und dem Wind auf ihrem Heimweg. Er kennt nicht jede Antwort. Aber er möchte weiter zuhören.",
+        "voice": "female",
+        "speaker": "Narrator"
+      }
+    ]
+  },
+  "200": {
+    "textHash": "c62074f9a4e53cb8226c9edfc4c1d70cdc7deec93199876b119a5b63dabaeab2",
+    "assignments": [],
+    "segments": [
+      {
+        "text": "Ben stellt zwei Teller auf den Tisch. Lea bringt die Gläser und setzt sich. Durch das offene Fenster hören sie ein Fahrrad im Hof und Stimmen von der Straße.\n\nVor langer Zeit hat Ben in seiner Küche oft allein gegessen. Er hat auf Nachrichten gewartet und sich gefragt, ob jemand zu ihm passen kann.\n\nJetzt sitzt Lea ihm gegenüber. Sie ist nicht immer derselben Meinung und nicht jeden Tag fröhlich. Trotzdem möchte er genau mit ihr sein Leben teilen.\n\nLea reicht ihm das Brot und beginnt zu erzählen. Ben hört zu. Der zweite Teller bleibt nicht mehr im Schrank. Ihr gemeinsames Leben geht nach diesem Abend weiter.",
         "voice": "female",
         "speaker": "Narrator"
       }

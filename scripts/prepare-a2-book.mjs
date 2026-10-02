@@ -38,7 +38,7 @@ for (const [index, row] of rows.entries()) {
   if (cursor < text.length) segments.push({ text: text.slice(cursor), voice: 'female', speaker: 'Narrator' });
   assert.equal(segments.map(s => s.text).join(''), text);
   plans[number] = { textHash: hash, assignments, segments };
-  sources.push({ id: String(number), title, text, level: 'A2', hotwords: Object.keys(cast).concat('Lindenstadt'), paragraphSentences: paragraphs.map(readingSentences) });
+  sources.push({ id: String(number), title, text, level: 'A2', hotwords: Object.keys(cast).concat('Lindenstadt', 'Kurt', 'Aylin', 'Berg'), paragraphSentences: paragraphs.map(readingSentences) });
 }
 assert.ok(pages.length <= 200);
 if (process.argv.includes('--complete')) assert.equal(pages.length, 200);

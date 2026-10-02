@@ -33,6 +33,7 @@ parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
 parser.add_argument('--batch-size', type=int, choices=[1, 2], default=1, help='Generate uncached same-voice chunks together; every chunk still receives the same validation')
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--book-id', help='Book slug for staged book sources; defaults to the existing A1 book')
+parser.add_argument('--retry-asr-without-hotwords', action='store_true', help='Retry a failed full-recording transcript without recognition hints; acceptance thresholds stay unchanged')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
 parser.add_argument('--source-json', type=Path, help='Standalone story sources for a staged narration run')
 parser.add_argument('--output-dir', type=Path, help='Staging directory for audio and timing files')
@@ -46,6 +47,8 @@ if bool(args.output_dir) != bool(args.manifest_path):
     parser.error('--output-dir and --manifest-path must be used together')
 if args.book_id and (args.collection!='book' or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', args.book_id)):
     parser.error('--book-id requires the book collection and a valid book slug')
+if args.book_id and not args.source_json:
+    parser.error('--book-id requires exact standalone sources through --source-json')
 args.checkpoint.mkdir(parents=True,exist_ok=True)
 source = args.source_json.read_bytes() if args.source_json else subprocess.check_output(['node','--input-type=module','-e',"""
 import {narrationSources} from './scripts/lib/narration-sources.mjs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
@@ -240,6 +243,12 @@ for story in stories:
                 coverage=matched/max(1,len(expected));excess=(len(actual)-matched)/max(1,len(expected))
                 if coverage<.9 or excess>.12:
                     save_json(args.checkpoint/(name+'-transcript-failed.json'),{'transcript':transcript,'coverage':coverage,'excess':excess})
+                    if args.retry_asr_without_hotwords and story_hotwords:
+                        print(f'Rechecking {story["id"]} transcript without recognition hints',flush=True)
+                        transcript=asr.generate(str(combined),language='German',hotwords=[],chunk_duration=30.0,max_tokens=max(512,len(visible_words(story['text']))*4)).text
+                        actual=normal(transcript)
+                        matched=sum(block.size for block in SequenceMatcher(None,expected,actual,autojunk=False).get_matching_blocks())
+                        coverage=matched/max(1,len(expected));excess=(len(actual)-matched)/max(1,len(expected))
                 assert coverage>=.9 and excess<=.12,f'Whole-story transcript differs: coverage={coverage:.2f}, excess={excess:.2f}'
                 save_json(args.checkpoint/(name+'-transcript.json'),{'transcript':transcript,'coverage':coverage,'excess':excess})
                 mx.clear_cache();gc.collect()

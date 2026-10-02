@@ -13,3 +13,7 @@ Cast: Ben (male), Lea (female), Nora (female, Ben's friend), Pavel (male, Ben's 
 Chapters: Ein Platz für zwei; Nachrichten auf dem Handy; Eine Pause; Der Kochkurs; Mehr als ein Abend; Zeit für uns; Ein schwieriges Gespräch; Sechs Wochen; Wieder zu Hause; Unser Alltag.
 
 The manuscript TSV/PSV records original German, reviewed English and ordered quote voices. Preserve previous A1 content and bookmarks. Each new page requires an exact-text recording, source/voice hashes and word timing before the complete book is published. No incomplete book release.
+
+The complete authored manuscript has 19,956 German whitespace-delimited words, 87–110 words per page, and approximately 7.9 words per sentence with the existing sentence segmenter. These are readability inventory checks, not CEFR certification. All 800 English paragraphs were authored alongside their exact German source.
+
+On page 56, the hinted recognizer echoed its name-hint list at the end of an otherwise source-matched transcript. The optional `--retry-asr-without-hotwords` reruns recognition on the same full waveform without those hints. It neither trims the transcript nor reduces the 90% source-token coverage and 12% excess limits. The failed first report remains in checkpoints for review.

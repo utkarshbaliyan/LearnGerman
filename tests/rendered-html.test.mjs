@@ -55,7 +55,9 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
   const indexHtml = await index.text();
   assert.match(indexHtml, /Der Schlüssel im blauen Korb/);
   assert.match(indexHtml, /href="\/books\/a1\/der-schluessel-im-blauen-korb"/);
-  assert.equal((indexHtml.match(/class="book-shelf-item"/g) ?? []).length, 1);
+  assert.equal((indexHtml.match(/class="book-shelf-item"/g) ?? []).length, 2);
+  assert.match(indexHtml, /href="\/books\/a2\/nicht-nur-ein-profil"/);
+  assert.equal((indexHtml.match(/aria-label="Open Der Schlüssel im blauen Korb"/g) ?? []).length, 1);
   assert.doesNotMatch(indexHtml, /Start reading|Continue reading|Chapter 1|Contents|Die Ankunft|book-chapter-item/);
   const contents = await renderRoute('/books/a1/der-schluessel-im-blauen-korb');
   assert.equal(contents.status, 200);
