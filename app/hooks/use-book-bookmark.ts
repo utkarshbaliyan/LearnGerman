@@ -1,15 +1,15 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { BOOK_PAGE_COUNT, readBookBookmark, type BookBookmark } from '@/app/lib/book-bookmark';
+import { A1_BOOK_ID, BOOK_BOOKMARK_STORAGE_KEY, BOOK_PAGE_COUNT, readBookBookmark, updateBookBookmark, type BookBookmark } from '@/app/lib/book-bookmark';
 import { PROGRESS_SYNCED_EVENT } from '@/app/lib/cloud-progress-keys';
 import { queueCloudProgress } from '@/app/lib/cloud-progress-save';
 
-export function useBookBookmark() {
+export function useBookBookmark(bookId = A1_BOOK_ID) {
   const [bookmark, setBookmark] = useState<BookBookmark | null>(null);
 
   useEffect(() => {
-    const refresh = () => setBookmark(readBookBookmark(localStorage));
+    const refresh = () => setBookmark(readBookBookmark(localStorage, bookId));
     refresh();
     window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
     window.addEventListener('storage', refresh);
@@ -17,15 +17,16 @@ export function useBookBookmark() {
       window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh);
       window.removeEventListener('storage', refresh);
     };
-  }, []);
+  }, [bookId]);
 
   const savePage = useCallback((page: number) => {
     if (!Number.isInteger(page) || page < 1 || page > BOOK_PAGE_COUNT) return;
-    const previous = readBookBookmark(localStorage);
-    const next = { page, updatedAt: Math.max(Date.now(), (previous?.updatedAt ?? 0) + 1) };
-    setBookmark(next);
+    let current: unknown = null;
+    try { current = JSON.parse(localStorage.getItem(BOOK_BOOKMARK_STORAGE_KEY) ?? 'null'); } catch {}
+    const next = updateBookBookmark(current, bookId, page);
+    setBookmark(readBookBookmark({ getItem: () => JSON.stringify(next) }, bookId));
     queueCloudProgress('books', next);
-  }, []);
+  }, [bookId]);
 
   return { bookmark, savePage };
 }

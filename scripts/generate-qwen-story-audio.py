@@ -32,6 +32,7 @@ parser.add_argument('--level', choices=['A1', 'A2', 'B1'], help='Limit story nar
 parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
 parser.add_argument('--batch-size', type=int, choices=[1, 2], default=1, help='Generate uncached same-voice chunks together; every chunk still receives the same validation')
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
+parser.add_argument('--book-id', help='Book slug for staged book sources; defaults to the existing A1 book')
 parser.add_argument('--dialogue-plan', type=Path, required=True)
 parser.add_argument('--source-json', type=Path, help='Standalone story sources for a staged narration run')
 parser.add_argument('--output-dir', type=Path, help='Staging directory for audio and timing files')
@@ -43,8 +44,8 @@ parser.add_argument('--checkpoint', type=Path, default=ROOT/'.local-piper/qwen-s
 args=parser.parse_args()
 if bool(args.output_dir) != bool(args.manifest_path):
     parser.error('--output-dir and --manifest-path must be used together')
-if args.source_json and args.collection!='stories':
-    parser.error('--source-json applies only to stories')
+if args.book_id and (args.collection!='book' or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', args.book_id)):
+    parser.error('--book-id requires the book collection and a valid book slug')
 args.checkpoint.mkdir(parents=True,exist_ok=True)
 source = args.source_json.read_bytes() if args.source_json else subprocess.check_output(['node','--input-type=module','-e',"""
 import {narrationSources} from './scripts/lib/narration-sources.mjs';import {readingSentences} from './app/lib/reading-sentence-segmentation.mjs';
@@ -58,8 +59,8 @@ if args.level:
 if args.only:stories=[s for s in stories if s['id']==args.only]
 if not stories:raise ValueError('No matching stories')
 book_mode=args.collection=='book'
-book=json.loads((ROOT/'app/lib/book-data.json').read_text()) if book_mode else None
-public_prefix=f"/audio/books/{book['id']}" if book_mode else '/audio/reading'
+book=json.loads((ROOT/'app/lib/book-data.json').read_text()) if book_mode and not args.book_id else None
+public_prefix=f"/audio/books/{args.book_id or book['id']}" if book_mode else '/audio/reading'
 output=args.output_dir if args.output_dir else ROOT/'public'/public_prefix.lstrip('/')
 output.mkdir(parents=True,exist_ok=True)
 metadata=json.loads((ROOT/'docs/audio-samples/qwen-samples.json').read_text())
