@@ -1,0 +1,1402 @@
+{
+  "1": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p001-page-50210d2788be-e23a3341-qwen-dialogue-opus16-814f62d9954c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p001-page-50210d2788be-e23a3341-qwen-dialogue-opus16-1cf67d33fa4b.json",
+    "textHash": "50210d2788be8c1d52715fa0698db946c28f6b974d7daa5b0f580c77dfc23f29",
+    "wordCount": 138,
+    "duration": 48.56
+  },
+  "2": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p002-page-2a12a91cced1-68c344fa-qwen-dialogue-opus16-abac37793ef5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p002-page-2a12a91cced1-68c344fa-qwen-dialogue-opus16-4249ba04ebb8.json",
+    "textHash": "2a12a91cced1a2f52d717f41d06e76bd63cf70e60459ab7ed36a8331e5a3991b",
+    "wordCount": 137,
+    "duration": 51
+  },
+  "3": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p003-page-e4e2737f67b2-620d2154-qwen-dialogue-opus16-53f5d61f1447.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p003-page-e4e2737f67b2-620d2154-qwen-dialogue-opus16-903ad7549af1.json",
+    "textHash": "e4e2737f67b2456138713c60c5c142df4e690c056a4bc3e975466a5ee06872fd",
+    "wordCount": 146,
+    "duration": 56.38004
+  },
+  "4": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p004-page-baca9d823c5f-3eb975f5-qwen-dialogue-opus16-be4a1749b4d2.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p004-page-baca9d823c5f-3eb975f5-qwen-dialogue-opus16-a021f117d101.json",
+    "textHash": "baca9d823c5fde7f7be1d7311ea23c151a7fd85c799bc06a0f342b15838fab4e",
+    "wordCount": 148,
+    "duration": 57.34
+  },
+  "5": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p005-page-dca8d8f89ef9-eb475098-qwen-dialogue-opus16-24a4b3a2708f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p005-page-dca8d8f89ef9-eb475098-qwen-dialogue-opus16-ef4c12a70560.json",
+    "textHash": "dca8d8f89ef9fdc0401f4d3d0705ecfc697c396d9916a3fe9bfec704693ebbaa",
+    "wordCount": 146,
+    "duration": 51.04
+  },
+  "6": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p006-page-aa681265507d-f503017c-qwen-dialogue-opus16-062f535d59cc.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p006-page-aa681265507d-f503017c-qwen-dialogue-opus16-642fc752740f.json",
+    "textHash": "aa681265507d9350f35f1a53ca1f38a4a265cf0639fb1380efad6234fcab5479",
+    "wordCount": 152,
+    "duration": 60.94
+  },
+  "7": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p007-page-4a557df5565d-8e57e852-qwen-dialogue-opus16-33de55dfb86e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p007-page-4a557df5565d-8e57e852-qwen-dialogue-opus16-3b112542e272.json",
+    "textHash": "4a557df5565d02300555dbbf4825421a3591d14178f65f982a26cf3d25019046",
+    "wordCount": 151,
+    "duration": 55.98
+  },
+  "8": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p008-page-97a4b39e7358-035ba3f1-qwen-dialogue-opus16-3d954e102219.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p008-page-97a4b39e7358-035ba3f1-qwen-dialogue-opus16-076eec92a9d8.json",
+    "textHash": "97a4b39e7358d05ef0e13c80077c4e52fad8920441652bb733dc2ec7b0a37869",
+    "wordCount": 156,
+    "duration": 55.9
+  },
+  "9": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p009-page-9b89b7c737bc-932bfdd0-qwen-dialogue-opus16-1ab0aed3c996.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p009-page-9b89b7c737bc-932bfdd0-qwen-dialogue-opus16-82018c65763d.json",
+    "textHash": "9b89b7c737bc46a59327fb358c6e9cb7e1293a6cc560c8f09a57be340fcfc391",
+    "wordCount": 153,
+    "duration": 63.82
+  },
+  "10": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p010-page-f16e3a097d6c-0564d1cf-qwen-dialogue-opus16-391f7c70fcc5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p010-page-f16e3a097d6c-0564d1cf-qwen-dialogue-opus16-617154ad5806.json",
+    "textHash": "f16e3a097d6c1e62980d71370159ae3ca969f5b16af6b2d7221556e37fac8cb3",
+    "wordCount": 152,
+    "duration": 50.46
+  },
+  "11": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p011-page-222114943f0c-bf519469-qwen-dialogue-opus16-c2ec2d768db0.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p011-page-222114943f0c-bf519469-qwen-dialogue-opus16-09f93a41db8c.json",
+    "textHash": "222114943f0c49e2caf3a73e9072c5293861b56886992149ab7b023110c5780a",
+    "wordCount": 153,
+    "duration": 58.7
+  },
+  "12": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p012-page-c0bf12c601c5-e51c0745-qwen-dialogue-opus16-83d8b6e57c76.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p012-page-c0bf12c601c5-e51c0745-qwen-dialogue-opus16-489ccb364405.json",
+    "textHash": "c0bf12c601c541dda51e81148abd01a4a92067a0de0f892640ea91cd86fcbb68",
+    "wordCount": 158,
+    "duration": 56.94
+  },
+  "13": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p013-page-98e769911446-1c79b8c9-qwen-dialogue-opus16-8f5a7bd06fa2.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p013-page-98e769911446-1c79b8c9-qwen-dialogue-opus16-3d9d01c6c389.json",
+    "textHash": "98e769911446af5f5c5ab3d57a7ccf5d301205b8fb7a5dbe2e7679d924a4e2a1",
+    "wordCount": 161,
+    "duration": 59.5
+  },
+  "14": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p014-page-66a540595ac6-a499c15b-qwen-dialogue-opus16-99d4da56d63a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p014-page-66a540595ac6-a499c15b-qwen-dialogue-opus16-cf0d12187e87.json",
+    "textHash": "66a540595ac666210252e18d55ef1c99f7651a225cd6855151871f8bcdfdea8b",
+    "wordCount": 152,
+    "duration": 57.82
+  },
+  "15": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p015-page-5897bc8f5d23-9f11b252-qwen-dialogue-opus16-c36f349d7507.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p015-page-5897bc8f5d23-9f11b252-qwen-dialogue-opus16-36e3e6c1ef0d.json",
+    "textHash": "5897bc8f5d231683166aa4c64b584b5dac992876e07d9a3309db36ce257ce5dc",
+    "wordCount": 156,
+    "duration": 56.38
+  },
+  "16": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p016-page-30cbc6e8b56e-7d814925-qwen-dialogue-opus16-dfea79109ac6.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p016-page-30cbc6e8b56e-7d814925-qwen-dialogue-opus16-abed14cc7134.json",
+    "textHash": "30cbc6e8b56e3244075c106af3a6664a465be449377d2f7043007ec47d3a906d",
+    "wordCount": 159,
+    "duration": 59.26
+  },
+  "17": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p017-page-c264817011bd-5e337b85-qwen-dialogue-opus16-2554669c4419.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p017-page-c264817011bd-5e337b85-qwen-dialogue-opus16-bc8067faa979.json",
+    "textHash": "c264817011bdc54e49d4e03cf1b7601d220c00b8103c361c3e88b8b68e76c75b",
+    "wordCount": 159,
+    "duration": 56.94
+  },
+  "18": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p018-page-d6f907561f89-54aa21fb-qwen-dialogue-opus16-b434804195ad.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p018-page-d6f907561f89-54aa21fb-qwen-dialogue-opus16-a87a0638420e.json",
+    "textHash": "d6f907561f89401903755f82fc1c6d9b6afef064ec4ee4ced6ba5f3f0a1337ac",
+    "wordCount": 162,
+    "duration": 59.74
+  },
+  "19": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p019-page-b97c2710ebfc-2cea1396-qwen-dialogue-opus16-0c3c75746847.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p019-page-b97c2710ebfc-2cea1396-qwen-dialogue-opus16-9f76b3874647.json",
+    "textHash": "b97c2710ebfc56589773a046bf7910c287319263c90907404cc61907b0fc588f",
+    "wordCount": 161,
+    "duration": 59.9
+  },
+  "20": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p020-page-8ed1b76d8766-72adf3ef-qwen-dialogue-opus16-339e7d7d46ab.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p020-page-8ed1b76d8766-72adf3ef-qwen-dialogue-opus16-93dbb6f81512.json",
+    "textHash": "8ed1b76d876682078c7ca5638af5588cef2cd03eaa2861b7dbdd0705b3a99af9",
+    "wordCount": 160,
+    "duration": 58.54
+  },
+  "21": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p021-page-f9e7ada5032b-41c59585-qwen-dialogue-opus16-4bc4cceb719e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p021-page-f9e7ada5032b-41c59585-qwen-dialogue-opus16-668a2826a660.json",
+    "textHash": "f9e7ada5032badd293472aa77b966de49e0b771fbc88f2a799b11e45c0287ee0",
+    "wordCount": 165,
+    "duration": 54.06
+  },
+  "22": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p022-page-5bb18f91740a-3dfb942b-qwen-dialogue-opus16-82775aa11840.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p022-page-5bb18f91740a-3dfb942b-qwen-dialogue-opus16-a87af8a7586e.json",
+    "textHash": "5bb18f91740ab4268a5ebd2190c2ecbf49c7ebd561628fef42b91a24f9e6d031",
+    "wordCount": 163,
+    "duration": 59.85787
+  },
+  "23": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p023-page-832b127fe91e-ec43c4c6-qwen-dialogue-opus16-615e1328d93c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p023-page-832b127fe91e-ec43c4c6-qwen-dialogue-opus16-b447d38dfadd.json",
+    "textHash": "832b127fe91e991fa4dab687d68add392f06e0f44bfe64e8c0fed005b943d619",
+    "wordCount": 171,
+    "duration": 64.3
+  },
+  "24": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p024-page-57ce3831fbf0-836fb5fa-qwen-dialogue-opus16-e5129dd0e249.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p024-page-57ce3831fbf0-836fb5fa-qwen-dialogue-opus16-a61b05729728.json",
+    "textHash": "57ce3831fbf0e50a6a9eba36a24e5c4859417acdf01a1dd10b29ba88a071a985",
+    "wordCount": 168,
+    "duration": 56.14
+  },
+  "25": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p025-page-fce044db095f-39ec97e7-qwen-dialogue-opus16-1b4206b452ce.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p025-page-fce044db095f-39ec97e7-qwen-dialogue-opus16-652e15385662.json",
+    "textHash": "fce044db095f24ab39532711a88278efd1478a9a4df52ac1a9cde15f98550d8a",
+    "wordCount": 163,
+    "duration": 62.2
+  },
+  "26": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p026-page-344549d909e8-6f510e8d-qwen-dialogue-opus16-f01ee96c8a52.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p026-page-344549d909e8-6f510e8d-qwen-dialogue-opus16-b54b9165fd13.json",
+    "textHash": "344549d909e8801e45218846a1e97a3c33669bf9c514b55337af49957a2bc535",
+    "wordCount": 159,
+    "duration": 56.68
+  },
+  "27": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p027-page-c84e3524a561-e857ca20-qwen-dialogue-opus16-182a6614d06f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p027-page-c84e3524a561-e857ca20-qwen-dialogue-opus16-c6c39eac6e60.json",
+    "textHash": "c84e3524a5616d508f6025864be2d298b1eee90bc4175eb93473bd83d429f850",
+    "wordCount": 167,
+    "duration": 57.34
+  },
+  "28": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p028-page-f6c560dd9c4b-52a01cae-qwen-dialogue-opus16-d588f89b5ce8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p028-page-f6c560dd9c4b-52a01cae-qwen-dialogue-opus16-1b71c02967aa.json",
+    "textHash": "f6c560dd9c4b4a0f8e28244a0c5699ac30b73d3ed43528c0a4ccbe6c6cf9e8ef",
+    "wordCount": 170,
+    "duration": 60.06
+  },
+  "29": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p029-page-6d56fc70bedd-9690040c-qwen-dialogue-opus16-1e2ddd516fdb.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p029-page-6d56fc70bedd-9690040c-qwen-dialogue-opus16-5b14ff6fabc7.json",
+    "textHash": "6d56fc70bedd64bbc3ce7cf393d42dce38bc714804f74766922dfde0b9db6089",
+    "wordCount": 165,
+    "duration": 60.22
+  },
+  "30": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p030-page-d20efe593cc0-b960c81f-qwen-dialogue-opus16-6372a38252ca.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p030-page-d20efe593cc0-b960c81f-qwen-dialogue-opus16-e01e04167328.json",
+    "textHash": "d20efe593cc011b39f4a9e5570f713218442c11dfb6b2ca249f47e0ec2f39df4",
+    "wordCount": 168,
+    "duration": 63.9
+  },
+  "31": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p031-page-fd827e5883d8-bbd5da27-qwen-dialogue-opus16-721019eff384.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p031-page-fd827e5883d8-bbd5da27-qwen-dialogue-opus16-1a35a7508956.json",
+    "textHash": "fd827e5883d8e5ef839589b5c3c926b2733e237bdd3f5725c2635b3a650a96f2",
+    "wordCount": 167,
+    "duration": 64.14
+  },
+  "32": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p032-page-f4b411d7366d-c70b4dd3-qwen-dialogue-opus16-537f79696c6d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p032-page-f4b411d7366d-c70b4dd3-qwen-dialogue-opus16-4694a8acf65d.json",
+    "textHash": "f4b411d7366d91de9f9ba3e972cac72cef8f4550f05e78b34b08d917d3c3d523",
+    "wordCount": 169,
+    "duration": 67.26
+  },
+  "33": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p033-page-116fd8d65a71-0f083a77-qwen-dialogue-opus16-f4e82cc25b47.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p033-page-116fd8d65a71-0f083a77-qwen-dialogue-opus16-efb83338a07d.json",
+    "textHash": "116fd8d65a71abe563fc9ba6a8ef30b45dd3826ad1536c252afbe4498194f4ca",
+    "wordCount": 169,
+    "duration": 61.34
+  },
+  "34": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p034-page-d38fe87f8d5a-abae064e-qwen-dialogue-opus16-c92307d62ac5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p034-page-d38fe87f8d5a-abae064e-qwen-dialogue-opus16-63ef1aa81d12.json",
+    "textHash": "d38fe87f8d5a7a1350e4df2360ba1c53bf4b39ab55b35d1ec55498392c0f164c",
+    "wordCount": 170,
+    "duration": 65.26
+  },
+  "35": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p035-page-2239f5e30cb4-78983d16-qwen-dialogue-opus16-a6b18e313ae3.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p035-page-2239f5e30cb4-78983d16-qwen-dialogue-opus16-58157aa8baf3.json",
+    "textHash": "2239f5e30cb42a55583621fb74401f18105e87cb3fbdf1c44032ae2ee930e349",
+    "wordCount": 174,
+    "duration": 65.58
+  },
+  "36": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p036-page-9187f696e232-45efb49d-qwen-dialogue-opus16-ed9ddee13098.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p036-page-9187f696e232-45efb49d-qwen-dialogue-opus16-39033bf98ebb.json",
+    "textHash": "9187f696e23276a5c4df1cd8ff81f95b3c67a75eae3de541563528602bf5c0e0",
+    "wordCount": 167,
+    "duration": 66.3
+  },
+  "37": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p037-page-aac0cbcfc5cd-ba826394-qwen-dialogue-opus16-1aa5219f6183.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p037-page-aac0cbcfc5cd-ba826394-qwen-dialogue-opus16-d50df1549d1f.json",
+    "textHash": "aac0cbcfc5cdd33d79e100b577b67622764ccc2ecffa84464521d94e57cdc994",
+    "wordCount": 171,
+    "duration": 67.98
+  },
+  "38": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p038-page-444cf38f8b10-ef87b614-qwen-dialogue-opus16-0445a79cd1db.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p038-page-444cf38f8b10-ef87b614-qwen-dialogue-opus16-566bd3cfd6e7.json",
+    "textHash": "444cf38f8b1033ef27f318fd6c41928784753ac066231152c8c75acb140076f9",
+    "wordCount": 167,
+    "duration": 60.62
+  },
+  "39": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p039-page-a7e316c63cc8-e454eabb-qwen-dialogue-opus16-199b2d4c3aa1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p039-page-a7e316c63cc8-e454eabb-qwen-dialogue-opus16-72bd137ea796.json",
+    "textHash": "a7e316c63cc83317a9b79d93ce209d4fd736689584b7c2a6476438e43423bc21",
+    "wordCount": 174,
+    "duration": 67.82
+  },
+  "40": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p040-page-09661ee44551-bab8f5bc-qwen-dialogue-opus16-e76726ad4e8a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p040-page-09661ee44551-bab8f5bc-qwen-dialogue-opus16-fe4c6bb67e9b.json",
+    "textHash": "09661ee44551a7ed32c89a940b9511afdef25460d53b09b3ee92d0225ae93ca1",
+    "wordCount": 175,
+    "duration": 59.26
+  },
+  "41": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p041-page-abd2f6ed2c0c-8d0d4be6-qwen-dialogue-opus16-6f197d4d7d03.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p041-page-abd2f6ed2c0c-8d0d4be6-qwen-dialogue-opus16-64c0b429c385.json",
+    "textHash": "abd2f6ed2c0cd99bbe7da6640435915323dfdbaba62737941893ed464dd293ee",
+    "wordCount": 172,
+    "duration": 58.7
+  },
+  "42": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p042-page-f6ed528487c4-80a7912f-qwen-dialogue-opus16-d2e477b4f8b9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p042-page-f6ed528487c4-80a7912f-qwen-dialogue-opus16-f7079849e4ca.json",
+    "textHash": "f6ed528487c4a69772d93f197362af3a5346903cc26f68479bdae708dc4c5e3b",
+    "wordCount": 173,
+    "duration": 62.3
+  },
+  "43": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p043-page-db1fe29be714-3c4adb2c-qwen-dialogue-opus16-18841cdcd088.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p043-page-db1fe29be714-3c4adb2c-qwen-dialogue-opus16-f90ff81de5a6.json",
+    "textHash": "db1fe29be71429afdd7de7abb8ee6cadd264bb507817d9ba8326ced0f5d166bd",
+    "wordCount": 166,
+    "duration": 57.02
+  },
+  "44": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p044-page-c3fa1d33777e-ab5b2f23-qwen-dialogue-opus16-78375d90fec7.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p044-page-c3fa1d33777e-ab5b2f23-qwen-dialogue-opus16-ef20ecdfa43d.json",
+    "textHash": "c3fa1d33777e23520df0a8cfef0d56d7ea8d3469703a38163e8763e6883ec5b8",
+    "wordCount": 174,
+    "duration": 67.82
+  },
+  "45": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p045-page-ec3e17a5c3cb-bbce8d7c-qwen-dialogue-opus16-24f77514f66c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p045-page-ec3e17a5c3cb-bbce8d7c-qwen-dialogue-opus16-699cd6b5392e.json",
+    "textHash": "ec3e17a5c3cb4e025ab57010822dad8837338635c8dd734c811676fa6d13762a",
+    "wordCount": 175,
+    "duration": 66.22
+  },
+  "46": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p046-page-87b0dd7c17af-1a2a36d9-qwen-dialogue-opus16-c4f990d45fc8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p046-page-87b0dd7c17af-1a2a36d9-qwen-dialogue-opus16-9110b6a4ab74.json",
+    "textHash": "87b0dd7c17af8872acaaa029290e3c1bde151d4588fb3f3aba42ea3eb0c062f6",
+    "wordCount": 175,
+    "duration": 64.7
+  },
+  "47": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p047-page-e8ec70f3bc80-05286528-qwen-dialogue-opus16-ada2c8ff0ba4.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p047-page-e8ec70f3bc80-05286528-qwen-dialogue-opus16-5f8911f1ca42.json",
+    "textHash": "e8ec70f3bc8052c94e10de2aabc536d09be103ff3bbf074f67d3a768990b0287",
+    "wordCount": 175,
+    "duration": 68.54
+  },
+  "48": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p048-page-f2461d364c2a-b24036f4-qwen-dialogue-opus16-91c0a26cdce0.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p048-page-f2461d364c2a-b24036f4-qwen-dialogue-opus16-605fb7abad6b.json",
+    "textHash": "f2461d364c2aac8752eda7c098047f1352e652a23c546b84e28478a4a2c4eac2",
+    "wordCount": 175,
+    "duration": 66.68
+  },
+  "49": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p049-page-e760198bb50c-8dda0164-qwen-dialogue-opus16-2083b291d7c8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p049-page-e760198bb50c-8dda0164-qwen-dialogue-opus16-b1a3dea3f746.json",
+    "textHash": "e760198bb50c1bc6c90283d9817a746aba40f4f52fbdb5c43c6b93e3ebfbd8fc",
+    "wordCount": 174,
+    "duration": 67.9
+  },
+  "50": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p050-page-199a5a020c98-e50f17bd-qwen-dialogue-opus16-c340cab44f83.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p050-page-199a5a020c98-e50f17bd-qwen-dialogue-opus16-64a33ce0a632.json",
+    "textHash": "199a5a020c9862c2de43734b819313e01dd85f5e848dcef67abfc5a02808446b",
+    "wordCount": 174,
+    "duration": 65.26
+  },
+  "51": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p051-page-2409ea5adde9-e76bbaf1-qwen-dialogue-opus16-5493e25b6eeb.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p051-page-2409ea5adde9-e76bbaf1-qwen-dialogue-opus16-66d5e30a21b3.json",
+    "textHash": "2409ea5adde9f96a545537e641eadc98b7d3211b7db430aff91a8f5c63e56a66",
+    "wordCount": 162,
+    "duration": 65.9
+  },
+  "52": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p052-page-466b2fea41ff-49d7a706-qwen-dialogue-opus16-ef4ea1c7c88d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p052-page-466b2fea41ff-49d7a706-qwen-dialogue-opus16-915a4f5dcc15.json",
+    "textHash": "466b2fea41ff90ab2e8303f578fc8cd2a706047137219102fe08b863a32b352c",
+    "wordCount": 169,
+    "duration": 61.26
+  },
+  "53": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p053-page-883ce119721b-5610f689-qwen-dialogue-opus16-50c38b9ea0a5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p053-page-883ce119721b-5610f689-qwen-dialogue-opus16-6414b76e620f.json",
+    "textHash": "883ce119721b670836d0ef2ce9dd36530631a3b8a6cc6ab748df7d94def3f8f4",
+    "wordCount": 172,
+    "duration": 66.14
+  },
+  "54": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p054-page-9a7e5ef99b6b-26164029-qwen-dialogue-opus16-3b746650e78b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p054-page-9a7e5ef99b6b-26164029-qwen-dialogue-opus16-7e43fe7875f7.json",
+    "textHash": "9a7e5ef99b6bf3e75fc46c779f94686d434e4edf969d3ef8a41951c423b08266",
+    "wordCount": 169,
+    "duration": 62.86
+  },
+  "55": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p055-page-251e67f350b4-50279c8b-qwen-dialogue-opus16-02bda6bf8bb9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p055-page-251e67f350b4-50279c8b-qwen-dialogue-opus16-32032d427724.json",
+    "textHash": "251e67f350b407b9d3c6c3314b428542dc14e410fd6a926a3b224da2e95c0807",
+    "wordCount": 175,
+    "duration": 67.26
+  },
+  "56": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p056-page-b38bede03e21-070a9e9d-qwen-dialogue-opus16-cd446089b845.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p056-page-b38bede03e21-070a9e9d-qwen-dialogue-opus16-f9b4d9d44ba4.json",
+    "textHash": "b38bede03e21b054f0e09812cae600788c742494a07105c6d27e7ed5476a070b",
+    "wordCount": 174,
+    "duration": 62.22
+  },
+  "57": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p057-page-2dd2d29da170-2eb51582-qwen-dialogue-opus16-874cbde04c0d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p057-page-2dd2d29da170-2eb51582-qwen-dialogue-opus16-3972930c1916.json",
+    "textHash": "2dd2d29da17037e2e5fe641f8eda7a69851f14679b3830fbe01b1c19e01a9017",
+    "wordCount": 172,
+    "duration": 65.1
+  },
+  "58": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p058-page-b2ba0393f3da-50c468a3-qwen-dialogue-opus16-3b1ebdf1c26f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p058-page-b2ba0393f3da-50c468a3-qwen-dialogue-opus16-947d7a701702.json",
+    "textHash": "b2ba0393f3dabcddf277fbba760f16d5a1b735438f14e93812d28f0621a2a38d",
+    "wordCount": 172,
+    "duration": 61.98
+  },
+  "59": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p059-page-791e0a13f13e-d63cd7c2-qwen-dialogue-opus16-becb2bec52c9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p059-page-791e0a13f13e-d63cd7c2-qwen-dialogue-opus16-7dbb75e544f9.json",
+    "textHash": "791e0a13f13e0670d1fb5bf1c6e5ade6169834c447c702e2a970ff1cdd75365e",
+    "wordCount": 173,
+    "duration": 64.86
+  },
+  "60": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p060-page-5e237d04ace0-8ba0a8ac-qwen-dialogue-opus16-fcb991b0dbf7.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p060-page-5e237d04ace0-8ba0a8ac-qwen-dialogue-opus16-58932f57c5c2.json",
+    "textHash": "5e237d04ace00b4d4cee41ed7e5733ce6a13fafe1c1d5fc59aae27bf356fb840",
+    "wordCount": 175,
+    "duration": 66.78
+  },
+  "61": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p061-page-71f94758bc12-3db0cdb4-qwen-dialogue-opus16-67b0c0935ffd.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p061-page-71f94758bc12-3db0cdb4-qwen-dialogue-opus16-a8b4ead12683.json",
+    "textHash": "71f94758bc125c5eb80be0f5ac34b9308f89f9f68ec94acf82d72fe9380da0f6",
+    "wordCount": 175,
+    "duration": 66.46
+  },
+  "62": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p062-page-4a58ffcf9641-d20aef21-qwen-dialogue-opus16-4777ffe68860.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p062-page-4a58ffcf9641-d20aef21-qwen-dialogue-opus16-3b9187bd2131.json",
+    "textHash": "4a58ffcf9641e5cc78e5e37cce81adc03d4499a1bf8570d93cc3f14a5f0d1acd",
+    "wordCount": 172,
+    "duration": 66.46
+  },
+  "63": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p063-page-a558244e735e-b6da0980-qwen-dialogue-opus16-a68c5ed6e75c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p063-page-a558244e735e-b6da0980-qwen-dialogue-opus16-76a8164dbae0.json",
+    "textHash": "a558244e735e7667671aa4cc09a9d905fe7f8f2a5a11c752c0c49c8e5d5df0a3",
+    "wordCount": 175,
+    "duration": 65.74
+  },
+  "64": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p064-page-ffdd2cc4dd0f-3f541a53-qwen-dialogue-opus16-7bd2f543ab11.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p064-page-ffdd2cc4dd0f-3f541a53-qwen-dialogue-opus16-182f47805024.json",
+    "textHash": "ffdd2cc4dd0f69fc7872cb1aea0eeb4319c6019d06ce0992ef5be1dd4870c8a1",
+    "wordCount": 173,
+    "duration": 64.86
+  },
+  "65": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p065-page-7422bf8ca9ca-e7db8783-qwen-dialogue-opus16-62cd91f9fa2f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p065-page-7422bf8ca9ca-e7db8783-qwen-dialogue-opus16-dc487762848a.json",
+    "textHash": "7422bf8ca9ca63a48a293b182a15c4721ab83c41a0c6e1337bf054a4b434a7d4",
+    "wordCount": 173,
+    "duration": 66.46
+  },
+  "66": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p066-page-69234f4b2ef6-3b64ed03-qwen-dialogue-opus16-adcbd16bcb5e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p066-page-69234f4b2ef6-3b64ed03-qwen-dialogue-opus16-acd7fff2cf43.json",
+    "textHash": "69234f4b2ef69f0013bb78e58585b77ed43744104bd745f9f026c89c7f749403",
+    "wordCount": 175,
+    "duration": 69.1
+  },
+  "67": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p067-page-01c481e2bd7f-4c509f38-qwen-dialogue-opus16-c1a7d08e49d9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p067-page-01c481e2bd7f-4c509f38-qwen-dialogue-opus16-be7c6e5bf053.json",
+    "textHash": "01c481e2bd7faf6782bed94456519b7746d0b85a31e7b8c0dc14a4dfb0941428",
+    "wordCount": 168,
+    "duration": 55.58004
+  },
+  "68": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p068-page-205d4935d396-9df08979-qwen-dialogue-opus16-9355acddd869.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p068-page-205d4935d396-9df08979-qwen-dialogue-opus16-e17de80d675f.json",
+    "textHash": "205d4935d396dc2d24ed83b07769e406df7e1ef6c1383afe879395f7c3a42867",
+    "wordCount": 173,
+    "duration": 65.96
+  },
+  "69": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p069-page-44013033250f-4f397df1-qwen-dialogue-opus16-16a94c0058e5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p069-page-44013033250f-4f397df1-qwen-dialogue-opus16-3f970d168951.json",
+    "textHash": "44013033250f49d383c3183a784929ad3e61531eed3d462d92891bceb77eac42",
+    "wordCount": 173,
+    "duration": 68.7
+  },
+  "70": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p070-page-cb011dd47d96-7039cb2a-qwen-dialogue-opus16-c25b8f87142b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p070-page-cb011dd47d96-7039cb2a-qwen-dialogue-opus16-149e5c3ccad2.json",
+    "textHash": "cb011dd47d96397d31d08393532fa9fc9a081ae6bbbf1fa117a9923db5242598",
+    "wordCount": 175,
+    "duration": 68.94
+  },
+  "71": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p071-page-20b73b4ed1b4-b4ac64be-qwen-dialogue-opus16-a1379f8ac926.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p071-page-20b73b4ed1b4-b4ac64be-qwen-dialogue-opus16-3dbe44337fae.json",
+    "textHash": "20b73b4ed1b48ba79e0d5d8b45c2ca8f53c4639c29a5c524c356c9bd3745eea1",
+    "wordCount": 172,
+    "duration": 61.82
+  },
+  "72": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p072-page-eb11d963fc12-ad88a991-qwen-dialogue-opus16-bb06f3c9015d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p072-page-eb11d963fc12-ad88a991-qwen-dialogue-opus16-186626de2d4d.json",
+    "textHash": "eb11d963fc126251dd5cb0880c161aa22f8f18a0c97ce9db7a5b400971529b2a",
+    "wordCount": 169,
+    "duration": 65.66004
+  },
+  "73": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p073-page-6c4daf6fa775-c9cd30f4-qwen-dialogue-opus16-338a6a5bb089.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p073-page-6c4daf6fa775-c9cd30f4-qwen-dialogue-opus16-88502dd144a4.json",
+    "textHash": "6c4daf6fa7759e015ef540db1e3ec43bc302c3c02108a1f68d4209660f850e09",
+    "wordCount": 171,
+    "duration": 66.54
+  },
+  "74": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p074-page-e91c54d1f1fb-ac305c4f-qwen-dialogue-opus16-e9f57248ff24.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p074-page-e91c54d1f1fb-ac305c4f-qwen-dialogue-opus16-e4188dfce63f.json",
+    "textHash": "e91c54d1f1fbd5d93dfbbafe28c1dcc3d3eed0dc36e468df8c09d8eafd5109d8",
+    "wordCount": 175,
+    "duration": 66.38
+  },
+  "75": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p075-page-99b55d9e10d1-77e1449b-qwen-dialogue-opus16-676c3aa17e75.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p075-page-99b55d9e10d1-77e1449b-qwen-dialogue-opus16-417d42465758.json",
+    "textHash": "99b55d9e10d11ad4e90cfc4d0cdd4fe7de012f2fc268102a8ca8b9668ead2b2a",
+    "wordCount": 175,
+    "duration": 68.92
+  },
+  "76": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p076-page-b227cb732200-6de88116-qwen-dialogue-opus16-da48f19fd28d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p076-page-b227cb732200-6de88116-qwen-dialogue-opus16-b63495ef2ddd.json",
+    "textHash": "b227cb732200fad66a984d7ecb8f8807a6f06e0ce6267bb2c408197d299f77c8",
+    "wordCount": 174,
+    "duration": 69.74
+  },
+  "77": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p077-page-6abb5bc2a993-23f0ab37-qwen-dialogue-opus16-b46d8916f490.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p077-page-6abb5bc2a993-23f0ab37-qwen-dialogue-opus16-8a4ec0a831f8.json",
+    "textHash": "6abb5bc2a99363010827e4b849e7adb8fb25917b831a072da97681b9b81069cc",
+    "wordCount": 175,
+    "duration": 69.98
+  },
+  "78": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p078-page-7ff822ebda57-baba71b8-qwen-dialogue-opus16-4aba7bf5ff27.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p078-page-7ff822ebda57-baba71b8-qwen-dialogue-opus16-e9552cb93534.json",
+    "textHash": "7ff822ebda575c879522d263ff451def490e225b62e2926deb429418be999e53",
+    "wordCount": 175,
+    "duration": 66.06
+  },
+  "79": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p079-page-f263f669dd78-e3d4be98-qwen-dialogue-opus16-ae7e3f09f0a4.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p079-page-f263f669dd78-e3d4be98-qwen-dialogue-opus16-59f7cf3df8cf.json",
+    "textHash": "f263f669dd78ea4a6430eabf98b6a6fb8d7dfe80016c0e98c1a4db3ef6959e89",
+    "wordCount": 172,
+    "duration": 61.1
+  },
+  "80": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p080-page-e33a93ca4661-fa000753-qwen-dialogue-opus16-0a307d2142ae.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p080-page-e33a93ca4661-fa000753-qwen-dialogue-opus16-be673003e7cf.json",
+    "textHash": "e33a93ca46619391c81b3d1acba203977846ba7fbd4e21faca34e188c2bcb8ea",
+    "wordCount": 175,
+    "duration": 66.3
+  },
+  "81": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p081-page-5d253582c75f-375e81a5-qwen-dialogue-opus16-e22724be246f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p081-page-5d253582c75f-375e81a5-qwen-dialogue-opus16-a1a7dde40fa0.json",
+    "textHash": "5d253582c75f1b0f8e3d0a5b370ae0562010a5ceb28569ea9550e4c1b03e177a",
+    "wordCount": 166,
+    "duration": 67.74
+  },
+  "82": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p082-page-77d5ed1a46ef-79cf7fbf-qwen-dialogue-opus16-221d5c0a5bb1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p082-page-77d5ed1a46ef-79cf7fbf-qwen-dialogue-opus16-8c5173d63a01.json",
+    "textHash": "77d5ed1a46ef2eae78fadc6fd929d65cc7a9c2eda21513a8d8e56b4556874454",
+    "wordCount": 168,
+    "duration": 65.9
+  },
+  "83": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p083-page-7975b0d3c666-7820a9e6-qwen-dialogue-opus16-6c81a5243929.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p083-page-7975b0d3c666-7820a9e6-qwen-dialogue-opus16-4bce58ed1935.json",
+    "textHash": "7975b0d3c666432a5ea1f097b5fe0e661ac81b53ab07255150c836d9f3e81314",
+    "wordCount": 167,
+    "duration": 67.66
+  },
+  "84": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p084-page-71f03867f629-8b57fdce-qwen-dialogue-opus16-cbd21650cc68.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p084-page-71f03867f629-8b57fdce-qwen-dialogue-opus16-d4434d19962b.json",
+    "textHash": "71f03867f6296046d2b3c33072f6013351533436534a60f2e245883c3a4cd55e",
+    "wordCount": 171,
+    "duration": 65.42
+  },
+  "85": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p085-page-c5ba0414ef6d-6a0a8546-qwen-dialogue-opus16-103e4d2c0d29.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p085-page-c5ba0414ef6d-6a0a8546-qwen-dialogue-opus16-75d39698f8be.json",
+    "textHash": "c5ba0414ef6dd92a6e79690ec4e7b6200d863054ce481c061a87d9bc6d134ccb",
+    "wordCount": 174,
+    "duration": 66.3
+  },
+  "86": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p086-page-7c2ba1bc3e92-abf5b3d3-qwen-dialogue-opus16-c58bebd9e6b6.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p086-page-7c2ba1bc3e92-abf5b3d3-qwen-dialogue-opus16-d0f7d4ac9a97.json",
+    "textHash": "7c2ba1bc3e92ac9cef0d7e3e4ba23c99d037a23d47e184def011a4fe991d99fd",
+    "wordCount": 174,
+    "duration": 61.9
+  },
+  "87": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p087-page-94df22e8648f-1772a672-qwen-dialogue-opus16-664cb6f00536.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p087-page-94df22e8648f-1772a672-qwen-dialogue-opus16-d9d10bcdd809.json",
+    "textHash": "94df22e8648f177ab8b7dbab98d02a1bb7cc0946f73576bd6081b79ea86e4e05",
+    "wordCount": 174,
+    "duration": 62.46
+  },
+  "88": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p088-page-9ef3f9261003-91f081e9-qwen-dialogue-opus16-789e646db323.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p088-page-9ef3f9261003-91f081e9-qwen-dialogue-opus16-8da21291143d.json",
+    "textHash": "9ef3f92610034f643f8fef021a99e8a4a6d43a5ba083ac4c6c69c98c10b19d4a",
+    "wordCount": 170,
+    "duration": 70.06
+  },
+  "89": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p089-page-06c043c8c67d-da015e0d-qwen-dialogue-opus16-e370e727cc2e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p089-page-06c043c8c67d-da015e0d-qwen-dialogue-opus16-1d704abb31d1.json",
+    "textHash": "06c043c8c67d128270dfe8aff1242c8a2e6c93bf00dd75eb59eb4f795e8c2a7f",
+    "wordCount": 175,
+    "duration": 67.02
+  },
+  "90": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p090-page-6e55bc8093e3-f8e57512-qwen-dialogue-opus16-8dcfe50629b5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p090-page-6e55bc8093e3-f8e57512-qwen-dialogue-opus16-f8c08733521b.json",
+    "textHash": "6e55bc8093e31b63bd6dd8cad1432bb7e5357ba00c44def3fac538b2bc9144cc",
+    "wordCount": 171,
+    "duration": 66.38
+  },
+  "91": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p091-page-ea620a1827ff-e4593b1b-qwen-dialogue-opus16-b8b41928e8d5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p091-page-ea620a1827ff-e4593b1b-qwen-dialogue-opus16-6332f714b205.json",
+    "textHash": "ea620a1827ff3d82002922916960fd5aacc810c6e577db5e872f0fe6055b9b54",
+    "wordCount": 175,
+    "duration": 67.58
+  },
+  "92": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p092-page-9ab64cd50304-bfa0d245-qwen-dialogue-opus16-acbb95e78250.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p092-page-9ab64cd50304-bfa0d245-qwen-dialogue-opus16-187d16fe18d3.json",
+    "textHash": "9ab64cd50304bf75dc05c4345bd237bd3a6d9a0e910597403757013850d80657",
+    "wordCount": 167,
+    "duration": 61.42
+  },
+  "93": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p093-page-8c0248be50b9-2ac4d450-qwen-dialogue-opus16-a72edeca7403.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p093-page-8c0248be50b9-2ac4d450-qwen-dialogue-opus16-2dab22fd5965.json",
+    "textHash": "8c0248be50b925a2e9e95534cdfa8243fff435be23157ee8ecbef88795a914fb",
+    "wordCount": 174,
+    "duration": 57.98
+  },
+  "94": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p094-page-1db53b5eadbe-30358c67-qwen-dialogue-opus16-e7746f3d22cf.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p094-page-1db53b5eadbe-30358c67-qwen-dialogue-opus16-8067cbb3646f.json",
+    "textHash": "1db53b5eadbedce2c8a49247c860b0838dedacba551775393d015a5f79e6ad7f",
+    "wordCount": 175,
+    "duration": 63.18
+  },
+  "95": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p095-page-28dd56ff98c7-f46d0aa8-qwen-dialogue-opus16-ec6023eb2b21.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p095-page-28dd56ff98c7-f46d0aa8-qwen-dialogue-opus16-d7df87b5d0c6.json",
+    "textHash": "28dd56ff98c79ae0cca62f7518e53b5409e21f755f1702c0b268f314eeecc565",
+    "wordCount": 167,
+    "duration": 65.98
+  },
+  "96": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p096-page-bc339441375a-92b1b0f3-qwen-dialogue-opus16-576ca806b133.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p096-page-bc339441375a-92b1b0f3-qwen-dialogue-opus16-a8151cd972a9.json",
+    "textHash": "bc339441375a03f839da8c21d9c8f30ac68e75d7705f9e1086ce84e3a175009e",
+    "wordCount": 162,
+    "duration": 69.26004
+  },
+  "97": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p097-page-939bcc35e208-c166e2b1-qwen-dialogue-opus16-272b565eae3f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p097-page-939bcc35e208-c166e2b1-qwen-dialogue-opus16-345782802e90.json",
+    "textHash": "939bcc35e20802dc1b138cb5b5af75d39faa350fc73d0931c62f6aa08694f06d",
+    "wordCount": 174,
+    "duration": 62.47083
+  },
+  "98": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p098-page-fdb48a2940ce-d1f47707-qwen-dialogue-opus16-d029dc520e97.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p098-page-fdb48a2940ce-d1f47707-qwen-dialogue-opus16-32be31929307.json",
+    "textHash": "fdb48a2940cee2d8da4520809915869039f11a1272db62d2270a03a979c7d05a",
+    "wordCount": 170,
+    "duration": 66.22
+  },
+  "99": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p099-page-2a07bef789ff-adf2d95c-qwen-dialogue-opus16-989cbcf7f8c4.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p099-page-2a07bef789ff-adf2d95c-qwen-dialogue-opus16-bd1c1e883c3d.json",
+    "textHash": "2a07bef789ffa27b291291c6b8777a3e9a27acc581e385e16174da27d60b8e56",
+    "wordCount": 174,
+    "duration": 68.3
+  },
+  "100": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p100-page-0a1afcd72bd2-bb4fdb37-qwen-dialogue-opus16-c21b20311db5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p100-page-0a1afcd72bd2-bb4fdb37-qwen-dialogue-opus16-758a98769185.json",
+    "textHash": "0a1afcd72bd2896d8ed11e3054d785d102042b5b4bcbe2db7a7b4ece3314a979",
+    "wordCount": 170,
+    "duration": 65.34
+  },
+  "101": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p101-page-181f9fdb63e5-a4d5b3ef-qwen-dialogue-opus16-cc948c7ea0fc.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p101-page-181f9fdb63e5-a4d5b3ef-qwen-dialogue-opus16-faef618f89dc.json",
+    "textHash": "181f9fdb63e5941daaaaa5f775e591ac0406c925fd3eddebfeede8e7b5d7293c",
+    "wordCount": 172,
+    "duration": 72.68
+  },
+  "102": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p102-page-703b39666ab7-19f99cad-qwen-dialogue-opus16-7ae0cc6cdab8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p102-page-703b39666ab7-19f99cad-qwen-dialogue-opus16-216d4d3a1991.json",
+    "textHash": "703b39666ab741ed8a2d004c9684a90b75c3cd5bea499026f6c39c30cf5e1ba6",
+    "wordCount": 166,
+    "duration": 65.02
+  },
+  "103": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p103-page-60335761ef3c-ca6ef8f7-qwen-dialogue-opus16-476bee685883.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p103-page-60335761ef3c-ca6ef8f7-qwen-dialogue-opus16-36fcecce044b.json",
+    "textHash": "60335761ef3c7c62b6a8d59c17d0921cc9ce8b7c33d8c5f1545d7ed019daa92a",
+    "wordCount": 173,
+    "duration": 66.38
+  },
+  "104": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p104-page-2f502c44ef59-47f120d2-qwen-dialogue-opus16-44e88b2e795b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p104-page-2f502c44ef59-47f120d2-qwen-dialogue-opus16-c4a72a1e3c72.json",
+    "textHash": "2f502c44ef59cfebe7db1680079d5905f259cb3fbf0aed068944de605cc9faf2",
+    "wordCount": 171,
+    "duration": 67.42
+  },
+  "105": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p105-page-2f3a6301d6aa-4f67d596-qwen-dialogue-opus16-c5cd9aad013e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p105-page-2f3a6301d6aa-4f67d596-qwen-dialogue-opus16-2ea52051ebee.json",
+    "textHash": "2f3a6301d6aad8c15d3914d3508bb6087ed4d696126748b11ca2679356833db2",
+    "wordCount": 174,
+    "duration": 70.46
+  },
+  "106": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p106-page-e82fb35fad57-6d49524c-qwen-dialogue-opus16-067d3154ea90.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p106-page-e82fb35fad57-6d49524c-qwen-dialogue-opus16-2d52445a6f5c.json",
+    "textHash": "e82fb35fad5701a814f2a5ff4b0f775f3e712cd9526acefd8664c565fa476e0d",
+    "wordCount": 171,
+    "duration": 68.54
+  },
+  "107": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p107-page-56df61089a2a-8acfb34c-qwen-dialogue-opus16-3fdc98407bf1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p107-page-56df61089a2a-8acfb34c-qwen-dialogue-opus16-0195a140c7a0.json",
+    "textHash": "56df61089a2acab2bdc20e63bfb82832dd7b9eee66d4188a73ee0a33afca077e",
+    "wordCount": 169,
+    "duration": 65.26
+  },
+  "108": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p108-page-63b12fb329d8-38b01f84-qwen-dialogue-opus16-179dcbb0d0d8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p108-page-63b12fb329d8-38b01f84-qwen-dialogue-opus16-eef666002839.json",
+    "textHash": "63b12fb329d841104796a3e81e835c0a3f9eabb21c139c3aa75acd155440ba65",
+    "wordCount": 174,
+    "duration": 61.66
+  },
+  "109": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p109-page-ec38a239f68a-ad13addb-qwen-dialogue-opus16-9a470121d7bb.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p109-page-ec38a239f68a-ad13addb-qwen-dialogue-opus16-9e86f3a56fec.json",
+    "textHash": "ec38a239f68aaf6351ac36e21267d149c97c5179d7dd610b976d318a8c73fa5d",
+    "wordCount": 170,
+    "duration": 62.46
+  },
+  "110": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p110-page-06207ddc177b-8289e7b6-qwen-dialogue-opus16-b5c1f08d1370.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p110-page-06207ddc177b-8289e7b6-qwen-dialogue-opus16-3957145cb4e9.json",
+    "textHash": "06207ddc177bd29cf9a6a85558e30544aaf08ce3c4c11153457a79c02956f056",
+    "wordCount": 168,
+    "duration": 62.06
+  },
+  "111": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p111-page-ed0d7ac412cf-06710a7c-qwen-dialogue-opus16-e900234aa7f5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p111-page-ed0d7ac412cf-06710a7c-qwen-dialogue-opus16-a43619598acb.json",
+    "textHash": "ed0d7ac412cfb089382ec01c7fce5db56ecd14f6ad649639bea52c2e0b7022c0",
+    "wordCount": 174,
+    "duration": 68.54
+  },
+  "112": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p112-page-edfd5df96f8f-be13f15e-qwen-dialogue-opus16-30f9e2b3bce1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p112-page-edfd5df96f8f-be13f15e-qwen-dialogue-opus16-31d4c65d5f92.json",
+    "textHash": "edfd5df96f8f8a2e851c43ac886f4691da676ba8f4e6f7fc5ea05d33bb7739de",
+    "wordCount": 173,
+    "duration": 70.38
+  },
+  "113": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p113-page-841facf68cbb-e1307332-qwen-dialogue-opus16-07f3a45dd042.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p113-page-841facf68cbb-e1307332-qwen-dialogue-opus16-64c7c2ed7b83.json",
+    "textHash": "841facf68cbb603f6bad97cbd6b7eca0f8ad4ffbd19687c3157e8219915aaa4f",
+    "wordCount": 172,
+    "duration": 68.94
+  },
+  "114": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p114-page-1074bf276f62-4118ace4-qwen-dialogue-opus16-6d1c9388ca86.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p114-page-1074bf276f62-4118ace4-qwen-dialogue-opus16-7fb99c262aa2.json",
+    "textHash": "1074bf276f620e14368dca04b85c9f3a8eb3214df86334e6f9582f596a42093a",
+    "wordCount": 173,
+    "duration": 68.06
+  },
+  "115": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p115-page-e329325c4fce-789c3af7-qwen-dialogue-opus16-594b5ceffd4e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p115-page-e329325c4fce-789c3af7-qwen-dialogue-opus16-fcdda8e69a47.json",
+    "textHash": "e329325c4fce36eef8dafe77e6e8c7a3e136db10d7e4e839e25359891a9ce6aa",
+    "wordCount": 166,
+    "duration": 63.18
+  },
+  "116": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p116-page-2c405ce68038-462fbf96-qwen-dialogue-opus16-9355fc39254a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p116-page-2c405ce68038-462fbf96-qwen-dialogue-opus16-39065f7527ed.json",
+    "textHash": "2c405ce68038ca921c352b53bd89b417b794c32dc4cf20ec7c17bf8570131fb2",
+    "wordCount": 175,
+    "duration": 63.9
+  },
+  "117": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p117-page-df21481efc0c-cd5f199b-qwen-dialogue-opus16-88b414c572e2.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p117-page-df21481efc0c-cd5f199b-qwen-dialogue-opus16-a98d0701be9d.json",
+    "textHash": "df21481efc0c70864f055334fce33d299297850058d361449d07379e7a603e9c",
+    "wordCount": 170,
+    "duration": 67.74
+  },
+  "118": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p118-page-d156501b3288-a25f6435-qwen-dialogue-opus16-fc91db89d86a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p118-page-d156501b3288-a25f6435-qwen-dialogue-opus16-63332f0d49b6.json",
+    "textHash": "d156501b3288eb250835b11ae1535accaaa7e04ac335b30ccfd10c4063b5cae0",
+    "wordCount": 175,
+    "duration": 61.98
+  },
+  "119": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p119-page-0dd9f8548ecc-6dc7c8a8-qwen-dialogue-opus16-8d7000fed4a4.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p119-page-0dd9f8548ecc-6dc7c8a8-qwen-dialogue-opus16-a379b59da7c0.json",
+    "textHash": "0dd9f8548ecc261fb66992cf4b5567a1d212e508c01b967c4caadb7569c2de5c",
+    "wordCount": 175,
+    "duration": 65.74
+  },
+  "120": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p120-page-515dc7fdedd1-019ad8db-qwen-dialogue-opus16-403135977477.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p120-page-515dc7fdedd1-019ad8db-qwen-dialogue-opus16-ad9751511a58.json",
+    "textHash": "515dc7fdedd1e3387a458a891bb3c396729f55dab7d593220c6cc54cde77dbf5",
+    "wordCount": 173,
+    "duration": 64.06
+  },
+  "121": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p121-page-20e7c7021a46-15c86fe6-qwen-dialogue-opus16-fd91ba621ce3.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p121-page-20e7c7021a46-15c86fe6-qwen-dialogue-opus16-cc50503e515f.json",
+    "textHash": "20e7c7021a4607813629b6d79307f12974827e948e2c66f781688caac3d59580",
+    "wordCount": 172,
+    "duration": 65.18
+  },
+  "122": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p122-page-44c1ecee3576-99d92494-qwen-dialogue-opus16-f14ddf02bb0d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p122-page-44c1ecee3576-99d92494-qwen-dialogue-opus16-3c8014dd2085.json",
+    "textHash": "44c1ecee35769438b7659d1bca94296376184518c892a82841ff8c164f822dca",
+    "wordCount": 175,
+    "duration": 66.46
+  },
+  "123": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p123-page-9925497648ff-25708a0f-qwen-dialogue-opus16-33e6227b35fd.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p123-page-9925497648ff-25708a0f-qwen-dialogue-opus16-4b2993e07273.json",
+    "textHash": "9925497648ff3287c1f29dbb064ee2bb8bdd58bec4d8af157be12bca84bec788",
+    "wordCount": 175,
+    "duration": 68.54
+  },
+  "124": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p124-page-4d33487acccb-947defdb-qwen-dialogue-opus16-d75cb752354d.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p124-page-4d33487acccb-947defdb-qwen-dialogue-opus16-e0740ae0d85b.json",
+    "textHash": "4d33487acccbc453d91f2f6297a6996953973aad30babcd5cbc7514143530609",
+    "wordCount": 175,
+    "duration": 67.02
+  },
+  "125": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p125-page-6a9cc929e098-c324b12f-qwen-dialogue-opus16-c179c63cd0f2.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p125-page-6a9cc929e098-c324b12f-qwen-dialogue-opus16-599debbcd219.json",
+    "textHash": "6a9cc929e098b91b56de90058bce9afd2e5ceb46b142b4523ae7fa87b62f57b8",
+    "wordCount": 175,
+    "duration": 70.62
+  },
+  "126": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p126-page-fbe6cb3f1f57-8302ca74-qwen-dialogue-opus16-0281c83212dc.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p126-page-fbe6cb3f1f57-8302ca74-qwen-dialogue-opus16-ea48b52ece1a.json",
+    "textHash": "fbe6cb3f1f576f4bc1f8e3f7471caa538ac2b3a43ccfd26f7697822797c2e478",
+    "wordCount": 169,
+    "duration": 75.34971
+  },
+  "127": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p127-page-0ba99f24659b-c31a0c2c-qwen-dialogue-opus16-65a865a01026.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p127-page-0ba99f24659b-c31a0c2c-qwen-dialogue-opus16-8f63ac300cab.json",
+    "textHash": "0ba99f24659b09af5749bbdce38b56538899afe6c64fc678d2b21dae449eb4e3",
+    "wordCount": 174,
+    "duration": 66.14004
+  },
+  "128": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p128-page-c36c71258de0-09084b9a-qwen-dialogue-opus16-bb475f872f2b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p128-page-c36c71258de0-09084b9a-qwen-dialogue-opus16-4e77fd06fdbf.json",
+    "textHash": "c36c71258de084e5459d01bf02de3eab8ac7516dcfcc1e07f357990b5afd2a37",
+    "wordCount": 167,
+    "duration": 64.38
+  },
+  "129": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p129-page-a6a7f8408c91-d8ae0a79-qwen-dialogue-opus16-ccea7fa6ba06.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p129-page-a6a7f8408c91-d8ae0a79-qwen-dialogue-opus16-fd1d7a641917.json",
+    "textHash": "a6a7f8408c917012430345b47d84f0d2d1dbd81396b6c00405fc0399ca173ae7",
+    "wordCount": 174,
+    "duration": 65.98004
+  },
+  "130": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p130-page-3d225ca9d697-1ec2a0f1-qwen-dialogue-opus16-68ed4f4cec78.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p130-page-3d225ca9d697-1ec2a0f1-qwen-dialogue-opus16-a7842300ba08.json",
+    "textHash": "3d225ca9d6976f25ab9c64d34d4958dc51fcd04e486ca502e1fa87fb8fc9f921",
+    "wordCount": 173,
+    "duration": 65.1
+  },
+  "131": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p131-page-f84887c9144c-55e860c5-qwen-dialogue-opus16-db35aa3eee50.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p131-page-f84887c9144c-55e860c5-qwen-dialogue-opus16-60e7e36e6446.json",
+    "textHash": "f84887c9144c9c50239734e08e5cb4068a6c5caa4aaddf1995ae01a00c6b2670",
+    "wordCount": 171,
+    "duration": 71.82
+  },
+  "132": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p132-page-d9b59ca4bcd5-863d37fe-qwen-dialogue-opus16-c4c3d36f3fde.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p132-page-d9b59ca4bcd5-863d37fe-qwen-dialogue-opus16-2329653a7b14.json",
+    "textHash": "d9b59ca4bcd526f1599185c5cdfbd667a99853970ba661c89c077fb2de7eff84",
+    "wordCount": 167,
+    "duration": 67.82
+  },
+  "133": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p133-page-51002944a908-77d280a7-qwen-dialogue-opus16-14b3e8608f29.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p133-page-51002944a908-77d280a7-qwen-dialogue-opus16-a385544d7498.json",
+    "textHash": "51002944a908122b00eb56f10c66d6a64967a56e475aeb799209eb45ad0e2c6c",
+    "wordCount": 172,
+    "duration": 73.42
+  },
+  "134": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p134-page-a95e94add943-265a75ef-qwen-dialogue-opus16-e583ec94a1af.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p134-page-a95e94add943-265a75ef-qwen-dialogue-opus16-eab07d938b91.json",
+    "textHash": "a95e94add9434d7af43b6ca8c3bfdf2c2cf2ac00c418e4610fb55cc9eff5f813",
+    "wordCount": 173,
+    "duration": 70.22
+  },
+  "135": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p135-page-c49de9a7939d-8e6e4a1b-qwen-dialogue-opus16-53614c96dc2f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p135-page-c49de9a7939d-8e6e4a1b-qwen-dialogue-opus16-e069f65f1c78.json",
+    "textHash": "c49de9a7939d465b0050c566b4bf458c19e24232720010d7f70f3492e4c2ec20",
+    "wordCount": 170,
+    "duration": 67.98
+  },
+  "136": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p136-page-b7ad774b47dd-5c600a8d-qwen-dialogue-opus16-5508466bb8b8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p136-page-b7ad774b47dd-5c600a8d-qwen-dialogue-opus16-c66640b26549.json",
+    "textHash": "b7ad774b47dd27f9f3c6f40986e2101490a3fb8ac405a3746fbcdc5965b8c02b",
+    "wordCount": 169,
+    "duration": 63.02
+  },
+  "137": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p137-page-3c0c23856ad6-37f3eade-qwen-dialogue-opus16-b93d4447bba8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p137-page-3c0c23856ad6-37f3eade-qwen-dialogue-opus16-c41490d84679.json",
+    "textHash": "3c0c23856ad61c7e06c3d80135b95be0fcabb558ecf5fc788100e4c76afe4d16",
+    "wordCount": 171,
+    "duration": 69.58
+  },
+  "138": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p138-page-1bca35e67f8a-dbaf8eed-qwen-dialogue-opus16-336b5b88bbef.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p138-page-1bca35e67f8a-dbaf8eed-qwen-dialogue-opus16-9ac6910cf06a.json",
+    "textHash": "1bca35e67f8a8edfb9d9c9b102937cd523993c4b7d0e41c5f9a157c857a92fb0",
+    "wordCount": 173,
+    "duration": 60.55
+  },
+  "139": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p139-page-94b02d43d174-44483065-qwen-dialogue-opus16-091512663d64.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p139-page-94b02d43d174-44483065-qwen-dialogue-opus16-7d49202d004f.json",
+    "textHash": "94b02d43d1746d831469f07f1f1660fa238d786355b0d22306f3a09a513e1bd3",
+    "wordCount": 170,
+    "duration": 60.78
+  },
+  "140": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p140-page-bc540a5437c1-7323fd06-qwen-dialogue-opus16-f57952eec95f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p140-page-bc540a5437c1-7323fd06-qwen-dialogue-opus16-c20a710f7372.json",
+    "textHash": "bc540a5437c113553cb4acf0682fca1d8a2accb200c68575ae71a46377f65f22",
+    "wordCount": 169,
+    "duration": 70.46
+  },
+  "141": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p141-page-2f3b61545188-a7657b5e-qwen-dialogue-opus16-2f69e132a3a5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p141-page-2f3b61545188-a7657b5e-qwen-dialogue-opus16-cd3f1a31b07d.json",
+    "textHash": "2f3b61545188f2eeb1ba34893d4d621def7cfa4071c9f7ca19ca6870a5c4fc18",
+    "wordCount": 172,
+    "duration": 68.7
+  },
+  "142": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p142-page-b676dfa519da-d998b652-qwen-dialogue-opus16-8564715bf8e4.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p142-page-b676dfa519da-d998b652-qwen-dialogue-opus16-88c032d8dccb.json",
+    "textHash": "b676dfa519da018bb77938a5d24369a364133ccf5f2d2b6de4f52c6ea06202d6",
+    "wordCount": 175,
+    "duration": 65.02
+  },
+  "143": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p143-page-cb79ab4052a9-7feffa6c-qwen-dialogue-opus16-5ae24a50aec1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p143-page-cb79ab4052a9-7feffa6c-qwen-dialogue-opus16-73e71a0a05d0.json",
+    "textHash": "cb79ab4052a91634117bd53377ab8a92d24f2f9427b708e08151dfcb8c40129d",
+    "wordCount": 174,
+    "duration": 60.86
+  },
+  "144": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p144-page-685cc63f04e9-abc73875-qwen-dialogue-opus16-7e41826d1313.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p144-page-685cc63f04e9-abc73875-qwen-dialogue-opus16-5f8dd3b6201a.json",
+    "textHash": "685cc63f04e9b3924bb0540dce4c8c51c05784e19036366088c0523f3b8d2e91",
+    "wordCount": 167,
+    "duration": 62.62
+  },
+  "145": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p145-page-3b313a5f5ae8-97d9e82a-qwen-dialogue-opus16-81bd81e5c1e6.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p145-page-3b313a5f5ae8-97d9e82a-qwen-dialogue-opus16-5fdb19c37530.json",
+    "textHash": "3b313a5f5ae8ef51041af10ea1267cd1efbeffd331d3e85b72096e745480039b",
+    "wordCount": 170,
+    "duration": 62.78
+  },
+  "146": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p146-page-4c1571a85b78-572ce0e8-qwen-dialogue-opus16-93a460766dd5.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p146-page-4c1571a85b78-572ce0e8-qwen-dialogue-opus16-48990284232d.json",
+    "textHash": "4c1571a85b78b58a1b55beb32f46c0ccfeb4effd791c66fb00e0229d5eba70a3",
+    "wordCount": 172,
+    "duration": 65.58
+  },
+  "147": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p147-page-993311e74e30-5edd1402-qwen-dialogue-opus16-51fa31455f4b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p147-page-993311e74e30-5edd1402-qwen-dialogue-opus16-40792fd5bbbc.json",
+    "textHash": "993311e74e30a96e3a96f917228d1744e4e6bd4954a879a3e689b4efd9527bd8",
+    "wordCount": 175,
+    "duration": 70.46
+  },
+  "148": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p148-page-42f888df6c39-a668e8f0-qwen-dialogue-opus16-934074ec2fe3.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p148-page-42f888df6c39-a668e8f0-qwen-dialogue-opus16-a1a674160dae.json",
+    "textHash": "42f888df6c39c1e25a7731174ecf54663355e20581290cd55da9e433f187dd80",
+    "wordCount": 171,
+    "duration": 64.78
+  },
+  "149": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p149-page-c243ed4b7d22-5dcdc84d-qwen-dialogue-opus16-7978d5ef60be.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p149-page-c243ed4b7d22-5dcdc84d-qwen-dialogue-opus16-afdeff9be0e0.json",
+    "textHash": "c243ed4b7d22501c32ddbbe326e717c47f01955b496f6a9030735852bff82705",
+    "wordCount": 169,
+    "duration": 62.62
+  },
+  "150": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p150-page-2a5b4615850b-118b8ad1-qwen-dialogue-opus16-bd4ab6561920.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p150-page-2a5b4615850b-118b8ad1-qwen-dialogue-opus16-b27c18991d52.json",
+    "textHash": "2a5b4615850bdc6e4288e823087582f4269a9bc472b00d7348aa929190e6b749",
+    "wordCount": 174,
+    "duration": 72.06
+  },
+  "151": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p151-page-7b0e7eabee16-77075ce3-qwen-dialogue-opus16-c256a7a64918.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p151-page-7b0e7eabee16-77075ce3-qwen-dialogue-opus16-ec4d23c05862.json",
+    "textHash": "7b0e7eabee1657c33c00187f71c9b5d8a883256c6d9b3db717220822f211ed6b",
+    "wordCount": 175,
+    "duration": 64.62
+  },
+  "152": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p152-page-1f8a72c0603a-abbecbdb-qwen-dialogue-opus16-e4bc5726dee0.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p152-page-1f8a72c0603a-abbecbdb-qwen-dialogue-opus16-b023735a1ba8.json",
+    "textHash": "1f8a72c0603a2a86d3a9fc0623528020929666472998f698b155b7f76df31d07",
+    "wordCount": 169,
+    "duration": 62.7
+  },
+  "153": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p153-page-b6abb75a038d-4a9afeb4-qwen-dialogue-opus16-1988de2eebf7.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p153-page-b6abb75a038d-4a9afeb4-qwen-dialogue-opus16-f6d8a2a8db49.json",
+    "textHash": "b6abb75a038d3a3fe7d6976c85d21fbe388690e41150abbec0e67a36908e3a12",
+    "wordCount": 168,
+    "duration": 69.98
+  },
+  "154": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p154-page-d926bc6e96b6-2e1160e2-qwen-dialogue-opus16-b15db09ecbd9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p154-page-d926bc6e96b6-2e1160e2-qwen-dialogue-opus16-17f246ca917e.json",
+    "textHash": "d926bc6e96b6ebc3fbb9557597d42fa330f40185ddb071c636865997ab6b1c0a",
+    "wordCount": 172,
+    "duration": 65.82
+  },
+  "155": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p155-page-a2df1a850650-74b0d52b-qwen-dialogue-opus16-2ead78d97b6e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p155-page-a2df1a850650-74b0d52b-qwen-dialogue-opus16-3883659b9342.json",
+    "textHash": "a2df1a850650a88042863c2be8890d0f96287cc06fabd071edc2ce716afae65e",
+    "wordCount": 171,
+    "duration": 66.22
+  },
+  "156": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p156-page-fef0af0094a6-e756c1f1-qwen-dialogue-opus16-938e79d5b122.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p156-page-fef0af0094a6-e756c1f1-qwen-dialogue-opus16-a17f6af63b82.json",
+    "textHash": "fef0af0094a6d2bb9d44bb3809ea65bf1786aee4b7edad294e962a67fc3a6c2c",
+    "wordCount": 169,
+    "duration": 69.16
+  },
+  "157": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p157-page-5381eb460fff-bf1ade38-qwen-dialogue-opus16-61f10677eab3.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p157-page-5381eb460fff-bf1ade38-qwen-dialogue-opus16-ec9f28a5623a.json",
+    "textHash": "5381eb460fffa1d601a7bb1dd22145f765029e70aacba78366a550b35321eeaf",
+    "wordCount": 167,
+    "duration": 69.66
+  },
+  "158": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p158-page-cdd534f48d64-5cf7a1a1-qwen-dialogue-opus16-1a896b666254.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p158-page-cdd534f48d64-5cf7a1a1-qwen-dialogue-opus16-9e1bb5b733b5.json",
+    "textHash": "cdd534f48d642cd016a12d9e154fe027022c6d6c89275764b4f5396d40e89735",
+    "wordCount": 172,
+    "duration": 66.86
+  },
+  "159": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p159-page-e216a5c8cdfa-e8027e16-qwen-dialogue-opus16-649fd96d0507.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p159-page-e216a5c8cdfa-e8027e16-qwen-dialogue-opus16-694fccb2659d.json",
+    "textHash": "e216a5c8cdfa89ca2463e2e38fcb813ff9e8bd76d105ac2a2d4cd0a3b9c378b1",
+    "wordCount": 169,
+    "duration": 70.22
+  },
+  "160": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p160-page-7afa3390fb4e-a26c9719-qwen-dialogue-opus16-ea10154d3f22.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p160-page-7afa3390fb4e-a26c9719-qwen-dialogue-opus16-eeffea292b5c.json",
+    "textHash": "7afa3390fb4e5f623c6071fabaadf8d4b4deb5f860fcbc5acdfa117c93e20cf7",
+    "wordCount": 175,
+    "duration": 68.62
+  },
+  "161": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p161-page-a326e7c5609e-df1534c7-qwen-dialogue-opus16-712e23fd01d1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p161-page-a326e7c5609e-df1534c7-qwen-dialogue-opus16-a95e4e2229e3.json",
+    "textHash": "a326e7c5609e3f3fda7810103ba8e1b4351c67b16417573c43d13b0408bbf6d8",
+    "wordCount": 170,
+    "duration": 68.7
+  },
+  "162": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p162-page-d68768ad637c-2d62ef7d-qwen-dialogue-opus16-4bb2b7ffa906.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p162-page-d68768ad637c-2d62ef7d-qwen-dialogue-opus16-b58bcd9ff275.json",
+    "textHash": "d68768ad637c0733e40158c178daf990ce2b74bc350bf280dae83d230b5f8c16",
+    "wordCount": 172,
+    "duration": 70.22
+  },
+  "163": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p163-page-fd17d70ab82b-121ba73a-qwen-dialogue-opus16-fb83fbf516be.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p163-page-fd17d70ab82b-121ba73a-qwen-dialogue-opus16-078c85de9e45.json",
+    "textHash": "fd17d70ab82b11610c26f1a7dca90bff614c618761ccc5f29d3cdd2c233ddb56",
+    "wordCount": 175,
+    "duration": 69.18
+  },
+  "164": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p164-page-68ca4c8234a6-d66adf17-qwen-dialogue-opus16-a5591abf72dc.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p164-page-68ca4c8234a6-d66adf17-qwen-dialogue-opus16-79f3210af32f.json",
+    "textHash": "68ca4c8234a685ac3ed2df6f6ce78e955c1d2d28424114754887287e6012c68e",
+    "wordCount": 172,
+    "duration": 67.18
+  },
+  "165": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p165-page-798644b1145c-f97cf77a-qwen-dialogue-opus16-9073a7a4b76a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p165-page-798644b1145c-f97cf77a-qwen-dialogue-opus16-d396d0c9697f.json",
+    "textHash": "798644b1145cceb4137400423a80106aac11464b86c52aaff7c225636449c893",
+    "wordCount": 171,
+    "duration": 63.1
+  },
+  "166": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p166-page-6e9bc16ff451-57bedd79-qwen-dialogue-opus16-bc308bd63e1b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p166-page-6e9bc16ff451-57bedd79-qwen-dialogue-opus16-4a1c3085c045.json",
+    "textHash": "6e9bc16ff45105f9b93be689999873f24bed6478d472b39faeb4b02636fad8cf",
+    "wordCount": 175,
+    "duration": 67.72
+  },
+  "167": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p167-page-b7ecee34afa2-24dabeb1-qwen-dialogue-opus16-637f4c4ba28f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p167-page-b7ecee34afa2-24dabeb1-qwen-dialogue-opus16-06376e078178.json",
+    "textHash": "b7ecee34afa25bffb8821b13de231fd6329ada1b319d2a742412500caf021e67",
+    "wordCount": 172,
+    "duration": 70.54
+  },
+  "168": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p168-page-c7d75b2d6d2c-2dc81a6d-qwen-dialogue-opus16-0d3f6cd923e1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p168-page-c7d75b2d6d2c-2dc81a6d-qwen-dialogue-opus16-d2116325ce3f.json",
+    "textHash": "c7d75b2d6d2c7cd2d877d6c6839df3e877c62cd531b14ab324fd5c9d5b1b4a8d",
+    "wordCount": 174,
+    "duration": 67.18
+  },
+  "169": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p169-page-54a2dc0115b2-220b137f-qwen-dialogue-opus16-ef487164b7fe.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p169-page-54a2dc0115b2-220b137f-qwen-dialogue-opus16-7abf2f903207.json",
+    "textHash": "54a2dc0115b254b0b30af0e4f34333708b0fd701e2780588aab3770edca0f96d",
+    "wordCount": 175,
+    "duration": 70.14
+  },
+  "170": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p170-page-5a040faa4092-639d80a2-qwen-dialogue-opus16-5ae53bff5b26.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p170-page-5a040faa4092-639d80a2-qwen-dialogue-opus16-9fe7e638fcfa.json",
+    "textHash": "5a040faa4092fa0a427fdcf2b7fe9cc114dc023637f713b6e1a13081881ffcf9",
+    "wordCount": 170,
+    "duration": 63.02
+  },
+  "171": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p171-page-5e742f300c17-df862763-qwen-dialogue-opus16-b4b10c2dee53.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p171-page-5e742f300c17-df862763-qwen-dialogue-opus16-3bfc795fc5ff.json",
+    "textHash": "5e742f300c170e2e42054a4ea667e409cf977e04d4954a169059a5c23edbec78",
+    "wordCount": 174,
+    "duration": 65.5
+  },
+  "172": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p172-page-6b7d45618249-52aec6df-qwen-dialogue-opus16-9ff565369c21.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p172-page-6b7d45618249-52aec6df-qwen-dialogue-opus16-d5cfecc8e94d.json",
+    "textHash": "6b7d45618249b4e7f643e69684f7bb815c5c5736515b08a44a6f02f566f333a8",
+    "wordCount": 166,
+    "duration": 61.18
+  },
+  "173": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p173-page-546132b12ba4-a7eb45aa-qwen-dialogue-opus16-660bbda7fed9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p173-page-546132b12ba4-a7eb45aa-qwen-dialogue-opus16-e5a81192fd05.json",
+    "textHash": "546132b12ba42d6f169ad55e52388eab40ee46b7dc1cb92e71351f12eeadfb2e",
+    "wordCount": 175,
+    "duration": 68.86
+  },
+  "174": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p174-page-1a3637243e5b-7955c4d2-qwen-dialogue-opus16-b7a2d6648e7b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p174-page-1a3637243e5b-7955c4d2-qwen-dialogue-opus16-55de48bebca9.json",
+    "textHash": "1a3637243e5b63366dece99e735224925be0785dbf0633a4539b310909191566",
+    "wordCount": 170,
+    "duration": 68.62
+  },
+  "175": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p175-page-32315186c8b8-5a9b8ab9-qwen-dialogue-opus16-1baf281af70a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p175-page-32315186c8b8-5a9b8ab9-qwen-dialogue-opus16-382ac5dde48e.json",
+    "textHash": "32315186c8b88719cabc2e708c1b1b52d3bf38caa4d96ca18e2d9cedf159520d",
+    "wordCount": 174,
+    "duration": 67.5
+  },
+  "176": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p176-page-5d06930e3bc4-dc76ff8e-qwen-dialogue-opus16-7929b2b493c1.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p176-page-5d06930e3bc4-dc76ff8e-qwen-dialogue-opus16-5e76520484cd.json",
+    "textHash": "5d06930e3bc4747dae180a8275222ba574b89ea61e547d7b48712e3fced14f5b",
+    "wordCount": 175,
+    "duration": 64.54
+  },
+  "177": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p177-page-e9704afd6a04-64cfc7e1-qwen-dialogue-opus16-1eafadfe58a3.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p177-page-e9704afd6a04-64cfc7e1-qwen-dialogue-opus16-d84e770b838f.json",
+    "textHash": "e9704afd6a048758b00596a975be2cafbc329934794f0edd178798b6a320f684",
+    "wordCount": 174,
+    "duration": 66.86
+  },
+  "178": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p178-page-a10556f65f9f-beacd297-qwen-dialogue-opus16-66e4e9886677.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p178-page-a10556f65f9f-beacd297-qwen-dialogue-opus16-21e9ada4a8a5.json",
+    "textHash": "a10556f65f9fc96f051bbe298149dbc92dc56f5b6fb1a90235b62d6a54def447",
+    "wordCount": 171,
+    "duration": 66.94
+  },
+  "179": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p179-page-e9cdf527d454-ba8b238d-qwen-dialogue-opus16-465638912373.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p179-page-e9cdf527d454-ba8b238d-qwen-dialogue-opus16-bdcb8874ab22.json",
+    "textHash": "e9cdf527d454a77d3b735b6e2ff790279efe2c46551095431be6af135b49d25f",
+    "wordCount": 174,
+    "duration": 69.42
+  },
+  "180": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p180-page-a5a500030344-ba263622-qwen-dialogue-opus16-0313f416d9cd.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p180-page-a5a500030344-ba263622-qwen-dialogue-opus16-7bc7e1f547be.json",
+    "textHash": "a5a5000303440f25d6c674456712d50143b16406398d8b9495b8c3b667acd1df",
+    "wordCount": 175,
+    "duration": 65.48
+  },
+  "181": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p181-page-b822293f7132-7ba78af1-qwen-dialogue-opus16-f71d5c22b8d8.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p181-page-b822293f7132-7ba78af1-qwen-dialogue-opus16-65716bf5737d.json",
+    "textHash": "b822293f71328864feac90fbaf9d4ba4b011faed9c1ea27cbba92a3954933d9a",
+    "wordCount": 174,
+    "duration": 61.18
+  },
+  "182": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p182-page-f1fe436737c2-13a12385-qwen-dialogue-opus16-f70d6a24e196.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p182-page-f1fe436737c2-13a12385-qwen-dialogue-opus16-8e7865164c4f.json",
+    "textHash": "f1fe436737c20297060542ee8959f3fab194f9faf6348113aa1bedf981fbf565",
+    "wordCount": 170,
+    "duration": 67.34
+  },
+  "183": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p183-page-aad4db74866e-e9a8657c-qwen-dialogue-opus16-a40cddf5a8df.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p183-page-aad4db74866e-e9a8657c-qwen-dialogue-opus16-cf4eda376616.json",
+    "textHash": "aad4db74866e3fc14624e5b3390dc3362380b506d67bdf13ebea63c077ea5aaf",
+    "wordCount": 170,
+    "duration": 71.98
+  },
+  "184": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p184-page-167449580cf1-70b36329-qwen-dialogue-opus16-e66a330dedb7.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p184-page-167449580cf1-70b36329-qwen-dialogue-opus16-379c0de3e303.json",
+    "textHash": "167449580cf16fd7c494ef3a2a54581d8a0a4ec9a86a66e2c0b51a6818fa022f",
+    "wordCount": 169,
+    "duration": 66.46
+  },
+  "185": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p185-page-923c994f8b6e-8fdb4b1e-qwen-dialogue-opus16-812040875558.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p185-page-923c994f8b6e-8fdb4b1e-qwen-dialogue-opus16-b609dc559fab.json",
+    "textHash": "923c994f8b6e29db0e3efe14b5c17a7012ef84ee0123a12842321a99e7d414e9",
+    "wordCount": 170,
+    "duration": 63.96
+  },
+  "186": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p186-page-edb5d9b7d468-47d64573-qwen-dialogue-opus16-cf8981f18cce.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p186-page-edb5d9b7d468-47d64573-qwen-dialogue-opus16-b3e7c7943306.json",
+    "textHash": "edb5d9b7d4689a18c64d2b285033019dcfc30d5e8327432d90dbbbc4ac18da8c",
+    "wordCount": 175,
+    "duration": 65.66
+  },
+  "187": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p187-page-9d661129c62a-91155a9f-qwen-dialogue-opus16-dc38e110ea2f.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p187-page-9d661129c62a-91155a9f-qwen-dialogue-opus16-c0a1c8b174f5.json",
+    "textHash": "9d661129c62a435c181ecf657e7a5573b08788270ed5101752fd0c947ae1b9c7",
+    "wordCount": 170,
+    "duration": 71.66
+  },
+  "188": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p188-page-ab532aa4cec8-fb6f8cbc-qwen-dialogue-opus16-4ca99a1c33f9.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p188-page-ab532aa4cec8-fb6f8cbc-qwen-dialogue-opus16-2034a2fe1304.json",
+    "textHash": "ab532aa4cec87817302a5bf6b84cf9247e33641fc2c258123911867d56ebbe0f",
+    "wordCount": 175,
+    "duration": 71.42
+  },
+  "189": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p189-page-e30c004a14fc-8ab3a698-qwen-dialogue-opus16-dde1ca16d802.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p189-page-e30c004a14fc-8ab3a698-qwen-dialogue-opus16-3fff37c4e17d.json",
+    "textHash": "e30c004a14fc16f76ad2158d4e53a1894287cd024d266776060d6a513756cacc",
+    "wordCount": 171,
+    "duration": 63.5
+  },
+  "190": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p190-page-ded73fa3b125-bea09016-qwen-dialogue-opus16-bcf000cc7c7b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p190-page-ded73fa3b125-bea09016-qwen-dialogue-opus16-88244cbf35b1.json",
+    "textHash": "ded73fa3b125ba7f507f04972eb8f4ffc845f0c6f32061a28a3d34e41723db50",
+    "wordCount": 174,
+    "duration": 71.82
+  },
+  "191": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p191-page-c0735bb4450a-88820606-qwen-dialogue-opus16-b84d7b77948b.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p191-page-c0735bb4450a-88820606-qwen-dialogue-opus16-b3e40fc634a0.json",
+    "textHash": "c0735bb4450a38309774adb036ae4512c98cf5b8e72ce6d6db478f02305380fc",
+    "wordCount": 165,
+    "duration": 62.22004
+  },
+  "192": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p192-page-76fd912b277d-07314811-qwen-dialogue-opus16-8718bb05267a.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p192-page-76fd912b277d-07314811-qwen-dialogue-opus16-41628f247a64.json",
+    "textHash": "76fd912b277de1e776d384f740630530ee131f88c0d168d1da6dc72a735fff04",
+    "wordCount": 166,
+    "duration": 60.7
+  },
+  "193": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p193-page-7e3c395a883d-6c25098e-qwen-dialogue-opus16-f605a1e5a418.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p193-page-7e3c395a883d-6c25098e-qwen-dialogue-opus16-8e017cf50d15.json",
+    "textHash": "7e3c395a883d0f45bd97d7252723500bee52e719fee34a05e3f7a18e0af98a5e",
+    "wordCount": 169,
+    "duration": 63.18
+  },
+  "194": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p194-page-be92e950178f-5d81cf94-qwen-dialogue-opus16-b259cc60420c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p194-page-be92e950178f-5d81cf94-qwen-dialogue-opus16-ace6e24d538f.json",
+    "textHash": "be92e950178f38156e3dc29ab3c32d74dfee0ead0a30a6b7db8ba509b343daf1",
+    "wordCount": 167,
+    "duration": 61.34
+  },
+  "195": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p195-page-9df2756cd542-6cd3c6ad-qwen-dialogue-opus16-438ff79ae42e.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p195-page-9df2756cd542-6cd3c6ad-qwen-dialogue-opus16-8600e1f9da5f.json",
+    "textHash": "9df2756cd542dfe980875f696b319fbfb14ae5135d0b601673343e8105af97d9",
+    "wordCount": 173,
+    "duration": 61.66004
+  },
+  "196": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p196-page-acc7bdd2a45e-911c17b2-qwen-dialogue-opus16-9d7bdd7f44e2.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p196-page-acc7bdd2a45e-911c17b2-qwen-dialogue-opus16-fef9195d672b.json",
+    "textHash": "acc7bdd2a45ef02c624a326b13b1d6c3f72151f11481466a93052cd2e42b34ba",
+    "wordCount": 172,
+    "duration": 65.74
+  },
+  "197": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p197-page-0863f330da2d-a9865d17-qwen-dialogue-opus16-6ea8ba2c1feb.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p197-page-0863f330da2d-a9865d17-qwen-dialogue-opus16-5d640f832545.json",
+    "textHash": "0863f330da2d7921085c184e2f244301c42460dc9cd1293a9a7a70157066e661",
+    "wordCount": 173,
+    "duration": 67.34004
+  },
+  "198": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p198-page-4d814a198bf1-1da73392-qwen-dialogue-opus16-2e6c0abdd85c.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p198-page-4d814a198bf1-1da73392-qwen-dialogue-opus16-e21c26c1c5b9.json",
+    "textHash": "4d814a198bf1ab2853a18c813386316265fd60900531dc88b62144d374e08f00",
+    "wordCount": 163,
+    "duration": 66.94
+  },
+  "199": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p199-page-0e8fd407e9ea-1e6a67f0-qwen-dialogue-opus16-60b3c5d0aea7.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p199-page-0e8fd407e9ea-1e6a67f0-qwen-dialogue-opus16-d5f1928d320e.json",
+    "textHash": "0e8fd407e9ea3f595e749add654edb6d629b1e5feceb0c6ae1d04261ba5a0865",
+    "wordCount": 166,
+    "duration": 63.5
+  },
+  "200": {
+    "src": "/media/books/zwischen-hoersaal-und-arbeitswelt/p200-page-6a858f00d195-4a1da2ef-qwen-dialogue-opus16-21f30b48f186.webm",
+    "timingSrc": "/media/books/zwischen-hoersaal-und-arbeitswelt/p200-page-6a858f00d195-4a1da2ef-qwen-dialogue-opus16-22908f88bc50.json",
+    "textHash": "6a858f00d1959782bf5bfababb66f6d238c9a15f5ea02652ac6c9ad29acd2003",
+    "wordCount": 175,
+    "duration": 69.34
+  }
+}
