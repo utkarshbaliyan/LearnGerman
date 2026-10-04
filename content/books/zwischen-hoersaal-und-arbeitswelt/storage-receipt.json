@@ -1,0 +1,1606 @@
+{
+  "stage": "all-objects-verified",
+  "origin": "https://leselaut-german.professor-ut7.chatgpt.site",
+  "objects": {
+    "books/zwischen-hoersaal-und-arbeitswelt/p001-page-50210d2788be-e23a3341-qwen-dialogue-opus16-814f62d9954c.webm": {
+      "bytes": 112941,
+      "sha256": "814f62d9954cdab2b07f28dd475855f3e82c93cddeeda4dab68f502d15d34d11"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p002-page-2a12a91cced1-68c344fa-qwen-dialogue-opus16-abac37793ef5.webm": {
+      "bytes": 115386,
+      "sha256": "abac37793ef5db64d57a7e00e6336f3f1e5cc94621aba21671810114052efde1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p001-page-50210d2788be-e23a3341-qwen-dialogue-opus16-1cf67d33fa4b.json": {
+      "bytes": 874,
+      "sha256": "1cf67d33fa4b4eba6428f0afd822e5c1072dc3beb3d139cb5bee358ce198dadb"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p002-page-2a12a91cced1-68c344fa-qwen-dialogue-opus16-4249ba04ebb8.json": {
+      "bytes": 868,
+      "sha256": "4249ba04ebb8fa73b59387625af64c1a0a092ae14cad9075cede65818e42f6c4"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p003-page-e4e2737f67b2-620d2154-qwen-dialogue-opus16-903ad7549af1.json": {
+      "bytes": 1009,
+      "sha256": "903ad7549af169ac146d849b327c4d1ad1a25084a225b9bec21fc0988268d4d7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p004-page-baca9d823c5f-3eb975f5-qwen-dialogue-opus16-a021f117d101.json": {
+      "bytes": 945,
+      "sha256": "a021f117d1017aa11791da55244450b71f4c2c4b9557c89f94d3e76518af00b8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p003-page-e4e2737f67b2-620d2154-qwen-dialogue-opus16-53f5d61f1447.webm": {
+      "bytes": 129829,
+      "sha256": "53f5d61f1447b0e45054cdd02c7a64e18113c0a85d48a6d0cfb368f476227ab9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p004-page-baca9d823c5f-3eb975f5-qwen-dialogue-opus16-be4a1749b4d2.webm": {
+      "bytes": 131285,
+      "sha256": "be4a1749b4d26d88dbcbac2744efe439f26f6ae8eb685e547d3e93d9fcd85c53"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p005-page-dca8d8f89ef9-eb475098-qwen-dialogue-opus16-24a4b3a2708f.webm": {
+      "bytes": 117214,
+      "sha256": "24a4b3a2708feaffecf90e530b6f3ea34d10dbbe3fca2351cebe8828fa64c6b8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p005-page-dca8d8f89ef9-eb475098-qwen-dialogue-opus16-ef4c12a70560.json": {
+      "bytes": 924,
+      "sha256": "ef4c12a705603f07506781125216d20f2ef41c060c038ef83595a7b4a9aef15f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p006-page-aa681265507d-f503017c-qwen-dialogue-opus16-642fc752740f.json": {
+      "bytes": 968,
+      "sha256": "642fc752740f28a2968087cf04146a53ef0ef1abab9557599503ddfa44e8bd32"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p006-page-aa681265507d-f503017c-qwen-dialogue-opus16-062f535d59cc.webm": {
+      "bytes": 139518,
+      "sha256": "062f535d59cc3783a758d6d48b3891f3daf5779f98e3793b54a4683b556bedd6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p007-page-4a557df5565d-8e57e852-qwen-dialogue-opus16-33de55dfb86e.webm": {
+      "bytes": 128482,
+      "sha256": "33de55dfb86e92c57649f3d2936d323d1edd6161bc39bf4fcabcc8df8c6945fe"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p007-page-4a557df5565d-8e57e852-qwen-dialogue-opus16-3b112542e272.json": {
+      "bytes": 966,
+      "sha256": "3b112542e2726937ddf803d57311df95291879a08ad35a5ee5907a0c12e669cf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p008-page-97a4b39e7358-035ba3f1-qwen-dialogue-opus16-3d954e102219.webm": {
+      "bytes": 127691,
+      "sha256": "3d954e1022191f0d0c7c71bbc7cdd86a6203e6ed6f28b38f051b413480c22cc8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p008-page-97a4b39e7358-035ba3f1-qwen-dialogue-opus16-076eec92a9d8.json": {
+      "bytes": 983,
+      "sha256": "076eec92a9d80dbba8e0dfe7ba510c68b3ba0d59f53c40de197896d7fb96c4fb"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p009-page-9b89b7c737bc-932bfdd0-qwen-dialogue-opus16-1ab0aed3c996.webm": {
+      "bytes": 146272,
+      "sha256": "1ab0aed3c996d50f42a758e3cbfe075580ab07cd4624ea6e709d7014c2f08f45"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p009-page-9b89b7c737bc-932bfdd0-qwen-dialogue-opus16-82018c65763d.json": {
+      "bytes": 971,
+      "sha256": "82018c65763d9658ee0138c9f83b5bb7d8a4f0922210499ead4738c3928ea410"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p010-page-f16e3a097d6c-0564d1cf-qwen-dialogue-opus16-617154ad5806.json": {
+      "bytes": 957,
+      "sha256": "617154ad5806709fdf2533ecd6a248571248877cf60933401b208d0b29557657"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p010-page-f16e3a097d6c-0564d1cf-qwen-dialogue-opus16-391f7c70fcc5.webm": {
+      "bytes": 117001,
+      "sha256": "391f7c70fcc5edd5a3c34a138379ffa34eca69c03663b3920e81138da9436b16"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p011-page-222114943f0c-bf519469-qwen-dialogue-opus16-09f93a41db8c.json": {
+      "bytes": 966,
+      "sha256": "09f93a41db8cfce9d2355fd5885e7db59cc0e6cd302a627072f3d663ce701572"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p011-page-222114943f0c-bf519469-qwen-dialogue-opus16-c2ec2d768db0.webm": {
+      "bytes": 133871,
+      "sha256": "c2ec2d768db0977678713f9d7a4953162ba67c68c6f5d8c6456b085a346397cf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p012-page-c0bf12c601c5-e51c0745-qwen-dialogue-opus16-489ccb364405.json": {
+      "bytes": 998,
+      "sha256": "489ccb36440573804f5a15e5aa3b05a14052f24ac58a5b97e06af25342e1b89b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p012-page-c0bf12c601c5-e51c0745-qwen-dialogue-opus16-83d8b6e57c76.webm": {
+      "bytes": 130924,
+      "sha256": "83d8b6e57c76bd610326c4826cde6c1d40295bb3d41d7c0c4af6b11c93180d1a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p013-page-98e769911446-1c79b8c9-qwen-dialogue-opus16-8f5a7bd06fa2.webm": {
+      "bytes": 136547,
+      "sha256": "8f5a7bd06fa2eeb3c62e885034380daa75d29f93940d7ae64da527ebd7638f44"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p014-page-66a540595ac6-a499c15b-qwen-dialogue-opus16-99d4da56d63a.webm": {
+      "bytes": 132377,
+      "sha256": "99d4da56d63a632be041565e84d85fd1a61614437524815ce866ff48838c75f0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p013-page-98e769911446-1c79b8c9-qwen-dialogue-opus16-3d9d01c6c389.json": {
+      "bytes": 1020,
+      "sha256": "3d9d01c6c38905dea72d7cca018136eddc3d46663da6ec2dce2401ae7ca4bee8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p014-page-66a540595ac6-a499c15b-qwen-dialogue-opus16-cf0d12187e87.json": {
+      "bytes": 958,
+      "sha256": "cf0d12187e87576f8a29ce190953cb9636c70f3ae159b00ed881f0b882b676ed"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p015-page-5897bc8f5d23-9f11b252-qwen-dialogue-opus16-c36f349d7507.webm": {
+      "bytes": 129134,
+      "sha256": "c36f349d75074800d0c20eda7af4323d295d428743c69bb380396aa72fb6be14"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p016-page-30cbc6e8b56e-7d814925-qwen-dialogue-opus16-dfea79109ac6.webm": {
+      "bytes": 136111,
+      "sha256": "dfea79109ac647218de53a78779302ce7e744f38c185e960ef18b694f79a2477"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p015-page-5897bc8f5d23-9f11b252-qwen-dialogue-opus16-36e3e6c1ef0d.json": {
+      "bytes": 982,
+      "sha256": "36e3e6c1ef0d3553efc0efff15ac6f245eec375e45fcd5bec105f33d8c32aab1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p016-page-30cbc6e8b56e-7d814925-qwen-dialogue-opus16-abed14cc7134.json": {
+      "bytes": 1009,
+      "sha256": "abed14cc713429ca38353259039ce796884afd3a9dff4b5a5611e676110783ab"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p017-page-c264817011bd-5e337b85-qwen-dialogue-opus16-bc8067faa979.json": {
+      "bytes": 1008,
+      "sha256": "bc8067faa9799f8b6b8e93c156e093dcd8be5cd383ff60afaccdbb5ce8b09aa8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p017-page-c264817011bd-5e337b85-qwen-dialogue-opus16-2554669c4419.webm": {
+      "bytes": 129219,
+      "sha256": "2554669c4419394023b6d4880c7c5a739218acd009247ef024296c876a38b023"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p018-page-d6f907561f89-54aa21fb-qwen-dialogue-opus16-a87a0638420e.json": {
+      "bytes": 1014,
+      "sha256": "a87a0638420ee5489dc8679d903ef6eb1509b95954f37d6c5d976851fc86b2da"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p018-page-d6f907561f89-54aa21fb-qwen-dialogue-opus16-b434804195ad.webm": {
+      "bytes": 134239,
+      "sha256": "b434804195adaf24182541fc6da4d47e813889e69d288658f75b30d0435a6f1c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p019-page-b97c2710ebfc-2cea1396-qwen-dialogue-opus16-0c3c75746847.webm": {
+      "bytes": 135168,
+      "sha256": "0c3c75746847756710d665128f1d5e549ed8a607b15bce1178ec0144524ddad3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p019-page-b97c2710ebfc-2cea1396-qwen-dialogue-opus16-9f76b3874647.json": {
+      "bytes": 1009,
+      "sha256": "9f76b387464779c6347091ccbc2ffeb8b152cb8f53ef6f2540355c779ce36d09"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p020-page-8ed1b76d8766-72adf3ef-qwen-dialogue-opus16-93dbb6f81512.json": {
+      "bytes": 997,
+      "sha256": "93dbb6f81512e6b0c779472d6116fac1e2561e8af426a1818cd036468a1795c9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p020-page-8ed1b76d8766-72adf3ef-qwen-dialogue-opus16-339e7d7d46ab.webm": {
+      "bytes": 133121,
+      "sha256": "339e7d7d46ab5f8d46e7b8b7f87509f8ec4337d03c7fb5ec45a0d7e5d82ba380"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p021-page-f9e7ada5032b-41c59585-qwen-dialogue-opus16-4bc4cceb719e.webm": {
+      "bytes": 123117,
+      "sha256": "4bc4cceb719e3f6fb20213ed63367da0dc702fe53c0eeb968599969f137c3fe8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p021-page-f9e7ada5032b-41c59585-qwen-dialogue-opus16-668a2826a660.json": {
+      "bytes": 1033,
+      "sha256": "668a2826a660a8a08712ac49a51c0eeee6589a6088c595109967509ee7564d27"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p022-page-5bb18f91740a-3dfb942b-qwen-dialogue-opus16-a87af8a7586e.json": {
+      "bytes": 1029,
+      "sha256": "a87af8a7586e7d948cbc47adc2cd3835ab0b95e17012d8f145fc3d6b5857c17d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p022-page-5bb18f91740a-3dfb942b-qwen-dialogue-opus16-82775aa11840.webm": {
+      "bytes": 135567,
+      "sha256": "82775aa11840ee7b2eec25be2e93bd70e122954846d6a5b593990dd8cda3abe9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p023-page-832b127fe91e-ec43c4c6-qwen-dialogue-opus16-615e1328d93c.webm": {
+      "bytes": 145302,
+      "sha256": "615e1328d93cad07310e959d5353a1af8ec164a687fa15a7a5a68872d9549497"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p023-page-832b127fe91e-ec43c4c6-qwen-dialogue-opus16-b447d38dfadd.json": {
+      "bytes": 1070,
+      "sha256": "b447d38dfaddd39d7cb8bce9fe8a07f5f20bff5e6138ac349f13d43aae09b34c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p024-page-57ce3831fbf0-836fb5fa-qwen-dialogue-opus16-a61b05729728.json": {
+      "bytes": 1054,
+      "sha256": "a61b057297282c8a04c3e3fda126e66c74b3794fa09eb8cd32ddb56f8186e76d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p024-page-57ce3831fbf0-836fb5fa-qwen-dialogue-opus16-e5129dd0e249.webm": {
+      "bytes": 125489,
+      "sha256": "e5129dd0e24995faceaa8dcd8c7d093ffd664b80611bd73ef4c1e45b194e10d9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p025-page-fce044db095f-39ec97e7-qwen-dialogue-opus16-1b4206b452ce.webm": {
+      "bytes": 139084,
+      "sha256": "1b4206b452ce8fadcad8a91944babd80e17b0567449782ce9edd2070d3fa83eb"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p025-page-fce044db095f-39ec97e7-qwen-dialogue-opus16-652e15385662.json": {
+      "bytes": 1025,
+      "sha256": "652e15385662bcd0211bd8e1b51544c548f78641b32d1da2d02246b75c5e710a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p026-page-344549d909e8-6f510e8d-qwen-dialogue-opus16-f01ee96c8a52.webm": {
+      "bytes": 128064,
+      "sha256": "f01ee96c8a52eafcf3752fb6cbfde2831023813ae326e885be2b211866f63e54"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p026-page-344549d909e8-6f510e8d-qwen-dialogue-opus16-b54b9165fd13.json": {
+      "bytes": 1003,
+      "sha256": "b54b9165fd13f299e66eb344b40f0e3910b7da836a6f9e8ea6699beed2668f2a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p027-page-c84e3524a561-e857ca20-qwen-dialogue-opus16-c6c39eac6e60.json": {
+      "bytes": 1047,
+      "sha256": "c6c39eac6e60261335c7d6a31740b0ac6199ff6d8bf57bf1bfdb4d796dd6938e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p027-page-c84e3524a561-e857ca20-qwen-dialogue-opus16-182a6614d06f.webm": {
+      "bytes": 132644,
+      "sha256": "182a6614d06f997266051b7ae349154ef22e5eb38e97fbade47f7551be4a0af5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p028-page-f6c560dd9c4b-52a01cae-qwen-dialogue-opus16-1b71c02967aa.json": {
+      "bytes": 1066,
+      "sha256": "1b71c02967aa5058b6b4f4605ac1f2a1db23777379f0ebc05078c6a154c87971"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p028-page-f6c560dd9c4b-52a01cae-qwen-dialogue-opus16-d588f89b5ce8.webm": {
+      "bytes": 137288,
+      "sha256": "d588f89b5ce8270a69b28af6ec365a4bdd0bb9e126bf5efffb4e43ff5c4978f2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p029-page-6d56fc70bedd-9690040c-qwen-dialogue-opus16-5b14ff6fabc7.json": {
+      "bytes": 1036,
+      "sha256": "5b14ff6fabc70cbe0d420dc2cb6ad900f674a747449fd7d0c6fcb6f2deb62509"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p029-page-6d56fc70bedd-9690040c-qwen-dialogue-opus16-1e2ddd516fdb.webm": {
+      "bytes": 138097,
+      "sha256": "1e2ddd516fdb7689f29a24b0de50fbcfc955e7cc2e2f60161ac8a3085389bcbc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p030-page-d20efe593cc0-b960c81f-qwen-dialogue-opus16-e01e04167328.json": {
+      "bytes": 1047,
+      "sha256": "e01e041673288ca1df5567b78a0dc0df905958673598a28e3376cdf96e771d3d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p030-page-d20efe593cc0-b960c81f-qwen-dialogue-opus16-6372a38252ca.webm": {
+      "bytes": 146105,
+      "sha256": "6372a38252ca67c8903fa25f7330b9451c6a3ddd0ae1f63a4176bc2f544d42c2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p031-page-fd827e5883d8-bbd5da27-qwen-dialogue-opus16-1a35a7508956.json": {
+      "bytes": 1046,
+      "sha256": "1a35a7508956ea1bfad76a7f4f9f67129ba17f3a6f00291e684ea6d70ca7ca4c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p031-page-fd827e5883d8-bbd5da27-qwen-dialogue-opus16-721019eff384.webm": {
+      "bytes": 146051,
+      "sha256": "721019eff384591cf88eb26b23292004a6e4d3e6fe7bfebdf686c5b9a84cbe6a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p032-page-f4b411d7366d-c70b4dd3-qwen-dialogue-opus16-4694a8acf65d.json": {
+      "bytes": 1060,
+      "sha256": "4694a8acf65d4584366ac039085870451e29fa6abaa94d630d257950133a087c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p032-page-f4b411d7366d-c70b4dd3-qwen-dialogue-opus16-537f79696c6d.webm": {
+      "bytes": 152313,
+      "sha256": "537f79696c6dc0b94371ad4ddf1aa54c2e727a8fad99ad9b57aab6fdccc091a3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p033-page-116fd8d65a71-0f083a77-qwen-dialogue-opus16-f4e82cc25b47.webm": {
+      "bytes": 141492,
+      "sha256": "f4e82cc25b470bf7b8f0b9fd11150e2eb16faefa9215884fdb7c9d530e1d7032"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p034-page-d38fe87f8d5a-abae064e-qwen-dialogue-opus16-c92307d62ac5.webm": {
+      "bytes": 149718,
+      "sha256": "c92307d62ac5970212059a2ff9f8c3c16938319951e0a77c6d3e6c0c716bba77"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p033-page-116fd8d65a71-0f083a77-qwen-dialogue-opus16-efb83338a07d.json": {
+      "bytes": 1056,
+      "sha256": "efb83338a07daa9cafe4879f67f50b59fd1fcf208bcaebdeb4ac82b7d6867556"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p034-page-d38fe87f8d5a-abae064e-qwen-dialogue-opus16-63ef1aa81d12.json": {
+      "bytes": 1076,
+      "sha256": "63ef1aa81d128c35eceb2d9894a7f67d312b4038950cf93527e80bab2e89ee15"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p035-page-2239f5e30cb4-78983d16-qwen-dialogue-opus16-58157aa8baf3.json": {
+      "bytes": 1087,
+      "sha256": "58157aa8baf38b6ae83915b70e62ffbcf86de541f400f17d9489de2ef8aa6f98"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p035-page-2239f5e30cb4-78983d16-qwen-dialogue-opus16-a6b18e313ae3.webm": {
+      "bytes": 150974,
+      "sha256": "a6b18e313ae3478781ef73a1f8c0b2d6f54a8ed00002da87f9af585d2c4985f8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p036-page-9187f696e232-45efb49d-qwen-dialogue-opus16-ed9ddee13098.webm": {
+      "bytes": 149714,
+      "sha256": "ed9ddee1309846ce900de3933fcb270caa55d5ba370d7dd55c5f5b42adfa923b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p036-page-9187f696e232-45efb49d-qwen-dialogue-opus16-39033bf98ebb.json": {
+      "bytes": 1060,
+      "sha256": "39033bf98ebbbdaa6445e51df1f2bec0423d3574a68616671a4b99b6a5a1cae0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p037-page-aac0cbcfc5cd-ba826394-qwen-dialogue-opus16-1aa5219f6183.webm": {
+      "bytes": 155579,
+      "sha256": "1aa5219f6183f2f59817c16aef69a988b67495eb7da7ea5ab823edbe308df660"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p037-page-aac0cbcfc5cd-ba826394-qwen-dialogue-opus16-d50df1549d1f.json": {
+      "bytes": 1069,
+      "sha256": "d50df1549d1f8bed9e19cfded70a6a9fc0f8c19f0b12f6a3870a20d85b1406c2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p038-page-444cf38f8b10-ef87b614-qwen-dialogue-opus16-566bd3cfd6e7.json": {
+      "bytes": 1053,
+      "sha256": "566bd3cfd6e749e2c05e28f4b71d8605f64ef2b94b3f7359f6e304f429d7732a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p038-page-444cf38f8b10-ef87b614-qwen-dialogue-opus16-0445a79cd1db.webm": {
+      "bytes": 139007,
+      "sha256": "0445a79cd1dbc36ee4ca96e219820c114f08f64f6045369978ff27fa7dc4434c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p039-page-a7e316c63cc8-e454eabb-qwen-dialogue-opus16-199b2d4c3aa1.webm": {
+      "bytes": 153702,
+      "sha256": "199b2d4c3aa1b378a86d017e3815f01a5935d1b8a0014282bad3adb33638cf3f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p040-page-09661ee44551-bab8f5bc-qwen-dialogue-opus16-e76726ad4e8a.webm": {
+      "bytes": 135122,
+      "sha256": "e76726ad4e8a9a3938e508bf688f95141769d9bc7e1319e335e3bdc7c9c32334"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p039-page-a7e316c63cc8-e454eabb-qwen-dialogue-opus16-72bd137ea796.json": {
+      "bytes": 1090,
+      "sha256": "72bd137ea7965c27a37bca7b931323f36219c1151014ef63de996d2653602939"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p040-page-09661ee44551-bab8f5bc-qwen-dialogue-opus16-fe4c6bb67e9b.json": {
+      "bytes": 1083,
+      "sha256": "fe4c6bb67e9b593a5d308c1233794b07574474b41f89ee03dadc84d06aa2e24c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p041-page-abd2f6ed2c0c-8d0d4be6-qwen-dialogue-opus16-6f197d4d7d03.webm": {
+      "bytes": 133367,
+      "sha256": "6f197d4d7d03ecd82bf2c1f32658a4e90d8d36b27a59e3d2f60a738342914b80"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p042-page-f6ed528487c4-80a7912f-qwen-dialogue-opus16-d2e477b4f8b9.webm": {
+      "bytes": 142307,
+      "sha256": "d2e477b4f8b98ad6b334d75c726d2bde84285c86fef40beb43988e3e17fc538c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p041-page-abd2f6ed2c0c-8d0d4be6-qwen-dialogue-opus16-64c0b429c385.json": {
+      "bytes": 1063,
+      "sha256": "64c0b429c385b491d69b88b636289eda2dd31e7dfda85ede1c0bbd0f5c0af42e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p042-page-f6ed528487c4-80a7912f-qwen-dialogue-opus16-f7079849e4ca.json": {
+      "bytes": 1076,
+      "sha256": "f7079849e4caba516b7b06608802aea7e0809bf1d61e06c8f741221d64c05b06"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p043-page-db1fe29be714-3c4adb2c-qwen-dialogue-opus16-18841cdcd088.webm": {
+      "bytes": 130887,
+      "sha256": "18841cdcd088e476a7a536ee4e5d758545df3d934fbd6a7a11136563649ab2bf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p043-page-db1fe29be714-3c4adb2c-qwen-dialogue-opus16-f90ff81de5a6.json": {
+      "bytes": 1046,
+      "sha256": "f90ff81de5a6d1438ffb787e4616f87a16b71426671ca12019e11577bb232458"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p044-page-c3fa1d33777e-ab5b2f23-qwen-dialogue-opus16-78375d90fec7.webm": {
+      "bytes": 152449,
+      "sha256": "78375d90fec788411834951334f05d8f98c5225852cdf7272acfa12de4ffa6ef"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p045-page-ec3e17a5c3cb-bbce8d7c-qwen-dialogue-opus16-699cd6b5392e.json": {
+      "bytes": 1103,
+      "sha256": "699cd6b5392ec10c45485ee99b84fe41291bdbf5b7b69ef3cc1713949764352f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p044-page-c3fa1d33777e-ab5b2f23-qwen-dialogue-opus16-ef20ecdfa43d.json": {
+      "bytes": 1085,
+      "sha256": "ef20ecdfa43d44cef739b7156a89ca525c636cfa198a063d12a290ead920b2ee"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p045-page-ec3e17a5c3cb-bbce8d7c-qwen-dialogue-opus16-24f77514f66c.webm": {
+      "bytes": 149590,
+      "sha256": "24f77514f66c470ad7b642209aa73b9b001ce7fd50dddd626264b114600999ea"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p046-page-87b0dd7c17af-1a2a36d9-qwen-dialogue-opus16-c4f990d45fc8.webm": {
+      "bytes": 147547,
+      "sha256": "c4f990d45fc80852e7bd81e3c7c5dfa925e1943efb42247b47ae5a3d0e6e43d0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p046-page-87b0dd7c17af-1a2a36d9-qwen-dialogue-opus16-9110b6a4ab74.json": {
+      "bytes": 1103,
+      "sha256": "9110b6a4ab742c5636325bd3f298690e50f960e51f45a76bd1779f147f12bb5a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p047-page-e8ec70f3bc80-05286528-qwen-dialogue-opus16-ada2c8ff0ba4.webm": {
+      "bytes": 157041,
+      "sha256": "ada2c8ff0ba44d6ea455e36ae55bae0fd0ed6094bd00495c302719421726aa40"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p047-page-e8ec70f3bc80-05286528-qwen-dialogue-opus16-5f8911f1ca42.json": {
+      "bytes": 1101,
+      "sha256": "5f8911f1ca42735fedbc895dd2b153c5f431d7e11002e25dbdc37c11b0ea54df"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p048-page-f2461d364c2a-b24036f4-qwen-dialogue-opus16-605fb7abad6b.json": {
+      "bytes": 1093,
+      "sha256": "605fb7abad6b6d34162880cfb8c046ccd91cbbb19edd2d14b53e0b5e34de37c1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p049-page-e760198bb50c-8dda0164-qwen-dialogue-opus16-2083b291d7c8.webm": {
+      "bytes": 152938,
+      "sha256": "2083b291d7c89caec8b05f19f16c5badc51871146a61e460b1e0634614d747db"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p048-page-f2461d364c2a-b24036f4-qwen-dialogue-opus16-91c0a26cdce0.webm": {
+      "bytes": 152169,
+      "sha256": "91c0a26cdce0ffb45faf428d39e633802d1b56dce2d33f51feb18ebe9ddd9c64"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p049-page-e760198bb50c-8dda0164-qwen-dialogue-opus16-b1a3dea3f746.json": {
+      "bytes": 1105,
+      "sha256": "b1a3dea3f746abd836e2b351a25494d36bbb1c73bd7d07092b8164a8b4e24c22"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p050-page-199a5a020c98-e50f17bd-qwen-dialogue-opus16-64a33ce0a632.json": {
+      "bytes": 1094,
+      "sha256": "64a33ce0a6320efa7e7b7e4d2ef2acab051a9f66d6b8844b73d2e46d5e7e45ff"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p051-page-2409ea5adde9-e76bbaf1-qwen-dialogue-opus16-5493e25b6eeb.webm": {
+      "bytes": 149694,
+      "sha256": "5493e25b6eeb943037d049f7e4418dfeaca720c80ae67aa34738b0d41e3cbc39"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p050-page-199a5a020c98-e50f17bd-qwen-dialogue-opus16-c340cab44f83.webm": {
+      "bytes": 149520,
+      "sha256": "c340cab44f83e42989d6ca0faaf60317b22299647f807b52dddfb64545d5718a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p051-page-2409ea5adde9-e76bbaf1-qwen-dialogue-opus16-66d5e30a21b3.json": {
+      "bytes": 1017,
+      "sha256": "66d5e30a21b32f193d9317e37d768407f7852f3b5a4e10702ddb928e9d9ad97d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p052-page-466b2fea41ff-49d7a706-qwen-dialogue-opus16-915a4f5dcc15.json": {
+      "bytes": 1057,
+      "sha256": "915a4f5dcc15f2648eca740ab8b8dcf3042f85990e7282130ffa6b64a5621b40"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p053-page-883ce119721b-5610f689-qwen-dialogue-opus16-50c38b9ea0a5.webm": {
+      "bytes": 152627,
+      "sha256": "50c38b9ea0a5356b29a9b03eca0d88f906ca03d2df2ae0766a2e357a791cb895"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p053-page-883ce119721b-5610f689-qwen-dialogue-opus16-6414b76e620f.json": {
+      "bytes": 1083,
+      "sha256": "6414b76e620f7aa347c27ecca7791001d2444d96854782ef7af266fab05699ee"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p052-page-466b2fea41ff-49d7a706-qwen-dialogue-opus16-ef4ea1c7c88d.webm": {
+      "bytes": 141052,
+      "sha256": "ef4ea1c7c88d6e3d3d4192cb5ce1a54aaf6c009265065609f0004c9744ff2aa6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p055-page-251e67f350b4-50279c8b-qwen-dialogue-opus16-02bda6bf8bb9.webm": {
+      "bytes": 151417,
+      "sha256": "02bda6bf8bb9e449987eb0f12c4abdb5e1fd0ddac64ca04a1dae41f0599832d9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p055-page-251e67f350b4-50279c8b-qwen-dialogue-opus16-32032d427724.json": {
+      "bytes": 1095,
+      "sha256": "32032d42772404ad74bd8d72347ad0ca0ea811abae0df0bdde8c3248ff3bcca2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p054-page-9a7e5ef99b6b-26164029-qwen-dialogue-opus16-7e43fe7875f7.json": {
+      "bytes": 1064,
+      "sha256": "7e43fe7875f7b1c292082ecd8068fa46c6de6a33e8125af6cf54aa4bb84c62c6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p054-page-9a7e5ef99b6b-26164029-qwen-dialogue-opus16-3b746650e78b.webm": {
+      "bytes": 144135,
+      "sha256": "3b746650e78b58c02ba29a00b6afadf7155e1802c405fe6acbb0ee5630e29e56"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p057-page-2dd2d29da170-2eb51582-qwen-dialogue-opus16-3972930c1916.json": {
+      "bytes": 1088,
+      "sha256": "3972930c191648539b0bc9ee600bd2f61686c5b65a8e64fe69b7b7e454789d72"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p056-page-b38bede03e21-070a9e9d-qwen-dialogue-opus16-f9b4d9d44ba4.json": {
+      "bytes": 1094,
+      "sha256": "f9b4d9d44ba4d6c912c4fbba292246fe3b597bcd3521b5d8ab9ba5b716deeb29"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p056-page-b38bede03e21-070a9e9d-qwen-dialogue-opus16-cd446089b845.webm": {
+      "bytes": 142339,
+      "sha256": "cd446089b84523f635339fe0d9100f9f058cd6cbe05ccc568ed91e47293472be"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p057-page-2dd2d29da170-2eb51582-qwen-dialogue-opus16-874cbde04c0d.webm": {
+      "bytes": 149278,
+      "sha256": "874cbde04c0d4584b23f8599f7d44df3272ad4a1287a7b0dfcd16242455a3aac"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p058-page-b2ba0393f3da-50c468a3-qwen-dialogue-opus16-947d7a701702.json": {
+      "bytes": 1081,
+      "sha256": "947d7a701702ae43c1119ad0c306a55797c09120a3f0d5c7d31c40ed0520e360"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p059-page-791e0a13f13e-d63cd7c2-qwen-dialogue-opus16-becb2bec52c9.webm": {
+      "bytes": 146043,
+      "sha256": "becb2bec52c9e0114f935a0cfb1982893b07faaed369c6cd8e5017d007c26e9a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p058-page-b2ba0393f3da-50c468a3-qwen-dialogue-opus16-3b1ebdf1c26f.webm": {
+      "bytes": 141575,
+      "sha256": "3b1ebdf1c26ff78b95db82096bc5e599fa2221c9a8eb2b154349f1f900a8dbd3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p059-page-791e0a13f13e-d63cd7c2-qwen-dialogue-opus16-7dbb75e544f9.json": {
+      "bytes": 1089,
+      "sha256": "7dbb75e544f9a8e4f753028ea2a5f15d41b45cf57bfe6182125c4be77f554dee"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p060-page-5e237d04ace0-8ba0a8ac-qwen-dialogue-opus16-fcb991b0dbf7.webm": {
+      "bytes": 154177,
+      "sha256": "fcb991b0dbf74a6c6a82044cbbcd9361c1acec7cad5914a1e86b776dee08aac6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p060-page-5e237d04ace0-8ba0a8ac-qwen-dialogue-opus16-58932f57c5c2.json": {
+      "bytes": 1097,
+      "sha256": "58932f57c5c2433c0b11aece1d8589e128b326760bd88c8b154eaff3af7220ab"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p061-page-71f94758bc12-3db0cdb4-qwen-dialogue-opus16-67b0c0935ffd.webm": {
+      "bytes": 151536,
+      "sha256": "67b0c0935ffdf2dae9801fe3b89ad5c318183bed62cf2812e5266d30a84a8d97"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p061-page-71f94758bc12-3db0cdb4-qwen-dialogue-opus16-a8b4ead12683.json": {
+      "bytes": 1101,
+      "sha256": "a8b4ead12683276a59fdb3127cbd339da3088cda45de5bc87e39e875c1b44741"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p062-page-4a58ffcf9641-d20aef21-qwen-dialogue-opus16-3b9187bd2131.json": {
+      "bytes": 1083,
+      "sha256": "3b9187bd2131e4a42fc68ffff2ef423f9d87374c6872cf73c15ed93f98b9e313"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p063-page-a558244e735e-b6da0980-qwen-dialogue-opus16-a68c5ed6e75c.webm": {
+      "bytes": 151536,
+      "sha256": "a68c5ed6e75cfc7e65c284834b47896bddd12d43ee0f319a7e71439791727416"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p063-page-a558244e735e-b6da0980-qwen-dialogue-opus16-76a8164dbae0.json": {
+      "bytes": 1100,
+      "sha256": "76a8164dbae0e8a7c94f5a4f574fc55bff8dc5a9158df105fed2afbe081ae232"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p062-page-4a58ffcf9641-d20aef21-qwen-dialogue-opus16-4777ffe68860.webm": {
+      "bytes": 151896,
+      "sha256": "4777ffe688608108748fb60320149c04f0887d165f54c02941835a0debaa3171"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p065-page-7422bf8ca9ca-e7db8783-qwen-dialogue-opus16-62cd91f9fa2f.webm": {
+      "bytes": 150843,
+      "sha256": "62cd91f9fa2f80412208a66a03010bcad4ccdcb872c359b7efa6899d52d9ffca"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p064-page-ffdd2cc4dd0f-3f541a53-qwen-dialogue-opus16-7bd2f543ab11.webm": {
+      "bytes": 147992,
+      "sha256": "7bd2f543ab11e48edf64f7304b4bb5591f9ee825f49a2f7138a6c11b71835191"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p064-page-ffdd2cc4dd0f-3f541a53-qwen-dialogue-opus16-182f47805024.json": {
+      "bytes": 1088,
+      "sha256": "182f47805024b80ad72191d26dfeada486b095a28ccb4483476fd22882c064f5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p065-page-7422bf8ca9ca-e7db8783-qwen-dialogue-opus16-dc487762848a.json": {
+      "bytes": 1083,
+      "sha256": "dc487762848a2b122d1ba943e15d263c57a6a6796faef625283283999728f7f9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p066-page-69234f4b2ef6-3b64ed03-qwen-dialogue-opus16-adcbd16bcb5e.webm": {
+      "bytes": 157986,
+      "sha256": "adcbd16bcb5e69f54fb41b7a9f3a5895858498f7bb590797c761a02ec68e6c47"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p066-page-69234f4b2ef6-3b64ed03-qwen-dialogue-opus16-acd7fff2cf43.json": {
+      "bytes": 1100,
+      "sha256": "acd7fff2cf43c9bd3849d69d7ad75595ed0540505d4c523a2ba0231134b84c1b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p067-page-01c481e2bd7f-4c509f38-qwen-dialogue-opus16-be7c6e5bf053.json": {
+      "bytes": 1137,
+      "sha256": "be7c6e5bf053caff4c177c057b29983806396f14724340681f113021ade0e841"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p067-page-01c481e2bd7f-4c509f38-qwen-dialogue-opus16-c1a7d08e49d9.webm": {
+      "bytes": 126734,
+      "sha256": "c1a7d08e49d9b2ed01394945e9d4e27b1284ac49933fe08713a89486369318d6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p068-page-205d4935d396-9df08979-qwen-dialogue-opus16-e17de80d675f.json": {
+      "bytes": 1088,
+      "sha256": "e17de80d675fa6a3ad1f317b6cc9d4752f1cbbbae5d6667e3207b8f6f164aeb0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p068-page-205d4935d396-9df08979-qwen-dialogue-opus16-9355acddd869.webm": {
+      "bytes": 149153,
+      "sha256": "9355acddd86901533a126f904db383e80c5deb9fe5c7418cec581a9975be52de"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p069-page-44013033250f-4f397df1-qwen-dialogue-opus16-3f970d168951.json": {
+      "bytes": 1095,
+      "sha256": "3f970d16895163a2fe18d32a66f7307b00fda1245c8eb6495365c7d34b3a47f2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p069-page-44013033250f-4f397df1-qwen-dialogue-opus16-16a94c0058e5.webm": {
+      "bytes": 156562,
+      "sha256": "16a94c0058e522f1d567d2ad5017e0e9538afdc38973e86dbcf7e772203da493"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p070-page-cb011dd47d96-7039cb2a-qwen-dialogue-opus16-149e5c3ccad2.json": {
+      "bytes": 1097,
+      "sha256": "149e5c3ccad2d01f42eec3d0d723e9310dd5b0519041a1a6dbf0cdcbe82357bd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p070-page-cb011dd47d96-7039cb2a-qwen-dialogue-opus16-c25b8f87142b.webm": {
+      "bytes": 156710,
+      "sha256": "c25b8f87142b58aab88ff30acd8b6a892e2c4af8892263c2124a06a46738c417"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p071-page-20b73b4ed1b4-b4ac64be-qwen-dialogue-opus16-a1379f8ac926.webm": {
+      "bytes": 142147,
+      "sha256": "a1379f8ac926c2a2d6277be1b3253e364403c7720c42632f6fce3028f3592252"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p071-page-20b73b4ed1b4-b4ac64be-qwen-dialogue-opus16-3dbe44337fae.json": {
+      "bytes": 1076,
+      "sha256": "3dbe44337fae187599dded93e9a80edf7fe9a6d73213439281a50ddc58e61a14"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p072-page-eb11d963fc12-ad88a991-qwen-dialogue-opus16-bb06f3c9015d.webm": {
+      "bytes": 149881,
+      "sha256": "bb06f3c9015d01f13b62a2b5461873a8cd09f6fa4c57e6186b06ec0f072e252a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p072-page-eb11d963fc12-ad88a991-qwen-dialogue-opus16-186626de2d4d.json": {
+      "bytes": 1215,
+      "sha256": "186626de2d4df43ce4aeeb9a0dcf5c1cde4a86ce0ad0334a9df55db3ddd5190e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p073-page-6c4daf6fa775-c9cd30f4-qwen-dialogue-opus16-338a6a5bb089.webm": {
+      "bytes": 152820,
+      "sha256": "338a6a5bb089783f35c88de0804544e6283573f2a3e3218d35bfe251b3cd10f6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p073-page-6c4daf6fa775-c9cd30f4-qwen-dialogue-opus16-88502dd144a4.json": {
+      "bytes": 1066,
+      "sha256": "88502dd144a49ca42560ee4d05b833ff344a779926bdc3730ae7376061752380"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p074-page-e91c54d1f1fb-ac305c4f-qwen-dialogue-opus16-e4188dfce63f.json": {
+      "bytes": 1102,
+      "sha256": "e4188dfce63f48c0dd08d67a9bfdb85da81082d7b41d89b3619cfb77df628b65"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p074-page-e91c54d1f1fb-ac305c4f-qwen-dialogue-opus16-e9f57248ff24.webm": {
+      "bytes": 152435,
+      "sha256": "e9f57248ff24c57f3180712c679d83e9014eb26b7358123ce286692f253b9e96"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p075-page-99b55d9e10d1-77e1449b-qwen-dialogue-opus16-676c3aa17e75.webm": {
+      "bytes": 155017,
+      "sha256": "676c3aa17e75546bfdccdaf5d4e8f0ebf7fcc34c9557cce7c9d45a56307722f9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p075-page-99b55d9e10d1-77e1449b-qwen-dialogue-opus16-417d42465758.json": {
+      "bytes": 1102,
+      "sha256": "417d4246575858cf52370aa0edba0ad77070155a03601382429bd2aa8478c14a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p076-page-b227cb732200-6de88116-qwen-dialogue-opus16-b63495ef2ddd.json": {
+      "bytes": 1096,
+      "sha256": "b63495ef2ddda08fa1e5ccc1422f0a0259f589aee269ec3d1da2d3f6949d816b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p077-page-6abb5bc2a993-23f0ab37-qwen-dialogue-opus16-8a4ec0a831f8.json": {
+      "bytes": 1097,
+      "sha256": "8a4ec0a831f810d1af59fba0009294d55b167a3a707d87a82b635b9262d3f92b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p077-page-6abb5bc2a993-23f0ab37-qwen-dialogue-opus16-b46d8916f490.webm": {
+      "bytes": 160220,
+      "sha256": "b46d8916f490fdcf96300285c19f9e1ad01a6718e282e2f37cc7350b5fdbed8f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p076-page-b227cb732200-6de88116-qwen-dialogue-opus16-da48f19fd28d.webm": {
+      "bytes": 157996,
+      "sha256": "da48f19fd28de419be9d7cbf54662b81f358accf4ad75fef7c1e023834c21641"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p078-page-7ff822ebda57-baba71b8-qwen-dialogue-opus16-4aba7bf5ff27.webm": {
+      "bytes": 151027,
+      "sha256": "4aba7bf5ff27b2ead844e3417bc9a6ca31a0e5d85b0ae18cb61afa5ad3a490b1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p079-page-f263f669dd78-e3d4be98-qwen-dialogue-opus16-ae7e3f09f0a4.webm": {
+      "bytes": 140679,
+      "sha256": "ae7e3f09f0a456b4a38582f858c876f62ac712f19406cc96139ec8b9c440b7d4"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p078-page-7ff822ebda57-baba71b8-qwen-dialogue-opus16-e9552cb93534.json": {
+      "bytes": 1092,
+      "sha256": "e9552cb93534fa455c1458b7ee4e79aeb4238adcd2ccc221f1f46ebf2cc2c884"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p079-page-f263f669dd78-e3d4be98-qwen-dialogue-opus16-59f7cf3df8cf.json": {
+      "bytes": 1085,
+      "sha256": "59f7cf3df8cfe3a034536bff0b9b666c4e5100e4ebce02cdb0712cce40162846"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p080-page-e33a93ca4661-fa000753-qwen-dialogue-opus16-0a307d2142ae.webm": {
+      "bytes": 152144,
+      "sha256": "0a307d2142ae44c5019895c469d3a7c339d4ba48284549a022c9fe009e96f618"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p081-page-5d253582c75f-375e81a5-qwen-dialogue-opus16-a1a7dde40fa0.json": {
+      "bytes": 1040,
+      "sha256": "a1a7dde40fa03c658818e5d97f2bcde44ce2c20501ee11ebd7987836f616cfc1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p080-page-e33a93ca4661-fa000753-qwen-dialogue-opus16-be673003e7cf.json": {
+      "bytes": 1104,
+      "sha256": "be673003e7cf5aab4e558049730270c67d10160e204fbe76f5218deea959f4bf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p081-page-5d253582c75f-375e81a5-qwen-dialogue-opus16-e22724be246f.webm": {
+      "bytes": 156338,
+      "sha256": "e22724be246f01ef4b664992a982bb345b7db5b26769cb0d44cbf447ffe20db8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p082-page-77d5ed1a46ef-79cf7fbf-qwen-dialogue-opus16-8c5173d63a01.json": {
+      "bytes": 1054,
+      "sha256": "8c5173d63a015a4fa3fa2854c13fc290fb78e7830a1f586e842c92fccc6a324f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p082-page-77d5ed1a46ef-79cf7fbf-qwen-dialogue-opus16-221d5c0a5bb1.webm": {
+      "bytes": 151147,
+      "sha256": "221d5c0a5bb16aeb5a4347fc57da905ad8ebd4ae6b1578517900fc7ce86d1bbc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p083-page-7975b0d3c666-7820a9e6-qwen-dialogue-opus16-6c81a5243929.webm": {
+      "bytes": 154696,
+      "sha256": "6c81a5243929bd0fefbe4da9bb2eef6b6248b3d6c4c6bb2211237605d96904ae"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p083-page-7975b0d3c666-7820a9e6-qwen-dialogue-opus16-4bce58ed1935.json": {
+      "bytes": 1058,
+      "sha256": "4bce58ed1935731b1016b5277c09e343c7f65d86a2de9026341925607ab1a70c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p084-page-71f03867f629-8b57fdce-qwen-dialogue-opus16-cbd21650cc68.webm": {
+      "bytes": 150214,
+      "sha256": "cbd21650cc68d6f694d2750cdf467d1b2dca7fe34b87561e85d457374b020583"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p084-page-71f03867f629-8b57fdce-qwen-dialogue-opus16-d4434d19962b.json": {
+      "bytes": 1074,
+      "sha256": "d4434d19962bd4f5c3a4297c78f984dacc7d4cff38f6baae00dc4b5845759182"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p085-page-c5ba0414ef6d-6a0a8546-qwen-dialogue-opus16-75d39698f8be.json": {
+      "bytes": 1081,
+      "sha256": "75d39698f8be3aafa3f1cb240380b84aac8568acf0d4a5263ba870c1232e1103"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p085-page-c5ba0414ef6d-6a0a8546-qwen-dialogue-opus16-103e4d2c0d29.webm": {
+      "bytes": 152256,
+      "sha256": "103e4d2c0d29b5beeabbf9e0a63d047f68541a852ff475670f11f057177323dd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p086-page-7c2ba1bc3e92-abf5b3d3-qwen-dialogue-opus16-d0f7d4ac9a97.json": {
+      "bytes": 1088,
+      "sha256": "d0f7d4ac9a97d39f409ed8f9bf84de305f779ea1a04a9a1b9139cbbbaf49a8bf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p086-page-7c2ba1bc3e92-abf5b3d3-qwen-dialogue-opus16-c58bebd9e6b6.webm": {
+      "bytes": 142891,
+      "sha256": "c58bebd9e6b6775fca317ee1fdcafb7874569e0ad7682c7afa5489ebc4d3cf69"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p087-page-94df22e8648f-1772a672-qwen-dialogue-opus16-d9d10bcdd809.json": {
+      "bytes": 1086,
+      "sha256": "d9d10bcdd809c4679596b6d57a9235239b63cdce628f3ca3d0adaaf433a40aa3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p087-page-94df22e8648f-1772a672-qwen-dialogue-opus16-664cb6f00536.webm": {
+      "bytes": 142386,
+      "sha256": "664cb6f005364550d85fb4543a1edde4a41ffc6d24ca28f1de25fbf00ad33d4e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p088-page-9ef3f9261003-91f081e9-qwen-dialogue-opus16-789e646db323.webm": {
+      "bytes": 160836,
+      "sha256": "789e646db3237a6af2d97fd73cc87c1f9b40a434a0c5e0202b96307b823b24fa"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p088-page-9ef3f9261003-91f081e9-qwen-dialogue-opus16-8da21291143d.json": {
+      "bytes": 1069,
+      "sha256": "8da21291143d6347bcfb1b0d6941164e8d8517ec69faab6cff7f7aa8304db1e3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p089-page-06c043c8c67d-da015e0d-qwen-dialogue-opus16-1d704abb31d1.json": {
+      "bytes": 1098,
+      "sha256": "1d704abb31d13969ad0fa5f25177e6fadff3bd3c51eb7b2601a7179b5feeb68b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p090-page-6e55bc8093e3-f8e57512-qwen-dialogue-opus16-8dcfe50629b5.webm": {
+      "bytes": 152182,
+      "sha256": "8dcfe50629b50fe0a875da96c07c4ba5344bd32a73e7b43ca72e02aa6e4d6dfe"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p089-page-06c043c8c67d-da015e0d-qwen-dialogue-opus16-e370e727cc2e.webm": {
+      "bytes": 151530,
+      "sha256": "e370e727cc2e75477a0ec787de9d05caaa810f7ea89481d3be7a919e5343f51f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p090-page-6e55bc8093e3-f8e57512-qwen-dialogue-opus16-f8c08733521b.json": {
+      "bytes": 1069,
+      "sha256": "f8c08733521b58c1aaf5f4817dce007f0df55039d5e007ee9568801995edf27e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p091-page-ea620a1827ff-e4593b1b-qwen-dialogue-opus16-b8b41928e8d5.webm": {
+      "bytes": 155237,
+      "sha256": "b8b41928e8d5a1625814297fd7ad9f5cd247c205466667420d3c285253d9e881"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p091-page-ea620a1827ff-e4593b1b-qwen-dialogue-opus16-6332f714b205.json": {
+      "bytes": 1091,
+      "sha256": "6332f714b2056fff97f26c6510687c682715dc2aee28dd3c47470cffe743d48f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p092-page-9ab64cd50304-bfa0d245-qwen-dialogue-opus16-187d16fe18d3.json": {
+      "bytes": 1058,
+      "sha256": "187d16fe18d3140d54449037d2a786d33af10fdd26aa68548f18ea18f777d011"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p092-page-9ab64cd50304-bfa0d245-qwen-dialogue-opus16-acbb95e78250.webm": {
+      "bytes": 141653,
+      "sha256": "acbb95e782509b917021b5704a15312592de133d7dc006fff3086ac16f4de89d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p093-page-8c0248be50b9-2ac4d450-qwen-dialogue-opus16-2dab22fd5965.json": {
+      "bytes": 1086,
+      "sha256": "2dab22fd59651a9a9caba3b1d4a98ea970e7b6ddb45374c39bec5356abe6820c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p093-page-8c0248be50b9-2ac4d450-qwen-dialogue-opus16-a72edeca7403.webm": {
+      "bytes": 132136,
+      "sha256": "a72edeca74031a616467b71838fefe2b1941b0e14c399ea658e62a77a5006290"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p094-page-1db53b5eadbe-30358c67-qwen-dialogue-opus16-8067cbb3646f.json": {
+      "bytes": 1087,
+      "sha256": "8067cbb3646f08a9b2999b47cbe2e23bd904d72565950a8fd60d402fc77ff92e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p094-page-1db53b5eadbe-30358c67-qwen-dialogue-opus16-e7746f3d22cf.webm": {
+      "bytes": 142997,
+      "sha256": "e7746f3d22cf0a1c9bb3598eceed498b4581558b4c27a84de24b5df48582ebca"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p095-page-28dd56ff98c7-f46d0aa8-qwen-dialogue-opus16-d7df87b5d0c6.json": {
+      "bytes": 1053,
+      "sha256": "d7df87b5d0c63d92170db9bcede6f6e1c4c312a1f57e4b1923e66fd2a67aefaa"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p096-page-bc339441375a-92b1b0f3-qwen-dialogue-opus16-a8151cd972a9.json": {
+      "bytes": 1186,
+      "sha256": "a8151cd972a9a998293cf61a5c1313e18d47399238640284d086a6c9ec319694"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p095-page-28dd56ff98c7-f46d0aa8-qwen-dialogue-opus16-ec6023eb2b21.webm": {
+      "bytes": 151239,
+      "sha256": "ec6023eb2b21ed8b44c72dcf08bad5041c4e828b15d0c817ce67fd7a24ab2569"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p096-page-bc339441375a-92b1b0f3-qwen-dialogue-opus16-576ca806b133.webm": {
+      "bytes": 159997,
+      "sha256": "576ca806b1338b04ec4fc205907f86fa06d78cc06c0b3e8ef6adb2287f4b424a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p097-page-939bcc35e208-c166e2b1-qwen-dialogue-opus16-272b565eae3f.webm": {
+      "bytes": 142332,
+      "sha256": "272b565eae3f1796e4549fe6f6d2c4585c928a8d2ba4b298c531afb98c8f2f4f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p097-page-939bcc35e208-c166e2b1-qwen-dialogue-opus16-345782802e90.json": {
+      "bytes": 1235,
+      "sha256": "345782802e907466bfaf622d15344f9b2b29e40313a4fc8fe0a210d0b2d28486"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p098-page-fdb48a2940ce-d1f47707-qwen-dialogue-opus16-32be31929307.json": {
+      "bytes": 1078,
+      "sha256": "32be3192930775c9496c576a44e7625abb651551ec0e492cee07f413468afc6e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p098-page-fdb48a2940ce-d1f47707-qwen-dialogue-opus16-d029dc520e97.webm": {
+      "bytes": 151812,
+      "sha256": "d029dc520e97541f2e41507dbbc7a6a49e121fb25b108a8479ab33592ca9889e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p099-page-2a07bef789ff-adf2d95c-qwen-dialogue-opus16-989cbcf7f8c4.webm": {
+      "bytes": 155139,
+      "sha256": "989cbcf7f8c4dc4e8336155d39ab82fea3e75f94e15ddea024ba2a10accef343"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p099-page-2a07bef789ff-adf2d95c-qwen-dialogue-opus16-bd1c1e883c3d.json": {
+      "bytes": 1089,
+      "sha256": "bd1c1e883c3d6fc907e084a2ec77020cd9d2814ead7451f9ed6a54761ee2a9bd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p100-page-0a1afcd72bd2-bb4fdb37-qwen-dialogue-opus16-c21b20311db5.webm": {
+      "bytes": 149824,
+      "sha256": "c21b20311db5355183e8618315a65b3a2181f10fee9df57fbb4d5a984ea01f6e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p100-page-0a1afcd72bd2-bb4fdb37-qwen-dialogue-opus16-758a98769185.json": {
+      "bytes": 1056,
+      "sha256": "758a987691855953653dfe0d993d75c55ad6db2e796599dcae8cd9c2bc193cfe"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p101-page-181f9fdb63e5-a4d5b3ef-qwen-dialogue-opus16-cc948c7ea0fc.webm": {
+      "bytes": 166606,
+      "sha256": "cc948c7ea0fc5c8723aa08aef51bca8ccc5ce2ddf31e0b8b72df032f60a6ebbb"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p101-page-181f9fdb63e5-a4d5b3ef-qwen-dialogue-opus16-faef618f89dc.json": {
+      "bytes": 1080,
+      "sha256": "faef618f89dce976160a4c2831c9e0b37dbbf0e786a0a519b9d7e4ef91e42d49"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p102-page-703b39666ab7-19f99cad-qwen-dialogue-opus16-7ae0cc6cdab8.webm": {
+      "bytes": 149259,
+      "sha256": "7ae0cc6cdab8a1d82d483b938470bdcd7335a13e38abca3e9c97501d9795e35a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p102-page-703b39666ab7-19f99cad-qwen-dialogue-opus16-216d4d3a1991.json": {
+      "bytes": 1049,
+      "sha256": "216d4d3a1991f435944ee7665e21beeab3d797105b0c32a3d761ccf9da5ff30d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p104-page-2f502c44ef59-47f120d2-qwen-dialogue-opus16-c4a72a1e3c72.json": {
+      "bytes": 1078,
+      "sha256": "c4a72a1e3c721123a6c3179d1a6c91b5299f027effe75d9ad1670f503be95fff"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p103-page-60335761ef3c-ca6ef8f7-qwen-dialogue-opus16-476bee685883.webm": {
+      "bytes": 152455,
+      "sha256": "476bee685883b1c963ea48ee1fcbe5590d07be91f4e379511e4ba12345c05eac"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p103-page-60335761ef3c-ca6ef8f7-qwen-dialogue-opus16-36fcecce044b.json": {
+      "bytes": 1085,
+      "sha256": "36fcecce044b885161a403fc7ec7381eecd348c0608bee0b6eaef4dbef893e25"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p104-page-2f502c44ef59-47f120d2-qwen-dialogue-opus16-44e88b2e795b.webm": {
+      "bytes": 154907,
+      "sha256": "44e88b2e795b77953b20e78bc6f81261897278e1382ef0f0e96d7c8a82f6e000"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p105-page-2f3a6301d6aa-4f67d596-qwen-dialogue-opus16-2ea52051ebee.json": {
+      "bytes": 1087,
+      "sha256": "2ea52051ebeee8c3e93e17ea164030404791c6ba370346faae63125b2dbcc6fc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p106-page-e82fb35fad57-6d49524c-qwen-dialogue-opus16-067d3154ea90.webm": {
+      "bytes": 157949,
+      "sha256": "067d3154ea90507f208c0ae923c325a60cda6816482c6140c01176b251eb3c9f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p106-page-e82fb35fad57-6d49524c-qwen-dialogue-opus16-2d52445a6f5c.json": {
+      "bytes": 1081,
+      "sha256": "2d52445a6f5cf40e66d2bbd9c8b6c85f8066a2c335b1e75c7b92fc0c499bb5f5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p105-page-2f3a6301d6aa-4f67d596-qwen-dialogue-opus16-c5cd9aad013e.webm": {
+      "bytes": 161046,
+      "sha256": "c5cd9aad013e3939fa38d3773b8a2ff849ec16bbb960ec43053c62c26db012ff"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p107-page-56df61089a2a-8acfb34c-qwen-dialogue-opus16-0195a140c7a0.json": {
+      "bytes": 1062,
+      "sha256": "0195a140c7a0046c76cdbe37c8fa50aba1ef1e53a9ab65bbf2c9b884d04c82c1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p108-page-63b12fb329d8-38b01f84-qwen-dialogue-opus16-179dcbb0d0d8.webm": {
+      "bytes": 142823,
+      "sha256": "179dcbb0d0d8b249e6e2c241eb9fc61bd2478cc4bfbf070522477248155fb5e7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p107-page-56df61089a2a-8acfb34c-qwen-dialogue-opus16-3fdc98407bf1.webm": {
+      "bytes": 148419,
+      "sha256": "3fdc98407bf151f83ad24dbde6b6c00f9dcf3e824dc3c489487bb84364cc3460"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p108-page-63b12fb329d8-38b01f84-qwen-dialogue-opus16-eef666002839.json": {
+      "bytes": 1091,
+      "sha256": "eef6660028395d2bd4933676cb9147e07c26b2a0d77ae000a7f231fba21a71ea"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p109-page-ec38a239f68a-ad13addb-qwen-dialogue-opus16-9a470121d7bb.webm": {
+      "bytes": 142818,
+      "sha256": "9a470121d7bb8bab3f5a57d75dbedfb5d6b94aee9616593c2b009d4e78d39d99"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p109-page-ec38a239f68a-ad13addb-qwen-dialogue-opus16-9e86f3a56fec.json": {
+      "bytes": 1065,
+      "sha256": "9e86f3a56fecde6f2d3ca731463f39df04fc7feaa85bd9c9c7d723fccc34dd81"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p110-page-06207ddc177b-8289e7b6-qwen-dialogue-opus16-3957145cb4e9.json": {
+      "bytes": 1049,
+      "sha256": "3957145cb4e96878cc5db29fe31cdf16e86733a50bfc342f97cddcb661cb3098"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p110-page-06207ddc177b-8289e7b6-qwen-dialogue-opus16-b5c1f08d1370.webm": {
+      "bytes": 143762,
+      "sha256": "b5c1f08d1370688af868722b0dc762b4fe347008fc10cc5b54d8720109e6b4b5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p111-page-ed0d7ac412cf-06710a7c-qwen-dialogue-opus16-e900234aa7f5.webm": {
+      "bytes": 156462,
+      "sha256": "e900234aa7f5431dfb9f290fa70ab687ddc3ce19de58e3de273e9d6e0f1c61d2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p111-page-ed0d7ac412cf-06710a7c-qwen-dialogue-opus16-a43619598acb.json": {
+      "bytes": 1093,
+      "sha256": "a43619598acb8177f22519a43c8f1787cdfe42548b844a8ea2f0642351e54e6c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p112-page-edfd5df96f8f-be13f15e-qwen-dialogue-opus16-31d4c65d5f92.json": {
+      "bytes": 1095,
+      "sha256": "31d4c65d5f9223d2c20aa5a075b318cd413989c94c6a804e4d3aa6dcfa67dd31"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p112-page-edfd5df96f8f-be13f15e-qwen-dialogue-opus16-30f9e2b3bce1.webm": {
+      "bytes": 162051,
+      "sha256": "30f9e2b3bce153f802f7b86765b89cbe2f1a3408a9ecec4ef6c81ad269330063"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p113-page-841facf68cbb-e1307332-qwen-dialogue-opus16-64c7c2ed7b83.json": {
+      "bytes": 1085,
+      "sha256": "64c7c2ed7b834ca9a34b6a3d2a0fd43989b3fc1ce03768aaa4b2ccee35074851"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p114-page-1074bf276f62-4118ace4-qwen-dialogue-opus16-6d1c9388ca86.webm": {
+      "bytes": 156545,
+      "sha256": "6d1c9388ca8604b6d8319eead9eb8e3205ad35a4da1573ba15e9e6dc1112979e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p114-page-1074bf276f62-4118ace4-qwen-dialogue-opus16-7fb99c262aa2.json": {
+      "bytes": 1091,
+      "sha256": "7fb99c262aa24ae441410b3b8c1341cfe8f71404599e9099aac811cdf3e97bfe"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p113-page-841facf68cbb-e1307332-qwen-dialogue-opus16-07f3a45dd042.webm": {
+      "bytes": 156990,
+      "sha256": "07f3a45dd042041b8fa3c94f1d09480950efdff33b953d6c44666960734a2ab7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p115-page-e329325c4fce-789c3af7-qwen-dialogue-opus16-fcdda8e69a47.json": {
+      "bytes": 1040,
+      "sha256": "fcdda8e69a47795cff81a28187965bdd69efe6c6ea256faf96cc75507f9175dd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p115-page-e329325c4fce-789c3af7-qwen-dialogue-opus16-594b5ceffd4e.webm": {
+      "bytes": 145027,
+      "sha256": "594b5ceffd4e1f83c08cd845b99baf8887d11fdfa37ead62b6d68d889c22b8a3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p116-page-2c405ce68038-462fbf96-qwen-dialogue-opus16-39065f7527ed.json": {
+      "bytes": 1090,
+      "sha256": "39065f7527edef46cda50dc7dd5146d74a3f93c0355283588f0b9b9b010a769a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p116-page-2c405ce68038-462fbf96-qwen-dialogue-opus16-9355fc39254a.webm": {
+      "bytes": 147929,
+      "sha256": "9355fc39254a3af6e74e93ca701352717b0926240f13aaf9866b782ed36b63bc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p117-page-df21481efc0c-cd5f199b-qwen-dialogue-opus16-a98d0701be9d.json": {
+      "bytes": 1072,
+      "sha256": "a98d0701be9df1f8593e6194bec502f1b45dd0263f505467aa1d173b8244e908"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p117-page-df21481efc0c-cd5f199b-qwen-dialogue-opus16-88b414c572e2.webm": {
+      "bytes": 155160,
+      "sha256": "88b414c572e25996b63ce4eb82913c38dba6e8af13ab67fd98863423dfe8ad44"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p118-page-d156501b3288-a25f6435-qwen-dialogue-opus16-fc91db89d86a.webm": {
+      "bytes": 141930,
+      "sha256": "fc91db89d86ad2942dadb637bd8a49d2d021ef3506faebb0668f37ed47e9f15a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p118-page-d156501b3288-a25f6435-qwen-dialogue-opus16-63332f0d49b6.json": {
+      "bytes": 1105,
+      "sha256": "63332f0d49b6877c58df3325dbe2302bdb619b2ddd084bba63df1b0f11dd99e0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p119-page-0dd9f8548ecc-6dc7c8a8-qwen-dialogue-opus16-a379b59da7c0.json": {
+      "bytes": 1095,
+      "sha256": "a379b59da7c09f382b13a367dccbbe7468dc2aade07cf90c823e7aef6e6ad56a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p119-page-0dd9f8548ecc-6dc7c8a8-qwen-dialogue-opus16-8d7000fed4a4.webm": {
+      "bytes": 150044,
+      "sha256": "8d7000fed4a498b4d47a2f6776687eb9bef106c7919cb36c72118fb6d1d53eca"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p120-page-515dc7fdedd1-019ad8db-qwen-dialogue-opus16-403135977477.webm": {
+      "bytes": 145403,
+      "sha256": "403135977477685a29a5f4e288769d0d2d9ad01bb8a6c2bcff8b7649912e6747"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p120-page-515dc7fdedd1-019ad8db-qwen-dialogue-opus16-ad9751511a58.json": {
+      "bytes": 1083,
+      "sha256": "ad9751511a5817fb80141104fd7d9dd6e016bcd033d093c95b44f4d15f6a912a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p121-page-20e7c7021a46-15c86fe6-qwen-dialogue-opus16-fd91ba621ce3.webm": {
+      "bytes": 149982,
+      "sha256": "fd91ba621ce3e407dc60bde86957802926a90600f458d26156d9740fbbd99161"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p122-page-44c1ecee3576-99d92494-qwen-dialogue-opus16-f14ddf02bb0d.webm": {
+      "bytes": 150642,
+      "sha256": "f14ddf02bb0d27bfa352f694f89a39dad455052f6d693e226c5b27e80b824a26"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p121-page-20e7c7021a46-15c86fe6-qwen-dialogue-opus16-cc50503e515f.json": {
+      "bytes": 1082,
+      "sha256": "cc50503e515f2366a097342f709d7ec4c8530e4215a647f3deea8334934717c3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p122-page-44c1ecee3576-99d92494-qwen-dialogue-opus16-3c8014dd2085.json": {
+      "bytes": 1103,
+      "sha256": "3c8014dd2085f26706864ff3afee56c9a271f6764314652b3d94a9620674fec9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p123-page-9925497648ff-25708a0f-qwen-dialogue-opus16-33e6227b35fd.webm": {
+      "bytes": 157873,
+      "sha256": "33e6227b35fd84564865503a93cc362e099c37c5edd52bafad36a6cfef828135"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p124-page-4d33487acccb-947defdb-qwen-dialogue-opus16-d75cb752354d.webm": {
+      "bytes": 152947,
+      "sha256": "d75cb752354d1c3d9a18f5cb851fb752ebac9b9d967500cab851d209e60bd0f7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p123-page-9925497648ff-25708a0f-qwen-dialogue-opus16-4b2993e07273.json": {
+      "bytes": 1096,
+      "sha256": "4b2993e07273de38e386b3db6a903cb6cfda653efe8992fe4804bbb618d84f43"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p124-page-4d33487acccb-947defdb-qwen-dialogue-opus16-e0740ae0d85b.json": {
+      "bytes": 1100,
+      "sha256": "e0740ae0d85b0825adda15cb645c9f77c6b1586e8b21aeff7de45174e30c8789"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p125-page-6a9cc929e098-c324b12f-qwen-dialogue-opus16-599debbcd219.json": {
+      "bytes": 1088,
+      "sha256": "599debbcd219d87b0c2fe5a7f9af640514a4f76e2b05fd9d2012a0e97c1fa4d1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p125-page-6a9cc929e098-c324b12f-qwen-dialogue-opus16-c179c63cd0f2.webm": {
+      "bytes": 163651,
+      "sha256": "c179c63cd0f25d731e5abf027ef82ecab5b8bf502c6fa264d57e27f73778b808"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p126-page-fbe6cb3f1f57-8302ca74-qwen-dialogue-opus16-0281c83212dc.webm": {
+      "bytes": 172771,
+      "sha256": "0281c83212dca2459759ee1b77bae76182d5a35238023bec3fbd2ab1110cc383"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p126-page-fbe6cb3f1f57-8302ca74-qwen-dialogue-opus16-ea48b52ece1a.json": {
+      "bytes": 1254,
+      "sha256": "ea48b52ece1a1c4461e81f70517d5705496162b233e88f9d278987f58474f10f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p127-page-0ba99f24659b-c31a0c2c-qwen-dialogue-opus16-8f63ac300cab.json": {
+      "bytes": 1239,
+      "sha256": "8f63ac300cabebbf8a7fb9865bd35b906041e0807d13a46dab51d6b4d5cc474b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p128-page-c36c71258de0-09084b9a-qwen-dialogue-opus16-4e77fd06fdbf.json": {
+      "bytes": 1054,
+      "sha256": "4e77fd06fdbf2133b686d3be19a7de131c2fe246fa7bf5e1a672dec1e6dd6d94"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p127-page-0ba99f24659b-c31a0c2c-qwen-dialogue-opus16-65a865a01026.webm": {
+      "bytes": 153033,
+      "sha256": "65a865a010265cf28481b73cc2afbae0b37fde44e6d3e439239e2c618c536941"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p128-page-c36c71258de0-09084b9a-qwen-dialogue-opus16-bb475f872f2b.webm": {
+      "bytes": 149036,
+      "sha256": "bb475f872f2bf170c62009a6a562fa4710b106ad2055d9f84180e6393b20a5e8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p129-page-a6a7f8408c91-d8ae0a79-qwen-dialogue-opus16-ccea7fa6ba06.webm": {
+      "bytes": 150872,
+      "sha256": "ccea7fa6ba069e2494a0e5dee60a253c8049a30a72083d6d0f03ebedb545d66d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p129-page-a6a7f8408c91-d8ae0a79-qwen-dialogue-opus16-fd1d7a641917.json": {
+      "bytes": 1104,
+      "sha256": "fd1d7a64191745b1906b7c2ce086512729decf2c79aba47ff728bb9ee35a85e6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p130-page-3d225ca9d697-1ec2a0f1-qwen-dialogue-opus16-68ed4f4cec78.webm": {
+      "bytes": 149778,
+      "sha256": "68ed4f4cec7828d1973d7827e43da4d54d7f815a7cd3d6feee4e7488f6ed5e63"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p130-page-3d225ca9d697-1ec2a0f1-qwen-dialogue-opus16-a7842300ba08.json": {
+      "bytes": 1081,
+      "sha256": "a7842300ba0802b287ff22882df497d261a7eadf64f42d49f3e762224885fee8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p131-page-f84887c9144c-55e860c5-qwen-dialogue-opus16-60e7e36e6446.json": {
+      "bytes": 1064,
+      "sha256": "60e7e36e6446ad1f7fd914f345a8526b493232f166484ae8ae6a9a1741375781"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p132-page-d9b59ca4bcd5-863d37fe-qwen-dialogue-opus16-c4c3d36f3fde.webm": {
+      "bytes": 153977,
+      "sha256": "c4c3d36f3fded40f96c7ed6788240067bd165eb73853b6bcb9b41132011852dc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p131-page-f84887c9144c-55e860c5-qwen-dialogue-opus16-db35aa3eee50.webm": {
+      "bytes": 165786,
+      "sha256": "db35aa3eee5004e91cc3736d439c581220b085290d3a2115f670a8ad63a9a3e4"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p132-page-d9b59ca4bcd5-863d37fe-qwen-dialogue-opus16-2329653a7b14.json": {
+      "bytes": 1054,
+      "sha256": "2329653a7b1401129af1c6c41b98981891b2d3bb556b4760b58892573b963722"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p133-page-51002944a908-77d280a7-qwen-dialogue-opus16-a385544d7498.json": {
+      "bytes": 1080,
+      "sha256": "a385544d7498b6eab21f7a423f9525020f342d6f1d5503745909ceb61c89fe3e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p134-page-a95e94add943-265a75ef-qwen-dialogue-opus16-e583ec94a1af.webm": {
+      "bytes": 160531,
+      "sha256": "e583ec94a1af5f761a6047c5b9260f5da21e8d7b0ea88e1f4b04af461840cffd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p134-page-a95e94add943-265a75ef-qwen-dialogue-opus16-eab07d938b91.json": {
+      "bytes": 1084,
+      "sha256": "eab07d938b912e832c22ef30930b488a59d85ea689c5f866255c16623870570b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p133-page-51002944a908-77d280a7-qwen-dialogue-opus16-14b3e8608f29.webm": {
+      "bytes": 169663,
+      "sha256": "14b3e8608f2980ac680a5f4d8876e19d0d36390cf5a80b3720eb35015f37336a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p135-page-c49de9a7939d-8e6e4a1b-qwen-dialogue-opus16-e069f65f1c78.json": {
+      "bytes": 1056,
+      "sha256": "e069f65f1c78ac07efe6acdc153ece25f39e8b7ac2ab0c34b9381c94418bac80"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p135-page-c49de9a7939d-8e6e4a1b-qwen-dialogue-opus16-53614c96dc2f.webm": {
+      "bytes": 154255,
+      "sha256": "53614c96dc2f06e69a4124762a84596e578063a5264ff21392f1b2614f9aa895"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p136-page-b7ad774b47dd-5c600a8d-qwen-dialogue-opus16-5508466bb8b8.webm": {
+      "bytes": 143185,
+      "sha256": "5508466bb8b8852ee3ca1abe51d21267e5e206cbb9d239b11ec99a9da29cf5a1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p136-page-b7ad774b47dd-5c600a8d-qwen-dialogue-opus16-c66640b26549.json": {
+      "bytes": 1051,
+      "sha256": "c66640b26549b95166c0073a6c0644c99c84f68090c6cc1d38237e705f4883c7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p137-page-3c0c23856ad6-37f3eade-qwen-dialogue-opus16-c41490d84679.json": {
+      "bytes": 1082,
+      "sha256": "c41490d8467966a0c8994644949e02189c422fb671baaa2d8584d9c151ee68f9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p137-page-3c0c23856ad6-37f3eade-qwen-dialogue-opus16-b93d4447bba8.webm": {
+      "bytes": 159444,
+      "sha256": "b93d4447bba8202252b45169bd234bb96336a44e3b08f37f7c6369d308eaa21a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p138-page-1bca35e67f8a-dbaf8eed-qwen-dialogue-opus16-336b5b88bbef.webm": {
+      "bytes": 137295,
+      "sha256": "336b5b88bbef501176a44c4345dc60e6869d9e25ea57849a0049e7284139cfdc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p138-page-1bca35e67f8a-dbaf8eed-qwen-dialogue-opus16-9ac6910cf06a.json": {
+      "bytes": 1099,
+      "sha256": "9ac6910cf06a8ec9679287126ce9abaac14eb27a340777cb6601a44d856502d6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p139-page-94b02d43d174-44483065-qwen-dialogue-opus16-091512663d64.webm": {
+      "bytes": 138877,
+      "sha256": "091512663d644f25df88d6a5697750b4b88488d9a6d01d062229d2fa7f6e4f1f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p139-page-94b02d43d174-44483065-qwen-dialogue-opus16-7d49202d004f.json": {
+      "bytes": 1063,
+      "sha256": "7d49202d004fa45e8494b137bff550548aaf1b5351674f73ef9957ad32128924"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p140-page-bc540a5437c1-7323fd06-qwen-dialogue-opus16-c20a710f7372.json": {
+      "bytes": 1059,
+      "sha256": "c20a710f73726b40c3afb5affef7604eae0ce236d7d25e9ff8753f424d0d9d91"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p140-page-bc540a5437c1-7323fd06-qwen-dialogue-opus16-f57952eec95f.webm": {
+      "bytes": 162041,
+      "sha256": "f57952eec95f585b532c9f0ac83052b0f8ba6b7ffcb911443492369058378df3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p141-page-2f3b61545188-a7657b5e-qwen-dialogue-opus16-2f69e132a3a5.webm": {
+      "bytes": 158332,
+      "sha256": "2f69e132a3a50f0b9ed79ef689e19b57c49ee5a3f4c811b669f501416001ac70"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p141-page-2f3b61545188-a7657b5e-qwen-dialogue-opus16-cd3f1a31b07d.json": {
+      "bytes": 1076,
+      "sha256": "cd3f1a31b07d772657d014da3da75063cf8f85b4c91eb233bfa5df8a255961f8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p142-page-b676dfa519da-d998b652-qwen-dialogue-opus16-8564715bf8e4.webm": {
+      "bytes": 150332,
+      "sha256": "8564715bf8e47b16343a05a4dfef33d4c83800f2e9f74695f53f57e324b6e741"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p142-page-b676dfa519da-d998b652-qwen-dialogue-opus16-88c032d8dccb.json": {
+      "bytes": 1105,
+      "sha256": "88c032d8dccb6dcfa4bbd864b8a5a3bcd78408eba35d79f306dcc0cb89407eb5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p143-page-cb79ab4052a9-7feffa6c-qwen-dialogue-opus16-5ae24a50aec1.webm": {
+      "bytes": 140462,
+      "sha256": "5ae24a50aec178514fb8961b48cddafb288b2816eaeb8bc5406be41c40fbed59"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p143-page-cb79ab4052a9-7feffa6c-qwen-dialogue-opus16-73e71a0a05d0.json": {
+      "bytes": 1082,
+      "sha256": "73e71a0a05d057b8d4ab3b497ac1e51f4eec3462ae23bebdb068b0485415b289"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p144-page-685cc63f04e9-abc73875-qwen-dialogue-opus16-7e41826d1313.webm": {
+      "bytes": 144057,
+      "sha256": "7e41826d1313b40ec409b9cab7749993bd5a6cfd08f72bf8fd78fe249117b6a3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p144-page-685cc63f04e9-abc73875-qwen-dialogue-opus16-5f8dd3b6201a.json": {
+      "bytes": 1055,
+      "sha256": "5f8dd3b6201aa7cc533aaf4405046ddca67561b011c79d122075b91096b798c8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p145-page-3b313a5f5ae8-97d9e82a-qwen-dialogue-opus16-5fdb19c37530.json": {
+      "bytes": 1072,
+      "sha256": "5fdb19c3753022ad80f74508bca2fa26ff70c8ca4695ec952066caa6c1fca533"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p145-page-3b313a5f5ae8-97d9e82a-qwen-dialogue-opus16-81bd81e5c1e6.webm": {
+      "bytes": 144009,
+      "sha256": "81bd81e5c1e67c6dcb88b0b4c0be6611aadc7402449aaa4d4547df86455ccbdf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p146-page-4c1571a85b78-572ce0e8-qwen-dialogue-opus16-93a460766dd5.webm": {
+      "bytes": 148693,
+      "sha256": "93a460766dd50688f230596bc0820a82373e1235e3f8aa88e412578e8242321a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p146-page-4c1571a85b78-572ce0e8-qwen-dialogue-opus16-48990284232d.json": {
+      "bytes": 1084,
+      "sha256": "48990284232df78bcadd5a35f0b0bad2880179fdcbe1ad7490a3e75c161f0449"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p147-page-993311e74e30-5edd1402-qwen-dialogue-opus16-40792fd5bbbc.json": {
+      "bytes": 1104,
+      "sha256": "40792fd5bbbc34d26955afd897a2f46bcc4ed7347609ef46592db336946f6f6e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p148-page-42f888df6c39-a668e8f0-qwen-dialogue-opus16-934074ec2fe3.webm": {
+      "bytes": 147740,
+      "sha256": "934074ec2fe356f04f94decb9dc591f3528980db160ce583b1c842a23e8785ab"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p147-page-993311e74e30-5edd1402-qwen-dialogue-opus16-51fa31455f4b.webm": {
+      "bytes": 161747,
+      "sha256": "51fa31455f4bef6b99f7ba63b35856df472ddf78e1114d3469c5002357bfe6c1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p148-page-42f888df6c39-a668e8f0-qwen-dialogue-opus16-a1a674160dae.json": {
+      "bytes": 1067,
+      "sha256": "a1a674160dae2a3b38bb0d1ffaaec29341b9144ad06abe07cc3032b054dba220"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p149-page-c243ed4b7d22-5dcdc84d-qwen-dialogue-opus16-7978d5ef60be.webm": {
+      "bytes": 142434,
+      "sha256": "7978d5ef60becaa856de14c12e613d4720c1d28c6beb638d86107028acb680e8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p149-page-c243ed4b7d22-5dcdc84d-qwen-dialogue-opus16-afdeff9be0e0.json": {
+      "bytes": 1059,
+      "sha256": "afdeff9be0e0bf861e535f83d02ca6bac87222158f7596cc08d629f82d42ce8c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p150-page-2a5b4615850b-118b8ad1-qwen-dialogue-opus16-b27c18991d52.json": {
+      "bytes": 1082,
+      "sha256": "b27c18991d52a8dabb45ea555f67b40dd055fe22d629c8161f661cfe2cc449cd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p150-page-2a5b4615850b-118b8ad1-qwen-dialogue-opus16-bd4ab6561920.webm": {
+      "bytes": 164590,
+      "sha256": "bd4ab656192089cd2911bd192e4ff1eb48225585669e83d1657b481de346265d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p151-page-7b0e7eabee16-77075ce3-qwen-dialogue-opus16-ec4d23c05862.json": {
+      "bytes": 1089,
+      "sha256": "ec4d23c05862595d4e52e9909c3c080d648e15dc5fe268e82262191a89a35ddc"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p151-page-7b0e7eabee16-77075ce3-qwen-dialogue-opus16-c256a7a64918.webm": {
+      "bytes": 147892,
+      "sha256": "c256a7a64918a2973d2f0e78f3daa748bade9925844773b9407d8d476fc4cfc5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p152-page-1f8a72c0603a-abbecbdb-qwen-dialogue-opus16-b023735a1ba8.json": {
+      "bytes": 1070,
+      "sha256": "b023735a1ba8515e661bcff60e2172b14b63f550f6280bbc88822edcf0d3fe75"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p152-page-1f8a72c0603a-abbecbdb-qwen-dialogue-opus16-e4bc5726dee0.webm": {
+      "bytes": 142928,
+      "sha256": "e4bc5726dee0415d5491f825dc192e0e5ec901597ffb61dc017afa2b94730960"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p153-page-b6abb75a038d-4a9afeb4-qwen-dialogue-opus16-1988de2eebf7.webm": {
+      "bytes": 160339,
+      "sha256": "1988de2eebf7fec5df1d618d72ca88db1b152cc268a5e91fb0219f54bb1d7b53"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p153-page-b6abb75a038d-4a9afeb4-qwen-dialogue-opus16-f6d8a2a8db49.json": {
+      "bytes": 1058,
+      "sha256": "f6d8a2a8db497dc8e20f5cda309dcad5ce60ddee294ff682700fc7f5615d6a74"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p154-page-d926bc6e96b6-2e1160e2-qwen-dialogue-opus16-17f246ca917e.json": {
+      "bytes": 1070,
+      "sha256": "17f246ca917e78506a920074585d70f9bd3f23c1e03f22a3c7981e99bbadbece"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p154-page-d926bc6e96b6-2e1160e2-qwen-dialogue-opus16-b15db09ecbd9.webm": {
+      "bytes": 151771,
+      "sha256": "b15db09ecbd9238f1d7ea5963ce027407ff51680569b8b4783af5897c9dabeff"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p155-page-a2df1a850650-74b0d52b-qwen-dialogue-opus16-3883659b9342.json": {
+      "bytes": 1077,
+      "sha256": "3883659b93422abe79772451d9c529bc5ee23d53d44d26a6209e7d18f45d6b80"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p155-page-a2df1a850650-74b0d52b-qwen-dialogue-opus16-2ead78d97b6e.webm": {
+      "bytes": 152800,
+      "sha256": "2ead78d97b6e11074c15140ae21697182b4f47d7869a118794826eff082b121e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p156-page-fef0af0094a6-e756c1f1-qwen-dialogue-opus16-938e79d5b122.webm": {
+      "bytes": 155465,
+      "sha256": "938e79d5b1226a17c2b1b5cea0feff389e332f6a94271f6ffa3e87f184861369"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p156-page-fef0af0094a6-e756c1f1-qwen-dialogue-opus16-a17f6af63b82.json": {
+      "bytes": 1060,
+      "sha256": "a17f6af63b826ab804d35c5a98e1cc6864bff9b6d6ee9ee3282cb879defb8b7b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p157-page-5381eb460fff-bf1ade38-qwen-dialogue-opus16-ec9f28a5623a.json": {
+      "bytes": 1054,
+      "sha256": "ec9f28a5623ad9f5b703645526d553fc033cf897343fdcc8640c02530e14b486"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p158-page-cdd534f48d64-5cf7a1a1-qwen-dialogue-opus16-1a896b666254.webm": {
+      "bytes": 151186,
+      "sha256": "1a896b6662547d435e1cd3bbd1d70804d79b28f7644cf7abf3f096b6b41eabe8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p157-page-5381eb460fff-bf1ade38-qwen-dialogue-opus16-61f10677eab3.webm": {
+      "bytes": 159615,
+      "sha256": "61f10677eab3a88ef3a7a14c88d2cf453a51c0cab7e6dab41f89e6cd2b303537"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p158-page-cdd534f48d64-5cf7a1a1-qwen-dialogue-opus16-9e1bb5b733b5.json": {
+      "bytes": 1088,
+      "sha256": "9e1bb5b733b52daade48ccd23c2f30f29804ae764b2056703a421ad54d8a2255"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p159-page-e216a5c8cdfa-e8027e16-qwen-dialogue-opus16-694fccb2659d.json": {
+      "bytes": 1065,
+      "sha256": "694fccb2659d8df5b098b7252c799194d1959581470f9e5f1e63eea2148db0ff"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p159-page-e216a5c8cdfa-e8027e16-qwen-dialogue-opus16-649fd96d0507.webm": {
+      "bytes": 160996,
+      "sha256": "649fd96d0507f80fbbed552dca4fcb54ad6603defdd68f697c5264a6a7b41c35"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p160-page-7afa3390fb4e-a26c9719-qwen-dialogue-opus16-eeffea292b5c.json": {
+      "bytes": 1107,
+      "sha256": "eeffea292b5ca9f9462affa887c4ff535d87495dc369a613030a9c7f38de25cd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p160-page-7afa3390fb4e-a26c9719-qwen-dialogue-opus16-ea10154d3f22.webm": {
+      "bytes": 156850,
+      "sha256": "ea10154d3f227571681a8655048cdda204a39d0a69e282ce18174b43e28b1856"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p161-page-a326e7c5609e-df1534c7-qwen-dialogue-opus16-712e23fd01d1.webm": {
+      "bytes": 155469,
+      "sha256": "712e23fd01d1dd5f00bb925f3b3a4aa75aee0553fbcb217e1eeb2acb957b539f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p161-page-a326e7c5609e-df1534c7-qwen-dialogue-opus16-a95e4e2229e3.json": {
+      "bytes": 1069,
+      "sha256": "a95e4e2229e37728feb9c7a1b46caaa39445c4a702b7f95cfd86786f77c3cf1e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p162-page-d68768ad637c-2d62ef7d-qwen-dialogue-opus16-b58bcd9ff275.json": {
+      "bytes": 1087,
+      "sha256": "b58bcd9ff2757794a8696632cda8d24d14053de0be1066901c5777c065b346e2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p162-page-d68768ad637c-2d62ef7d-qwen-dialogue-opus16-4bb2b7ffa906.webm": {
+      "bytes": 160859,
+      "sha256": "4bb2b7ffa906f5781fe6f9bc66b42eaeea2cc58ac80fbcc0ba5c508f33f46bc8"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p163-page-fd17d70ab82b-121ba73a-qwen-dialogue-opus16-fb83fbf516be.webm": {
+      "bytes": 159849,
+      "sha256": "fb83fbf516be5307a8c8398a92c6f1aff53e5dc36d7403601c5bb2b075f94a66"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p163-page-fd17d70ab82b-121ba73a-qwen-dialogue-opus16-078c85de9e45.json": {
+      "bytes": 1102,
+      "sha256": "078c85de9e457528c61ee8e42dc27a442a860684d8f95c26dae9c069c2750c8f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p164-page-68ca4c8234a6-d66adf17-qwen-dialogue-opus16-a5591abf72dc.webm": {
+      "bytes": 154332,
+      "sha256": "a5591abf72dcbf8d76d4792091d294e291742f96933b883d999a3db67591b1c5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p164-page-68ca4c8234a6-d66adf17-qwen-dialogue-opus16-79f3210af32f.json": {
+      "bytes": 1092,
+      "sha256": "79f3210af32fd982a4c1d39ccabfde7b644e5056d97e28bce6288ff8c009a04b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p165-page-798644b1145c-f97cf77a-qwen-dialogue-opus16-9073a7a4b76a.webm": {
+      "bytes": 144730,
+      "sha256": "9073a7a4b76a840287b25c9e09821c2e75141235d477199a2fec5d354643cc0a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p166-page-6e9bc16ff451-57bedd79-qwen-dialogue-opus16-bc308bd63e1b.webm": {
+      "bytes": 152924,
+      "sha256": "bc308bd63e1b709dee11a0fcb7d05457c0871dd16be6ae99c11d5ef1be888182"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p165-page-798644b1145c-f97cf77a-qwen-dialogue-opus16-d396d0c9697f.json": {
+      "bytes": 1078,
+      "sha256": "d396d0c9697f1bb58bdd83f9d07adba3e5d9cbb5525de1ada2dedd6206df51db"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p166-page-6e9bc16ff451-57bedd79-qwen-dialogue-opus16-4a1c3085c045.json": {
+      "bytes": 1093,
+      "sha256": "4a1c3085c045e5bb4cfa6f8a636b18769f988296a70f78f9265e4b810baa8067"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p167-page-b7ecee34afa2-24dabeb1-qwen-dialogue-opus16-637f4c4ba28f.webm": {
+      "bytes": 161098,
+      "sha256": "637f4c4ba28f8ea98b6ec57359f26e158fea60ad65ed959813486f2851f6125e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p167-page-b7ecee34afa2-24dabeb1-qwen-dialogue-opus16-06376e078178.json": {
+      "bytes": 1079,
+      "sha256": "06376e078178aed120f7bf2a3e1875a054c0ec0759db80a2659cc7bd16f10a27"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p168-page-c7d75b2d6d2c-2dc81a6d-qwen-dialogue-opus16-0d3f6cd923e1.webm": {
+      "bytes": 155605,
+      "sha256": "0d3f6cd923e1699c76de749a6eb3f9c2651fa289deb8f80befd8068f1283ec86"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p168-page-c7d75b2d6d2c-2dc81a6d-qwen-dialogue-opus16-d2116325ce3f.json": {
+      "bytes": 1089,
+      "sha256": "d2116325ce3f09bae38859cb3638e0cad2b4df67dbeb5f06cc2af4ea7d8a6af0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p169-page-54a2dc0115b2-220b137f-qwen-dialogue-opus16-7abf2f903207.json": {
+      "bytes": 1095,
+      "sha256": "7abf2f903207ca5bb3b6846200aae4bf4adb19a4cabb99d50f9ad8f72fdeafca"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p169-page-54a2dc0115b2-220b137f-qwen-dialogue-opus16-ef487164b7fe.webm": {
+      "bytes": 161964,
+      "sha256": "ef487164b7fe50f5b17ba2a1a7099e672ee59b81bbae45206ef3bae758c4c5db"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p170-page-5a040faa4092-639d80a2-qwen-dialogue-opus16-9fe7e638fcfa.json": {
+      "bytes": 1074,
+      "sha256": "9fe7e638fcfa2da949e077039112305e8091cc12870c47d2f32780e24f882b80"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p170-page-5a040faa4092-639d80a2-qwen-dialogue-opus16-5ae53bff5b26.webm": {
+      "bytes": 146344,
+      "sha256": "5ae53bff5b265b782db188711684acfd76e81d941c161c1e085bda1c30e99a17"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p171-page-5e742f300c17-df862763-qwen-dialogue-opus16-3bfc795fc5ff.json": {
+      "bytes": 1093,
+      "sha256": "3bfc795fc5ff5a6a28c406146c5c818e1a31b3806d385238dd7bf6eac120b62a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p171-page-5e742f300c17-df862763-qwen-dialogue-opus16-b4b10c2dee53.webm": {
+      "bytes": 150915,
+      "sha256": "b4b10c2dee5345cbf594321efbd0ff1779a5b67d84f972d7dbef337d2c088d39"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p172-page-6b7d45618249-52aec6df-qwen-dialogue-opus16-9ff565369c21.webm": {
+      "bytes": 140420,
+      "sha256": "9ff565369c21b38631f76a1e5ae9f85ff574ea2c3caa8c6ca4a433ef650a1a38"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p173-page-546132b12ba4-a7eb45aa-qwen-dialogue-opus16-e5a81192fd05.json": {
+      "bytes": 1091,
+      "sha256": "e5a81192fd057e1a9cb48f883d8d32458c242a4bfb831cd30f1885d056a32c4c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p172-page-6b7d45618249-52aec6df-qwen-dialogue-opus16-d5cfecc8e94d.json": {
+      "bytes": 1041,
+      "sha256": "d5cfecc8e94d2ac51afa686b8184d68170d7ddcd8e98403dba5fd5d1b5b9837c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p173-page-546132b12ba4-a7eb45aa-qwen-dialogue-opus16-660bbda7fed9.webm": {
+      "bytes": 156669,
+      "sha256": "660bbda7fed969763a4f9fabc719ed5664c8f03e33761a24007c360bbe02f868"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p174-page-1a3637243e5b-7955c4d2-qwen-dialogue-opus16-b7a2d6648e7b.webm": {
+      "bytes": 157893,
+      "sha256": "b7a2d6648e7b55e38d6112dda1ff315d12733608f432628dc588de3fd0c1e418"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p174-page-1a3637243e5b-7955c4d2-qwen-dialogue-opus16-55de48bebca9.json": {
+      "bytes": 1069,
+      "sha256": "55de48bebca9da94514cd75ce2de6ca8b6fa93df7c50058c8c1867b2839d4f5c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p175-page-32315186c8b8-5a9b8ab9-qwen-dialogue-opus16-382ac5dde48e.json": {
+      "bytes": 1085,
+      "sha256": "382ac5dde48ec592c6b3990a1a97846c3e3b9588476d0982f4c1918dbd61465d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p176-page-5d06930e3bc4-dc76ff8e-qwen-dialogue-opus16-7929b2b493c1.webm": {
+      "bytes": 145857,
+      "sha256": "7929b2b493c1cf2f6d9905e7cd9c87eee253d53f7ca085a69b2e77f6582b3576"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p175-page-32315186c8b8-5a9b8ab9-qwen-dialogue-opus16-1baf281af70a.webm": {
+      "bytes": 152853,
+      "sha256": "1baf281af70acd1fe8c20dd314f9abd03b3e42b0f6a27818e6a4890ee906ff6b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p177-page-e9704afd6a04-64cfc7e1-qwen-dialogue-opus16-1eafadfe58a3.webm": {
+      "bytes": 150780,
+      "sha256": "1eafadfe58a37f79dccb783c3a209c392c4d8681e0a2a39351df36c30a21f3c6"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p177-page-e9704afd6a04-64cfc7e1-qwen-dialogue-opus16-d84e770b838f.json": {
+      "bytes": 1097,
+      "sha256": "d84e770b838f498bee51b2b648c2551a468cb039910f7a5bec86e4303213ada1"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p176-page-5d06930e3bc4-dc76ff8e-qwen-dialogue-opus16-5e76520484cd.json": {
+      "bytes": 1096,
+      "sha256": "5e76520484cd145c0652917ade3c74598cc6ea1afc792b22be3a7b8adf23a900"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p178-page-a10556f65f9f-beacd297-qwen-dialogue-opus16-66e4e9886677.webm": {
+      "bytes": 154388,
+      "sha256": "66e4e98866773bb66f5f3c6f2b4c656eac4abc169faf1633a68de88fd7c06552"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p179-page-e9cdf527d454-ba8b238d-qwen-dialogue-opus16-bdcb8874ab22.json": {
+      "bytes": 1084,
+      "sha256": "bdcb8874ab22b99f53f4b1dc3cbcc332642cf0eabc0b497093baa91082f5b27e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p178-page-a10556f65f9f-beacd297-qwen-dialogue-opus16-21e9ada4a8a5.json": {
+      "bytes": 1069,
+      "sha256": "21e9ada4a8a59f011d962414dc1c041c4f2a6bdbbda452d1c4b4d910cb3e9af2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p180-page-a5a500030344-ba263622-qwen-dialogue-opus16-0313f416d9cd.webm": {
+      "bytes": 148114,
+      "sha256": "0313f416d9cd980a562d4a81da6aa12a1724adb9c44ce25326eab287c5e56fb3"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p179-page-e9cdf527d454-ba8b238d-qwen-dialogue-opus16-465638912373.webm": {
+      "bytes": 157258,
+      "sha256": "465638912373edeacf5092d76bc686409f424b455022c25b63f12ceebb408266"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p180-page-a5a500030344-ba263622-qwen-dialogue-opus16-7bc7e1f547be.json": {
+      "bytes": 1100,
+      "sha256": "7bc7e1f547beea9e4668c438e43ac299675b88f95022facda170a124e05988af"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p181-page-b822293f7132-7ba78af1-qwen-dialogue-opus16-65716bf5737d.json": {
+      "bytes": 1102,
+      "sha256": "65716bf5737d37d267e98ff5803558e6a4ca73338fb0b06dea779f3e0f1ca66e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p181-page-b822293f7132-7ba78af1-qwen-dialogue-opus16-f71d5c22b8d8.webm": {
+      "bytes": 140026,
+      "sha256": "f71d5c22b8d8d5488ea25b2aef5cc6065d4414b924eacae3c3f9ee812fbfaaaf"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p182-page-f1fe436737c2-13a12385-qwen-dialogue-opus16-f70d6a24e196.webm": {
+      "bytes": 154776,
+      "sha256": "f70d6a24e196c8d7eca262838fbd94f931a05c684c70b0b7935f3b372e4d0cbd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p182-page-f1fe436737c2-13a12385-qwen-dialogue-opus16-8e7865164c4f.json": {
+      "bytes": 1079,
+      "sha256": "8e7865164c4fd562de74f5b759a6c36f8bc2361dbfc2f4d9ef84493f9ede4f20"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p183-page-aad4db74866e-e9a8657c-qwen-dialogue-opus16-cf4eda376616.json": {
+      "bytes": 1070,
+      "sha256": "cf4eda3766165c62aa2135cf147cfe0e9d4a269cdb3932111acb875a83bbf775"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p183-page-aad4db74866e-e9a8657c-qwen-dialogue-opus16-a40cddf5a8df.webm": {
+      "bytes": 164239,
+      "sha256": "a40cddf5a8df8c12e33a886cd854fc386d211600a48b5c2390a00ee4d091cc38"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p184-page-167449580cf1-70b36329-qwen-dialogue-opus16-e66a330dedb7.webm": {
+      "bytes": 151967,
+      "sha256": "e66a330dedb79d05131258cae2beeeb325e52327067fabd38edafde159d4b65a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p184-page-167449580cf1-70b36329-qwen-dialogue-opus16-379c0de3e303.json": {
+      "bytes": 1070,
+      "sha256": "379c0de3e3036846ed7ffb95aadefd7e3da745c950b27fc6ff8ffbdcc10ff83d"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p185-page-923c994f8b6e-8fdb4b1e-qwen-dialogue-opus16-812040875558.webm": {
+      "bytes": 143186,
+      "sha256": "812040875558f060e6b464f900291b846f70a525f7d5663701c76cabb2de79bd"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p185-page-923c994f8b6e-8fdb4b1e-qwen-dialogue-opus16-b609dc559fab.json": {
+      "bytes": 1077,
+      "sha256": "b609dc559fabf1fa6c99e967e106712bc18197da39047b15ec02e328ccb7f680"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p186-page-edb5d9b7d468-47d64573-qwen-dialogue-opus16-b3e7c7943306.json": {
+      "bytes": 1100,
+      "sha256": "b3e7c79433061f05be5a8d1fc0f30817238b60b55f22114006601f1ff74b9b30"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p186-page-edb5d9b7d468-47d64573-qwen-dialogue-opus16-cf8981f18cce.webm": {
+      "bytes": 151586,
+      "sha256": "cf8981f18cce77ec984b11bbc1e13f3f6416249079659ace9feda095e9fb06fe"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p187-page-9d661129c62a-91155a9f-qwen-dialogue-opus16-c0a1c8b174f5.json": {
+      "bytes": 1070,
+      "sha256": "c0a1c8b174f5baffa2c4aa1afebeb2fb659a7fc841cdaf771f314d0d062a4508"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p187-page-9d661129c62a-91155a9f-qwen-dialogue-opus16-dc38e110ea2f.webm": {
+      "bytes": 164426,
+      "sha256": "dc38e110ea2f4d11ee5f712c3fc694691a2b14eb5566a8d479a0c9ea5d3c3b1c"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p188-page-ab532aa4cec8-fb6f8cbc-qwen-dialogue-opus16-4ca99a1c33f9.webm": {
+      "bytes": 162892,
+      "sha256": "4ca99a1c33f9721ae57f4f70617bf1c23327e52af29091f92dffde026f9d0ea2"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p188-page-ab532aa4cec8-fb6f8cbc-qwen-dialogue-opus16-2034a2fe1304.json": {
+      "bytes": 1103,
+      "sha256": "2034a2fe1304c91e531008112e5b21fdb18fe7ec7da2e48b7d84749a18c1f982"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p189-page-e30c004a14fc-8ab3a698-qwen-dialogue-opus16-dde1ca16d802.webm": {
+      "bytes": 144989,
+      "sha256": "dde1ca16d802ef605dba63cc747db83bd8d748bdef7d38c44be60327033dba86"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p189-page-e30c004a14fc-8ab3a698-qwen-dialogue-opus16-3fff37c4e17d.json": {
+      "bytes": 1062,
+      "sha256": "3fff37c4e17d6b455bed1250b5ae85a38a8801e451cf6086f8615d07febff832"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p190-page-ded73fa3b125-bea09016-qwen-dialogue-opus16-bcf000cc7c7b.webm": {
+      "bytes": 164629,
+      "sha256": "bcf000cc7c7ba56b26fa3d9a075d9b8b84dd47f582fde2a8bea69bdd922a024e"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p190-page-ded73fa3b125-bea09016-qwen-dialogue-opus16-88244cbf35b1.json": {
+      "bytes": 1096,
+      "sha256": "88244cbf35b1ecda027c8bd81ea6be28a7ab78ffb34aa212382dddaf07e4b6ae"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p191-page-c0735bb4450a-88820606-qwen-dialogue-opus16-b3e40fc634a0.json": {
+      "bytes": 1171,
+      "sha256": "b3e40fc634a0c870f04823699f9fef95531e074f9fc9f576ff7372fb235be737"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p192-page-76fd912b277d-07314811-qwen-dialogue-opus16-8718bb05267a.webm": {
+      "bytes": 138804,
+      "sha256": "8718bb05267ad2a0af5c8e8e3efdccfaab1141287ab9705cf8150d6b0b62a0b0"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p191-page-c0735bb4450a-88820606-qwen-dialogue-opus16-b84d7b77948b.webm": {
+      "bytes": 143359,
+      "sha256": "b84d7b77948b8031a55ce6627194a98c3eacc971521d17a8a9cd122d39b60d54"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p192-page-76fd912b277d-07314811-qwen-dialogue-opus16-41628f247a64.json": {
+      "bytes": 1036,
+      "sha256": "41628f247a64348c0c4d693610ae45bbdbe5ccd907cda7e7453ea1f511435e0a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p193-page-7e3c395a883d-6c25098e-qwen-dialogue-opus16-f605a1e5a418.webm": {
+      "bytes": 143929,
+      "sha256": "f605a1e5a4183f3e313e8e91e0e550f6057155d49c1c4a09ed5065f32ea1e67b"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p193-page-7e3c395a883d-6c25098e-qwen-dialogue-opus16-8e017cf50d15.json": {
+      "bytes": 1067,
+      "sha256": "8e017cf50d1520394b8b17c8e62eb5dbcf3710e319487fec5d1ddf8561381705"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p194-page-be92e950178f-5d81cf94-qwen-dialogue-opus16-b259cc60420c.webm": {
+      "bytes": 139687,
+      "sha256": "b259cc60420c206b23aef9ac29e49111af34c19c19af8c9fa74dffa7e2a064f5"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p194-page-be92e950178f-5d81cf94-qwen-dialogue-opus16-ace6e24d538f.json": {
+      "bytes": 1046,
+      "sha256": "ace6e24d538f0f88aaf44f7ffdaab697809e82fa7ff28f62c88cdb7042342096"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p196-page-acc7bdd2a45e-911c17b2-qwen-dialogue-opus16-9d7bdd7f44e2.webm": {
+      "bytes": 151094,
+      "sha256": "9d7bdd7f44e217cf962f984bb3f078c0d241dcf05101c35721e81ddd9c077b16"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p196-page-acc7bdd2a45e-911c17b2-qwen-dialogue-opus16-fef9195d672b.json": {
+      "bytes": 1076,
+      "sha256": "fef9195d672bd35e027372ac2ab70da52e87482906f311d8c1a020170cedf412"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p195-page-9df2756cd542-6cd3c6ad-qwen-dialogue-opus16-8600e1f9da5f.json": {
+      "bytes": 1197,
+      "sha256": "8600e1f9da5ff5d40613ec82d1fcb61694b6674b20f65518bf2dc746c577870f"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p195-page-9df2756cd542-6cd3c6ad-qwen-dialogue-opus16-438ff79ae42e.webm": {
+      "bytes": 141222,
+      "sha256": "438ff79ae42e4d1d45e4bd89b48b939354f74483a392b3dc407837dc5e25746a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p197-page-0863f330da2d-a9865d17-qwen-dialogue-opus16-5d640f832545.json": {
+      "bytes": 1231,
+      "sha256": "5d640f832545e4dfdf0dc9e30f04608fc62cf847547c9e09369187476db2d6f9"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p197-page-0863f330da2d-a9865d17-qwen-dialogue-opus16-6ea8ba2c1feb.webm": {
+      "bytes": 152928,
+      "sha256": "6ea8ba2c1feb5971a4ee0e55bc91cc15b7407b8949d67492bb6db3efba4bba71"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p198-page-4d814a198bf1-1da73392-qwen-dialogue-opus16-e21c26c1c5b9.json": {
+      "bytes": 1035,
+      "sha256": "e21c26c1c5b93251a0016d6aca7100ba89dd0b14c7a5b38e26f0b1ba57f4cb43"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p198-page-4d814a198bf1-1da73392-qwen-dialogue-opus16-2e6c0abdd85c.webm": {
+      "bytes": 153832,
+      "sha256": "2e6c0abdd85c82fbbea4dc4da44ab333c43f7a83459a1649091ed5cd1cc0af23"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p199-page-0e8fd407e9ea-1e6a67f0-qwen-dialogue-opus16-d5f1928d320e.json": {
+      "bytes": 1047,
+      "sha256": "d5f1928d320ea7ad797e73f5deaf830ab3217bca758cc8423b5afd757f6717d7"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p200-page-6a858f00d195-4a1da2ef-qwen-dialogue-opus16-21f30b48f186.webm": {
+      "bytes": 157235,
+      "sha256": "21f30b48f1862dcb26a2c99c7bcbf14f5323bb8f1cfc9d69a8a35f5523b5f65a"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p200-page-6a858f00d195-4a1da2ef-qwen-dialogue-opus16-22908f88bc50.json": {
+      "bytes": 1094,
+      "sha256": "22908f88bc5013542d452d5c25e8ca9f52d45385e354fc4e42bec65900709c53"
+    },
+    "books/zwischen-hoersaal-und-arbeitswelt/p199-page-0e8fd407e9ea-1e6a67f0-qwen-dialogue-opus16-60b3c5d0aea7.webm": {
+      "bytes": 144843,
+      "sha256": "60b3c5d0aea75916bb904299cb9683ba887c5cc368ae059254990b5cd2429c87"
+    }
+  }
+}

@@ -67,7 +67,7 @@ test('A2 shelf shows only its cover and the contents and page reader stay inside
     const { default: Shelf } = await vite.ssrLoadModule('/app/books/page.tsx');
     const shelf = renderToStaticMarkup(React.createElement(Shelf));
     assert.match(shelf, /href="\/books\/a2\/nicht-nur-ein-profil"/);
-    assert.equal((shelf.match(/class="book-shelf-item"/g) ?? []).length, 2);
+    assert.equal((shelf.match(/class="book-shelf-item"/g) ?? []).length, 3);
     assert.doesNotMatch(shelf, /Der zweite Teller|Ein Platz für zwei|Ben steht in seiner Küche/);
     const { default: Contents } = await vite.ssrLoadModule('/app/books/a2/nicht-nur-ein-profil/page.tsx');
     const contents = renderToStaticMarkup(React.createElement(Contents));
