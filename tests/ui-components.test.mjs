@@ -14,9 +14,11 @@ const vite = await createServer({
   configFile: false,
   root,
   resolve: { alias: { "@": root } },
+  optimizeDeps: { noDiscovery: true, include: [] },
   server: {
     middlewareMode: true,
-    watch: { ignored: ["**/.sites-runtime/**", "**/.next/**", "**/dist/**"] },
+    ws: false,
+    watch: null,
   },
 });
 
@@ -289,7 +291,7 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   assert.equal(vocabularyVerbType(word("lernen", "to learn", "Verben")), "regular-other");
 });
 
-test("opens vocabulary on focused learning sets with separate library and practice areas", async () => {
+test("opens vocabulary on the word library with practice and review available", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
@@ -297,11 +299,12 @@ test("opens vocabulary on focused learning sets with separate library and practi
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);
-  assert.match(html, /30 words per set, with shorter sets at the end of a topic/);
-  assert.match(html, /aria-label="Vocabulary study sets"/);
-  assert.match(html, /aria-label="Filter learning sets by topic"/);
-  assert.equal((html.match(/class="vocab-set-card/g) ?? []).length, 12);
-  assert.doesNotMatch(html, /aria-label="Pronounce this word in German"/);
+  assert.match(html, /Explore vocabulary/);
+  assert.match(html, /Search English or German/);
+  assert.match(html, /aria-label="Filter by vocabulary topic"/);
+  assert.equal((html.match(/<article class="vocabulary-card/g) ?? []).length, 120);
+  assert.match(html, /aria-label="Pronounce this word in German"/);
+  assert.doesNotMatch(html, /Learning sets|study sets|Choose your next set|vocab-set-card/i);
   assert.doesNotMatch(html, /aria-label="Choose the German answer"/);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
@@ -316,32 +319,6 @@ test("configures vocabulary pronunciation for German speech", async () => {
   assert.match(pageSource, /utterance\.rate = 0\.82/);
   assert.match(pageSource, /voice\.lang\.toLocaleLowerCase\(\)\.startsWith\("de"\)/);
   assert.match(pageSource, /Pronunciation is not available in this browser\./);
-});
-
-test("partitions every CEFR range into topic-pure sets of at most 30 words", async () => {
-  const { ALL_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
-  const {
-    buildVocabularyStudySets,
-    MAX_STUDY_SET_SIZE,
-  } = await vite.ssrLoadModule("/app/vocabulary/study-sets.ts");
-
-  for (const level of ["all", "A1", "A2", "B1"]) {
-    const words = level === "all" ? ALL_VOCABULARY : ALL_VOCABULARY.filter((word) => word.level === level);
-    const sets = buildVocabularyStudySets(words);
-    const assignedIds = sets.flatMap((set) => set.words.map((word) => word.id));
-
-    assert.equal(MAX_STUDY_SET_SIZE, 30);
-    assert.ok(sets.every((set) => set.words.length > 0));
-    assert.ok(sets.every((set) => new Set(set.words.map((word) => word.category)).size === 1));
-    assert.ok(sets.every((set) => new Set(set.words.map((word) => word.level)).size === 1));
-    assert.equal(new Set(sets.map((set) => set.title)).size, sets.length);
-    for (const cefr of ["A1", "A2", "B1"]) {
-      assert.deepEqual(sets.filter((set) => set.words[0].level === cefr), buildVocabularyStudySets(words.filter((word) => word.level === cefr)));
-    }
-    assert.ok(sets.every((set) => set.words.length <= MAX_STUDY_SET_SIZE));
-    assert.equal(new Set(assignedIds).size, words.length);
-    assert.deepEqual(new Set(assignedIds), new Set(words.map((word) => word.id)));
-  }
 });
 
 test("forwards progress semantics to the primitive", async () => {

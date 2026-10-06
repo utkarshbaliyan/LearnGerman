@@ -100,7 +100,7 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
     {!hydrated || !cursor ? <p role="status">Loading your progress…</p> : !question ? <div className="practice-empty" role="status">
       <strong>{mode === "guess" ? "No new words left in this selection." : reviews.length ? "All scheduled reviews are caught up." : "Your review deck is empty."}</strong>
       {mode === "flashcard" && Number.isFinite(nextDue) && <p>Next review: {new Date(nextDue).toLocaleString()}.</p>}
-      <p>{mode === "guess" ? "Choose another learning set, or practise your review words in Flashcards." : "Wrong guesses and words you mark Review appear here."}</p>
+      <p>{mode === "guess" ? "Change the level or topic filters, or practise your review words in Flashcards." : "Wrong guesses and words you mark Review appear here."}</p>
     </div> : <div className="vocabulary-quiz">
       <div className="vocabulary-quiz-heading">
         <span>{needsReview ? "Review" : "Practice"} · {question.word.level}{mode === "flashcard" ? " · Recall before revealing" : ""}</span>

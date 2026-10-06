@@ -1,10 +1,8 @@
 "use client";
 
 import {
-  ArrowLeft, ArrowRight, Bookmark, BookOpen, BriefcaseBusiness, Building2, Check, CheckCircle2,
-  ChevronDown, CircleUserRound, Clock3, CloudSun, GraduationCap, HeartPulse, House,
-  Laptop2, Leaf, MapPinned, RotateCcw, Search, ShoppingBag, SlidersHorizontal, Sparkles, TrainFront, Utensils, Volume2, X,
-  type LucideIcon,
+  Bookmark, BookOpen, Check, CheckCircle2, ChevronDown,
+  RotateCcw, Search, SlidersHorizontal, Volume2, X,
 } from "lucide-react";
 import Link from "next/link";
 import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties } from "react";
@@ -28,7 +26,6 @@ import {
 } from "@/app/vocabulary/data";
 import { VocabularyPractice } from "@/app/vocabulary/practice";
 import { vocabularyReviewDueAt } from "@/app/lib/progress-sync";
-import { buildVocabularyStudySets } from "@/app/vocabulary/study-sets";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -66,24 +63,24 @@ const WORD_CLASS_CARD_LABELS: Record<VocabularyWordClass, string> = {
   "phrase-other": "Other words",
 };
 
-const CATEGORY_META: Record<VocabularyCategory, { icon: LucideIcon; color: string }> = {
-  "Grundlagen & Kommunikation": { icon: Sparkles, color: "#d66a48" },
-  "Familie & Menschen": { icon: CircleUserRound, color: "#8d6bd1" },
-  "Zuhause & Wohnen": { icon: House, color: "#278071" },
-  "Essen & Trinken": { icon: Utensils, color: "#d55369" },
-  "Einkaufen & Kleidung": { icon: ShoppingBag, color: "#bd7a22" },
-  "Schule & Lernen": { icon: GraduationCap, color: "#5275ad" },
-  "Arbeit & Beruf": { icon: BriefcaseBusiness, color: "#706247" },
-  "Stadt & Verkehr": { icon: TrainFront, color: "#357b8d" },
-  "Reisen & Unterkunft": { icon: MapPinned, color: "#3e739f" },
-  "Gesundheit & Körper": { icon: HeartPulse, color: "#bf5562" },
-  "Freizeit, Kultur & Sport": { icon: Leaf, color: "#5a8c55" },
-  "Natur, Wetter & Umwelt": { icon: CloudSun, color: "#47866f" },
-  "Zeit, Zahlen & Mengen": { icon: Clock3, color: "#9b6a43" },
-  "Medien & Digitales": { icon: Laptop2, color: "#526e9f" },
-  "Dienstleistungen & Behörden": { icon: Building2, color: "#786a91" },
-  "Verben": { icon: BookOpen, color: "#c9553d" },
-  "Adjektive & Adverbien": { icon: Sparkles, color: "#6d63a8" },
+const CATEGORY_COLORS: Record<VocabularyCategory, string> = {
+  "Grundlagen & Kommunikation": "#d66a48",
+  "Familie & Menschen": "#8d6bd1",
+  "Zuhause & Wohnen": "#278071",
+  "Essen & Trinken": "#d55369",
+  "Einkaufen & Kleidung": "#bd7a22",
+  "Schule & Lernen": "#5275ad",
+  "Arbeit & Beruf": "#706247",
+  "Stadt & Verkehr": "#357b8d",
+  "Reisen & Unterkunft": "#3e739f",
+  "Gesundheit & Körper": "#bf5562",
+  "Freizeit, Kultur & Sport": "#5a8c55",
+  "Natur, Wetter & Umwelt": "#47866f",
+  "Zeit, Zahlen & Mengen": "#9b6a43",
+  "Medien & Digitales": "#526e9f",
+  "Dienstleistungen & Behörden": "#786a91",
+  "Verben": "#c9553d",
+  "Adjektive & Adverbien": "#6d63a8",
 };
 
 function GermanAnswer({ answer }: { answer: string }) {
@@ -115,7 +112,7 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
   return (
     <article
       className={`vocabulary-card${revealed ? " is-revealed" : ""}${completed ? " is-completed" : ""}${review ? " is-review" : ""}`}
-      style={{ "--vocabulary-color": CATEGORY_META[word.category].color } as CSSProperties}
+      style={{ "--vocabulary-color": CATEGORY_COLORS[word.category] } as CSSProperties}
     >
       <button type="button" className="vocabulary-reveal" aria-expanded={revealed} onClick={onReveal}>
         <span className="vocabulary-card-top"><small>{word.level} · {grammarLabel}</small><ChevronDown /></span>
@@ -133,11 +130,9 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
 }
 
 export default function VocabularyPage() {
-  const [view, setView] = useState("sets");
-  const [setLimit, setSetLimit] = useState(12);
+  const [view, setView] = useState("library");
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
-  const [studySetId, setStudySetId] = useState<string | "all">("all");
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
@@ -152,13 +147,6 @@ export default function VocabularyPage() {
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
-  const studySets = useMemo(() => buildVocabularyStudySets(levelWords).filter((set) => category === "all" || set.words.some((word) => word.category === category)), [category, levelWords]);
-  const activeStudySet = useMemo(
-    () => studySetId === "all" ? null : studySets.find((set) => set.id === studySetId) ?? null,
-    [studySetId, studySets],
-  );
-  const activeStudySetWordIds = useMemo(() => new Set(activeStudySet?.words.map((word) => word.id) ?? []), [activeStudySet]);
-  const studySetProgress = useMemo(() => new Map(studySets.map((set) => [set.id, set.words.filter(isLearned).length])), [isLearned, studySets]);
   const wordClassCounts = useMemo(() => Object.fromEntries(
     VOCABULARY_WORD_CLASSES.map((name) => [name, levelWords.filter((word) => vocabularyWordClass(word) === name).length]),
   ) as Record<VocabularyWordClass, number>, [levelWords]);
@@ -170,8 +158,7 @@ export default function VocabularyPage() {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
     const verbTypeFilter = selectedVerbType(wordClassFilter);
     return levelWords.filter((word) => {
-      if (activeStudySet && !activeStudySetWordIds.has(word.id)) return false;
-      if (!activeStudySet && category !== "all" && word.category !== category) return false;
+      if (category !== "all" && word.category !== category) return false;
       if (verbTypeFilter && vocabularyVerbType(word) !== verbTypeFilter) return false;
       if (!verbTypeFilter && wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
       if (progressFilter === "unlearned" && (isLearned(word) || isReview(word))) return false;
@@ -179,10 +166,10 @@ export default function VocabularyPage() {
       if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     });
-  }, [activeStudySet, activeStudySetWordIds, category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
+  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
-  const practiceWords = useMemo(() => activeStudySet?.words ?? levelWords.filter((word) => category === "all" || word.category === category), [activeStudySet, category, levelWords]);
+  const practiceWords = useMemo(() => levelWords.filter((word) => category === "all" || word.category === category), [category, levelWords]);
 
   useEffect(() => () => {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -190,19 +177,8 @@ export default function VocabularyPage() {
 
   function chooseLevel(next: LevelFilter) {
     setLevel(next);
-    setStudySetId("all");
     setVisibleLimit(VISIBLE_BATCH);
     setCategory("all");
-    setSetLimit(12);
-  }
-
-  function chooseStudySet(next: string | "all") {
-    setStudySetId(next);
-    setVisibleLimit(VISIBLE_BATCH);
-    setQuery("");
-    setProgressFilter("all");
-    setWordClassFilter("all");
-    setView("library");
   }
 
   function chooseProgressFilter(next: ProgressFilter) {
@@ -217,7 +193,6 @@ export default function VocabularyPage() {
 
   function clearFilters() {
     setQuery("");
-    setStudySetId("all");
     setProgressFilter("all");
     setCategory("all");
     setWordClassFilter("all");
@@ -269,9 +244,8 @@ export default function VocabularyPage() {
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–B1" : level;
-  const hasActiveFilters = query || category !== "all" || studySetId !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
+  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
-  const activeStudySetLearned = activeStudySet ? studySetProgress.get(activeStudySet.id) ?? 0 : 0;
 
   return (
     <main className="site-shell vocabulary-page" id="top">
@@ -298,44 +272,11 @@ export default function VocabularyPage() {
 
         <Tabs value={view} onValueChange={setView} className="vocab-sections">
           <TabsList variant="line" aria-label="Vocabulary sections">
-            <TabsTrigger value="sets">Learning sets</TabsTrigger>
             <TabsTrigger value="library">Word library</TabsTrigger>
             <TabsTrigger value="practice">Practice & review</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="sets">
-            <div className="vocab-section-heading">
-              <div><h2>Choose your next set</h2><p>30 words per set, with shorter sets at the end of a topic. Each set stays within one topic and level. {studySets.length} sets in {levelLabel}.</p></div>
-              <label className="vocab-topic-picker"><span>Topic</span>
-                <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setStudySetId("all"); setSetLimit(12); }}>
-                  <SelectTrigger aria-label="Filter learning sets by topic"><SelectValue /></SelectTrigger>
-                  <SelectContent><SelectItem value="all">All topics</SelectItem>{VOCABULARY_CATEGORIES.map((name) => <SelectItem key={name} value={name}>{name}</SelectItem>)}</SelectContent>
-                </Select>
-              </label>
-            </div>
-            <div className="vocab-set-grid" aria-label="Vocabulary study sets">
-              {studySets.slice(0, setLimit).map((set) => {
-                const Icon = CATEGORY_META[set.primaryCategory].icon;
-                const learned = studySetProgress.get(set.id) ?? 0;
-                const complete = learned === set.words.length;
-                return <button key={set.id} type="button" className={`vocab-set-card${complete ? " is-complete" : ""}`} onClick={() => chooseStudySet(set.id)}>
-                  <span className="vocab-set-top"><span className="vocab-set-icon"><Icon /></span><span>{complete ? "Completed" : learned ? "In progress" : `${set.words.length} words`}</span></span>
-                  <strong>{set.title}</strong>
-                  <Progress value={learned / set.words.length * 100} aria-label={`${learned} of ${set.words.length} words learned`} />
-                  <span className="vocab-set-bottom"><span>{learned} / {set.words.length} learned</span>{complete ? <Check /> : <ArrowRight />}</span>
-                </button>;
-              })}
-            </div>
-            {setLimit < studySets.length && <Button className="vocab-more-sets" variant="outline" onClick={() => setSetLimit((current) => current + 12)}>Show more sets</Button>}
-            {!studySets.length && <p className="practice-empty">No sets in this topic at {levelLabel}. Choose another topic.</p>}
-          </TabsContent>
-
           <TabsContent value="library">
-            {activeStudySet && <div className="vocab-current-set">
-              <Button variant="ghost" onClick={() => { setView("sets"); setStudySetId("all"); }}><ArrowLeft /> Learning sets</Button>
-              <span>{activeStudySet.title} · {activeStudySetLearned}/{activeStudySet.words.length} learned</span>
-              <Button onClick={() => setView("practice")}>Practice this set <ArrowRight /></Button>
-            </div>}
         <div className="vocabulary-toolbar">
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
@@ -350,7 +291,7 @@ export default function VocabularyPage() {
           <summary><SlidersHorizontal /> Filters{hasActiveFilters ? " · active" : ""}<ChevronDown /></summary>
         <div className="vocabulary-advanced-filters" aria-label="Advanced vocabulary filters">
           <label className="vocabulary-filter-control"><span>Topic</span>
-            <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setStudySetId("all"); setVisibleLimit(VISIBLE_BATCH); }}>
+            <Select value={category} onValueChange={(value) => { setCategory(value as VocabularyCategory | "all"); setVisibleLimit(VISIBLE_BATCH); }}>
               <SelectTrigger className="vocabulary-select" aria-label="Filter by vocabulary topic"><SelectValue /></SelectTrigger>
               <SelectContent><SelectItem value="all">All topics</SelectItem>{VOCABULARY_CATEGORIES.map((name) => <SelectItem key={name} value={name}>{name} · {levelWords.filter((word) => word.category === name).length}</SelectItem>)}</SelectContent>
             </Select>
@@ -378,7 +319,7 @@ export default function VocabularyPage() {
 
 
         <div className="vocabulary-list-heading">
-          <div><span>{`${levelLabel} · ${activeStudySet?.title ?? "all study sets"} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : activeStudySet && activeStudySetLearned === activeStudySet.words.length ? "Study set complete" : activeStudySet ? "Complete this study set" : "Explore vocabulary"}</h2></div>
+          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 
@@ -397,10 +338,10 @@ export default function VocabularyPage() {
 
           <TabsContent value="practice">
             <div className="vocab-section-heading">
-              <div><h2>{activeStudySet ? activeStudySet.title : "Practice & review"}</h2><p>{practiceWords.length.toLocaleString("en")} words · {levelLabel}{category !== "all" && !activeStudySet ? ` · ${category}` : ""}</p></div>
-              {(activeStudySet || category !== "all") && <Button variant="outline" onClick={clearFilters}>Use all {levelLabel} words</Button>}
+              <div><h2>Practice & review</h2><p>{practiceWords.length.toLocaleString("en")} words · {levelLabel}{category !== "all" ? ` · ${category}` : ""}</p></div>
+              {category !== "all" && <Button variant="outline" onClick={clearFilters}>Use all {levelLabel} words</Button>}
             </div>
-            <VocabularyPractice key={`${level}:${category}:${studySetId}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
+            <VocabularyPractice key={`${level}:${category}`} words={practiceWords} progress={vocabularyProgress} hydrated={hydrated}
               recordGuess={recordGuess} rateFlashcard={rateFlashcard} pronounce={pronounceWord} />
             {pronunciationUnavailable && <p role="alert">Pronunciation is not available in this browser.</p>}
           </TabsContent>
