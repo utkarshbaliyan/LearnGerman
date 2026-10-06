@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/bahman-farhadian/tartarus",
+  "commit": "308e64a848f803379ecdbe9a17bf85745be5f85e",
+  "license": "MIT",
+  "target": 3300,
+  "wordClasses": {
+    "noun": 2050,
+    "verb": 700,
+    "adjective": 450,
+    "adverb": 100
+  },
+  "sources": [
+    {
+      "file": "german_noun_b2.json",
+      "sha256": "f9fdff9780c625d0b6b48ee5dc4fbd476817664baf5d83a75dafe965724473be"
+    },
+    {
+      "file": "german_verb_b2.json",
+      "sha256": "a89ebbd4d899384239685456b04ff3b2b08e531223ba1deda4dab25a1c302340"
+    },
+    {
+      "file": "german_adjective_b2.json",
+      "sha256": "611889bda117738902685b17acc867aabb8e3daee87ba0aa809ee4c4c79f2aa0"
+    },
+    {
+      "file": "german_adverb_b2.json",
+      "sha256": "38ce1546b04528cf8387b0be2a26af3b0c2311c651337203eec84e26eff0fbeb"
+    }
+  ],
+  "rejectedBeforeQuota": {
+    "noun": 140,
+    "verb": 45,
+    "adjective": 56,
+    "adverb": 14
+  },
+  "rowsSha256": "143c4fc2b6f27236b6bcec1d32ec4029b321285df1d240ac3454f4dc8bceff0d",
+  "review": "Structural checks and editorial exceptions; not independently CEFR-certified or fully teacher-reviewed."
+}

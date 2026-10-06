@@ -16,6 +16,7 @@ export type VocabularyIdentity = {
   id?: string;
   english: string;
   german: string;
+  progressAliases?: { id: string; german: string; english: string }[];
 };
 
 export type VocabularyProgress = {
@@ -161,6 +162,7 @@ export function vocabularyProgressKeys(word: VocabularyIdentity) {
   return unique([
     english ? `en:${english}` : "",
     german ? `de:${german}` : "",
+    ...(word.progressAliases ?? []).flatMap(vocabularyProgressKeys),
   ].filter(Boolean));
 }
 
@@ -231,7 +233,8 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
   const stored = parseObject(storage.getItem(VOCABULARY_PROGRESS_STORAGE_KEY));
   const learned = new Set(stringArray(stored.learnedKeys).map(normalizeStoredVocabularyKey));
   const review = new Set(stringArray(stored.reviewKeys).map(normalizeStoredVocabularyKey));
-  const byId = new Map(catalog.filter((word) => word.id).map((word) => [word.id!, word]));
+  const byId = new Map(catalog.flatMap((word) => [word.id, ...(word.progressAliases ?? []).map((alias) => alias.id)]
+    .filter((id): id is string => !!id).map((id) => [id, word] as const)));
   const shouldMigrateLegacy = catalog.length > 0 && stored.legacyMigrated !== true;
 
   if (shouldMigrateLegacy) {
@@ -248,13 +251,28 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
     }
   }
 
+  const cards = readReviewCards(stored.cards);
+  for (const word of catalog) {
+    if (!word.progressAliases?.length) continue;
+    const key = vocabularyCardKey(word);
+    const keys = vocabularyProgressKeys(word);
+    // Carry forward the latest FSRS state without deleting historical keys.
+    const candidates = keys.filter((value) => value.startsWith("de:")).flatMap((value) => cards[value] ? [cards[value]] : []);
+    candidates.sort((a, b) => {
+      const left = JSON.stringify(a); const right = JSON.stringify(b);
+      return b.updatedAt - a.updatedAt || (left === right ? 0 : right > left ? 1 : -1);
+    });
+    if (candidates.length) cards[key] = candidates[0];
+    if (keys.some((value) => learned.has(value))) learned.add(key);
+    if (keys.some((value) => review.has(value))) review.add(key);
+  }
   for (const key of learned) review.delete(key);
   return {
     learnedKeys: [...learned],
     reviewKeys: [...review],
     legacyMigrated: stored.legacyMigrated === true || shouldMigrateLegacy,
     ...(readGuessStreak(stored.guessStreak) ? { guessStreak: readGuessStreak(stored.guessStreak) } : {}),
-    ...(stored.cards ? { cards: readReviewCards(stored.cards) } : {}),
+    ...(stored.cards ? { cards } : {}),
   };
 }
 

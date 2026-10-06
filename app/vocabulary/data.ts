@@ -4,6 +4,8 @@ import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
 import { EXTENDED_B1_LEXICON } from "@/app/vocabulary/extended-data";
+import { B2_LEXICON } from "@/app/vocabulary/b2-data";
+import { vocabularyHeadwordKey } from "@/app/vocabulary/headword";
 import { applyVocabularyPlacement } from "@/app/vocabulary/placement";
 import { verbHeadwordForForm } from "@/app/vocabulary/verb-forms";
 import {
@@ -43,8 +45,9 @@ export type VocabularyWord = {
   english: string;
   german: string;
   category: VocabularyCategory;
-  level: "A1" | "A2" | "B1";
+  level: "A1" | "A2" | "B1" | "B2";
   wordClass?: VocabularyWordClass;
+  progressAliases?: { id: string; german: string; english: string }[];
 };
 
 export const VOCABULARY_WORD_CLASSES = [
@@ -453,7 +456,7 @@ const COVERED_B1_VOCABULARY = addEssentialVocabulary(
   "b1",
   [...RAW_A1_VOCABULARY, ...RAW_EXTENDED_A2_VOCABULARY],
 );
-export const TOTAL_VOCABULARY_TARGET = 5000;
+export const TOTAL_VOCABULARY_TARGET = 8300;
 const RAW_B1_VOCABULARY = COVERED_B1_VOCABULARY;
 export const CORE_VOCABULARY = removeDuplicateVerbForms([
   ...RAW_A1_VOCABULARY,
@@ -467,25 +470,45 @@ const CLEAN_VOCABULARY = applyVocabularyPlacement(removeDuplicateVerbForms([
   ...READING_VOCABULARY as VocabularyWord[],
 ]).filter(isStandaloneVocabularyHeadword).map((word) => ({ ...word, wordClass: vocabularyWordClass(word) })));
 
-export const A1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A1");
-export const EXTENDED_A2_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "A2");
-export const B1_VOCABULARY = CLEAN_VOCABULARY.filter((word) => word.level === "B1");
+// Keep every original identity available for legacy ID migration. Public cards
+// retain the earliest placement and carry aliases for consolidated duplicates.
+export const LEGACY_VOCABULARY = CLEAN_VOCABULARY;
+function uniqueHeadwords(words: VocabularyWord[]) {
+  const byHeadword = new Map<string, VocabularyWord>();
+  for (const word of words) {
+    const key = vocabularyHeadwordKey(word.german);
+    const existing = byHeadword.get(key);
+    if (existing) {
+      existing.progressAliases = [...existing.progressAliases ?? [], { id: word.id, german: word.german, english: word.english }];
+    } else byHeadword.set(key, { ...word });
+  }
+  return [...byHeadword.values()];
+}
+const legacyHeadwords = new Set(LEGACY_VOCABULARY.map((word) => vocabularyHeadwordKey(word.german)));
+if (B2_LEXICON.length !== 3300 || B2_LEXICON.some((word) => legacyHeadwords.has(vocabularyHeadwordKey(word.german)))) {
+  throw new Error("B2 must add exactly 3,300 headwords without overlap with A1–B1.");
+}
+export const ALL_VOCABULARY = uniqueHeadwords([...LEGACY_VOCABULARY, ...B2_LEXICON]);
+export const A1_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A1");
+export const EXTENDED_A2_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A2");
+export const B1_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "B1");
+export const B2_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "B2");
 export { EXTENDED_A2_VOCABULARY as A2_VOCABULARY };
-export const ALL_VOCABULARY = CLEAN_VOCABULARY;
 export const VOCABULARY_LEVEL_COUNTS = {
   A1: A1_VOCABULARY.length,
   A2: EXTENDED_A2_VOCABULARY.length,
   B1: B1_VOCABULARY.length,
+  B2: B2_VOCABULARY.length,
   all: ALL_VOCABULARY.length,
 } as const;
 
 const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
 
-// The raw catalog may contain up to 5,000 candidates. The public catalog is
-// smaller by design after conjugations, duplicates, and phrase padding are removed.
+// Up to 5,000 original candidates plus 3,300 B2 additions, after deduplication.
 if (ALL_VOCABULARY.length > TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
-  throw new Error(`The A1–B1 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
+  throw new Error(`The A1–B2 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
 }
+if (B2_VOCABULARY.length !== 3300) throw new Error("Duplicate B2 headwords were found.");
 
 for (const category of VOCABULARY_CATEGORIES) {
   if (!ALL_VOCABULARY.some((word) => word.category === category)) {

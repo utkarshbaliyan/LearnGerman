@@ -33,7 +33,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type ProgressFilter = "all" | "unlearned" | "completed" | "review";
-type LevelFilter = "all" | "A1" | "A2" | "B1";
+type LevelFilter = "all" | VocabularyWord["level"];
 type WordClassFilter = VocabularyWordClass | `verb:${VocabularyVerbType}` | "all";
 const VISIBLE_BATCH = 120;
 
@@ -243,7 +243,7 @@ export default function VocabularyPage() {
   }
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
-  const levelLabel = level === "all" ? "A1–B1" : level;
+  const levelLabel = level === "all" ? "A1–B2" : level;
   const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
 
@@ -253,13 +253,13 @@ export default function VocabularyPage() {
 
       <section className="vocabulary-workspace vocabulary-organized">
         <header className="vocab-page-heading">
-          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to B1</p></div>
+          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to B2</p></div>
           <label className="vocab-level-picker"><span>Study level</span>
             <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>
               <SelectTrigger aria-label="Choose a vocabulary level"><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All levels · {VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")}</SelectItem>
-                {(["A1", "A2", "B1"] as const).map((name) => <SelectItem key={name} value={name}>{name} · {VOCABULARY_LEVEL_COUNTS[name].toLocaleString("en")} words</SelectItem>)}
+                {(["A1", "A2", "B1", "B2"] as const).map((name) => <SelectItem key={name} value={name}>{name} · {VOCABULARY_LEVEL_COUNTS[name].toLocaleString("en")} words</SelectItem>)}
               </SelectContent>
             </Select>
           </label>
@@ -348,7 +348,7 @@ export default function VocabularyPage() {
         </Tabs>
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} essential vocabulary cards for the complete A1–B1 learning path.</p><div><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary cards across A1–B2. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

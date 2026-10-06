@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import test, { after } from "node:test";
@@ -246,6 +247,8 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   const {
     ALL_VOCABULARY,
     CORE_VOCABULARY,
+    LEGACY_VOCABULARY,
+    B2_VOCABULARY,
     TOTAL_VOCABULARY_TARGET,
     VOCABULARY_LEVEL_COUNTS,
     isStandaloneVocabularyHeadword,
@@ -255,19 +258,41 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
-  assert.equal(TOTAL_VOCABULARY_TARGET, 5000);
-  assert.equal(ALL_VOCABULARY.length, 4142);
+  assert.equal(TOTAL_VOCABULARY_TARGET, 8300);
+  assert.equal(ALL_VOCABULARY.length, 7397);
   assert.equal(CORE_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 871, A2: 1100, B1: 2171, all: 4142 });
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 870, A2: 1079, B1: 2148, B2: 3300, all: 7397 });
+  // This digest covers every old ID, translation, headword, class and placement.
+  assert.equal(createHash("sha256").update(JSON.stringify(LEGACY_VOCABULARY)).digest("hex"),
+    "11e18ba658a07480488a42bb8392d318be7eec58f894074a739688a1d56f279f");
   assert.equal(new Set(ALL_VOCABULARY.map((item) => item.id)).size, ALL_VOCABULARY.length);
   assert.ok(ALL_VOCABULARY.every(isStandaloneVocabularyHeadword));
   const headwordKey = (item) => item.german.toLocaleLowerCase("de").replace(/^(?:der|die|das)\s+/, "").trim();
-  const extended = ALL_VOCABULARY.filter((item) => item.id.startsWith("lexicon-b1-"));
+  const extended = LEGACY_VOCABULARY.filter((item) => item.id.startsWith("lexicon-b1-"));
   const coreHeadwords = new Set(CORE_VOCABULARY.map(headwordKey));
   assert.equal(extended.length, 2000);
   assert.equal(new Set(extended.map(headwordKey)).size, extended.length);
   assert.ok(extended.every((item) => !coreHeadwords.has(headwordKey(item))));
   assert.ok(extended.every((item) => !/\s/.test(headwordKey(item))));
+  const { vocabularyHeadwordKey } = await vite.ssrLoadModule("/app/vocabulary/headword.ts");
+  const allHeadwords = ALL_VOCABULARY.map((item) => vocabularyHeadwordKey(item.german));
+  assert.equal(new Set(allHeadwords).size, ALL_VOCABULARY.length);
+  const oldHeadwords = new Set(LEGACY_VOCABULARY.map((item) => vocabularyHeadwordKey(item.german)));
+  assert.equal(B2_VOCABULARY.length, 3300);
+  assert.ok(B2_VOCABULARY.every((item) => !oldHeadwords.has(vocabularyHeadwordKey(item.german))));
+  assert.ok(B2_VOCABULARY.every((item) => item.id === `lexicon-b2-${vocabularyHeadwordKey(item.german)}`));
+  const provenance = JSON.parse(await readFile(path.join(root, "app/vocabulary/b2-provenance.json"), "utf8"));
+  const rows = B2_VOCABULARY.map(({ german, english, category, wordClass }) => [german, english, category, wordClass]);
+  assert.equal(createHash("sha256").update(JSON.stringify(rows)).digest("hex"), provenance.rowsSha256);
+  assert.deepEqual(Object.fromEntries(["noun", "verb", "adjective", "adverb"].map((kind) =>
+    [kind, B2_VOCABULARY.filter((item) => item.wordClass === kind).length])),
+    { noun: 2050, verb: 700, adjective: 450, adverb: 100 });
+  assert.ok(B2_VOCABULARY.filter((item) => item.wordClass === "noun").every((item) => /^(der|die|das)\s+[\p{Lu}]/u.test(item.german)));
+  assert.notEqual(vocabularyHeadwordKey("der Stand"), vocabularyHeadwordKey("stehen"));
+  assert.notEqual(vocabularyHeadwordKey("die Sucht"), vocabularyHeadwordKey("suchen"));
+  assert.notEqual(vocabularyHeadwordKey("die Maße"), vocabularyHeadwordKey("die Masse"));
+  assert.equal(vocabularyHeadwordKey("sich anmelden"), vocabularyHeadwordKey("anmelden"));
+  assert.equal(vocabularyHeadwordKey("selbständig"), vocabularyHeadwordKey("selbstständig"));
   assert.ok(!ALL_VOCABULARY.some((item) => /^(?:Informationen über|Fragen zu|die Debatte über|in Bezug auf|im Zusammenhang mit|die Bedeutung von)\b/i.test(item.german)));
   assert.ok(!ALL_VOCABULARY.some((item) => /^(?:information about|questions about|with regard to|in connection with|the debate about|the importance of)\b/i.test(item.english)));
 
@@ -295,7 +320,7 @@ test("opens vocabulary on the word library with practice and review available", 
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /4,142 words/);
+  assert.match(html, /7,397 words · A1 to B2/);
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);
@@ -309,6 +334,42 @@ test("opens vocabulary on the word library with practice and review available", 
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
   assert.doesNotMatch(html, /Phrase \/ other|Phrases &amp; other/);
+});
+
+test("preserves duplicate vocabulary IDs and the latest FSRS history during consolidation", async () => {
+  const { ALL_VOCABULARY, LEGACY_VOCABULARY } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const catalogIds = new Set(ALL_VOCABULARY.flatMap((word) => [word.id, ...(word.progressAliases ?? []).map((alias) => alias.id)]));
+  assert.ok(LEGACY_VOCABULARY.every((word) => catalogIds.has(word.id)));
+  const aliases = ALL_VOCABULARY.flatMap((word) => word.progressAliases ?? []);
+  assert.equal(aliases.length, 45);
+  const values = new Map([["leselaut:vocabulary:a1-b1", JSON.stringify({ completed: aliases.map((word) => word.id), review: [] })]]);
+  const storage = { getItem: (key) => values.get(key) ?? null, setItem: (key, value) => values.set(key, value) };
+  const migrated = p.readVocabularyProgress(storage, ALL_VOCABULARY);
+  assert.ok(ALL_VOCABULARY.filter((word) => word.progressAliases).every((word) => p.isVocabularyLearned(migrated, word)));
+  const word = ALL_VOCABULARY.find((item) => item.german === "sich anmelden");
+  const alias = word.progressAliases.find((item) => item.german === "anmelden");
+  const oldKey = p.vocabularyCardKey(alias); const key = p.vocabularyCardKey(word);
+  assert.notEqual(oldKey, key);
+  const { rateVocabularyFlashcard } = await vite.ssrLoadModule("/app/lib/flashcard-progress.ts");
+  const oldCard = rateVocabularyFlashcard(p.emptyVocabularyProgress(), alias, 3, 2000).cards[oldKey];
+  assert.equal(oldCard.memory.reps, 1);
+  values.set(p.VOCABULARY_PROGRESS_STORAGE_KEY, JSON.stringify({ learnedKeys: [], reviewKeys: [oldKey], legacyMigrated: true,
+    cards: { [oldKey]: oldCard, [key]: { ...oldCard, status: "learned", updatedAt: 1000 } } }));
+  const modern = p.readVocabularyProgress(storage, ALL_VOCABULARY);
+  assert.deepEqual(modern.cards[key], oldCard);
+  assert.deepEqual(modern.cards[oldKey], oldCard);
+  assert.equal(p.isVocabularyReview(modern, word), true);
+  assert.equal(p.vocabularyReviewDueAt(modern, word), oldCard.dueAt);
+  p.writeVocabularyProgress(storage, modern);
+  assert.deepEqual(p.readVocabularyProgress(storage, ALL_VOCABULARY), modern);
+  const rated = rateVocabularyFlashcard(modern, word, 3, oldCard.dueAt);
+  assert.equal(rated.cards[key].memory.reps, 2);
+  const b2 = ALL_VOCABULARY.find((item) => item.german === "ermitteln");
+  assert.equal(b2.level, "B2");
+  const updated = p.setVocabularyStatus(modern, b2, "learned", 3000);
+  assert.equal(p.isVocabularyLearned(updated, b2), true);
+  assert.deepEqual(updated.cards[oldKey], oldCard);
 });
 
 test("configures vocabulary pronunciation for German speech", async () => {

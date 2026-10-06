@@ -7,6 +7,13 @@ are adapted from the German B1 vocabulary lists in
 [Tartarus](https://github.com/bahman-farhadian/tartarus), copyright (c) 2025
 Bahman Farhadian. Example sentences and secondary senses are not included.
 
+The 3,300 B2 headwords in `app/vocabulary/b2-data.ts` are adapted from the
+German B2 vocabulary lists in the same MIT-licensed project at revision
+`308e64a848f803379ecdbe9a17bf85745be5f85e`, copyright (c) 2026 Bahman Farhadian.
+Primary English noun senses and selected secondary senses for other word classes
+are retained; example sentences are omitted. See `app/vocabulary/b2-provenance.json`,
+`scripts/build-b2-vocabulary.mjs` and `docs/B2_VOCABULARY.md`.
+
 Tartarus is distributed under the MIT License:
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -94,7 +94,10 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
   db.prepare('INSERT INTO tutor_quotas(user_id,day,used) VALUES(?,?,19)').run('limit',new Date().toISOString().slice(0,10));
   const limited=await Promise.all([post({action:'generate',level:'C1',count:12,requestId:'quota-last-one-01'},'limit'),post({action:'generate',level:'A2',count:1,requestId:'quota-overflow-01'},'limit')]);assert.deepEqual(limited.map(r=>r.status).sort(),[200,429]);assert.equal(quota('limit'),20);
   assert.ok(seen.find(x=>x.task.seed==='generate-pending-01').task.avoid.includes('I live in Berlin.'),'History includes previous sentences across levels');
-  assert.deepEqual(seen.find(x=>x.task.seed==='quota-last-one-01').task.avoid,[],'Another account does not receive Alice’s history');
+  // Either concurrent request can reserve the final slot; inspect its prompt.
+  const quotaPrompt=seen.find(x=>['quota-last-one-01','quota-overflow-01'].includes(x.task.seed));
+  assert.ok(quotaPrompt,'The successful quota request reaches the model');
+  assert.deepEqual(quotaPrompt.task.avoid,[],'Another account does not receive Alice’s history');
   const usedBefore=quota('alice'),callsBefore=calls;repeatedGeneration=1;
   const fresh={action:'generate',level:'A1',count:1,requestId:'generate-fresh-001'};
   const freshResult=await post(fresh);assert.equal(freshResult.status,200);assert.deepEqual((await freshResult.json()).session.sentences,['The red bicycle is outside.']);assert.equal(calls,callsBefore+2);assert.equal(quota('alice'),usedBefore+1,'Internal repetition retries reserve only one daily request');
