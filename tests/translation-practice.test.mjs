@@ -13,6 +13,8 @@ test('translation validation accepts alternatives, rejects invented errors and m
   assert.deepEqual(p.TRANSLATION_LEVELS,['A1','A2','B1','B2','C1']);
   assert.deepEqual(p.generatedSentences({sentences:['I live in Berlin.']},'A1',1),['I live in Berlin.']);
   assert.throws(()=>p.generatedSentences({sentences:['Hello there.','Hello there!']},'A1',2));
+  assert.throws(()=>p.generatedSentences({sentences:['I LIVE in Berlin!']},'A1',1,['I live in Berlin.']));
+  assert.throws(()=>p.generatedSentences({sentences:['I live  in Berlin.']},'A1',1,['I live in Berlin.']));
   assert.throws(()=>p.generatedSentences({sentences:['one two three four five six seven eight nine ten eleven twelve thirteen.']},'A1',1));
   const correct={number:1,verdict:'correct',correctTranslation:'Ich wohne in Berlin.',explanation:'Both wohnen and leben work here.',corrections:[]};
   assert.equal(p.checkedTranslations({feedback:[correct]},['Ich lebe in Berlin.'])[0].verdict,'correct');
@@ -31,7 +33,7 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
  const db=new DatabaseSync(':memory:');db.exec(readFileSync('drizzle/0002_legal_nehzno.sql','utf8'));
  globalThis.__translationDb={prepare(sql){return{bind(...args){return{async first(){return db.prepare(sql).get(...args)??null;},async all(){return{results:db.prepare(sql).all(...args)};},async run(){return{meta:{changes:Number(db.prepare(sql).run(...args).changes)}};}};}};}};
  const vite=await server([{name:'translation-test-auth',enforce:'pre',transform(code,id){if(id.endsWith('/app/api/active-learning/translation/route.ts'))return code.replace("import { getD1 } from '@/db';","const getD1=async()=>globalThis.__translationDb;").replace("import { getAuthenticatedUser } from '@/app/lib/supabase-auth';","const getAuthenticatedUser=async r=>r.headers.get('x-test-user')?{id:r.headers.get('x-test-user')}:null;");}}]);
- const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';let calls=0,held=null,badFeedback=false;
+ const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';let calls=0,held=null,badFeedback=false,repeatedGeneration=0;
  const seen=[];globalThis.fetch=async(url,init)=>{
   calls++;
   if(String(url).endsWith('/audio/transcriptions'))return Response.json({text:'Ich lebe in Berlin.'});
@@ -40,7 +42,10 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
   const task=JSON.parse(data);seen.push({instruction:input.messages[0].content,task});
   if(held){const gate=held;held=null;await gate;}
   let result;
-  if(task.count)result={sentences:Array.from({length:task.count},(_,i)=>i===0?'I live in Berlin.':i===1?'She buys bread.':`We visit the museum on day ${i+1}.`)};
+  if(task.count && repeatedGeneration>0){repeatedGeneration--;result={sentences:['I LIVE in Berlin!']};}
+  else if(task.count && task.avoid.includes('My blue umbrella is near door 1.'))result={sentences:['The red bicycle is outside.']};
+  else if(task.count && task.avoid.includes('I live in Berlin.'))result={sentences:Array.from({length:task.count},(_,i)=>`My blue umbrella is near door ${i+1}.`)};
+  else if(task.count)result={sentences:Array.from({length:task.count},(_,i)=>i===0?'I live in Berlin.':i===1?'She buys bread.':`We visit the museum on day ${i+1}.`)};
   else result={feedback:task.items.map(item=>({number:item.number,verdict:item.german==='Ich wohne in Berlin.'?'correct':item.german==='Ich lebe in Berlin.'?'correct':'needs_work',correctTranslation:item.number===1?'Ich wohne in Berlin.':'Sie kauft Brot.',explanation:item.german.startsWith('Ich')?'Your wording conveys the English meaning.':'Use the verb ending for sie.',corrections:item.german.startsWith('Ich')?[]:[{original:badFeedback?'invented source':item.german,corrected:'Sie kauft Brot.',explanation:'Singular sie takes kauft.',category:'grammar',kind:'error'}]}))};
   return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(result)}}]});
  };
@@ -88,6 +93,24 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
   r=await post({action:'generate',level:'B1',count:1,requestId:'generate-stale-01'});assert.equal(r.status,502);assert.equal((await r.json()).session.operations[0].status,'failed');
   db.prepare('INSERT INTO tutor_quotas(user_id,day,used) VALUES(?,?,19)').run('limit',new Date().toISOString().slice(0,10));
   const limited=await Promise.all([post({action:'generate',level:'C1',count:12,requestId:'quota-last-one-01'},'limit'),post({action:'generate',level:'A2',count:1,requestId:'quota-overflow-01'},'limit')]);assert.deepEqual(limited.map(r=>r.status).sort(),[200,429]);assert.equal(quota('limit'),20);
+  assert.ok(seen.find(x=>x.task.seed==='generate-pending-01').task.avoid.includes('I live in Berlin.'),'History includes previous sentences across levels');
+  assert.deepEqual(seen.find(x=>x.task.seed==='quota-last-one-01').task.avoid,[],'Another account does not receive Alice’s history');
+  const usedBefore=quota('alice'),callsBefore=calls;repeatedGeneration=1;
+  const fresh={action:'generate',level:'A1',count:1,requestId:'generate-fresh-001'};
+  const freshResult=await post(fresh);assert.equal(freshResult.status,200);assert.deepEqual((await freshResult.json()).session.sentences,['The red bicycle is outside.']);assert.equal(calls,callsBefore+2);assert.equal(quota('alice'),usedBefore+1,'Internal repetition retries reserve only one daily request');
+  assert.equal((await post(fresh)).status,200);assert.equal(calls,callsBefore+2);assert.equal(quota('alice'),usedBefore+1);
   const latest=await (await get()).json();assert.ok(latest.recent.length);assert.equal(latest.recent.every(x=>x.exerciseId.startsWith('translation-')),true);
  }finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GROQ_API_KEY;else process.env.GROQ_API_KEY=oldKey;delete globalThis.__translationDb;await vite.close();db.close();}
+});
+
+test('generation retries repeated output internally and never returns a repeat when retries are exhausted',async()=>{
+ const vite=await server(),oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';
+ let calls=0,alwaysRepeat=false;const inputs=[];
+ globalThis.fetch=async(_url,init)=>{calls++;const task=JSON.parse(JSON.parse(init.body).messages[1].content);inputs.push(task);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify({sentences:[alwaysRepeat||calls===1?'I LIVE in Berlin!':'The dog sleeps beside the chair.']})}}]});};
+ try{
+  const ai=await vite.ssrLoadModule('/app/api/active-learning/translation/_ai.ts');
+  assert.deepEqual(await ai.generateTranslationSentences('A1',1,'repeat-retry-0001',['I live in Berlin.']),['The dog sleeps beside the chair.']);
+  assert.equal(calls,2);assert.ok(inputs[1].avoid.includes('I LIVE in Berlin!'));assert.notDeepEqual(inputs[0].contexts,inputs[1].contexts);
+  calls=0;alwaysRepeat=true;await assert.rejects(ai.generateTranslationSentences('A1',1,'repeat-block-0001',['I live in Berlin.']),/repeated/);assert.equal(calls,3);
+ }finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GROQ_API_KEY;else process.env.GROQ_API_KEY=oldKey;await vite.close();}
 });

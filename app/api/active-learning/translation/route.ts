@@ -96,7 +96,8 @@ export async function POST(request: Request) {
       if (!await save(db, user, record)) return fail('This exercise is being generated. Reload saved work shortly.', 409);
       try {
         if (!await reserveTutorQuota(db, user)) { operation.errorStatus = 429; throw new Error('quota'); }
-        record.session.sentences = await generateTranslationSentences(level, count, requestId); operation.status = 'complete';
+        const history = await db.prepare("SELECT sentence.value AS sentence FROM tutor_sessions AS sessions, json_each(sessions.data, '$.sentences') AS sentence WHERE sessions.user_id = ? AND sessions.task_id LIKE 'translation-%' AND json_extract(sessions.data, '$.kind') = 'translation-v1' AND sentence.type = 'text' ORDER BY sessions.updated_at DESC, sentence.key ASC").bind(user).all<{ sentence: string }>();
+        record.session.sentences = await generateTranslationSentences(level, count, requestId, history.results.map(row => row.sentence)); operation.status = 'complete';
       } catch { operation.status = 'failed'; operation.error = operation.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC.' : 'Sentences could not be generated. Generate a new set to try again.'; operation.errorStatus ??= 502; }
       if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
       return operation.status === 'failed' ? fail(operation.error!, operation.errorStatus, record) : respond(record);

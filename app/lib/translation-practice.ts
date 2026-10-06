@@ -23,9 +23,11 @@ export type TranslationSession = { kind: 'translation-v1'; level: TranslationLev
 export type TranslationRecord = { exerciseId: string; version: number; session: TranslationSession };
 export type TranslationResponse = TranslationRecord & { error?: string; recent?: { exerciseId: string; level: TranslationLevel; count: number }[] };
 
-export function generatedSentences(value: unknown, level: TranslationLevel, count: number): string[] {
+export const sentenceKey = (sentence: string) => sentence.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+export function generatedSentences(value: unknown, level: TranslationLevel, count: number, previous: Iterable<string> = []): string[] {
   const result = z.object({ sentences: z.array(z.string().trim().min(3).max(400)).length(count) }).strict().parse(value).sentences;
-  if (new Set(result.map(s => s.toLowerCase().replace(/\W/g, ''))).size !== count || result.some(s => s.split(/\s+/).length > LEVEL_GUIDANCE[level].words || /[\r\n]/.test(s))) throw new Error('The generated sentences did not match the exercise.');
+  const used = new Set(Array.from(previous, sentenceKey));
+  if (new Set(result.map(sentenceKey)).size !== count || result.some(s => used.has(sentenceKey(s)) || s.split(/\s+/).length > LEVEL_GUIDANCE[level].words || /[\r\n]/.test(s))) throw new Error('The generated sentences did not match the exercise or repeated previous work.');
   return result;
 }
 export function checkedTranslations(value: unknown, answers: string[]): SentenceFeedback[] {
