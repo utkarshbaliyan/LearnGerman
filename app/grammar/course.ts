@@ -1,3 +1,4 @@
+import { ADVANCED_GRAMMAR_MODULES, ADVANCED_GRAMMAR_LESSONS } from "./advanced-course";
 import { A1_LESSON_ONE_EXERCISES } from "@/app/grammar/a1-lesson-one-exercises";
 import { A1_LESSON_TWO_EXERCISES } from "@/app/grammar/a1-lesson-two-exercises";
 import { A1_LESSON_THREE_EXERCISES } from "@/app/grammar/a1-lesson-three-exercises";
@@ -16,9 +17,9 @@ import { A2_ADVANCED_LESSONS } from "@/app/grammar/a2-advanced-lessons";
 import { B1_FOUNDATION_LESSONS } from "@/app/grammar/b1-foundation-lessons";
 import { B1_ADVANCED_LESSONS } from "@/app/grammar/b1-advanced-lessons";
 
-export type GrammarLevel = "A1" | "A2" | "B1";
+export type GrammarLevel = "A1" | "A2" | "B1" | "B2" | "C1";
 
-type ExerciseMeta = { id: string; group?: string; explanation: string };
+type ExerciseMeta = { id: string; group?: string; explanation: string; caseSensitive?: boolean };
 
 export type GrammarExercise =
   | (ExerciseMeta & { type: "choice"; prompt: string; options: string[]; answer: string })
@@ -55,6 +56,7 @@ export type GrammarLessonContent = {
   examples: { german: string; english: string; note?: string }[];
   mistakes: { wrong: string; right: string; why: string }[];
   memoryTip: string;
+  sources?: string[];
   exercises: GrammarExercise[];
 };
 
@@ -170,9 +172,10 @@ export const GRAMMAR_MODULES: GrammarModule[] = [
     ["Cohesion and reference", "Link paragraphs with pronouns and connective adverbs."],
     ["Commas and formal register", "Punctuate complex clauses and adjust style to context."],
   ]),
+  ...ADVANCED_GRAMMAR_MODULES,
 ];
 
-export const GRAMMAR_LEVELS: GrammarLevel[] = ["A1", "A2", "B1"];
+export const GRAMMAR_LEVELS: GrammarLevel[] = ["A1", "A2", "B1", "B2", "C1"];
 
 export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   "a1-1-1": {
@@ -1411,6 +1414,7 @@ export const LIVE_GRAMMAR_LESSONS: Record<string, GrammarLessonContent> = {
   ...A2_ADVANCED_LESSONS,
   ...B1_FOUNDATION_LESSONS,
   ...B1_ADVANCED_LESSONS,
+  ...ADVANCED_GRAMMAR_LESSONS,
 };
 
 export const ALL_GRAMMAR_LESSONS = GRAMMAR_MODULES.flatMap((item) => item.lessons);

@@ -8,6 +8,8 @@ import {
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
+import { acceptsGrammarAnswer, joinGrammarTokens } from "./practice-answer";
+import { GRAMMAR_SOURCES } from "./sources";
 import { SiteHeader } from "@/app/components/site-header";
 import {
   ALL_GRAMMAR_LESSONS, GRAMMAR_LEVELS, GRAMMAR_MODULES, LIVE_GRAMMAR_LESSONS,
@@ -32,15 +34,6 @@ const REQUIRED_GRAMMAR_SETS = Object.fromEntries(Object.entries(LIVE_GRAMMAR_LES
   lessonId,
   [...new Set(lesson.exercises.map((exercise) => exercise.group ?? "Core practice"))],
 ]));
-
-function normalize(value: string) {
-  return value.trim().toLocaleLowerCase("de").replace(/[.!?]+$/g, "").replace(/\s+/g, " ");
-}
-
-function accepted(answer: string | string[], value: string) {
-  const answers = Array.isArray(answer) ? answer : [answer];
-  return answers.some((item) => normalize(item) === normalize(value));
-}
 
 function ExerciseType({ exercise }: { exercise: GrammarExercise }) {
   const labels: Record<GrammarExercise["type"], string> = {
@@ -70,7 +63,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
   const gradedTotal = exercises.filter((item) => item.type !== "production").length;
 
   function currentValue() {
-    if (exercise.type === "order") return ordered.map((tokenIndex) => exercise.tokens[tokenIndex]).join(" ").replace(/\s+([.!?])/g, "$1");
+    if (exercise.type === "order") return joinGrammarTokens(ordered.map((tokenIndex) => exercise.tokens[tokenIndex]));
     return value;
   }
 
@@ -79,7 +72,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
       setSubmitted(true);
       return;
     }
-    const isCorrect = accepted(exercise.answer, currentValue());
+    const isCorrect = acceptsGrammarAnswer(exercise.answer, currentValue(), exercise.caseSensitive);
     setCorrect(isCorrect);
     setSubmitted(true);
     if (isCorrect) setCorrectCount((count) => count + 1);
@@ -138,9 +131,9 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
       <div className="practice-finish">
         <span><CheckCircle2 /></span>
         <p>Practice set complete</p>
-        <strong>{score}%</strong>
-        <h3>{score >= 80 ? "You reached mastery." : "Good first pass—review once more."}</h3>
-        <p>{correctCount} of {gradedTotal} graded tasks were correct. Your best score is saved on this device.</p>
+        <strong>{gradedTotal === 0 ? "Self-check complete" : `${score}%`}</strong>
+        <h3>{gradedTotal === 0 ? "Review your own grammar against the models." : score >= 80 ? "Strong result on this set." : "Review the patterns and try again."}</h3>
+        <p>{gradedTotal === 0 ? "Production is self-checked; it is not independently graded." : `${correctCount} of ${gradedTotal} graded tasks were correct.`} Your practice progress is saved and synced to your account.</p>
         <div className="practice-finish-actions"><Button onClick={restart} variant="outline"><RefreshCcw /> Practice again</Button><Button onClick={() => setActiveGroup(null)}>All practice sets</Button></div>
       </div>
     );
@@ -167,7 +160,7 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
 
         {(exercise.type === "fill" || exercise.type === "correction" || exercise.type === "translation") && (
           <label className="answer-field">
-            <span>{exercise.type === "fill" ? "Your answer" : exercise.type === "correction" ? "Correct sentence" : exercise.direction === "en-de" ? "German translation" : "English translation"}</span>
+            <span>{exercise.caseSensitive && "Use the model’s capitalisation. "}{exercise.type === "fill" ? "Your answer" : exercise.type === "correction" ? "Correct sentence" : exercise.direction === "en-de" ? "German translation" : "English translation"}</span>
             <Input lang={exercise.type === "translation" && exercise.direction === "de-en" ? "en" : "de"} value={value} disabled={submitted} onChange={(event) => setValue(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && canSubmit && !submitted) checkAnswer(); }} placeholder={exercise.type === "fill" ? "Type the missing word" : exercise.type === "correction" ? "Rewrite the complete sentence" : "Type the complete translation"} />
           </label>
         )}
@@ -209,6 +202,7 @@ export default function GrammarPage() {
   const [level, setLevel] = useState<GrammarLevel>("A1");
   const [selectedLessonId, setSelectedLessonId] = useState("a1-1-1");
   const [progress, setProgress] = useState<GrammarProgress>({ completed: [], scores: {}, sets: {} });
+  const [query, setQuery] = useState("");
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -263,6 +257,8 @@ export default function GrammarPage() {
   function selectLesson(id: string) {
     if (!LIVE_GRAMMAR_LESSONS[id]) return;
     setSelectedLessonId(id);
+    setLevel(getGrammarModuleForLesson(id)!.level);
+    setQuery("");
     document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -281,7 +277,11 @@ export default function GrammarPage() {
     queueCloudProgress("course", syncGrammarLessonToCourse(localStorage, selectedLessonId, lessonSets, average));
   }
 
-  const overallRoadmap = Math.round((progress.completed.length / ALL_GRAMMAR_LESSONS.length) * 100);
+  const overallRoadmap = Math.round((completedLive / ALL_GRAMMAR_LESSONS.length) * 100);
+  const searchResults = query.trim() ? ALL_GRAMMAR_LESSONS.filter(lesson => {
+    const content = LIVE_GRAMMAR_LESSONS[lesson.id];
+    return `${lesson.title} ${lesson.outcome} ${content.pattern} ${content.explanation.join(" ")}`.toLocaleLowerCase("de").includes(query.trim().toLocaleLowerCase("de"));
+  }) : [];
   const liveProgress = Math.round((completedLive / liveLessons.length) * 100);
 
   return (
@@ -290,21 +290,21 @@ export default function GrammarPage() {
 
       <section className="grammar-hero">
         <div>
-          <Badge className="eyebrow"><Sparkles /> A1–B1 · Grammar lessons</Badge>
+          <Badge className="eyebrow"><Sparkles /> A1–C1 · Grammar lessons</Badge>
           <h1>Understand the rule.<br /><em>Use it with confidence.</em></h1>
-          <p>A complete 72-lesson roadmap from first sentences to connected B1 German. Every lesson follows the same learning loop: notice, understand, build, correct, produce, and review.</p>
-          <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
+          <p>A 144-lesson core grammar course from first sentences to advanced C1 writing. Every lesson follows the same learning loop: notice, understand, build, correct, produce, and review.</p>
+          <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/reference">Grammar reference →</Link><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
         </div>
         <aside className="grammar-progress-card">
           <span>Your grammar progress</span>
           <div className="grammar-score"><strong>{liveProgress}%</strong><small>current release</small></div>
           <Progress value={liveProgress} />
           <p>{completedLive} of {liveLessons.length} available lessons completed. Your practice results are saved to your account.</p>
-          <div className="grammar-progress-meta"><span><b>72</b> total lessons</span><span><b>{overallRoadmap}%</b> full path</span></div>
+          <div className="grammar-progress-meta"><span><b>{ALL_GRAMMAR_LESSONS.length}</b> total lessons</span><span><b>{overallRoadmap}%</b> full path</span></div>
         </aside>
       </section>
 
-      <section className="grammar-recall-entry" aria-labelledby="recall-entry-title"><div><span>Keep the patterns close</span><h2 id="recall-entry-title">Four cases. One reference section.</h2><p>Recall articles, pronouns, adjective endings, noun forms and prepositions with side-by-side tables.</p></div><Link href="/grammar/cheat-sheets">Open cheat sheets →</Link></section>
+      <section className="grammar-recall-entry" aria-labelledby="recall-entry-title"><div><span>Keep the patterns close</span><h2 id="recall-entry-title">Find the rule. Check the pattern.</h2><p>Review the cases and advanced verb, clause and writing patterns. CEFR levels guide the sequence; this course is not a proficiency certificate.</p></div><Link href="/grammar/reference">Open grammar reference →</Link></section>
 
       <section className="grammar-method">
         <div><Target /><strong>Understand</strong><span>Plain-English rules and visual patterns</span></div>
@@ -314,9 +314,11 @@ export default function GrammarPage() {
 
       <section className="grammar-course" id="roadmap">
         <div className="grammar-roadmap">
-          <div className="grammar-roadmap-heading"><span>Grammar roadmap</span><h2>From your first sentence to B1 precision.</h2><p>Choose a lesson to study its explanation and practice.</p></div>
+          <div className="grammar-roadmap-heading"><span>Grammar roadmap</span><h2>From your first sentence to C1 precision.</h2><p>Choose a lesson to study its explanation and practice.</p></div>
+          <label className="grammar-topic-search"><span>Find a topic across A1–C1</span><Input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Try passive, Konjunktiv, commas…" /></label>
+          {query.trim() && <div className="grammar-search-results" aria-live="polite"><p>{searchResults.length} matching lessons</p>{searchResults.map(lesson => <button type="button" key={lesson.id} onClick={() => selectLesson(lesson.id)}><b>{getGrammarModuleForLesson(lesson.id)!.level} · {lesson.title}</b><span>{lesson.outcome}</span></button>)}</div>}
           <div className="grammar-level-switcher" aria-label="Choose a grammar level">
-            {GRAMMAR_LEVELS.map((item) => <button key={item} type="button" className={level === item ? "is-active" : ""} onClick={() => selectLevel(item)}><b>{item}</b><span>24 lessons</span></button>)}
+            {GRAMMAR_LEVELS.map((item) => <button key={item} type="button" className={level === item ? "is-active" : ""} onClick={() => selectLevel(item)}><b>{item}</b><span>{GRAMMAR_MODULES.filter(module => module.level === item).reduce((sum, module) => sum + module.lessons.length, 0)} lessons</span></button>)}
           </div>
 
           <div className="grammar-module-list">
@@ -368,6 +370,8 @@ export default function GrammarPage() {
 
             <aside className="grammar-memory-tip"><Lightbulb /><div><span>Memory hook</span><p>{content.memoryTip}</p></div></aside>
 
+            {content.sources && <details className="grammar-rule-sources"><summary>Rule references</summary><ul>{content.sources.map(id => <li key={id}><a href={GRAMMAR_SOURCES[id].url} target="_blank" rel="noreferrer">{GRAMMAR_SOURCES[id].title}</a></li>)}</ul><p>Original explanations and examples informed by these references. Level placement is an editorial sequence.</p></details>}
+
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 
             {nextLesson && <button type="button" className="next-grammar-lesson" onClick={() => selectLesson(nextLesson.id)}><span>Next lesson</span><strong>{nextLesson.title}</strong><ArrowRight /></button>}
@@ -377,7 +381,7 @@ export default function GrammarPage() {
         )}
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>A1–B1 grammar lessons with explanations, practice, and saved progress.</p><div><Link href="/stories" prefetch>Stories</Link><Link href="/vocabulary" prefetch>Vocabulary</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>A1–C1 grammar lessons with explanations, practice, and saved progress.</p><div><Link href="/stories" prefetch>Stories</Link><Link href="/vocabulary" prefetch>Vocabulary</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

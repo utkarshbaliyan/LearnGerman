@@ -212,3 +212,23 @@ test('old B1 story bookmarks open the current edition and invalid editions remai
   for (const id of ['reading-b1-999-v1', 'reading-b1-01-v99'])
     assert.equal((await renderRoute(`/stories/${id}`)).status, 404);
 });
+
+test('grammar presents A1–C1 counts, topic search and a complete linked reference', async () => {
+  const grammar=await renderRoute('/grammar');
+  assert.equal(grammar.status,200);
+  const html=(await grammar.text()).replaceAll('<!-- -->','');
+  assert.match(html,/A1–C1 German Grammar/);
+  assert.match(html,/144-lesson core grammar/);
+  assert.match(html,/Find a topic across A1–C1/);
+  assert.match(html,/<b>B2<\/b><span>36 lessons<\/span>/);
+  assert.match(html,/<b>C1<\/b><span>36 lessons<\/span>/);
+  assert.match(html,/href="\/grammar\/reference"/);
+  const reference=await renderRoute('/grammar/reference');
+  assert.equal(reference.status,200);
+  const content=await reference.text();
+  assert.match(content,/href="\/grammar\?lesson=c1-6-6"/);
+  assert.match(content,/href="\/grammar\?lesson=b2-6-6"/);
+  assert.match(content,/lexical exceptions/);
+  assert.match(content,/grammis.ids-mannheim.de/);
+  assert.equal((content.match(/<table>/g)??[]).length,9);
+});
