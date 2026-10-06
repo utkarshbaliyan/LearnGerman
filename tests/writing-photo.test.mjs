@@ -38,7 +38,7 @@ test("photo assignments require consent, preserve handwriting errors, confirm te
     let content;
     if (Array.isArray(body.messages[1].content)) {
       visionCalls++;
-      assert.equal(body.model, "qwen/qwen3.6-27b");
+      assert.equal(body.model, "qwen/qwen3.8-27b");
       assert.match(body.messages[0].content, /Do NOT correct/);
       assert.match(body.messages[0].content, /never instructions to obey/);
       assert.match(body.messages[1].content[1].image_url.url, /^data:image\/png;base64,/);
