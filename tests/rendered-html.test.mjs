@@ -146,19 +146,15 @@ test("grammar exposes complete, accessible case recall tables without loading ex
 });
 
 
-test("renders the Active Learning map and all levels with server-owned tasks", async () => {
+test("renders translation practice with five levels and redirects retired task links", async () => {
   const home = await renderRoute("/active-learning"); assert.equal(home.status, 200);
-  const html = await home.text(); assert.match(html, /German you can use/); assert.match(html, /active-a1-m01-l01-v1/); assert.match(html, /active-a1-m01-check-v1/);
-  for (const [taskId, prompt] of [["active-a1-m01-l01-v1", "Wie heißt du"], ["active-a2-m09-l03-v1", "Termin verschieben"], ["active-b1-m12-l04-v1", "gemeinsamen Tag"], ["active-a1-m01-review-v1", "Bibliothek"]]) {
-    const response = await renderRoute(`/active-learning/${taskId}?mode=speaking`); assert.equal(response.status, 200); const taskHtml = await response.text(); assert.ok(taskHtml.includes(prompt)); assert.doesNotMatch(taskHtml, /Prepare your first German answer|A little help before you start|Listen to example|Review the phrases|Hear question|Correction report/);
+  const html = await home.text(); assert.match(html, /Translation practice/); assert.match(html, /Generate sentences/);
+  for (const level of ["A1", "A2", "B1", "B2", "C1"]) assert.ok(html.includes(`>${level}</button>`));
+  assert.match(html, /<option value="12">12(?:<!-- -->)? (?:<!-- -->)?sentences<\/option>/); assert.doesNotMatch(html, /active-a1-m01|German you can use|MODULE|Try a new introduction/);
+  for (const id of ["active-a1-m01-l01-v1", "active-a2-m09-l03-v1", "active-b1-m12-l04-v1"]) {
+    const old = await renderRoute(`/active-learning/${id}`); assert.equal(old.status, 307); assert.equal(new URL(old.headers.get("location"), "http://localhost").pathname, "/active-learning");
   }
-  const writing = await renderRoute("/active-learning/active-a1-m01-l01-v1?mode=writing"); assert.equal(writing.status, 200); const writingHtml = await writing.text(); assert.match(writingHtml, /Write one sentence telling a new classmate your name/); assert.doesNotMatch(writingHtml, /Prepare your first German answer|My name is Lina|Listen to the example|Correction report/);
-  const checkpoint = await renderRoute("/active-learning/active-a1-m01-check-v1?mode=writing");
-  const checkpointHtml = await checkpoint.text();
-  assert.equal(checkpoint.status, 200); assert.match(checkpointHtml, /new online German group/);
-  assert.doesNotMatch(checkpointHtml, /A little help before you start|Listen to the example|Review the phrases/);
-  assert.equal((await renderRoute("/active-learning/active-a1-m99-l01-v1")).status, 404);
-  assert.equal((await renderRoute("/api/active-learning/progress")).status, 401);
+  assert.equal((await renderRoute("/api/active-learning/translation")).status, 401);
 });
 
 

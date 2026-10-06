@@ -8,6 +8,8 @@ See [Project structure and performance audit](docs/PROJECT-STRUCTURE-AND-PERFORM
 for the current folder map, storage boundaries, measurements and optimization priorities.
 The feature notes below include historical implementation milestones.
 
+Active Learning now offers [A1–C1 translation practice](docs/active-learning/TRANSLATION-PRACTICE.md): generate 1–12 English sentences, answer by typing, recording or handwritten photo, then review AI corrections and a possible German translation. Previous task records are preserved.
+
 ## Prerequisites
 
 - Node.js `>=22.13.0`

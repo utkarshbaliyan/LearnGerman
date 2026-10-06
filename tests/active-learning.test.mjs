@@ -4,7 +4,7 @@ import { createServer } from 'vite';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 
-test('Active Learning has a complete versioned course, account-owned progress and beginner-friendly checks', async () => {
+test('Retired Active Learning tasks retain saved attempts and account-owned progress', async () => {
  const sqlite = new DatabaseSync(':memory:'); sqlite.exec(readFileSync('drizzle/0002_legal_nehzno.sql','utf8'));
  globalThis.__activeDb = { prepare(sql) { return {bind(...params) { return {
   async first() { return sqlite.prepare(sql).get(...params) ?? null; }, async all() { return {results:sqlite.prepare(sql).all(...params)}; },
