@@ -1,3 +1,4 @@
+import { ADVANCED_FEEDBACK } from "./advanced-feedback";
 import { makeGrammarLesson, type GrammarBlueprint, type GrammarSample } from "./lesson-blueprint";
 import type { GrammarLessonContent } from "./course";
 
@@ -14,7 +15,9 @@ export type AdvancedDefinition = {
 };
 
 export function advancedLesson(definition: AdvancedDefinition): GrammarLessonContent {
-  const samples: GrammarSample[] = definition.rows.map(([marked, english, note]) => {
+  const reasons = ADVANCED_FEEDBACK[definition.id];
+  if (!reasons || reasons.length !== 10) throw new Error(`${definition.id} needs ten sentence-specific explanations.`);
+  const samples: GrammarSample[] = definition.rows.map(([marked, english, note], index) => {
     const match = marked.match(/\[([^~\]]+)~([^\]]+)\]/);
     if (!match || (marked.match(/\[/g) ?? []).length !== 1) throw new Error(`Invalid example in ${definition.id}: ${marked}`);
     const [marker, answer, error] = match;
@@ -22,7 +25,7 @@ export function advancedLesson(definition: AdvancedDefinition): GrammarLessonCon
       german: marked.replace(marker, answer), english,
       cloze: marked.replace(marker, "___"), answer,
       wrong: marked.replace(marker, error),
-      focus: note ?? `Use ${answer} in this structure. ${definition.rules[0]}`,
+      focus: note ?? reasons[index],
     };
   });
   if (samples.length !== 10 || new Set(samples.map(s => s.german)).size !== 10) throw new Error(`${definition.id} needs ten distinct examples.`);

@@ -94,7 +94,7 @@ test('every B1 recording and R2 object is pinned to final source, voice plan and
   }
 });
 test('B1 cover, contents and reader use separate book routes and object-backed narration', async () => {
-  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false } });
+  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, ws: false, watch: null } });
   try {
     const { default: Shelf } = await vite.ssrLoadModule('/app/books/page.tsx');
     const shelf = renderToStaticMarkup(React.createElement(Shelf));
@@ -122,7 +122,7 @@ test('B1 cover, contents and reader use separate book routes and object-backed n
   } finally { await vite.close(); }
 });
 test('adding B1 bookmarks preserves both existing book records', async () => {
-  const vite = await createServer({ configFile: false, server: { middlewareMode: true, ws: false } });
+  const vite = await createServer({ configFile: false, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, ws: false, watch: null } });
   try {
     const { updateBookBookmark, mergeBookBookmark, readBookBookmark } = await vite.ssrLoadModule('/app/lib/book-bookmark.ts');
     const a2='nicht-nur-ein-profil', b1='zwischen-hoersaal-und-arbeitswelt';

@@ -23,6 +23,7 @@ test('B2 and C1 provide complete sequenced modules with distinct model contexts 
     const lesson=course.LIVE_GRAMMAR_LESSONS[d.id];
     assert.equal(d.rows.length,10,d.id);
     assert.equal(new Set(lesson.exercises.filter(e=>e.type==='choice').map(e=>e.answer)).size,10,d.id);
+    assert.ok(lesson.exercises.every(e=>e.explanation.length>30 && !e.explanation.startsWith('Use ')),`${d.id}: specific grammatical feedback`);
     assert.ok(d.rules.every(rule=>rule.length>50),`${d.id}: full specific rules`);
     assert.ok(lesson.sources.length>0);
     for(const source of lesson.sources) assert.ok(GRAMMAR_SOURCES[source],`${d.id}: ${source}`);
@@ -71,6 +72,8 @@ test('advanced progress round-trips and merges with old scores without changing 
 });
 
 test('current infinitive comma guidance and mixed declension exceptions remain explicit',()=>{
+  assert.match(course.LIVE_GRAMMAR_LESSONS['c1-6-6'].exercises[0].explanation,/Mixed noun Name.*genitive/);
+  assert.match(course.LIVE_GRAMMAR_LESSONS['b2-1-6'].exercises[3].explanation,/hat precedes bleiben müssen/);
   assert.match(course.LIVE_GRAMMAR_LESSONS['a2-4-1'].explanation.join(' '),/2024.*clause-like/);
   assert.match(course.LIVE_GRAMMAR_LESSONS['b1-1-4'].explanation.join(' '),/des Namens.*des Herzens/);
   assert.match(course.LIVE_GRAMMAR_LESSONS['b1-4-3'].explanation.join(' '),/does not automatically express disbelief/);

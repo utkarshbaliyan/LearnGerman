@@ -2,7 +2,7 @@
 
 Research date: 6 October 2026.
 
-144 released lessons: 24 each at A1, A2 and B1; 36 each at B2 and C1. Every lesson has 50 tasks in five sets of ten. The expansion adds 72 lessons, 720 distinct original model contexts and 3,600 practice tasks, bringing the total to 7,200. Recognition, fill, order, correction, both translation directions and guided production retain the existing interaction model.
+144 released lessons: 24 each at A1, A2 and B1; 36 each at B2 and C1. Every lesson has 50 tasks in five sets of ten. The expansion adds 72 lessons, 720 distinct original model contexts, 720 sentence-specific grammatical explanations and 3,600 practice tasks, bringing the total to 7,200. Recognition, fill, order, correction, both translation directions and guided production retain the existing interaction model.
 
 ## Scope and limits
 

@@ -118,7 +118,8 @@ function PracticePanel({ lessonId, completedSets, onFinish }: { lessonId: string
           {groups.map((group, groupIndex) => {
             const count = allExercises.filter((item) => (item.group ?? "Core practice") === group).length;
             const score = completedSets[group];
-            return <button key={group} type="button" onClick={() => chooseSet(group)}><span>{String(groupIndex + 1).padStart(2, "0")}</span><div><strong>{group.replace(/^\d+ · /, "")}</strong><small>{count} exercises · {score === undefined ? "Not started" : `Best ${score}%`}</small></div>{score === undefined ? <ChevronRight /> : <CheckCircle2 />}</button>;
+            const selfChecked = allExercises.filter(item => (item.group ?? "Core practice") === group).every(item => item.type === "production");
+            return <button key={group} type="button" onClick={() => chooseSet(group)}><span>{String(groupIndex + 1).padStart(2, "0")}</span><div><strong>{group.replace(/^\d+ · /, "")}</strong><small>{count} exercises · {score === undefined ? "Not started" : selfChecked ? "Self-check complete" : `Best ${score}%`}</small></div>{score === undefined ? <ChevronRight /> : <CheckCircle2 />}</button>;
           })}
         </div>
       </section>
