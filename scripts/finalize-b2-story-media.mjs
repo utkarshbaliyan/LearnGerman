@@ -1,4 +1,4 @@
-import {readFileSync, writeFileSync} from 'node:fs';
+import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {basename, join} from 'node:path';
 import assert from 'node:assert/strict';
 import {storyDigest} from './lib/b2-story-quality.mjs';
@@ -9,7 +9,8 @@ const stage = '.local-piper/b2-release';
 const stories = read(`${stage}/stories.json`), plans = read(`${stage}/plans.json`), audio = read(`${stage}/audio-manifest.json`);
 assert.equal(stories.length, 200);
 assert.deepEqual(Object.keys(audio).sort(), stories.map(s => s.id).sort(), 'Every B2 story needs a verified recording');
-const registry = {}, manifest = {}, timings = {}, reports = {};
+const registry = {}, manifest = {}, reports = {};
+mkdirSync('content/reading/b2/timings', {recursive:true});
 for (const story of stories) {
   const hash = storyDigest(story.text), plan = plans[story.id], entry = audio[story.id];
   assert.equal(plan.textHash, hash);
@@ -43,11 +44,11 @@ for (const story of stories) {
     paths[extension] = '/media/'+key;
   }
   manifest[story.id] = {...entry, src:paths.webm, timingSrc:paths.json};
-  timings[story.id] = timing;
+  writeFileSync(`content/reading/b2/timings/${story.id}.json`, readFileSync(`${stage}/audio/${name}.json`));
   reports[story.id] = {textHash:hash, planHash:storyDigest(pythonJSON), coverage:report.coverage, excess:report.excess,
     voices:[...new Set(plan.segments.map(s => s.voice))]};
 }
-for (const [filename, data] of Object.entries({'media-registry.json':registry,'audio-manifest.json':manifest,'timings.json':timings,'audio-validation.json':reports})) {
+for (const [filename, data] of Object.entries({'media-registry.json':registry,'audio-manifest.json':manifest,'audio-validation.json':reports})) {
   writeFileSync(`content/reading/b2/${filename}`,JSON.stringify(data,null,2)+'\n');
 }
 console.log('All 200 recordings and 400 immutable media objects validated; ready for upload.');

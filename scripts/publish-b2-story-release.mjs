@@ -45,4 +45,29 @@ try {
 } finally {await vite.close();}
 writeFileSync('app/lib/reading-b2-data.json', JSON.stringify(stories,null,2)+'\n');
 writeFileSync('app/lib/b2-sentence-translations.json', JSON.stringify(translations,null,2)+'\n');
+const sections = read('content/reading/b2/blueprints.json').categories.map(category => category.title);
+const goals = [
+  'Weigh shared space, privacy, budgets and access needs.',
+  'Follow how obligations and boundaries shape relationships.',
+  'Trace teamwork, responsibilities, feedback and competing deadlines.',
+  'Evaluate workplace fairness, ethical choices and personal limits.',
+  'Follow travel disruptions, booking decisions and access constraints.',
+  'Interpret expectations and viewpoints in unfamiliar encounters.',
+  'Understand participation, assessment and trust at school.',
+  'Compare educational choices, criteria and evidence.',
+  'Follow differing training goals and shared-space decisions.',
+  'Understand fairness, club decisions and outdoor challenges.',
+  'Compare product needs, advertising, quality and costs.',
+  'Read accounts of contracts, charges and everyday administration.',
+  'Follow requests, service decisions and hospitality expectations.',
+  'Trace choices and misunderstandings around food and shared meals.',
+  'Follow negotiations about traditions, celebrations and inclusion.',
+  'Compare civic priorities, representation and practical consequences.',
+  'Interpret evidence and competing needs in environmental decisions.',
+  'Understand consent, reliability and accessibility in communication.',
+  'Follow creative choices, ownership and audience expectations.',
+  'Interpret trust, uncertainty and the consequences of personal choices.',
+];
+assert.equal(sections.length,20);assert.equal(goals.length,sections.length);
+writeFileSync('app/lib/reading-b2-sections.json',JSON.stringify({titles:sections,goals},null,2)+'\n');
 console.log('Published data prepared: 200 B2 stories, full English, word meanings and 400 byte-verified media objects.');

@@ -9,6 +9,7 @@ const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const blueprints = read('content/reading/b2/blueprints.json').stories;
 const progress = read('content/reading/b2/manuscripts/progress.json');
 const previous = [...read('app/lib/reading-path-data.json'), ...read('app/lib/reading-expanded-data.json')];
+const topics = read('app/lib/reading-topics.json');
 const stories = [], plans = {}, translations = {}, findings = [];
 assert.equal(blueprints.length, 200);
 for (const blueprint of blueprints) {
@@ -16,6 +17,8 @@ for (const blueprint of blueprints) {
   assert.equal(draft.id, blueprint.id);
   assert.equal(draft.level, 'B2');
   assert.equal(draft.number, blueprint.number);
+  assert.equal(draft.section, blueprint.section);
+  assert.ok(draft.topics.length && draft.topics.every(topic => Object.hasOwn(topics, topic)));
   assert.equal(progress.reviews[draft.id]?.sourceHash, storyDigest(draft.text), `${draft.id}: stale author review`);
   assert.equal(progress.reviews[draft.id]?.editorialStatus, 'author-reviewed');
   const issues = b2DraftIssues({...blueprint, title:draft.title}, draft, [...previous, ...stories]);
@@ -41,7 +44,7 @@ for (const blueprint of blueprints) {
   }
   stories.push({id:draft.id, level:'B2', number:draft.number, section:draft.section, title:draft.title,
     goal:draft.goal, text:draft.text, english:draft.english, words:draft.vocabulary, questions:draft.questions,
-    grammar:[], grammarFocus:draft.grammarFocus, topics:draft.topics, courseChapter:null, revisit:[], wordGlosses});
+    grammar:[draft.grammarFocus], grammarFocus:draft.grammarFocus, topics:draft.topics, courseChapter:null, revisit:[], wordGlosses});
   plans[draft.id] = {textHash:storyDigest(draft.text), assignments:draft.speakerAssignments,
     segments:dialogueSegments(draft.text, draft.speakerAssignments)};
   translations[draft.id] = draft.sentenceTranslations;

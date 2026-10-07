@@ -30,7 +30,7 @@ parser.add_argument('--ffmpeg', required=True)
 parser.add_argument('--only')
 parser.add_argument('--level', choices=['A1', 'A2', 'B1', 'B2', 'C1'], help='Limit story narration to one level')
 parser.add_argument('--bitrate-kbps', type=int, choices=[16, 24], default=24)
-parser.add_argument('--batch-size', type=int, choices=[1, 2], default=1, help='Generate uncached same-voice chunks together; every chunk still receives the same validation')
+parser.add_argument('--batch-size', type=int, choices=[1, 2, 4], default=1, help='Generate uncached same-voice chunks together; every chunk still receives the same validation')
 parser.add_argument('--collection', choices=['stories','book'], default='stories')
 parser.add_argument('--book-id', help='Book slug for staged book sources; defaults to the existing A1 book')
 parser.add_argument('--retry-asr-without-hotwords', action='store_true', help='Retry a failed full-recording transcript without recognition hints; acceptance thresholds stay unchanged')
@@ -200,8 +200,10 @@ for story in stories:
     if old and old['src'].endswith(name+'.webm') and old['textHash']==digest and target.exists() and sidecar.exists() and (plans is None or (args.checkpoint/(name+'-transcript.json')).exists()):
         completed+=1;continue
     try:
+        story_started=time.monotonic()
         frames=[];starts=[];offset=0;reports=[]
         story_chunks=chunks(story,voice)
+        print(f"Rendering {story['id']}: {len(story_chunks)} chunks, batch size {args.batch_size}",flush=True)
         story_hotwords=sorted(set(story.get('hotwords',[])) | {assignment['speaker'] for assignment in plans[story['id']]['assignments'] if assignment['voice']!='narrator' and len(assignment['speaker'].split())==1}) if plans is not None else []
         prepare_batched_chunks(story,story_chunks,story_hotwords)
         for chunk_index,(selected_voice,text) in enumerate(story_chunks):
@@ -229,6 +231,7 @@ for story in stories:
             if chunk_index<len(story_chunks)-1:
                 frames.append(np.zeros(7200,dtype=np.float32));offset+=.3
             reports.append(report)
+            print(f"Validated {story['id']} chunk {chunk_index+1}/{len(story_chunks)}",flush=True)
         audio=np.concatenate(frames)
         duration=round(len(audio)/24000,5)
         assert len(starts)==len(visible_words(story['text']))
@@ -266,7 +269,7 @@ for story in stories:
         manifests[voice][story['id']]={'src':public_prefix+'/'+target.name,'timingSrc':public_prefix+'/'+sidecar.name,'textHash':digest,'wordCount':len(starts),'duration':duration}
         save_json(paths[voice],manifests[voice])
         completed+=1
-        print(f"Completed {completed}/{len(stories)*len(voices)}: {story['id']} {voice} ({duration:.1f}s)",flush=True)
+        print(f"Completed {completed}/{len(stories)*len(voices)}: {story['id']} {voice} ({duration:.1f}s; generated in {time.monotonic()-story_started:.0f}s)",flush=True)
         mx.clear_cache()
     except Exception as e:
         traceback.print_exc()
