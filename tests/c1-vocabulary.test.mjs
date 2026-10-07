@@ -75,3 +75,24 @@ test('published source guidance includes contributor attribution and honest leve
   assert.match(html,/creativecommons.org\/licenses\/by-sa\/4.0/);
   assert.match(html,/c1-data.json/);
 });
+
+test('shared English meanings cannot transfer C1 mastery or alter earlier cards',async()=>{
+ const p=await vite.ssrLoadModule('/app/lib/progress-sync.ts');
+ const earlier=data.ALL_VOCABULARY.filter(w=>w.level!=='C1');
+ const newWord=words.find(w=>earlier.some(old=>old.english===w.english));
+ assert.ok(newWord,'Fixture must exercise a real shared translation');
+ const old=earlier.find(w=>w.english===newWord.english);
+ const initial={...p.emptyVocabularyProgress(),legacyMigrated:true,learnedKeys:[p.vocabularyProgressKey(old)]};
+ assert.equal(p.isVocabularyLearned(initial,old),true);
+ assert.equal(p.isVocabularyLearned(initial,newWord),false);
+ const review={...initial,learnedKeys:[],reviewKeys:[p.vocabularyProgressKey(old)]};
+ assert.equal(p.isVocabularyReview(review,old),true);
+ assert.equal(p.isVocabularyReview(review,newWord),false);
+ assert.deepEqual(p.vocabularyProgressKeys(newWord),[p.vocabularyCardKey(newWord)]);
+ const updated=p.setVocabularyStatus(initial,newWord,'review',1000);
+ assert.deepEqual(updated.learnedKeys,initial.learnedKeys);
+ assert.equal(p.isVocabularyLearned(updated,old),true);
+ assert.equal(p.isVocabularyReview(updated,newWord),true);
+ const historical={...initial,learnedKeys:[...initial.learnedKeys,p.vocabularyCardKey(newWord)]};
+ assert.equal(p.isVocabularyLearned(historical,newWord),true,'Genuine previously saved German-headword learning survives');
+});

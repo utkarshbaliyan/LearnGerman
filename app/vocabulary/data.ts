@@ -48,6 +48,7 @@ export type VocabularyWord = {
   category: VocabularyCategory;
   level: "A1" | "A2" | "B1" | "B2" | "C1";
   sourceUrl?: string;
+  progressByHeadword?: boolean;
   wordClass?: VocabularyWordClass;
   progressAliases?: { id: string; german: string; english: string }[];
 };

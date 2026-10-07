@@ -16,6 +16,7 @@ export type VocabularyIdentity = {
   id?: string;
   english: string;
   german: string;
+  progressByHeadword?: boolean;
   progressAliases?: { id: string; german: string; english: string }[];
 };
 
@@ -151,6 +152,7 @@ function normalizeMeaning(value: string) {
 }
 
 export function vocabularyProgressKey(word: VocabularyIdentity) {
+  if (word.progressByHeadword) return vocabularyCardKey(word);
   const english = normalizeMeaning(word.english);
   if (english) return `en:${english}`;
   return `de:${normalizeMeaning(word.german)}`;
@@ -160,7 +162,7 @@ export function vocabularyProgressKeys(word: VocabularyIdentity) {
   const english = normalizeMeaning(word.english);
   const german = normalizeMeaning(germanVerbLemma(word.german.split(",")[0]).replace(/^(der|die|das|ein|eine)\s+/i, ""));
   return unique([
-    english ? `en:${english}` : "",
+    !word.progressByHeadword && english ? `en:${english}` : "",
     german ? `de:${german}` : "",
     ...(word.progressAliases ?? []).flatMap(vocabularyProgressKeys),
   ].filter(Boolean));

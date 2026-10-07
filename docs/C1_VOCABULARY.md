@@ -60,8 +60,11 @@ additional words.
 
 Search, topics, word-class/verb-type filters, 120-card rendering batches,
 pronunciation playback, quizzes, FSRS flashcards and learned/review flags use the
-existing vocabulary behavior. Progress keys, migration, aliases, scheduling,
-D1 and Supabase semantics are unchanged; no data migration is required.
+existing vocabulary behavior. Existing progress keys, migration, aliases, scheduling and stored records are
+retained; no D1 or Supabase migration is required. New C1 cards read and write
+German-headword progress only, preventing a shared English gloss from importing
+another word’s learned/review flags. Existing A1–B2 fallback behavior is preserved.
+Genuine saved German-headword C1 progress remains available.
 
 ## Licensing and reproduction
 

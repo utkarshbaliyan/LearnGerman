@@ -8,5 +8,6 @@ import { vocabularyHeadwordKey } from './headword';
 export const C1_LEXICON: VocabularyWord[] = ROWS.map(([german, english, category, wordClass, sourceWord]) => ({
   id: `lexicon-c1-${vocabularyHeadwordKey(german)}`, german, english,
   category: category as VocabularyCategory, wordClass: wordClass as VocabularyWordClass,
-  level: 'C1', sourceUrl: `https://en.wiktionary.org/wiki/${encodeURIComponent(sourceWord)}#German`,
+  level: 'C1', progressByHeadword: true,
+  sourceUrl: `https://en.wiktionary.org/wiki/${encodeURIComponent(sourceWord)}#German`,
 }));
