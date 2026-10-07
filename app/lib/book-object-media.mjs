@@ -49,8 +49,11 @@ async function validSignature(request, secret, key, entry, now) {
   } catch { return false; }
 }
 
-export async function bookMediaResponse(request, asset, { bucket, registry, uploadSecret, now = Date.now() }) {
-  const allowed = allowedMedia(asset, registry);
+export async function bookMediaResponse(request, asset, options) {
+  return immutableMediaResponse(request, allowedMedia(asset, options.registry), options);
+}
+
+export async function immutableMediaResponse(request, allowed, { bucket, uploadSecret, now = Date.now() }) {
   if (!allowed) return error(404, 'Recording not found.');
   if (!bucket) return error(503, 'Recording storage is unavailable.');
   const { key, entry } = allowed;

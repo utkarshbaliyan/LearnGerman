@@ -1,0 +1,251 @@
+{
+  "status": "follow-up recommendations; frozen original blueprint unchanged",
+  "replaceBeforeDrafting": [
+    {
+      "title": "Die Hantelbank ist nicht leer",
+      "conflict": "A gym newcomer mistakes a resting lifter’s station for an abandoned machine because local signals of continued use are inconsistent.",
+      "resolution": "The two lifters agree to alternate compatible sets and use a clear direct question, while the trainer changes the misleading local sign.",
+      "number": 90,
+      "id": "reading-b2-90-v1",
+      "section": 9,
+      "category": "gym",
+      "categoryTitle": "Gym, fitness & wellbeing",
+      "topics": [
+        "sport",
+        "health"
+      ],
+      "goal": "Follow why apparently convenient evidence or a customary practice can fail, and how the specific consequence changes a decision.",
+      "grammarFocus": "Modal descriptions of possible courses of action; condition and concession with selbst wenn",
+      "narrativeForm": "close third-person narrative ending in a specific image rather than a moral",
+      "targetGermanWordCount": {
+        "min": 900,
+        "max": 1000,
+        "draftAim": 950
+      },
+      "designDetail": "replacement recommended after lower-level plot comparison; eight specific ordered beats",
+      "protagonists": [
+        {
+          "name": "Hanna",
+          "gender": "female",
+          "role": "member facing the concrete training dilemma"
+        },
+        {
+          "name": "Noah",
+          "gender": "male",
+          "role": "trainer or training companion"
+        }
+      ],
+      "nearestLowerLevelStories": [
+        {
+          "id": "reading-a2-146-v1",
+          "difference": "Unlike B1-63, this is not a return after illness followed by reducing an overambitious workload. Its causal trigger is ambiguous equipment-use etiquette; the resolution is compatible turn-taking rather than recovery planning."
+        },
+        {
+          "id": "reading-b1-146-v2",
+          "difference": "Unlike B1-63, this is not a return after illness followed by reducing an overambitious workload. Its causal trigger is ambiguous equipment-use etiquette; the resolution is compatible turn-taking rather than recovery planning."
+        }
+      ],
+      "plotBeats": [
+        "A new member sees a towel on an unoccupied bench and waits, watching its apparent owner answer a message across the room.",
+        "After several minutes she assumes the station has been abandoned and adjusts it, only to hear that the owner was resting between demanding sets.",
+        "Their first exchange stays civil but each feels the other has ignored an obvious signal; surrounding members give contradictory accounts of the unwritten rule.",
+        "A trainer shows an old sign that speaks about unattended property but not rest intervals, explaining why both interpretations are plausible.",
+        "The lifter explains what a set and recovery mean in his routine; the newcomer describes how endless silent reservations make a beginner afraid to use anything.",
+        "They discover that they can alternate without repeatedly changing the setup, provided they ask before touching the weights and do not rush recovery.",
+        "The trainer tests an explicit availability question with another pair and replaces the ambiguous sign with a simple explanation of shared use.",
+        "The newcomer finishes her session and thanks the other lifter for one useful explanation; their next turn is arranged aloud rather than claimed by a towel."
+      ],
+      "differenceFromEarlierPlots": "Unlike B1-63, this is not a return after illness followed by reducing an overambitious workload. Its causal trigger is ambiguous equipment-use etiquette; the resolution is compatible turn-taking rather than recovery planning."
+    },
+    {
+      "title": "Der Kaffee ist schon bezahlt",
+      "conflict": "A café offers prepaid drinks donated by customers, but a cashier wrongly assumes recipients must publicly explain financial hardship before claiming one.",
+      "resolution": "The proprietor states the offer clearly and removes the humiliating proof requirement; a recipient accepts a drink without a performance of gratitude.",
+      "number": 126,
+      "id": "reading-b2-126-v1",
+      "section": 13,
+      "category": "hospitality",
+      "categoryTitle": "Cafés, restaurants & hospitality",
+      "topics": [
+        "cafe"
+      ],
+      "goal": "Follow why apparently convenient evidence or a customary practice can fail, and how the specific consequence changes a decision.",
+      "grammarFocus": "Counterfactual past with hätte/wäre; temporal relations with bevor, nachdem and seitdem",
+      "narrativeForm": "narrative beginning after the consequence and tracing its cause",
+      "targetGermanWordCount": {
+        "min": 900,
+        "max": 1000,
+        "draftAim": 950
+      },
+      "designDetail": "replacement recommended after lower-level plot comparison; eight specific ordered beats",
+      "protagonists": [
+        {
+          "name": "Jana",
+          "gender": "female",
+          "role": "customer or worker affected by the practice"
+        },
+        {
+          "name": "Emil",
+          "gender": "male",
+          "role": "manager or fellow worker"
+        }
+      ],
+      "nearestLowerLevelStories": [
+        {
+          "id": "reading-b1-96-v2",
+          "difference": "Unlike B1-96, no table is moved to improve step-free access. This plot concerns dignity, invented eligibility rules and voluntary generosity; the physical seating layout is incidental."
+        },
+        {
+          "id": "reading-b1-93-v2",
+          "difference": "Unlike B1-96, no table is moved to improve step-free access. This plot concerns dignity, invented eligibility rules and voluntary generosity; the physical seating layout is incidental."
+        }
+      ],
+      "plotBeats": [
+        "A small chalkboard says a few coffees have already been paid for; a visitor asks what the message means while waiting for her ordinary order.",
+        "A man quietly requests one of the drinks, and the cashier asks in front of the queue whether he really needs it.",
+        "The man starts to leave; the visitor hesitates, realizing a loud act of rescue could expose him even further.",
+        "She asks the cashier privately where the stated condition came from, discovering that the employee invented it to protect donations from misuse.",
+        "The proprietor describes the donors’ actual intention: the drink was offered, not awarded after a public assessment of deservingness.",
+        "Cashier and proprietor discuss the tension between limited supply and controlling strangers’ lives; they acknowledge that availability cannot guarantee perfect targeting.",
+        "The sign is revised to explain what is available and that no personal story is required; the cashier apologizes directly without demanding that the man return.",
+        "On another day someone claims an available coffee and reads quietly at a table, while the staff treat the transaction as an ordinary part of the café."
+      ],
+      "differenceFromEarlierPlots": "Unlike B1-96, no table is moved to improve step-free access. This plot concerns dignity, invented eligibility rules and voluntary generosity; the physical seating layout is incidental."
+    },
+    {
+      "title": "Das Abendessen aus dem Wald",
+      "conflict": "Friends plan a mushroom dinner, but an enthusiastic collector treats an identification app’s confident label as enough despite uncertainty about the actual specimen.",
+      "resolution": "They leave uncertain specimens unused, seek competent local identification and cook an ordinary shop-bought dinner, accepting that enthusiasm did not make the planned harvest usable.",
+      "number": 136,
+      "id": "reading-b2-136-v1",
+      "section": 14,
+      "category": "food",
+      "categoryTitle": "Food, cooking & shared meals",
+      "topics": [
+        "food"
+      ],
+      "goal": "Follow why apparently convenient evidence or a customary practice can fail, and how the specific consequence changes a decision.",
+      "grammarFocus": "Modal descriptions of possible courses of action; condition and concession with selbst wenn",
+      "narrativeForm": "narrative beginning after the consequence and tracing its cause",
+      "targetGermanWordCount": {
+        "min": 900,
+        "max": 1000,
+        "draftAim": 950
+      },
+      "designDetail": "replacement recommended after lower-level plot comparison; eight specific ordered beats",
+      "protagonists": [
+        {
+          "name": "Lena",
+          "gender": "female",
+          "role": "cook or community participant"
+        },
+        {
+          "name": "Jonas",
+          "gender": "male",
+          "role": "organizer or participant with a competing need"
+        }
+      ],
+      "nearestLowerLevelStories": [
+        {
+          "id": "reading-b1-121-v2",
+          "difference": "Unlike B1-156, this is not a hobby becoming paid work and then remaining a hobby. The new plot centers uncertain identification, social pressure from an anticipated meal and knowingly abandoning unsafe certainty. Keep it fictional and non-instructional: do not teach species identification, diagnostics or a home safety test."
+        },
+        {
+          "id": "reading-b1-139-v2",
+          "difference": "Unlike B1-156, this is not a hobby becoming paid work and then remaining a hobby. The new plot centers uncertain identification, social pressure from an anticipated meal and knowingly abandoning unsafe certainty. Keep it fictional and non-instructional: do not teach species identification, diagnostics or a home safety test."
+        }
+      ],
+      "plotBeats": [
+        "Friends return from a forest walk pleased with a small basket and imagine recreating a familiar childhood mushroom meal.",
+        "One opens an identification app and sees a confident-looking result, while another notices that the photographed specimen and the collected one do not look identical.",
+        "The collector recalls family experience but admits he cannot explain which features distinguish similar specimens; the other does not pretend she can identify them either.",
+        "A conversation separates the wish for a memorable dinner from evidence sufficient to use an unknown ingredient; the full basket makes abandoning the plan emotionally difficult.",
+        "They locate a competent local identification contact and learn that the remaining uncertainty will not be resolved in time for that evening.",
+        "They keep the uncertain collection out of the meal and buy clearly sold cooking ingredients, without using a taste test or improvised identification trick.",
+        "At dinner the collector admits he had wanted his confidence to stand in for certainty, and his friend acknowledges why refusing the harvest felt disappointing.",
+        "The next walk is planned as observation and learning with qualified support, while the ordinary dinner has already become a good evening together."
+      ],
+      "differenceFromEarlierPlots": "Unlike B1-156, this is not a hobby becoming paid work and then remaining a hobby. The new plot centers uncertain identification, social pressure from an anticipated meal and knowingly abandoning unsafe certainty. Keep it fictional and non-instructional: do not teach species identification, diagnostics or a home safety test."
+    },
+    {
+      "title": "Die Untertitel verlieren den Anschluss",
+      "conflict": "A theater advertises a captioned performance, but last-minute improvisation leaves captions out of sequence and excludes spectators who depend on them.",
+      "resolution": "The company corrects its promise, rehearses a consistent captioned version and offers improvisation separately, accepting reduced flexibility in the accessible performance.",
+      "number": 188,
+      "id": "reading-b2-188-v1",
+      "section": 19,
+      "category": "culture",
+      "categoryTitle": "Culture, arts & creative life",
+      "topics": [
+        "culture",
+        "leisure"
+      ],
+      "goal": "Follow why apparently convenient evidence or a customary practice can fail, and how the specific consequence changes a decision.",
+      "grammarFocus": "Plusquamperfekt for earlier commitments; logical transitions with allerdings and folglich",
+      "narrativeForm": "chronological narrative with one unresolved secondary tension",
+      "targetGermanWordCount": {
+        "min": 900,
+        "max": 1000,
+        "draftAim": 950
+      },
+      "designDetail": "replacement recommended after lower-level plot comparison; eight specific ordered beats",
+      "protagonists": [
+        {
+          "name": "Daria",
+          "gender": "female",
+          "role": "artist or participant facing the rights conflict"
+        },
+        {
+          "name": "Tobias",
+          "gender": "male",
+          "role": "editor, organizer or reviewer"
+        }
+      ],
+      "nearestLowerLevelStories": [
+        {
+          "id": "reading-b1-16-v2",
+          "difference": "Unlike B1-16, this is not a neighbor sleep complaint resolved by earlier or quieter music. The new cause is a performance artifact drifting from spoken improvisation; the outcome changes the artistic format and makes access promises accurate."
+        },
+        {
+          "id": "reading-b1-150-v2",
+          "difference": "Unlike B1-16, this is not a neighbor sleep complaint resolved by earlier or quieter music. The new cause is a performance artifact drifting from spoken improvisation; the outcome changes the artistic format and makes access promises accurate."
+        }
+      ],
+      "plotBeats": [
+        "At a rehearsal an actor enjoys a newly improvised exchange, and the director decides to keep its spontaneity for opening night.",
+        "The caption operator asks which exact lines will be spoken, but others assume displaying a rough summary will be sufficient.",
+        "During a trial with invited viewers, the projected text falls behind an unexpected scene change and one viewer cannot tell who is answering whom.",
+        "The viewer explains the loss of timing and meaning; the actor recognizes that a lively moment for hearing spectators has become an incoherent one for others.",
+        "The company compares true captioning with a plot summary and confronts the gap between its advertised promise and its unrehearsed system.",
+        "They retain a fixed, rehearsed captioned performance and move free improvisation into a separately described event instead of forcing one format to serve incompatible needs.",
+        "The operator works through cues with actors, who accept that spontaneity must stay within the agreed version when the captions depend on it.",
+        "At the next performance the relevant text arrives with the speaker’s action, and the actor notices a viewer reacting at the same moment as the rest of the room."
+      ],
+      "differenceFromEarlierPlots": "Unlike B1-16, this is not a neighbor sleep complaint resolved by earlier or quieter music. The new cause is a performance artifact drifting from spoken improvisation; the outcome changes the artistic format and makes access promises accurate."
+    }
+  ],
+  "refineBeforeDrafting": [
+    {
+      "number": 139,
+      "reason": "Ingredient-substitution traditions are adjacent to B1-140 and B1-197. Keep economic/supply history and explicitly marked archived vs adapted recipes central; do not merely recreate a grandmother’s recipe or relieve preparation labor."
+    },
+    {
+      "number": 89,
+      "reason": "Unwanted training advice is adjacent to B1-155. This must concern surveillance of food and attendance outside the gym, with relationship control and private limits, rather than confusing simultaneous instructions during class."
+    },
+    {
+      "number": 193,
+      "reason": "Generic polite refusal could repeat B1 volunteer-boundary plots. Specify one consequential accepted favor (for example transporting an immovable exhibition object), a concrete newly discovered constraint and a costly replacement arrangement; do not rewrite a general ability-to-say-no essay."
+    },
+    {
+      "number": 53,
+      "reason": "Keep the location fictional and do not present universal legal claims about photography at real borders. The story can show a local request to stop and seeking permitted information without inventing enforceable rules."
+    }
+  ],
+  "remainingRisks": [
+    "Many B2 kernels involve institutional access, accountability or consent. Vary scene form and tone, and use ordinary conversations and physical events so the collection does not become 200 abstract policy negotiations.",
+    "Category nearest-story IDs are candidates from manual editorial comparison, not a semantic-ranking result. Actual German drafts require whole-catalog comparison.",
+    "Unique titles have been measured; unique semantic plots have not been proved. Check each final draft’s trigger, contested need, decision and cost against all earlier stories and every completed B2 draft.",
+    "The four replacements prevent obvious plot-mechanism echoes but do not establish CEFR certification or teacher review of eventual prose."
+  ]
+}
