@@ -99,3 +99,8 @@ snapshot rather than silently importing a different release.
 Tests verify counts, global uniqueness, all earlier card/alias fingerprints,
 standalone forms, noun articles, known extraction-error exclusions, attribution,
 source hashes and mixed earlier/C1 review scheduling. Run using stable Node 22.
+
+Production builds clear only generated migration copies and verify that emitted
+migrations match the committed source byte for byte. This prevents duplicate
+local sync files from rerunning existing D1 table creation during deployment.
+Package on macOS with `COPYFILE_DISABLE=1` to exclude resource-fork sidecars.

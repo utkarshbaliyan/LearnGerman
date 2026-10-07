@@ -14,6 +14,8 @@ if [[ ! -x "${vinext}" ]]; then
 fi
 
 echo "Running bounded vinext build..."
-exec node "${script_dir}/run-bounded.mjs" \
+node "${script_dir}/verify-deployment-migrations.mjs" --prepare
+node "${script_dir}/run-bounded.mjs" \
   "${SITES_BUILD_TIMEOUT:-3m}" "${SITES_BUILD_KILL_AFTER:-10s}" \
   "${vinext}" build
+node "${script_dir}/verify-deployment-migrations.mjs"
