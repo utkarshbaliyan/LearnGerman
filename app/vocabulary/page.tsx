@@ -119,6 +119,7 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
         <span className="vocabulary-prompt" lang="en">{word.english}</span>
         {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Show German</span>}
       </button>
+      {word.sourceUrl && <a className="vocabulary-source" href={word.sourceUrl} target="_blank" rel="noreferrer">Dictionary source ↗</a>}
       {review && <p className="vocabulary-due-date">{dueAt === 0 ? "Ready for review" : `Review: ${new Date(dueAt).toLocaleString()}`}</p>}
       <div className="vocabulary-card-actions">
         <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Learned</button>
@@ -243,7 +244,7 @@ export default function VocabularyPage() {
   }
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
-  const levelLabel = level === "all" ? "A1–B2" : level;
+  const levelLabel = level === "all" ? "A1–C1" : level;
   const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
 
@@ -253,17 +254,18 @@ export default function VocabularyPage() {
 
       <section className="vocabulary-workspace vocabulary-organized">
         <header className="vocab-page-heading">
-          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to B2</p></div>
+          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
           <label className="vocab-level-picker"><span>Study level</span>
             <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>
               <SelectTrigger aria-label="Choose a vocabulary level"><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All levels · {VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")}</SelectItem>
-                {(["A1", "A2", "B1", "B2"] as const).map((name) => <SelectItem key={name} value={name}>{name} · {VOCABULARY_LEVEL_COUNTS[name].toLocaleString("en")} words</SelectItem>)}
+                {(["A1", "A2", "B1", "B2", "C1"] as const).map((name) => <SelectItem key={name} value={name}>{name} · {VOCABULARY_LEVEL_COUNTS[name].toLocaleString("en")} words</SelectItem>)}
               </SelectContent>
             </Select>
           </label>
         </header>
+        {level === "C1" && <p className="vocabulary-scope-note">C1 extension: advanced and specialist vocabulary, plus useful gaps from earlier levels. Placement is editorial. <Link href="/vocabulary/sources">Sources and level guidance →</Link></p>}
         <div className="vocab-progress-strip" aria-label="Vocabulary progress">
           <span><strong>{selectedCompleted}</strong> / {levelWords.length.toLocaleString("en")} learned</span>
           <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
@@ -348,7 +350,7 @@ export default function VocabularyPage() {
         </Tabs>
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary cards across A1–B2. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary cards across A1–C1. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/vocabulary/sources">Vocabulary sources</Link><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

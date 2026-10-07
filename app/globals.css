@@ -2146,3 +2146,11 @@ html[data-theme="dark"] .chapter-tables th { background: #090a0d; color: #f7f7f8
 .grammar-reference-page .coverage-levels article { border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
 .grammar-reference-page ul { line-height: 1.8; }
 @media (max-width: 480px) { .grammar-level-switcher button { padding: 10px 5px; text-align: center; } .grammar-level-switcher span { font-size: 9px; } }
+
+.vocabulary-scope-note { margin: 0 0 1rem; color: var(--muted-foreground); font-size: .875rem; line-height: 1.6; }
+.vocabulary-scope-note a, .vocabulary-source, .vocabulary-sources-content a { color: var(--foreground); text-decoration: underline; text-underline-offset: .2em; }
+.vocabulary-source { margin: 0 1rem .75rem; font-size: .75rem; width: fit-content; }
+.vocabulary-sources-content { max-width: 52rem; margin: 3rem auto 5rem; padding: 0 1.5rem; line-height: 1.75; }
+.vocabulary-sources-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; margin: 1.5rem 0; }
+.vocabulary-sources-content h2 { margin-top: 2rem; font-size: 1.35rem; }
+.vocabulary-sources-content p { margin: 1rem 0; }

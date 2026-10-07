@@ -1,0 +1,70 @@
+{
+  "dictionary": "https://kaikki.org/dictionary/German/index.html",
+  "download": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl.gz",
+  "dump": "2026-09-02",
+  "extracted": "2026-10-03",
+  "archiveSha256": "ff03802fa4d034a80c03fd72a78243834cc06e69d7031c7be9d745a02c78b34e",
+  "license": "CC-BY-SA-4.0",
+  "frequency": {
+    "package": "wordfreq",
+    "version": "3.1.1",
+    "wordlist": "large",
+    "language": "de",
+    "range": [
+      2,
+      4.5
+    ]
+  },
+  "placementSource": {
+    "repository": "https://github.com/bahman-farhadian/tartarus",
+    "commit": "308e64a848f803379ecdbe9a17bf85745be5f85e",
+    "license": "MIT",
+    "sources": [
+      {
+        "file": "german_noun_c1.json",
+        "sha256": "eb7ac24c90d5e3c029a42cc04f913f6cd8efb31fb40b2c4f0ab557cc7e6ac431"
+      },
+      {
+        "file": "german_verb_c1.json",
+        "sha256": "02eec988578819367bdb0183df5a6805e844383a69087348d4d7b59f3b87475a"
+      },
+      {
+        "file": "german_adjective_c1.json",
+        "sha256": "ce0fbe521a56408ba0abccf5e1c9914684a197a43b290b15dcd220c3768ee623"
+      },
+      {
+        "file": "german_adverb_c1.json",
+        "sha256": "8e1a3b6eafd0f3b7f1b2a0bc1f6d7ca81071246f1edac01b4b2f38607c55e660"
+      }
+    ]
+  },
+  "target": 10000,
+  "wordClasses": {
+    "noun": 6500,
+    "verb": 1800,
+    "adjective": 1400,
+    "adverb": 300
+  },
+  "sourceC1Matches": 2080,
+  "snapshotSha256": "72f1fe8a412ffc5b15ecab122d726c96f353c196037b03adc0d5de0f9deb222c",
+  "rowsSha256": "afc87b890d05d1937834bc1748f4b4f340f84256a3d782b2fe8d137bc5515c79",
+  "zipfRanges": {
+    "noun": [
+      2,
+      4.5
+    ],
+    "verb": [
+      2.02,
+      4.5
+    ],
+    "adjective": [
+      2.02,
+      4.5
+    ],
+    "adverb": [
+      2.66,
+      4.5
+    ]
+  },
+  "review": "Dictionary-backed editorial C1 advanced and specialist practice; not independently CEFR-certified or fully teacher-reviewed. Inflections, alternative forms and marked nonstandard senses excluded."
+}

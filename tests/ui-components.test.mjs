@@ -258,10 +258,10 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
-  assert.equal(TOTAL_VOCABULARY_TARGET, 8300);
-  assert.equal(ALL_VOCABULARY.length, 7397);
+  assert.equal(TOTAL_VOCABULARY_TARGET, 18300);
+  assert.equal(ALL_VOCABULARY.length, 17397);
   assert.equal(CORE_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 870, A2: 1079, B1: 2148, B2: 3300, all: 7397 });
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 870, A2: 1079, B1: 2148, B2: 3300, C1: 10000, all: 17397 });
   // This digest covers every old ID, translation, headword, class and placement.
   assert.equal(createHash("sha256").update(JSON.stringify(LEGACY_VOCABULARY)).digest("hex"),
     "11e18ba658a07480488a42bb8392d318be7eec58f894074a739688a1d56f279f");
@@ -320,7 +320,7 @@ test("opens vocabulary on the word library with practice and review available", 
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /7,397 words · A1 to B2/);
+  assert.match(html, /17,397 words · A1 to C1/);
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);
