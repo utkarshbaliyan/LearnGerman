@@ -1,0 +1,1402 @@
+{
+  "reading-b2-01-v1": {
+    "src": "/media/stories/b2/reading-b2-01-v1-f9c30c65b95e-d2c8c088-qwen-dialogue-opus16-c231d4aa4bf2.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-01-v1-f9c30c65b95e-d2c8c088-qwen-dialogue-opus16-5d5ede22b5be.json",
+    "textHash": "f9c30c65b95ef9571671eaeb46be300d4bc662015b89726acd5f0178682ce253",
+    "wordCount": 943,
+    "duration": 361.62
+  },
+  "reading-b2-02-v1": {
+    "src": "/media/stories/b2/reading-b2-02-v1-62957e320a11-fb093e4c-qwen-dialogue-opus16-af8b9f9578e1.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-02-v1-62957e320a11-fb093e4c-qwen-dialogue-opus16-63b790d18d1d.json",
+    "textHash": "62957e320a1127e38663c1aad32c38c1293ee4d8bf2d7e145233266686e62c39",
+    "wordCount": 931,
+    "duration": 359.29062
+  },
+  "reading-b2-03-v1": {
+    "src": "/media/stories/b2/reading-b2-03-v1-0f9ae7862488-e94656c5-qwen-dialogue-opus16-107cdc739534.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-03-v1-0f9ae7862488-e94656c5-qwen-dialogue-opus16-17c0c938caed.json",
+    "textHash": "0f9ae786248815667e563fbc25d91aac8281445bfb82d231ad54e35eff21cc4d",
+    "wordCount": 922,
+    "duration": 361.16004
+  },
+  "reading-b2-04-v1": {
+    "src": "/media/stories/b2/reading-b2-04-v1-e78030f9fa6e-a3db8406-qwen-dialogue-opus16-af38467a1d78.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-04-v1-e78030f9fa6e-a3db8406-qwen-dialogue-opus16-02ff0f9ff2be.json",
+    "textHash": "e78030f9fa6e2a7d4cc0c6e73a6b24aa173b8f3afc910d22bab616444413f245",
+    "wordCount": 931,
+    "duration": 351.24
+  },
+  "reading-b2-05-v1": {
+    "src": "/media/stories/b2/reading-b2-05-v1-26c3b5a63eb2-edb200ff-qwen-dialogue-opus16-2f0423b69723.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-05-v1-26c3b5a63eb2-edb200ff-qwen-dialogue-opus16-6825f9fe9f58.json",
+    "textHash": "26c3b5a63eb25869418b224d4729cc0cd0cf719a09c9df7863a6b1f6c5ff6d30",
+    "wordCount": 925,
+    "duration": 356.62929
+  },
+  "reading-b2-06-v1": {
+    "src": "/media/stories/b2/reading-b2-06-v1-7dabc381ea3f-7e3f3bd2-qwen-dialogue-opus16-721bd2ca60f3.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-06-v1-7dabc381ea3f-7e3f3bd2-qwen-dialogue-opus16-ca9d91247165.json",
+    "textHash": "7dabc381ea3f4d6761adb037b2db62d1892011d99bc250836a195f109b88459d",
+    "wordCount": 935,
+    "duration": 361.66004
+  },
+  "reading-b2-07-v1": {
+    "src": "/media/stories/b2/reading-b2-07-v1-17cfee13a7c9-4dad4e3b-qwen-dialogue-opus16-3269c0444901.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-07-v1-17cfee13a7c9-4dad4e3b-qwen-dialogue-opus16-81b95c37ab59.json",
+    "textHash": "17cfee13a7c91ff3ad906f7bdd20457315548e850daed75510bdaad5025b1614",
+    "wordCount": 934,
+    "duration": 376.77383
+  },
+  "reading-b2-08-v1": {
+    "src": "/media/stories/b2/reading-b2-08-v1-dcca89b256fa-5d641ce2-qwen-dialogue-opus16-a995454b5ca2.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-08-v1-dcca89b256fa-5d641ce2-qwen-dialogue-opus16-c0ed18b89e99.json",
+    "textHash": "dcca89b256fa8cb92b94204e8f79930d768d07d0ec7f5c343de4e0a8852cf438",
+    "wordCount": 947,
+    "duration": 352.99321
+  },
+  "reading-b2-09-v1": {
+    "src": "/media/stories/b2/reading-b2-09-v1-0d6febed8af1-f8b14274-qwen-dialogue-opus16-9fae6e0363a6.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-09-v1-0d6febed8af1-f8b14274-qwen-dialogue-opus16-a3c2b180e055.json",
+    "textHash": "0d6febed8af1f1c756529b0e473637a37280d20a73eaf03ca53a16438825ca18",
+    "wordCount": 901,
+    "duration": 346.3
+  },
+  "reading-b2-10-v1": {
+    "src": "/media/stories/b2/reading-b2-10-v1-af010496aca5-08ac218b-qwen-dialogue-opus16-baad189810b4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-10-v1-af010496aca5-08ac218b-qwen-dialogue-opus16-0eff04b6d0e2.json",
+    "textHash": "af010496aca52c165fe79b228689223c65308499efb3f03cbee08edcaae6ebbc",
+    "wordCount": 950,
+    "duration": 352.38
+  },
+  "reading-b2-11-v1": {
+    "src": "/media/stories/b2/reading-b2-11-v1-cbb363bfbf20-f5816bdb-qwen-dialogue-opus16-e53c3a6c2499.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-11-v1-cbb363bfbf20-f5816bdb-qwen-dialogue-opus16-a4ed92d35589.json",
+    "textHash": "cbb363bfbf2004bfdfd8156d01de9317c603aa80154277610873571808ae7a34",
+    "wordCount": 957,
+    "duration": 362.52004
+  },
+  "reading-b2-12-v1": {
+    "src": "/media/stories/b2/reading-b2-12-v1-fbce47a5e9d0-c067ad5b-qwen-dialogue-opus16-e101958f1674.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-12-v1-fbce47a5e9d0-c067ad5b-qwen-dialogue-opus16-274421759f3d.json",
+    "textHash": "fbce47a5e9d0f89930eabcd1b675a1d62d35be3121d3bdfba887aea4c960a743",
+    "wordCount": 902,
+    "duration": 340.20004
+  },
+  "reading-b2-13-v1": {
+    "src": "/media/stories/b2/reading-b2-13-v1-887996584c24-02ee3e00-qwen-dialogue-opus16-71417650fcd4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-13-v1-887996584c24-02ee3e00-qwen-dialogue-opus16-40f19e55acc7.json",
+    "textHash": "887996584c24710d0f88957d443fed185d2f533b5c45660ddef8550761f35f7a",
+    "wordCount": 938,
+    "duration": 367.1
+  },
+  "reading-b2-14-v1": {
+    "src": "/media/stories/b2/reading-b2-14-v1-ab958b2f5d86-91f4cd71-qwen-dialogue-opus16-7df89145ea1a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-14-v1-ab958b2f5d86-91f4cd71-qwen-dialogue-opus16-741f934e2774.json",
+    "textHash": "ab958b2f5d86f3cbb9fdeda1a72e0e150741ef615f83955566f1613422194973",
+    "wordCount": 938,
+    "duration": 356.06
+  },
+  "reading-b2-15-v1": {
+    "src": "/media/stories/b2/reading-b2-15-v1-7aca0b739d0a-1ade5ca1-qwen-dialogue-opus16-2e01ba6b291c.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-15-v1-7aca0b739d0a-1ade5ca1-qwen-dialogue-opus16-4a3680863161.json",
+    "textHash": "7aca0b739d0a416f3e87cb1a87c680cd5918f30add760335e421b034d844718e",
+    "wordCount": 939,
+    "duration": 344.78
+  },
+  "reading-b2-16-v1": {
+    "src": "/media/stories/b2/reading-b2-16-v1-a027c1bb2562-b959ae55-qwen-dialogue-opus16-3dd2b3eb308e.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-16-v1-a027c1bb2562-b959ae55-qwen-dialogue-opus16-b8745a735cc0.json",
+    "textHash": "a027c1bb25623435b958df99d56a3fd1e36309524c04b08aff542c135d24db90",
+    "wordCount": 902,
+    "duration": 337.76004
+  },
+  "reading-b2-17-v1": {
+    "src": "/media/stories/b2/reading-b2-17-v1-16795406973d-0a1690a9-qwen-dialogue-opus16-f0d1b7ce6b43.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-17-v1-16795406973d-0a1690a9-qwen-dialogue-opus16-24aab8c5dcd8.json",
+    "textHash": "16795406973d14ef9d6dc3a26f850e4167e43c2c3a6867ef64bce2c2b20ff5d9",
+    "wordCount": 944,
+    "duration": 361.56
+  },
+  "reading-b2-18-v1": {
+    "src": "/media/stories/b2/reading-b2-18-v1-f2fa0b7bd3eb-9807c8a0-qwen-dialogue-opus16-8bd7fa33a21a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-18-v1-f2fa0b7bd3eb-9807c8a0-qwen-dialogue-opus16-a0cca7e0b50e.json",
+    "textHash": "f2fa0b7bd3eb7c46c4283035745a323440c0ebc310a2173224ec10e7e19c1b2e",
+    "wordCount": 932,
+    "duration": 323.34004
+  },
+  "reading-b2-19-v1": {
+    "src": "/media/stories/b2/reading-b2-19-v1-99f05e16b39b-2a06563d-qwen-dialogue-opus16-c88eaa004790.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-19-v1-99f05e16b39b-2a06563d-qwen-dialogue-opus16-f0cb8722b959.json",
+    "textHash": "99f05e16b39bfa774debef187316c5c8ba8a92c9ee28d0723362a955e28fee13",
+    "wordCount": 903,
+    "duration": 340.74
+  },
+  "reading-b2-20-v1": {
+    "src": "/media/stories/b2/reading-b2-20-v1-73f34163c05b-5abb6965-qwen-dialogue-opus16-3325ab6287fa.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-20-v1-73f34163c05b-5abb6965-qwen-dialogue-opus16-ffd8f53f582e.json",
+    "textHash": "73f34163c05b1727e6b3f8d0ddba9ce9b2b361622247283737e89f1bd1bb698c",
+    "wordCount": 926,
+    "duration": 354.54
+  },
+  "reading-b2-21-v1": {
+    "src": "/media/stories/b2/reading-b2-21-v1-85e929f26c19-421c3270-qwen-dialogue-opus16-27296bc60425.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-21-v1-85e929f26c19-421c3270-qwen-dialogue-opus16-f1c906d8e02c.json",
+    "textHash": "85e929f26c19ecdcac332a79d41828bfd925ef7f61ff8701519ec2f09c96fbb5",
+    "wordCount": 928,
+    "duration": 377.46
+  },
+  "reading-b2-22-v1": {
+    "src": "/media/stories/b2/reading-b2-22-v1-2a68ac46b327-2997e494-qwen-dialogue-opus16-936479a9d521.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-22-v1-2a68ac46b327-2997e494-qwen-dialogue-opus16-ff1a5538c6ea.json",
+    "textHash": "2a68ac46b3270cf2c50dbbdf9c66c9505440154b1592e9f2ffc22b3a0c9d2d9a",
+    "wordCount": 933,
+    "duration": 359.76
+  },
+  "reading-b2-23-v1": {
+    "src": "/media/stories/b2/reading-b2-23-v1-eba0abc99068-d784cf4c-qwen-dialogue-opus16-81ad73f8706b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-23-v1-eba0abc99068-d784cf4c-qwen-dialogue-opus16-68ab1869a4d1.json",
+    "textHash": "eba0abc99068bf5085846df7d4fc6f626217b65dcc472b4516176cab822dc10f",
+    "wordCount": 927,
+    "duration": 383.57008
+  },
+  "reading-b2-24-v1": {
+    "src": "/media/stories/b2/reading-b2-24-v1-9848fa5e6d1d-03a654f7-qwen-dialogue-opus16-b0643366fbd7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-24-v1-9848fa5e6d1d-03a654f7-qwen-dialogue-opus16-2ed6eb6a731d.json",
+    "textHash": "9848fa5e6d1d06efbd3a224336d040bce58f8ae4602cc327e08245fd488b5e12",
+    "wordCount": 917,
+    "duration": 375.46004
+  },
+  "reading-b2-25-v1": {
+    "src": "/media/stories/b2/reading-b2-25-v1-ceec54a45a67-47d0a506-qwen-dialogue-opus16-3547ba409c62.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-25-v1-ceec54a45a67-47d0a506-qwen-dialogue-opus16-873cd33dd8fe.json",
+    "textHash": "ceec54a45a67dfe2635efc96c6ee50cbaf29ed52f6606acd6e8f63760c1a0d34",
+    "wordCount": 917,
+    "duration": 339.54
+  },
+  "reading-b2-26-v1": {
+    "src": "/media/stories/b2/reading-b2-26-v1-72d10ee5e27e-b191d7a4-qwen-dialogue-opus16-906ac8a2b8ad.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-26-v1-72d10ee5e27e-b191d7a4-qwen-dialogue-opus16-6e6bee4cd109.json",
+    "textHash": "72d10ee5e27efb3d48de0b73e48dfef939e0046f393d91e67df2fe0cae14288a",
+    "wordCount": 918,
+    "duration": 376.80008
+  },
+  "reading-b2-27-v1": {
+    "src": "/media/stories/b2/reading-b2-27-v1-25892ba3abbd-e7f7499d-qwen-dialogue-opus16-6434ae3654a4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-27-v1-25892ba3abbd-e7f7499d-qwen-dialogue-opus16-3800c7d05abd.json",
+    "textHash": "25892ba3abbd417c1cc0c9813f9047fc8c983def8b20ee113ab4648fb27a94fe",
+    "wordCount": 921,
+    "duration": 369.28004
+  },
+  "reading-b2-28-v1": {
+    "src": "/media/stories/b2/reading-b2-28-v1-da7a4a4d83fa-39161537-qwen-dialogue-opus16-2bf3f5ac9c7b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-28-v1-da7a4a4d83fa-39161537-qwen-dialogue-opus16-47a28508df9f.json",
+    "textHash": "da7a4a4d83fa553d4edf8bae5247f9d54a1456f42fbb227776ac71b7b3869e58",
+    "wordCount": 908,
+    "duration": 359.88
+  },
+  "reading-b2-29-v1": {
+    "src": "/media/stories/b2/reading-b2-29-v1-a86c2b9ed3b3-71fa558e-qwen-dialogue-opus16-0dc6cea90bc7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-29-v1-a86c2b9ed3b3-71fa558e-qwen-dialogue-opus16-c47dbd59ba74.json",
+    "textHash": "a86c2b9ed3b317e81f1132c0b1cbcc36c778ba01d5e79ebb5323d6a007918cbd",
+    "wordCount": 928,
+    "duration": 371.72
+  },
+  "reading-b2-30-v1": {
+    "src": "/media/stories/b2/reading-b2-30-v1-8f96323fc116-0202fb08-qwen-dialogue-opus16-e63c697a4e32.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-30-v1-8f96323fc116-0202fb08-qwen-dialogue-opus16-8cf1d9b0ea71.json",
+    "textHash": "8f96323fc1169e6953441665343a391235883f88f9e7dbc90534aaf31ad3c1cc",
+    "wordCount": 916,
+    "duration": 382.7
+  },
+  "reading-b2-31-v1": {
+    "src": "/media/stories/b2/reading-b2-31-v1-3d6f57be74c4-a9326b2f-qwen-dialogue-opus16-cf749b70f125.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-31-v1-3d6f57be74c4-a9326b2f-qwen-dialogue-opus16-7d9d6145128f.json",
+    "textHash": "3d6f57be74c46ce148a802da154b57b0966eebe664f25a136c9d5edfa2c7c21f",
+    "wordCount": 930,
+    "duration": 385.55037
+  },
+  "reading-b2-32-v1": {
+    "src": "/media/stories/b2/reading-b2-32-v1-28c3a95bd677-02d44f20-qwen-dialogue-opus16-727d84d103c0.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-32-v1-28c3a95bd677-02d44f20-qwen-dialogue-opus16-cad0f0150b3a.json",
+    "textHash": "28c3a95bd6774fa064e8271060a29190dc07f41361f400e0e0aa882ddd10f925",
+    "wordCount": 929,
+    "duration": 353.88
+  },
+  "reading-b2-33-v1": {
+    "src": "/media/stories/b2/reading-b2-33-v1-f0ce189d6d6c-7ded62d0-qwen-dialogue-opus16-90525aa18c77.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-33-v1-f0ce189d6d6c-7ded62d0-qwen-dialogue-opus16-ae3cb406a158.json",
+    "textHash": "f0ce189d6d6c96ccc1c1b87772119c11870f3d6335c055a646eae0040276fd02",
+    "wordCount": 919,
+    "duration": 378.12
+  },
+  "reading-b2-34-v1": {
+    "src": "/media/stories/b2/reading-b2-34-v1-748589d7e954-9b919c2d-qwen-dialogue-opus16-e5a59e22bf10.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-34-v1-748589d7e954-9b919c2d-qwen-dialogue-opus16-87e54dc2165e.json",
+    "textHash": "748589d7e9546e36ef8980ba8fa30993d5dee441d3cde417901bbf1290bc529e",
+    "wordCount": 931,
+    "duration": 383.51621
+  },
+  "reading-b2-35-v1": {
+    "src": "/media/stories/b2/reading-b2-35-v1-afc68abfb0b7-a1b29ee0-qwen-dialogue-opus16-0a0c0aec5aca.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-35-v1-afc68abfb0b7-a1b29ee0-qwen-dialogue-opus16-017f853f4271.json",
+    "textHash": "afc68abfb0b72d98b8e9ee8119013c3604c799e6e77653630dea1b2d5f6d91d4",
+    "wordCount": 908,
+    "duration": 345.16004
+  },
+  "reading-b2-36-v1": {
+    "src": "/media/stories/b2/reading-b2-36-v1-788aee4d5251-129e39c4-qwen-dialogue-opus16-67835a12d98b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-36-v1-788aee4d5251-129e39c4-qwen-dialogue-opus16-2422568f6196.json",
+    "textHash": "788aee4d52515721d039f75b5778837c3fc8073dce9b75b4c1d98a5296c57a84",
+    "wordCount": 921,
+    "duration": 387.76004
+  },
+  "reading-b2-37-v1": {
+    "src": "/media/stories/b2/reading-b2-37-v1-dccf5c05df3f-10223852-qwen-dialogue-opus16-ec1af4083266.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-37-v1-dccf5c05df3f-10223852-qwen-dialogue-opus16-b0ec2b6bf6db.json",
+    "textHash": "dccf5c05df3f084097953fd7df23793fd786fb53c46f3cc137416465880ef3f4",
+    "wordCount": 913,
+    "duration": 376.68
+  },
+  "reading-b2-38-v1": {
+    "src": "/media/stories/b2/reading-b2-38-v1-a79c08a8c359-556891d6-qwen-dialogue-opus16-41d1273d0cf4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-38-v1-a79c08a8c359-556891d6-qwen-dialogue-opus16-1632bc48300b.json",
+    "textHash": "a79c08a8c359b3a1e5bb8929b476af9036ab865c5aef21b30ecb0f07fddb955a",
+    "wordCount": 918,
+    "duration": 376.38004
+  },
+  "reading-b2-39-v1": {
+    "src": "/media/stories/b2/reading-b2-39-v1-1e61ec7c6ef8-876692e8-qwen-dialogue-opus16-4a69aaf404ec.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-39-v1-1e61ec7c6ef8-876692e8-qwen-dialogue-opus16-486edc711df0.json",
+    "textHash": "1e61ec7c6ef8ff5ed525c1186762712ea7b08414cf4479948d3a6db3696590cb",
+    "wordCount": 901,
+    "duration": 359.12008
+  },
+  "reading-b2-40-v1": {
+    "src": "/media/stories/b2/reading-b2-40-v1-3737974798bc-44a4dfa1-qwen-dialogue-opus16-2cd54d54f1dd.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-40-v1-3737974798bc-44a4dfa1-qwen-dialogue-opus16-384f1e3e13ca.json",
+    "textHash": "3737974798bc92845e1df581b67650bfd62eb8d94f1464d401bceac88b8fde47",
+    "wordCount": 918,
+    "duration": 395.84
+  },
+  "reading-b2-41-v1": {
+    "src": "/media/stories/b2/reading-b2-41-v1-e5465815bf1e-9414e86c-qwen-dialogue-opus16-5945ffca7447.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-41-v1-e5465815bf1e-9414e86c-qwen-dialogue-opus16-063e22729a31.json",
+    "textHash": "e5465815bf1e6f3ec8d20d840f5bcd1a181bd8effb0ac953690d14a72a7319d8",
+    "wordCount": 921,
+    "duration": 357.22
+  },
+  "reading-b2-42-v1": {
+    "src": "/media/stories/b2/reading-b2-42-v1-871bfa946b47-f2e0a9c3-qwen-dialogue-opus16-c9ee8328912f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-42-v1-871bfa946b47-f2e0a9c3-qwen-dialogue-opus16-f16340db3b55.json",
+    "textHash": "871bfa946b47929d045bab3298a0428ceb1db09397a74f7d65f9f1d36a0d0b70",
+    "wordCount": 924,
+    "duration": 346.70004
+  },
+  "reading-b2-43-v1": {
+    "src": "/media/stories/b2/reading-b2-43-v1-597ac3ca7b7c-995a5ab9-qwen-dialogue-opus16-b6b9c29fcb87.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-43-v1-597ac3ca7b7c-995a5ab9-qwen-dialogue-opus16-8da915877fb1.json",
+    "textHash": "597ac3ca7b7cfd677d59eea623d621aef7d45c71f9fe2fb9efff810ccb0ab6ed",
+    "wordCount": 931,
+    "duration": 360.94
+  },
+  "reading-b2-44-v1": {
+    "src": "/media/stories/b2/reading-b2-44-v1-517f48e5d0e9-4a8d81f1-qwen-dialogue-opus16-1760d8f68f5d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-44-v1-517f48e5d0e9-4a8d81f1-qwen-dialogue-opus16-da3efcd88273.json",
+    "textHash": "517f48e5d0e99f9b8d4b00d56bd4bfada4ae9d3055d892515ed85deb178c3089",
+    "wordCount": 921,
+    "duration": 360.98004
+  },
+  "reading-b2-45-v1": {
+    "src": "/media/stories/b2/reading-b2-45-v1-ae1afc41726d-be020069-qwen-dialogue-opus16-18f3eb472a9f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-45-v1-ae1afc41726d-be020069-qwen-dialogue-opus16-c58dad05f25a.json",
+    "textHash": "ae1afc41726dc234af6282eff00bd5a51c7887916f3003f8c45206e180288bb6",
+    "wordCount": 900,
+    "duration": 332.72
+  },
+  "reading-b2-46-v1": {
+    "src": "/media/stories/b2/reading-b2-46-v1-62f3edd4a48b-c2965740-qwen-dialogue-opus16-e20b1b67fc2d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-46-v1-62f3edd4a48b-c2965740-qwen-dialogue-opus16-83d451ff175f.json",
+    "textHash": "62f3edd4a48bdefb3845688588cccde358cf5ec43818429f7f5a7a8999b64ea2",
+    "wordCount": 908,
+    "duration": 366.88004
+  },
+  "reading-b2-47-v1": {
+    "src": "/media/stories/b2/reading-b2-47-v1-f6d168f4b994-4c426d91-qwen-dialogue-opus16-ac11bc7a0fb9.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-47-v1-f6d168f4b994-4c426d91-qwen-dialogue-opus16-66ee4174506c.json",
+    "textHash": "f6d168f4b9942ac211a8bbf29da529d288472cd4c6f9892e50ae99097ffd143a",
+    "wordCount": 908,
+    "duration": 362.00008
+  },
+  "reading-b2-48-v1": {
+    "src": "/media/stories/b2/reading-b2-48-v1-1da6cfc21b5f-570c2ec7-qwen-dialogue-opus16-eae2152b0701.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-48-v1-1da6cfc21b5f-570c2ec7-qwen-dialogue-opus16-780db9cfff98.json",
+    "textHash": "1da6cfc21b5fb0d174fd26e4e7fcd2e01ea6001cd39c734e10c9aa2df23516d1",
+    "wordCount": 919,
+    "duration": 346.48008
+  },
+  "reading-b2-49-v1": {
+    "src": "/media/stories/b2/reading-b2-49-v1-46b072898f18-5467c15b-qwen-dialogue-opus16-aaf235250b14.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-49-v1-46b072898f18-5467c15b-qwen-dialogue-opus16-5d87286ec2e5.json",
+    "textHash": "46b072898f1815844f4eb310136dae9b85742668ce64c12b6f618a54d385a3bf",
+    "wordCount": 925,
+    "duration": 352.06008
+  },
+  "reading-b2-50-v1": {
+    "src": "/media/stories/b2/reading-b2-50-v1-379af65b0ea8-ff083696-qwen-dialogue-opus16-7f600f6bb2d9.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-50-v1-379af65b0ea8-ff083696-qwen-dialogue-opus16-c19e86032666.json",
+    "textHash": "379af65b0ea8bc5e8cb00787473b8b3f5e93d32aa5ed2571767589f46510077e",
+    "wordCount": 939,
+    "duration": 344.56004
+  },
+  "reading-b2-51-v1": {
+    "src": "/media/stories/b2/reading-b2-51-v1-25daa752ecfc-ca09a127-qwen-dialogue-opus16-2a13aa4d1581.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-51-v1-25daa752ecfc-ca09a127-qwen-dialogue-opus16-ad4a8def30af.json",
+    "textHash": "25daa752ecfc13dd5762f7534d0cc0ecdcb38f47ed4c958259b715988d9ee514",
+    "wordCount": 935,
+    "duration": 338.28
+  },
+  "reading-b2-52-v1": {
+    "src": "/media/stories/b2/reading-b2-52-v1-4cba9d932b28-2a843af5-qwen-dialogue-opus16-db16ddb8e0a4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-52-v1-4cba9d932b28-2a843af5-qwen-dialogue-opus16-af8b7cd1eaf4.json",
+    "textHash": "4cba9d932b28660f75401857534bce69cb87ab23971769773278116add1f4897",
+    "wordCount": 920,
+    "duration": 349.98
+  },
+  "reading-b2-53-v1": {
+    "src": "/media/stories/b2/reading-b2-53-v1-de3dca794966-ae8331f4-qwen-dialogue-opus16-f68b87589b76.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-53-v1-de3dca794966-ae8331f4-qwen-dialogue-opus16-b16abfbbb16b.json",
+    "textHash": "de3dca7949666d3b4051e9ee08f3a5c401fd04910e997c1d80437fefe888188a",
+    "wordCount": 911,
+    "duration": 349.00004
+  },
+  "reading-b2-54-v1": {
+    "src": "/media/stories/b2/reading-b2-54-v1-38de873004eb-cca456d0-qwen-dialogue-opus16-49908ab97728.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-54-v1-38de873004eb-cca456d0-qwen-dialogue-opus16-3c28b4d7907d.json",
+    "textHash": "38de873004ebe0da89e333a8a204ff43fff0f4985004f5f201778b9b364eefd0",
+    "wordCount": 917,
+    "duration": 348.94004
+  },
+  "reading-b2-55-v1": {
+    "src": "/media/stories/b2/reading-b2-55-v1-a639d6b14dba-e42033a4-qwen-dialogue-opus16-042ce76ab668.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-55-v1-a639d6b14dba-e42033a4-qwen-dialogue-opus16-b13dc8f8d2dc.json",
+    "textHash": "a639d6b14dba38f695eff3a8ef457accd92b6bf4b2a58e9805cea6c8c7b1aac1",
+    "wordCount": 906,
+    "duration": 332.44004
+  },
+  "reading-b2-56-v1": {
+    "src": "/media/stories/b2/reading-b2-56-v1-9e1ba2f4f257-21c02111-qwen-dialogue-opus16-a031795388b4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-56-v1-9e1ba2f4f257-21c02111-qwen-dialogue-opus16-671dddd26c80.json",
+    "textHash": "9e1ba2f4f257d47207b93015bdedf07c4cbaf485de7240bf0c35d92d44db6bb9",
+    "wordCount": 923,
+    "duration": 356.69654
+  },
+  "reading-b2-57-v1": {
+    "src": "/media/stories/b2/reading-b2-57-v1-e1bc59ac6dd4-d5f208ca-qwen-dialogue-opus16-3cca21c33752.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-57-v1-e1bc59ac6dd4-d5f208ca-qwen-dialogue-opus16-0642a123dba1.json",
+    "textHash": "e1bc59ac6dd4eb09853e2562fa2cdf4e235718c3309b408b2a89c38ab59b0712",
+    "wordCount": 919,
+    "duration": 360.6
+  },
+  "reading-b2-58-v1": {
+    "src": "/media/stories/b2/reading-b2-58-v1-24199d1c29c3-f89465ad-qwen-dialogue-opus16-eaf6fcfda458.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-58-v1-24199d1c29c3-f89465ad-qwen-dialogue-opus16-9fff30fe670d.json",
+    "textHash": "24199d1c29c3f9fef94e7aa604291d3f0039de19c32716aea12c96f2164b4096",
+    "wordCount": 912,
+    "duration": 370.26
+  },
+  "reading-b2-59-v1": {
+    "src": "/media/stories/b2/reading-b2-59-v1-bcac4d3b52d0-782ef087-qwen-dialogue-opus16-ef1aebdfba7b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-59-v1-bcac4d3b52d0-782ef087-qwen-dialogue-opus16-86d3fb9bc5c4.json",
+    "textHash": "bcac4d3b52d036ca9ca44921ee0f187e02d62fa48f64284e7f7e7dfbecbabc42",
+    "wordCount": 923,
+    "duration": 357.34008
+  },
+  "reading-b2-60-v1": {
+    "src": "/media/stories/b2/reading-b2-60-v1-21eaa7877d93-e42706a9-qwen-dialogue-opus16-555d52f66ff6.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-60-v1-21eaa7877d93-e42706a9-qwen-dialogue-opus16-42a6b499ef3f.json",
+    "textHash": "21eaa7877d93d33ce9fa6aa134c85f1bcf64ff29195918b60584e07231549dc1",
+    "wordCount": 931,
+    "duration": 348.94
+  },
+  "reading-b2-61-v1": {
+    "src": "/media/stories/b2/reading-b2-61-v1-6998114aa56f-dd22aacf-qwen-dialogue-opus16-84afeb65a307.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-61-v1-6998114aa56f-dd22aacf-qwen-dialogue-opus16-fcf250e2484e.json",
+    "textHash": "6998114aa56f789663db2d3e2b9b0f0d7c771ac52c2ecb419cf8fcdb43b077f7",
+    "wordCount": 901,
+    "duration": 354.06008
+  },
+  "reading-b2-62-v1": {
+    "src": "/media/stories/b2/reading-b2-62-v1-2fe593fc829d-7797bc99-qwen-dialogue-opus16-1fe218f245d5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-62-v1-2fe593fc829d-7797bc99-qwen-dialogue-opus16-07245c36718e.json",
+    "textHash": "2fe593fc829da798e4e3dd97e59d5382232f69d5b361a52775bbb6d7d44dbb5b",
+    "wordCount": 911,
+    "duration": 344.38
+  },
+  "reading-b2-63-v1": {
+    "src": "/media/stories/b2/reading-b2-63-v1-97cd1ef6baef-11ad8dc5-qwen-dialogue-opus16-60c1095ec4cd.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-63-v1-97cd1ef6baef-11ad8dc5-qwen-dialogue-opus16-3105f62119dc.json",
+    "textHash": "97cd1ef6baef1950bf9dc7c3ace0d125e4e2b22c11b10489cfc6fa0ccc2a063c",
+    "wordCount": 916,
+    "duration": 371.77079
+  },
+  "reading-b2-64-v1": {
+    "src": "/media/stories/b2/reading-b2-64-v1-46cadc8a87b6-c719b96f-qwen-dialogue-opus16-a2998b33d218.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-64-v1-46cadc8a87b6-c719b96f-qwen-dialogue-opus16-d7c3d8d2d33b.json",
+    "textHash": "46cadc8a87b616a161af6b883f73de08f64571ab4e5c37be71f335242f5029b5",
+    "wordCount": 913,
+    "duration": 359.66
+  },
+  "reading-b2-65-v1": {
+    "src": "/media/stories/b2/reading-b2-65-v1-3a6a02b312cb-f38efba7-qwen-dialogue-opus16-ecaf7455644f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-65-v1-3a6a02b312cb-f38efba7-qwen-dialogue-opus16-a8da2bfb3ae9.json",
+    "textHash": "3a6a02b312cbbee860d7af35920d8d2e6e3e892b9e362564aa397becc83c5388",
+    "wordCount": 922,
+    "duration": 362.68008
+  },
+  "reading-b2-66-v1": {
+    "src": "/media/stories/b2/reading-b2-66-v1-dcd8914a6a6f-56f360c0-qwen-dialogue-opus16-3e899f1aee67.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-66-v1-dcd8914a6a6f-56f360c0-qwen-dialogue-opus16-3c7c7296c8fe.json",
+    "textHash": "dcd8914a6a6f4e9fbb9c36c3311e945bc50779578648f58fd1a36a7d256dabf1",
+    "wordCount": 920,
+    "duration": 368.96004
+  },
+  "reading-b2-67-v1": {
+    "src": "/media/stories/b2/reading-b2-67-v1-5e62386e2e74-34412a58-qwen-dialogue-opus16-9ba0af0f7e38.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-67-v1-5e62386e2e74-34412a58-qwen-dialogue-opus16-4e92f6d1217f.json",
+    "textHash": "5e62386e2e74a6ba3cb31409e23b7b18c3ffd3d5cbd03026cf03370a6166ff8b",
+    "wordCount": 900,
+    "duration": 360.98
+  },
+  "reading-b2-68-v1": {
+    "src": "/media/stories/b2/reading-b2-68-v1-de806040c4ba-cb89efd8-qwen-dialogue-opus16-22753945b729.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-68-v1-de806040c4ba-cb89efd8-qwen-dialogue-opus16-10c08344251b.json",
+    "textHash": "de806040c4ba13ea35b74b111f294e369ed5da7bc50e6193b3a6f75367942a80",
+    "wordCount": 940,
+    "duration": 375.86008
+  },
+  "reading-b2-69-v1": {
+    "src": "/media/stories/b2/reading-b2-69-v1-0a3d71241eb1-74c32cc4-qwen-dialogue-opus16-8c8d4d18bc0e.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-69-v1-0a3d71241eb1-74c32cc4-qwen-dialogue-opus16-f8b1fbe54752.json",
+    "textHash": "0a3d71241eb1de3f1c9ea6a5e9dea76fd81f6ce69004e5e1f3bdee96cfd65bae",
+    "wordCount": 926,
+    "duration": 367.72008
+  },
+  "reading-b2-70-v1": {
+    "src": "/media/stories/b2/reading-b2-70-v1-d760fed1644b-17f52cb7-qwen-dialogue-opus16-ae36a094fdac.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-70-v1-d760fed1644b-17f52cb7-qwen-dialogue-opus16-1e71e0fdb709.json",
+    "textHash": "d760fed1644b18c75fd9c10b1f50f048ab7a8b19fae6e0da57a158e1ba90bda8",
+    "wordCount": 918,
+    "duration": 366.42
+  },
+  "reading-b2-71-v1": {
+    "src": "/media/stories/b2/reading-b2-71-v1-5b8bb6ff852a-88a83c4f-qwen-dialogue-opus16-45d2ee1dea82.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-71-v1-5b8bb6ff852a-88a83c4f-qwen-dialogue-opus16-737d87974221.json",
+    "textHash": "5b8bb6ff852a96f5f90efdc590a192087967f74a2a89c0afa132b755520eb8dc",
+    "wordCount": 925,
+    "duration": 367.84
+  },
+  "reading-b2-72-v1": {
+    "src": "/media/stories/b2/reading-b2-72-v1-005d47531a71-985a9497-qwen-dialogue-opus16-adfcd9915f8b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-72-v1-005d47531a71-985a9497-qwen-dialogue-opus16-b95c4835758c.json",
+    "textHash": "005d47531a71196b73f0b036bbb47b8218fc263f79a3d94c1cea3bbea3b3d04b",
+    "wordCount": 909,
+    "duration": 387.58
+  },
+  "reading-b2-73-v1": {
+    "src": "/media/stories/b2/reading-b2-73-v1-4272785beecc-d864ecea-qwen-dialogue-opus16-555b008dcd50.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-73-v1-4272785beecc-d864ecea-qwen-dialogue-opus16-d46d92ebfa84.json",
+    "textHash": "4272785beeccf61fd01ae05d03d71738845073bba2dd86845652a59cd271adc7",
+    "wordCount": 907,
+    "duration": 393.76
+  },
+  "reading-b2-74-v1": {
+    "src": "/media/stories/b2/reading-b2-74-v1-143fa4340275-55eb0fb4-qwen-dialogue-opus16-4e48bb84ba70.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-74-v1-143fa4340275-55eb0fb4-qwen-dialogue-opus16-ba08db0bf0be.json",
+    "textHash": "143fa43402759619e8b01145e04e74d74658194b9525b3020859d74fa180910b",
+    "wordCount": 901,
+    "duration": 364.62004
+  },
+  "reading-b2-75-v1": {
+    "src": "/media/stories/b2/reading-b2-75-v1-615018d0a5e4-9c217bd6-qwen-dialogue-opus16-dc1372fa7950.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-75-v1-615018d0a5e4-9c217bd6-qwen-dialogue-opus16-73f30d3727aa.json",
+    "textHash": "615018d0a5e420d602c5211e1e53f04f0e6c34f042c8e73ddb7bb5c8b18efb50",
+    "wordCount": 913,
+    "duration": 373.22
+  },
+  "reading-b2-76-v1": {
+    "src": "/media/stories/b2/reading-b2-76-v1-2a4250a32e7a-a9fb0360-qwen-dialogue-opus16-b0299049aa81.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-76-v1-2a4250a32e7a-a9fb0360-qwen-dialogue-opus16-0ab9f900d380.json",
+    "textHash": "2a4250a32e7aadcf91e951f4058cf2b10ac6a5f17813eb321ee243bcd6a0fee7",
+    "wordCount": 922,
+    "duration": 373.94
+  },
+  "reading-b2-77-v1": {
+    "src": "/media/stories/b2/reading-b2-77-v1-101dcf366cbe-9e41ece3-qwen-dialogue-opus16-1fd911cb8315.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-77-v1-101dcf366cbe-9e41ece3-qwen-dialogue-opus16-c3412d9401c7.json",
+    "textHash": "101dcf366cbe6b5a1642be16eff47f34e01ac0047cd93aca8ed068cff80e953e",
+    "wordCount": 909,
+    "duration": 365.88
+  },
+  "reading-b2-78-v1": {
+    "src": "/media/stories/b2/reading-b2-78-v1-bdae3e1e61a4-c304c647-qwen-dialogue-opus16-7431121bd474.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-78-v1-bdae3e1e61a4-c304c647-qwen-dialogue-opus16-1b4d3a90f02f.json",
+    "textHash": "bdae3e1e61a419ee31c33800040673bb16dd1973f9e748970183420a1dd216d4",
+    "wordCount": 901,
+    "duration": 374.10004
+  },
+  "reading-b2-79-v1": {
+    "src": "/media/stories/b2/reading-b2-79-v1-3dd725a77a95-78c83b97-qwen-dialogue-opus16-a45810753271.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-79-v1-3dd725a77a95-78c83b97-qwen-dialogue-opus16-0aebdbdfb74b.json",
+    "textHash": "3dd725a77a9549dc5436ac9627589a5785ccc6d2844f4279e018934348813d67",
+    "wordCount": 951,
+    "duration": 386.54
+  },
+  "reading-b2-80-v1": {
+    "src": "/media/stories/b2/reading-b2-80-v1-3035ba0974d8-fb598e1d-qwen-dialogue-opus16-18f44e9c4caa.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-80-v1-3035ba0974d8-fb598e1d-qwen-dialogue-opus16-e225a0023fa2.json",
+    "textHash": "3035ba0974d8007f25045dbfad559798150353bfab3980286ddab2779e2e6ae2",
+    "wordCount": 908,
+    "duration": 364.72004
+  },
+  "reading-b2-81-v1": {
+    "src": "/media/stories/b2/reading-b2-81-v1-c4d87d4b0471-e40b25bc-qwen-dialogue-opus16-f6662093e4a6.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-81-v1-c4d87d4b0471-e40b25bc-qwen-dialogue-opus16-6fdee6f132f1.json",
+    "textHash": "c4d87d4b0471c9e579454f324cdc4c8bb9f0d61f2d95fc756f8b77afead15ff5",
+    "wordCount": 914,
+    "duration": 351.84
+  },
+  "reading-b2-82-v1": {
+    "src": "/media/stories/b2/reading-b2-82-v1-ea7bec18db0f-c845590f-qwen-dialogue-opus16-0ee09e12bb07.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-82-v1-ea7bec18db0f-c845590f-qwen-dialogue-opus16-acee377aa387.json",
+    "textHash": "ea7bec18db0fcad25e4c7beaafed333f8dc53f2d74d47430104db33aec814241",
+    "wordCount": 937,
+    "duration": 366.46008
+  },
+  "reading-b2-83-v1": {
+    "src": "/media/stories/b2/reading-b2-83-v1-8c241ddeb889-e6cae4d1-qwen-dialogue-opus16-10b974243fce.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-83-v1-8c241ddeb889-e6cae4d1-qwen-dialogue-opus16-9d2c27ed83d6.json",
+    "textHash": "8c241ddeb8894870f7fe400146ee3f853d69d70715f8967debcb1e7545bbf68d",
+    "wordCount": 970,
+    "duration": 385.02008
+  },
+  "reading-b2-84-v1": {
+    "src": "/media/stories/b2/reading-b2-84-v1-b4827a1f5b3a-85f874a2-qwen-dialogue-opus16-43ddc1f3650c.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-84-v1-b4827a1f5b3a-85f874a2-qwen-dialogue-opus16-f5958c9b6f3b.json",
+    "textHash": "b4827a1f5b3a6d4ae9399f1001f385e41024a8ab4e9c893422cc72630dec665a",
+    "wordCount": 927,
+    "duration": 366.02004
+  },
+  "reading-b2-85-v1": {
+    "src": "/media/stories/b2/reading-b2-85-v1-47c4f284c3f5-41f3e83e-qwen-dialogue-opus16-44558f8355b5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-85-v1-47c4f284c3f5-41f3e83e-qwen-dialogue-opus16-e289d6921b7e.json",
+    "textHash": "47c4f284c3f5cd962def44fb696eda16e74c338778c45bce9edeee5dad63880e",
+    "wordCount": 940,
+    "duration": 361.87425
+  },
+  "reading-b2-86-v1": {
+    "src": "/media/stories/b2/reading-b2-86-v1-63577e6c9c27-adbee0d3-qwen-dialogue-opus16-6c45b8eb8eb8.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-86-v1-63577e6c9c27-adbee0d3-qwen-dialogue-opus16-f27361cc2fb7.json",
+    "textHash": "63577e6c9c27725a977dc9bd57a30a7da4f31bb942eafe17806a8ae22937751d",
+    "wordCount": 931,
+    "duration": 376.15
+  },
+  "reading-b2-87-v1": {
+    "src": "/media/stories/b2/reading-b2-87-v1-89babf43ddb8-9720089d-qwen-dialogue-opus16-c2def0cb0f46.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-87-v1-89babf43ddb8-9720089d-qwen-dialogue-opus16-3af8e7243aad.json",
+    "textHash": "89babf43ddb8cf1b9a66725b0e4fa35abf27f99263a1005029f7c05ff9d6e968",
+    "wordCount": 911,
+    "duration": 356.98
+  },
+  "reading-b2-88-v1": {
+    "src": "/media/stories/b2/reading-b2-88-v1-c47ca22b0ea8-98deaf4e-qwen-dialogue-opus16-7a77bd61be62.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-88-v1-c47ca22b0ea8-98deaf4e-qwen-dialogue-opus16-05a423c7c67e.json",
+    "textHash": "c47ca22b0ea8f272007849fc3ec3daf05279f3be16633a8b17d58d89751e4935",
+    "wordCount": 928,
+    "duration": 363.46
+  },
+  "reading-b2-89-v1": {
+    "src": "/media/stories/b2/reading-b2-89-v1-775b3468714a-1337d5ec-qwen-dialogue-opus16-c9445569abc3.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-89-v1-775b3468714a-1337d5ec-qwen-dialogue-opus16-40bb6ce765cc.json",
+    "textHash": "775b3468714aff6e17243fc4e82372eb8d7f5250a5a394a82404d4fb3d1f7082",
+    "wordCount": 930,
+    "duration": 360.36004
+  },
+  "reading-b2-90-v1": {
+    "src": "/media/stories/b2/reading-b2-90-v1-9bce9508a5ee-4f0b4f4c-qwen-dialogue-opus16-4044ed9de8eb.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-90-v1-9bce9508a5ee-4f0b4f4c-qwen-dialogue-opus16-3efd649f4a1e.json",
+    "textHash": "9bce9508a5eef03ed97c65833d41c0ba1097907b11338212f021c872faaa975d",
+    "wordCount": 978,
+    "duration": 370.351
+  },
+  "reading-b2-91-v1": {
+    "src": "/media/stories/b2/reading-b2-91-v1-65b9d75b4c81-edd11aa5-qwen-dialogue-opus16-ae90dce36643.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-91-v1-65b9d75b4c81-edd11aa5-qwen-dialogue-opus16-f7669d76733b.json",
+    "textHash": "65b9d75b4c81b7e036c14d5e0893ceaec263dae1319fb636388df1cd710867cd",
+    "wordCount": 905,
+    "duration": 360.24992
+  },
+  "reading-b2-92-v1": {
+    "src": "/media/stories/b2/reading-b2-92-v1-92fc5a1b4885-526a4266-qwen-dialogue-opus16-70c467ed8a8a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-92-v1-92fc5a1b4885-526a4266-qwen-dialogue-opus16-b2ce47ebbe01.json",
+    "textHash": "92fc5a1b488523e0ed3901c06dc3ee115b4e39099d144f31dab4abd57d1d69e4",
+    "wordCount": 923,
+    "duration": 382.16008
+  },
+  "reading-b2-93-v1": {
+    "src": "/media/stories/b2/reading-b2-93-v1-8a2568e7546b-420b4c24-qwen-dialogue-opus16-d5bf1a515262.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-93-v1-8a2568e7546b-420b4c24-qwen-dialogue-opus16-609c0ed1d953.json",
+    "textHash": "8a2568e7546b321aaadb585f250d116843c6259d9f643d8525a6246b27567b54",
+    "wordCount": 973,
+    "duration": 388.60004
+  },
+  "reading-b2-94-v1": {
+    "src": "/media/stories/b2/reading-b2-94-v1-d5cf10162a9e-804a98f5-qwen-dialogue-opus16-f6eab9ff984c.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-94-v1-d5cf10162a9e-804a98f5-qwen-dialogue-opus16-bb3f01226bec.json",
+    "textHash": "d5cf10162a9ed53767b826b6ffdb37bf4acfc301d2afcb758d104dce9f517335",
+    "wordCount": 971,
+    "duration": 402.76
+  },
+  "reading-b2-95-v1": {
+    "src": "/media/stories/b2/reading-b2-95-v1-e7f44db64131-a1efa01f-qwen-dialogue-opus16-56ae17048214.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-95-v1-e7f44db64131-a1efa01f-qwen-dialogue-opus16-cf9c8560b143.json",
+    "textHash": "e7f44db64131b05d775c95228c72260b2383e55231249d0da98442f051bf598a",
+    "wordCount": 957,
+    "duration": 363.38004
+  },
+  "reading-b2-96-v1": {
+    "src": "/media/stories/b2/reading-b2-96-v1-2a1287b4329f-9a505fb6-qwen-dialogue-opus16-c06ede6ae3ec.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-96-v1-2a1287b4329f-9a505fb6-qwen-dialogue-opus16-e3058ffb55b5.json",
+    "textHash": "2a1287b4329f436e7b74a04f871824ace549ae72bcc31f09aa15d9b95efbb87b",
+    "wordCount": 954,
+    "duration": 374.36004
+  },
+  "reading-b2-97-v1": {
+    "src": "/media/stories/b2/reading-b2-97-v1-3b0587f5d988-7bcc2475-qwen-dialogue-opus16-6e9acefefee5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-97-v1-3b0587f5d988-7bcc2475-qwen-dialogue-opus16-0bd71a6f7620.json",
+    "textHash": "3b0587f5d9886b0ce51166568a5d99c277960bc6ab2456300022e71c79521bd9",
+    "wordCount": 962,
+    "duration": 383.82008
+  },
+  "reading-b2-98-v1": {
+    "src": "/media/stories/b2/reading-b2-98-v1-19df3632b06a-e8d3bcc7-qwen-dialogue-opus16-4570b8554c80.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-98-v1-19df3632b06a-e8d3bcc7-qwen-dialogue-opus16-a67304b83830.json",
+    "textHash": "19df3632b06acc45d01de3ebadee9c4cca82074952537c37873b15befa7e3f53",
+    "wordCount": 955,
+    "duration": 376.49304
+  },
+  "reading-b2-99-v1": {
+    "src": "/media/stories/b2/reading-b2-99-v1-c5c6fd04b4a9-96b4ab89-qwen-dialogue-opus16-16b3a2e81a5f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-99-v1-c5c6fd04b4a9-96b4ab89-qwen-dialogue-opus16-f758653589bf.json",
+    "textHash": "c5c6fd04b4a9a85aa9217febbfd6a627fb03a57ef5598cc418fc8d013e30c8a8",
+    "wordCount": 922,
+    "duration": 361.6
+  },
+  "reading-b2-100-v1": {
+    "src": "/media/stories/b2/reading-b2-100-v1-2b60b09221a0-1228eea5-qwen-dialogue-opus16-5fa4dd6fdd50.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-100-v1-2b60b09221a0-1228eea5-qwen-dialogue-opus16-e8d8abae3ecb.json",
+    "textHash": "2b60b09221a0ae5258963ad4c820ca3e927eef27eb754cef2dec186bbab13ff5",
+    "wordCount": 965,
+    "duration": 372
+  },
+  "reading-b2-101-v1": {
+    "src": "/media/stories/b2/reading-b2-101-v1-e1c9d7eac70b-c67d53f4-qwen-dialogue-opus16-148d8b986884.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-101-v1-e1c9d7eac70b-c67d53f4-qwen-dialogue-opus16-2012ea0c61ff.json",
+    "textHash": "e1c9d7eac70b88daf25cfda330318ae1080422f2a34e79b4cd1fa9608e9a43df",
+    "wordCount": 902,
+    "duration": 361.64
+  },
+  "reading-b2-102-v1": {
+    "src": "/media/stories/b2/reading-b2-102-v1-d2575634d25b-c455d1ba-qwen-dialogue-opus16-cda27d50902d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-102-v1-d2575634d25b-c455d1ba-qwen-dialogue-opus16-dd9a141384ed.json",
+    "textHash": "d2575634d25bd599f359f116b8fadd0a23a619c6e542a2f1a0cd31782287d014",
+    "wordCount": 902,
+    "duration": 368.48
+  },
+  "reading-b2-103-v1": {
+    "src": "/media/stories/b2/reading-b2-103-v1-e50be1122324-bb36dcc3-qwen-dialogue-opus16-3b0a9f5d1f80.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-103-v1-e50be1122324-bb36dcc3-qwen-dialogue-opus16-f9d5cedd50ad.json",
+    "textHash": "e50be1122324348267324e9e90d99c9310c67e7630f7ca5693c2a3d51504d023",
+    "wordCount": 904,
+    "duration": 353.86004
+  },
+  "reading-b2-104-v1": {
+    "src": "/media/stories/b2/reading-b2-104-v1-60dbd1fac34e-c14c918a-qwen-dialogue-opus16-b14bb8f3db9d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-104-v1-60dbd1fac34e-c14c918a-qwen-dialogue-opus16-0385c38838f7.json",
+    "textHash": "60dbd1fac34e144119101e0b5579a8354856d9d26eadceda4c2781a1748c13bd",
+    "wordCount": 912,
+    "duration": 350.9
+  },
+  "reading-b2-105-v1": {
+    "src": "/media/stories/b2/reading-b2-105-v1-6f7d9fec4904-0320891d-qwen-dialogue-opus16-713a8033ebc1.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-105-v1-6f7d9fec4904-0320891d-qwen-dialogue-opus16-e71c64e18486.json",
+    "textHash": "6f7d9fec4904fb457d03f9846750dce74569e2a5ed6d53ac8b1e435764621a12",
+    "wordCount": 904,
+    "duration": 349.7
+  },
+  "reading-b2-106-v1": {
+    "src": "/media/stories/b2/reading-b2-106-v1-85a4983b6dfb-3e77cfa3-qwen-dialogue-opus16-61d43f6f95d5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-106-v1-85a4983b6dfb-3e77cfa3-qwen-dialogue-opus16-768813900364.json",
+    "textHash": "85a4983b6dfb151c27429a1cba34e25257401541530071d5d2bce7eeb20d8919",
+    "wordCount": 903,
+    "duration": 345.92
+  },
+  "reading-b2-107-v1": {
+    "src": "/media/stories/b2/reading-b2-107-v1-725cf12214a3-7400e8c0-qwen-dialogue-opus16-3754c69ff602.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-107-v1-725cf12214a3-7400e8c0-qwen-dialogue-opus16-d2cecead7f5e.json",
+    "textHash": "725cf12214a327f5d308b0eaf2ae2d249341711f3e3b689743c7bbab9a3e1c5c",
+    "wordCount": 915,
+    "duration": 347.15067
+  },
+  "reading-b2-108-v1": {
+    "src": "/media/stories/b2/reading-b2-108-v1-8b92ad7fb324-5ec8ad93-qwen-dialogue-opus16-26672899a955.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-108-v1-8b92ad7fb324-5ec8ad93-qwen-dialogue-opus16-11fcf4447529.json",
+    "textHash": "8b92ad7fb3249d07fd590d2213987b8b5d3dc5d6e96f0d69329e6f636ce00ad6",
+    "wordCount": 920,
+    "duration": 374.8
+  },
+  "reading-b2-109-v1": {
+    "src": "/media/stories/b2/reading-b2-109-v1-21f8779e6347-66777760-qwen-dialogue-opus16-97ac5927cb83.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-109-v1-21f8779e6347-66777760-qwen-dialogue-opus16-b64917461b19.json",
+    "textHash": "21f8779e63477fde3a1bc595702134e9d7755fddc28e6d087144467767fc1de9",
+    "wordCount": 903,
+    "duration": 345.62
+  },
+  "reading-b2-110-v1": {
+    "src": "/media/stories/b2/reading-b2-110-v1-7ca30eb9d02c-098ceeba-qwen-dialogue-opus16-7fd62f98ad46.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-110-v1-7ca30eb9d02c-098ceeba-qwen-dialogue-opus16-ecf551163fb1.json",
+    "textHash": "7ca30eb9d02c20febb032aac9b7165faa0df68980538ae89bc43e11321b59212",
+    "wordCount": 907,
+    "duration": 365.97033
+  },
+  "reading-b2-111-v1": {
+    "src": "/media/stories/b2/reading-b2-111-v1-b823f46a012e-895568f5-qwen-dialogue-opus16-38779045bf15.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-111-v1-b823f46a012e-895568f5-qwen-dialogue-opus16-8c59a6b29153.json",
+    "textHash": "b823f46a012ede5fd6c7c0dd9e4fdd7fffa14dcfdb669dce8a52b2e15026334d",
+    "wordCount": 913,
+    "duration": 346.8
+  },
+  "reading-b2-112-v1": {
+    "src": "/media/stories/b2/reading-b2-112-v1-50f46c2b787d-9c679f1d-qwen-dialogue-opus16-e23868819830.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-112-v1-50f46c2b787d-9c679f1d-qwen-dialogue-opus16-a8d329872d80.json",
+    "textHash": "50f46c2b787d52d7fe03a49ea91d4247313f4c6312896fccae4f732288b022b3",
+    "wordCount": 900,
+    "duration": 364.86
+  },
+  "reading-b2-113-v1": {
+    "src": "/media/stories/b2/reading-b2-113-v1-74b507a0cc17-bbd4e159-qwen-dialogue-opus16-37927b37bf05.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-113-v1-74b507a0cc17-bbd4e159-qwen-dialogue-opus16-e226f50eacd4.json",
+    "textHash": "74b507a0cc17f79f10f74ecea8a2037064ac7105b8a9f55cab597427855e04e3",
+    "wordCount": 955,
+    "duration": 386.26
+  },
+  "reading-b2-114-v1": {
+    "src": "/media/stories/b2/reading-b2-114-v1-0a322c08936e-c4cbf4b6-qwen-dialogue-opus16-f5e2c0f5f090.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-114-v1-0a322c08936e-c4cbf4b6-qwen-dialogue-opus16-7e34a573c4dd.json",
+    "textHash": "0a322c08936e456848ef4f52b8b44ed60b784d962eafcdf19b5ed633b3366896",
+    "wordCount": 919,
+    "duration": 375.06183
+  },
+  "reading-b2-115-v1": {
+    "src": "/media/stories/b2/reading-b2-115-v1-86ce0e43b8c7-71879294-qwen-dialogue-opus16-bce2decbc993.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-115-v1-86ce0e43b8c7-71879294-qwen-dialogue-opus16-7223f7c725a0.json",
+    "textHash": "86ce0e43b8c7aebcc18475aae2f3ab255bd1a5837754d5f357becd812bfdb0f8",
+    "wordCount": 911,
+    "duration": 368.36004
+  },
+  "reading-b2-116-v1": {
+    "src": "/media/stories/b2/reading-b2-116-v1-9a295e595f4e-2f6cb565-qwen-dialogue-opus16-1bf3e85fab56.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-116-v1-9a295e595f4e-2f6cb565-qwen-dialogue-opus16-0a5c5dfa7831.json",
+    "textHash": "9a295e595f4edb62f4e97ef992ea56e71a678ccfe4c4d2a0a91ed783ff252fd9",
+    "wordCount": 917,
+    "duration": 385.69
+  },
+  "reading-b2-117-v1": {
+    "src": "/media/stories/b2/reading-b2-117-v1-d636365ddc58-7c820e4a-qwen-dialogue-opus16-87331d059ae3.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-117-v1-d636365ddc58-7c820e4a-qwen-dialogue-opus16-d2e776dc5ed0.json",
+    "textHash": "d636365ddc58501977455c4de6bc65737ccd941781a69793018cf8b936bc7ea1",
+    "wordCount": 907,
+    "duration": 356.51017
+  },
+  "reading-b2-118-v1": {
+    "src": "/media/stories/b2/reading-b2-118-v1-a04bf1fa9689-3dbd5eca-qwen-dialogue-opus16-4af92fd5aac3.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-118-v1-a04bf1fa9689-3dbd5eca-qwen-dialogue-opus16-d1b6aed2e901.json",
+    "textHash": "a04bf1fa9689b783040dbd5021c48fadd29433b096789a768dbc91eab0beb94a",
+    "wordCount": 908,
+    "duration": 352.88
+  },
+  "reading-b2-119-v1": {
+    "src": "/media/stories/b2/reading-b2-119-v1-5cdb61d89146-4e7560ce-qwen-dialogue-opus16-0ca966afc825.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-119-v1-5cdb61d89146-4e7560ce-qwen-dialogue-opus16-f9d858d9d5ad.json",
+    "textHash": "5cdb61d89146275fab793f3d6c657d93de04ecfba2e9edb80f6857a18161a29d",
+    "wordCount": 907,
+    "duration": 374.82008
+  },
+  "reading-b2-120-v1": {
+    "src": "/media/stories/b2/reading-b2-120-v1-dd7fab60c5f5-a6ec8bd6-qwen-dialogue-opus16-2b2d07d8b0d7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-120-v1-dd7fab60c5f5-a6ec8bd6-qwen-dialogue-opus16-8e00acdf3910.json",
+    "textHash": "dd7fab60c5f5fca50c64b6c2bd62eb264bdc254311d84fa36d97582334324699",
+    "wordCount": 918,
+    "duration": 381.92004
+  },
+  "reading-b2-121-v1": {
+    "src": "/media/stories/b2/reading-b2-121-v1-b537d118045b-aacc9bd1-qwen-dialogue-opus16-698f7c2ca782.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-121-v1-b537d118045b-aacc9bd1-qwen-dialogue-opus16-9c61b96aa634.json",
+    "textHash": "b537d118045b19ff2369f59ba5ea6918624fc770771493dd4d0a845c599d04ee",
+    "wordCount": 909,
+    "duration": 347.32
+  },
+  "reading-b2-122-v1": {
+    "src": "/media/stories/b2/reading-b2-122-v1-1ef0472228a9-1fbf9975-qwen-dialogue-opus16-5a66c17869be.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-122-v1-1ef0472228a9-1fbf9975-qwen-dialogue-opus16-9120963e63c8.json",
+    "textHash": "1ef0472228a93a1f92d5d0bfd4b216ea07d0e0250c084515852685e3764b7296",
+    "wordCount": 970,
+    "duration": 392.06
+  },
+  "reading-b2-123-v1": {
+    "src": "/media/stories/b2/reading-b2-123-v1-e3d28500b835-19357f39-qwen-dialogue-opus16-c65c02ed70b5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-123-v1-e3d28500b835-19357f39-qwen-dialogue-opus16-c22448cf829e.json",
+    "textHash": "e3d28500b835b0386c31b3dde06f5151747df037652c1c31c85709323f6996c6",
+    "wordCount": 935,
+    "duration": 369.34008
+  },
+  "reading-b2-124-v1": {
+    "src": "/media/stories/b2/reading-b2-124-v1-38d20e899a37-726790ff-qwen-dialogue-opus16-77381fe1d93e.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-124-v1-38d20e899a37-726790ff-qwen-dialogue-opus16-54455f779b5c.json",
+    "textHash": "38d20e899a37fca1a290cc1ddd5a0f37c446317f4f17f2ee5d5d5bac74ffe47b",
+    "wordCount": 932,
+    "duration": 368.32
+  },
+  "reading-b2-125-v1": {
+    "src": "/media/stories/b2/reading-b2-125-v1-9d75d936a2e3-94cf6bb3-qwen-dialogue-opus16-de2cea07a4e9.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-125-v1-9d75d936a2e3-94cf6bb3-qwen-dialogue-opus16-df079f032ae5.json",
+    "textHash": "9d75d936a2e3ead4f6fa16177ed33c15a796f3d2a93425784af7eccef6e9e60a",
+    "wordCount": 977,
+    "duration": 382.98004
+  },
+  "reading-b2-126-v1": {
+    "src": "/media/stories/b2/reading-b2-126-v1-0b0b44d9c738-f1c7abb9-qwen-dialogue-opus16-7ad327345f3d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-126-v1-0b0b44d9c738-f1c7abb9-qwen-dialogue-opus16-2e6ef76ed026.json",
+    "textHash": "0b0b44d9c7386661b0449e7c7f9cf59137c46d458f3a03f31ff4ce960ebac3a1",
+    "wordCount": 931,
+    "duration": 361.58058
+  },
+  "reading-b2-127-v1": {
+    "src": "/media/stories/b2/reading-b2-127-v1-cb78c82f60fe-b47a0a0d-qwen-dialogue-opus16-18c4a6eb837f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-127-v1-cb78c82f60fe-b47a0a0d-qwen-dialogue-opus16-690349af727a.json",
+    "textHash": "cb78c82f60fe4639dda98c1c10a130a8b35f781faebfc963e2a7c2a5c57c3e2b",
+    "wordCount": 958,
+    "duration": 376.84
+  },
+  "reading-b2-128-v1": {
+    "src": "/media/stories/b2/reading-b2-128-v1-8c568104e040-6f772fc0-qwen-dialogue-opus16-0b165ed76396.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-128-v1-8c568104e040-6f772fc0-qwen-dialogue-opus16-ccec3a249a6e.json",
+    "textHash": "8c568104e0400ce77745aa180c0ad4ab079d7eb7ad7fb54f567e271713026c42",
+    "wordCount": 972,
+    "duration": 376.70008
+  },
+  "reading-b2-129-v1": {
+    "src": "/media/stories/b2/reading-b2-129-v1-172840889b49-80aa7b47-qwen-dialogue-opus16-fb0b8bcc794b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-129-v1-172840889b49-80aa7b47-qwen-dialogue-opus16-2e4ab83325ee.json",
+    "textHash": "172840889b49fdd95f584ba4d2b9321fdf87299fb230d90374ea5bc024271bfd",
+    "wordCount": 970,
+    "duration": 376.50004
+  },
+  "reading-b2-130-v1": {
+    "src": "/media/stories/b2/reading-b2-130-v1-7b8d058ad950-241c34e4-qwen-dialogue-opus16-e4d679400cca.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-130-v1-7b8d058ad950-241c34e4-qwen-dialogue-opus16-0580a3a3ed32.json",
+    "textHash": "7b8d058ad950d2e5f77cd4f2b29d4bab002423bcd7a27650c7e79d03ba5875e6",
+    "wordCount": 986,
+    "duration": 399.68004
+  },
+  "reading-b2-131-v1": {
+    "src": "/media/stories/b2/reading-b2-131-v1-da90f76cd366-44ef723e-qwen-dialogue-opus16-fee78afe5c03.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-131-v1-da90f76cd366-44ef723e-qwen-dialogue-opus16-a09fef70f744.json",
+    "textHash": "da90f76cd3669d95f1e266551ee2f7bfb27d4cb1a85f3c2ea6c9922aea0ceb2d",
+    "wordCount": 999,
+    "duration": 391.52004
+  },
+  "reading-b2-132-v1": {
+    "src": "/media/stories/b2/reading-b2-132-v1-4af76b62dd21-3e710751-qwen-dialogue-opus16-d3695a0c5f6a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-132-v1-4af76b62dd21-3e710751-qwen-dialogue-opus16-a5606e4bae42.json",
+    "textHash": "4af76b62dd219c117c1e33ff826b2f1a1a93f6bd9b3dd3b202a7677482bf912a",
+    "wordCount": 967,
+    "duration": 386.52008
+  },
+  "reading-b2-133-v1": {
+    "src": "/media/stories/b2/reading-b2-133-v1-f343c09b45b5-967a4ada-qwen-dialogue-opus16-dd6727e8f90c.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-133-v1-f343c09b45b5-967a4ada-qwen-dialogue-opus16-c6fc4d8a4d41.json",
+    "textHash": "f343c09b45b5062d4118d3f4dec34f4650033569aca0cd2b91bf44550c08e809",
+    "wordCount": 962,
+    "duration": 380.44004
+  },
+  "reading-b2-134-v1": {
+    "src": "/media/stories/b2/reading-b2-134-v1-60fc9511913f-68348138-qwen-dialogue-opus16-064bdbcdd9d1.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-134-v1-60fc9511913f-68348138-qwen-dialogue-opus16-1008bab09d38.json",
+    "textHash": "60fc9511913fe322508bcbedec8ec5640cacba0f44f194f4b76bbf51e549f565",
+    "wordCount": 959,
+    "duration": 388.6
+  },
+  "reading-b2-135-v1": {
+    "src": "/media/stories/b2/reading-b2-135-v1-5dd237586ad4-eb4b2202-qwen-dialogue-opus16-b8897a682c89.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-135-v1-5dd237586ad4-eb4b2202-qwen-dialogue-opus16-0a20a8facd67.json",
+    "textHash": "5dd237586ad45d6d68e8d4e3e7a1d38ef59925aa225312ee8e967379cad45378",
+    "wordCount": 964,
+    "duration": 397.44
+  },
+  "reading-b2-136-v1": {
+    "src": "/media/stories/b2/reading-b2-136-v1-b2c22c87e86f-eca46a80-qwen-dialogue-opus16-b1261e2b057f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-136-v1-b2c22c87e86f-eca46a80-qwen-dialogue-opus16-076d7b22708a.json",
+    "textHash": "b2c22c87e86fda5a316d54ebb35c1532706025c6a7d5d25707d9a305368c2866",
+    "wordCount": 993,
+    "duration": 384.14013
+  },
+  "reading-b2-137-v1": {
+    "src": "/media/stories/b2/reading-b2-137-v1-47b857d91d53-53645a29-qwen-dialogue-opus16-087f70175821.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-137-v1-47b857d91d53-53645a29-qwen-dialogue-opus16-e0cb0d20960a.json",
+    "textHash": "47b857d91d535bd8f210f85d8401c6cfb18fda6b1d5e7e17b8f101f145849e98",
+    "wordCount": 977,
+    "duration": 409.46
+  },
+  "reading-b2-138-v1": {
+    "src": "/media/stories/b2/reading-b2-138-v1-abec0b7d5a72-96c8753f-qwen-dialogue-opus16-62652f3c7099.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-138-v1-abec0b7d5a72-96c8753f-qwen-dialogue-opus16-a0a9dc3efefe.json",
+    "textHash": "abec0b7d5a728fafc0d67e52e4b25a232e5880d196466edbd0f347fbcc82e620",
+    "wordCount": 982,
+    "duration": 412.52004
+  },
+  "reading-b2-139-v1": {
+    "src": "/media/stories/b2/reading-b2-139-v1-1335d73e8bdf-e4937884-qwen-dialogue-opus16-33abdf302676.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-139-v1-1335d73e8bdf-e4937884-qwen-dialogue-opus16-f3870f26c2a6.json",
+    "textHash": "1335d73e8bdf7e70409ab60f14f65706144a48317d92fa4e141af3933f295226",
+    "wordCount": 996,
+    "duration": 394.30758
+  },
+  "reading-b2-140-v1": {
+    "src": "/media/stories/b2/reading-b2-140-v1-dbd32406562d-65541bcf-qwen-dialogue-opus16-15d106ba69c5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-140-v1-dbd32406562d-65541bcf-qwen-dialogue-opus16-73e27bb68585.json",
+    "textHash": "dbd32406562dc8416fb594ffcb1931ceb68529ada64e827f1c65c77b125449a9",
+    "wordCount": 992,
+    "duration": 404.04
+  },
+  "reading-b2-141-v1": {
+    "src": "/media/stories/b2/reading-b2-141-v1-82826bf09f55-291cd2d3-qwen-dialogue-opus16-51d5045877ab.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-141-v1-82826bf09f55-291cd2d3-qwen-dialogue-opus16-cdfc1548a592.json",
+    "textHash": "82826bf09f55d0636408e3c5c5374059133aa4726824c44940c5632097cb3689",
+    "wordCount": 967,
+    "duration": 397.12
+  },
+  "reading-b2-142-v1": {
+    "src": "/media/stories/b2/reading-b2-142-v1-4c911d38614a-0c03eb98-qwen-dialogue-opus16-77bc9ed87c4f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-142-v1-4c911d38614a-0c03eb98-qwen-dialogue-opus16-611d78b8f8bb.json",
+    "textHash": "4c911d38614af9fd27a04290b0a7c7b41154e4411560062f6d03ee57188a21ba",
+    "wordCount": 990,
+    "duration": 382.62004
+  },
+  "reading-b2-143-v1": {
+    "src": "/media/stories/b2/reading-b2-143-v1-cd12e19409bb-9e51e606-qwen-dialogue-opus16-08bffdecba75.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-143-v1-cd12e19409bb-9e51e606-qwen-dialogue-opus16-bb566690cfd1.json",
+    "textHash": "cd12e19409bba4728e0c9036f669e770bdd73137b09fd27b50732410db829f63",
+    "wordCount": 993,
+    "duration": 419.44004
+  },
+  "reading-b2-144-v1": {
+    "src": "/media/stories/b2/reading-b2-144-v1-d4a6449ad711-6ae1ebb2-qwen-dialogue-opus16-3fb9de4dd7f4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-144-v1-d4a6449ad711-6ae1ebb2-qwen-dialogue-opus16-f4445e91b6f4.json",
+    "textHash": "d4a6449ad71104605bab25882bf647253c5ec17f634bb2a78cd907ada37894e4",
+    "wordCount": 932,
+    "duration": 369.28
+  },
+  "reading-b2-145-v1": {
+    "src": "/media/stories/b2/reading-b2-145-v1-a26f0888c752-f1547e0f-qwen-dialogue-opus16-8120a617a3b0.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-145-v1-a26f0888c752-f1547e0f-qwen-dialogue-opus16-4a8ee2f84d06.json",
+    "textHash": "a26f0888c752d8866b8fc7948a4a16282efd7fe115ce4110724864b0d83e7260",
+    "wordCount": 984,
+    "duration": 371.68004
+  },
+  "reading-b2-146-v1": {
+    "src": "/media/stories/b2/reading-b2-146-v1-39966f0d6e80-65fb9375-qwen-dialogue-opus16-fc56c668da98.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-146-v1-39966f0d6e80-65fb9375-qwen-dialogue-opus16-1f2c817ac302.json",
+    "textHash": "39966f0d6e80fdb8de6713a765694cab28a2aa59666add3371c1ef64a587f2a7",
+    "wordCount": 994,
+    "duration": 371.06
+  },
+  "reading-b2-147-v1": {
+    "src": "/media/stories/b2/reading-b2-147-v1-be80df0afa33-8d4cec3b-qwen-dialogue-opus16-0579900117b9.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-147-v1-be80df0afa33-8d4cec3b-qwen-dialogue-opus16-561e31fa1a14.json",
+    "textHash": "be80df0afa3325af3dcbccda8632fbeddd3300bec702e442b8bfa75238aa6463",
+    "wordCount": 966,
+    "duration": 367.65983
+  },
+  "reading-b2-148-v1": {
+    "src": "/media/stories/b2/reading-b2-148-v1-2ec6ceaa14eb-0f6c062b-qwen-dialogue-opus16-540c602f32ef.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-148-v1-2ec6ceaa14eb-0f6c062b-qwen-dialogue-opus16-33ed560fcb6c.json",
+    "textHash": "2ec6ceaa14eb725a44849538c91855f100a3753cc276286de40aaedc59b4a3aa",
+    "wordCount": 973,
+    "duration": 376.98004
+  },
+  "reading-b2-149-v1": {
+    "src": "/media/stories/b2/reading-b2-149-v1-2eae49a0fbba-f916183b-qwen-dialogue-opus16-fcbb1d4bb24d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-149-v1-2eae49a0fbba-f916183b-qwen-dialogue-opus16-6d786ccf46e8.json",
+    "textHash": "2eae49a0fbba554d1dcd4bd854a59e97195af96dac6b3d8ae162092c12065f53",
+    "wordCount": 998,
+    "duration": 362.4
+  },
+  "reading-b2-150-v1": {
+    "src": "/media/stories/b2/reading-b2-150-v1-1aa30d85905f-637c6678-qwen-dialogue-opus16-4c944eed1434.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-150-v1-1aa30d85905f-637c6678-qwen-dialogue-opus16-cad967a39157.json",
+    "textHash": "1aa30d85905f5e5b3f89cfb0d9d47b8f14d2f055da0befa7b6df47884289e5cc",
+    "wordCount": 947,
+    "duration": 371.82004
+  },
+  "reading-b2-151-v1": {
+    "src": "/media/stories/b2/reading-b2-151-v1-a2154843951c-df44fd67-qwen-dialogue-opus16-ce5326e4fa50.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-151-v1-a2154843951c-df44fd67-qwen-dialogue-opus16-7265069cbea1.json",
+    "textHash": "a2154843951c77adf72ee60bf341aa063bb32631e85a2fd31910fc0caea59279",
+    "wordCount": 977,
+    "duration": 391.84
+  },
+  "reading-b2-152-v1": {
+    "src": "/media/stories/b2/reading-b2-152-v1-163e7cbee296-3c593c80-qwen-dialogue-opus16-83ffe89e6358.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-152-v1-163e7cbee296-3c593c80-qwen-dialogue-opus16-eb27de79b469.json",
+    "textHash": "163e7cbee296df0b2955799c6eb76ae69cc38715275f349980f051092e71d72b",
+    "wordCount": 952,
+    "duration": 364.34
+  },
+  "reading-b2-153-v1": {
+    "src": "/media/stories/b2/reading-b2-153-v1-7735b280973b-70d1b1e3-qwen-dialogue-opus16-8954f0d8248a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-153-v1-7735b280973b-70d1b1e3-qwen-dialogue-opus16-ff99b766cf16.json",
+    "textHash": "7735b280973b3d247ec2045fb9f20a0b4b8a85dd892e61c35ba08b68e42707cd",
+    "wordCount": 964,
+    "duration": 400.22
+  },
+  "reading-b2-154-v1": {
+    "src": "/media/stories/b2/reading-b2-154-v1-d48de0b5cd43-cc0a3dd6-qwen-dialogue-opus16-574b02bcc829.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-154-v1-d48de0b5cd43-cc0a3dd6-qwen-dialogue-opus16-95d817628862.json",
+    "textHash": "d48de0b5cd430df54c325efe647319e9b2b8f35992256c98acaedf086675eead",
+    "wordCount": 963,
+    "duration": 399.54
+  },
+  "reading-b2-155-v1": {
+    "src": "/media/stories/b2/reading-b2-155-v1-fabc66051181-fb0fdbf4-qwen-dialogue-opus16-302757601954.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-155-v1-fabc66051181-fb0fdbf4-qwen-dialogue-opus16-7ee0b0654cf6.json",
+    "textHash": "fabc6605118181aff7182118261ce80575eec40ebf731c4f852e4ed13c09520f",
+    "wordCount": 997,
+    "duration": 388.22
+  },
+  "reading-b2-156-v1": {
+    "src": "/media/stories/b2/reading-b2-156-v1-5cbc8f1e192c-f7c6c0f5-qwen-dialogue-opus16-b877434af83b.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-156-v1-5cbc8f1e192c-f7c6c0f5-qwen-dialogue-opus16-a5f8ab0af07f.json",
+    "textHash": "5cbc8f1e192c22edc52bf2d819e40d8bc43a433b2f8b8e8c5ddc5bb9f2650e54",
+    "wordCount": 992,
+    "duration": 411.64004
+  },
+  "reading-b2-157-v1": {
+    "src": "/media/stories/b2/reading-b2-157-v1-e7caeebadf98-88b2261a-qwen-dialogue-opus16-6eafb406592d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-157-v1-e7caeebadf98-88b2261a-qwen-dialogue-opus16-f717bbe6f9ae.json",
+    "textHash": "e7caeebadf98d33065158c74aa83adbb17b2647b32b164168a6c0b574ef77cad",
+    "wordCount": 985,
+    "duration": 401.74004
+  },
+  "reading-b2-158-v1": {
+    "src": "/media/stories/b2/reading-b2-158-v1-ae28aa773206-84271bab-qwen-dialogue-opus16-0dfc404ee94a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-158-v1-ae28aa773206-84271bab-qwen-dialogue-opus16-532451d7d854.json",
+    "textHash": "ae28aa773206aa1eb2c4b6beb8f3b9bffecb8ca342d0ec95549f9e984b8195a6",
+    "wordCount": 971,
+    "duration": 390.00004
+  },
+  "reading-b2-159-v1": {
+    "src": "/media/stories/b2/reading-b2-159-v1-6cf4870c0cc4-f8ce24f8-qwen-dialogue-opus16-e95746aec780.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-159-v1-6cf4870c0cc4-f8ce24f8-qwen-dialogue-opus16-19e24d6ed9a4.json",
+    "textHash": "6cf4870c0cc4ef491ff49e2f9aaf9382e8ab9364417d4a95866605dd6911cc8b",
+    "wordCount": 996,
+    "duration": 374.42
+  },
+  "reading-b2-160-v1": {
+    "src": "/media/stories/b2/reading-b2-160-v1-ad3c3760c3a8-e155f5a4-qwen-dialogue-opus16-0f21156c36f5.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-160-v1-ad3c3760c3a8-e155f5a4-qwen-dialogue-opus16-b6329ab937f5.json",
+    "textHash": "ad3c3760c3a80ac096e0aba096570dc26cfa3910f7d32872ea124c21f6857c14",
+    "wordCount": 984,
+    "duration": 390.94
+  },
+  "reading-b2-161-v1": {
+    "src": "/media/stories/b2/reading-b2-161-v1-dfa73782fe59-5cb06b5d-qwen-dialogue-opus16-6ebdaab31ac8.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-161-v1-dfa73782fe59-5cb06b5d-qwen-dialogue-opus16-4537c7d33e83.json",
+    "textHash": "dfa73782fe59b090b2f5e7569bc11a0c77142a26071c968c595526d89517fc11",
+    "wordCount": 981,
+    "duration": 389.88
+  },
+  "reading-b2-162-v1": {
+    "src": "/media/stories/b2/reading-b2-162-v1-51ae39630527-785c36fe-qwen-dialogue-opus16-9e6e87ed0ec6.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-162-v1-51ae39630527-785c36fe-qwen-dialogue-opus16-4db849c94c5d.json",
+    "textHash": "51ae39630527e63187637946842e85553d907c596183d6fa18473360953e92ff",
+    "wordCount": 922,
+    "duration": 354.3
+  },
+  "reading-b2-163-v1": {
+    "src": "/media/stories/b2/reading-b2-163-v1-4a1f838dbd0a-430406ae-qwen-dialogue-opus16-5855891c2590.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-163-v1-4a1f838dbd0a-430406ae-qwen-dialogue-opus16-ede2d54c708a.json",
+    "textHash": "4a1f838dbd0a08df373596b8dc07c2286f5a1319b01772a297acd10866955934",
+    "wordCount": 921,
+    "duration": 368.98
+  },
+  "reading-b2-164-v1": {
+    "src": "/media/stories/b2/reading-b2-164-v1-d624ae85d725-7a8e9d46-qwen-dialogue-opus16-7e3055f0a68d.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-164-v1-d624ae85d725-7a8e9d46-qwen-dialogue-opus16-7a9f3cbbcba6.json",
+    "textHash": "d624ae85d725b0610c65ff652d0cbe5fdb4804b8a2a6e89de9dbd4c70adeae45",
+    "wordCount": 925,
+    "duration": 350.86
+  },
+  "reading-b2-165-v1": {
+    "src": "/media/stories/b2/reading-b2-165-v1-b93bcb6767b4-ff1188f8-qwen-dialogue-opus16-dbf7624892d0.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-165-v1-b93bcb6767b4-ff1188f8-qwen-dialogue-opus16-77ba7dad5a0c.json",
+    "textHash": "b93bcb6767b44bd7c62f4dfb32590103be2edcb60c16b8e15c0083246ffe4637",
+    "wordCount": 935,
+    "duration": 368.24
+  },
+  "reading-b2-166-v1": {
+    "src": "/media/stories/b2/reading-b2-166-v1-edfdb276e995-de391146-qwen-dialogue-opus16-0a0e967e137a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-166-v1-edfdb276e995-de391146-qwen-dialogue-opus16-9cf857b59069.json",
+    "textHash": "edfdb276e995af71991553f76731333d6325a4c17a425957f83875fa034970e2",
+    "wordCount": 918,
+    "duration": 376.76008
+  },
+  "reading-b2-167-v1": {
+    "src": "/media/stories/b2/reading-b2-167-v1-afaaa2fcf381-16059a7c-qwen-dialogue-opus16-63297d3c5d23.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-167-v1-afaaa2fcf381-16059a7c-qwen-dialogue-opus16-7084205046b0.json",
+    "textHash": "afaaa2fcf381f4708af8ee16e83052fd77f88809b1e4b94c02c35c930b50dd61",
+    "wordCount": 917,
+    "duration": 382.38
+  },
+  "reading-b2-168-v1": {
+    "src": "/media/stories/b2/reading-b2-168-v1-fac29a249c38-7133b0ce-qwen-dialogue-opus16-8c112b3542a7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-168-v1-fac29a249c38-7133b0ce-qwen-dialogue-opus16-de5e19b53c70.json",
+    "textHash": "fac29a249c385b43c6a5ba2106321281927f0caec440378616ba07e8033e5d11",
+    "wordCount": 904,
+    "duration": 351.50004
+  },
+  "reading-b2-169-v1": {
+    "src": "/media/stories/b2/reading-b2-169-v1-dfe15c41d993-84c03f44-qwen-dialogue-opus16-d172e8ee76c4.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-169-v1-dfe15c41d993-84c03f44-qwen-dialogue-opus16-7e228cb621ad.json",
+    "textHash": "dfe15c41d993ded8c555d9b43afe41d895948cc0dc43fc8229745934d9283549",
+    "wordCount": 941,
+    "duration": 376.7
+  },
+  "reading-b2-170-v1": {
+    "src": "/media/stories/b2/reading-b2-170-v1-4205e5c8e4be-b917c049-qwen-dialogue-opus16-611c7b13dcd7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-170-v1-4205e5c8e4be-b917c049-qwen-dialogue-opus16-0a6f0b47e4d7.json",
+    "textHash": "4205e5c8e4bea9be1a33f21914e7495f7325ad6212a06c13d47c766202242161",
+    "wordCount": 902,
+    "duration": 376.88008
+  },
+  "reading-b2-171-v1": {
+    "src": "/media/stories/b2/reading-b2-171-v1-f4559a850ccb-aa11092e-qwen-dialogue-opus16-2fb70deb8989.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-171-v1-f4559a850ccb-aa11092e-qwen-dialogue-opus16-c5e0ec734981.json",
+    "textHash": "f4559a850ccb45390718ed5cc90e9c559a0ec77ed21e45b4cd7fd6cf49b7fa94",
+    "wordCount": 937,
+    "duration": 352.92
+  },
+  "reading-b2-172-v1": {
+    "src": "/media/stories/b2/reading-b2-172-v1-c2b8d809782c-aa053682-qwen-dialogue-opus16-3480ef620277.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-172-v1-c2b8d809782c-aa053682-qwen-dialogue-opus16-6a25ed026239.json",
+    "textHash": "c2b8d809782c74b703e1f43ac3265d15a608566aae8f7c1251552df687b130bc",
+    "wordCount": 905,
+    "duration": 378.02004
+  },
+  "reading-b2-173-v1": {
+    "src": "/media/stories/b2/reading-b2-173-v1-1fd71e49f458-0685398a-qwen-dialogue-opus16-f5e6f8b1f396.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-173-v1-1fd71e49f458-0685398a-qwen-dialogue-opus16-4dd9fa2e0d27.json",
+    "textHash": "1fd71e49f4581c002129cc3a97c595a1eb08ebb84cbcf68e0ffadf89e7a26026",
+    "wordCount": 929,
+    "duration": 380.46017
+  },
+  "reading-b2-174-v1": {
+    "src": "/media/stories/b2/reading-b2-174-v1-624b5efdd5d1-051d46aa-qwen-dialogue-opus16-e9ef280c1e0e.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-174-v1-624b5efdd5d1-051d46aa-qwen-dialogue-opus16-6254d1e186a7.json",
+    "textHash": "624b5efdd5d1e6a8411237c1926d0c28cf2196a348e5a12cf79f08dddf4b2aeb",
+    "wordCount": 936,
+    "duration": 384.48004
+  },
+  "reading-b2-175-v1": {
+    "src": "/media/stories/b2/reading-b2-175-v1-4d92a0719574-06d65baf-qwen-dialogue-opus16-0b0c2a25bb39.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-175-v1-4d92a0719574-06d65baf-qwen-dialogue-opus16-ebb1102693cf.json",
+    "textHash": "4d92a0719574c2261360d54d05389975c850c455549b7e5be6adb033103b74e2",
+    "wordCount": 938,
+    "duration": 365.20004
+  },
+  "reading-b2-176-v1": {
+    "src": "/media/stories/b2/reading-b2-176-v1-c1e83e3961f4-09edcbf3-qwen-dialogue-opus16-115f355b1902.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-176-v1-c1e83e3961f4-09edcbf3-qwen-dialogue-opus16-a73d337a3365.json",
+    "textHash": "c1e83e3961f4c4ddc5b10caf556b2f2eab9b5e44b353470ac6f54c5d80d07ec5",
+    "wordCount": 920,
+    "duration": 376.80008
+  },
+  "reading-b2-177-v1": {
+    "src": "/media/stories/b2/reading-b2-177-v1-7bd86805d361-4e50c89b-qwen-dialogue-opus16-64cdf44a0a91.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-177-v1-7bd86805d361-4e50c89b-qwen-dialogue-opus16-b9d076507fcd.json",
+    "textHash": "7bd86805d361f29603f90a0cd0307f306026c4d5e06d64d838548bf1aa6a4e4e",
+    "wordCount": 928,
+    "duration": 381.38004
+  },
+  "reading-b2-178-v1": {
+    "src": "/media/stories/b2/reading-b2-178-v1-a5de6641ead5-4036946c-qwen-dialogue-opus16-30cfac3c770a.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-178-v1-a5de6641ead5-4036946c-qwen-dialogue-opus16-bf03e829460f.json",
+    "textHash": "a5de6641ead554d3f52b7d1989ebfee6e81deaefdca4879d3257a72b343cd060",
+    "wordCount": 935,
+    "duration": 387.52
+  },
+  "reading-b2-179-v1": {
+    "src": "/media/stories/b2/reading-b2-179-v1-236f78e58753-6a4703ae-qwen-dialogue-opus16-006e437820af.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-179-v1-236f78e58753-6a4703ae-qwen-dialogue-opus16-dcad223268c9.json",
+    "textHash": "236f78e587532223da227fa9885893fc46abf8e9fefce8da9955922767c7e539",
+    "wordCount": 920,
+    "duration": 349.5
+  },
+  "reading-b2-180-v1": {
+    "src": "/media/stories/b2/reading-b2-180-v1-93b1c58e5898-15a7f729-qwen-dialogue-opus16-9b6366ad8c8f.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-180-v1-93b1c58e5898-15a7f729-qwen-dialogue-opus16-e1f4d859b977.json",
+    "textHash": "93b1c58e5898668776df50c72696ce858aefc687e71ecc2c966bb17894ab28b9",
+    "wordCount": 927,
+    "duration": 370.76
+  },
+  "reading-b2-181-v1": {
+    "src": "/media/stories/b2/reading-b2-181-v1-c4c50bb11bc9-5864ef91-qwen-dialogue-opus16-3c317b7447d9.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-181-v1-c4c50bb11bc9-5864ef91-qwen-dialogue-opus16-a4acb760483c.json",
+    "textHash": "c4c50bb11bc91f47af2d7e28e2679327ccf3c6bf55efd6cdd696f770654bf06b",
+    "wordCount": 936,
+    "duration": 375.58004
+  },
+  "reading-b2-182-v1": {
+    "src": "/media/stories/b2/reading-b2-182-v1-527efb0a6be7-a075fb3a-qwen-dialogue-opus16-b60252362da3.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-182-v1-527efb0a6be7-a075fb3a-qwen-dialogue-opus16-e74e6e39168b.json",
+    "textHash": "527efb0a6be78ad74c55fb5a916b0ff17e9524937b39c4191e4c7b81605471ae",
+    "wordCount": 922,
+    "duration": 368.28008
+  },
+  "reading-b2-183-v1": {
+    "src": "/media/stories/b2/reading-b2-183-v1-9e5d652f7b3e-0df2bcee-qwen-dialogue-opus16-62f0e17b5cd2.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-183-v1-9e5d652f7b3e-0df2bcee-qwen-dialogue-opus16-d9d7646953cc.json",
+    "textHash": "9e5d652f7b3ef9e2be033f7a8b3c1eb5558655df65e56709609a4a3427405299",
+    "wordCount": 920,
+    "duration": 369.52004
+  },
+  "reading-b2-184-v1": {
+    "src": "/media/stories/b2/reading-b2-184-v1-e58ca87a8083-3a60f829-qwen-dialogue-opus16-4a56315b9176.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-184-v1-e58ca87a8083-3a60f829-qwen-dialogue-opus16-e6bc3494cfe0.json",
+    "textHash": "e58ca87a808342d71989073f56600643cec9dd9dd49c789f7acad35d26cffe47",
+    "wordCount": 939,
+    "duration": 385.32004
+  },
+  "reading-b2-185-v1": {
+    "src": "/media/stories/b2/reading-b2-185-v1-62c6a5ca59fe-6c1e1752-qwen-dialogue-opus16-d66d29755583.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-185-v1-62c6a5ca59fe-6c1e1752-qwen-dialogue-opus16-931bf41cfc67.json",
+    "textHash": "62c6a5ca59fe3af2f8308a92e886b5cff300472ecfbd1dec4966359e49bdadc2",
+    "wordCount": 954,
+    "duration": 379.44
+  },
+  "reading-b2-186-v1": {
+    "src": "/media/stories/b2/reading-b2-186-v1-8273989a63ea-932d1e91-qwen-dialogue-opus16-3b6cde32a492.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-186-v1-8273989a63ea-932d1e91-qwen-dialogue-opus16-dfcd38e6c2c7.json",
+    "textHash": "8273989a63eae2a334be8d0eed28c7b8543de3d6cc94edc6960890b7b61c78b9",
+    "wordCount": 922,
+    "duration": 390.56
+  },
+  "reading-b2-187-v1": {
+    "src": "/media/stories/b2/reading-b2-187-v1-c89bdcce83ad-5973ee02-qwen-dialogue-opus16-5198f1e252f7.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-187-v1-c89bdcce83ad-5973ee02-qwen-dialogue-opus16-2b7291da1fed.json",
+    "textHash": "c89bdcce83ad4e01929295ea45af863c434ac06b710637062c5cd0727eaecee9",
+    "wordCount": 939,
+    "duration": 382.18
+  },
+  "reading-b2-188-v1": {
+    "src": "/media/stories/b2/reading-b2-188-v1-e0d6593ec939-69d2ed23-qwen-dialogue-opus16-ae5d855e8f25.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-188-v1-e0d6593ec939-69d2ed23-qwen-dialogue-opus16-bbf42205f3be.json",
+    "textHash": "e0d6593ec9394d7fdde77581b59488bb9d343bcf9cdcc2e755c8358baff2c2de",
+    "wordCount": 963,
+    "duration": 389.88
+  },
+  "reading-b2-189-v1": {
+    "src": "/media/stories/b2/reading-b2-189-v1-ff5cca9a9bb3-c8a5f9a9-qwen-dialogue-opus16-80376be23d47.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-189-v1-ff5cca9a9bb3-c8a5f9a9-qwen-dialogue-opus16-a241586b2211.json",
+    "textHash": "ff5cca9a9bb3ad1b4762060adcb57bc730e059be86449b668a3fcefc6c25114a",
+    "wordCount": 918,
+    "duration": 361.96008
+  },
+  "reading-b2-190-v1": {
+    "src": "/media/stories/b2/reading-b2-190-v1-569bc6b9cf13-3fa7fd3c-qwen-dialogue-opus16-fd4bac674203.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-190-v1-569bc6b9cf13-3fa7fd3c-qwen-dialogue-opus16-179697f6e1e4.json",
+    "textHash": "569bc6b9cf13f472317df605445f27460a22962f3dd7dfe41b4afd354b2b9f51",
+    "wordCount": 950,
+    "duration": 376.96008
+  },
+  "reading-b2-191-v1": {
+    "src": "/media/stories/b2/reading-b2-191-v1-a2384abeea0c-5d0f3853-qwen-dialogue-opus16-dd3b7a4a11ab.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-191-v1-a2384abeea0c-5d0f3853-qwen-dialogue-opus16-cdef9cc5caee.json",
+    "textHash": "a2384abeea0c32cfbb646019c520b9f92ce5d4082f22dedb1e3f2d8b46a1f3fd",
+    "wordCount": 965,
+    "duration": 367.28
+  },
+  "reading-b2-192-v1": {
+    "src": "/media/stories/b2/reading-b2-192-v1-702b450f6f2d-c4cdd4eb-qwen-dialogue-opus16-910ee6f9ea53.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-192-v1-702b450f6f2d-c4cdd4eb-qwen-dialogue-opus16-c7cf9bd9cc8b.json",
+    "textHash": "702b450f6f2d40cd01d30b13c93ad3c579df8c7c1fb649963f8693313d117875",
+    "wordCount": 937,
+    "duration": 350.8
+  },
+  "reading-b2-193-v1": {
+    "src": "/media/stories/b2/reading-b2-193-v1-254406f522a7-3b8d0df1-qwen-dialogue-opus16-1aebc5bc23b8.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-193-v1-254406f522a7-3b8d0df1-qwen-dialogue-opus16-6e215c648a4a.json",
+    "textHash": "254406f522a72b1e797aace495989d28722ad0725ceda3640601d51156d8b328",
+    "wordCount": 963,
+    "duration": 383.28
+  },
+  "reading-b2-194-v1": {
+    "src": "/media/stories/b2/reading-b2-194-v1-5e5315c7acee-e8c415e8-qwen-dialogue-opus16-61b253d2b4e8.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-194-v1-5e5315c7acee-e8c415e8-qwen-dialogue-opus16-82ada5dba561.json",
+    "textHash": "5e5315c7acee683205996e2fe87f44d598c840c83c0c8e127d178174b978881a",
+    "wordCount": 930,
+    "duration": 373
+  },
+  "reading-b2-195-v1": {
+    "src": "/media/stories/b2/reading-b2-195-v1-ffda5b3908e3-489ad429-qwen-dialogue-opus16-109387e749aa.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-195-v1-ffda5b3908e3-489ad429-qwen-dialogue-opus16-715cd5cf28d3.json",
+    "textHash": "ffda5b3908e3a7bbe672ba386c3fb2ce18d1b4895b0e6ea0297c722b65e6ddc7",
+    "wordCount": 931,
+    "duration": 334.16004
+  },
+  "reading-b2-196-v1": {
+    "src": "/media/stories/b2/reading-b2-196-v1-f7992e01e9a5-f3c18a87-qwen-dialogue-opus16-b3361c5c1b83.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-196-v1-f7992e01e9a5-f3c18a87-qwen-dialogue-opus16-b33054f1b8ed.json",
+    "textHash": "f7992e01e9a5db06eb07ae2661b881a91a85c6bc379efd65162d1faa98b11050",
+    "wordCount": 958,
+    "duration": 359.18
+  },
+  "reading-b2-197-v1": {
+    "src": "/media/stories/b2/reading-b2-197-v1-b1bf734da485-7170ddc6-qwen-dialogue-opus16-15f6ed2a4b78.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-197-v1-b1bf734da485-7170ddc6-qwen-dialogue-opus16-c8baf7524e55.json",
+    "textHash": "b1bf734da48582d6fca7068a0e921277ab4c1f4abe89665df15423609a98a878",
+    "wordCount": 942,
+    "duration": 356.86012
+  },
+  "reading-b2-198-v1": {
+    "src": "/media/stories/b2/reading-b2-198-v1-3f1665bd6dce-1c8d464c-qwen-dialogue-opus16-92e1c063003e.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-198-v1-3f1665bd6dce-1c8d464c-qwen-dialogue-opus16-55fa1738c829.json",
+    "textHash": "3f1665bd6dce596c0d548b2571a38bd107e85accd9dfcef84decefd5fbfd45fa",
+    "wordCount": 909,
+    "duration": 350.04004
+  },
+  "reading-b2-199-v1": {
+    "src": "/media/stories/b2/reading-b2-199-v1-805d716be706-d9e37dbe-qwen-dialogue-opus16-277b149bc186.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-199-v1-805d716be706-d9e37dbe-qwen-dialogue-opus16-26b8449b50f4.json",
+    "textHash": "805d716be706f6a9d452602758b7d396ccd8b674ff90692a66fe667d1e1f6e30",
+    "wordCount": 915,
+    "duration": 334.02
+  },
+  "reading-b2-200-v1": {
+    "src": "/media/stories/b2/reading-b2-200-v1-ff3151b43b59-77d1752c-qwen-dialogue-opus16-4485daa5eba8.webm",
+    "timingSrc": "/media/stories/b2/reading-b2-200-v1-ff3151b43b59-77d1752c-qwen-dialogue-opus16-3bd9a965a464.json",
+    "textHash": "ff3151b43b59966161257722ab58938f1420bea4ffafd75142b12b0ee5fb271a",
+    "wordCount": 912,
+    "duration": 329.74004
+  }
+}

@@ -1,0 +1,2002 @@
+{
+  "reading-b2-01-v1": {
+    "textHash": "f9c30c65b95ef9571671eaeb46be300d4bc662015b89726acd5f0178682ce253",
+    "planHash": "d2c8c08828eefeb62c19e6bb49525580cb6d52fa3faf8180ea46cb5ffeb16ee7",
+    "coverage": 0.9777306468716861,
+    "excess": 0.026511134676564158,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-02-v1": {
+    "textHash": "62957e320a1127e38663c1aad32c38c1293ee4d8bf2d7e145233266686e62c39",
+    "planHash": "fb093e4c2d540ed68504b55d3bf8c8001de7fc08c9c6db2f25632a640931a436",
+    "coverage": 0.9709989258861439,
+    "excess": 0.0322234156820623,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-03-v1": {
+    "textHash": "0f9ae786248815667e563fbc25d91aac8281445bfb82d231ad54e35eff21cc4d",
+    "planHash": "e94656c5da0121fa9e0e81c283df23cdb7d4fe367a2acf52277a45f1d5c18c49",
+    "coverage": 0.9642082429501084,
+    "excess": 0.039045553145336226,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-04-v1": {
+    "textHash": "e78030f9fa6e2a7d4cc0c6e73a6b24aa173b8f3afc910d22bab616444413f245",
+    "planHash": "a3db84063dd01101eef6b217cfe7116d2e81dfc341e1c75191f3ced93cfb0d54",
+    "coverage": 0.9774436090225563,
+    "excess": 0.023630504833512353,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-05-v1": {
+    "textHash": "26c3b5a63eb25869418b224d4729cc0cd0cf719a09c9df7863a6b1f6c5ff6d30",
+    "planHash": "edb200ff165b54674283d26adf3c84813a11254bb4d5cfb961c068ce659d9f27",
+    "coverage": 0.9762419006479481,
+    "excess": 0.02591792656587473,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-06-v1": {
+    "textHash": "7dabc381ea3f4d6761adb037b2db62d1892011d99bc250836a195f109b88459d",
+    "planHash": "7e3f3bd27ea39a0b850f3d147f14d2ded20ad5e1d5da53c9c8ca7bc0a149dc73",
+    "coverage": 0.9657754010695188,
+    "excess": 0.038502673796791446,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-07-v1": {
+    "textHash": "17cfee13a7c91ff3ad906f7bdd20457315548e850daed75510bdaad5025b1614",
+    "planHash": "4dad4e3b0f4389da40f95e1a8ba3d245ab4772be1e4d37feb46e8aa3d8b32e8e",
+    "coverage": 0.9721627408993576,
+    "excess": 0.027837259100642397,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-08-v1": {
+    "textHash": "dcca89b256fa8cb92b94204e8f79930d768d07d0ec7f5c343de4e0a8852cf438",
+    "planHash": "5d641ce27fbb53f63813df227405bae46d47c226a4a9ae0e51a4090e44a718c2",
+    "coverage": 0.9820485744456178,
+    "excess": 0.01795142555438226,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-09-v1": {
+    "textHash": "0d6febed8af1f1c756529b0e473637a37280d20a73eaf03ca53a16438825ca18",
+    "planHash": "f8b14274e2441d8b3ee1fabb0a5fafc9e6dc1c08ea5e00f3dc4c5fc8845189b4",
+    "coverage": 0.9844617092119867,
+    "excess": 0.014428412874583796,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-10-v1": {
+    "textHash": "af010496aca52c165fe79b228689223c65308499efb3f03cbee08edcaae6ebbc",
+    "planHash": "08ac218bb7d63d0c856f8eae55cc87b4af7d5976ab6f723cce3ab8f92d29ef63",
+    "coverage": 0.9694736842105263,
+    "excess": 0.03368421052631579,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-11-v1": {
+    "textHash": "cbb363bfbf2004bfdfd8156d01de9317c603aa80154277610873571808ae7a34",
+    "planHash": "f5816bdb89d9385cd6632af20a14d3a2a4c5db1ed83f10c414d8cf9aa724307c",
+    "coverage": 0.9885057471264368,
+    "excess": 0.013584117032392894,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-12-v1": {
+    "textHash": "fbce47a5e9d0f89930eabcd1b675a1d62d35be3121d3bdfba887aea4c960a743",
+    "planHash": "c067ad5b339986f1a942bb8fac5bef9802bd385ee592126674b24a95d621ae22",
+    "coverage": 0.9855875831485588,
+    "excess": 0.012195121951219513,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-13-v1": {
+    "textHash": "887996584c24710d0f88957d443fed185d2f533b5c45660ddef8550761f35f7a",
+    "planHash": "02ee3e004554ebbcd3cd990f156752488a79d6e76aab78e5a715e9a646a57ce9",
+    "coverage": 0.9658848614072495,
+    "excess": 0.035181236673773986,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-14-v1": {
+    "textHash": "ab958b2f5d86f3cbb9fdeda1a72e0e150741ef615f83955566f1613422194973",
+    "planHash": "91f4cd71a84c7671fd2d2f736f297f2f4d572e27495c88a13b7c6be7b9f48f37",
+    "coverage": 0.9797441364605544,
+    "excess": 0.022388059701492536,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-15-v1": {
+    "textHash": "7aca0b739d0a416f3e87cb1a87c680cd5918f30add760335e421b034d844718e",
+    "planHash": "1ade5ca1104966a94b4574f73ad56e9a6d57de96cd16acb80638b58e28c3c0a4",
+    "coverage": 0.9787007454739084,
+    "excess": 0.022364217252396165,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-16-v1": {
+    "textHash": "a027c1bb25623435b958df99d56a3fd1e36309524c04b08aff542c135d24db90",
+    "planHash": "b959ae5514f0995015b23b776a1c471f3e5edeb50523be2b65171fbf96da6fc4",
+    "coverage": 0.983370288248337,
+    "excess": 0.015521064301552107,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-17-v1": {
+    "textHash": "16795406973d14ef9d6dc3a26f850e4167e43c2c3a6867ef64bce2c2b20ff5d9",
+    "planHash": "0a1690a95c168da715febfa9fc270e89f5a26eece7e9a095c2ab99ba6d254a14",
+    "coverage": 0.9766949152542372,
+    "excess": 0.026483050847457626,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-18-v1": {
+    "textHash": "f2fa0b7bd3eb7c46c4283035745a323440c0ebc310a2173224ec10e7e19c1b2e",
+    "planHash": "9807c8a09c242e4a728f86e6d2cd9c58c239e2e7640ce9e5c0f1915ae75097f5",
+    "coverage": 0.9742489270386266,
+    "excess": 0.028969957081545063,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-19-v1": {
+    "textHash": "99f05e16b39bfa774debef187316c5c8ba8a92c9ee28d0723362a955e28fee13",
+    "planHash": "2a06563daa6a90a1cddb1cee2b2e14c022b8026e7c61cd25f064c7f6ae787ed4",
+    "coverage": 0.964562569213732,
+    "excess": 0.03211517165005537,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-20-v1": {
+    "textHash": "73f34163c05b1727e6b3f8d0ddba9ce9b2b361622247283737e89f1bd1bb698c",
+    "planHash": "5abb6965bc448146ab93b39f56888c91e8eb9c9500efa386ceb7229b8162f932",
+    "coverage": 0.9827213822894169,
+    "excess": 0.02267818574514039,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-21-v1": {
+    "textHash": "85e929f26c19ecdcac332a79d41828bfd925ef7f61ff8701519ec2f09c96fbb5",
+    "planHash": "421c32705bf5afeecdd64ff006642b9a70059d791b1946ff60988713cbe2eb6e",
+    "coverage": 0.9870689655172413,
+    "excess": 0.010775862068965518,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-22-v1": {
+    "textHash": "2a68ac46b3270cf2c50dbbdf9c66c9505440154b1592e9f2ffc22b3a0c9d2d9a",
+    "planHash": "2997e4943f4c5239b2d4ac88e0eadf0d82c83f26cf966792f1ecf1cb9c98ba97",
+    "coverage": 0.9742765273311897,
+    "excess": 0.027867095391211148,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-23-v1": {
+    "textHash": "eba0abc99068bf5085846df7d4fc6f626217b65dcc472b4516176cab822dc10f",
+    "planHash": "d784cf4ce8a03f81704c0cd7efd8aecbb3290bee4ff1a8496c9cc31327781e6d",
+    "coverage": 0.9816612729234089,
+    "excess": 0.02481121898597627,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-24-v1": {
+    "textHash": "9848fa5e6d1d06efbd3a224336d040bce58f8ae4602cc327e08245fd488b5e12",
+    "planHash": "03a654f7bfdbf5f132fc0448952f25b11a316cdeeff13411a46c8200e53b9d40",
+    "coverage": 0.9694656488549618,
+    "excess": 0.029443838604143947,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-25-v1": {
+    "textHash": "ceec54a45a67dfe2635efc96c6ee50cbaf29ed52f6606acd6e8f63760c1a0d34",
+    "planHash": "47d0a5066fb43b06412d240c1d1c2c027d61465af37c4f23ba56644409bbcf01",
+    "coverage": 0.9760087241003271,
+    "excess": 0.025081788440567066,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-26-v1": {
+    "textHash": "72d10ee5e27efb3d48de0b73e48dfef939e0046f393d91e67df2fe0cae14288a",
+    "planHash": "b191d7a4628ce347dc33ddda079bfdc572555ba79427ccd68a1b40050c2887f7",
+    "coverage": 0.971677559912854,
+    "excess": 0.03159041394335512,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-27-v1": {
+    "textHash": "25892ba3abbd417c1cc0c9813f9047fc8c983def8b20ee113ab4648fb27a94fe",
+    "planHash": "e7f7499d2d2451b9fccb4afe7a0f41361f805a8fa51e625d377ff7ce6053a4fe",
+    "coverage": 0.991313789359392,
+    "excess": 0.011943539630836048,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-28-v1": {
+    "textHash": "da7a4a4d83fa553d4edf8bae5247f9d54a1456f42fbb227776ac71b7b3869e58",
+    "planHash": "391615372a297181b98faa74981ee2d31820dd7b4550c97093a5285fe80d24da",
+    "coverage": 0.9779735682819384,
+    "excess": 0.023127753303964757,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-29-v1": {
+    "textHash": "a86c2b9ed3b317e81f1132c0b1cbcc36c778ba01d5e79ebb5323d6a007918cbd",
+    "planHash": "71fa558e00e57c8ffe272d13d607bd4c7fe3028e185db493b69c539c3772c571",
+    "coverage": 0.9816810344827587,
+    "excess": 0.01939655172413793,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-30-v1": {
+    "textHash": "8f96323fc1169e6953441665343a391235883f88f9e7dbc90534aaf31ad3c1cc",
+    "planHash": "0202fb08ff0a37b8f3f1e065ffd19cbb4dc0a8f1e5d488297ddb7cf4cae4c33c",
+    "coverage": 0.9596069868995634,
+    "excess": 0.05131004366812227,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-31-v1": {
+    "textHash": "3d6f57be74c46ce148a802da154b57b0966eebe664f25a136c9d5edfa2c7c21f",
+    "planHash": "a9326b2f241eee81c6bf5baf538e87d3a7031d4645b4c754f95ce7fd198f0cc1",
+    "coverage": 0.978494623655914,
+    "excess": 0.024731182795698924,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-32-v1": {
+    "textHash": "28c3a95bd6774fa064e8271060a29190dc07f41361f400e0e0aa882ddd10f925",
+    "planHash": "02d44f2087bf0000ef40e00ab9e5ae36d2a4e53ebaa5bad16c4bbc8dd929d2a0",
+    "coverage": 0.9795479009687836,
+    "excess": 0.02691065662002153,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-33-v1": {
+    "textHash": "f0ce189d6d6c96ccc1c1b87772119c11870f3d6335c055a646eae0040276fd02",
+    "planHash": "7ded62d0942c6a48f147f1cf5790b60ff7315022003934b9869cbc226e36901c",
+    "coverage": 0.9640914036996736,
+    "excess": 0.035908596300326445,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-34-v1": {
+    "textHash": "748589d7e9546e36ef8980ba8fa30993d5dee441d3cde417901bbf1290bc529e",
+    "planHash": "9b919c2de9156e10aa43999172d1c4f2b34e2b7b9c1c632e895b05da4384def4",
+    "coverage": 0.9752953813104189,
+    "excess": 0.02577873254564984,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-35-v1": {
+    "textHash": "afc68abfb0b72d98b8e9ee8119013c3604c799e6e77653630dea1b2d5f6d91d4",
+    "planHash": "a1b29ee0cfee1a012d87fca5a0cc4eb229d7f15d3babc150812cda04e5e62ad6",
+    "coverage": 0.9834801762114538,
+    "excess": 0.01762114537444934,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-36-v1": {
+    "textHash": "788aee4d52515721d039f75b5778837c3fc8073dce9b75b4c1d98a5296c57a84",
+    "planHash": "129e39c40dab1e29b3701af926764fa7b2ca75bc737815faa6d144a3382b54b4",
+    "coverage": 0.9858849077090119,
+    "excess": 0.014115092290988056,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-37-v1": {
+    "textHash": "dccf5c05df3f084097953fd7df23793fd786fb53c46f3cc137416465880ef3f4",
+    "planHash": "1022385214cbd67589a96755e8d02adf041d6ba7faa29f14a3279860b047d5f2",
+    "coverage": 0.9791894852135816,
+    "excess": 0.017524644030668127,
+    "voices": [
+      "male",
+      "female"
+    ]
+  },
+  "reading-b2-38-v1": {
+    "textHash": "a79c08a8c359b3a1e5bb8929b476af9036ab865c5aef21b30ecb0f07fddb955a",
+    "planHash": "556891d653b30f47deccaa3d7c0dd16af4dbf9ce3f5ba57701a28f2cc60fb199",
+    "coverage": 0.9760348583877996,
+    "excess": 0.02832244008714597,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-39-v1": {
+    "textHash": "1e61ec7c6ef8ff5ed525c1186762712ea7b08414cf4479948d3a6db3696590cb",
+    "planHash": "876692e8928a8861ab44b2d33f3dc4d92b3710f97db175f557acf3f4eca6ad4a",
+    "coverage": 0.9833518312985572,
+    "excess": 0.01997780244173141,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-40-v1": {
+    "textHash": "3737974798bc92845e1df581b67650bfd62eb8d94f1464d401bceac88b8fde47",
+    "planHash": "44a4dfa135b23ca7bc5117fe15b3c2c35eaa8e8942fd2c44d88577cecf0ff725",
+    "coverage": 0.9727668845315904,
+    "excess": 0.029411764705882353,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-41-v1": {
+    "textHash": "e5465815bf1e6f3ec8d20d840f5bcd1a181bd8effb0ac953690d14a72a7319d8",
+    "planHash": "9414e86cf54f7e79383b2793a8b1594fc4168b18818166c1ab6da588f4663541",
+    "coverage": 0.9804560260586319,
+    "excess": 0.02062975027144408,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-42-v1": {
+    "textHash": "871bfa946b47929d045bab3298a0428ceb1db09397a74f7d65f9f1d36a0d0b70",
+    "planHash": "f2e0a9c32f2c7b16903fa41833024e6d16b5e1e44fac1dd09b59742368211cea",
+    "coverage": 0.987012987012987,
+    "excess": 0.015151515151515152,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-43-v1": {
+    "textHash": "597ac3ca7b7cfd677d59eea623d621aef7d45c71f9fe2fb9efff810ccb0ab6ed",
+    "planHash": "995a5ab90f2a83884bc3f24c60ebc4f1fbbd2b53b65ea87eb64c3f7409d70a7d",
+    "coverage": 0.9752953813104189,
+    "excess": 0.024704618689581095,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-44-v1": {
+    "textHash": "517f48e5d0e99f9b8d4b00d56bd4bfada4ae9d3055d892515ed85deb178c3089",
+    "planHash": "4a8d81f15207168a5c7f40ed5c06afd1f2e213b74aa7358e96633f6a791a8798",
+    "coverage": 0.9793702497285559,
+    "excess": 0.02062975027144408,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-45-v1": {
+    "textHash": "ae1afc41726dc234af6282eff00bd5a51c7887916f3003f8c45206e180288bb6",
+    "planHash": "be020069d603f27906810c614b60493dc712b7c656d60e72bb3610a1ee8cad17",
+    "coverage": 0.9822222222222222,
+    "excess": 0.016666666666666666,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-46-v1": {
+    "textHash": "62f3edd4a48bdefb3845688588cccde358cf5ec43818429f7f5a7a8999b64ea2",
+    "planHash": "c2965740e9019976d809822ef9a10d26c51a74feeecfc3ef25f6e6435182dc6c",
+    "coverage": 0.9790748898678414,
+    "excess": 0.02092511013215859,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-47-v1": {
+    "textHash": "f6d168f4b9942ac211a8bbf29da529d288472cd4c6f9892e50ae99097ffd143a",
+    "planHash": "4c426d9191da8cdbb4e509dd20ccadee56a3b297157c2934a278dda79fd69912",
+    "coverage": 0.974669603524229,
+    "excess": 0.03303964757709251,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-48-v1": {
+    "textHash": "1da6cfc21b5fb0d174fd26e4e7fcd2e01ea6001cd39c734e10c9aa2df23516d1",
+    "planHash": "570c2ec7096258a865620ecaa317faeb7e1a3fdb8db464c1c4c2436105312240",
+    "coverage": 0.955386289445049,
+    "excess": 0.051142546245919476,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-49-v1": {
+    "textHash": "46b072898f1815844f4eb310136dae9b85742668ce64c12b6f618a54d385a3bf",
+    "planHash": "5467c15be5f092f77b5dd913922d622f0e6b1d447e317a546b32e315aefe01e3",
+    "coverage": 0.9740540540540541,
+    "excess": 0.023783783783783784,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-50-v1": {
+    "textHash": "379af65b0ea8bc5e8cb00787473b8b3f5e93d32aa5ed2571767589f46510077e",
+    "planHash": "ff083696d70a39e2e69341cdde4a0619b008f7d0d7f5ede3fcb5ce4aa3ed7a31",
+    "coverage": 0.9850905218317358,
+    "excess": 0.01597444089456869,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-51-v1": {
+    "textHash": "25daa752ecfc13dd5762f7534d0cc0ecdcb38f47ed4c958259b715988d9ee514",
+    "planHash": "ca09a1278ea44e451d1eeed68e24bb4698ff5f156c83c6b2b9a966ddefa934d4",
+    "coverage": 0.983957219251337,
+    "excess": 0.01818181818181818,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-52-v1": {
+    "textHash": "4cba9d932b28660f75401857534bce69cb87ab23971769773278116add1f4897",
+    "planHash": "2a843af5e3e76225cccb7d237ac749a0e2137547f6c22a0efd981d59bfdb4b44",
+    "coverage": 0.9815217391304348,
+    "excess": 0.015217391304347827,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-53-v1": {
+    "textHash": "de3dca7949666d3b4051e9ee08f3a5c401fd04910e997c1d80437fefe888188a",
+    "planHash": "ae8331f4fe788327bf9bcc8dc84ab81139dab2712e1dc40eb763711327afb6f7",
+    "coverage": 0.9824368825466521,
+    "excess": 0.019758507135016465,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-54-v1": {
+    "textHash": "38de873004ebe0da89e333a8a204ff43fff0f4985004f5f201778b9b364eefd0",
+    "planHash": "cca456d04603590874fe9e43eac8926b6aec3e41752377d94411ec1e6a5a3c99",
+    "coverage": 0.9803707742639041,
+    "excess": 0.018538713195201745,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-55-v1": {
+    "textHash": "a639d6b14dba38f695eff3a8ef457accd92b6bf4b2a58e9805cea6c8c7b1aac1",
+    "planHash": "e42033a46c6871850fd1943c7441b7719a9e8a44e560da6cd8fc447217cbf472",
+    "coverage": 0.9768211920529801,
+    "excess": 0.02869757174392936,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-56-v1": {
+    "textHash": "9e1ba2f4f257d47207b93015bdedf07c4cbaf485de7240bf0c35d92d44db6bb9",
+    "planHash": "21c021116d10a4a51e5cfa6c4285bf67a962c016278cef2ee4356a7023eef26e",
+    "coverage": 0.9674972914409534,
+    "excess": 0.0390032502708559,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-57-v1": {
+    "textHash": "e1bc59ac6dd4eb09853e2562fa2cdf4e235718c3309b408b2a89c38ab59b0712",
+    "planHash": "d5f208ca54bf3b44ed42e6d0317e281703ee91a30e0f79e4dde680e400e1f235",
+    "coverage": 0.9836779107725789,
+    "excess": 0.015233949945593036,
+    "voices": [
+      "male",
+      "female"
+    ]
+  },
+  "reading-b2-58-v1": {
+    "textHash": "24199d1c29c3f9fef94e7aa604291d3f0039de19c32716aea12c96f2164b4096",
+    "planHash": "f89465add09b03568c4078d33d304b5e1f0390e3a0b6b5893a09a181738eb94d",
+    "coverage": 0.9802631578947368,
+    "excess": 0.023026315789473683,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-59-v1": {
+    "textHash": "bcac4d3b52d036ca9ca44921ee0f187e02d62fa48f64284e7f7e7dfbecbabc42",
+    "planHash": "782ef0874fed012a813f5285b4f1c1a1deb557041db7d1a90dce338d47434669",
+    "coverage": 0.980498374864572,
+    "excess": 0.021668472372697724,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-60-v1": {
+    "textHash": "21eaa7877d93d33ce9fa6aa134c85f1bcf64ff29195918b60584e07231549dc1",
+    "planHash": "e42706a9fdbaec2e4f5bbcb72aaa808617f943173be89ef17c5c5ceabc8795a4",
+    "coverage": 0.9785177228786252,
+    "excess": 0.01933404940923738,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-61-v1": {
+    "textHash": "6998114aa56f789663db2d3e2b9b0f0d7c771ac52c2ecb419cf8fcdb43b077f7",
+    "planHash": "dd22aacf21c73e7e67637934b4c7926b91a7e7239e071ebb3a442d28a4b60438",
+    "coverage": 0.9733629300776915,
+    "excess": 0.03218645948945616,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-62-v1": {
+    "textHash": "2fe593fc829da798e4e3dd97e59d5382232f69d5b361a52775bbb6d7d44dbb5b",
+    "planHash": "7797bc99101dd8fb815e77640fea6f06929fb7dab4fe178e1a5252c48e918ab6",
+    "coverage": 0.9758507135016465,
+    "excess": 0.029637760702524697,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-63-v1": {
+    "textHash": "97cd1ef6baef1950bf9dc7c3ace0d125e4e2b22c11b10489cfc6fa0ccc2a063c",
+    "planHash": "11ad8dc50e6995e36fee863d6ac8141459c38520f7fa24ab3d9b1f51a619d722",
+    "coverage": 0.9858078602620087,
+    "excess": 0.016375545851528384,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-64-v1": {
+    "textHash": "46cadc8a87b616a161af6b883f73de08f64571ab4e5c37be71f335242f5029b5",
+    "planHash": "c719b96f93576996f93de97e17ba0ce64b60a15dcd227768e10ece936cea844d",
+    "coverage": 0.9780941949616648,
+    "excess": 0.02628696604600219,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-65-v1": {
+    "textHash": "3a6a02b312cbbee860d7af35920d8d2e6e3e892b9e362564aa397becc83c5388",
+    "planHash": "f38efba7c00ae8cc3d6c3878a3403388e6fb8f83d78f10edce1fa3a523f75b0b",
+    "coverage": 0.982646420824295,
+    "excess": 0.01735357917570499,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-66-v1": {
+    "textHash": "dcd8914a6a6f4e9fbb9c36c3311e945bc50779578648f58fd1a36a7d256dabf1",
+    "planHash": "56f360c0a79d546769b28136767a32d6e08f8ad41049ef898576de1570d14cdc",
+    "coverage": 0.975,
+    "excess": 0.020652173913043477,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-67-v1": {
+    "textHash": "5e62386e2e74a6ba3cb31409e23b7b18c3ffd3d5cbd03026cf03370a6166ff8b",
+    "planHash": "34412a58d1a130fd2aa5eba7ec4cb0177ea0c15c817e73e785624d7e7b9ad533",
+    "coverage": 0.9688888888888889,
+    "excess": 0.03222222222222222,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-68-v1": {
+    "textHash": "de806040c4ba13ea35b74b111f294e369ed5da7bc50e6193b3a6f75367942a80",
+    "planHash": "cb89efd8bd4011c5bd2cb3d6929cfb0ae7219ce9bb7523102939a38c0da50951",
+    "coverage": 0.973404255319149,
+    "excess": 0.031914893617021274,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-69-v1": {
+    "textHash": "0a3d71241eb1de3f1c9ea6a5e9dea76fd81f6ce69004e5e1f3bdee96cfd65bae",
+    "planHash": "74c32cc4f5cd51007aa094aba3c21de98520711324d8ecddca46cab4c7915e72",
+    "coverage": 0.9848812095032398,
+    "excess": 0.014038876889848811,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-70-v1": {
+    "textHash": "d760fed1644b18c75fd9c10b1f50f048ab7a8b19fae6e0da57a158e1ba90bda8",
+    "planHash": "17f52cb72352c4cb065d2a558dc7bf29eab9190188fa5539efa025f1981f4271",
+    "coverage": 0.9825708061002179,
+    "excess": 0.0196078431372549,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-71-v1": {
+    "textHash": "5b8bb6ff852a96f5f90efdc590a192087967f74a2a89c0afa132b755520eb8dc",
+    "planHash": "88a83c4fbb259aef0c3a1328f997a0b75b7c7743a03ee9a1053f426bd1236b84",
+    "coverage": 0.9718918918918918,
+    "excess": 0.02702702702702703,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-72-v1": {
+    "textHash": "005d47531a71196b73f0b036bbb47b8218fc263f79a3d94c1cea3bbea3b3d04b",
+    "planHash": "985a9497a123207a0088b313b1f968964f94c8dec331f5ac468bf4208880e911",
+    "coverage": 0.9812981298129813,
+    "excess": 0.0187018701870187,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-73-v1": {
+    "textHash": "4272785beeccf61fd01ae05d03d71738845073bba2dd86845652a59cd271adc7",
+    "planHash": "d864eceaeeb1e3bc2e3d8565b04f0bb296945f75971b626740071a3da3920226",
+    "coverage": 0.9746416758544653,
+    "excess": 0.030871003307607496,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-74-v1": {
+    "textHash": "143fa43402759619e8b01145e04e74d74658194b9525b3020859d74fa180910b",
+    "planHash": "55eb0fb42aa599add13a5a0b4afd003c8c71c29b35ad09e48fb40fb05511ab42",
+    "coverage": 0.9778024417314095,
+    "excess": 0.02885682574916759,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-75-v1": {
+    "textHash": "615018d0a5e420d602c5211e1e53f04f0e6c34f042c8e73ddb7bb5c8b18efb50",
+    "planHash": "9c217bd6107cfa1529eeaacd380f39e31e9c22be2c3b2d2dc27fcb96cfe5e155",
+    "coverage": 0.9879518072289156,
+    "excess": 0.014238773274917854,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-76-v1": {
+    "textHash": "2a4250a32e7aadcf91e951f4058cf2b10ac6a5f17813eb321ee243bcd6a0fee7",
+    "planHash": "a9fb036002f5a89b7340b868aab241eed273e43a8187e697be632883e5d5b60f",
+    "coverage": 0.9804772234273319,
+    "excess": 0.01735357917570499,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-77-v1": {
+    "textHash": "101dcf366cbe6b5a1642be16eff47f34e01ac0047cd93aca8ed068cff80e953e",
+    "planHash": "9e41ece396397e9dc05d9d896e668836ae06bf7a8c6b5662660b12e319c36c5a",
+    "coverage": 0.977997799779978,
+    "excess": 0.026402640264026403,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-78-v1": {
+    "textHash": "bdae3e1e61a419ee31c33800040673bb16dd1973f9e748970183420a1dd216d4",
+    "planHash": "c304c647ec0e260d3d02bc8bb603d7213ca6eac91ce7735788244db7fb1b18a6",
+    "coverage": 0.978912319644839,
+    "excess": 0.0244173140954495,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-79-v1": {
+    "textHash": "3dd725a77a9549dc5436ac9627589a5785ccc6d2844f4279e018934348813d67",
+    "planHash": "78c83b973a004e2fb323c4f68e96d906297fa1bf3ec093beeffad82ebed46e35",
+    "coverage": 0.9769150052465897,
+    "excess": 0.026232948583420776,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-80-v1": {
+    "textHash": "3035ba0974d8007f25045dbfad559798150353bfab3980286ddab2779e2e6ae2",
+    "planHash": "fb598e1d7f17ff1ff0f6c91698ed6b6792c114a3ce9ed1116f7351368ca19552",
+    "coverage": 0.9790748898678414,
+    "excess": 0.024229074889867842,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-81-v1": {
+    "textHash": "c4d87d4b0471c9e579454f324cdc4c8bb9f0d61f2d95fc756f8b77afead15ff5",
+    "planHash": "e40b25bcb640615f54eade9c76897e75096d747a4f3002d6fe70d99bb7672397",
+    "coverage": 0.9814004376367614,
+    "excess": 0.024070021881838075,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-82-v1": {
+    "textHash": "ea7bec18db0fcad25e4c7beaafed333f8dc53f2d74d47430104db33aec814241",
+    "planHash": "c845590f7dcdbbfb272b07a1b2c294650c2fdd1ccc0ef446b699bf75bf63e7ff",
+    "coverage": 0.9797225186766275,
+    "excess": 0.021344717182497332,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-83-v1": {
+    "textHash": "8c241ddeb8894870f7fe400146ee3f853d69d70715f8967debcb1e7545bbf68d",
+    "planHash": "e6cae4d1c2ceb5606929ca6a122c5dd42436576bcb4fa61d2bf55afb14448e86",
+    "coverage": 0.98659793814433,
+    "excess": 0.013402061855670102,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-84-v1": {
+    "textHash": "b4827a1f5b3a6d4ae9399f1001f385e41024a8ab4e9c893422cc72630dec665a",
+    "planHash": "85f874a2226d3ac232573627b7696780776ff92f7a7fd8818b6ef71106b25dc2",
+    "coverage": 0.9881593110871906,
+    "excess": 0.00968783638320775,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-85-v1": {
+    "textHash": "47c4f284c3f5cd962def44fb696eda16e74c338778c45bce9edeee5dad63880e",
+    "planHash": "41f3e83e87cb53057b950b43134ff9e0a69fc1425326730349eba8d3733d81de",
+    "coverage": 0.9893617021276596,
+    "excess": 0.011702127659574468,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-86-v1": {
+    "textHash": "63577e6c9c27725a977dc9bd57a30a7da4f31bb942eafe17806a8ae22937751d",
+    "planHash": "adbee0d3ca7a279c03f2f26e31c32d4655849c275de61726638782bec96ddb8c",
+    "coverage": 0.9742212674543501,
+    "excess": 0.02900107411385607,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-87-v1": {
+    "textHash": "89babf43ddb8cf1b9a66725b0e4fa35abf27f99263a1005029f7c05ff9d6e968",
+    "planHash": "9720089d7e87cdbfe20bace248f478c77de8c799e129cabbfae573a389596e0f",
+    "coverage": 0.969264544456641,
+    "excess": 0.03402854006586169,
+    "voices": [
+      "male",
+      "female"
+    ]
+  },
+  "reading-b2-88-v1": {
+    "textHash": "c47ca22b0ea8f272007849fc3ec3daf05279f3be16633a8b17d58d89751e4935",
+    "planHash": "98deaf4ec13a570a80fa32543cdaca8d39540cc7abb0f756913cee3e8a6ee2ef",
+    "coverage": 0.9676724137931034,
+    "excess": 0.036637931034482756,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-89-v1": {
+    "textHash": "775b3468714aff6e17243fc4e82372eb8d7f5250a5a394a82404d4fb3d1f7082",
+    "planHash": "1337d5ec5a64eb32e4d7d9440884faf3714bea466ed36f02ecf21d43f394cb59",
+    "coverage": 0.9838709677419355,
+    "excess": 0.016129032258064516,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-90-v1": {
+    "textHash": "9bce9508a5eef03ed97c65833d41c0ba1097907b11338212f021c872faaa975d",
+    "planHash": "4f0b4f4c8aa5e41a32a26fdf9a7d3554f57e7f63431eb8b731ff4d05077685a8",
+    "coverage": 0.9805725971370143,
+    "excess": 0.02044989775051125,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-91-v1": {
+    "textHash": "65b9d75b4c81b7e036c14d5e0893ceaec263dae1319fb636388df1cd710867cd",
+    "planHash": "edd11aa5417101dc54a96058a0d43dad98dc9ac13f65ccc844acf9329c3c7d0a",
+    "coverage": 0.9712707182320443,
+    "excess": 0.030939226519337018,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-92-v1": {
+    "textHash": "92fc5a1b488523e0ed3901c06dc3ee115b4e39099d144f31dab4abd57d1d69e4",
+    "planHash": "526a4266fe3d9aad90b887a3a562fd7a0a9b13ffbb221c0638d44b57f20c3109",
+    "coverage": 0.9826652221018418,
+    "excess": 0.01950162513542795,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-93-v1": {
+    "textHash": "8a2568e7546b321aaadb585f250d116843c6259d9f643d8525a6246b27567b54",
+    "planHash": "420b4c2416b4e0ac25ac6a483498c0869e67256b1040ed71edeb835e3e9a0c8e",
+    "coverage": 0.9763617677286742,
+    "excess": 0.02672147995889003,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-94-v1": {
+    "textHash": "d5cf10162a9ed53767b826b6ffdb37bf4acfc301d2afcb758d104dce9f517335",
+    "planHash": "804a98f57ca11808747c6ddb4648197371e29ac31dae44b3e2fc7d733485b112",
+    "coverage": 0.9835221421215242,
+    "excess": 0.017507723995880537,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-95-v1": {
+    "textHash": "e7f44db64131b05d775c95228c72260b2383e55231249d0da98442f051bf598a",
+    "planHash": "a1efa01f81b3d27635c41655584335cd0f5ecc91c7dbc24be4908bbcf3fec74c",
+    "coverage": 0.9916405433646813,
+    "excess": 0.008359456635318705,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-96-v1": {
+    "textHash": "2a1287b4329f436e7b74a04f871824ace549ae72bcc31f09aa15d9b95efbb87b",
+    "planHash": "9a505fb6918c09f5c2cb9e3a8eb386dedda2c43994cd99f8e4482e2bdc4e7f1f",
+    "coverage": 0.9779874213836478,
+    "excess": 0.02410901467505241,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-97-v1": {
+    "textHash": "3b0587f5d9886b0ce51166568a5d99c277960bc6ab2456300022e71c79521bd9",
+    "planHash": "7bcc247589edd208acff209a715e477f5d5346b9cdd11d417f05df1019b36692",
+    "coverage": 0.9615384615384616,
+    "excess": 0.04365904365904366,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-98-v1": {
+    "textHash": "19df3632b06acc45d01de3ebadee9c4cca82074952537c37873b15befa7e3f53",
+    "planHash": "e8d3bcc7abcd2a1677ffb822c419fda0074c4e9a7ac71c8074ba0ab6f0dc389a",
+    "coverage": 0.974869109947644,
+    "excess": 0.02617801047120419,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-99-v1": {
+    "textHash": "c5c6fd04b4a9a85aa9217febbfd6a627fb03a57ef5598cc418fc8d013e30c8a8",
+    "planHash": "96b4ab890e75604bd39af91e9402317c685e39090ded2833b49d610e9ae0f312",
+    "coverage": 0.9772234273318872,
+    "excess": 0.021691973969631236,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-100-v1": {
+    "textHash": "2b60b09221a0ae5258963ad4c820ca3e927eef27eb754cef2dec186bbab13ff5",
+    "planHash": "1228eea5702cc92e66e13817562a17453aa942bafbb9a5fc1db2aeb9b92df626",
+    "coverage": 0.9823834196891191,
+    "excess": 0.019689119170984457,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-101-v1": {
+    "textHash": "e1c9d7eac70b88daf25cfda330318ae1080422f2a34e79b4cd1fa9608e9a43df",
+    "planHash": "c67d53f46a68a3bcab5729af95869c925b26131651d0b56e0dfc4a81e59657a3",
+    "coverage": 0.9645232815964523,
+    "excess": 0.037694013303769404,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-102-v1": {
+    "textHash": "d2575634d25bd599f359f116b8fadd0a23a619c6e542a2f1a0cd31782287d014",
+    "planHash": "c455d1ba01d5d079a981b5c92d577a0ea66564782e7974e5451e0b3b7157aa2e",
+    "coverage": 0.9778270509977827,
+    "excess": 0.031042128603104215,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-103-v1": {
+    "textHash": "e50be1122324348267324e9e90d99c9310c67e7630f7ca5693c2a3d51504d023",
+    "planHash": "bb36dcc39af52d575fd2b3a6f70c9ec87615b90104d865a883d413f790e71a8d",
+    "coverage": 0.9800884955752213,
+    "excess": 0.024336283185840708,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-104-v1": {
+    "textHash": "60dbd1fac34e144119101e0b5579a8354856d9d26eadceda4c2781a1748c13bd",
+    "planHash": "c14c918a2a8016bf7827b48a7b3b512d835f2a783f07ac15a27fc5fdfa51f27a",
+    "coverage": 0.981359649122807,
+    "excess": 0.019736842105263157,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-105-v1": {
+    "textHash": "6f7d9fec4904fb457d03f9846750dce74569e2a5ed6d53ac8b1e435764621a12",
+    "planHash": "0320891db6836a6bc524ce01332414c0d28558ce642121137af60207f6f5a28d",
+    "coverage": 0.9745575221238938,
+    "excess": 0.035398230088495575,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-106-v1": {
+    "textHash": "85a4983b6dfb151c27429a1cba34e25257401541530071d5d2bce7eeb20d8919",
+    "planHash": "3e77cfa348a1725c79d6fbf105dccece05ea823f3f5e1fa3e6870085d9c2a2cc",
+    "coverage": 0.9856035437430787,
+    "excess": 0.014396456256921373,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-107-v1": {
+    "textHash": "725cf12214a327f5d308b0eaf2ae2d249341711f3e3b689743c7bbab9a3e1c5c",
+    "planHash": "7400e8c0307a3b359bc5bb70e240fc7e4dc1174a4c67fc9282c00945a8b30e8f",
+    "coverage": 0.9715846994535519,
+    "excess": 0.03169398907103825,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-108-v1": {
+    "textHash": "8b92ad7fb3249d07fd590d2213987b8b5d3dc5d6e96f0d69329e6f636ce00ad6",
+    "planHash": "5ec8ad939b3a304b4069a0bdd616ff2276f7f3e7cfdd91a614b436998b00eaf5",
+    "coverage": 0.9619565217391305,
+    "excess": 0.0391304347826087,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-109-v1": {
+    "textHash": "21f8779e63477fde3a1bc595702134e9d7755fddc28e6d087144467767fc1de9",
+    "planHash": "66777760e20009ed9bc2a102bc1174dd77e478db1894db052fe8aaa5808e2dc4",
+    "coverage": 0.9745293466223699,
+    "excess": 0.026578073089700997,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-110-v1": {
+    "textHash": "7ca30eb9d02c20febb032aac9b7165faa0df68980538ae89bc43e11321b59212",
+    "planHash": "098ceebab4cda099a59e29d1d5f4763372f5d18683df468f34e713b65a7421b3",
+    "coverage": 0.9735391400220507,
+    "excess": 0.030871003307607496,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-111-v1": {
+    "textHash": "b823f46a012ede5fd6c7c0dd9e4fdd7fffa14dcfdb669dce8a52b2e15026334d",
+    "planHash": "895568f5acb24426c40c0bf76e017f692e7e25f940ff36a2474614017482bcfc",
+    "coverage": 0.976998904709748,
+    "excess": 0.025191675794085433,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-112-v1": {
+    "textHash": "50f46c2b787d52d7fe03a49ea91d4247313f4c6312896fccae4f732288b022b3",
+    "planHash": "9c679f1d825caf38bb49f1c0fc5585236ac148b8d29efdde72104acb7d1ebaa6",
+    "coverage": 0.9833333333333333,
+    "excess": 0.017777777777777778,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-113-v1": {
+    "textHash": "74b507a0cc17f79f10f74ecea8a2037064ac7105b8a9f55cab597427855e04e3",
+    "planHash": "bbd4e159102417c36f40b29a55018747a895b0370af396eaf41408119f6774bc",
+    "coverage": 0.9769633507853404,
+    "excess": 0.025130890052356022,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-114-v1": {
+    "textHash": "0a322c08936e456848ef4f52b8b44ed60b784d962eafcdf19b5ed633b3366896",
+    "planHash": "c4cbf4b6ed5d4479a785eb723a34a60d41e2f86407fea33c901b6b84c405a668",
+    "coverage": 0.9782372143634385,
+    "excess": 0.02176278563656148,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-115-v1": {
+    "textHash": "86ce0e43b8c7aebcc18475aae2f3ab255bd1a5837754d5f357becd812bfdb0f8",
+    "planHash": "71879294427036195143da78bd16d51f4ba3950ba6441de456ea3e3d25307500",
+    "coverage": 0.9890230515916575,
+    "excess": 0.014270032930845226,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-116-v1": {
+    "textHash": "9a295e595f4edb62f4e97ef992ea56e71a678ccfe4c4d2a0a91ed783ff252fd9",
+    "planHash": "2f6cb565f62e31affb8a3b68bd46de90ac0543400067513f8e5d41f6a7904e41",
+    "coverage": 0.9825517993456925,
+    "excess": 0.023991275899672846,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-117-v1": {
+    "textHash": "d636365ddc58501977455c4de6bc65737ccd941781a69793018cf8b936bc7ea1",
+    "planHash": "7c820e4a5f08969ad67008f2b0988438e2f534250ac0ba679d7c1175c6fe394f",
+    "coverage": 0.9713340683572216,
+    "excess": 0.027563395810363836,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-118-v1": {
+    "textHash": "a04bf1fa9689b783040dbd5021c48fadd29433b096789a768dbc91eab0beb94a",
+    "planHash": "3dbd5ecadd0e3e8882deca7a5987d35e48843d43fd1e8b496a5026f75e77db51",
+    "coverage": 0.9801762114537445,
+    "excess": 0.019823788546255508,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-119-v1": {
+    "textHash": "5cdb61d89146275fab793f3d6c657d93de04ecfba2e9edb80f6857a18161a29d",
+    "planHash": "4e7560ce694c5ffec9557028507025b818ce946b8554749f2a8a2f57da130c67",
+    "coverage": 0.9867695700110254,
+    "excess": 0.015435501653803748,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-120-v1": {
+    "textHash": "dd7fab60c5f5fca50c64b6c2bd62eb264bdc254311d84fa36d97582334324699",
+    "planHash": "a6ec8bd68e27d861e1196f46973b77650dc78a5a50807323608f529c84ebb262",
+    "coverage": 0.9749455337690632,
+    "excess": 0.02505446623093682,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-121-v1": {
+    "textHash": "b537d118045b19ff2369f59ba5ea6918624fc770771493dd4d0a845c599d04ee",
+    "planHash": "aacc9bd1b646ce5be8d6d27b61875a844f828ae9045bf6f176339d749d0b6160",
+    "coverage": 0.9801980198019802,
+    "excess": 0.022002200220022004,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-122-v1": {
+    "textHash": "1ef0472228a93a1f92d5d0bfd4b216ea07d0e0250c084515852685e3764b7296",
+    "planHash": "1fbf9975c2028b679c8d016f69ed78facd03d4f14b2ac7a5ef0dcf27efe57dbc",
+    "coverage": 0.977319587628866,
+    "excess": 0.02577319587628866,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-123-v1": {
+    "textHash": "e3d28500b835b0386c31b3dde06f5151747df037652c1c31c85709323f6996c6",
+    "planHash": "19357f398f4edec3cc614aca2c1153ea0b470ef398e0e8e16bc709090735515d",
+    "coverage": 0.9657754010695188,
+    "excess": 0.03529411764705882,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-124-v1": {
+    "textHash": "38d20e899a37fca1a290cc1ddd5a0f37c446317f4f17f2ee5d5d5bac74ffe47b",
+    "planHash": "726790ffa51d9e92cd2ac2ce84e98c439910382e56ddf2962bba952602678ad3",
+    "coverage": 0.9796137339055794,
+    "excess": 0.02145922746781116,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-125-v1": {
+    "textHash": "9d75d936a2e3ead4f6fa16177ed33c15a796f3d2a93425784af7eccef6e9e60a",
+    "planHash": "94cf6bb320b45885f8a7119aa708d7764d173025ae11a7a957d708001823928b",
+    "coverage": 0.9785056294779939,
+    "excess": 0.0255885363357216,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-126-v1": {
+    "textHash": "0b0b44d9c7386661b0449e7c7f9cf59137c46d458f3a03f31ff4ce960ebac3a1",
+    "planHash": "f1c7abb9ed9676eca1f3d7b2809b2d252e8b04ea6128c7689934559aada4c62c",
+    "coverage": 0.9774436090225563,
+    "excess": 0.02577873254564984,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-127-v1": {
+    "textHash": "cb78c82f60fe4639dda98c1c10a130a8b35f781faebfc963e2a7c2a5c57c3e2b",
+    "planHash": "b47a0a0d950ff0cb6125e429c53ee36eabe3eca99f65677a706f4a159f3a28bd",
+    "coverage": 0.9749478079331941,
+    "excess": 0.027139874739039668,
+    "voices": [
+      "male",
+      "female"
+    ]
+  },
+  "reading-b2-128-v1": {
+    "textHash": "8c568104e0400ce77745aa180c0ad4ab079d7eb7ad7fb54f567e271713026c42",
+    "planHash": "6f772fc05a26a50119c8282d796a2d95b7258f93bac2e9c5e50a32ced771a69d",
+    "coverage": 0.9804526748971193,
+    "excess": 0.0257201646090535,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-129-v1": {
+    "textHash": "172840889b49fdd95f584ba4d2b9321fdf87299fb230d90374ea5bc024271bfd",
+    "planHash": "80aa7b47d29321f0edebec25dc9deee904530f724395f4a9b033c82e70565150",
+    "coverage": 0.9742268041237113,
+    "excess": 0.0288659793814433,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-130-v1": {
+    "textHash": "7b8d058ad950d2e5f77cd4f2b29d4bab002423bcd7a27650c7e79d03ba5875e6",
+    "planHash": "241c34e4d072d9e0b38fae385e43eb10660d17b8c62d1f7c2f69524e1fd2c697",
+    "coverage": 0.9807302231237323,
+    "excess": 0.02129817444219067,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-131-v1": {
+    "textHash": "da90f76cd3669d95f1e266551ee2f7bfb27d4cb1a85f3c2ea6c9922aea0ceb2d",
+    "planHash": "44ef723eed6b32d69e595d0d9346373ea0dda620f2037c659c2bd32f773c3968",
+    "coverage": 0.97997997997998,
+    "excess": 0.025025025025025027,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-132-v1": {
+    "textHash": "4af76b62dd219c117c1e33ff826b2f1a1a93f6bd9b3dd3b202a7677482bf912a",
+    "planHash": "3e710751add50c30d8f33a9a465864c212c4ad2b8156d64ba77edf1fa1de8a35",
+    "coverage": 0.9824198552223371,
+    "excess": 0.01964839710444674,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-133-v1": {
+    "textHash": "f343c09b45b5062d4118d3f4dec34f4650033569aca0cd2b91bf44550c08e809",
+    "planHash": "967a4ada96fcf6025d57d9c779656e93f579081bf7ba147f5ce5dec7bbaf13a9",
+    "coverage": 0.975051975051975,
+    "excess": 0.02702702702702703,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-134-v1": {
+    "textHash": "60fc9511913fe322508bcbedec8ec5640cacba0f44f194f4b76bbf51e549f565",
+    "planHash": "68348138a0b360ad54bb42d074bba25313f1ec1ef92d2ecf281618a8b337faf5",
+    "coverage": 0.9697601668404588,
+    "excess": 0.03023983315954119,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-135-v1": {
+    "textHash": "5dd237586ad45d6d68e8d4e3e7a1d38ef59925aa225312ee8e967379cad45378",
+    "planHash": "eb4b22022cb76bc63cb83a4024a10523c4ad9727f5302f7c69d2029413dc42bf",
+    "coverage": 0.9699170124481328,
+    "excess": 0.028008298755186723,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-136-v1": {
+    "textHash": "b2c22c87e86fda5a316d54ebb35c1532706025c6a7d5d25707d9a305368c2866",
+    "planHash": "eca46a8005f85b2bb1576d1addac05e48c56b93b5ceb396379d839fa660c7f84",
+    "coverage": 0.9758308157099698,
+    "excess": 0.02416918429003021,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-137-v1": {
+    "textHash": "47b857d91d535bd8f210f85d8401c6cfb18fda6b1d5e7e17b8f101f145849e98",
+    "planHash": "53645a2907ca972c7c7befc6f160c42c48d46df24be240f1df4773b9f46c4117",
+    "coverage": 0.9662231320368475,
+    "excess": 0.032753326509723645,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-138-v1": {
+    "textHash": "abec0b7d5a728fafc0d67e52e4b25a232e5880d196466edbd0f347fbcc82e620",
+    "planHash": "96c8753fc7b24bf491a2a7edc3bba0a9fa341e5a2a6e38ab30e0daa621448f6c",
+    "coverage": 0.9714867617107943,
+    "excess": 0.031568228105906315,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-139-v1": {
+    "textHash": "1335d73e8bdf7e70409ab60f14f65706144a48317d92fa4e141af3933f295226",
+    "planHash": "e4937884124eb88ac7976244a9eb98815055d4529124f90e5338c755966d817d",
+    "coverage": 0.9869477911646586,
+    "excess": 0.013052208835341365,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-140-v1": {
+    "textHash": "dbd32406562dc8416fb594ffcb1931ceb68529ada64e827f1c65c77b125449a9",
+    "planHash": "65541bcfe195de68a9127f94713d3c2d1f0c1e485c79565fac82ffe06e26cf68",
+    "coverage": 0.9647177419354839,
+    "excess": 0.037298387096774195,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-141-v1": {
+    "textHash": "82826bf09f55d0636408e3c5c5374059133aa4726824c44940c5632097cb3689",
+    "planHash": "291cd2d3bf4ee2851994340a590141d42a12ad56574c2ae702f7df1b03a016b8",
+    "coverage": 0.9813857290589452,
+    "excess": 0.022750775594622543,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-142-v1": {
+    "textHash": "4c911d38614af9fd27a04290b0a7c7b41154e4411560062f6d03ee57188a21ba",
+    "planHash": "0c03eb98eaf4b0f9ae45d17c5efbb196700b2381577a72a31a61827b755963e6",
+    "coverage": 0.9777777777777777,
+    "excess": 0.022222222222222223,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-143-v1": {
+    "textHash": "cd12e19409bba4728e0c9036f669e770bdd73137b09fd27b50732410db829f63",
+    "planHash": "9e51e60615163067b4d65cd52003028bdbe13fc8f54ca3ffbe0c7484a36a06d6",
+    "coverage": 0.973816717019134,
+    "excess": 0.02920443101711984,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-144-v1": {
+    "textHash": "d4a6449ad71104605bab25882bf647253c5ec17f634bb2a78cd907ada37894e4",
+    "planHash": "6ae1ebb2e33ecf1287ad5942ca0965923b28349363d1b2d2c8ad8659ab63f9bc",
+    "coverage": 0.9667381974248928,
+    "excess": 0.03969957081545064,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-145-v1": {
+    "textHash": "a26f0888c752d8866b8fc7948a4a16282efd7fe115ce4110724864b0d83e7260",
+    "planHash": "f1547e0feafc4564c5b1f1eb438c62c9ffbd45e1408448e05e3c193d7308eccb",
+    "coverage": 0.9908536585365854,
+    "excess": 0.01524390243902439,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-146-v1": {
+    "textHash": "39966f0d6e80fdb8de6713a765694cab28a2aa59666add3371c1ef64a587f2a7",
+    "planHash": "65fb9375306352fa55d7f9cfc1c40097cac8e886d565156c093a63d94ec9774b",
+    "coverage": 0.9828973843058351,
+    "excess": 0.02012072434607646,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-147-v1": {
+    "textHash": "be80df0afa3325af3dcbccda8632fbeddd3300bec702e442b8bfa75238aa6463",
+    "planHash": "8d4cec3beae4b0c62cb48d1a220ef5563e6e4c8f683ca527f0263dc73cca70b7",
+    "coverage": 0.9824016563146998,
+    "excess": 0.017598343685300208,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-148-v1": {
+    "textHash": "2ec6ceaa14eb725a44849538c91855f100a3753cc276286de40aaedc59b4a3aa",
+    "planHash": "0f6c062bdbf98a7356ef99775a36583649f26e63dbc3a259862fc9be7d598c9c",
+    "coverage": 0.9640287769784173,
+    "excess": 0.03494347379239465,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-149-v1": {
+    "textHash": "2eae49a0fbba554d1dcd4bd854a59e97195af96dac6b3d8ae162092c12065f53",
+    "planHash": "f916183b290089f3c19a2586a2ad7a36853d27bb9abbf28ce22bb67ab094f113",
+    "coverage": 0.9819639278557114,
+    "excess": 0.018036072144288578,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-150-v1": {
+    "textHash": "1aa30d85905f5e5b3f89cfb0d9d47b8f14d2f055da0befa7b6df47884289e5cc",
+    "planHash": "637c6678a77170035446d2dfebd058d75290a661d6de18a428778a6e1d8dbfab",
+    "coverage": 0.9577613516367476,
+    "excess": 0.0454065469904963,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-151-v1": {
+    "textHash": "a2154843951c77adf72ee60bf341aa063bb32631e85a2fd31910fc0caea59279",
+    "planHash": "df44fd671680a8688bf860fb881720293ea309ff6a88c9441477dbd35a1bf9ae",
+    "coverage": 0.9866939611054247,
+    "excess": 0.014329580348004094,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-152-v1": {
+    "textHash": "163e7cbee296df0b2955799c6eb76ae69cc38715275f349980f051092e71d72b",
+    "planHash": "3c593c80b99d0a80b20b1dd538465d79a2593ab72c8c372c64148ebdc865cc56",
+    "coverage": 0.9758403361344538,
+    "excess": 0.026260504201680673,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-153-v1": {
+    "textHash": "7735b280973b3d247ec2045fb9f20a0b4b8a85dd892e61c35ba08b68e42707cd",
+    "planHash": "70d1b1e35d306323cd2f00c16f347f833feddb9722ea7068f5c2c65ddc7eddd3",
+    "coverage": 0.9719917012448133,
+    "excess": 0.03112033195020747,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-154-v1": {
+    "textHash": "d48de0b5cd430df54c325efe647319e9b2b8f35992256c98acaedf086675eead",
+    "planHash": "cc0a3dd6f3fd8dd3fa1f48b856507838de734d2ff1cca9a298c791658f1add69",
+    "coverage": 0.9813084112149533,
+    "excess": 0.021806853582554516,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-155-v1": {
+    "textHash": "fabc6605118181aff7182118261ce80575eec40ebf731c4f852e4ed13c09520f",
+    "planHash": "fb0fdbf4041e688297e5ffc13ded5e7a0b3431b22c971272fa8f951a60835fc2",
+    "coverage": 0.9779338014042126,
+    "excess": 0.024072216649949848,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-156-v1": {
+    "textHash": "5cbc8f1e192c22edc52bf2d819e40d8bc43a433b2f8b8e8c5ddc5bb9f2650e54",
+    "planHash": "f7c6c0f5df6e1a93a7f98e42ec1e7f17e70ad5aa7967390f9644e7fcdfa5091f",
+    "coverage": 0.9838709677419355,
+    "excess": 0.021169354838709676,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-157-v1": {
+    "textHash": "e7caeebadf98d33065158c74aa83adbb17b2647b32b164168a6c0b574ef77cad",
+    "planHash": "88b2261a595bafffb345f9cb8f55aff902ae8536a33787225c3e1b4e52076a38",
+    "coverage": 0.9776649746192894,
+    "excess": 0.030456852791878174,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-158-v1": {
+    "textHash": "ae28aa773206aa1eb2c4b6beb8f3b9bffecb8ca342d0ec95549f9e984b8195a6",
+    "planHash": "84271bab5c45c45cc6d480eb01d1d8bb461b1cc678be4a5385fb0dac95cd5343",
+    "coverage": 0.964984552008239,
+    "excess": 0.03810504634397528,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-159-v1": {
+    "textHash": "6cf4870c0cc4ef491ff49e2f9aaf9382e8ab9364417d4a95866605dd6911cc8b",
+    "planHash": "f8ce24f80ee2ab08be3edf1ccc0c83819087d5f144b7b44c776efd0a6ea82f2f",
+    "coverage": 0.9608433734939759,
+    "excess": 0.0391566265060241,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-160-v1": {
+    "textHash": "ad3c3760c3a80ac096e0aba096570dc26cfa3910f7d32872ea124c21f6857c14",
+    "planHash": "e155f5a47aeda5912e1ed7dad520e8ad509dd72c9907064ffa27235db1583fb0",
+    "coverage": 0.983739837398374,
+    "excess": 0.018292682926829267,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-161-v1": {
+    "textHash": "dfa73782fe59b090b2f5e7569bc11a0c77142a26071c968c595526d89517fc11",
+    "planHash": "5cb06b5d2f4f655f3defa17d393dfc046df8109283ca7eba778b351252305baf",
+    "coverage": 0.9734964322120285,
+    "excess": 0.03058103975535168,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-162-v1": {
+    "textHash": "51ae39630527e63187637946842e85553d907c596183d6fa18473360953e92ff",
+    "planHash": "785c36fe98d2ed6cd6ba3cf5e9259f73a055bc6effedf50d72d571596fb2ab1b",
+    "coverage": 0.9598698481561823,
+    "excess": 0.03796095444685466,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-163-v1": {
+    "textHash": "4a1f838dbd0a08df373596b8dc07c2286f5a1319b01772a297acd10866955934",
+    "planHash": "430406aefa93fcf1839c737f89e65a3ee971c7c6a3e4b0e61605d0d8f2d0b625",
+    "coverage": 0.9728555917480999,
+    "excess": 0.02714440825190011,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-164-v1": {
+    "textHash": "d624ae85d725b0610c65ff652d0cbe5fdb4804b8a2a6e89de9dbd4c70adeae45",
+    "planHash": "7a8e9d46401ef75b492418b5e7e550339196af12f91f9068f704adf190736319",
+    "coverage": 0.9740540540540541,
+    "excess": 0.023783783783783784,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-165-v1": {
+    "textHash": "b93bcb6767b44bd7c62f4dfb32590103be2edcb60c16b8e15c0083246ffe4637",
+    "planHash": "ff1188f860963d936cd3c38667ce6a5bae04ecb936c9990b36b2ae223d2002d5",
+    "coverage": 0.9700534759358289,
+    "excess": 0.026737967914438502,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-166-v1": {
+    "textHash": "edfdb276e995af71991553f76731333d6325a4c17a425957f83875fa034970e2",
+    "planHash": "de391146ba250ea60d8cfa06e0a757955db5804d3b4272b0f012e38500aa15cf",
+    "coverage": 0.9760348583877996,
+    "excess": 0.02287581699346405,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-167-v1": {
+    "textHash": "afaaa2fcf381f4708af8ee16e83052fd77f88809b1e4b94c02c35c930b50dd61",
+    "planHash": "16059a7c213b3d50d6528bab5a22fe7cacc0b07b542efbf4b2f37219336b08a6",
+    "coverage": 0.9814612868047983,
+    "excess": 0.021810250817884406,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-168-v1": {
+    "textHash": "fac29a249c385b43c6a5ba2106321281927f0caec440378616ba07e8033e5d11",
+    "planHash": "7133b0ce81ec3a25f7f005d1ceeb69187f10ed8236f2c6732abe483bc7263ae5",
+    "coverage": 0.9800884955752213,
+    "excess": 0.023230088495575223,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-169-v1": {
+    "textHash": "dfe15c41d993ded8c555d9b43afe41d895948cc0dc43fc8229745934d9283549",
+    "planHash": "84c03f446dbb0984730d567bbd6bfd20ec5897034c19d4c034417416eed1a58e",
+    "coverage": 0.9766206163655685,
+    "excess": 0.021253985122210415,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-170-v1": {
+    "textHash": "4205e5c8e4bea9be1a33f21914e7495f7325ad6212a06c13d47c766202242161",
+    "planHash": "b917c049612a46341563d4bc756e2ff69471528fc65d383dde561eacc9ed5d9b",
+    "coverage": 0.9767184035476718,
+    "excess": 0.02328159645232816,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-171-v1": {
+    "textHash": "f4559a850ccb45390718ed5cc90e9c559a0ec77ed21e45b4cd7fd6cf49b7fa94",
+    "planHash": "aa11092e8e994298dc3d0bb45583ddd94218fdf87ef8d25c7ae54e2b187e225b",
+    "coverage": 0.9775880469583778,
+    "excess": 0.023479188900747065,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-172-v1": {
+    "textHash": "c2b8d809782c74b703e1f43ac3265d15a608566aae8f7c1251552df687b130bc",
+    "planHash": "aa053682c9ab3e6246942eef846de21a1cf2e5d61a6bad12de8ecde022f8a745",
+    "coverage": 0.980110497237569,
+    "excess": 0.028729281767955802,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-173-v1": {
+    "textHash": "1fd71e49f4581c002129cc3a97c595a1eb08ebb84cbcf68e0ffadf89e7a26026",
+    "planHash": "0685398a1c6795dbd1748801ecd343041c88bd45f04cfaee44da673d7a051641",
+    "coverage": 0.9817007534983854,
+    "excess": 0.0193756727664155,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-174-v1": {
+    "textHash": "624b5efdd5d1e6a8411237c1926d0c28cf2196a348e5a12cf79f08dddf4b2aeb",
+    "planHash": "051d46aa998821b50af6109bec5684f696319f062de20112f8de9c389cf94a60",
+    "coverage": 0.9722518676627535,
+    "excess": 0.033084311632870865,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-175-v1": {
+    "textHash": "4d92a0719574c2261360d54d05389975c850c455549b7e5be6adb033103b74e2",
+    "planHash": "06d65baf05b237ec72375d3173c3e46bd7ef45ba734fc87c173a5d1b9848be16",
+    "coverage": 0.9712153518123667,
+    "excess": 0.03091684434968017,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-176-v1": {
+    "textHash": "c1e83e3961f4c4ddc5b10caf556b2f2eab9b5e44b353470ac6f54c5d80d07ec5",
+    "planHash": "09edcbf3e133279e1b2dc03d221a23183c11821994b944fef0354d801d5dec0d",
+    "coverage": 0.9793478260869565,
+    "excess": 0.021739130434782608,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-177-v1": {
+    "textHash": "7bd86805d361f29603f90a0cd0307f306026c4d5e06d64d838548bf1aa6a4e4e",
+    "planHash": "4e50c89b3646d7cfe9f77e5a5038566573c580eaf3502a691ae0de1daf18af4e",
+    "coverage": 0.9699248120300752,
+    "excess": 0.031149301825993556,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-178-v1": {
+    "textHash": "a5de6641ead554d3f52b7d1989ebfee6e81deaefdca4879d3257a72b343cd060",
+    "planHash": "4036946c8d4badbf042c67303bb469b7232694d468394b7af34fce03b11356f5",
+    "coverage": 0.9658484525080042,
+    "excess": 0.033084311632870865,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-179-v1": {
+    "textHash": "236f78e587532223da227fa9885893fc46abf8e9fefce8da9955922767c7e539",
+    "planHash": "6a4703aead80e4b3ca377f823995a3c3b6b955fe4311da857134e7e8cd63cf3a",
+    "coverage": 0.95,
+    "excess": 0.08260869565217391,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-180-v1": {
+    "textHash": "93b1c58e5898668776df50c72696ce858aefc687e71ecc2c966bb17894ab28b9",
+    "planHash": "15a7f729d298bbeb7fca5f9a3fe8c28fd6e7b307b3bffddabf82b373774bb01b",
+    "coverage": 0.9784250269687162,
+    "excess": 0.025889967637540454,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-181-v1": {
+    "textHash": "c4c50bb11bc91f47af2d7e28e2679327ccf3c6bf55efd6cdd696f770654bf06b",
+    "planHash": "5864ef9183a4aaf20a1f7481e2b770181901115b04b271197c2a8fde7a1c4573",
+    "coverage": 0.9775641025641025,
+    "excess": 0.019230769230769232,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-182-v1": {
+    "textHash": "527efb0a6be78ad74c55fb5a916b0ff17e9524937b39c4191e4c7b81605471ae",
+    "planHash": "a075fb3a9b0920e41d29ee4214b00c7b9fc7e946c5cc9edde48e1d51f53672cc",
+    "coverage": 0.9859002169197397,
+    "excess": 0.015184381778741865,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-183-v1": {
+    "textHash": "9e5d652f7b3ef9e2be033f7a8b3c1eb5558655df65e56709609a4a3427405299",
+    "planHash": "0df2bceeaeff8e0fe4f5a0fa380de9e9bfe0adc47d080f28e9ec04d02a1552a5",
+    "coverage": 0.975,
+    "excess": 0.02826086956521739,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-184-v1": {
+    "textHash": "e58ca87a808342d71989073f56600643cec9dd9dd49c789f7acad35d26cffe47",
+    "planHash": "3a60f829cf6561336bd541edc7990243868c896fb5ddbd142b0768a38e8c98cf",
+    "coverage": 0.979765708200213,
+    "excess": 0.022364217252396165,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-185-v1": {
+    "textHash": "62c6a5ca59fe3af2f8308a92e886b5cff300472ecfbd1dec4966359e49bdadc2",
+    "planHash": "6c1e17525348d40fe7112f0b8fb4e4dbe8e9c57606d4927cccc5a0f60c4cc4ed",
+    "coverage": 0.9842767295597484,
+    "excess": 0.015723270440251572,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-186-v1": {
+    "textHash": "8273989a63eae2a334be8d0eed28c7b8543de3d6cc94edc6960890b7b61c78b9",
+    "planHash": "932d1e912574fa758e126933e7e112f52c2d5c5eb9196359d97faf3cb7f81c57",
+    "coverage": 0.9707158351409978,
+    "excess": 0.033622559652928416,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-187-v1": {
+    "textHash": "c89bdcce83ad4e01929295ea45af863c434ac06b710637062c5cd0727eaecee9",
+    "planHash": "5973ee0252d322cf76dc5e146186bfc95bd8369457d404e1941c25ead72d418c",
+    "coverage": 0.9680511182108626,
+    "excess": 0.0308839190628328,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-188-v1": {
+    "textHash": "e0d6593ec9394d7fdde77581b59488bb9d343bcf9cdcc2e755c8358baff2c2de",
+    "planHash": "69d2ed23fe82b176150d282e25b6bf186fcbb9c85564550bd00f144dadec1981",
+    "coverage": 0.9657320872274143,
+    "excess": 0.036344755970924195,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-189-v1": {
+    "textHash": "ff5cca9a9bb3ad1b4762060adcb57bc730e059be86449b668a3fcefc6c25114a",
+    "planHash": "c8a5f9a93d8fe874cde89f6ca0fec838fd9cf42b69784fdc020da335227516f4",
+    "coverage": 0.9847494553376906,
+    "excess": 0.013071895424836602,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-190-v1": {
+    "textHash": "569bc6b9cf13f472317df605445f27460a22962f3dd7dfe41b4afd354b2b9f51",
+    "planHash": "3fa7fd3c8c41ea0e6509cb36eacc6e938f6088ff545fdfdb697bffb896299e5b",
+    "coverage": 0.9768421052631578,
+    "excess": 0.024210526315789474,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-191-v1": {
+    "textHash": "a2384abeea0c32cfbb646019c520b9f92ce5d4082f22dedb1e3f2d8b46a1f3fd",
+    "planHash": "5d0f38532fe5df6083b15066d99bcc32034aa80bad7817d69cd157de4664e9da",
+    "coverage": 0.9772020725388602,
+    "excess": 0.021761658031088083,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-192-v1": {
+    "textHash": "702b450f6f2d40cd01d30b13c93ad3c579df8c7c1fb649963f8693313d117875",
+    "planHash": "c4cdd4ebf8d75d789ca868b120f2c19ed45edbf3f617eaedf41bc64615afc37c",
+    "coverage": 0.9754535752401281,
+    "excess": 0.0288153681963714,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-193-v1": {
+    "textHash": "254406f522a72b1e797aace495989d28722ad0725ceda3640601d51156d8b328",
+    "planHash": "3b8d0df1d7505e30f406dcbff34df0e652adc80810d3191b075d252b610ab29a",
+    "coverage": 0.9781931464174455,
+    "excess": 0.02699896157840083,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-194-v1": {
+    "textHash": "5e5315c7acee683205996e2fe87f44d598c840c83c0c8e127d178174b978881a",
+    "planHash": "e8c415e8733a5971e8459f4a8b37673168ed64c3010a8c844b5cf117b19e37f5",
+    "coverage": 0.9795698924731183,
+    "excess": 0.02258064516129032,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-195-v1": {
+    "textHash": "ffda5b3908e3a7bbe672ba386c3fb2ce18d1b4895b0e6ea0297c722b65e6ddc7",
+    "planHash": "489ad4291ce509df52ae2f41be2d70794399d936a5a4d94571a70b4e2591aa1e",
+    "coverage": 0.9817400644468314,
+    "excess": 0.023630504833512353,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-196-v1": {
+    "textHash": "f7992e01e9a5db06eb07ae2661b881a91a85c6bc379efd65162d1faa98b11050",
+    "planHash": "f3c18a875e787280c04e2ae6d427a3eb823154670770bd9fc6f6daa9a5550edd",
+    "coverage": 0.9780793319415448,
+    "excess": 0.022964509394572025,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-197-v1": {
+    "textHash": "b1bf734da48582d6fca7068a0e921277ab4c1f4abe89665df15423609a98a878",
+    "planHash": "7170ddc6b38d58db58ad84182de3cfa40b821651ce01012a5cd531a3054b7cb5",
+    "coverage": 0.9745222929936306,
+    "excess": 0.028662420382165606,
+    "voices": [
+      "male",
+      "female"
+    ]
+  },
+  "reading-b2-198-v1": {
+    "textHash": "3f1665bd6dce596c0d548b2571a38bd107e85accd9dfcef84decefd5fbfd45fa",
+    "planHash": "1c8d464c4b6792f39d2d0eacbbcb3c85cf3cb43ba87ca7c31b73786b50844a5c",
+    "coverage": 0.9845984598459846,
+    "excess": 0.0165016501650165,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-199-v1": {
+    "textHash": "805d716be706f6a9d452602758b7d396ccd8b674ff90692a66fe667d1e1f6e30",
+    "planHash": "d9e37dbe9c62cd04d696e028d410ed0534fcf3b13119766650cf0f98aa640575",
+    "coverage": 0.9825136612021858,
+    "excess": 0.019672131147540985,
+    "voices": [
+      "female",
+      "male"
+    ]
+  },
+  "reading-b2-200-v1": {
+    "textHash": "ff3151b43b59966161257722ab58938f1420bea4ffafd75142b12b0ee5fb271a",
+    "planHash": "77d1752cf5eda79d0c0aecd2b98fceb4aa5731d845c0f9a5edc4afbe3041f4c1",
+    "coverage": 0.9890350877192983,
+    "excess": 0.013157894736842105,
+    "voices": [
+      "female",
+      "male"
+    ]
+  }
+}

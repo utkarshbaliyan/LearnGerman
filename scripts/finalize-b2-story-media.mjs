@@ -4,7 +4,10 @@ import assert from 'node:assert/strict';
 import {storyDigest} from './lib/b2-story-quality.mjs';
 import {allowedStoryMedia} from '../app/lib/story-object-media.mjs';
 
-const read = path => JSON.parse(readFileSync(path, 'utf8'));
+const read = path => {
+  try { return JSON.parse(readFileSync(path, 'utf8')); }
+  catch (cause) { throw new Error(`Invalid or unreadable release JSON: ${path}`, {cause}); }
+};
 const stage = '.local-piper/b2-release';
 const stories = read(`${stage}/stories.json`), plans = read(`${stage}/plans.json`), audio = read(`${stage}/audio-manifest.json`);
 assert.equal(stories.length, 200);
