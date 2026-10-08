@@ -16,6 +16,10 @@ The text was written directly in Codex, without external text-generation APIs.
 The three gloss PSV files contain directly authored contextual meanings for
 forms absent from the existing reading dictionaries. They are scoped to B2
 stories and do not change course vocabulary or learner progress.
+Story-specific overrides in `contextual-glosses.json` correct meanings where
+the same written form can represent a different grammatical use in context.
+`shared-gloss-corrections.json` includes broader meanings for ambiguous forms
+found during B2 reader checks, without changing earlier levels' dictionaries.
 
 ## Prepare and narrate
 

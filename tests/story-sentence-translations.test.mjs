@@ -9,14 +9,16 @@ import { readingSentences } from '../app/lib/reading-sentence-segmentation.mjs';
 const load = async name => JSON.parse(await readFile(new URL(`../app/lib/${name}.json`, import.meta.url), 'utf8'));
 const spokenTokens = text => text.split(/\s+/).filter(part => /[A-Za-zÄÖÜäöüßÉé0-9]/.test(part));
 
-test('every A1, A2 and B1 story has complete sentence translations without changing narration word order', async () => {
+test('every A1, A2, B1 and B2 story has complete sentence translations without changing narration word order', async () => {
   const [core, expanded, a1, later] = await Promise.all([
     load('reading-path-data'), load('reading-expanded-data'),
     load('a1-sentence-translations'), load('a2-b1-sentence-translations'),
   ]);
-  const stories = [...core, ...expanded];
-  const translations = { ...a1, ...later };
-  assert.equal(stories.length, 454);
+  const b2 = await load('reading-b2-data');
+  const b2Translations = await load('b2-sentence-translations');
+  const stories = [...core, ...expanded, ...b2];
+  const translations = { ...a1, ...later, ...b2Translations };
+  assert.equal(stories.length, 654);
   assert.deepEqual(Object.keys(translations).sort(), stories.map(story => story.id).sort());
   let count = 0;
   for (const story of stories) {
@@ -55,7 +57,7 @@ test('translations load for all stories, reject stale sources and render one ini
       assert.ok(getReadingSentenceTranslations(story), story.id);
     }
     assert.equal(getReadingSentenceTranslations({ ...READING_STORIES[0], text: 'A changed story.' }), null);
-    for (const level of ['A1', 'A2', 'B1']) {
+    for (const level of ['A1', 'A2', 'B1', 'B2']) {
       const story = READING_STORIES.find(s => s.level === level);
       const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null,
         React.createElement(ReadingText, { story, glosses: {}, sentenceTranslations: getReadingSentenceTranslations(story) })));

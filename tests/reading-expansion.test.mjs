@@ -17,7 +17,7 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
   const {filterReadingStories} = await vite.ssrLoadModule('/app/lib/reading-library.ts');
   const {mergeStoryProgress,markStory} = await vite.ssrLoadModule('/app/lib/story-progress.ts');
   assert.equal(added.length,382);
-  assert.equal(new Set(READING_STORIES.map(s=>s.text)).size,454);
+  assert.equal(new Set(READING_STORIES.map(s=>s.text)).size,654);
   for (const id of ['reading-b1-34-v1','reading-b1-35-v1','reading-b1-36-v1']) {
    const story = READING_STORIES.find(s=>s.id===id.replace(/-v1$/, `-v${editions.B1}`));
    if (editions.B1 === 2) assert.equal(story.text, drafts[id].text, 'B1 publishes the reviewed rewrite');

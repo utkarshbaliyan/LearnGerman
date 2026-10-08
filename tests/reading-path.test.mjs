@@ -14,7 +14,7 @@ test('graded stories have complete vocabulary support, meaningful questions and 
   for (const story of stories.filter(story => story.level === 'A2')) assert.ok(readingWordCount(story.text) >= 200 && readingWordCount(story.text) <= 400, story.id);
   for (const story of stories.filter(story => story.level === 'B1' && story.id.endsWith('-v2'))) assert.ok(readingWordCount(story.text) >= 600 && readingWordCount(story.text) <= 800, story.id);
   const ids = new Set(stories.map(story=>story.id));
-  assert.equal(ids.size,454);
+  assert.equal(ids.size,654);
   assert.equal(getReadingStory('reading-a1-999-v1'),undefined);
   assert.equal(getReadingStory('a1-1'),undefined);
   for(const level of ['A1','A2','B1']) {
@@ -33,7 +33,7 @@ test('graded stories have complete vocabulary support, meaningful questions and 
    assert.equal(chapter.vocabulary.length,story.words.filter(word=>!word.contextOnly).length);
    assert.notEqual(chapter.listening[0].prompt,chapter.reading[0].prompt);
    }
-   assert.equal(story.questions.length,2);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
+   assert.equal(story.questions.length,story.level === 'B2' ? 4 : 2);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
    for(const q of story.questions){assert.equal(new Set(q.options).size,3);assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<3);assert.ok(q.explanation.length>15);}
    for(const word of story.words){assert.ok(story.text.includes(word.example),`${story.id}: source example`);assert.ok(word.example.toLowerCase().includes(word.form.toLowerCase()),`${story.id}: ${word.german}`);}
    for(const link of story.revisit){assert.ok(ids.has(link.storyId));assert.ok(stories.findIndex(s=>s.id===link.storyId)<stories.indexOf(story));assert.ok(story.text.toLowerCase().includes(link.german.toLowerCase()));}

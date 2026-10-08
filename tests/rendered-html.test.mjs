@@ -1,13 +1,14 @@
 import { readFileSync } from 'node:fs';
 const editions = JSON.parse(readFileSync(new URL('../app/lib/reading-editions.json', import.meta.url)));
-const editionId = (level, number) => `reading-${level.toLowerCase()}-${String(number).padStart(2, '0')}-v${editions[level.toUpperCase()]}`;
+const editionId = (level, number) => `reading-${level.toLowerCase()}-${String(number).padStart(2, '0')}-v${editions[level.toUpperCase()] ?? 1}`;
 import assert from "node:assert/strict";
 import test from "node:test";
 
+// A deployed isolate reuses its Worker module between requests. Importing a
+// fresh bundle for every route retained every content catalog until test exit.
+const workerModule = import(new URL("../dist/server/index.js", import.meta.url).href);
 async function renderRoute(pathname) {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
-  const { default: worker } = await import(workerUrl.href);
+  const { default: worker } = await workerModule;
 
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
@@ -38,7 +39,7 @@ test("opens Stories as home while the integrated course is paused", async () => 
 });
 
 test('all story levels offer one toggle for all sentence translations', async () => {
-  for (const level of ['a1', 'a2', 'b1']) {
+  for (const level of ['a1', 'a2', 'b1', 'b2']) {
     const response = await renderRoute(`/stories/${editionId(level, 1)}`);
     assert.equal(response.status, 200);
     const html = await response.text();
@@ -168,7 +169,7 @@ test("renders the graded reading path and independent story pages", async () => 
   for (const id of [editionId("A1", 1), editionId("A2", 18), editionId("B1", 24)]) {
     const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /What happened/); assert.match(html, /Show English translations/);
+    assert.match(html, /Check understanding/); assert.match(html, /Show English translations/);
     assert.doesNotMatch(html, /Need the gist in English/);
     assert.match(html, /Check my answers/);
     assert.doesNotMatch(html, /Notice the grammar|Practice this grammar|useful words &amp; phrases/);
@@ -182,7 +183,7 @@ test("renders the graded reading path and independent story pages", async () => 
     const response = await renderRoute(`/stories/${editionId(level, total)}`);
     assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /What happened/);
+    assert.match(html, /Check understanding/);
     assert.doesNotMatch(html, /Notice the grammar|Open grammar recall tables/);
     assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
     assert.doesNotMatch(html, /Narration is unavailable/);

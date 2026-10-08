@@ -15,6 +15,10 @@ assert.equal(receipt.origin, 'https://leselaut-german.professor-ut7.chatgpt.site
 assert.deepEqual(Object.keys(receipt.objects).sort(), Object.keys(registry).sort());
 for (const [key, entry] of Object.entries(registry)) assert.deepEqual(receipt.objects[key], {bytes:entry.bytes, sha256:entry.sha256});
 const meanings = {};
+const contextualGlosses = read('content/reading/b2/contextual-glosses.json');
+const sharedGlossCorrections = read('content/reading/b2/shared-gloss-corrections.json');
+assert.ok(Object.keys(contextualGlosses).every(id => stories.some(story => story.id === id)));
+for (const [form, meaning] of Object.entries(sharedGlossCorrections)) assert.ok(/^[\p{Ll}\p{N}]+$/u.test(form) && typeof meaning === 'string' && meaning.trim());
 for (let group = 1; group <= 3; group++) {
   const rows = readFileSync(`content/reading/b2/glosses-${group}.psv`, 'utf8').trim().split('\n');
   for (const row of rows) {
@@ -36,7 +40,10 @@ try {
     assert.equal(story.english, manuscript.english);
     assert.equal(audio[story.id]?.textHash, storyDigest(story.text), `${story.id}: missing or stale narration`);
     assert.ok(audio[story.id].src.startsWith('/media/stories/b2/'));
-    const help = glossesForText(story.text, {...meanings, ...story.wordGlosses});
+    const overrides = contextualGlosses[story.id] ?? {};
+    const forms = new Set((story.text.match(/[\p{L}]+(?:[-’'][\p{L}]+)*/gu) ?? []).map(cleanWord));
+    for (const [form, meaning] of Object.entries(overrides)) assert.ok(forms.has(form) && typeof meaning === 'string' && meaning.trim(), `${story.id}: invalid contextual meaning for ${form}`);
+    const help = glossesForText(story.text, {...meanings, ...story.wordGlosses, ...sharedGlossCorrections, ...overrides});
     for (const token of story.text.match(/[\p{L}]+(?:[-’'][\p{L}]+)*/gu) ?? []) {
       assert.ok(help[cleanWord(token)], `${story.id}: missing hover meaning for ${token}`);
     }

@@ -26,12 +26,14 @@ function sentenceNarrationTokens(paragraphs: ReadingSentenceTranslation[][]) {
 export function ReadingText({ story, glosses, sentenceTranslations }: { story: ReadingStory; glosses: Record<string, string>; sentenceTranslations?: ReadingSentenceTranslation[][] | null }) {
   const { activeWord } = useReadingNarration();
   const [showTranslations, setShowTranslations] = useState(false);
+  const [openedGloss, setOpenedGloss] = useState<string | null>(null);
   const sentenceRows = useMemo(() => sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
     [sentenceTranslations]);
   const renderWords = (parts: { text: string; wordIndex: number | null }[]) => parts.map((part, k) =>
     <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
       const meaning = glosses[wordKey(token)];
-      return meaning ? <Tooltip key={j}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
+      const glossId = `${part.wordIndex}-${j}`;
+      return meaning ? <Tooltip key={j} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={event => { event.preventDefault(); setOpenedGloss(glossId); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
     })}</span>);
   return <div className="reading-content">
     <p className="reading-help">Tap a word for its meaning.</p>
@@ -59,7 +61,7 @@ export function ReadingCheck({ story, onScore }: { story: ReadingStory; onScore?
     if (correct === story.questions.length) setStoryCompleted(story.id, true);
   }
   return <section className="reading-check" aria-label="Reading practice">
-    <span className="reading-eyebrow">Two small questions</span><h2>What happened?</h2>
+    <span className="reading-eyebrow">Comprehension quiz</span><h2>Check understanding</h2>
     {story.questions.map((question, i) => <fieldset key={question.prompt}><legend>{question.prompt}</legend>{question.options.map((option, j) => <label key={option}><input type="radio" name={`${story.id}-q${i}`} checked={answers[i] === j} disabled={checked} onChange={() => setAnswers(current => ({ ...current, [i]: j }))} />{option}</label>)}{checked && <p className={answers[i] === question.answer ? 'reading-correct' : 'reading-retry'}>{answers[i] === question.answer ? 'Yes. ' : 'Read that part once more. '}{question.explanation}</p>}</fieldset>)}
     <div aria-live="polite">{checked && correct === story.questions.length ? <div className="reading-finished"><CheckCircle2 /><div><strong>Story complete.</strong><p>You followed a German story and checked its meaning.</p></div></div> : checked ? <p>You found {correct} of {story.questions.length}. Take another look, then try again.</p> : hydrated && completedIds.has(story.id) ? <p>You completed this story before. You can practise it again.</p> : null}</div>
     {checked ? <Button variant="outline" onClick={() => { setChecked(false); setAnswers({}); }}>Try the questions again</Button> : <Button onClick={check} disabled={!hydrated || Object.keys(answers).length !== story.questions.length}>Check my answers</Button>}
