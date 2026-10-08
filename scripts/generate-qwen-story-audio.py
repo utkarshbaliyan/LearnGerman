@@ -17,6 +17,8 @@ import tempfile
 import time
 import traceback
 
+from lib.german_transcript_normalization import normal
+
 import mlx.core as mx
 import numpy as np
 from mlx_audio.audio_io import write, read
@@ -89,15 +91,6 @@ def save_json(path,data):
     indent=2 if path in paths.values() else None
     temporary.write_text(json.dumps(data,ensure_ascii=False,indent=indent,separators=None if indent else (',',':'))+'\n');temporary.replace(path)
 def visible_words(text):return [w for w in text.split() if re.search('[A-Za-zÄÖÜäöüßÉé0-9]',w)]
-NUMBER_WORDS = ['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn']
-TENS = ['', '', 'zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig']
-NUMBER_WORDS += [TENS[n//10] if n%10 == 0 else ('ein' if n%10 == 1 else NUMBER_WORDS[n%10])+'und'+TENS[n//10] for n in range(20,100)]
-NUMBER_NORMAL = {word.replace('ß','ss'):str(n) for n,word in enumerate(NUMBER_WORDS)}
-def normal(text):
-    # ASR writes spoken numbers as digits. Compare their meaning consistently.
-    value=text.casefold().replace('ß','ss').replace('é','e')
-    value=re.sub(r'\bgleis(?=[a-zäöü])','gleis ',value)
-    return [NUMBER_NORMAL.get(word,word) for word in re.findall(r'[a-zäöü]+|[0-9]+',value)]
 def chunks(story,voice):
     if plans is not None:
         result=[]
