@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
+import { TopicArt } from "@/app/components/topic-art";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import {
   ALL_VOCABULARY,
@@ -254,7 +255,8 @@ export default function VocabularyPage() {
 
       <section className="vocabulary-workspace vocabulary-organized">
         <header className="vocab-page-heading">
-          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
+          <div><span className="reading-eyebrow">Every word opens a door.</span><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
+          <TopicArt kind="shopping" className="topic-art--sticker" />
           <label className="vocab-level-picker"><span>Study level</span>
             <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>
               <SelectTrigger aria-label="Choose a vocabulary level"><SelectValue /></SelectTrigger>

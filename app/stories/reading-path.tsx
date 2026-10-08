@@ -2,8 +2,9 @@
 import Link from 'next/link';
 import { RECEPTION_CATALOG } from '@/app/lib/reception-catalog';
 import { useState } from 'react';
-import { ArrowRight, BookOpen, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Headphones, CheckCircle2, ChevronDown } from 'lucide-react';
 import { SiteHeader } from '@/app/components/site-header';
+import { TopicArt, storyArt } from '@/app/components/topic-art';
 import { useStoryProgress } from '@/app/hooks/use-story-progress';
 import type { ReadingLevel, ReadingSummary } from '@/app/lib/reading-path';
 import { filterReadingStories } from '@/app/lib/reading-library';
@@ -27,7 +28,7 @@ export function ReadingPath({ stories, sections, goals, initialLevel }: {
   const topics = [...new Set(selected.flatMap(story => story.topics))].sort((a,b) => topicLabel(a).localeCompare(topicLabel(b)));
   const filtering = topic !== 'all' || !!query.trim();
   return <div className="site-shell"><SiteHeader active="stories" /><main className="reading-path">
-    <header className="reading-heading"><div><span className="reading-eyebrow">Read a little. Discover more.</span><h1>Stories</h1><p>Grow from simple scenes to connected German stories.</p><p>{stories.length} stories about everyday life. Start with the guided path or explore a situation below.</p></div><BookOpen aria-hidden="true" /></header>
+    <header className="reading-heading"><div><span className="reading-eyebrow">A little German. A new world.</span><h1>Small stories.<br /><em>Big discoveries.</em></h1><p>Step into everyday German. Read a story, listen along, and find the meaning of any new word.</p><span className="reading-collection-note"><Headphones size={17} aria-hidden="true" /> {stories.length} stories with audio & English translations</span></div><div className="reading-hero-art"><img src="/illustrations/reading-room.png" alt="Two readers sharing books and conversation in a sunny German café" width="1536" height="1024" fetchPriority="high" /><span className="reading-art-note">One page. One little adventure.</span></div></header>
     <Tabs value={level} onValueChange={value => { setLevel(value as ReadingLevel); setTopic('all'); }}><TabsList aria-label="Story level">{(['A1', 'A2', 'B1'] as const).map(item => <TabsTrigger key={item} value={item}>{item} · {stories.filter(story => story.level === item).length}</TabsTrigger>)}</TabsList></Tabs>
     {level === 'A1' && <p className="book-from-stories">Ready for a longer read? <Link href="/books">Explore the A1 book · 200 pages <ArrowRight size={16} /></Link></p>}
     <div className="reading-filters" role="search" aria-label="Find a story">
@@ -45,8 +46,8 @@ export function ReadingPath({ stories, sections, goals, initialLevel }: {
       const done = group.filter(story => completedIds.has(story.id)).length;
       const goal = goals[level][index] ?? `More stories about ${title.toLowerCase()}.`;
       return <details className="reading-section" key={title} open={filtering || next?.section === index + 1}>
-        <summary><span className="reading-section-number">{done === group.length ? <CheckCircle2 aria-label="Section complete" /> : String(index + 1).padStart(2, '0')}</span><span><strong>{title}</strong><small>{goal}</small></span><span className="reading-section-count">{done}/{group.length}</span></summary>
-        <ol>{shown.map(story => <li key={story.id}><Link href={`/stories/${story.id}`}><span className="reading-item-number">{completedIds.has(story.id) ? <CheckCircle2 aria-label="Completed" size={20} /> : String(story.number).padStart(2, '0')}</span><span><strong lang="de">{story.title}</strong><small>{story.goal}</small></span><span className="reading-item-length">{story.wordCount} words · {story.hasAudio ? 'Audio' : 'Reading'} <ArrowRight size={16} /></span></Link></li>)}</ol>
+        <summary><span className="reading-section-number">{done === group.length ? <CheckCircle2 aria-label="Section complete" /> : String(index + 1).padStart(2, '0')}</span><span><strong>{title}</strong><small>{goal}</small></span><span className="reading-section-count">{done}/{group.length}</span><ChevronDown className="reading-section-chevron" size={19} aria-hidden="true" /></summary>
+        <ol>{shown.map(story => <li key={story.id}><Link className="reading-story-card" href={`/stories/${story.id}`}><TopicArt kind={storyArt(story.topics)} /><span className="reading-card-copy"><span className="reading-card-meta"><span>{story.level}</span><span className="reading-item-number">{completedIds.has(story.id) ? <CheckCircle2 aria-label="Completed" size={20} /> : `Story ${String(story.number).padStart(2, '0')}`}</span></span><strong lang="de">{story.title}</strong><small>{story.goal}</small><span className="reading-item-length">{story.wordCount} words · {story.hasAudio ? 'Audio' : 'Reading'} <ArrowRight size={16} /></span></span></Link></li>)}</ol>
         {done === group.length && <p className="reading-section-success">Section complete. You practised: {goal.toLowerCase()}</p>}
       </details>;
     })}</div>

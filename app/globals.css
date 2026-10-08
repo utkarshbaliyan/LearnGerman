@@ -1,11 +1,13 @@
-@import "tailwindcss";
+@import "tailwindcss" source("./");
 @import "tw-animate-css";
 @import "../vendor/shadcn-tailwind-4.13.0.css";
+@source "../components";
 
 :root {
   color-scheme: light;
   --font-book: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --font-ui: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ui: "DM Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", ui-sans-serif, sans-serif;
   --ink: #171719;
   --ink-soft: #62636a;
   --paper: #f7f7f5;
@@ -846,8 +848,8 @@ footer > div a { color: var(--ink); font-size: 10px; font-weight: 800; }
 }
 
 /* Calm, mobile-first study interface */
-:where(h1, h2, h3, h4, .brand strong, .story-card h3, .reader-copy, .vocabulary-answer, .grammar-pattern strong) {
-  font-family: var(--font-book) !important;
+:where(h1, h2, h3, h4, .brand strong, .story-card h3, .grammar-pattern strong) {
+  font-family: var(--font-display) !important;
 }
 :where(a, button, input, small, .eyebrow, .grammar-section-label) { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }

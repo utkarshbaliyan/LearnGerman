@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from "react";
 import { acceptsGrammarAnswer, joinGrammarTokens } from "./practice-answer";
 import { GRAMMAR_SOURCES } from "./sources";
 import { SiteHeader } from "@/app/components/site-header";
+import { TopicArt } from "@/app/components/topic-art";
 import {
   ALL_GRAMMAR_LESSONS, GRAMMAR_LEVELS, GRAMMAR_MODULES, LIVE_GRAMMAR_LESSONS,
   getGrammarModuleForLesson, type GrammarExercise, type GrammarLevel,
@@ -291,7 +292,7 @@ export default function GrammarPage() {
 
       <section className="grammar-hero">
         <div>
-          <Badge className="eyebrow"><Sparkles /> A1–C1 · Grammar lessons</Badge>
+          <div className="module-kicker"><Badge className="eyebrow"><Sparkles /> A1–C1 · Grammar lessons</Badge><TopicArt kind="learn" className="topic-art--sticker" /></div>
           <h1>Understand the rule.<br /><em>Use it with confidence.</em></h1>
           <p>A 144-lesson core grammar course from first sentences to advanced C1 writing. Every lesson follows the same learning loop: notice, understand, build, correct, produce, and review.</p>
           <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Continue learning <ArrowRight /></Button><a href="#roadmap">View the full roadmap</a><Link href="/grammar/reference">Grammar reference →</Link><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>

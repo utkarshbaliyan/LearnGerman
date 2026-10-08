@@ -32,7 +32,7 @@ test("opens Stories as home while the integrated course is paused", async () => 
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();
-  assert.match(html, /Grow from simple scenes to connected German stories/);
+  assert.match(html, /<main class="reading-path">/);
   assert.match(html, /Active Learning/);
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
@@ -148,7 +148,7 @@ test("grammar exposes complete, accessible case recall tables without loading ex
 
 test("renders translation practice with five levels and redirects retired task links", async () => {
   const home = await renderRoute("/active-learning"); assert.equal(home.status, 200);
-  const html = await home.text(); assert.match(html, /Translation practice/); assert.match(html, /Generate sentences/);
+  const html = await home.text(); assert.match(html, /<main class="active-learning translation-page">/); assert.match(html, /Generate sentences/);
   for (const level of ["A1", "A2", "B1", "B2", "C1"]) assert.ok(html.includes(`>${level}</button>`));
   assert.match(html, /<option value="12">12(?:<!-- -->)? (?:<!-- -->)?sentences<\/option>/); assert.doesNotMatch(html, /active-a1-m01|German you can use|MODULE|Try a new introduction/);
   for (const id of ["active-a1-m01-l01-v1", "active-a2-m09-l03-v1", "active-b1-m12-l04-v1"]) {
@@ -162,7 +162,7 @@ test("renders the graded reading path and independent story pages", async () => 
   for (const level of ["A1", "A2", "B1"]) {
     const response = await renderRoute(`/stories?level=${level}`); assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /Grow from simple scenes to connected German stories/); assert.doesNotMatch(html, /Previous story library/);
+    assert.match(html, /<main class="reading-path">/); assert.doesNotMatch(html, /Previous story library/);
     assert.ok(html.includes(editionId(level, 1)));
   }
   for (const id of [editionId("A1", 1), editionId("A2", 18), editionId("B1", 24)]) {

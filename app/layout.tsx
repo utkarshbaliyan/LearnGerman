@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import "./globals.css";
+import "./illustrated-ui.css";
 
 export const metadata: Metadata = {
   title: "LeseLaut — Learn German through stories",
   description:
-    "Follow a structured A1–B1 German course with stories, built-in audio, vocabulary, word help, and saved progress.",
+    "Learn German with illustrated story libraries, narrated books, vocabulary, grammar practice, and saved progress.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -16,8 +17,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f7f5" },
-    { media: "(prefers-color-scheme: dark)", color: "#101114" },
+    { media: "(prefers-color-scheme: light)", color: "#fcfaf6" },
+    { media: "(prefers-color-scheme: dark)", color: "#171522" },
   ],
 };
 
