@@ -5,8 +5,8 @@ export function LearningHero({ kind }: { kind: 'today' | 'review' }) {
   return <header className={`learning-header learning-hero learning-hero--${kind}`}>
     <div className="learning-hero-copy">
       <span className="reading-eyebrow">{today ? 'A little German, used well' : 'Keep what you learn'}</span>
-      <h1>{today ? 'TODAY' : 'YOUR REVIEW'}</h1>
-      <p>{today ? 'Recall something familiar. Understand a story. Put German into your own words.' : 'Revisit saved words and practise past mistakes in fresh situations.'}</p>
+      <h1>{today ? 'TODAY & REVIEW' : 'YOUR REVIEW'}</h1>
+      <p>{today ? 'Build your daily session or create a small word deck. Recall first, then read, listen and use German.' : 'Revisit saved words and practise past mistakes in fresh situations.'}</p>
       <div className="learning-hero-tags" aria-label={today ? 'Session activities' : 'Review activities'}>
         {(today ? ['Recall', 'Read & listen', 'Use German'] : ['Saved words', 'Vocabulary', 'Fresh practice']).map(label => <span key={label}>{label}</span>)}
       </div>

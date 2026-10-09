@@ -15,8 +15,7 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         <span><strong>LeseLaut</strong><small>German through stories</small></span>
       </Link>
       <nav className="topnav" aria-label="Main navigation">
-        <Link href="/" prefetch={false} aria-current={active === 'today' ? 'page' : undefined}><span>Today</span></Link>
-        <Link href="/review" prefetch={false} aria-current={active === 'review' ? 'page' : undefined}><span>Review</span></Link>
+        <Link href="/" prefetch={false} aria-current={active === 'today' || active === 'review' ? 'page' : undefined}><span>Today & Review</span></Link>
         <Link href="/stories" prefetch={false} aria-current={active === "stories" ? "page" : undefined}><BookOpen aria-hidden="true" /><span>Stories</span></Link>
         <Link href="/books" prefetch={false} aria-current={active === "books" ? "page" : undefined}><BookMarked aria-hidden="true" /><span>Books</span></Link>
         <Link href="/active-learning" prefetch={false} aria-current={active === "active-learning" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Active Learning</span></Link>

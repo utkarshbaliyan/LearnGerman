@@ -11,13 +11,19 @@ available. Vocabulary, Today and Review show the same collected-word counts.
 
 ## Today and personal review
 
-Today uses a warm yellow welcome panel with the existing reading-room illustration,
-a topic illustration beside the resumable session, and sage/lilac/yellow learning
-evidence cards. Review uses a sage welcome panel with book and plant artwork;
-saved words, scheduled vocabulary and mistake practice have sage, lilac and peach
-sections with matching topic illustrations. The existing atlas also illustrates
-the exploration links. All artwork is decorative and reuses already published
-assets; no generation, cover reassignment or automation was started.
+Today and Review now share one illustrated learning hub and one navigation entry.
+Accessible tabs switch between the daily plan and a 5–15-word active recall deck
+builder. The builder has a sage introduction, lilac selection panel and blue saved
+decks; its controls and typed recall panels fit 320px layouts in both themes.
+Existing scheduled word and mistake practice stays in a collapsible section.
+
+The shared hub uses a warm yellow welcome panel with the existing reading-room
+illustration, a topic illustration beside the resumable session, and
+sage/lilac/yellow learning evidence cards. Review decks reuse the book artwork;
+saved words, scheduled vocabulary and mistake practice retain sage, lilac and
+peach sections with matching topic illustrations. The existing atlas also
+illustrates the exploration links. All artwork is decorative and reuses already
+published assets; no generation, cover reassignment or automation was started.
 
 These learning-page colours sit within the shared platform palette, with separate
 dark-theme surfaces, readable actions, and compact illustrations on mobile.

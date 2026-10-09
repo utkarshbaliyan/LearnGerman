@@ -1,5 +1,39 @@
 # Today, personal review and learning evidence
 
+## Combined Today & Review
+
+Home is one learning hub with Today and Review tabs. The shared header has one
+Today & Review link; `/review` redirects to `/?view=review` so existing bookmarks
+and reader links open the Review tab. Tab changes retain the active daily session
+and current recall input. Existing daily preferences, reading sessions, narration,
+word stacks and translation mistake review remain available.
+
+Review starts with a named active recall deck builder. Learners choose 5–15
+different German card identities from the A1–C1 vocabulary catalog and their saved
+story/book words, mixing sources when useful. English meanings appear during
+selection; German models remain hidden. Search is bounded to 24 public catalog
+results and never sends the full vocabulary catalog to the browser.
+
+Each round shuffles the selected words and asks for typed English-to-German recall.
+The existing shared vocabulary action saves the first attempt and FSRS update
+before revealing the model. Source-sentence hints and reveals mark assistance.
+Deck state saves the same attempt ID; a failed deck save can retry without rating
+the word twice. Returning learners resume at the next unchecked word. A completed
+round reports unaided, missed and assisted counts; repeated practice does not
+become a long-term retention claim.
+
+Deck definitions and their latest rounds use the existing `learning` progress
+scope and account-owned D1 JSON store. No migration is required. A deck accepts
+5–15 unique canonical keys, safe reading links and at most one first answer per
+word per round. Same-round answers merge across devices; the newer round survives
+late answers from an old offline round. The UI permits 30 decks while merges
+retain valid independent decks created concurrently. Account changes clear deck
+selection and active rounds through the existing owner-isolation path.
+
+Scheduled single-word and fresh translation reviews remain available in a
+collapsible section below the deck builder. The Today tab continues to show the
+shared word counts, existing learning evidence and resumable daily plan.
+
 ## Connected reading vocabulary
 
 Stories, embedded course stories, Today readings, and all three book readers have
@@ -68,6 +102,15 @@ AI feedback and help reports are uncalibrated practice evidence. Real learner an
 teacher validation remain necessary after release.
 
 ## Verification completed
+
+- Combined hub and recall decks: all 159 tests, TypeScript, the production build
+  and migration contract passed. Coverage includes 5–15 unique words, malformed
+  records, independent device merges, newer-round preservation, shared FSRS and
+  recall evidence, cloud account isolation, unique mounted form labels, route
+  compatibility and reader bundle performance. Browser checks covered mixed word
+  sources, hidden answers, typed failure/success, hints/reveals, round completion,
+  tab state, reload/resume, C1 search and the existing daily session. Desktop and
+  320px layouts passed in both themes.
 
 - Connected word stacks: all 152 tests, TypeScript, the production build and
   migration contract passed. Desktop and 320px mobile checks covered collection

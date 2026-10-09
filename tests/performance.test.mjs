@@ -15,9 +15,12 @@ test('story readers receive the selected audio asset without downloading the col
     assert.doesNotMatch(code, /\/audio\/reading\/reading-[ab][12]-/, `${entry.file} embeds collection audio paths`);
     for (const dependency of entry.imports ?? []) await inspect(dependency);
   }
-  await inspect('app/components/reading-narration.tsx');
-  await inspect('app/components/reading-experience.tsx');
-  await inspect('app/components/reception-workspace.tsx');
+  // Shared client boundaries can be emitted as named chunks instead of entries.
+  for (const name of ['reading-narration', 'reading-experience', 'reception-workspace']) {
+    const roots = Object.entries(manifest).filter(([key, entry]) => key === `app/components/${name}.tsx` || entry.name === name).map(([key]) => key);
+    assert.ok(roots.length, `Missing built client component ${name}`);
+    for (const key of roots) await inspect(key);
+  }
 });
 
 test('long-lived media caching only covers filenames containing source and voice-plan hashes', async () => {

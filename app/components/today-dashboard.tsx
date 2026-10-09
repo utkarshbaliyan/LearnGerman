@@ -16,7 +16,6 @@ import { ReadingAudio, ReadingNarrationProvider } from './reading-narration';
 import { TranslationWorkspace } from '@/app/active-learning/translation-workspace';
 import { LearningWordReview, type ReviewWord } from './learning-word-review';
 import { LearningEvidence } from './learning-evidence';
-import { LearningHero } from './learning-hero';
 import { ConnectedWordProgress } from './connected-word-progress';
 import { TopicArt, storyArt } from './topic-art';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY } from '@/app/lib/cloud-progress-keys';
@@ -70,7 +69,7 @@ export function TodayDashboard({ stories }: { stories: ReadingSummary[] }) {
   const content = material?.content;
   const checked = output?.session.checks.at(-1);
   const outputReady = checked && (checked.feedback.every(f => f.verdict === 'correct') || output!.session.checks.length > 1);
-  return <main className="learning-page learning-page--today"><LearningHero kind="today" />
+  return <div className="learning-today-panel">
     {!hydrated || !vocabReady || !storiesReady ? <p role="status">Loading your learning plan…</p> : <>
     {storageError && <p role="alert">{storageError}</p>}
     {(!prefs || settings) && <Setup key={prefs?.updatedAt ?? 'new'} preferences={prefs} onSave={p => { if (update(state => ({ ...state, preferences: p }))) { setSettings(false); if (!prefs) start(p); } }} />}
@@ -86,5 +85,5 @@ export function TodayDashboard({ stories }: { stories: ReadingSummary[] }) {
     {!session && <><ConnectedWordProgress vocabulary={vocabulary} /><LearningEvidence progress={progress} memory={memory} vocabulary={vocabulary} /><section className="learning-next"><h2>Keep exploring</h2><div><Link href="/stories"><TopicArt kind="home" />Stories →</Link><Link href="/books"><TopicArt kind="learn" />Continue a book →</Link><Link href="/active-learning"><TopicArt kind="friends" />Active Learning →</Link><Link href="/vocabulary"><TopicArt kind="technology" />Vocabulary →</Link><Link href="/grammar"><TopicArt kind="work" />Grammar →</Link></div></section></>}
     {memoryLoading && signedIn && <p role="status">Loading mistake review…</p>}{memoryError && <p role="alert">{memoryError} <button type="button" onClick={() => void refresh()}>Try again</button></p>}<p className="learning-save-note">Reading and word review work without an account. Sign in for AI feedback and sync across devices.</p>
     </>}
-  </main>;
+  </div>;
 }

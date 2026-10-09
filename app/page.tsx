@@ -1,7 +1,8 @@
 import { SiteHeader } from './components/site-header';
-import { TodayDashboard } from './components/today-dashboard';
+import { LearningHub } from './components/learning-hub';
 import { READING_STORIES, readingSummary } from './lib/reading-path';
 
-export default function HomePage() {
-  return <div className="site-shell"><SiteHeader active="today" /><TodayDashboard stories={READING_STORIES.map(readingSummary)} /></div>;
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ view?: string }> }) {
+  const { view } = await searchParams;
+  return <div className="site-shell"><SiteHeader active="today" /><LearningHub initialView={view === 'review' ? 'review' : 'today'} stories={READING_STORIES.map(readingSummary)} /></div>;
 }

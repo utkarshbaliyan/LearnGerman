@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { PenLine, Mic, Camera, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,7 @@ type Recent = NonNullable<TranslationResponse['recent']>;
 const endpoint = '/api/active-learning/translation';
 const cacheKey = (owner: string, exercise: string) => `leselaut:translation-draft:v1:${owner}:${exercise}`;
 export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferredCount = 1, savedExerciseId, onRecord }: { learning?: TranslationLearningContext; preferredLevel?: TranslationLevel; preferredCount?: number; savedExerciseId?: string; onRecord?: (record: TranslationRecord) => void } = {}) {
+  const inputPrefix = useId();
   const [usedHelp, setUsedHelp] = useState(false);
   const hintOpened = useRef(false);
   const props = useRef({ learning, savedExerciseId, onRecord, preferredLevel, preferredCount }); props.current = { learning, savedExerciseId, onRecord, preferredLevel, preferredCount };
@@ -117,7 +118,7 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
   return <section className="translation-workspace" aria-label="English to German practice">
     <div className="translation-setup">
       <fieldset disabled={locked || Boolean(learning)}><legend>Your German level</legend><div className="translation-levels">{TRANSLATION_LEVELS.map(l => <button key={l} type="button" aria-pressed={level === l} onClick={() => setLevel(l)}>{l}</button>)}</div><p>{LEVEL_GUIDANCE[level].label}</p></fieldset>
-      <label className="translation-count" htmlFor="translation-count">English sentences<select id="translation-count" value={count} disabled={locked || Boolean(learning)} onChange={e => setCount(Number(e.target.value))}>{Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1} {i ? 'sentences' : 'sentence'}</option>)}</select></label>
+      <label className="translation-count" htmlFor={`${inputPrefix}-count`}>English sentences<select id={`${inputPrefix}-count`} value={count} disabled={locked || Boolean(learning)} onChange={e => setCount(Number(e.target.value))}>{Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1} {i ? 'sentences' : 'sentence'}</option>)}</select></label>
       <Button disabled={!signedIn || locked} onClick={() => void send('generate', { level, count: learning ? preferredCount : count, ...(learning ? { learning } : {}) })}>{record ? 'Generate new sentences' : 'Generate sentences'}</Button>
     </div>
     {!signedIn && !loading && <p className="translation-signin"><Link href="/account">Sign in</Link> to generate sentences and get AI feedback.</p>}
@@ -126,7 +127,7 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
     {record && !usable && !busy && !loading && <div className="translation-error"><p>{record.session.operations[0]?.error ?? 'Your sentences are still being generated. Reload saved work shortly.'}</p><Button variant="outline" disabled={locked} onClick={() => void reload(record.exerciseId)}>Reload saved work</Button></div>}
     {error && <div role="alert" className="translation-error"><p>{error}</p>{signedIn && <Button variant="outline" disabled={Boolean(busy) || saving || recording || loading} onClick={() => void reload(record?.exerciseId)}><RefreshCw size={15} />Reload saved work</Button>}</div>}
     {recovery && <div className="translation-recovery"><p>You have a different unsent draft in this browser. Choose which version to use.</p><Button disabled={Boolean(busy)} onClick={() => { setAnswers(recovery); setRecovery(null); setError(''); }}>Restore browser draft</Button><Button variant="outline" onClick={() => { setRecovery(null); if (record) setAnswers(record.session.answers); }}>Keep saved version</Button></div>}
-    {!learning && recent.length > 1 && <label className="translation-history" htmlFor="translation-history">Saved sets<select id="translation-history" value={record?.exerciseId ?? ''} disabled={locked} onChange={e => void reload(e.target.value)}>{recent.map((r, i) => <option key={r.exerciseId} value={r.exerciseId}>{r.level} · {r.count} {r.count === 1 ? 'sentence' : 'sentences'} · {i === 0 ? 'most recent set' : `set ${i + 1}`}</option>)}</select></label>}
+    {!learning && recent.length > 1 && <label className="translation-history" htmlFor={`${inputPrefix}-history`}>Saved sets<select id={`${inputPrefix}-history`} value={record?.exerciseId ?? ''} disabled={locked} onChange={e => void reload(e.target.value)}>{recent.map((r, i) => <option key={r.exerciseId} value={r.exerciseId}>{r.level} · {r.count} {r.count === 1 ? 'sentence' : 'sentences'} · {i === 0 ? 'most recent set' : `set ${i + 1}`}</option>)}</select></label>}
     {usable && record && <div className="translation-exercise" key={`${owner.current}:${record.exerciseId}`}>
       <header className="translation-exercise-heading"><h2>Translate into German</h2><span>{record.session.level} · {record.session.count} {record.session.count === 1 ? 'sentence' : 'sentences'}</span></header>
       <div className="translation-modes" role="group" aria-label="How to answer">{([{ id: 'write', title: 'Write', Icon: PenLine }, { id: 'speak', title: 'Speak', Icon: Mic }, { id: 'photo', title: 'Upload photo', Icon: Camera }] as const).map(({ id, title, Icon }) => <button key={id} type="button" aria-pressed={mode === id} disabled={locked} onClick={() => setMode(id)}><Icon size={17} />{title}</button>)}</div>
@@ -136,8 +137,8 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
         const feedback = latest?.feedback[i], matches = latest?.answers[i] === answers[i];
         return <li key={`${record.exerciseId}:${i}`} className="translation-sentence"><p className="translation-english" lang="en"><span aria-hidden="true">{i + 1}.</span>{english}</p>
           {mode === 'speak' && <TranslationRecording disabled={locked} consent={speechConsent} onRecording={setRecording} onTranscribe={(file, id) => send('speech', { sentenceIndex: i }, file, id)} />}
-          <label htmlFor={`translation-answer-${i}`}>{mode === 'speak' ? 'German transcript · correct any recognition mistakes' : 'Your German translation'}</label>
-          <Textarea id={`translation-answer-${i}`} lang="de" value={answers[i] ?? ''} maxLength={1200} disabled={Boolean(busy) || loading || recording || Boolean(recovery)} spellCheck={false} onChange={e => setAnswers(rows => rows.map((a, j) => i === j ? e.target.value : a))} />
+          <label htmlFor={`${inputPrefix}-answer-${i}`}>{mode === 'speak' ? 'German transcript · correct any recognition mistakes' : 'Your German translation'}</label>
+          <Textarea id={`${inputPrefix}-answer-${i}`} lang="de" value={answers[i] ?? ''} maxLength={1200} disabled={Boolean(busy) || loading || recording || Boolean(recovery)} spellCheck={false} onChange={e => setAnswers(rows => rows.map((a, j) => i === j ? e.target.value : a))} />
           {feedback && matches && <section className={`translation-feedback translation-feedback--${feedback.verdict}`} aria-label={`Feedback for sentence ${i + 1}`}><h3>{feedback.verdict === 'correct' ? 'Your translation works' : 'What to improve'}</h3><p>{feedback.explanation}</p>{feedback.corrections.map((c, j) => <article key={j}><p lang="de"><span>{c.original || '…'}</span> → <strong>{c.corrected}</strong></p><p>{c.explanation}</p>{c.kind === 'style' && <small>Optional style suggestion</small>}</article>)}<div className="translation-model"><span>One possible correct translation</span><p lang="de">{feedback.correctTranslation}</p></div></section>}
           {feedback && !matches && <p className="translation-recheck">You changed this translation. Check again for updated feedback.</p>}
         </li>;

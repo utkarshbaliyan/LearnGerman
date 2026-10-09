@@ -58,15 +58,20 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     save.queueCloudProgress("course", unchanged);
     await save.flushCloudProgress("course");
     assert.equal(puts, before, "hydrating unchanged data must not trigger an endless save loop");
-    save.queueCloudProgress('learning', { words: {}, recalls: {}, sessions: {}, preferences: { level: 'B1', goal: 'work', minutes: 15, updatedAt: 1000 } });
+    const decks = await vite.ssrLoadModule('/app/lib/recall-decks.ts');
+    const deckWords = Array.from({ length: 5 }, (_, i) => ({ german: `Wort ${i}`, english: `word ${i}`, key: `de:wort ${i}`, progressByHeadword: true }));
+    const deck = decks.createRecallDeck('alice-deck', 'My words', deckWords, 1000);
+    save.queueCloudProgress('learning', { words: {}, recalls: {}, sessions: {}, decks: { [deck.id]: deck }, preferences: { level: 'B1', goal: 'work', minutes: 15, updatedAt: 1000 } });
     await save.flushCloudProgress('learning');
     assert.equal(remote.learning.preferences.level, 'B1', 'learning preferences use the account-owned progress store');
+    assert.equal(remote.learning.decks[deck.id].words.length, 5, 'recall decks sync in the same account-owned store');
     // Switching accounts discards the previous account's cached progress.
     globalThis.__syncFetch = async (_url, init) => !init?.method ? Response.json({ userId: "bob", progress: {} })
       : Response.json({ userId: "bob", data: JSON.parse(init.body).data });
     await synchronizeCloudProgress();
     assert.equal(localStorage.getItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY), "bob");
     assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.learning)).preferences, undefined, 'the previous account learning preferences are cleared');
+    assert.deepEqual(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.learning)).decks, {}, 'another account cannot receive the previous account decks');
     assert.equal(p.isVocabularyLearned(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.vocabulary)), a), false);
     assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.books)).page ?? null, null, "the previous account's bookmark is cleared");
   } finally {
