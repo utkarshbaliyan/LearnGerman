@@ -175,7 +175,8 @@ h1, h2, h3, h4 { font-optical-sizing: auto; }
 .illustrated-bookshelf .book-shelf:nth-child(3) .book-cover { background: var(--art-blue); }
 .book-shelf-item:hover .book-cover--illustrated { transform: translateY(-4px) rotate(-1deg); box-shadow: 7px 9px 0 var(--line); }
 
-.vocabulary-organized { max-width: 1240px; padding-left: 32px; padding-right: 32px; }
+.vocabulary-organized { width: 100%; max-width: none; padding-left: 32px; padding-right: 32px; }
+.vocabulary-organized > * { max-width: none; }
 .vocab-page-heading { display: grid; grid-template-columns: 1fr 120px 200px; gap: 24px; align-items: center; margin-bottom: 26px; }
 .vocab-page-heading h1 { font-size: clamp(38px, 5vw, 60px); font-weight: 750; letter-spacing: -.05em; line-height: 1.05; margin: 12px 0; }
 .vocab-page-heading p { font-size: 14px; }
