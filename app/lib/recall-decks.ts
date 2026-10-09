@@ -12,12 +12,15 @@ const wordSchema = z.object({
   sourceHref: z.string().regex(/^\/(?:stories\/[a-zA-Z0-9_-]+|books\/(?:a1|a2|b1)\/[a-z0-9-]+\/[1-9]\d*)$/).optional(),
 }).refine(w => w.key === vocabularyCardKey(w));
 export type RecallDeckWord = z.infer<typeof wordSchema>;
-const answerSchema = z.object({ id, key: id, at: time, correct: z.boolean(), assisted: z.boolean(), elapsedDays: z.number().min(0).max(100000) });
-const runSchema = z.object({ id, startedAt: time, updatedAt: time, order: z.array(id).min(MIN_RECALL_WORDS).max(MAX_RECALL_WORDS), answers: z.record(answerSchema) });
+const answerSchema = z.object({ id, key: id, at: time, correct: z.boolean(), assisted: z.boolean(), elapsedDays: z.number().min(0).max(100000), action: z.enum(['flashcard', 'read']).optional(), rating: z.number().int().min(1).max(4).optional() });
+export type DeckAnswer = z.infer<typeof answerSchema>;
+const runSchema = z.object({ id, startedAt: time, updatedAt: time, order: z.array(id).min(1).max(MAX_RECALL_WORDS), answers: z.record(answerSchema) });
 const deckSchema = z.object({
   id, name: z.string().trim().min(1).max(80), createdAt: time, updatedAt: time,
-  words: z.array(wordSchema).min(MIN_RECALL_WORDS).max(MAX_RECALL_WORDS), run: runSchema.optional(),
+  words: z.array(wordSchema).min(1).max(MAX_RECALL_WORDS), run: runSchema.optional(), kind: z.literal('review').optional(),
+  requestedSize: z.union([z.literal(8), z.literal(10), z.literal(12)]).optional(),
 }).superRefine((d, ctx) => {
+  if (d.kind === 'review' ? !d.requestedSize || d.words.length > d.requestedSize : d.words.length < MIN_RECALL_WORDS) ctx.addIssue({ code: 'custom', message: 'Invalid deck size.' });
   const keys = new Set(d.words.map(w => w.key));
   if (keys.size !== d.words.length) ctx.addIssue({ code: 'custom', message: 'Choose different words.' });
   if (d.run && (d.run.order.length !== keys.size || new Set(d.run.order).size !== keys.size || d.run.order.some(k => !keys.has(k)) || Object.entries(d.run.answers).some(([key, a]) => !keys.has(key) || a.key !== key || a.at < d.run!.startedAt))) ctx.addIssue({ code: 'custom', message: 'Invalid recall round.' });
@@ -42,10 +45,27 @@ export function startRecallDeck(deck: RecallDeck, runId: string, now = Date.now(
   return deckSchema.parse({ ...deck, updatedAt: Math.max(now, deck.updatedAt + 1), run: { id: runId, startedAt: now, updatedAt: now, order, answers: {} } });
 }
 
-export function recordDeckAnswer(deck: RecallDeck, runId: string, answer: VocabularyRecallAttempt): RecallDeck {
+export function recordDeckAnswer(deck: RecallDeck, runId: string, answer: VocabularyRecallAttempt & Pick<DeckAnswer, 'action' | 'rating'>): RecallDeck {
   if (!deck.run || deck.run.id !== runId || !deck.run.order.includes(answer.key)) throw new Error('This recall round has changed.');
   if (deck.run.answers[answer.key]) return deck;
   return deckSchema.parse({ ...deck, updatedAt: Math.max(answer.at, deck.updatedAt + 1), run: { ...deck.run, updatedAt: Math.max(answer.at, deck.run.updatedAt + 1), answers: { ...deck.run.answers, [answer.key]: answer } } });
+}
+
+export function createReviewSession(id: string, words: RecallDeckWord[], requestedSize: 8 | 10 | 12, now = Date.now()): RecallDeck {
+  return deckSchema.parse({ id, name: 'Review flashcards', kind: 'review', requestedSize, words, createdAt: now, updatedAt: now });
+}
+
+export function readReviewSession(value: unknown): RecallDeck | undefined {
+  const parsed = deckSchema.safeParse(value);
+  return parsed.success && parsed.data.kind === 'review' ? parsed.data : undefined;
+}
+
+export function mergeReviewSessions(a: unknown, b: unknown): RecallDeck | undefined {
+  const x = readReviewSession(a), y = readReviewSession(b);
+  if (!x || !y) return x ?? y;
+  if (x.id === y.id) return mergeRecallDecks({ [x.id]: x }, { [y.id]: y })[x.id];
+  const started = (d: RecallDeck) => d.run?.startedAt ?? d.createdAt;
+  return started(x) > started(y) || (started(x) === started(y) && x.id > y.id) ? x : y;
 }
 
 export function mergeRecallDecks(a: unknown, b: unknown): Record<string, RecallDeck> {

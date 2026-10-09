@@ -61,10 +61,12 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     const decks = await vite.ssrLoadModule('/app/lib/recall-decks.ts');
     const deckWords = Array.from({ length: 5 }, (_, i) => ({ german: `Wort ${i}`, english: `word ${i}`, key: `de:wort ${i}`, progressByHeadword: true }));
     const deck = decks.createRecallDeck('alice-deck', 'My words', deckWords, 1000);
-    save.queueCloudProgress('learning', { words: {}, recalls: {}, sessions: {}, decks: { [deck.id]: deck }, preferences: { level: 'B1', goal: 'work', minutes: 15, updatedAt: 1000 } });
+    const reviewSession = decks.startRecallDeck(decks.createReviewSession('alice-review', deckWords, 8, 1000), 'alice-review-round', 1001);
+    save.queueCloudProgress('learning', { words: {}, recalls: {}, sessions: {}, decks: { [deck.id]: deck }, reviewSession, preferences: { level: 'B1', goal: 'work', minutes: 15, updatedAt: 1000 } });
     await save.flushCloudProgress('learning');
     assert.equal(remote.learning.preferences.level, 'B1', 'learning preferences use the account-owned progress store');
     assert.equal(remote.learning.decks[deck.id].words.length, 5, 'recall decks sync in the same account-owned store');
+    assert.equal(remote.learning.reviewSession.run.id, reviewSession.run.id, 'unfinished shared review rounds sync to the owning account');
     // Switching accounts discards the previous account's cached progress.
     globalThis.__syncFetch = async (_url, init) => !init?.method ? Response.json({ userId: "bob", progress: {} })
       : Response.json({ userId: "bob", data: JSON.parse(init.body).data });
@@ -72,6 +74,7 @@ test("cloud sync preserves in-flight edits, receives merged saves, and avoids sa
     assert.equal(localStorage.getItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY), "bob");
     assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.learning)).preferences, undefined, 'the previous account learning preferences are cleared');
     assert.deepEqual(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.learning)).decks, {}, 'another account cannot receive the previous account decks');
+    assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.learning)).reviewSession, undefined, 'another account cannot receive the previous account flashcards');
     assert.equal(p.isVocabularyLearned(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.vocabulary)), a), false);
     assert.equal(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.books)).page ?? null, null, "the previous account's bookmark is cleared");
   } finally {

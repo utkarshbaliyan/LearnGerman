@@ -12,23 +12,25 @@ available. Vocabulary, Today and Review show the same collected-word counts.
 ## Today and personal review
 
 Today and Review now share one illustrated learning hub and one navigation entry.
-Accessible tabs switch between the daily plan and a 5–15-word active recall deck
-builder. The builder has a sage introduction, lilac selection panel and blue saved
-decks; its controls and typed recall panels fit 320px layouts in both themes.
-Existing scheduled word and mistake practice stays in a collapsible section.
+Accessible tabs switch between the daily plan and one shared Review word box.
+Practice opens an 8/10/12-word size selector, followed by reveal-and-rate
+flashcards. The sage introduction, blue size panel and familiar-word action use
+the existing palette. Only explicitly reviewed library words and saved reading
+words enter the deck; Mark as read updates the shared familiar progress. An
+unfinished round can resume, and fresh translation mistakes remain collapsible.
 
 The shared hub uses a warm yellow welcome panel with the existing reading-room
 illustration, a topic illustration beside the resumable session, and
-sage/lilac/yellow learning evidence cards. Review decks reuse the book artwork;
-saved words, scheduled vocabulary and mistake practice retain sage, lilac and
-peach sections with matching topic illustrations. The existing atlas also
+sage/lilac/yellow learning evidence cards. Review reuses the book artwork and
+retains source labels for library, story and book words. Mistake practice keeps
+its peach section and matching topic illustration. The existing atlas also
 illustrates the exploration links. All artwork is decorative and reuses already
 published assets; no generation, cover reassignment or automation was started.
 
 These learning-page colours sit within the shared platform palette, with separate
 dark-theme surfaces, readable actions, and compact illustrations on mobile.
-Progress, review schedules, answer visibility and the daily session behavior
-remain unchanged.
+Word progress and review schedules stay shared across sections. Flashcards reveal
+answers on demand; the daily session retains its existing behavior.
 
 The current refinement uses warm paper and dark green surfaces, compact navigation,
 condensed uppercase headings and a flat four-column story gallery. It takes visual

@@ -8,31 +8,32 @@ and reader links open the Review tab. Tab changes retain the active daily sessio
 and current recall input. Existing daily preferences, reading sessions, narration,
 word stacks and translation mistake review remain available.
 
-Review starts with a named active recall deck builder. Learners choose 5–15
-different German card identities from the A1–C1 vocabulary catalog and their saved
-story/book words, mixing sources when useful. English meanings appear during
-selection; German models remain hidden. Search is bounded to 24 public catalog
-results and never sends the full vocabulary catalog to the browser.
+Review starts with one box containing the words added to Review in the word
+library and the story/book stacks. The list deduplicates German headwords and
+retains source context. Unmarked catalog words, familiar words and unsaved stack
+entries never fill the deck; English synonyms do not add unrelated headwords.
+The browser resolves only explicit review keys, across A1–C1, in bounded batches.
 
-Each round shuffles the selected words and asks for typed English-to-German recall.
-The existing shared vocabulary action saves the first attempt and FSRS update
-before revealing the model. Source-sentence hints and reveals mark assistance.
-Deck state saves the same attempt ID; a failed deck save can retry without rating
-the word twice. Returning learners resume at the next unchecked word. A completed
-round reports unaided, missed and assisted counts; repeated practice does not
-become a long-term retention claim.
+The workflow is Review word box → Practice → choose 8, 10 or 12 → flashcards.
+If fewer words are available, the round uses only those words, even a single one.
+Due words take priority, then the round shuffles its selected words. Learners
+recall the German, show the answer and rate Again/Hard/Good/Easy using the existing
+FSRS scheduler. Ratings are self-assessments and do not create independent recall
+evidence. Mark as read marks a word familiar, removes it from active Review, and
+updates Vocabulary/Today while retaining its FSRS memory and source metadata.
+The action is available in both the word box and revealed flashcards.
 
-Deck definitions and their latest rounds use the existing `learning` progress
-scope and account-owned D1 JSON store. No migration is required. A deck accepts
-5–15 unique canonical keys, safe reading links and at most one first answer per
-word per round. Same-round answers merge across devices; the newer round survives
-late answers from an old offline round. The UI permits 30 decks while merges
-retain valid independent decks created concurrently. Account changes clear deck
-selection and active rounds through the existing owner-isolation path.
+The latest round is validated and saved as `learning.reviewSession` in the
+existing account-owned JSON store; no migration is required. Same-round answers
+merge across devices, newer rounds survive late offline answers, and interrupted
+rounds resume at their next eligible unanswered word. A failed round save retries
+without rating the word twice. Words removed elsewhere are skipped. Existing
+named decks remain in `learning.decks`; their data and history are preserved.
+Account changes clear the active round and pending actions and reload metadata.
 
-Scheduled single-word and fresh translation reviews remain available in a
-collapsible section below the deck builder. The Today tab continues to show the
-shared word counts, existing learning evidence and resumable daily plan.
+Fresh translation mistake practice remains in a collapsible section below the
+word deck. The Today tab keeps its existing typed recall, shared word counts,
+learning evidence and resumable daily plan.
 
 ## Connected reading vocabulary
 
@@ -102,6 +103,14 @@ AI feedback and help reports are uncalibrated practice evidence. Real learner an
 teacher validation remain necessary after release.
 
 ## Verification completed
+
+- Shared Review flashcards: all 165 tests, TypeScript, the production build and
+  migration contract passed. Coverage includes explicit word selection without
+  synonym filler, 8/10/12 rounds and single-word shortages, round reload/merging,
+  familiar marks that preserve FSRS memory, bounded metadata lookup and account
+  isolation. Browser checks covered library/story/book sources, hidden answers,
+  all four ratings, Mark as read updating Vocabulary, completion and resume.
+  Desktop and 320px layouts passed in both themes; the daily plan remains available.
 
 - Combined hub and recall decks: all 159 tests, TypeScript, the production build
   and migration contract passed. Coverage includes 5–15 unique words, malformed

@@ -38,7 +38,7 @@ test("combines Today and Review at home and preserves review bookmarks and the s
   assert.equal(new URL(oldReview.headers.get('location'), 'http://localhost').search, '?view=review');
   const review = await renderRoute('/?view=review');
   assert.equal(review.status, 200);
-  assert.match(await review.text(), /Your active recall decks/);
+  assert.match(await review.text(), /Your review deck/);
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();

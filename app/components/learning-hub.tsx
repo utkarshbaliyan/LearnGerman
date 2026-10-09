@@ -13,7 +13,7 @@ export function LearningHub({ stories, initialView }: { stories: ReadingSummary[
   useEffect(() => setView(initialView), [initialView]);
   return <main className="learning-page learning-hub"><LearningHero kind="today" />
     <Tabs value={view} onValueChange={value => { const next = value === 'review' ? 'review' : 'today'; setView(next); router.replace(next === 'review' ? '/?view=review' : '/', { scroll: false }); }}>
-      <TabsList className="learning-hub-tabs" aria-label="Today and Review"><TabsTrigger value="today">Today</TabsTrigger><TabsTrigger value="review">Review · 5–15 words</TabsTrigger></TabsList>
+      <TabsList className="learning-hub-tabs" aria-label="Today and Review"><TabsTrigger value="today">Today</TabsTrigger><TabsTrigger value="review">Review</TabsTrigger></TabsList>
       <TabsContent value="today" forceMount hidden={view !== 'today'}><TodayDashboard stories={stories} /></TabsContent>
       <TabsContent value="review" forceMount hidden={view !== 'review'}><PersonalReview /></TabsContent>
     </Tabs>

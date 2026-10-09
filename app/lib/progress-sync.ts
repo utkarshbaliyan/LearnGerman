@@ -258,6 +258,14 @@ export function scheduleVocabularyReview(current: VocabularyProgress, word: Voca
   return { ...next, cards: { ...next.cards, [key]: { ...next.cards![key], dueAt: now + minutes * 60000, intervalMinutes: minutes } } };
 }
 
+/** A self-marked familiar word leaves Review without erasing its memory history. */
+export function markVocabularyRead(current: VocabularyProgress, word: VocabularyIdentity, now = Date.now()): VocabularyProgress {
+  const next = setVocabularyStatus(current, word, 'learned', now);
+  const key = vocabularyCardKey(word), previous = current.cards?.[key];
+  if (previous) next.cards![key] = { ...previous, status: 'learned', updatedAt: next.cards![key].updatedAt };
+  return next;
+}
+
 export function vocabularyReviewDueAt(progress: VocabularyProgress, word: VocabularyIdentity) {
   return isVocabularyReview(progress, word) ? progress.cards?.[vocabularyCardKey(word)]?.dueAt ?? 0 : Infinity;
 }
