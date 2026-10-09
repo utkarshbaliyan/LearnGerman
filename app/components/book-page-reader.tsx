@@ -3,14 +3,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { narrationTokens, spokenWordAt, validNarrationTiming, type NarrationAsset, type NarrationTiming } from '@/app/lib/reading-narration';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useReaderWordStack } from './reader-word-stack';
+import type { WordSource } from '@/app/lib/progress-sync';
 
 const wordKey = (word: string) => word.toLowerCase().replace(/[^a-zäöüßé]/g, '');
 
-export function BookPageReader({ paragraphs, translations, glosses, audio }: {
+export function BookPageReader({ paragraphs, translations, glosses, audio, source }: {
   paragraphs: string[];
   translations: string[];
   glosses: Record<string, string>;
   audio?: NarrationAsset;
+  source: WordSource;
 }) {
   const player = useRef<HTMLAudioElement>(null);
   const frame = useRef(0);
@@ -20,6 +23,8 @@ export function BookPageReader({ paragraphs, translations, glosses, audio }: {
   const [showTranslations, setShowTranslations] = useState(false);
   const [speed, setSpeed] = useState(.85);
   const words = useMemo(() => narrationTokens(paragraphs.join('\n\n')), [paragraphs]);
+  const { collect, stack } = useReaderWordStack(source);
+  const [openedGloss, setOpenedGloss] = useState<string | null>(null);
 
   useEffect(() => {
     if (!audio) return;
@@ -47,8 +52,8 @@ export function BookPageReader({ paragraphs, translations, glosses, audio }: {
     return () => cancelAnimationFrame(frame.current);
   }, [follow]);
 
-  return <TooltipProvider delayDuration={100}><div className="book-page-sheet">
-    <p className="reading-help">Hover over or tap a word for its English meaning.</p>
+  return <TooltipProvider delayDuration={100}><div className="book-page-sheet reading-with-stack"><div className="reading-copy">
+    <p className="reading-help">Hover for a meaning. Click a word to collect it in your stack.</p>
     <div className="book-page-audio">
       {audio ? <audio ref={player} src={audio.src} controls preload="metadata" aria-label="Play this whole page in German"
         onLoadedMetadata={event => { event.currentTarget.defaultPlaybackRate = speed; event.currentTarget.playbackRate = speed; }}
@@ -68,9 +73,10 @@ export function BookPageReader({ paragraphs, translations, glosses, audio }: {
       <p lang="de" className="reading-prose reading-prose-a1">{words[index].map((part, partIndex) => <span key={partIndex} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>
         {part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, tokenIndex) => {
           const meaning = glosses[wordKey(token)];
-          return meaning ? <Tooltip key={tokenIndex}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={tokenIndex}>{token}</span>;
+          const glossId = `${part.wordIndex}-${tokenIndex}`;
+          return meaning ? <Tooltip key={tokenIndex} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={() => { setOpenedGloss(glossId); collect(token, meaning, paragraph); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={tokenIndex}>{token}</span>;
         })}</span>)}</p>
       {showTranslations && <p lang="en" className="book-paragraph-translation">{translations[index]}</p>}
     </section>)}
-  </div></TooltipProvider>;
+  </div>{stack}</div></TooltipProvider>;
 }

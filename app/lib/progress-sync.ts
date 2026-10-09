@@ -26,7 +26,54 @@ export type VocabularyProgress = {
   legacyMigrated: boolean;
   cards?: Record<string, VocabularyReviewCard>;
   guessStreak?: { current: number; best: number; updatedAt: number };
+  words?: Record<string, CollectedVocabularyWord>;
+  recalls?: Record<string, VocabularyRecallAttempt>;
 };
+
+export type VocabularyRecallAttempt = { id: string; key: string; at: number; correct: boolean; assisted: boolean; elapsedDays: number };
+export function readVocabularyRecalls(value: unknown): Record<string, VocabularyRecallAttempt> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(Object.entries(value).flatMap(([id, raw]) => {
+    if (!raw || typeof raw !== 'object') return [];
+    const r = raw as VocabularyRecallAttempt;
+    return /^[\p{L}\p{N}_: -]{1,200}$/u.test(id) && !['__proto__', 'constructor', 'prototype'].includes(id) && r.id === id && typeof r.key === 'string' && /^[\p{L}\p{N}_: -]{1,200}$/u.test(r.key)
+      && Number.isSafeInteger(r.at) && r.at >= 0 && typeof r.correct === 'boolean' && typeof r.assisted === 'boolean' && Number.isFinite(r.elapsedDays) && r.elapsedDays >= 0 && r.elapsedDays <= 100000
+      ? [[id, { id, key: r.key, at: r.at, correct: r.correct, assisted: r.assisted, elapsedDays: r.elapsedDays }]] : [];
+  }).sort((a, b) => (a[1] as VocabularyRecallAttempt).at - (b[1] as VocabularyRecallAttempt).at || String(a[0]).localeCompare(String(b[0]))).slice(-1000)) as Record<string, VocabularyRecallAttempt>;
+}
+
+export type WordSource = { kind: 'story' | 'book'; id: string; title: string; href: string; level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' };
+export type CollectedVocabularyWord = { german: string; english: string; context: string; source: WordSource; createdAt: number; updatedAt: number; progressByHeadword: true };
+export type CollectWordInput = Omit<CollectedVocabularyWord, 'createdAt' | 'updatedAt' | 'progressByHeadword'>;
+export const MAX_COLLECTED_WORDS = 500;
+
+export function readCollectedWords(value: unknown): Record<string, CollectedVocabularyWord> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(Object.entries(value).flatMap(([key, raw]) => {
+    if (!raw || typeof raw !== 'object') return [];
+    const w = raw as CollectedVocabularyWord, s = w.source;
+    if (typeof w.german !== 'string' || !w.german.trim() || w.german.length > 100 || typeof w.english !== 'string' || !w.english.trim() || w.english.length > 600 || typeof w.context !== 'string' || w.context.length > 600
+      || !s || !['story', 'book'].includes(s.kind) || typeof s.id !== 'string' || !/^[a-zA-Z0-9_-]{1,200}$/.test(s.id) || typeof s.title !== 'string' || s.title.length > 200
+      || typeof s.href !== 'string' || !/^\/(?:stories\/[a-zA-Z0-9_-]+|books\/(?:a1|a2|b1)\/[a-z0-9-]+\/[1-9]\d*)$/.test(s.href) || !['A1', 'A2', 'B1', 'B2', 'C1'].includes(s.level)
+      || ![w.createdAt, w.updatedAt].every(n => Number.isSafeInteger(n) && n >= 0) || key !== vocabularyCardKey(w)) return [];
+    return [[key, { german: w.german, english: w.english, context: w.context, source: { kind: s.kind, id: s.id, title: s.title, href: s.href, level: s.level }, createdAt: w.createdAt, updatedAt: w.updatedAt, progressByHeadword: true }]];
+  }).sort((a, b) => (a[1] as CollectedVocabularyWord).updatedAt - (b[1] as CollectedVocabularyWord).updatedAt || String(a[0]).localeCompare(String(b[0])))) as Record<string, CollectedVocabularyWord>;
+}
+
+export function collectVocabularyWord(current: VocabularyProgress, input: CollectWordInput, now = Date.now()): VocabularyProgress {
+  const key = vocabularyCardKey(input), words = readCollectedWords(current.words);
+  if (!words[key] && Object.keys(words).length >= MAX_COLLECTED_WORDS) throw new Error('Your collected deck has reached 500 words. Existing words remain available.');
+  const word = readCollectedWords({ [key]: { ...input, context: input.context.slice(0, 600), createdAt: words[key]?.createdAt ?? now, updatedAt: now, progressByHeadword: true } })[key];
+  if (!word) throw new Error('This word could not be saved.');
+  const previous = current.cards?.[key];
+  let next = current;
+  if (!previous || !isVocabularyReview(current, word)) {
+    next = setVocabularyStatus(current, word, 'review', now);
+    if (previous?.memory) next.cards![key].memory = previous.memory;
+  }
+  // Repeated saves add source metadata without restarting an existing schedule.
+  return { ...next, words: { ...words, [key]: words[key] ?? word } };
+}
 
 export function readGuessStreak(value: unknown): NonNullable<VocabularyProgress["guessStreak"]> | undefined {
   if (!value || typeof value !== "object") return undefined;
@@ -61,6 +108,14 @@ export function vocabularyCardKey(word: VocabularyIdentity) {
 export function mergeVocabularyProgress(local: unknown, remote: unknown): VocabularyProgress {
   const a = (remote ?? {}) as Partial<VocabularyProgress>;
   const b = (local ?? {}) as Partial<VocabularyProgress>;
+  const words = { ...readCollectedWords(a.words) };
+  for (const [key, word] of Object.entries(readCollectedWords(b.words))) {
+    if (!words[key] || word.updatedAt > words[key].updatedAt || (word.updatedAt === words[key].updatedAt && JSON.stringify(word) > JSON.stringify(words[key]))) words[key] = word;
+  }
+  const recalls = { ...readVocabularyRecalls(a.recalls) };
+  for (const [key, recall] of Object.entries(readVocabularyRecalls(b.recalls))) {
+    if (!recalls[key] || recall.at > recalls[key].at || (recall.at === recalls[key].at && JSON.stringify(recall) > JSON.stringify(recalls[key]))) recalls[key] = recall;
+  }
   const streaks = [readGuessStreak(a.guessStreak), readGuessStreak(b.guessStreak)].filter((s) => s !== undefined);
   // Latest answer owns the current run; best scores never move backwards.
   streaks.sort((x, y) => y.updatedAt - x.updatedAt || x.current - y.current);
@@ -80,7 +135,7 @@ export function mergeVocabularyProgress(local: unknown, remote: unknown): Vocabu
   }
   for (const key of learned) review.delete(key);
   return { learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: a.legacyMigrated === true || b.legacyMigrated === true,
-    ...(Object.keys(cards).length ? { cards } : {}), ...(guessStreak ? { guessStreak } : {}) };
+    ...(Object.keys(cards).length ? { cards } : {}), ...(guessStreak ? { guessStreak } : {}), ...(Object.keys(words).length ? { words: readCollectedWords(words) } : {}), ...(Object.keys(recalls).length ? { recalls: readVocabularyRecalls(recalls) } : {}) };
 }
 
 export type GrammarProgress = {
@@ -275,6 +330,8 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
     legacyMigrated: stored.legacyMigrated === true || shouldMigrateLegacy,
     ...(readGuessStreak(stored.guessStreak) ? { guessStreak: readGuessStreak(stored.guessStreak) } : {}),
     ...(stored.cards ? { cards } : {}),
+    ...(Object.keys(readCollectedWords(stored.words)).length ? { words: readCollectedWords(stored.words) } : {}),
+    ...(Object.keys(readVocabularyRecalls(stored.recalls)).length ? { recalls: readVocabularyRecalls(stored.recalls) } : {}),
   };
 }
 
@@ -285,6 +342,8 @@ export function writeVocabularyProgress(storage: StorageLike, progress: Vocabula
     legacyMigrated: progress.legacyMigrated,
     ...(readGuessStreak(progress.guessStreak) ? { guessStreak: readGuessStreak(progress.guessStreak) } : {}),
     ...(progress.cards ? { cards: progress.cards } : {}),
+    ...(progress.words ? { words: readCollectedWords(progress.words) } : {}),
+    ...(progress.recalls ? { recalls: readVocabularyRecalls(progress.recalls) } : {}),
   }));
 }
 

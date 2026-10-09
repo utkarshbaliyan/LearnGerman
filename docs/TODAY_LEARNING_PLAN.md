@@ -1,5 +1,31 @@
 # Today, personal review and learning evidence
 
+## Connected reading vocabulary
+
+Stories, embedded course stories, Today readings, and all three book readers have
+a word stack. Word clicks collect the displayed form, gloss and source locally in
+the current reader. Add to review saves a word into the existing account-owned
+`vocabulary` scope, immediately available in Vocabulary, its collected-word filter,
+flashcards, Personal Review and Today. Unsaved stack entries are temporary; removing
+an entry from the stack does not delete a saved word.
+
+The shared German card key deduplicates articles and the existing supported verb
+forms. Unrecognized inflections remain separate forms; this is not a full German
+lemmatizer. Saved source context and glosses are retained. Catalog matches keep
+their catalog placement, while extra reading forms retain their source level.
+The first saved source is retained when the same card is encountered elsewhere.
+
+Existing `learning.words` are copied into the shared deck without deleting their
+original records, resetting due dates, or replacing newer vocabulary decisions.
+All reading review uses the existing FSRS schedule. Typed attempts and their
+card updates are saved together in vocabulary; older learning recalls remain
+included without duplication. Self-ratings and familiarity marks remain distinct
+from delayed typed recall evidence. Sign-in synchronizes the shared metadata,
+schedule and typed recall through the existing D1 progress API; no migration or
+authentication changes are needed. New collection is capped at 500 words; merges
+retain existing words if concurrent devices exceed the cap. Typed history retains
+up to 1,000 attempts.
+
 ## Execution order
 
 1. Make `/` a Today dashboard. Save the learner's self-selected level, goal and
@@ -43,6 +69,10 @@ teacher validation remain necessary after release.
 
 ## Verification completed
 
+- Connected word stacks: all 152 tests, TypeScript, the production build and
+  migration contract passed. Desktop and 320px mobile checks covered collection
+  in stories and all three books, one-click saving, filtered vocabulary practice,
+  typed review, shared due counts and schedule preservation across sources.
 - 147 tests passed, including account isolation, merge preservation, review
   timing, unchecked reviews, fresh-sentence exclusions, retries and quota usage.
 - TypeScript checks, the production build and migration contract passed.

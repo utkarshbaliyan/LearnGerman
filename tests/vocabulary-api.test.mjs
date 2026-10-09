@@ -95,6 +95,20 @@ test("vocabulary API persists schedules, merges concurrent browsers, and isolate
     assert.equal((await put("alice", mistake)).status, 200);
     assert.equal((await put("alice", streakRun)).status, 200);
     assert.deepEqual((await get("alice")).progress.vocabulary.guessStreak, { current: 0, best: 1, updatedAt: 800000 });
+    const source = { kind: 'book', id: 'der-schluessel-im-blauen-korb', title: 'Page 1', href: '/books/a1/der-schluessel-im-blauen-korb/1', level: 'A1' };
+    const readingWord = { german: 'Bücherkorb', english: 'book basket', context: 'Der Bücherkorb ist blau.', source };
+    const custom = p.collectVocabularyWord((await get('alice')).progress.vocabulary, readingWord, 900000);
+    const recall = { id: 'typed-book-first', key: 'de:bücherkorb', at: 1000000, correct: true, assisted: false, elapsedDays: 0 };
+    const ratedBook = p.rateVocabularyFlashcard(custom, readingWord, 3, recall.at, recall);
+    const another = p.collectVocabularyWord(custom, { ...readingWord, german: 'Briefkasten', english: 'mailbox', source: { ...source, kind: 'story', id: 'reading-a2-25-v1', href: '/stories/reading-a2-25-v1' } }, 1100000);
+    assert.ok((await Promise.all([put('alice', ratedBook), put('alice', another)])).every(r => r.status === 200));
+    const freshDeck = (await get('alice')).progress.vocabulary;
+    assert.equal(freshDeck.words['de:bücherkorb'].source.href, source.href);
+    assert.ok(freshDeck.words['de:briefkasten']);
+    assert.deepEqual(freshDeck.recalls[recall.id], recall);
+    assert.deepEqual(freshDeck.cards[recall.key], ratedBook.cards[recall.key]);
+    await put('alice', custom);
+    assert.deepEqual((await get('alice')).progress.vocabulary.cards[recall.key], ratedBook.cards[recall.key], 'stale reading save cannot undo practice');
     assert.deepEqual((await get("bob")).progress, {});
   } finally {
     await vite.close();

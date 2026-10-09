@@ -8,6 +8,7 @@ import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import { PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
 import { readGrammarProgress } from "@/app/lib/progress-sync";
 import { ALL_VOCABULARY } from "@/app/vocabulary/data";
+import { connectedVocabulary } from '@/app/lib/saved-vocabulary';
 import { Progress } from "@/components/ui/progress";
 
 export function LearningProgressOverview({ completedChapters, chapterTotal, grammarLessonIds, courseReady }: {
@@ -17,7 +18,8 @@ export function LearningProgressOverview({ completedChapters, chapterTotal, gram
   courseReady: boolean;
 }) {
   const { completedIds, hydrated: storiesHydrated } = useStoryProgress();
-  const { isLearned, hydrated: vocabularyHydrated } = useVocabularyProgress(ALL_VOCABULARY);
+  const { progress: vocabulary, isLearned, hydrated: vocabularyHydrated } = useVocabularyProgress(ALL_VOCABULARY);
+  const vocabularyCatalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabulary), [vocabulary]);
   const [completedGrammarIds, setCompletedGrammarIds] = useState<string[]>([]);
   const [grammarReady, setGrammarReady] = useState(false);
   const availableStories = useMemo(() => ["A1", "A2", "B1"].flatMap(level => Array.from({ length: 24 }, (_, index) => ({ id: readingEditionId(level, index + 1) }))), []);
@@ -34,7 +36,7 @@ export function LearningProgressOverview({ completedChapters, chapterTotal, gram
     { label: "Course", value: completedChapters, total: chapterTotal, suffix: "chapters", ready: courseReady },
     { label: "Stories", value: availableStories.filter((story) => completedIds.has(story.id)).length, total: availableStories.length, suffix: "stories", ready: storiesHydrated },
     { label: "Grammar", value: grammarLessonIds.filter((id) => completedGrammarIds.includes(id)).length, total: grammarLessonIds.length, suffix: "lessons", ready: grammarReady },
-    { label: "Vocabulary", value: ALL_VOCABULARY.filter(isLearned).length, total: ALL_VOCABULARY.length, suffix: "words", ready: vocabularyHydrated },
+    { label: "Vocabulary", value: vocabularyCatalog.filter(isLearned).length, total: vocabularyCatalog.length, suffix: "words", ready: vocabularyHydrated },
   ];
 
   return <section className="learning-progress-overview" aria-labelledby="learning-progress-title">
@@ -45,7 +47,7 @@ export function LearningProgressOverview({ completedChapters, chapterTotal, gram
         return <article key={item.label} className={item.ready ? "is-ready" : ""}>
           <div><span>{item.label}</span><strong>{percent}%</strong></div>
           <Progress value={percent} aria-label={`${item.label}: ${percent}% complete`} />
-          <p>{item.value.toLocaleString("en")} of {item.total.toLocaleString("en")} {item.suffix} completed</p>
+          <p>{item.value.toLocaleString("en")} of {item.total.toLocaleString("en")} {item.suffix} {item.label === 'Vocabulary' ? 'marked familiar' : 'completed'}</p>
         </article>;
       })}
     </div>

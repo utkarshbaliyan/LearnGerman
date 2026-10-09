@@ -2,8 +2,9 @@
 import { delayedRecallSummary, type LearningProgress } from '@/app/lib/learning-state';
 import type { TranslationMemory } from '@/app/lib/translation-memory';
 import { TopicArt } from './topic-art';
-export function LearningEvidence({ progress, memory }: { progress: LearningProgress; memory: TranslationMemory | null }) {
-  const recall = delayedRecallSummary(progress), sessions = Object.values(progress.sessions).filter(s => s.finishedAt), complete = sessions.filter(s => !s.outputSkipped).length;
+import type { VocabularyProgress } from '@/app/lib/progress-sync';
+export function LearningEvidence({ progress, memory, vocabulary }: { progress: LearningProgress; memory: TranslationMemory | null; vocabulary: VocabularyProgress }) {
+  const recall = delayedRecallSummary({ ...progress, recalls: { ...progress.recalls, ...vocabulary.recalls } }), sessions = Object.values(progress.sessions).filter(s => s.finishedAt), complete = sessions.filter(s => !s.outputSkipped).length;
   return <section className="learning-evidence" aria-labelledby="learning-evidence-title"><span className="reading-eyebrow">Your learning evidence</span><h2 id="learning-evidence-title">What you can recall and use</h2><div className="learning-evidence-grid">
     <article data-tone="sage"><TopicArt kind="nature" className="learning-evidence-art" /><span>Seven-day word recall</span><strong>{recall.total ? `${recall.correct} / ${recall.total}` : 'Not checked yet'}</strong><p>Model words matched after at least seven days since their last recorded practice, before revealing or using source-sentence help.</p></article>
     <article data-tone="lilac"><TopicArt kind="friends" className="learning-evidence-art" /><span>Fresh-context delayed output</span><strong>{memory?.delayed.total ? `${memory.delayed.correct} / ${memory.delayed.total}` : 'Not checked yet'}</strong><p>First translations accepted by AI in new review contexts after at least seven days since the last recorded practice of that review item. Help use is self-reported; revisions are excluded.</p></article>

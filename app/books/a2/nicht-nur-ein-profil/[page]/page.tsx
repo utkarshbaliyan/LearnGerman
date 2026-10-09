@@ -22,7 +22,7 @@ export default async function A2BookPage({ params }: { params: Promise<{ page: s
     <Link className="reading-back" href={A2_BOOK_PATH}><ArrowLeft size={17} />{A2_BOOK.title} · Contents</Link>
     <article className="book-volume book-volume--page">
       <header className="book-page-header"><span className="book-page-running-title" lang="de">{A2_BOOK.title}</span><span className="reading-eyebrow">Chapter {page.chapter} · {page.chapterTitle}</span><h1 lang="de">{page.title}</h1><p>Page {page.number} of 200</p><progress value={page.number} max={200} aria-label={`Page ${page.number} of 200`} /><BookBookmarkButton page={page.number} bookId={A2_BOOK.id} /></header>
-      <BookPageReader paragraphs={page.paragraphs} translations={page.translations} glosses={page.glosses} audio={page.audio} />
+      <BookPageReader paragraphs={page.paragraphs} translations={page.translations} glosses={page.glosses} audio={page.audio} source={{ kind: 'book', id: A2_BOOK.id, title: `${A2_BOOK.title} · Page ${page.number}`, href: `${A2_BOOK_PATH}/${page.number}`, level: 'A2' }} />
       <BookPageNavigation page={page.number} bookId={A2_BOOK.id} path={A2_BOOK_PATH} />
       <p className="book-leaf-number" aria-hidden="true">{page.number}</p>
     </article>

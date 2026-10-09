@@ -1,6 +1,7 @@
 @import "tailwindcss" source("./");
 @import "tw-animate-css";
 @import "../vendor/shadcn-tailwind-4.13.0.css";
+@import "./word-stack.css";
 @source "../components";
 
 :root {

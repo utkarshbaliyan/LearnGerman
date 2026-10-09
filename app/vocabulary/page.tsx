@@ -26,7 +26,9 @@ import {
   type VocabularyWordClass,
 } from "@/app/vocabulary/data";
 import { VocabularyPractice } from "@/app/vocabulary/practice";
-import { vocabularyReviewDueAt } from "@/app/lib/progress-sync";
+import { connectedVocabulary } from '@/app/lib/saved-vocabulary';
+import { ConnectedWordProgress } from '@/app/components/connected-word-progress';
+import { vocabularyCardKey, vocabularyReviewDueAt, type CollectedVocabularyWord } from "@/app/lib/progress-sync";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -95,8 +97,9 @@ function GermanAnswer({ answer }: { answer: string }) {
   );
 }
 
-function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, onReveal, onComplete, onReview, onPronounce }: {
+function VocabularyCard({ word, saved, revealed, completed, review, dueAt, speaking, onReveal, onComplete, onReview, onPronounce }: {
   word: VocabularyWord;
+  saved?: CollectedVocabularyWord;
   revealed: boolean;
   completed: boolean;
   review: boolean;
@@ -121,6 +124,7 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
         {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Show German</span>}
       </button>
       {word.sourceUrl && <a className="vocabulary-source" href={word.sourceUrl} target="_blank" rel="noreferrer">Dictionary source ↗</a>}
+      {saved && <p className="vocabulary-source"><Link href={saved.source.href}>{saved.source.kind === 'book' ? 'From your book' : 'From your story'} →</Link></p>}
       {review && <p className="vocabulary-due-date">{dueAt === 0 ? "Ready for review" : `Review: ${new Date(dueAt).toLocaleString()}`}</p>}
       <div className="vocabulary-card-actions">
         <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Marked familiar</button>
@@ -136,16 +140,19 @@ export default function VocabularyPage() {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
+  const [collectionOnly, setCollectionOnly] = useState(false);
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
   const [speakingWordId, setSpeakingWordId] = useState<string | null>(null);
   const [pronunciationUnavailable, setPronunciationUnavailable] = useState(false);
-  const { progress: vocabularyProgress, hydrated, isLearned, isReview, setLearned, setReview, rateFlashcard, recordGuess } = useVocabularyProgress(ALL_VOCABULARY);
+  const { progress: vocabularyProgress, hydrated, isLearned, isReview, setLearned, setReview, rateFlashcard, recordGuess, storageError } = useVocabularyProgress(ALL_VOCABULARY);
   const deferredQuery = useDeferredValue(query);
 
-  const levelWords = useMemo(() => ALL_VOCABULARY.filter((word) => level === "all" || word.level === level), [level]);
+  const catalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabularyProgress), [vocabularyProgress]);
+  const levelWords = useMemo(() => catalog.filter(word => (level === "all" || word.level === level) && (!collectionOnly || Boolean(vocabularyProgress.words?.[vocabularyCardKey(word)]))), [catalog, level, collectionOnly, vocabularyProgress.words]);
+  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('collection') === 'reading') setCollectionOnly(true); if (params.get('view') === 'practice') setView('practice'); }, []);
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
@@ -194,6 +201,7 @@ export default function VocabularyPage() {
   }
 
   function clearFilters() {
+    setCollectionOnly(false);
     setQuery("");
     setProgressFilter("all");
     setCategory("all");
@@ -246,7 +254,7 @@ export default function VocabularyPage() {
 
   const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–C1" : level;
-  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
+  const hasActiveFilters = collectionOnly || query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
 
   return (
@@ -273,6 +281,10 @@ export default function VocabularyPage() {
           <Progress value={progress} aria-label={`${Math.round(progress)}% marked familiar`} />
           <span><strong>{selectedReview}</strong> in review</span>
         </div>
+
+        <ConnectedWordProgress vocabulary={vocabularyProgress} />
+        {storageError && <p role="alert">{storageError}</p>}
+        <div className="vocabulary-collection-toggle" aria-label="Vocabulary collection"><Button variant={collectionOnly ? "outline" : "default"} aria-pressed={!collectionOnly} onClick={() => { setCollectionOnly(false); setVisibleLimit(VISIBLE_BATCH); }}>All vocabulary</Button><Button variant={collectionOnly ? "default" : "outline"} aria-pressed={collectionOnly} onClick={() => { clearFilters(); setLevel("all"); setCollectionOnly(true); }}>From stories & books · {Object.keys(vocabularyProgress.words ?? {}).length}</Button></div>
 
         <Tabs value={view} onValueChange={setView} className="vocab-sections">
           <TabsList variant="line" aria-label="Vocabulary sections">
@@ -331,7 +343,7 @@ export default function VocabularyPage() {
 
         {visibleWords.length ? (
           <>
-            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} dueAt={vocabularyReviewDueAt(vocabularyProgress, word)} speaking={speakingWordId === word.id} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} onPronounce={() => pronounceWord(word)} />)}</div>
+            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} saved={vocabularyProgress.words?.[vocabularyCardKey(word)]} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} dueAt={vocabularyReviewDueAt(vocabularyProgress, word)} speaking={speakingWordId === word.id} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} onPronounce={() => pronounceWord(word)} />)}</div>
             {renderedWords.length < visibleWords.length && <Button className="show-more-vocabulary" variant="outline" onClick={() => setVisibleLimit((current) => current + VISIBLE_BATCH)}>Show {Math.min(VISIBLE_BATCH, visibleWords.length - renderedWords.length)} more words</Button>}
           </>
         ) : (

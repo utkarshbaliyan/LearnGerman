@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { TRANSLATION_LEVELS, sentenceKey } from './translation-practice';
 import type { ReadingSummary } from './reading-path';
-import { readReviewCards, type VocabularyReviewCard } from './progress-sync';
+import { readReviewCards, vocabularyCardKey, type VocabularyReviewCard } from './progress-sync';
 
 export const LEARNING_STORAGE_KEY = 'leselaut:learning:v1';
 export const DAY = 86_400_000;
@@ -50,7 +50,7 @@ export function saveStoryWord(progress: LearningProgress, word: Omit<SavedWord, 
 export function recallMatches(answer: string, expected: string) { return sentenceKey(answer) === sentenceKey(expected); }
 export function delayedRecallSummary(progress: LearningProgress) {
   const attempts = Object.values(progress.recalls).filter(r => !r.assisted && r.elapsedDays >= 7);
-  return { correct: attempts.filter(r => r.correct).length, total: attempts.length, words: new Set(attempts.filter(r => r.correct).map(r => r.key)).size };
+  return { correct: attempts.filter(r => r.correct).length, total: attempts.length, words: new Set(attempts.filter(r => r.correct).map(r => r.key.startsWith('word:') ? vocabularyCardKey({ german: r.key.slice(5), english: '' }) : r.key)).size };
 }
 export function localDay(now = new Date()) { return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`; }
 export function recommendStory(stories: ReadingSummary[], prefs: LearningPreferences, completed: Set<string>, sessions: LearningSession[]) {

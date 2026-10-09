@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { narrationTokens } from '@/app/lib/reading-narration';
@@ -9,8 +8,7 @@ import type { ReadingStory } from '@/app/lib/reading-path';
 import { useStoryProgress } from '@/app/hooks/use-story-progress';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { useLearningProgress } from '@/app/hooks/use-learning-progress';
-import { personalWordKey, saveStoryWord } from '@/app/lib/learning-state';
+import { useReaderWordStack } from './reader-word-stack';
 
 const wordKey = (word: string) => word.toLowerCase().replace(/[^a-zäöüßé]/g, '');
 
@@ -29,19 +27,17 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
   const { activeWord } = useReadingNarration();
   const [showTranslations, setShowTranslations] = useState(false);
   const [openedGloss, setOpenedGloss] = useState<string | null>(null);
-  const [selectedWord, setSelectedWord] = useState<{ german: string; english: string; context: string } | null>(null);
-  const { progress: learning, update: updateLearning, hydrated: learningReady, storageError } = useLearningProgress();
+  const { collect, stack } = useReaderWordStack({ kind: 'story', id: story.id, title: story.title, href: `/stories/${story.id}`, level: story.level });
   const sentenceRows = useMemo(() => sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
     [sentenceTranslations]);
   const renderWords = (parts: { text: string; wordIndex: number | null }[], context: string) => parts.map((part, k) =>
     <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
       const meaning = glosses[wordKey(token)];
       const glossId = `${part.wordIndex}-${j}`;
-      return meaning ? <Tooltip key={j} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={event => { event.preventDefault(); setOpenedGloss(glossId); setSelectedWord({ german: token, english: meaning, context: context.slice(0, 1500) }); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
+      return meaning ? <Tooltip key={j} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={event => { event.preventDefault(); setOpenedGloss(glossId); collect(token, meaning, context); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
     })}</span>);
-  return <div className="reading-content">
-    <p className="reading-help">Tap a word for its meaning.</p>
-    {selectedWord && <aside className="learning-word-save" aria-label="Selected story word"><div><strong lang="de">{selectedWord.german}</strong><span>{selectedWord.english}</span></div><Button variant="outline" disabled={!learningReady || Boolean(learning.words[personalWordKey(selectedWord.german)]) || Object.keys(learning.words).length >= 500} onClick={() => updateLearning(p => saveStoryWord(p, { ...selectedWord, storyId: story.id }))}>{learning.words[personalWordKey(selectedWord.german)] ? 'Saved for review' : 'Save for tomorrow'}</Button><Link href="/review">Your review →</Link>{storageError && <p role="alert">{storageError}</p>}{Object.keys(learning.words).length >= 500 && <p>Your personal deck has reached 500 words. Existing words remain available for review.</p>}</aside>}
+  return <div className="reading-content reading-with-stack"><div className="reading-copy">
+    <p className="reading-help">Tap a word for its meaning and collect it in your word stack.</p>
     {sentenceRows && <button type="button" className="reading-translation-toggle" aria-pressed={showTranslations} onClick={() => setShowTranslations(value => !value)}>{showTranslations ? 'Hide English translations' : 'Show English translations'}</button>}
     <TooltipProvider delayDuration={100}><article lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
       {sentenceRows ? sentenceRows.map((paragraph, index) => <div className="reading-sentence-paragraph" key={index}>
@@ -52,7 +48,7 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
       </div>) : narrationTokens(story.text).map((paragraph, index) => <p key={index}>{renderWords(paragraph, paragraph.map(p => p.text).join(''))}</p>)}
     </article></TooltipProvider>
     {!sentenceRows && <details className="reading-support"><summary>Need the gist in English?</summary><p lang="en">{story.english}</p></details>}
-  </div>;
+  </div>{stack}</div>;
 }
 
 export function ReadingCheck({ story, onScore }: { story: ReadingStory; onScore?: (score: number) => void }) {

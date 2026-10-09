@@ -1,0 +1,46 @@
+.site-shell .reading-reader { max-width: 1180px; }
+.reading-reader > header, .reading-reader > .reading-audio, .reading-reader > .reading-check, .reading-reader > .reception-teaser, .reading-reader > .reading-reader-next { max-width: 760px; }
+.reading-with-stack { display: grid; grid-template-columns: minmax(0, 1fr) 285px; gap: 28px; align-items: start; }
+.reading-copy { min-width: 0; }
+.reader-word-stack { position: sticky; top: 88px; scroll-margin-top: 176px; margin-top: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); color: var(--ink); overflow: hidden; font-family: var(--font-ui), sans-serif; }
+.reader-word-stack .reader-stack-jump { display: none; }
+.reader-word-stack > details > summary { display: flex; align-items: center; gap: 12px; padding: 18px; cursor: pointer; background: color-mix(in srgb, var(--green-accent) 10%, var(--white)); font-size: 18px; font-weight: 600; list-style: none; }
+.reader-word-stack > details > summary::-webkit-details-marker { display: none; }
+.reader-word-stack > details > summary:after { content: '+'; margin-left: auto; }
+.reader-word-stack > details[open] > summary:after { content: '−'; }
+.reader-word-stack summary small { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; color: var(--ink-soft); }
+.reader-stack-body { padding: 16px; }
+.reader-stack-body > p { font-size: 13px; line-height: 1.65; margin: 0 0 14px; color: var(--ink-soft); }
+.reader-stack-empty { padding: 20px 12px; border: 1px dashed var(--line); border-radius: 10px; font-size: 14px; text-align: center; margin: 18px 0; }
+.reader-stack-body ul { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 12px; max-height: 55vh; overflow-y: auto; overscroll-behavior: contain; }
+.reader-stack-body li { padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); overflow-wrap: anywhere; }
+.reader-stack-word { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.reader-stack-word strong { font-size: 19px; }
+.reader-stack-word button { padding: 6px; border-radius: 5px; cursor: pointer; }
+.reader-stack-body li > p { font-size: 14px; line-height: 1.6; margin: 6px 0 12px; }
+.reader-stack-body [data-slot="button"] { font-size: 12px; width: 100%; white-space: normal; height: auto; min-height: 36px; }
+.reader-stack-context { font-size: 12px; margin: 0 0 12px; }
+.reader-stack-context summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.reader-stack-context p { margin-top: 8px; line-height: 1.7; }
+.reader-stack-status { display: block; color: var(--ink-soft); font-size: 11px; line-height: 1.6; margin-top: 8px; }
+.reader-stack-links { display: grid; gap: 10px; font-size: 13px; margin: 16px 0; }
+.reader-stack-links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.reader-stack-body .reader-stack-note { font-size: 11px; margin-bottom: 0; }
+.reader-word-stack button:focus-visible, .reader-word-stack a:focus-visible, .reader-word-stack summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.site-shell .book-reader--page { max-width: 1240px; }
+.book-volume.book-volume--page { padding-right: clamp(1.5rem, 4vw, 3rem); padding-left: clamp(1.5rem, 4vw, 3rem); }
+.book-page-header, .book-page-navigation { max-width: 760px; }
+.learning-session:has(.reading-with-stack) { max-width: none; }
+.connected-word-progress { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin: 28px 0; background: color-mix(in srgb, var(--green-accent) 6%, var(--white)); color: var(--ink); }
+.connected-word-progress h2 { font-family: var(--font-display), sans-serif; font-size: 28px; margin: 6px 0; }
+.connected-word-progress p { font-size: 13px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
+.connected-word-progress dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: center; }
+.connected-word-progress dl > div { display: flex; flex-direction: column-reverse; gap: 6px; }
+.connected-word-progress dt { font-size: 11px; color: var(--ink-soft); }
+.connected-word-progress dd { font-size: 26px; font-weight: 600; margin: 0; }
+.connected-word-progress > a { font-size: 13px; grid-column: 1 / -1; text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
+.vocabulary-collection-toggle { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+@media (max-width: 960px) { .reading-with-stack { grid-template-columns: minmax(0, 1fr) 245px; gap: 20px; } .connected-word-progress { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .reading-with-stack { display: flex; flex-direction: column; } .reading-copy { width: 100%; } .reader-word-stack { position: static; order: -1; width: 100%; margin: 0; } .reader-stack-body ul { max-height: 240px; } .reader-stack-body > p { margin-bottom: 10px; } .reader-stack-empty { padding: 12px; margin: 10px 0; } .connected-word-progress { padding: 20px; } .connected-word-progress dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .reader-word-stack .reader-stack-jump { display: inline-flex; position: fixed; z-index: 30; bottom: 18px; right: 20px; width: auto; box-shadow: 0 3px 16px #0003; } }
+@media (max-width: 380px) { .reader-word-stack { scroll-margin-top: 216px; } }

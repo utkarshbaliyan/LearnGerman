@@ -1,5 +1,14 @@
 # Illustrated LeseLaut interface
 
+## Reader word stack
+
+Story and book readers keep the reading column alongside a sticky word stack on
+desktop. Word clicks collect displayed forms and meanings; Add to review sends
+them to the shared vocabulary deck. On mobile the collapsible stack sits above
+the text, with a floating shortcut after collecting a word. The panel supports
+both themes and leaves narration, translations, bookmarks and page navigation
+available. Vocabulary, Today and Review show the same collected-word counts.
+
 ## Today and personal review
 
 Today uses a warm yellow welcome panel with the existing reading-room illustration,

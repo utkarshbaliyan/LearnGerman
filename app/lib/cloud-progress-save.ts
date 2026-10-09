@@ -115,8 +115,8 @@ export async function flushCloudProgress(scope: CloudProgressScope) {
 export function queueCloudProgress(scope: CloudProgressScope, data: unknown) {
   const serialized = JSON.stringify(data);
   if (lastQueued.get(scope) === serialized) return;
-  lastQueued.set(scope, serialized);
   cacheCloudProgress(scope, data);
+  lastQueued.set(scope, serialized);
   queueMicrotask(() => window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT)));
   pendingProgress.set(scope, { data, revision: ++nextRevision, owner: localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY) });
   if (savesPaused === 0 && cloudAuthenticated !== false) scheduleCloudProgress(scope);
