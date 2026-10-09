@@ -10,6 +10,18 @@ word stacks and translation mistake review remain available. Home opens directly
 with the tabs: its introductory banner and collected-word progress panel are
 removed. Collected-word progress remains on Vocabulary.
 
+Four Home cards introduce Stories, Grammar, Vocabulary and Active Learning with
+existing illustrations, useful links and section-specific saved progress.
+Stories count completions against the current published IDs. Grammar uses the
+same required-set merge with legacy course progress and links to its next
+unfinished lesson. Vocabulary is a read-only, bounded server calculation of
+the same connected catalog statuses used by its page, including reading words
+and legacy marks; no migration is written by this summary. Its full catalog is
+not downloaded on Home. Account changes abort and clear pending word summaries.
+Active Learning adds first-check activity counts to the existing account-owned
+memory response. Revisions are not counted twice, generated but unchecked sets
+remain separate, and activity is not treated as independent recall evidence.
+
 Review starts with one box containing the words added to Review in the word
 library and the story/book stacks. The list deduplicates German headwords and
 retains source context. Unmarked catalog words, familiar words and unsaved stack
@@ -105,6 +117,13 @@ AI feedback and help reports are uncalibrated practice evidence. Real learner an
 teacher validation remain necessary after release.
 
 ## Verification completed
+
+- Illustrated Home sections: all 169 tests, TypeScript, the production build
+  and migration contract passed. Tests cover connected vocabulary and legacy
+  marks, required grammar sets, bounded read-only summaries, first-check activity,
+  revisions and account ownership. Desktop and 320px checks in both themes
+  verified illustration loading, no horizontal overflow, matching Home/Vocabulary
+  counts and the shared Review shortcut with 8/10/12-word choices.
 
 - Home cleanup: all 165 tests, TypeScript, the production build and migration
   contract passed. Desktop and 320px checks in both themes verified the Home

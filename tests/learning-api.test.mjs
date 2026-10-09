@@ -29,7 +29,9 @@ test('fresh mistake reviews enforce account ownership, source validity, spacing,
     const getMemory = user => memory.GET(new Request('http://local/api/learning/memory', { headers: user ? { 'x-test-user': user } : {} }));
     const generate = { action: 'generate', level: 'A1', count: 1, requestId: 'memory-review-generate-01', learning: { reviewSource: source } };
     assert.equal((await getMemory()).status, 401);
-    assert.deepEqual((await (await getMemory('bob')).json()).reviews, []);
+    const bob = await (await getMemory('bob')).json();
+    assert.deepEqual(bob.reviews, []);
+    assert.deepEqual(bob.activity, { savedSets: 0, checkedSets: 0, checkedSentences: 0 });
     assert.equal((await post(generate, 'bob')).status, 404);
     assert.equal((await post({ ...generate, level: 'B2' })).status, 400);
     assert.equal(quota(), 0);
@@ -39,7 +41,9 @@ test('fresh mistake reviews enforce account ownership, source validity, spacing,
     assert.equal(inputs[0].focus.pattern, 'Subject–verb agreement');
     assert.equal(quota(), 1);
     const unchecked = await getMemory('alice'); assert.equal(unchecked.status, 200);
-    assert.equal((await unchecked.json()).reviews[0].attempts, 0, 'generated but unchecked reviews do not break or inflate memory');
+    const uncheckedMemory = await unchecked.json();
+    assert.equal(uncheckedMemory.reviews[0].attempts, 0, 'generated but unchecked reviews do not break or inflate memory');
+    assert.deepEqual(uncheckedMemory.activity, { savedSets: 2, checkedSets: 1, checkedSentences: 1 });
     assert.equal((await post(generate)).status, 200); assert.equal(quota(), 1, 'retry does not consume quota');
     response = await post({ action: 'draft', exerciseId: record.exerciseId, version: record.version, answers: ['Sie verkauft Äpfel.'], usedHelp: true }); record = await response.json();
     assert.equal(record.session.helpUsed, true);

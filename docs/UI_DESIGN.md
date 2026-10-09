@@ -11,6 +11,23 @@ available. Vocabulary and Review share the same collected-word progress.
 
 ## Today and personal review
 
+Home includes four illustrated section cards for Stories, Grammar, Vocabulary
+and Active Learning. The cards explain each activity, show saved progress and
+link straight into it; Grammar links to the next available unfinished lesson.
+Stories count the current published IDs, Grammar follows its existing required
+exercise sets, and Vocabulary matches the complete connected library counts.
+Active Learning reports checked sets and first-check sentence activity from the
+latest 200 saved sets, including helped practice, rather than a language-level
+score. The full word catalog and grammar exercises stay out of the Home client.
+
+The card artwork reuses `reading-room.png` and three checksum-identical existing
+illustrations: `home-grammar.webp` from `reading-a2-47-v1`,
+`home-vocabulary.webp` from `reading-a1-04-v1`, and `home-active-learning.webp`
+from `reading-b1-47-v2`. The extra placements do not exceed three uses per image;
+original cover assignments, R2 objects and paused automations remain intact.
+Neutral cards have gently tinted image panels and readable status accents in
+both themes. The grid becomes one column on mobile.
+
 Today and Review share one learning hub under the Home navigation entry.
 Accessible tabs switch between the daily plan and one shared Review word box.
 Practice opens an 8/10/12-word size selector, followed by reveal-and-rate

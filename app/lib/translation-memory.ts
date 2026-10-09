@@ -18,6 +18,16 @@ export function feedbackPattern(feedback: SentenceFeedback): TutorPatternId {
 export const reviewSourceKey = (s: TranslationReviewSource) => `${s.exerciseId}:${s.checkId}:${s.number}`;
 export type TranslationReview = { key: string; source: TranslationReviewSource; level: TranslationRecord['session']['level']; pattern: TutorPatternId; label: string; sourceAt: string; dueAt: number; attempts: number; latestCorrect?: boolean };
 export function buildTranslationMemory(records: TranslationRecord[], now = Date.now()) {
+  const activity = { savedSets: records.length, checkedSets: 0, checkedSentences: 0 };
+  for (const record of records) {
+    const check = record.session.checks?.[0];
+    if (!check || !Number.isFinite(Date.parse(check.createdAt))) continue;
+    const numbers = new Set((check.feedback ?? []).flatMap(raw => {
+      const parsed = sentenceFeedbackSchema.safeParse(raw);
+      return parsed.success ? [parsed.data.number] : [];
+    }));
+    if (numbers.size) { activity.checkedSets++; activity.checkedSentences += numbers.size; }
+  }
   const reviews: TranslationReview[] = [];
   for (const r of records) {
     if (r.session.learning?.reviewSource) continue;
@@ -42,6 +52,6 @@ export function buildTranslationMemory(records: TranslationRecord[], now = Date.
     return c && c.usedHelp === false && source && Date.parse(c.createdAt) - Date.parse(source) >= 7 * DAY;
   }).flatMap(r => r.session.checks[0].feedback);
   const independent = records.filter(r => !r.session.learning?.reviewSource && r.session.checks?.[0]?.usedHelp === false).flatMap(r => r.session.checks[0].feedback);
-  return { reviews: reviews.sort((a, b) => a.dueAt - b.dueAt || a.key.localeCompare(b.key)), due: reviews.filter(r => r.dueAt <= now).length, delayed: { correct: delayed.filter(f => f.verdict === 'correct').length, total: delayed.length }, independent: { correct: independent.filter(f => f.verdict === 'correct').length, total: independent.length } };
+  return { activity, reviews: reviews.sort((a, b) => a.dueAt - b.dueAt || a.key.localeCompare(b.key)), due: reviews.filter(r => r.dueAt <= now).length, delayed: { correct: delayed.filter(f => f.verdict === 'correct').length, total: delayed.length }, independent: { correct: independent.filter(f => f.verdict === 'correct').length, total: independent.length } };
 }
 export type TranslationMemory = ReturnType<typeof buildTranslationMemory>;
