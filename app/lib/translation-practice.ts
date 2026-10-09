@@ -17,9 +17,11 @@ export const answerSchema = z.string().max(1200);
 const correctionSchema = z.object({ original: z.string().max(1200), corrected: z.string().min(1).max(1200), explanation: z.string().min(1).max(600), category: z.enum(['grammar', 'vocabulary', 'spelling', 'meaning', 'style']), kind: z.enum(['error', 'style']) }).strict();
 export const sentenceFeedbackSchema = z.object({ number: z.number().int().min(1).max(12), verdict: z.enum(['correct', 'needs_work']), correctTranslation: z.string().trim().min(1).max(1200), explanation: z.string().trim().min(1).max(1000), corrections: z.array(correctionSchema).max(4) }).strict();
 export type SentenceFeedback = z.infer<typeof sentenceFeedbackSchema>;
-export type TranslationCheck = { id: string; createdAt: string; answers: string[]; feedback: SentenceFeedback[] };
+export type TranslationCheck = { id: string; createdAt: string; answers: string[]; feedback: SentenceFeedback[]; usedHelp?: boolean };
+export type TranslationReviewSource = { exerciseId: string; checkId: string; number: number };
+export type TranslationLearningContext = { sessionId?: string; storyId?: string; reviewSource?: TranslationReviewSource; pattern?: import('./tutor-patterns').TutorPatternId; sourceAt?: string };
 export type TranslationOperation = { id: string; action: 'generate' | 'check' | 'speech' | 'photo'; fingerprint: string; createdAt: string; status: 'pending' | 'complete' | 'failed'; text?: string; uncertain?: boolean; sentenceIndex?: number; confirmedAt?: string; error?: string; errorStatus?: number };
-export type TranslationSession = { kind: 'translation-v1'; level: TranslationLevel; count: number; createdAt: string; draftUpdatedAt: string; sentences: string[]; answers: string[]; checks: TranslationCheck[]; operations: TranslationOperation[] };
+export type TranslationSession = { kind: 'translation-v1'; level: TranslationLevel; count: number; createdAt: string; draftUpdatedAt: string; sentences: string[]; answers: string[]; checks: TranslationCheck[]; operations: TranslationOperation[]; helpUsed?: boolean; learning?: TranslationLearningContext };
 export type TranslationRecord = { exerciseId: string; version: number; session: TranslationSession };
 export type TranslationResponse = TranslationRecord & { error?: string; recent?: { exerciseId: string; level: TranslationLevel; count: number }[] };
 

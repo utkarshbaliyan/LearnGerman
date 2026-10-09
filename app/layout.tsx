@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import "./globals.css";
 import "./illustrated-ui.css";
+import './learning.css';
 
 export const metadata: Metadata = {
   title: "LeseLaut — Learn German through stories",

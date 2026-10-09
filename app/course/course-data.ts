@@ -10,13 +10,13 @@ import {
   ALL_GRAMMAR_LESSONS,
   LIVE_GRAMMAR_LESSONS,
   getGrammarModuleForLesson,
-  type GrammarLevel,
 } from "@/app/grammar/course";
 
-export const COURSE_LEVELS: GrammarLevel[] = ["A1", "A2", "B1"];
+export type CourseLevel = 'A1' | 'A2' | 'B1';
+export const COURSE_LEVELS: CourseLevel[] = ["A1", "A2", "B1"];
 export const CHAPTERS_PER_LEVEL = 24;
 
-const LEVEL_COPY: Record<GrammarLevel, { title: string; label: string; target: string }> = {
+const LEVEL_COPY: Record<CourseLevel, { title: string; label: string; target: string }> = {
   A1: { title: "Complete foundation", label: "Foundation", target: "Handle essential personal and everyday situations." },
   A2: { title: "Everyday independence", label: "Everyday", target: "Connect ideas and manage familiar life with growing independence." },
   B1: { title: "Independent German", label: "Independent", target: "Explain experiences, opinions, problems, and plans in connected German." },
@@ -28,7 +28,7 @@ const COMMON_WORDS = new Set([
   "sich", "sie", "sind", "und", "von", "vor", "war", "wenn", "wie", "wir", "zu", "zum", "zur",
 ]);
 
-function chapterId(level: GrammarLevel, number: number) {
+function chapterId(level: CourseLevel, number: number) {
   const moduleNumber = Math.ceil(number / 6);
   const lessonNumber = ((number - 1) % 6) + 1;
   return `${level.toLowerCase()}-${moduleNumber}-${lessonNumber}`;
@@ -51,7 +51,7 @@ function uniqueOptions(answer: string, candidates: string[]) {
   return options.sort((left, right) => (left.length + answer.length) % 3 - (right.length + answer.length) % 3);
 }
 
-function contextualVocabulary(story: Story, level: GrammarLevel): ChapterVocabulary[] {
+function contextualVocabulary(story: Story, level: CourseLevel): ChapterVocabulary[] {
   const sentences = splitSentences(story.text);
   const seen = new Set<string>();
   const words: ChapterVocabulary[] = [];
@@ -83,7 +83,7 @@ function contextualVocabulary(story: Story, level: GrammarLevel): ChapterVocabul
   return words;
 }
 
-function generatedQuestions(level: GrammarLevel, number: number, story: Story, storyIndex: number) {
+function generatedQuestions(level: CourseLevel, number: number, story: Story, storyIndex: number) {
   const curriculum = getCurriculum(level)!;
   const lessonId = chapterId(level, number);
   const lesson = ALL_GRAMMAR_LESSONS.find((item) => item.id === lessonId)!;
@@ -201,7 +201,7 @@ function generatedQuestions(level: GrammarLevel, number: number, story: Story, s
 }
 
 export function getCourseChapter(level: string, number: number) {
-  const normalizedLevel = level.toUpperCase() as GrammarLevel;
+  const normalizedLevel = level.toUpperCase() as CourseLevel;
   if (!COURSE_LEVELS.includes(normalizedLevel) || !Number.isInteger(number) || number < 1 || number > CHAPTERS_PER_LEVEL) return null;
 
   const curriculum = getCurriculum(normalizedLevel)!;
@@ -263,6 +263,6 @@ export function getCourseChapter(level: string, number: number) {
 
 export type CourseChapterContent = NonNullable<ReturnType<typeof getCourseChapter>>;
 
-export function courseChapterHref(level: GrammarLevel, number: number) {
+export function courseChapterHref(level: CourseLevel, number: number) {
   return `/course/${level.toLowerCase()}/chapter-${number}`;
 }

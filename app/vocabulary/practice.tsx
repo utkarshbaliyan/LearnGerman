@@ -95,7 +95,7 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
       {mode === "flashcard" && <span>{due.length} due · {reviews.length} in review</span>}
     </div>
     <p className="practice-description">{mode === "guess"
-      ? "Correct answers are automatically marked Learned. Wrong answers go to Review for flashcard practice. Answered words do not repeat in this game."
+      ? "Correct choices are marked familiar. This recognition game does not establish lasting recall. Wrong answers go to Review; answered words do not repeat here."
       : "Reveal the answer, then rate your recall. Again means forgotten; Hard means you remembered with difficulty. Review intervals adjust automatically."}</p>
     {!hydrated || !cursor ? <p role="status">Loading your progress…</p> : !question ? <div className="practice-empty" role="status">
       <strong>{mode === "guess" ? "No new words left in this selection." : reviews.length ? "All scheduled reviews are caught up." : "Your review deck is empty."}</strong>
@@ -115,7 +115,7 @@ function PracticeBox({ words, progress, hydrated, recordGuess, rateFlashcard, pr
       </div>}
       {finished && <div className="practice-feedback">
         <p role="status">{mode === "flashcard" ? question.word.german : answer === question.word.german
-          ? "Correct. Added to learned."
+          ? "Correct choice. Marked familiar."
           : `The answer is ${question.word.german}. Added to review.`}</p>
         <div className="practice-actions">
           <Button variant="outline" onClick={() => pronounce(question.word)}><Volume2 /> Listen</Button>

@@ -1,8 +1,7 @@
 import { readingEditionId } from '@/app/lib/reading-progress';
 import { notFound, redirect } from "next/navigation";
 
-import { CHAPTERS_PER_LEVEL, COURSE_LEVELS } from "@/app/course/course-data";
-import type { GrammarLevel } from "@/app/grammar/course";
+import { CHAPTERS_PER_LEVEL, COURSE_LEVELS, type CourseLevel } from "@/app/course/course-data";
 
 function parseChapter(value: string) {
   const match = /^chapter-(\d+)$/.exec(value);
@@ -11,7 +10,7 @@ function parseChapter(value: string) {
 
 export default async function CourseChapterPage({ params }: { params: Promise<{ level: string; chapter: string }> }) {
   const { level: rawLevel, chapter: rawChapter } = await params;
-  const level = rawLevel.toUpperCase() as GrammarLevel;
+  const level = rawLevel.toUpperCase() as CourseLevel;
   const number = parseChapter(rawChapter);
 
   if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();

@@ -7,4 +7,5 @@ export const PROGRESS_STORAGE_KEYS = {
   course: "leselaut:course-progress:v1", stories: STORY_PROGRESS_STORAGE_KEY,
   grammar: "leselaut:grammar-progress:v1", vocabulary: "leselaut:vocabulary-progress:v2",
   books: BOOK_BOOKMARK_STORAGE_KEY,
+  learning: 'leselaut:learning:v1',
 } as const;

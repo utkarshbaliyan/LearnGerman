@@ -123,7 +123,7 @@ function VocabularyCard({ word, revealed, completed, review, dueAt, speaking, on
       {word.sourceUrl && <a className="vocabulary-source" href={word.sourceUrl} target="_blank" rel="noreferrer">Dictionary source ↗</a>}
       {review && <p className="vocabulary-due-date">{dueAt === 0 ? "Ready for review" : `Review: ${new Date(dueAt).toLocaleString()}`}</p>}
       <div className="vocabulary-card-actions">
-        <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Learned</button>
+        <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Marked familiar</button>
         <button type="button" className={review ? "is-active" : ""} aria-pressed={review} onClick={onReview}><Bookmark /> Review</button>
         <button type="button" className={speaking ? "is-speaking" : ""} aria-label="Pronounce this word in German" onClick={onPronounce}><Volume2 /> {speaking ? "Playing" : "Listen"}</button>
       </div>
@@ -269,8 +269,8 @@ export default function VocabularyPage() {
         </header>
         {level === "C1" && <p className="vocabulary-scope-note">C1 extension: advanced and specialist vocabulary, plus useful gaps from earlier levels. Placement is editorial. <Link href="/vocabulary/sources">Sources and level guidance →</Link></p>}
         <div className="vocab-progress-strip" aria-label="Vocabulary progress">
-          <span><strong>{selectedCompleted}</strong> / {levelWords.length.toLocaleString("en")} learned</span>
-          <Progress value={progress} aria-label={`${Math.round(progress)}% learned`} />
+          <span><strong>{selectedCompleted}</strong> / {levelWords.length.toLocaleString("en")} marked familiar</span>
+          <Progress value={progress} aria-label={`${Math.round(progress)}% marked familiar`} />
           <span><strong>{selectedReview}</strong> in review</span>
         </div>
 
@@ -285,8 +285,8 @@ export default function VocabularyPage() {
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
             <button type="button" className={progressFilter === "all" ? "is-active" : ""} onClick={() => chooseProgressFilter("all")}>All <b>{levelWords.length}</b></button>
-            <button type="button" className={progressFilter === "unlearned" ? "is-active" : ""} onClick={() => chooseProgressFilter("unlearned")}><BookOpen /> Not learned <b>{selectedUnlearned}</b></button>
-            <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => chooseProgressFilter("completed")}><CheckCircle2 /> Learned <b>{selectedCompleted}</b></button>
+            <button type="button" className={progressFilter === "unlearned" ? "is-active" : ""} onClick={() => chooseProgressFilter("unlearned")}><BookOpen /> Not marked familiar <b>{selectedUnlearned}</b></button>
+            <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => chooseProgressFilter("completed")}><CheckCircle2 /> Marked familiar <b>{selectedCompleted}</b></button>
             <button type="button" className={progressFilter === "review" ? "is-active" : ""} onClick={() => chooseProgressFilter("review")}><Bookmark /> Review <b>{selectedReview}</b></button>
           </div>
         </div>
@@ -323,7 +323,7 @@ export default function VocabularyPage() {
 
 
         <div className="vocabulary-list-heading">
-          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to learn" : progressFilter === "completed" ? "Learned words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
+          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to explore" : progressFilter === "completed" ? "Marked familiar words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 

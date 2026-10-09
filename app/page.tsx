@@ -1,6 +1,7 @@
-import { redirect } from 'next/navigation';
+import { SiteHeader } from './components/site-header';
+import { TodayDashboard } from './components/today-dashboard';
+import { READING_STORIES, readingSummary } from './lib/reading-path';
 
 export default function HomePage() {
-  // Resume the integrated course here after Stories, Vocabulary and Grammar reach C1.
-  redirect('/stories');
+  return <div className="site-shell"><SiteHeader active="today" /><TodayDashboard stories={READING_STORIES.map(readingSummary)} /></div>;
 }

@@ -4,6 +4,7 @@ import { mergeReadingEditionChecks } from './reading-progress';
 import { mergeVocabularyProgress } from "./progress-sync";
 import { mergeStoryProgress } from "./story-progress";
 import { mergeBookBookmark } from './book-bookmark';
+import { mergeLearningProgress } from './learning-state';
 import type { CloudProgressScope } from "./cloud-progress-save";
 function object(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -71,5 +72,6 @@ export function mergeProgress(scope: CloudProgressScope, local: unknown, remote:
   if (scope === "stories") return mergeStoryProgress(local, remote);
   if (scope === "grammar") return mergeGrammar(local, remote);
   if (scope === "books") return mergeBookBookmark(local, remote);
+  if (scope === 'learning') return mergeLearningProgress(local, remote);
   return mergeVocabulary(local, remote);
 }

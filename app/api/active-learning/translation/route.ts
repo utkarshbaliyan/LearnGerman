@@ -8,6 +8,10 @@ import { MAX_PHOTO_BYTES, photoProblem } from '@/app/lib/writing-photo';
 import { MAX_SPEAKING_AUDIO_BYTES, speakingAudioProblem } from '@/app/lib/speaking-audio';
 import { answerSchema, countSchema, exerciseIdSchema, levelSchema, requestIdSchema, sameAnswers, type TranslationRecord, type TranslationSession, type TranslationOperation } from '@/app/lib/translation-practice';
 import { generateTranslationSentences, checkTranslationSentences } from './_ai';
+import { getReadingStory } from '@/app/lib/reading-path';
+import { feedbackPattern } from '@/app/lib/translation-memory';
+import { TUTOR_PATTERNS } from '@/app/lib/tutor-patterns';
+import type { TranslationLearningContext } from '@/app/lib/translation-practice';
 
 const headers = { 'cache-control': 'no-store' };
 const fail = (error: string, status = 400, record?: TranslationRecord) => Response.json({ ...record, error }, { status, headers });
@@ -85,19 +89,39 @@ export async function POST(request: Request) {
   try {
     const db = await getD1(), user = auth.user.id, action = body.action;
     if (action === 'generate') {
-      const config = z.object({ level: levelSchema, count: countSchema, requestId: requestIdSchema }).safeParse(body);
+      const config = z.object({ level: levelSchema, count: countSchema, requestId: requestIdSchema, learning: z.object({ sessionId: requestIdSchema.optional(), storyId: z.string().max(100).optional(), reviewSource: z.object({ exerciseId: exerciseIdSchema, checkId: requestIdSchema, number: z.number().int().min(1).max(12) }).optional() }).strict().optional() }).safeParse(body);
       if (!config.success) return fail('Choose a level from A1 to C1 and 1–12 sentences.');
-      const { level, count, requestId } = config.data, id = `translation-${requestId}`, hash = await fingerprint({ action, level, count });
+      const { level, count, requestId } = config.data, id = `translation-${requestId}`, hash = await fingerprint({ action, level, count, ...(config.data.learning ? { learning: config.data.learning } : {}) });
       const previous = await read(db, user, id);
       if (previous) return await replay(db, user, previous, requestId, hash) ?? fail('This exercise already exists.', 409, previous);
+      let learning: TranslationLearningContext | undefined = config.data.learning;
+      let focus: { pattern: string; detail: string; phrase: string } | undefined;
+      const story = learning?.storyId ? getReadingStory(learning.storyId) : undefined;
+      if (learning?.storyId && (!story || story.level !== (level === 'C1' ? 'B2' : level))) return fail('Choose a story at your selected reading level.');
+      if (learning?.reviewSource) {
+        const source = await read(db, user, learning.reviewSource.exerciseId);
+        const check = source?.session.checks[0];
+        const feedback = check?.feedback.find(f => f.number === learning!.reviewSource!.number);
+        const error = feedback?.corrections.find(c => c.kind === 'error');
+        if (!source || check?.id !== learning.reviewSource.checkId || !error || source.session.learning?.reviewSource) return fail('This mistake review is unavailable.', 404);
+        if (source.session.level !== level || count !== 1) return fail('Review one sentence at the original practice level.');
+        const history = await db.prepare("SELECT json_extract(data, '$.checks[0].createdAt') AS firstAt, json_extract(data, '$.checks[#-1].createdAt') AS at, json_extract(data, '$.checks[0].feedback') AS feedback FROM tutor_sessions WHERE user_id = ? AND json_extract(data, '$.learning.reviewSource.exerciseId') = ? AND json_extract(data, '$.learning.reviewSource.checkId') = ? AND json_extract(data, '$.learning.reviewSource.number') = ? AND json_array_length(data, '$.checks') > 0 ORDER BY json_extract(data, '$.checks[#-1].createdAt') DESC LIMIT 200").bind(user, learning.reviewSource.exerciseId, learning.reviewSource.checkId, learning.reviewSource.number).all<{ firstAt: string; at: string; feedback: string }>();
+        const latest = history.results.toSorted((a, b) => Date.parse(a.firstAt) - Date.parse(b.firstAt)).at(-1);
+        const sourceAt = new Date(Math.max(Date.parse(source.session.checks.at(-1)!.createdAt), ...history.results.map(h => Date.parse(h.at)))).toISOString();
+        const interval = latest && (JSON.parse(latest.feedback) as { verdict: string }[]).every(f => f.verdict === 'correct') ? 7 : 1;
+        if (Date.now() - Date.parse(sourceAt) < interval * 86_400_000) return fail('This mistake is not due yet. You can revise its saved exercise now.');
+        const pattern = feedbackPattern(feedback!);
+        learning = { ...learning, pattern, sourceAt };
+        focus = { pattern: TUTOR_PATTERNS[pattern].label, detail: error.explanation, phrase: error.corrected };
+      }
       const createdAt = new Date().toISOString();
       const operation: TranslationOperation = { id: requestId, action, fingerprint: hash, status: 'pending', createdAt };
-      const record: TranslationRecord = { exerciseId: id, version: 0, session: { kind: 'translation-v1', level, count, createdAt, draftUpdatedAt: createdAt, sentences: [], answers: Array(count).fill(''), checks: [], operations: [operation] } };
+      const record: TranslationRecord = { exerciseId: id, version: 0, session: { kind: 'translation-v1', level, count, createdAt, draftUpdatedAt: createdAt, sentences: [], answers: Array(count).fill(''), checks: [], operations: [operation], ...(learning ? { learning } : {}) } };
       if (!await save(db, user, record)) return fail('This exercise is being generated. Reload saved work shortly.', 409);
       try {
         if (!await reserveTutorQuota(db, user)) { operation.errorStatus = 429; throw new Error('quota'); }
         const history = await db.prepare("SELECT sentence.value AS sentence FROM tutor_sessions AS sessions, json_each(sessions.data, '$.sentences') AS sentence WHERE sessions.user_id = ? AND sessions.task_id LIKE 'translation-%' AND json_extract(sessions.data, '$.kind') = 'translation-v1' AND sentence.type = 'text' ORDER BY sessions.updated_at DESC, sentence.key ASC").bind(user).all<{ sentence: string }>();
-        record.session.sentences = await generateTranslationSentences(level, count, requestId, history.results.map(row => row.sentence)); operation.status = 'complete';
+        record.session.sentences = await generateTranslationSentences(level, count, requestId, history.results.map(row => row.sentence), { ...(focus ? { focus } : {}), ...(story ? { story: { title: story.title, goal: story.goal, topics: story.topics } } : {}) }); operation.status = 'complete';
       } catch { operation.status = 'failed'; operation.error = operation.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC.' : 'Sentences could not be generated. Generate a new set to try again.'; operation.errorStatus ??= 502; }
       if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
       return operation.status === 'failed' ? fail(operation.error!, operation.errorStatus, record) : respond(record);
@@ -113,13 +137,14 @@ export async function POST(request: Request) {
       if (!parsed.success) return fail('Provide one German answer per sentence, with no more than 1,200 characters each.');
       answers = parsed.data;
       if (action === 'check' && answers.some(s => !s.trim() || /\[unclear\]/i.test(s))) return fail('Translate every sentence and resolve unclear text before checking.');
+      if (body.usedHelp !== undefined && typeof body.usedHelp !== 'boolean') return fail('Help use must be true or false.');
     }
     if (action === 'speech' && (!Number.isInteger(body.sentenceIndex) || Number(body.sentenceIndex) < 0 || Number(body.sentenceIndex) >= record.session.count)) return fail('Choose a valid sentence to record.');
     let hash = '', requestId = '';
     if (action !== 'draft') {
       const parsed = requestIdSchema.safeParse(body.requestId); if (!parsed.success) return fail('A valid request ID is required.'); requestId = parsed.data;
       const fileHash = upload ? [...new Uint8Array(await crypto.subtle.digest('SHA-256', await upload.arrayBuffer()))].map(x => x.toString(16).padStart(2, '0')).join('') : null;
-      hash = await fingerprint({ action, answers, sentenceIndex: action === 'speech' ? body.sentenceIndex : null, fileHash });
+      hash = await fingerprint({ action, answers, sentenceIndex: action === 'speech' ? body.sentenceIndex : null, fileHash, ...(action === 'check' && body.usedHelp !== undefined ? { usedHelp: body.usedHelp } : {}) });
       const duplicate = await replay(db, user, record, requestId, hash); if (duplicate) return duplicate;
     }
     if (body.version !== record.version) return fail('This exercise changed in another tab. Reload saved work before continuing.', 409, record);
@@ -136,6 +161,7 @@ export async function POST(request: Request) {
         photo.confirmedAt = new Date().toISOString();
       }
       record.session.answers = answers!; record.session.draftUpdatedAt = new Date().toISOString();
+      if (body.usedHelp === true) record.session.helpUsed = true;
       if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
       return respond(record);
     }
@@ -148,7 +174,7 @@ export async function POST(request: Request) {
     if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
     try {
       if (!await reserveTutorQuota(db, user)) { op.errorStatus = 429; throw new Error('quota'); }
-      if (action === 'check') record.session.checks.push({ id: requestId, createdAt: op.createdAt, answers: answers!, feedback: await checkTranslationSentences(record.session.level, record.session.sentences, answers!) });
+      if (action === 'check') record.session.checks.push({ id: requestId, createdAt: op.createdAt, answers: answers!, feedback: await checkTranslationSentences(record.session.level, record.session.sentences, answers!), ...(body.usedHelp !== undefined || record.session.checks.length ? { usedHelp: record.session.checks.length > 0 || record.session.helpUsed === true || body.usedHelp !== false } : {}) });
       else if (action === 'speech') {
         op.text = await transcribeGerman(upload!);
         if (op.text.length > 1200) throw new Error('Transcript too long.');

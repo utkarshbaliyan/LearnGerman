@@ -8,13 +8,18 @@ import { authenticatedFetch } from '@/app/lib/authenticated-fetch';
 import { WritingPhotoUpload } from '@/app/components/writing-photo-upload';
 import { LEVEL_GUIDANCE, TRANSLATION_LEVELS, photoAnswers, sameAnswers, type TranslationLevel, type TranslationRecord, type TranslationResponse } from '@/app/lib/translation-practice';
 import { TranslationRecording } from './translation-recording';
+import type { TranslationLearningContext } from '@/app/lib/translation-practice';
+import { TUTOR_PATTERNS } from '@/app/lib/tutor-patterns';
 
 type Mode = 'write' | 'speak' | 'photo';
 type Recent = NonNullable<TranslationResponse['recent']>;
 const endpoint = '/api/active-learning/translation';
 const cacheKey = (owner: string, exercise: string) => `leselaut:translation-draft:v1:${owner}:${exercise}`;
-export function TranslationWorkspace() {
-  const [level, setLevel] = useState<TranslationLevel>('A1'), [count, setCount] = useState(1), [mode, setMode] = useState<Mode>('write');
+export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferredCount = 1, savedExerciseId, onRecord }: { learning?: TranslationLearningContext; preferredLevel?: TranslationLevel; preferredCount?: number; savedExerciseId?: string; onRecord?: (record: TranslationRecord) => void } = {}) {
+  const [usedHelp, setUsedHelp] = useState(false);
+  const hintOpened = useRef(false);
+  const props = useRef({ learning, savedExerciseId, onRecord, preferredLevel, preferredCount }); props.current = { learning, savedExerciseId, onRecord, preferredLevel, preferredCount };
+  const [level, setLevel] = useState<TranslationLevel>(preferredLevel), [count, setCount] = useState(preferredCount), [mode, setMode] = useState<Mode>('write');
   const [record, setRecord] = useState<TranslationRecord | null>(null), [answers, setAnswers] = useState<string[]>([]), [recent, setRecent] = useState<Recent>([]);
   const [signedIn, setSignedIn] = useState(false), [loading, setLoading] = useState(true), [busy, setBusy] = useState(''), [saving, setSaving] = useState(false), [recording, setRecording] = useState(false), [speechConsent, setSpeechConsent] = useState(false);
   const [error, setError] = useState(''), [recovery, setRecovery] = useState<string[] | null>(null), [cacheWarning, setCacheWarning] = useState('');
@@ -22,18 +27,23 @@ export function TranslationWorkspace() {
   const recordRef = useRef(record), answersRef = useRef(answers); recordRef.current = record; answersRef.current = answers;
   const adopt = useCallback((value: TranslationRecord, recover = true) => {
     setRecord(value); setAnswers(value.session.answers); setLevel(value.session.level); setCount(value.session.count); setRecovery(null);
+    setUsedHelp(value.session.checks.length > 0 || value.session.helpUsed === true); hintOpened.current = value.session.helpUsed === true; props.current.onRecord?.(value);
     if (recover && owner.current) try {
       const raw = localStorage.getItem(cacheKey(owner.current, value.exerciseId));
       const cached = raw ? JSON.parse(raw) : null;
+      if (cached?.helpUsed === true) { hintOpened.current = true; setUsedHelp(true); }
       if (Array.isArray(cached?.answers) && cached.answers.length === value.session.count && cached.answers.every((a: unknown) => typeof a === 'string' && a.length <= 1200) && !sameAnswers(cached.answers, value.session.answers)) setRecovery(cached.answers);
     } catch { setCacheWarning('Browser recovery is unavailable. Save your draft before leaving.'); }
   }, []);
   const load = useCallback(async (id?: string, generation = epoch.current) => {
-    const r = await authenticatedFetch(endpoint + (id ? `?exerciseId=${encodeURIComponent(id)}` : ''), { headers: { 'x-translation-owner': owner.current ?? '' }, signal: AbortSignal.timeout(20_000) });
+    const requested = id ?? props.current.savedExerciseId;
+    const r = await authenticatedFetch(endpoint + (requested ? `?exerciseId=${encodeURIComponent(requested)}` : ''), { headers: { 'x-translation-owner': owner.current ?? '' }, signal: AbortSignal.timeout(20_000) });
     const data = await r.json() as TranslationResponse;
     if (generation !== epoch.current) return;
     if (!r.ok) throw new Error(data.error ?? 'Saved exercises could not be loaded.');
-    if (data.session) adopt(data); else { setRecord(null); setAnswers([]); setRecovery(null); }
+    const context = props.current.learning;
+    const belongs = !context || (context.sessionId ? data.session?.learning?.sessionId === context.sessionId : JSON.stringify(data.session?.learning?.reviewSource) === JSON.stringify(context.reviewSource));
+    if (data.session && belongs) adopt(data); else { setRecord(null); setAnswers([]); setRecovery(null); setLevel(props.current.preferredLevel); setCount(props.current.preferredCount); }
     setRecent(data.recent ?? []); setError(''); setLoading(false);
   }, [adopt]);
   useEffect(() => {
@@ -53,9 +63,9 @@ export function TranslationWorkspace() {
   }, [load]);
   useEffect(() => {
     if (!record || !owner.current || recovery || loading) return;
-    try { localStorage.setItem(cacheKey(owner.current, record.exerciseId), JSON.stringify({ answers })); setCacheWarning(''); }
+    try { localStorage.setItem(cacheKey(owner.current, record.exerciseId), JSON.stringify({ answers, helpUsed: usedHelp || hintOpened.current })); setCacheWarning(''); }
     catch { setCacheWarning('This browser could not save your draft. Use Save draft before leaving.'); }
-  }, [answers, record, recovery, loading]);
+  }, [answers, record, recovery, loading, usedHelp]);
   const send = useCallback(async (action: 'generate' | 'draft' | 'check' | 'speech' | 'photo', extra: Record<string, unknown> = {}, file?: File, fixedId?: string) => {
     if (lock.current || !owner.current) return false;
     const current = recordRef.current, generation = epoch.current;
@@ -82,7 +92,7 @@ export function TranslationWorkspace() {
       if (terminal) keys.current.delete(signature);
       if (payload.session) {
         if (action === 'generate') { adopt(payload, false); setRecent(rows => [{ exerciseId: payload.exerciseId, level: payload.session.level, count: payload.session.count }, ...rows.filter(x => x.exerciseId !== payload.exerciseId)].slice(0, 10)); }
-        else setRecord(payload);
+        else { setRecord(payload); props.current.onRecord?.(payload); }
       }
       if (!r.ok) throw new Error(payload.error ?? 'The request did not finish. Try again.');
       if (action === 'draft' && extra.photoId) { setAnswers(submitted!); setRecovery(null); }
@@ -106,9 +116,9 @@ export function TranslationWorkspace() {
   }
   return <section className="translation-workspace" aria-label="English to German practice">
     <div className="translation-setup">
-      <fieldset disabled={locked}><legend>Your German level</legend><div className="translation-levels">{TRANSLATION_LEVELS.map(l => <button key={l} type="button" aria-pressed={level === l} onClick={() => setLevel(l)}>{l}</button>)}</div><p>{LEVEL_GUIDANCE[level].label}</p></fieldset>
-      <label className="translation-count" htmlFor="translation-count">English sentences<select id="translation-count" value={count} disabled={locked} onChange={e => setCount(Number(e.target.value))}>{Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1} {i ? 'sentences' : 'sentence'}</option>)}</select></label>
-      <Button disabled={!signedIn || locked} onClick={() => void send('generate', { level, count })}>{record ? 'Generate new sentences' : 'Generate sentences'}</Button>
+      <fieldset disabled={locked || Boolean(learning)}><legend>Your German level</legend><div className="translation-levels">{TRANSLATION_LEVELS.map(l => <button key={l} type="button" aria-pressed={level === l} onClick={() => setLevel(l)}>{l}</button>)}</div><p>{LEVEL_GUIDANCE[level].label}</p></fieldset>
+      <label className="translation-count" htmlFor="translation-count">English sentences<select id="translation-count" value={count} disabled={locked || Boolean(learning)} onChange={e => setCount(Number(e.target.value))}>{Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1} {i ? 'sentences' : 'sentence'}</option>)}</select></label>
+      <Button disabled={!signedIn || locked} onClick={() => void send('generate', { level, count: learning ? preferredCount : count, ...(learning ? { learning } : {}) })}>{record ? 'Generate new sentences' : 'Generate sentences'}</Button>
     </div>
     {!signedIn && !loading && <p className="translation-signin"><Link href="/account">Sign in</Link> to generate sentences and get AI feedback.</p>}
     {loading && <p role="status">Loading your saved practice…</p>}
@@ -116,7 +126,7 @@ export function TranslationWorkspace() {
     {record && !usable && !busy && !loading && <div className="translation-error"><p>{record.session.operations[0]?.error ?? 'Your sentences are still being generated. Reload saved work shortly.'}</p><Button variant="outline" disabled={locked} onClick={() => void reload(record.exerciseId)}>Reload saved work</Button></div>}
     {error && <div role="alert" className="translation-error"><p>{error}</p>{signedIn && <Button variant="outline" disabled={Boolean(busy) || saving || recording || loading} onClick={() => void reload(record?.exerciseId)}><RefreshCw size={15} />Reload saved work</Button>}</div>}
     {recovery && <div className="translation-recovery"><p>You have a different unsent draft in this browser. Choose which version to use.</p><Button disabled={Boolean(busy)} onClick={() => { setAnswers(recovery); setRecovery(null); setError(''); }}>Restore browser draft</Button><Button variant="outline" onClick={() => { setRecovery(null); if (record) setAnswers(record.session.answers); }}>Keep saved version</Button></div>}
-    {recent.length > 1 && <label className="translation-history" htmlFor="translation-history">Saved sets<select id="translation-history" value={record?.exerciseId ?? ''} disabled={locked} onChange={e => void reload(e.target.value)}>{recent.map((r, i) => <option key={r.exerciseId} value={r.exerciseId}>{r.level} · {r.count} {r.count === 1 ? 'sentence' : 'sentences'} · {i === 0 ? 'most recent set' : `set ${i + 1}`}</option>)}</select></label>}
+    {!learning && recent.length > 1 && <label className="translation-history" htmlFor="translation-history">Saved sets<select id="translation-history" value={record?.exerciseId ?? ''} disabled={locked} onChange={e => void reload(e.target.value)}>{recent.map((r, i) => <option key={r.exerciseId} value={r.exerciseId}>{r.level} · {r.count} {r.count === 1 ? 'sentence' : 'sentences'} · {i === 0 ? 'most recent set' : `set ${i + 1}`}</option>)}</select></label>}
     {usable && record && <div className="translation-exercise" key={`${owner.current}:${record.exerciseId}`}>
       <header className="translation-exercise-heading"><h2>Translate into German</h2><span>{record.session.level} · {record.session.count} {record.session.count === 1 ? 'sentence' : 'sentences'}</span></header>
       <div className="translation-modes" role="group" aria-label="How to answer">{([{ id: 'write', title: 'Write', Icon: PenLine }, { id: 'speak', title: 'Speak', Icon: Mic }, { id: 'photo', title: 'Upload photo', Icon: Camera }] as const).map(({ id, title, Icon }) => <button key={id} type="button" aria-pressed={mode === id} disabled={locked} onClick={() => setMode(id)}><Icon size={17} />{title}</button>)}</div>
@@ -133,7 +143,8 @@ export function TranslationWorkspace() {
         </li>;
       })}</ol>
       {mode === 'photo' && <WritingPhotoUpload key={`${owner.current}:${record.exerciseId}:photo`} minCharacters={2} photos={photos} hasDraft={answers.some(s => s.trim())} busy={locked} onUpload={(file, id) => send('photo', {}, file, id).then(() => undefined)} onConfirm={async (text, photoId) => { try { const rows = photoAnswers(text, record.session.count); await send('draft', { answers: rows, photoId }); } catch (e) { setError(e instanceof Error ? e.message : 'Check the sentence numbers.'); } }} />}
-      <div className="translation-actions"><Button disabled={locked || answers.some(s => !s.trim() || /\[unclear\]/i.test(s)) || sameAnswers(latest?.answers ?? [], answers)} onClick={() => void send('check')}>{latest ? 'Check my revision' : 'Check translations'}</Button><Button variant="outline" disabled={locked || sameAnswers(answers, record.session.answers)} onClick={() => void send('draft')}>Save draft</Button><span role="status">{saving ? 'Saving draft…' : answers.filter(s => s.trim()).length + ' of ' + record.session.count + ' translated'}</span></div>
+      {!latest && <div className="translation-help-report"><label><input type="checkbox" checked={usedHelp} onChange={e => setUsedHelp(e.target.checked)} disabled={locked} />I used a hint, dictionary, translation tool or outside help.</label><p>First attempts and revisions are recorded separately. Help use is self-reported.</p>{record.session.learning?.pattern && <details onToggle={e => { if (e.currentTarget.open) { hintOpened.current = true; setUsedHelp(true); void send('draft', { usedHelp: true }); } }}><summary>Show a hint</summary><p>{TUTOR_PATTERNS[record.session.learning.pattern].question}</p><p lang="de">{TUTOR_PATTERNS[record.session.learning.pattern].example}</p></details>}</div>}
+      <div className="translation-actions"><Button disabled={locked || answers.some(s => !s.trim() || /\[unclear\]/i.test(s)) || sameAnswers(latest?.answers ?? [], answers)} onClick={() => void send('check', { usedHelp: usedHelp || hintOpened.current || Boolean(latest) })}>{latest ? 'Check my revision' : 'Check translations'}</Button><Button variant="outline" disabled={locked || sameAnswers(answers, record.session.answers)} onClick={() => void send('draft')}>Save draft</Button><span role="status">{saving ? 'Saving draft…' : answers.filter(s => s.trim()).length + ' of ' + record.session.count + ' translated'}</span></div>
       {pending && <p role="status">An earlier request is still processing. Reload saved work to see its result.</p>}
       <p className="translation-guidance">Translate every sentence before checking. You can revise your answers and check again.</p>
       {cacheWarning && <p role="alert">{cacheWarning}</p>}

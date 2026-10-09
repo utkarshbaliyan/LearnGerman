@@ -158,7 +158,7 @@ export function vocabularyProgressKey(word: VocabularyIdentity) {
   return `de:${normalizeMeaning(word.german)}`;
 }
 
-export function vocabularyProgressKeys(word: VocabularyIdentity) {
+export function vocabularyProgressKeys(word: VocabularyIdentity): string[] {
   const english = normalizeMeaning(word.english);
   const german = normalizeMeaning(germanVerbLemma(word.german.split(",")[0]).replace(/^(der|die|das|ein|eine)\s+/i, ""));
   return unique([

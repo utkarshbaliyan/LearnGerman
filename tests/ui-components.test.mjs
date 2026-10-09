@@ -515,7 +515,8 @@ test("separates guess and flashcard boxes and never requeues answered guesses", 
   assert.equal((html.match(/class="vocabulary-practice"/g) ?? []).length, 2);
   assert.match(html, /aria-label="Quick guess"/);
   assert.match(html, /aria-label="Review flashcards"/);
-  assert.match(html, /Correct answers are automatically marked Learned/);
+  assert.match(html, /Correct choices are marked familiar/);
+  assert.match(html, /does not establish lasting recall/);
   assert.match(html, /Wrong answers go to Review/);
   assert.match(html, /Current streak/);
   assert.match(html, /Best streak/);

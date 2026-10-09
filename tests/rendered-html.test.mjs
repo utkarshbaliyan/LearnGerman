@@ -26,10 +26,13 @@ async function renderRoute(pathname) {
   );
 }
 
-test("opens Stories as home while the integrated course is paused", async () => {
+test("opens Today as home with the story library and paused course preserved", async () => {
   const response = await renderRoute("/");
-  assert.equal(response.status, 307);
-  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/stories");
+  assert.equal(response.status, 200);
+  const todayHtml = await response.text();
+  assert.match(todayHtml, /TODAY/);
+  assert.match(todayHtml, /href="\/review"/);
+  assert.equal((await renderRoute("/review")).status, 200);
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();
