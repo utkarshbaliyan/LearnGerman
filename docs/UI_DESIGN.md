@@ -1,5 +1,19 @@
 # Illustrated LeseLaut interface
 
+## Today and personal review
+
+Today uses a warm yellow welcome panel with the existing reading-room illustration,
+a topic illustration beside the resumable session, and sage/lilac/yellow learning
+evidence cards. Review uses a sage welcome panel with book and plant artwork;
+saved words, scheduled vocabulary and mistake practice have sage, lilac and peach
+sections with matching topic illustrations. The existing atlas also illustrates
+the exploration links. All artwork is decorative and reuses already published
+assets; no generation, cover reassignment or automation was started.
+
+The colours are scoped to the learning pages, with separate dark-theme surfaces,
+readable green actions, and compact illustrations on mobile. Progress, review
+schedules, answer visibility and the daily session behavior remain unchanged.
+
 The current refinement uses neutral white and dark surfaces, compact navigation, condensed uppercase headings and a flat four-column story gallery. It takes visual direction from [Sloeful's German stories](https://www.sloeful.com/german/stories), with original assets and LeseLaut's existing navigation and learning tools.
 
 ## Original artwork
