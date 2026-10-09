@@ -30,8 +30,7 @@ test("combines Today and Review at home and preserves review bookmarks and the s
   const response = await renderRoute("/");
   assert.equal(response.status, 200);
   const todayHtml = await response.text();
-  assert.match(todayHtml, /TODAY/);
-  assert.match(todayHtml, /Today &amp; Review/);
+  assert.match(todayHtml, /Home/);
   assert.match(todayHtml, /aria-label="Today and Review"/);
   const oldReview = await renderRoute('/review');
   assert.equal(oldReview.status, 307);

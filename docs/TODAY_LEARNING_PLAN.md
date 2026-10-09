@@ -3,10 +3,12 @@
 ## Combined Today & Review
 
 Home is one learning hub with Today and Review tabs. The shared header has one
-Today & Review link; `/review` redirects to `/?view=review` so existing bookmarks
+Home link; `/review` redirects to `/?view=review` so existing bookmarks
 and reader links open the Review tab. Tab changes retain the active daily session
 and current recall input. Existing daily preferences, reading sessions, narration,
-word stacks and translation mistake review remain available.
+word stacks and translation mistake review remain available. Home opens directly
+with the tabs: its introductory banner and collected-word progress panel are
+removed. Collected-word progress remains on Vocabulary.
 
 Review starts with one box containing the words added to Review in the word
 library and the story/book stacks. The list deduplicates German headwords and
@@ -32,7 +34,7 @@ named decks remain in `learning.decks`; their data and history are preserved.
 Account changes clear the active round and pending actions and reload metadata.
 
 Fresh translation mistake practice remains in a collapsible section below the
-word deck. The Today tab keeps its existing typed recall, shared word counts,
+word deck. The Today tab keeps its existing typed recall,
 learning evidence and resumable daily plan.
 
 ## Connected reading vocabulary
@@ -103,6 +105,11 @@ AI feedback and help reports are uncalibrated practice evidence. Real learner an
 teacher validation remain necessary after release.
 
 ## Verification completed
+
+- Home cleanup: all 165 tests, TypeScript, the production build and migration
+  contract passed. Desktop and 320px checks in both themes verified the Home
+  navigation label, direct Today/Review tabs and removed introductory banner
+  and collected-word panel. The saved Review deck and daily resume stay available.
 
 - Shared Review flashcards: all 165 tests, TypeScript, the production build and
   migration contract passed. Coverage includes explicit word selection without

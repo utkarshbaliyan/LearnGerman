@@ -7,11 +7,11 @@ desktop. Word clicks collect displayed forms and meanings; Add to review sends
 them to the shared vocabulary deck. On mobile the collapsible stack sits above
 the text, with a floating shortcut after collecting a word. The panel supports
 both themes and leaves narration, translations, bookmarks and page navigation
-available. Vocabulary, Today and Review show the same collected-word counts.
+available. Vocabulary and Review share the same collected-word progress.
 
 ## Today and personal review
 
-Today and Review now share one illustrated learning hub and one navigation entry.
+Today and Review share one learning hub under the Home navigation entry.
 Accessible tabs switch between the daily plan and one shared Review word box.
 Practice opens an 8/10/12-word size selector, followed by reveal-and-rate
 flashcards. The sage introduction, blue size panel and familiar-word action use
@@ -19,9 +19,10 @@ the existing palette. Only explicitly reviewed library words and saved reading
 words enter the deck; Mark as read updates the shared familiar progress. An
 unfinished round can resume, and fresh translation mistakes remain collapsible.
 
-The shared hub uses a warm yellow welcome panel with the existing reading-room
-illustration, a topic illustration beside the resumable session, and
-sage/lilac/yellow learning evidence cards. Review reuses the book artwork and
+The shared hub starts directly with its tabs. Its introductory banner and
+collected-word progress panel are removed from Home; collected-word progress
+remains on Vocabulary. A topic illustration sits beside the resumable session,
+with sage/lilac/yellow learning evidence cards. Review reuses the book artwork and
 retains source labels for library, story and book words. Mistake practice keeps
 its peach section and matching topic illustration. The existing atlas also
 illustrates the exploration links. All artwork is decorative and reuses already
