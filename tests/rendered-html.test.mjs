@@ -169,7 +169,7 @@ test("renders the graded reading path and independent story pages", async () => 
   for (const id of [editionId("A1", 1), editionId("A2", 18), editionId("B1", 24)]) {
     const response = await renderRoute(`/stories/${id}`); assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /Check understanding/); assert.match(html, /Show English translations/);
+    assert.match(html, /Comprehension quiz/); assert.match(html, /Show English translations/);
     assert.doesNotMatch(html, /Need the gist in English/);
     assert.match(html, /Check my answers/);
     assert.doesNotMatch(html, /Notice the grammar|Practice this grammar|useful words &amp; phrases/);
@@ -183,7 +183,7 @@ test("renders the graded reading path and independent story pages", async () => 
     const response = await renderRoute(`/stories/${editionId(level, total)}`);
     assert.equal(response.status, 200);
     const html = await response.text();
-    assert.match(html, /Check understanding/);
+    assert.match(html, /Comprehension quiz/);
     assert.doesNotMatch(html, /Notice the grammar|Open grammar recall tables/);
     assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
     assert.doesNotMatch(html, /Narration is unavailable/);

@@ -1,13 +1,13 @@
 # Illustrated LeseLaut interface
 
-The October 2026 redesign uses warm ivory surfaces, purple controls, pastel topic artwork and illustrated story cards. It takes visual direction from [Sloeful's German stories](https://www.sloeful.com/german/stories), with original assets and LeseLaut's existing navigation and learning tools.
+The current refinement uses neutral white and dark surfaces, compact navigation, condensed uppercase headings and a flat four-column story gallery. It takes visual direction from [Sloeful's German stories](https://www.sloeful.com/german/stories), with original assets and LeseLaut's existing navigation and learning tools.
 
 ## Original artwork
 
 Created with the built-in ImageGen tool; no external generation API or API key was used. Original generated images are retained in the Codex generated-images directory.
 
 - `public/illustrations/reading-room.png`: reading café hero, 1536 × 1024 pixels.
-- `public/illustrations/topic-atlas.png`: transparent 4-column × 3-row atlas used by `app/components/topic-art.tsx`. Twelve reusable illustrations cover home, work, travel, food, shopping, study, conversation, nature, sport, celebration, culture and technology. Decorative cards hide this artwork from assistive technology.
+- `public/illustrations/topic-atlas.png`: transparent 4-column × 3-row atlas used by `app/components/topic-art.tsx`. Twelve reusable illustrations remain available for books and decorative learning-section artwork. Story covers use separate images tied to their individual manuscripts. Decorative artwork is hidden from assistive technology.
 
 Exact hero prompt:
 
@@ -19,17 +19,27 @@ Exact atlas prompt:
 
 ## Typography
 
-Both variable fonts are self-hosted under `public/fonts`, with their SIL Open Font License files. Headings use Bricolage Grotesque and controls use DM Sans. Reading passages retain the existing book serif stack.
+Fonts are self-hosted under `public/fonts`, with their SIL Open Font License files. Headings use Bebas Neue. Body copy, reading passages and controls use Noto Sans. The first redesign’s Bricolage Grotesque and DM Sans files are retained.
 
 Official sources:
 
-- [Bricolage Grotesque](https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque)
-- [DM Sans](https://github.com/google/fonts/tree/main/ofl/dmsans)
+- [Bebas Neue](https://github.com/google/fonts/tree/main/ofl/bebasneue)
+- [Noto Sans](https://github.com/google/fonts/tree/main/ofl/notosans)
 
 ## Preservation and verification
 
-The redesign changes presentation and introductory copy. Story IDs, manuscripts, translations, narration, book pages, bookmarks, progress storage, authentication, database migrations and AI quotas retain their existing behavior. Story filters, level controls, grammar exercises and translation practice remain available. The queued B2 release must add its tab to the redesigned library without replacing the illustration layout.
+The redesign changes presentation and introductory copy. Story IDs, manuscripts, translations, narration, book pages, bookmarks, progress storage, authentication, database migrations and AI quotas retain their existing behavior. Story filters, level controls, grammar exercises and translation practice remain available. The story-level controls derive from the published catalog, including B2 when its release is ready.
 
 Check Stories, Books, Vocabulary, Grammar and Active Learning in the browser, including mobile sizing and both themes. Run the existing test suite and verified production build before publication.
 
-Release validation: all 135 existing tests passed with Node 22; the production build passed and deployment migrations match committed source. Desktop and mobile browser checks covered all five learning sections, story filtering, vocabulary reveal, navigation and light/dark contrast. All 11 protected source, authentication configuration and local learner-data hashes remained unchanged. Existing rendered-route assertions now identify their learning page instead of depending on retired introductory copy.
+Version 121 validation: all 135 existing tests passed with Node 22; the production build passed and deployment migrations match committed source. Desktop and mobile browser checks covered all five learning sections, story filtering, vocabulary reveal, navigation and light/dark contrast. All 11 protected source, authentication configuration and local learner-data hashes remained unchanged. Existing rendered-route assertions now identify their learning page instead of depending on retired introductory copy.
+
+## Individual story illustrations
+
+The user-approved release contains 307 distinct covers: all 104 A1, all 150 A2 and 53 B1. Further generation was stopped at the user's request. All 654 stories remain available; stories without a cover use a numbered square tile. Completed illustrations are never reused for another story. Each brief is based on that story’s setting and objects. The chosen style is warm ink outlines with watercolor and colored-pencil texture, transparent surroundings and generous margins. Mountains, streets, cities, homes, trees and animals appear where the manuscript calls for them. Each scene was generated separately with the built-in ImageGen tool.
+
+`content/illustrations/story-art-briefs.json` retains all 654 source briefs for future work. The final `story-art-prompts.json` records each released generation prompt and image checksum. Original and rejected variants are preserved locally. `scripts/finalize-story-art.mjs --partial` builds the authorized 307-cover release, rejects unready or rejected images, and checks dimensions, alpha, byte counts, checksums and duplicate image files. The default full-release mode still requires all 654 covers.
+
+Images use square frames with `object-fit: contain` and internal padding. Images are stored in the existing R2 bucket through a restricted immutable route, avoiding the source archive size limit. A temporary upload secret is used only for signed writes. Every stored image must be downloaded and checksum-verified by `scripts/upload-story-art.mjs` before the final UI is published.
+
+The combined B2 content release and UI refinement passes 140 tests and the verified production build. Desktop browser checks confirm Noto Sans and Bebas Neue, four columns, whole images, filtering, search, level switching, English translations and quiz retry. The 307 released WebP images preserve their original dimensions and exact decoded alpha; quality is 86. Their original PNGs remain intact.
