@@ -28,7 +28,8 @@
 .reader-stack-body .reader-stack-note { font-size: 11px; margin-bottom: 0; }
 .reader-word-stack button:focus-visible, .reader-word-stack a:focus-visible, .reader-word-stack summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .site-shell .book-reader--page { max-width: 1240px; }
-.book-volume.book-volume--page { padding-right: clamp(1.5rem, 4vw, 3rem); padding-left: clamp(1.5rem, 4vw, 3rem); }
+.book-volume.book-volume--page { padding-right: clamp(1.5rem, 4vw, 3rem); padding-left: clamp(1.5rem, 4vw, 3rem); overflow: clip; }
+.book-paragraph .reading-word:hover, .book-paragraph .reading-word:focus-visible { color: var(--book-ink); text-decoration-color: var(--book-ink); }
 .book-page-header, .book-page-navigation { max-width: 760px; }
 .learning-session:has(.reading-with-stack) { max-width: none; }
 .connected-word-progress { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin: 28px 0; background: color-mix(in srgb, var(--green-accent) 6%, var(--white)); color: var(--ink); }
