@@ -5,7 +5,7 @@ import {
   RotateCcw, Search, SlidersHorizontal, Volume2, X,
 } from "lucide-react";
 import Link from "next/link";
-import { useDeferredValue, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
 import { TopicArt } from "@/app/components/topic-art";
@@ -26,12 +26,12 @@ import {
   type VocabularyWordClass,
 } from "@/app/vocabulary/data";
 import { VocabularyPractice } from "@/app/vocabulary/practice";
+import { VocabularyProgressChart } from "@/app/vocabulary/progress-chart";
 import { connectedVocabulary } from '@/app/lib/saved-vocabulary';
 import { ConnectedWordProgress } from '@/app/components/connected-word-progress';
 import { vocabularyCardKey, vocabularyReviewDueAt, type CollectedVocabularyWord } from "@/app/lib/progress-sync";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -66,26 +66,6 @@ const WORD_CLASS_CARD_LABELS: Record<VocabularyWordClass, string> = {
   "phrase-other": "Other words",
 };
 
-const CATEGORY_COLORS: Record<VocabularyCategory, string> = {
-  "Grundlagen & Kommunikation": "#d66a48",
-  "Familie & Menschen": "#8d6bd1",
-  "Zuhause & Wohnen": "#278071",
-  "Essen & Trinken": "#d55369",
-  "Einkaufen & Kleidung": "#bd7a22",
-  "Schule & Lernen": "#5275ad",
-  "Arbeit & Beruf": "#706247",
-  "Stadt & Verkehr": "#357b8d",
-  "Reisen & Unterkunft": "#3e739f",
-  "Gesundheit & Körper": "#bf5562",
-  "Freizeit, Kultur & Sport": "#5a8c55",
-  "Natur, Wetter & Umwelt": "#47866f",
-  "Zeit, Zahlen & Mengen": "#9b6a43",
-  "Medien & Digitales": "#526e9f",
-  "Dienstleistungen & Behörden": "#786a91",
-  "Verben": "#c9553d",
-  "Adjektive & Adverbien": "#6d63a8",
-};
-
 function GermanAnswer({ answer }: { answer: string }) {
   const [first, ...rest] = answer.split(" ");
   const hasArticle = /^(der|die|das)(\/die)?$/.test(first);
@@ -116,7 +96,6 @@ function VocabularyCard({ word, saved, revealed, completed, review, dueAt, speak
   return (
     <article
       className={`vocabulary-card${revealed ? " is-revealed" : ""}${completed ? " is-completed" : ""}${review ? " is-review" : ""}`}
-      style={{ "--vocabulary-color": CATEGORY_COLORS[word.category] } as CSSProperties}
     >
       <button type="button" className="vocabulary-reveal" aria-expanded={revealed} onClick={onReveal}>
         <span className="vocabulary-card-top"><small>{word.level} · {grammarLabel}</small><ChevronDown /></span>
@@ -252,7 +231,6 @@ export default function VocabularyPage() {
     speech.speak(utterance);
   }
 
-  const progress = levelWords.length ? selectedCompleted / levelWords.length * 100 : 0;
   const levelLabel = level === "all" ? "A1–C1" : level;
   const hasActiveFilters = collectionOnly || query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
@@ -276,11 +254,8 @@ export default function VocabularyPage() {
           </label>
         </header>
         {level === "C1" && <p className="vocabulary-scope-note">C1 extension: advanced and specialist vocabulary, plus useful gaps from earlier levels. Placement is editorial. <Link href="/vocabulary/sources">Sources and level guidance →</Link></p>}
-        <div className="vocab-progress-strip" aria-label="Vocabulary progress">
-          <span><strong>{selectedCompleted}</strong> / {levelWords.length.toLocaleString("en")} marked familiar</span>
-          <Progress value={progress} aria-label={`${Math.round(progress)}% marked familiar`} />
-          <span><strong>{selectedReview}</strong> in review</span>
-        </div>
+        <VocabularyProgressChart learned={selectedCompleted} review={selectedReview} unlearned={selectedUnlearned}
+          hydrated={hydrated} scope={`${levelLabel}${collectionOnly ? " · from stories & books" : " · all vocabulary"}`} />
 
         <ConnectedWordProgress vocabulary={vocabularyProgress} />
         {storageError && <p role="alert">{storageError}</p>}

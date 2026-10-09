@@ -41,6 +41,40 @@ async function readCssTree(directory) {
   return contents.join("\n");
 }
 
+test("vocabulary pie shows shared states, including a full slice, an empty collection and loading", async () => {
+  const { VocabularyProgressChart } = await vite.ssrLoadModule("/app/vocabulary/progress-chart.tsx");
+  const p = await vite.ssrLoadModule("/app/lib/progress-sync.ts");
+  const words = ["Haus", "Baum", "Buch", "Tür"].map((german, index) => ({ german, english: ["house", "tree", "book", "door"][index] }));
+  let progress = p.setVocabularyStatus(p.emptyVocabularyProgress(), words[0], "learned", 100);
+  progress = p.setVocabularyStatus(progress, words[1], "review", 101);
+  const counts = () => ({
+    learned: words.filter(w => p.isVocabularyLearned(progress, w)).length,
+    review: words.filter(w => p.isVocabularyReview(progress, w)).length,
+    unlearned: words.filter(w => !p.isVocabularyLearned(progress, w) && !p.isVocabularyReview(progress, w)).length,
+  });
+  const render = props => renderToStaticMarkup(React.createElement(VocabularyProgressChart, { hydrated: true, scope: "A1 · all vocabulary", ...props }));
+  assert.deepEqual(counts(), { learned: 1, review: 1, unlearned: 2 });
+  const mixed = render(counts());
+  assert.match(mixed, /aria-label="1 learned, 1 in review, 2 unlearned"/);
+  assert.equal((mixed.match(/<path /g) ?? []).length, 3);
+  assert.match(mixed, /25%/); assert.match(mixed, /50%/);
+  assert.doesNotMatch(mixed, /NaN|Infinity/);
+  progress = p.setVocabularyStatus(progress, words[0], "review", 102);
+  assert.deepEqual(counts(), { learned: 0, review: 2, unlearned: 2 });
+  assert.match(render(counts()), /aria-label="0 learned, 2 in review, 2 unlearned"/);
+  for (const state of ["learned", "review", "unlearned"]) {
+    const full = render({ learned: 0, review: 0, unlearned: 0, [state]: 4 });
+    assert.match(full, new RegExp(`<circle class="vocab-pie-${state}"`));
+    assert.doesNotMatch(full, /<path /); assert.match(full, /100%/);
+  }
+  const empty = render({ learned: 0, review: 0, unlearned: 0 });
+  assert.match(empty, /No words in this collection/); assert.doesNotMatch(empty, /NaN|Infinity|100%/);
+  assert.match(render({ learned: 1, review: 0, unlearned: 17396 }), /&lt;0\.1%/);
+  const loading = render({ learned: 1, review: 1, unlearned: 2, hydrated: false });
+  assert.match(loading, /aria-busy="true"/); assert.match(loading, /Loading vocabulary progress/);
+  assert.doesNotMatch(loading, /<path |25%|50%/);
+});
+
 test("FSRS ratings preserve memory across account sync and schedule due-only repeats", async () => {
   const p = { ...await vite.ssrLoadModule("/app/lib/progress-sync.ts"), ...await vite.ssrLoadModule("/app/lib/flashcard-progress.ts") };
   const s = await vite.ssrLoadModule("/app/lib/flashcard-scheduler.ts");

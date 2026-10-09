@@ -38,10 +38,17 @@ with original assets and LeseLaut's existing navigation and learning tools.
 ## Platform colours
 
 `app/platform-colours.css` provides the shared palette. The active section on the
-site header selects coral for Vocabulary, blue for Grammar and Account, lilac for
-Active Learning, sage for Stories and Review, and amber for Today and Books. These
+site header selects a neutral surface with blue accents for Vocabulary, blue for
+Grammar and Account, lilac for Active Learning, sage for Stories and Review, and
+amber for Today and Books. These
 colours carry through navigation, headers, cards, controls and progress panels.
-Vocabulary retains its topic colours and labelled familiar/review states. Grammar
+Vocabulary uses neutral headers, library cards and controls, with colour limited
+to a subtly highlighted progress panel, practice flashcards and small state cues.
+Its accessible pie chart shows learned (marked familiar), review and unlearned in
+green, amber and slate, with counts and percentages alongside the slices. Counts
+follow the selected level and collection, use the shared vocabulary state, and
+exclude search/topic filters. Loading, empty and single-state charts are handled
+explicitly; learner data and schedules are unchanged. Grammar
 patterns, reference tables and case chips have distinct coloured surfaces. Story
 cover frames cycle through the five soft colours without changing artwork.
 
@@ -51,6 +58,10 @@ cheat sheets fit the screen; larger reference tables scroll within their panels.
 The connected word stack and all reading and practice actions retain their
 existing behavior. No new images, content, migrations or automation changes are
 part of this refinement.
+
+Vocabulary pie refinement validation: all 160 tests, TypeScript, the production
+build and migration contract passed. Browser checks covered light/dark themes,
+320px layouts, level and collected-word counts, and existing practice controls.
 
 Validation: all 152 regression tests passed against the fresh production build,
 TypeScript passed, and deployment migrations match source. Browser checks covered

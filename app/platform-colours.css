@@ -60,7 +60,7 @@ body {
   --ring: var(--section-ink);
   --section-line: color-mix(in srgb, var(--section-ink) 25%, var(--line));
 }
-body:has(.topbar[data-section="vocabulary"]) { --section-soft: var(--tone-peach); --section-ink: var(--tone-peach-ink); }
+body:has(.topbar[data-section="vocabulary"]) { --section-soft: var(--muted); --section-ink: var(--blue); --section-line: var(--line); }
 body:has(.topbar[data-section="grammar"]), body:has(.topbar[data-section="account"]) { --section-soft: var(--tone-sky); --section-ink: var(--tone-sky-ink); }
 body:has(.topbar[data-section="active-learning"]) { --section-soft: var(--tone-lilac); --section-ink: var(--tone-lilac-ink); }
 body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"]) { --section-soft: var(--tone-butter); --section-ink: var(--tone-butter-ink); }
@@ -84,22 +84,49 @@ body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"])
 .reader-stack-body li { background: color-mix(in srgb, var(--section-soft) 45%, var(--white)); border-color: var(--section-line); }
 .reader-stack-links a { color: var(--section-ink); }
 
-/* Vocabulary: warm coral introduction, topic-tinted cards, explicit statuses. */
-.vocab-page-heading { padding: 28px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
-.vocab-page-heading h1 { color: var(--section-ink); }
-.vocab-progress-strip { background: var(--tone-sage); border: 1px solid color-mix(in srgb, var(--tone-sage-ink) 20%, var(--line)); }
-.vocabulary-card:not(.is-completed):not(.is-review) { background: color-mix(in srgb, var(--vocabulary-color) 9%, var(--white)); }
+/* Vocabulary stays neutral, with colour reserved for progress and state cues. */
+.vocab-page-heading { padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; }
+.vocab-page-heading h1 { color: var(--ink); }
+.vocabulary-page { --vocab-learned: #2d8062; --vocab-review: #c68a24; --vocab-unlearned: #8a9bad; }
+html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-review: #e6b75c; --vocab-unlearned: #667d93; }
+.vocab-progress-summary { display: grid; grid-template-columns: 128px minmax(0, 1fr) minmax(240px, .6fr); align-items: center; gap: 28px; padding: 22px 28px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--tone-sky) 40%, var(--white)); }
+.vocab-progress-pie { width: 128px; max-width: 100%; height: auto; }
+.vocab-pie-learned { fill: var(--vocab-learned); background: var(--vocab-learned); }
+.vocab-pie-review { fill: var(--vocab-review); background: var(--vocab-review); }
+.vocab-pie-unlearned { fill: var(--vocab-unlearned); background: var(--vocab-unlearned); }
+.vocab-pie-empty { fill: var(--muted); }
+.vocab-progress-copy h2 { margin: 0 0 4px; font-size: 28px; }
+.vocab-progress-copy p { margin: 0 0 12px; color: var(--ink-soft); font-size: 14px; }
+.vocab-progress-copy small { display: block; max-width: 390px; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
+.vocab-progress-legend { display: grid; gap: 12px; margin: 0; }
+.vocab-progress-legend > div { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.vocab-progress-legend dt { display: flex; align-items: center; gap: 9px; font-size: 14px; }
+.vocab-legend-dot { width: 11px; height: 11px; flex: none; border-radius: 50%; }
+.vocab-progress-legend dd { display: flex; align-items: baseline; justify-content: flex-end; gap: 12px; margin: 0; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.vocab-progress-legend dd small { min-width: 48px; text-align: right; color: var(--ink-soft); font-size: 12px; font-weight: 400; }
+.vocabulary-page .connected-word-progress { background: var(--white); }
+.vocabulary-page .connected-word-progress dd { color: var(--ink); }
+.vocabulary-page .vocabulary-card { --vocabulary-color: var(--line); background: var(--white); }
+.vocabulary-page .vocabulary-card.is-completed { border-top-color: var(--vocab-learned); }
+.vocabulary-page .vocabulary-card.is-review { border-top-color: var(--vocab-review); }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] { background: transparent; }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"][data-state="active"] { background: transparent; color: var(--blue); border-color: var(--line); }
+.vocabulary-page .vocabulary-collection-toggle [data-slot="button"] { background: var(--white); color: var(--ink-soft); border: 1px solid var(--line); }
+.vocabulary-page .vocabulary-collection-toggle [data-slot="button"][aria-pressed="true"] { background: var(--muted); color: var(--ink); }
+.vocabulary-page .progress-filters button.is-active { background: var(--muted); color: var(--ink); border-color: var(--line); }
+.vocabulary-page .progress-filters button.is-active b { color: var(--ink); }
 .vocabulary-card-top { color: var(--ink-soft); }
 .vocabulary-card-actions button { background: color-mix(in srgb, var(--white) 75%, transparent); }
 .vocabulary-card-actions button:first-child.is-active { background: var(--tone-sage); color: var(--tone-sage-ink); }
 .vocabulary-card-actions button:nth-child(2).is-active { background: var(--tone-butter); color: var(--tone-butter-ink); }
-.vocabulary-card.is-completed { background: var(--tone-sage); }
-.vocabulary-card.is-review { background: var(--tone-butter); }
 .vocabulary-practice { border-top: 4px solid var(--section-ink); background: var(--white); }
 .vocabulary-practice + .vocabulary-practice { border-top-color: var(--tone-sage-ink); }
+.vocabulary-page .vocabulary-practice { border-top: 1px solid var(--line); }
 .practice-controls { background: var(--section-soft); padding: 16px; border-radius: 10px; }
+.vocabulary-page .practice-controls { background: transparent; padding: 0; }
 .guess-streaks dd { color: var(--section-ink); }
 .practice-flashcard { background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 12px; }
+.vocabulary-page .practice-flashcard { background: var(--tone-sky); border-color: var(--line); }
 .progress-filters button.is-active, .grammar-level-switcher button.is-active { background: var(--section-ink); color: var(--section-on); }
 .progress-filters button.is-active b, .grammar-level-switcher button.is-active b, .grammar-level-switcher button.is-active span { color: var(--section-on); }
 .vocab-filter-drawer { border-color: var(--section-line); }
@@ -187,6 +214,9 @@ body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"])
 .route-loading-line { background: linear-gradient(90deg, var(--tone-sage), var(--tone-butter), var(--tone-sage)); background-size: 200% 100%; }
 
 @media (max-width: 760px) {
+  .vocab-progress-summary { grid-template-columns: 104px minmax(0, 1fr); padding: 20px; gap: 20px; }
+  .vocab-progress-legend { grid-column: 1 / -1; gap: 10px; }
+  .vocab-progress-copy h2 { font-size: 24px; }
   .vocab-page-heading, .reading-heading, .illustrated-intro, .grammar-reference-page > header, .recall-header, .account-intro { padding: 20px; }
   .grammar-page .grammar-hero { max-width: calc(100% - 40px); margin: 24px auto; padding: 22px; }
   .reading-next { padding: 14px; }
@@ -198,4 +228,10 @@ body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"])
   .account-shell { grid-template-columns: minmax(0, 1fr); padding: 32px 20px 60px; gap: 24px; }
   .grammar-lesson-heading, .book-page-header { padding: 18px; }
 }
-@media (max-width: 480px) { .module-kicker > .topic-art--sticker { display: none; } }
+@media (max-width: 480px) {
+  .module-kicker > .topic-art--sticker { display: none; }
+  .vocab-progress-summary { grid-template-columns: 80px minmax(0, 1fr); gap: 16px; padding: 16px; }
+  .vocab-progress-copy h2 { font-size: 22px; }
+  .vocab-progress-copy p { font-size: 12px; }
+  .vocab-progress-copy small { font-size: 11px; }
+}
