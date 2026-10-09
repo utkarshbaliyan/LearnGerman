@@ -17,6 +17,8 @@ import { TranslationWorkspace } from '@/app/active-learning/translation-workspac
 import { LearningWordReview, type ReviewWord } from './learning-word-review';
 import { LearningEvidence } from './learning-evidence';
 import { HomeSections } from './home-sections';
+import { ReviewDeck } from './review-deck';
+import { TranslationMistakeReview } from './personal-review';
 import type { HomeGrammarLesson } from '@/app/lib/home-progress';
 import { TopicArt, storyArt } from './topic-art';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY } from '@/app/lib/cloud-progress-keys';
@@ -27,10 +29,11 @@ function Setup({ preferences, onSave }: { preferences?: LearningPreferences; onS
   const [level, setLevel] = useState(preferences?.level ?? 'A1'), [goal, setGoal] = useState(preferences?.goal ?? 'everyday'), [minutes, setMinutes] = useState(preferences?.minutes ?? 15);
   return <form className="learning-setup" onSubmit={e => { e.preventDefault(); onSave({ level, goal, minutes, updatedAt: Date.now() }); }}><h2>{preferences ? 'Your session preferences' : 'Make German part of your day'}</h2><p>Choose a starting level. You can change it as you find what feels useful.</p><div className="learning-setup-fields"><label>Your level<select value={level} onChange={e => setLevel(e.target.value as typeof level)}>{TRANSLATION_LEVELS.map(l => <option key={l}>{l}</option>)}</select></label><label>Your goal<select value={goal} onChange={e => setGoal(e.target.value as typeof goal)}><option value="everyday">Everyday life</option><option value="work">Work & professional life</option><option value="study">Study & learning</option></select></label><label>Available time<select value={minutes} onChange={e => setMinutes(Number(e.target.value) as typeof minutes)}>{[10, 15, 20].map(m => <option key={m} value={m}>{m} minutes</option>)}</select></label></div><Button type="submit">{preferences ? 'Save preferences' : 'Save and get started'}</Button></form>;
 }
-export function TodayDashboard({ stories, grammarLessons }: { stories: ReadingSummary[]; grammarLessons: HomeGrammarLesson[] }) {
+export function TodayDashboard({ stories, grammarLessons, initialReview = false }: { stories: ReadingSummary[]; grammarLessons: HomeGrammarLesson[]; initialReview?: boolean }) {
   const { progress, hydrated, update, storageError } = useLearningProgress(), { progress: vocabulary, hydrated: vocabReady } = useVocabularyProgress(), { completedIds, hydrated: storiesReady } = useStoryProgress();
   const { memory, loading: memoryLoading, error: memoryError, signedIn, refresh } = useTranslationMemory();
   const [activeId, setActiveId] = useState<string | null>(null), [material, setMaterial] = useState<Material | null>(null), [error, setError] = useState(''), [loading, setLoading] = useState(false), [settings, setSettings] = useState(false), [output, setOutput] = useState<TranslationRecord | null>(null);
+  useEffect(() => { if (initialReview) { setActiveId(null); setOutput(null); } }, [initialReview]);
   const latestCheck = useRef('');
   const sessions = Object.values(progress.sessions).sort((a, b) => b.startedAt - a.startedAt);
   const unfinished = sessions.find(s => !s.finishedAt);
@@ -71,6 +74,7 @@ export function TodayDashboard({ stories, grammarLessons }: { stories: ReadingSu
   const checked = output?.session.checks.at(-1);
   const outputReady = checked && (checked.feedback.every(f => f.verdict === 'correct') || output!.session.checks.length > 1);
   return <div className="learning-today-panel">
+    {!session && <ReviewDeck compact initialOpen={initialReview} mistakeDue={memory?.due} reviewExtra={<TranslationMistakeReview state={{ memory, loading: memoryLoading, error: memoryError, signedIn, refresh }} />} />}
     {!hydrated || !vocabReady || !storiesReady ? <p role="status">Loading your learning plan…</p> : <>
     {storageError && <p role="alert">{storageError}</p>}
     {(!prefs || settings) && <Setup key={prefs?.updatedAt ?? 'new'} preferences={prefs} onSave={p => { if (update(state => ({ ...state, preferences: p }))) { setSettings(false); if (!prefs) start(p); } }} />}

@@ -28,15 +28,18 @@ original cover assignments, R2 objects and paused automations remain intact.
 Neutral cards have gently tinted image panels and readable status accents in
 both themes. The grid becomes one column on mobile.
 
-Today and Review share one learning hub under the Home navigation entry.
-Accessible tabs switch between the daily plan and one shared Review word box.
-Practice opens an 8/10/12-word size selector, followed by reveal-and-rate
-flashcards. The sage introduction, blue size panel and familiar-word action use
+Home starts with two compact rectangular cards for Flashcards and Review,
+with small existing illustrations, saved-word counts and due-review counts.
+Flashcards opens the 8/10/12-word size selector or resumes an unfinished round.
+Review opens the shared word box with collapsible translation mistakes. Both use
+an accessible, scrollable dialog over Home; there is no separate Review tab.
+Escape or Close returns focus to the launcher, and pending word/round saves must
+finish before closing. The blue size panel and familiar-word action use
 the existing palette. Only explicitly reviewed library words and saved reading
 words enter the deck; Mark as read updates the shared familiar progress. An
 unfinished round can resume, and fresh translation mistakes remain collapsible.
 
-The shared hub starts directly with its tabs. Its introductory banner and
+The shared hub starts directly with its compact practice cards. Its introductory banner and
 collected-word progress panel are removed from Home; collected-word progress
 remains on Vocabulary. A topic illustration sits beside the resumable session,
 with sage/lilac/yellow learning evidence cards. Review reuses the book artwork and

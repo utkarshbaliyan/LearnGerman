@@ -1,13 +1,19 @@
 # Today, personal review and learning evidence
 
-## Combined Today & Review
+## Home practice cards
 
-Home is one learning hub with Today and Review tabs. The shared header has one
+Home is one dashboard with compact Flashcards and Review cards. The shared header has one
 Home link; `/review` redirects to `/?view=review` so existing bookmarks
-and reader links open the Review tab. Tab changes retain the active daily session
-and current recall input. Existing daily preferences, reading sessions, narration,
+and reader links open the Review dialog over Home. Flashcards opens the 8/10/12-word
+practice choices or an empty-deck explanation; an unfinished round has a Resume
+action. Review opens the shared word box and saved translation mistakes. Closing
+practice returns to Home and keeps the saved round; closing is blocked while a
+word action or round-save retry is pending. Keyboard focus returns to the launcher.
+Review links from a daily session return to Home without deleting that session's
+saved progress; the daily plan can still resume it.
+Existing daily preferences, reading sessions, narration,
 word stacks and translation mistake review remain available. Home opens directly
-with the tabs: its introductory banner and collected-word progress panel are
+with the two compact cards: its introductory banner and collected-word progress panel are
 removed. Collected-word progress remains on Vocabulary.
 
 Four Home cards introduce Stories, Grammar, Vocabulary and Active Learning with
@@ -117,6 +123,13 @@ AI feedback and help reports are uncalibrated practice evidence. Real learner an
 teacher validation remain necessary after release.
 
 ## Verification completed
+
+- Compact Home practice cards: all 169 tests, TypeScript, the production build
+  and migration contract passed. Browser checks covered direct 8/10/12 choices,
+  round resume, shared familiar marks, Save & leave returning Home, keyboard
+  dismissal/focus restoration, existing Review links and translation mistakes.
+  Desktop and 320px cards and dialogs passed in both themes without horizontal
+  overflow. The shared deck, FSRS memory and learner records are preserved.
 
 - Illustrated Home sections: all 169 tests, TypeScript, the production build
   and migration contract passed. Tests cover connected vocabulary and legacy

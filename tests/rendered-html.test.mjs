@@ -26,18 +26,21 @@ async function renderRoute(pathname) {
   );
 }
 
-test("combines Today and Review at home and preserves review bookmarks and the story library", async () => {
+test("Home offers compact Flashcards and Review cards and preserves review bookmarks and the story library", async () => {
   const response = await renderRoute("/");
   assert.equal(response.status, 200);
   const todayHtml = await response.text();
   assert.match(todayHtml, /Home/);
-  assert.match(todayHtml, /aria-label="Today and Review"/);
+  assert.match(todayHtml, /aria-label="Flashcards and Review"/);
+  assert.match(todayHtml, /Practice flashcards/);
+  assert.match(todayHtml, /Open review/);
+  assert.doesNotMatch(todayHtml, /role="tablist"|aria-label="Today and Review"/);
   const oldReview = await renderRoute('/review');
   assert.equal(oldReview.status, 307);
   assert.equal(new URL(oldReview.headers.get('location'), 'http://localhost').search, '?view=review');
   const review = await renderRoute('/?view=review');
   assert.equal(review.status, 200);
-  assert.match(await review.text(), /Your review deck/);
+  assert.match(await review.text(), /aria-label="Flashcards and Review"/);
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();
