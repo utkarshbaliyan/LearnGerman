@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
 import { allowedStoryArt } from '../app/lib/story-art-media.mjs';
+import { assignStoryArtCovers } from '../app/lib/story-art-covers.mjs';
 
 const partial = process.argv.includes('--partial'), preview = process.argv.includes('--preview');
 const briefs = JSON.parse(readFileSync('content/illustrations/story-art-briefs.json','utf8'));
@@ -38,5 +39,7 @@ for (const brief of briefs) {
   prompts[brief.id] = {title:brief.title,scene:brief.scene,prompt:image.prompt,style:image.style,sourceSha256,sha256,width:exported.width,height:exported.height,alphaSha256:exported.alphaSha256};
 }
 if (!Object.keys(registry).length || (!partial && Object.keys(registry).length !== 654)) throw new Error('The full illustration release requires 654 distinct covers.');
-for (const [name,data] of [['story-art-registry',registry],['story-art-manifest',covers],['story-art-prompts',prompts]]) writeFileSync(`content/illustrations/${name}.json`,JSON.stringify(data,null,2)+'\n');
+const reuse = JSON.parse(readFileSync('content/illustrations/story-art-reuse.json','utf8'));
+const assigned = assignStoryArtCovers(briefs, covers, reuse);
+for (const [name,data] of [['story-art-registry',registry],['story-art-manifest',assigned],['story-art-prompts',prompts]]) writeFileSync(`content/illustrations/${name}.json`,JSON.stringify(data,null,2)+'\n');
 console.log(`Prepared ${Object.keys(registry).length} distinct ${preview?'local preview':'immutable production'} story illustrations.`);
