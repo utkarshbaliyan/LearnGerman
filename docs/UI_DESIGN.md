@@ -19,11 +19,37 @@ sections with matching topic illustrations. The existing atlas also illustrates
 the exploration links. All artwork is decorative and reuses already published
 assets; no generation, cover reassignment or automation was started.
 
-The colours are scoped to the learning pages, with separate dark-theme surfaces,
-readable green actions, and compact illustrations on mobile. Progress, review
-schedules, answer visibility and the daily session behavior remain unchanged.
+These learning-page colours sit within the shared platform palette, with separate
+dark-theme surfaces, readable actions, and compact illustrations on mobile.
+Progress, review schedules, answer visibility and the daily session behavior
+remain unchanged.
 
-The current refinement uses neutral white and dark surfaces, compact navigation, condensed uppercase headings and a flat four-column story gallery. It takes visual direction from [Sloeful's German stories](https://www.sloeful.com/german/stories), with original assets and LeseLaut's existing navigation and learning tools.
+The current refinement uses warm paper and dark green surfaces, compact navigation,
+condensed uppercase headings and a flat four-column story gallery. It takes visual
+direction from [Sloeful's German stories](https://www.sloeful.com/german/stories),
+with original assets and LeseLaut's existing navigation and learning tools.
+
+## Platform colours
+
+`app/platform-colours.css` provides the shared palette. The active section on the
+site header selects coral for Vocabulary, blue for Grammar and Account, lilac for
+Active Learning, sage for Stories and Review, and amber for Today and Books. These
+colours carry through navigation, headers, cards, controls and progress panels.
+Vocabulary retains its topic colours and labelled familiar/review states. Grammar
+patterns, reference tables and case chips have distinct coloured surfaces. Story
+cover frames cycle through the five soft colours without changing artwork.
+
+Both themes use separate readable foregrounds and surfaces. Book pages keep their
+existing paper and reading ink. At 320px, Grammar modules, Account forms and case
+cheat sheets fit the screen; larger reference tables scroll within their panels.
+The connected word stack and all reading and practice actions retain their
+existing behavior. No new images, content, migrations or automation changes are
+part of this refinement.
+
+Validation: all 152 regression tests passed against the fresh production build,
+TypeScript passed, and deployment migrations match source. Browser checks covered
+the shared page families, light and dark themes, 320px layouts, vocabulary reveal
+and practice controls, grammar lessons, and the reader word stack.
 
 ## Original artwork
 

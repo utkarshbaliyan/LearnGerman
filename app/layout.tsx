@@ -3,6 +3,7 @@ import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import "./globals.css";
 import "./illustrated-ui.css";
 import './learning.css';
+import './platform-colours.css';
 
 export const metadata: Metadata = {
   title: "LeseLaut — Learn German through stories",
@@ -18,8 +19,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#171717" },
+    { media: "(prefers-color-scheme: light)", color: "#fffdf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#141b1a" },
   ],
 };
 

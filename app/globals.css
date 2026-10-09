@@ -1003,7 +1003,6 @@ footer { background: var(--muted); }
 .category-scroller button { --category-color: var(--blue) !important; }
 .vocabulary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .vocabulary-card {
-  --vocabulary-color: var(--blue) !important;
   min-height: 208px;
   border-top-width: 3px;
   border-radius: 13px;

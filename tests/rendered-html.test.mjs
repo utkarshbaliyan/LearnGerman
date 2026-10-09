@@ -83,7 +83,8 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
     assert.match(html, /href="\/books\/a1\/der-schluessel-im-blauen-korb">Contents<\/a>/);
     assert.match(html, /class="book-volume book-volume--page"/);
     assert.doesNotMatch(html, /In English ·/);
-    assert.match(html, /Hover over or tap a word for its English meaning/);
+    assert.match(html, /class="reading-help">Hover for a meaning\. Click a word to collect it in your stack\./);
+    assert.match(html, /aria-label="Collected word stack"/);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
   }
   assert.equal((await renderRoute('/books/a1/der-schluessel-im-blauen-korb/201')).status, 404);

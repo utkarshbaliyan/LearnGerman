@@ -1,0 +1,201 @@
+/* Shared editorial palette. Decorative colour never replaces progress labels. */
+:root {
+  --paper: #fffdf9;
+  --white: #ffffff;
+  --ink: #202d28;
+  --ink-soft: #596860;
+  --line: #dce4de;
+  --muted: #f1f5f1;
+  --blue: #285bac;
+  --green: #173f32;
+  --green-accent: #206149;
+  --amber: #825b17;
+  --tone-sage: #eaf3ed;
+  --tone-sage-ink: #206149;
+  --tone-sky: #eaf1fe;
+  --tone-sky-ink: #285bac;
+  --tone-lilac: #f2ebfb;
+  --tone-lilac-ink: #7042a0;
+  --tone-peach: #fcece2;
+  --tone-peach-ink: #9b492a;
+  --tone-butter: #fbf1d3;
+  --tone-butter-ink: #825b17;
+  --section-soft: var(--tone-sage);
+  --section-ink: var(--tone-sage-ink);
+  --section-on: #ffffff;
+}
+html[data-theme="dark"] {
+  --paper: #141b1a;
+  --white: #1b2422;
+  --ink: #eff4f1;
+  --ink-soft: #b4c2bc;
+  --line: #34443f;
+  --muted: #25302d;
+  --blue: #a5c6ff;
+  --green: #102820;
+  --green-accent: #9ddbb8;
+  --amber: #f0d393;
+  --tone-sage: #20372f;
+  --tone-sage-ink: #9ddbb8;
+  --tone-sky: #202e48;
+  --tone-sky-ink: #a5c6ff;
+  --tone-lilac: #302641;
+  --tone-lilac-ink: #d2b8f1;
+  --tone-peach: #3d2b24;
+  --tone-peach-ink: #f2b99d;
+  --tone-butter: #37301e;
+  --tone-butter-ink: #f0d393;
+  --section-on: #10211b;
+}
+body {
+  --orange: var(--section-ink);
+  --orange-dark: var(--section-ink);
+  --primary: var(--section-ink);
+  --primary-foreground: var(--section-on);
+  --secondary: var(--section-soft);
+  --secondary-foreground: var(--ink);
+  --accent: var(--section-soft);
+  --accent-foreground: var(--section-ink);
+  --mint: var(--section-soft);
+  --ring: var(--section-ink);
+  --section-line: color-mix(in srgb, var(--section-ink) 25%, var(--line));
+}
+body:has(.topbar[data-section="vocabulary"]) { --section-soft: var(--tone-peach); --section-ink: var(--tone-peach-ink); }
+body:has(.topbar[data-section="grammar"]), body:has(.topbar[data-section="account"]) { --section-soft: var(--tone-sky); --section-ink: var(--tone-sky-ink); }
+body:has(.topbar[data-section="active-learning"]) { --section-soft: var(--tone-lilac); --section-ink: var(--tone-lilac-ink); }
+body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"]) { --section-soft: var(--tone-butter); --section-ink: var(--tone-butter-ink); }
+
+/* The navigation and shared controls connect every route to its section. */
+.topbar { background: color-mix(in srgb, var(--section-soft) 35%, var(--white)); border-bottom: 2px solid var(--section-line); }
+.topnav > a[aria-current="page"] { background: var(--section-soft); color: var(--section-ink); box-shadow: inset 0 -2px var(--section-ink); }
+.topnav > a:hover { color: var(--section-ink); }
+.theme-toggle { background: var(--white); border-color: var(--section-line); color: var(--section-ink); }
+.reading-eyebrow, .grammar-section-label { color: var(--section-ink); }
+.site-shell > footer { background: var(--section-soft); border-color: var(--section-line); }
+.site-shell :is(input, textarea, select, [data-slot="select-trigger"]) { accent-color: var(--section-ink); }
+.site-shell [data-slot="progress"] { background: var(--section-soft); }
+.site-shell [data-slot="progress-indicator"] { background: var(--section-ink); }
+.site-shell [data-slot="tabs-list"] { background: var(--section-soft); }
+.site-shell [data-slot="tabs-list"] > [data-slot="tabs-trigger"][data-state="active"] { background: var(--section-ink); color: var(--section-on); border-color: var(--section-ink); }
+.connected-word-progress { background: var(--section-soft); border-color: var(--section-line); }
+.connected-word-progress dd { color: var(--section-ink); }
+.reader-word-stack { border-color: var(--section-line); }
+.reader-word-stack > details > summary { background: var(--section-soft); color: var(--section-ink); }
+.reader-stack-body li { background: color-mix(in srgb, var(--section-soft) 45%, var(--white)); border-color: var(--section-line); }
+.reader-stack-links a { color: var(--section-ink); }
+
+/* Vocabulary: warm coral introduction, topic-tinted cards, explicit statuses. */
+.vocab-page-heading { padding: 28px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
+.vocab-page-heading h1 { color: var(--section-ink); }
+.vocab-progress-strip { background: var(--tone-sage); border: 1px solid color-mix(in srgb, var(--tone-sage-ink) 20%, var(--line)); }
+.vocabulary-card:not(.is-completed):not(.is-review) { background: color-mix(in srgb, var(--vocabulary-color) 9%, var(--white)); }
+.vocabulary-card-top { color: var(--ink-soft); }
+.vocabulary-card-actions button { background: color-mix(in srgb, var(--white) 75%, transparent); }
+.vocabulary-card-actions button:first-child.is-active { background: var(--tone-sage); color: var(--tone-sage-ink); }
+.vocabulary-card-actions button:nth-child(2).is-active { background: var(--tone-butter); color: var(--tone-butter-ink); }
+.vocabulary-card.is-completed { background: var(--tone-sage); }
+.vocabulary-card.is-review { background: var(--tone-butter); }
+.vocabulary-practice { border-top: 4px solid var(--section-ink); background: var(--white); }
+.vocabulary-practice + .vocabulary-practice { border-top-color: var(--tone-sage-ink); }
+.practice-controls { background: var(--section-soft); padding: 16px; border-radius: 10px; }
+.guess-streaks dd { color: var(--section-ink); }
+.practice-flashcard { background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 12px; }
+.progress-filters button.is-active, .grammar-level-switcher button.is-active { background: var(--section-ink); color: var(--section-on); }
+.progress-filters button.is-active b, .grammar-level-switcher button.is-active b, .grammar-level-switcher button.is-active span { color: var(--section-on); }
+.vocab-filter-drawer { border-color: var(--section-line); }
+.vocab-filter-drawer > summary { color: var(--section-ink); }
+.vocabulary-sources-content { background: var(--white); border-top: 4px solid var(--section-ink); }
+.vocabulary-sources-content h1, .vocabulary-sources-content a { color: var(--section-ink); }
+
+/* Grammar: blue landmarks, coloured patterns and quiet reference tables. */
+.grammar-page .grammar-hero { width: 1180px; max-width: calc(100% - 64px); margin: 32px auto; padding: 32px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
+.grammar-hero h1, .grammar-hero h1 em { color: var(--section-ink); }
+.grammar-hero > div, .grammar-progress-card { min-width: 0; }
+.grammar-page .grammar-progress-card { border: 1px solid var(--section-line); background: var(--white); }
+.grammar-method { width: calc(100% - 64px); max-width: 1180px; margin: 32px auto; padding: 0; gap: 16px; border: 0; background: transparent; }
+.grammar-method > div { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--tone-sky); }
+.grammar-method > div:nth-child(2) { background: var(--tone-sage); }
+.grammar-method > div:nth-child(3) { background: var(--tone-lilac); }
+.grammar-module-card > header { background: var(--section-soft); border-bottom-color: var(--section-line); }
+.grammar-module-card > header > span { color: var(--section-ink); }
+.grammar-module-card button.is-active { background: var(--section-soft); border-left-color: var(--section-ink); }
+.grammar-lesson-heading { padding: 22px; background: var(--section-soft); border-radius: 12px; }
+.grammar-page .grammar-pattern { background: var(--section-ink); color: var(--section-on); border-left-color: var(--tone-butter-ink); }
+.grammar-page .grammar-pattern span { color: inherit; }
+.grammar-page .grammar-memory-tip { background: var(--tone-butter); color: var(--ink); border-color: color-mix(in srgb, var(--tone-butter-ink) 25%, var(--line)); }
+.grammar-memory-tip :is(svg, span) { color: var(--tone-butter-ink); }
+.grammar-reference-page > header, .recall-header { padding: 28px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
+.grammar-reference-page h1, .recall-header h1 { color: var(--section-ink); }
+.grammar-reference-page a { color: var(--section-ink); }
+.grammar-rule-sources a { color: var(--section-ink); }
+.grammar-reference-page nav a, .recall-nav a { background: var(--section-soft); padding: 10px 14px; border-radius: 7px; }
+.recall-layout > * { min-width: 0; }
+:is(.reference-scroll, .recall-table-scroll, .grammar-reference-table) thead th { background: var(--section-soft); color: var(--ink); }
+.grammar-page .grammar-reference-table thead th { background: var(--section-soft); color: var(--ink); }
+:is(.reference-scroll, .recall-table-scroll, .grammar-reference-table) tbody tr:nth-child(even) { background: color-mix(in srgb, var(--section-soft) 50%, var(--white)); }
+.coverage-levels article { background: var(--section-soft); border-color: var(--section-line); }
+.recall-sheet { border-top: 4px solid var(--section-ink); background: var(--white); }
+.recall-sheet-heading > span { background: var(--section-soft); color: var(--section-ink); }
+.recall-case-key span:nth-child(1) { background: var(--tone-sky); color: var(--tone-sky-ink); }
+.recall-case-key span:nth-child(2) { background: var(--tone-peach); color: var(--tone-peach-ink); }
+.recall-case-key span:nth-child(3) { background: var(--tone-sage); color: var(--tone-sage-ink); }
+.recall-case-key span:nth-child(4) { background: var(--tone-lilac); color: var(--tone-lilac-ink); }
+.recall-tip { background: var(--tone-butter); color: var(--ink); }
+
+/* Reading stays calm; colour lives around the text and in existing artwork. */
+.reading-heading, .illustrated-intro { padding: 28px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
+.reading-heading h1, .illustrated-intro h1, .illustrated-intro h1 em { color: var(--section-ink); }
+.reading-next { padding: 16px; background: var(--section-soft); border-color: var(--section-line); border-radius: 10px; }
+.reading-gallery > li:nth-child(5n+1) .story-art { background: var(--tone-sage); }
+.reading-gallery > li:nth-child(5n+2) .story-art { background: var(--tone-lilac); }
+.reading-gallery > li:nth-child(5n+3) .story-art { background: var(--tone-butter); }
+.reading-gallery > li:nth-child(5n+4) .story-art { background: var(--tone-sky); }
+.reading-gallery > li:nth-child(5n+5) .story-art { background: var(--tone-peach); }
+.reading-reader > header { padding: 22px; background: var(--section-soft); border-left: 4px solid var(--section-ink); border-radius: 0 12px 12px 0; }
+.reading-reader > header h1 { color: var(--section-ink); }
+.reading-check fieldset { background: color-mix(in srgb, var(--section-soft) 35%, var(--white)); }
+.reception-teaser, .reception-later { background: var(--section-soft); border-color: var(--section-line); }
+.book-page-header { background: #faf0d6; padding: 22px; border-radius: 10px; }
+.book-page-header h1 { color: var(--book-ink); }
+.book-page-sheet .reading-help { color: var(--book-muted); }
+.book-volume--front .book-front-page { background: #fff9ea; }
+
+/* Active Learning, course chapters, accounts and supporting routes. */
+.translation-setup, .active-workspace { border-top: 4px solid var(--section-ink); background: var(--white); }
+.translation-sentence { border-left: 4px solid var(--section-ink); }
+.translation-english > span { background: var(--section-soft); color: var(--section-ink); border-radius: 6px; padding: 3px 7px; align-self: flex-start; }
+.translation-signin, .translation-speech-help, .translation-help-report { background: var(--section-soft); padding: 18px; border-radius: 10px; }
+.translation-signin a { color: var(--section-ink); }
+.active-module > header, .active-input { background: var(--section-soft); border-color: var(--section-line); }
+.course-home-hero, .chapter-hero { background: var(--section-soft); }
+.chapter-learning-section { border-top: 3px solid var(--section-line); }
+.chapter-section-copy > span, .chapter-kicker { color: var(--section-ink); }
+.chapter-quiz, .chapter-vocabulary, .chapter-grammar, .chapter-writing { border-color: var(--section-line); }
+.chapter-question-list fieldset, .resource-safety-net, .course-promise { background: var(--section-soft); }
+.level-journey-grid > article:nth-child(3n+1) { background: var(--tone-sage); }
+.level-journey-grid > article:nth-child(3n+2) { background: var(--tone-sky); }
+.level-journey-grid > article:nth-child(3n+3) { background: var(--tone-lilac); }
+.learning-session, .learning-setup { border-top: 4px solid var(--section-ink); }
+.learning-start { background: var(--tone-sky); }
+.account-intro { padding: 28px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; align-self: start; }
+.account-intro h1, .account-intro > span { color: var(--section-ink); }
+.account-panel { min-width: 0; border-top: 4px solid var(--section-ink); background: var(--white); }
+.account-auth-tabs button.is-active, .account-submit { background: var(--section-ink); color: var(--section-on); }
+.account-profile > span { background: var(--section-soft); color: var(--section-ink); }
+.account-benefits > div { background: var(--section-soft); }
+.auth-callback { background: var(--tone-sage); color: var(--tone-sage-ink); }
+.route-loading-line { background: linear-gradient(90deg, var(--tone-sage), var(--tone-butter), var(--tone-sage)); background-size: 200% 100%; }
+
+@media (max-width: 760px) {
+  .vocab-page-heading, .reading-heading, .illustrated-intro, .grammar-reference-page > header, .recall-header, .account-intro { padding: 20px; }
+  .grammar-page .grammar-hero { max-width: calc(100% - 40px); margin: 24px auto; padding: 22px; }
+  .reading-next { padding: 14px; }
+  .grammar-method > div { padding: 16px; }
+  .grammar-method { width: calc(100% - 40px); }
+  .module-kicker { flex-wrap: wrap; }
+  .recall-layout { grid-template-columns: minmax(0, 1fr); }
+  .recall-nav { grid-template-columns: minmax(0, 1fr); }
+  .account-shell { grid-template-columns: minmax(0, 1fr); padding: 32px 20px 60px; gap: 24px; }
+  .grammar-lesson-heading, .book-page-header { padding: 18px; }
+}
+@media (max-width: 480px) { .module-kicker > .topic-art--sticker { display: none; } }

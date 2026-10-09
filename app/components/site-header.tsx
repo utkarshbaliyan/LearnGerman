@@ -9,7 +9,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ active }: SiteHeaderProps) {
   return (
-    <header className="topbar">
+    <header className="topbar" data-section={active}>
       <Link href="/" prefetch={false} className="brand" aria-label="LeseLaut home">
         <span className="brand-mark" aria-hidden="true">ä</span>
         <span><strong>LeseLaut</strong><small>German through stories</small></span>
