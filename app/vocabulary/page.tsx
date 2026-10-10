@@ -28,7 +28,6 @@ import {
 import { VocabularyPractice } from "@/app/vocabulary/practice";
 import { VocabularyProgressChart } from "@/app/vocabulary/progress-chart";
 import { connectedVocabulary } from '@/app/lib/saved-vocabulary';
-import { ConnectedWordProgress } from '@/app/components/connected-word-progress';
 import { vocabularyCardKey, vocabularyReviewDueAt, type CollectedVocabularyWord } from "@/app/lib/progress-sync";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,7 +118,6 @@ export default function VocabularyPage() {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
-  const [collectionOnly, setCollectionOnly] = useState(false);
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
@@ -130,8 +128,8 @@ export default function VocabularyPage() {
   const deferredQuery = useDeferredValue(query);
 
   const catalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabularyProgress), [vocabularyProgress]);
-  const levelWords = useMemo(() => catalog.filter(word => (level === "all" || word.level === level) && (!collectionOnly || Boolean(vocabularyProgress.words?.[vocabularyCardKey(word)]))), [catalog, level, collectionOnly, vocabularyProgress.words]);
-  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('collection') === 'reading') setCollectionOnly(true); if (params.get('view') === 'practice') setView('practice'); }, []);
+  const levelWords = useMemo(() => catalog.filter(word => level === "all" || word.level === level), [catalog, level]);
+  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); }, []);
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
@@ -180,7 +178,6 @@ export default function VocabularyPage() {
   }
 
   function clearFilters() {
-    setCollectionOnly(false);
     setQuery("");
     setProgressFilter("all");
     setCategory("all");
@@ -232,7 +229,7 @@ export default function VocabularyPage() {
   }
 
   const levelLabel = level === "all" ? "A1–C1" : level;
-  const hasActiveFilters = collectionOnly || query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
+  const hasActiveFilters = query || category !== "all" || progressFilter !== "all" || wordClassFilter !== "all";
   const wordClassLabel = vocabularyFilterLabel(wordClassFilter);
 
   return (
@@ -255,11 +252,9 @@ export default function VocabularyPage() {
         </header>
         {level === "C1" && <p className="vocabulary-scope-note">C1 extension: advanced and specialist vocabulary, plus useful gaps from earlier levels. Placement is editorial. <Link href="/vocabulary/sources">Sources and level guidance →</Link></p>}
         <VocabularyProgressChart learned={selectedCompleted} review={selectedReview} unlearned={selectedUnlearned}
-          hydrated={hydrated} scope={`${levelLabel}${collectionOnly ? " · from stories & books" : " · all vocabulary"}`} />
+          hydrated={hydrated} scope={`${levelLabel} · all vocabulary`} />
 
-        <ConnectedWordProgress vocabulary={vocabularyProgress} />
         {storageError && <p role="alert">{storageError}</p>}
-        <div className="vocabulary-collection-toggle" aria-label="Vocabulary collection"><Button variant={collectionOnly ? "outline" : "default"} aria-pressed={!collectionOnly} onClick={() => { setCollectionOnly(false); setVisibleLimit(VISIBLE_BATCH); }}>All vocabulary</Button><Button variant={collectionOnly ? "default" : "outline"} aria-pressed={collectionOnly} onClick={() => { clearFilters(); setLevel("all"); setCollectionOnly(true); }}>From stories & books · {Object.keys(vocabularyProgress.words ?? {}).length}</Button></div>
 
         <Tabs value={view} onValueChange={setView} className="vocab-sections">
           <TabsList variant="line" aria-label="Vocabulary sections">

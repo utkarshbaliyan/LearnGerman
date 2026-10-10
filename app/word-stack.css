@@ -32,16 +32,7 @@
 .book-paragraph .reading-word:hover, .book-paragraph .reading-word:focus-visible { color: var(--book-ink); text-decoration-color: var(--book-ink); }
 .book-page-header, .book-page-navigation { max-width: 760px; }
 .learning-session:has(.reading-with-stack) { max-width: none; }
-.connected-word-progress { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin: 28px 0; background: color-mix(in srgb, var(--green-accent) 6%, var(--white)); color: var(--ink); }
-.connected-word-progress h2 { font-family: var(--font-display), sans-serif; font-size: 28px; margin: 6px 0; }
-.connected-word-progress p { font-size: 13px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
-.connected-word-progress dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: center; }
-.connected-word-progress dl > div { display: flex; flex-direction: column-reverse; gap: 6px; }
-.connected-word-progress dt { font-size: 11px; color: var(--ink-soft); }
-.connected-word-progress dd { font-size: 26px; font-weight: 600; margin: 0; }
-.connected-word-progress > a { font-size: 13px; grid-column: 1 / -1; text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
-.vocabulary-collection-toggle { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
-@media (max-width: 960px) { .reading-with-stack { grid-template-columns: minmax(0, 1fr) 245px; gap: 20px; } .connected-word-progress { grid-template-columns: 1fr; } }
-@media (max-width: 760px) { .reading-with-stack { display: flex; flex-direction: column; } .reading-copy { width: 100%; } .reader-word-stack { position: static; order: -1; width: 100%; margin: 0; } .reader-stack-body ul { max-height: 240px; } .reader-stack-body > p { margin-bottom: 10px; } .reader-stack-empty { padding: 12px; margin: 10px 0; } .connected-word-progress { padding: 20px; } .connected-word-progress dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .reading-with-stack { grid-template-columns: minmax(0, 1fr) 245px; gap: 20px; } }
+@media (max-width: 760px) { .reading-with-stack { display: flex; flex-direction: column; } .reading-copy { width: 100%; } .reader-word-stack { position: static; order: -1; width: 100%; margin: 0; } .reader-stack-body ul { max-height: 240px; } .reader-stack-body > p { margin-bottom: 10px; } .reader-stack-empty { padding: 12px; margin: 10px 0; } }
 @media (max-width: 760px) { .reader-word-stack .reader-stack-jump { display: inline-flex; position: fixed; z-index: 30; bottom: 18px; right: 20px; width: auto; box-shadow: 0 3px 16px #0003; } }
 @media (max-width: 380px) { .reader-word-stack { scroll-margin-top: 216px; } }

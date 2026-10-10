@@ -104,15 +104,11 @@ html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-rev
 .vocab-legend-dot { width: 11px; height: 11px; flex: none; border-radius: 50%; }
 .vocab-progress-legend dd { display: flex; align-items: baseline; justify-content: flex-end; gap: 12px; margin: 0; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .vocab-progress-legend dd small { min-width: 48px; text-align: right; color: var(--ink-soft); font-size: 12px; font-weight: 400; }
-.vocabulary-page .connected-word-progress { background: var(--white); }
-.vocabulary-page .connected-word-progress dd { color: var(--ink); }
 .vocabulary-page .vocabulary-card { --vocabulary-color: var(--line); background: var(--white); }
 .vocabulary-page .vocabulary-card.is-completed { border-top-color: var(--vocab-learned); }
 .vocabulary-page .vocabulary-card.is-review { border-top-color: var(--vocab-review); }
 .vocabulary-page .vocab-sections > [data-slot="tabs-list"] { background: transparent; }
 .vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"][data-state="active"] { background: transparent; color: var(--blue); border-color: var(--line); }
-.vocabulary-page .vocabulary-collection-toggle [data-slot="button"] { background: var(--white); color: var(--ink-soft); border: 1px solid var(--line); }
-.vocabulary-page .vocabulary-collection-toggle [data-slot="button"][aria-pressed="true"] { background: var(--muted); color: var(--ink); }
 .vocabulary-page .progress-filters button.is-active { background: var(--muted); color: var(--ink); border-color: var(--line); }
 .vocabulary-page .progress-filters button.is-active b { color: var(--ink); }
 .vocabulary-card-top { color: var(--ink-soft); }

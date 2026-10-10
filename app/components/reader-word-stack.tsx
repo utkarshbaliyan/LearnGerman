@@ -29,7 +29,7 @@ function ReaderWordStack({ words, vocabulary, remove }: { words: CollectWordInpu
   const count = Object.keys(progress.words ?? {}).length;
   return <aside ref={panel} className="reader-word-stack" aria-label="Collected word stack">{words.length > 0 && <Button className="reader-stack-jump" size="sm" onClick={() => panel.current?.scrollIntoView({ behavior: 'auto', block: 'start' })}><Layers3 size={16} /> Word stack · {words.length}</Button>}<details open>
     <summary><Layers3 size={20} /><span>Word stack <small>{words.length} collected here</small></span></summary>
-    <div className="reader-stack-body"><p>Click words as you read. Add the useful ones to your shared vocabulary and review deck.</p>
+    <div className="reader-stack-body"><p>Click words as you read. Add to review saves them in Vocabulary, Review and Flashcards.</p>
     {!words.length ? <div className="reader-stack-empty">Your next useful word starts here.</div> : <ul>{words.map(word => {
       const key = vocabularyCardKey(word), review = isVocabularyReview(progress, word), saved = Boolean(progress.words?.[key]), familiar = isVocabularyLearned(progress, word);
       const dueAt = progress.cards?.[key]?.dueAt;
@@ -39,7 +39,7 @@ function ReaderWordStack({ words, vocabulary, remove }: { words: CollectWordInpu
         {review ? <small className="reader-stack-status">{dueAt && dueAt > Date.now() ? `Next review: ${new Date(dueAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}` : 'Ready to practise now'}</small> : familiar ? <small className="reader-stack-status">Marked familiar in Vocabulary</small> : null}
       </li>;
     })}</ul>}
-    <div className="reader-stack-links"><Link href="/vocabulary?collection=reading&view=practice">Vocabulary & practice →</Link><Link href="/review">Your review →</Link></div>
+    <div className="reader-stack-links"><Link href="/vocabulary">Word library →</Link><Link href="/?view=review">Flashcards & review →</Link></div>
     <p className="reader-stack-note">Saved words share one schedule across sections. Sign in to sync across devices.</p>
     {count >= MAX_COLLECTED_WORDS && <p role="status">Your collected deck has {count} words. Existing words remain available.</p>}{storageError && <p role="alert">{storageError}</p>}
     </div></details></aside>;

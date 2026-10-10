@@ -7,7 +7,11 @@ desktop. Word clicks collect displayed forms and meanings; Add to review sends
 them to the shared vocabulary deck. On mobile the collapsible stack sits above
 the text, with a floating shortcut after collecting a word. The panel supports
 both themes and leaves narration, translations, bookmarks and page navigation
-available. Vocabulary and Review share the same collected-word progress.
+available. Add to review immediately includes the word in the same Vocabulary
+library and Home Review/Flashcards deck, with one shared schedule and familiar
+status. Reading words retain their source links on normal library cards; they
+have no separate collection tab or progress panel. Old reading-collection
+practice links still open the unified Vocabulary practice view.
 
 ## Today and personal review
 
@@ -39,9 +43,9 @@ the existing palette. Only explicitly reviewed library words and saved reading
 words enter the deck; Mark as read updates the shared familiar progress. An
 unfinished round can resume, and fresh translation mistakes remain collapsible.
 
-The shared hub starts directly with its compact practice cards. Its introductory banner and
-collected-word progress panel are removed from Home; collected-word progress
-remains on Vocabulary. A topic illustration sits beside the resumable session,
+The shared hub starts directly with its compact practice cards. Its introductory
+banner is removed from Home, and the collected-word progress panel is removed
+from Home and Vocabulary. A topic illustration sits beside the resumable session,
 with sage/lilac/yellow learning evidence cards. Review reuses the book artwork and
 retains source labels for library, story and book words. Mistake practice keeps
 its peach section and matching topic illustration. The existing atlas also
@@ -120,6 +124,12 @@ Official sources:
 The redesign changes presentation and introductory copy. Story IDs, manuscripts, translations, narration, book pages, bookmarks, progress storage, authentication, database migrations and AI quotas retain their existing behavior. Story filters, level controls, grammar exercises and translation practice remain available. The story-level controls derive from the published catalog, including B2 when its release is ready.
 
 Check Stories, Books, Vocabulary, Grammar and Active Learning in the browser, including mobile sizing and both themes. Run the existing test suite and verified production build before publication.
+
+Unified Vocabulary validation: 169 tests, TypeScript and the production build
+passed; deployment migrations match source. Browser checks covered adding a book
+word directly to Home Review and Flashcards, finding it in the normal library
+with its source and review status, the 8/10/12-word chooser, old practice links,
+both themes and a 320px viewport without horizontal overflow.
 
 Version 121 validation: all 135 existing tests passed with Node 22; the production build passed and deployment migrations match committed source. Desktop and mobile browser checks covered all five learning sections, story filtering, vocabulary reveal, navigation and light/dark contrast. All 11 protected source, authentication configuration and local learner-data hashes remained unchanged. Existing rendered-route assertions now identify their learning page instead of depending on retired introductory copy.
 
