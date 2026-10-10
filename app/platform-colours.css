@@ -107,8 +107,11 @@ html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-rev
 .vocabulary-page .vocabulary-card { --vocabulary-color: var(--line); background: var(--white); }
 .vocabulary-page .vocabulary-card.is-completed { border-top-color: var(--vocab-learned); }
 .vocabulary-page .vocabulary-card.is-review { border-top-color: var(--vocab-review); }
-.vocabulary-page .vocab-sections > [data-slot="tabs-list"] { background: transparent; }
-.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"][data-state="active"] { background: transparent; color: var(--blue); border-color: var(--line); }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] { width: fit-content; max-width: 100%; align-items: stretch; gap: 8px; border: 0; background: transparent; }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"] { flex: 1 1 auto; min-width: 0; min-height: 44px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); white-space: normal; }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"]::after { display: none; }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"]:hover { background: var(--muted); }
+.vocabulary-page .vocab-sections > [data-slot="tabs-list"] > [data-slot="tabs-trigger"][data-state="active"] { background: color-mix(in srgb, var(--blue) 10%, var(--white)); color: var(--blue); border-color: var(--blue); box-shadow: none; }
 .vocabulary-page .progress-filters button.is-active { background: var(--muted); color: var(--ink); border-color: var(--line); }
 .vocabulary-page .progress-filters button.is-active b { color: var(--ink); }
 .vocabulary-card-top { color: var(--ink-soft); }

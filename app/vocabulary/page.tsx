@@ -257,7 +257,7 @@ export default function VocabularyPage() {
         {storageError && <p role="alert">{storageError}</p>}
 
         <Tabs value={view} onValueChange={setView} className="vocab-sections">
-          <TabsList variant="line" aria-label="Vocabulary sections">
+          <TabsList aria-label="Vocabulary sections">
             <TabsTrigger value="library">Word library</TabsTrigger>
             <TabsTrigger value="practice">Practice & review</TabsTrigger>
           </TabsList>
