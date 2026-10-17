@@ -22,6 +22,39 @@ test('story and book saves share a headword schedule, are due immediately, and n
   const familiar = p.setVocabularyStatus(verb, input, 'learned', 500);
   assert.equal(p.isVocabularyLearned(familiar, again.words[key]), true);
 }));
+test('one batch saves every selected headword without resetting existing review schedules', () => fixture(p => {
+  const first = p.collectVocabularyWord(p.emptyVocabularyProgress(), input, 100);
+  const reviewed = p.rateVocabularyFlashcard(first, input, 3, 200);
+  const before = JSON.stringify(reviewed);
+  const house = { ...input, german: 'Haus', english: 'house' };
+  const street = { ...input, german: 'Straße', english: 'street' };
+  const batch = p.collectVocabularyWords(reviewed, [input, house, street, { ...house, german: 'das Haus' }], 300);
+  assert.equal(Object.keys(batch.words).length, 3);
+  assert.deepEqual(batch.cards[p.vocabularyCardKey(input)], reviewed.cards[p.vocabularyCardKey(input)]);
+  for (const word of [house, street]) {
+    assert.equal(p.isVocabularyReview(batch, word), true);
+    assert.equal(p.vocabularyReviewDueAt(batch, word), 300);
+  }
+  assert.equal(JSON.stringify(reviewed), before);
+  assert.deepEqual(p.collectVocabularyWords(batch, [input, house, street], 400), batch);
+}));
+test('a batch that exceeds capacity or contains an invalid word leaves existing progress untouched', () => fixture(p => {
+  const first = p.collectVocabularyWord(p.emptyVocabularyProgress(), input, 100);
+  const template = first.words[p.vocabularyCardKey(input)];
+  const almostFull = { ...first, words: Object.fromEntries(Array.from({ length: p.MAX_COLLECTED_WORDS - 1 }, (_, i) => {
+    const word = { ...template, german: `Wort${i}` };
+    return [p.vocabularyCardKey(word), word];
+  })) };
+  const before = JSON.stringify(almostFull);
+  const house = { ...input, german: 'Haus', english: 'house' };
+  assert.throws(() => p.collectVocabularyWords(almostFull, [house, input], 300), /500 words/);
+  assert.equal(JSON.stringify(almostFull), before);
+  assert.throws(() => p.collectVocabularyWords(first, [house, { ...input, english: '' }], 300), /could not be saved/);
+  assert.equal(Object.keys(first.words).length, 1);
+  const atLimit = p.collectVocabularyWords(almostFull, [house], 300);
+  assert.equal(Object.keys(atLimit.words).length, p.MAX_COLLECTED_WORDS);
+  assert.deepEqual(p.collectVocabularyWords(atLimit, [house], 400), atLimit);
+}));
 test('legacy migration preserves due dates, FSRS and recall history without overwriting a newer shared decision', () => fixture(p => {
   const legacy = p.saveStoryWord(p.emptyLearningProgress(), { german: input.german, english: input.english, context: input.context, storyId: source.id }, 100);
   const key = p.vocabularyCardKey(input), oldKey = p.personalWordKey(input.german);

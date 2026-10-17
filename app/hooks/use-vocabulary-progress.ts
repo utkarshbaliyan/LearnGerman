@@ -12,6 +12,7 @@ import {
   markVocabularyRead,
   recordVocabularyGuess,
   collectVocabularyWord,
+  collectVocabularyWords,
   type CollectWordInput,
   type VocabularyRecallAttempt,
   type VocabularyIdentity,
@@ -96,6 +97,7 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     return update(current => recordVocabularyGuess(current, word, correct));
   }, [update]);
   const saveWord = useCallback((word: CollectWordInput) => update(current => collectVocabularyWord(current, word)), [update]);
+  const saveWords = useCallback((words: CollectWordInput[]) => update(current => collectVocabularyWords(current, words)), [update]);
   const markAsRead = useCallback((word: VocabularyIdentity) => update(current => markVocabularyRead(current, word)), [update]);
 
   return {
@@ -103,6 +105,7 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     hydrated,
     storageError,
     saveWord,
+    saveWords,
     markAsRead,
     isLearned: useCallback((word: VocabularyIdentity) => isVocabularyLearned(progress, word), [progress]),
     isReview: useCallback((word: VocabularyIdentity) => isVocabularyReview(progress, word), [progress]),

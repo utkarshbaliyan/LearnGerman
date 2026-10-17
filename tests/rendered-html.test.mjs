@@ -58,6 +58,10 @@ test('all story levels offer one toggle for all sentence translations', async ()
     assert.match(html, /Show English translations/);
     assert.doesNotMatch(html, /class="reading-sentence-translation"/);
     assert.doesNotMatch(html, /Need the gist in English/);
+    assert.match(html, /aria-label="Add words to review"/);
+    assert.match(html, /Click on the words in the story to add them to review\./);
+    assert.equal((html.match(/Add to review<\/button>/g) ?? []).length, 1);
+    assert.doesNotMatch(html, /Word stack|Your next useful word starts here|Word library →|Saved words share one schedule/);
   }
 });
 
@@ -91,8 +95,10 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
     assert.match(html, /href="\/books\/a1\/der-schluessel-im-blauen-korb">Contents<\/a>/);
     assert.match(html, /class="book-volume book-volume--page"/);
     assert.doesNotMatch(html, /In English ·/);
-    assert.match(html, /class="reading-help">Hover for a meaning\. Click a word to collect it in your stack\./);
-    assert.match(html, /aria-label="Collected word stack"/);
+    assert.match(html, /class="reading-help">Hover or tap a word for its meaning\./);
+    assert.match(html, /aria-label="Add words to review"/);
+    assert.match(html, /Click on the words in the book to add them to review\./);
+    assert.equal((html.match(/Add to review<\/button>/g) ?? []).length, 1);
     assert.doesNotMatch(html, /Reading practice|Check my answers|Two small questions/);
   }
   assert.equal((await renderRoute('/books/a1/der-schluessel-im-blauen-korb/201')).status, 404);

@@ -37,7 +37,7 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
       return meaning ? <Tooltip key={j} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={event => { event.preventDefault(); setOpenedGloss(glossId); collect(token, meaning, context); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
     })}</span>);
   return <div className="reading-content reading-with-stack"><div className="reading-copy">
-    <p className="reading-help">Tap a word for its meaning and collect it in your word stack.</p>
+    <p className="reading-help">Tap a word for its meaning.</p>
     {sentenceRows && <button type="button" className="reading-translation-toggle" aria-pressed={showTranslations} onClick={() => setShowTranslations(value => !value)}>{showTranslations ? 'Hide English translations' : 'Show English translations'}</button>}
     <TooltipProvider delayDuration={100}><article lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
       {sentenceRows ? sentenceRows.map((paragraph, index) => <div className="reading-sentence-paragraph" key={index}>

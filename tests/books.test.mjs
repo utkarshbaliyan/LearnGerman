@@ -109,7 +109,10 @@ test('every book paragraph has full source-matched English and each page renders
     const { BookPageReader } = await vite.ssrLoadModule('/app/components/book-page-reader.tsx');
     for (const number of [1, 50, 200]) {
       const page = getBookPage(number);
-      const html = renderToStaticMarkup(React.createElement(BookPageReader, page));
+      const html = renderToStaticMarkup(React.createElement(BookPageReader, {
+        ...page,
+        source: { kind: 'book', id: 'der-schluessel-im-blauen-korb', title: `Der Schlüssel im blauen Korb · Page ${number}`, href: `/books/a1/der-schluessel-im-blauen-korb/${number}`, level: 'A1' },
+      }));
       assert.equal((html.match(/<audio /g) ?? []).length, 1);
       assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
       assert.match(html, /aria-pressed="false"/);

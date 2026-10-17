@@ -53,7 +53,7 @@ export function BookPageReader({ paragraphs, translations, glosses, audio, sourc
   }, [follow]);
 
   return <TooltipProvider delayDuration={100}><div className="book-page-sheet reading-with-stack"><div className="reading-copy">
-    <p className="reading-help">Hover for a meaning. Click a word to collect it in your stack.</p>
+    <p className="reading-help">Hover or tap a word for its meaning.</p>
     <div className="book-page-audio">
       {audio ? <audio ref={player} src={audio.src} controls preload="metadata" aria-label="Play this whole page in German"
         onLoadedMetadata={event => { event.currentTarget.defaultPlaybackRate = speed; event.currentTarget.playbackRate = speed; }}

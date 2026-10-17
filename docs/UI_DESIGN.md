@@ -2,16 +2,27 @@
 
 ## Reader word stack
 
-Story and book readers keep the reading column alongside a sticky word stack on
-desktop. Word clicks collect displayed forms and meanings; Add to review sends
-them to the shared vocabulary deck. On mobile the collapsible stack sits above
-the text, with a floating shortcut after collecting a word. The panel supports
+Story and book readers keep the reading column alongside a sticky Add to review
+panel on desktop. Word clicks collect displayed forms and meanings; one Add to
+review button saves the entire selection to the shared vocabulary deck in one
+update, preserving existing review schedules. The panel contains a short click
+instruction, selected words and meanings, remove controls and the single save
+button. Saved words show a check, and the button is disabled until the selection
+contains an unsaved word. A failed batch leaves progress untouched. On mobile
+the collapsible panel sits above the text, with a floating shortcut after
+collecting a word. The panel supports
 both themes and leaves narration, translations, bookmarks and page navigation
 available. Add to review immediately includes the word in the same Vocabulary
 library and Home Review/Flashcards deck, with one shared schedule and familiar
 status. Reading words retain their source links on normal library cards; they
 have no separate collection tab or progress panel. Old reading-collection
 practice links still open the unified Vocabulary practice view.
+
+The simplified reader panel passes all 171 tests, the production build and
+deployment migration verification. Browser checks confirmed one-click saving of
+three story words and two book words, including persistence after reloading and
+the narrow-screen panel layout. Batch failures and existing schedules have
+regression coverage.
 
 ## Today and personal review
 

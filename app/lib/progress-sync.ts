@@ -75,6 +75,11 @@ export function collectVocabularyWord(current: VocabularyProgress, input: Collec
   return { ...next, words: { ...words, [key]: words[key] ?? word } };
 }
 
+export function collectVocabularyWords(current: VocabularyProgress, inputs: CollectWordInput[], now = Date.now()): VocabularyProgress {
+  // Build the whole selection before persisting so a failed word cannot leave a partial save.
+  return inputs.reduce((next, word) => collectVocabularyWord(next, word, now), current);
+}
+
 export function readGuessStreak(value: unknown): NonNullable<VocabularyProgress["guessStreak"]> | undefined {
   if (!value || typeof value !== "object") return undefined;
   const s = value as NonNullable<VocabularyProgress["guessStreak"]>;
