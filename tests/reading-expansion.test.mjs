@@ -6,9 +6,10 @@ import { createServer } from 'vite';
 const original = JSON.parse(readFileSync(new URL('../app/lib/reading-path-data.json', import.meta.url)));
 const added = JSON.parse(readFileSync(new URL('../app/lib/reading-expanded-data.json', import.meta.url)));
 const authored = JSON.parse(readFileSync(new URL('../content/reading/long-stories.json', import.meta.url)));
-const reviews = JSON.parse(readFileSync(new URL('../content/reading/b1-reviews/question-reviews.json', import.meta.url)));
 const drafts = JSON.parse(readFileSync(new URL('../content/reading/b1-rewrite-drafts.json', import.meta.url)));
 const editions = JSON.parse(readFileSync(new URL('../app/lib/reading-editions.json', import.meta.url)));
+const quizzes = JSON.parse(readFileSync(new URL('../app/lib/reading-quizzes.json', import.meta.url)));
+const quizReviews = JSON.parse(readFileSync(new URL('../content/reading/quizzes/reviewed.json', import.meta.url)));
 
 test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', async () => {
  const vite = await createServer({configFile:false,resolve:{alias:{'@':process.cwd()}},optimizeDeps:{noDiscovery:true,include:[]},server:{middlewareMode:true,ws:false}});
@@ -23,7 +24,7 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
    if (editions.B1 === 2) assert.equal(story.text, drafts[id].text, 'B1 publishes the reviewed rewrite');
    else assert.notEqual(story.text, authored[id].text, 'B1 drafts are held until the complete release');
   }
-  for(const old of original) assert.deepEqual(READING_STORIES.find(s=>s.id===old.id),old);
+  for(const old of original) assert.deepEqual(READING_STORIES.find(s=>s.id===old.id),{...old, questions:quizzes[old.id]});
   const means=[];
   for(const [level,total] of [['A1',104],['A2',150],['B1',200]]) {
    const all=READING_STORIES.filter(s=>s.level===level);
@@ -42,17 +43,13 @@ test('A1/A2 expanded stories and the B1 catalog preserve topics and progress', a
     assert.ok(story.words.length>=3&&story.words.length<=4);
     if (range) assert.ok(story.text.split(/\s+/).length>=range[0]);
     assert.doesNotMatch(story.text,/~|Die Hauptperson|eine Geschichte, die später unter dem Titel/);
-    assert.equal(story.questions.length,2);
+    assert.equal(story.questions.length,4);
     for(const q of story.questions) {
      assert.equal(new Set(q.options).size,3);
-     if (level === 'B1' && editions.B1 === 2) {
-      const { evidence, ...reviewed } = reviews[story.id].questions.find(question => question.prompt === q.prompt);
-      assert.deepEqual(q, reviewed, 'B1 answers match the source-bound review');
-      assert.ok(evidence.every(sentence => story.text.includes(sentence)));
-     } else {
-      assert.equal(q.options[q.answer],q.explanation);
-      assert.ok(story.english.includes(q.explanation));
-     }
+     const { evidence, skill, ...reviewed } = quizReviews[story.id].questions.find(question => question.prompt === q.prompt);
+     assert.deepEqual(q, reviewed, 'Learner questions match the current source-bound review');
+     const normalized = text => text.replace(/\s+/gu,' ').trim();
+     assert.ok(evidence.every(sentence => normalized(story.text).includes(normalized(sentence))));
     }
    }
   }

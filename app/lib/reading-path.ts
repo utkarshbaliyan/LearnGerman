@@ -5,10 +5,11 @@ import audio from './reading-audio-manifest.json';
 import b2 from './reading-b2-data.json';
 import b2Sections from './reading-b2-sections.json';
 import b2Audio from '../../content/reading/b2/audio-manifest.json';
+import { withReadingQuiz } from './story-quizzes';
 
 export type ReadingLevel = 'A1' | 'A2' | 'B1' | 'B2';
 export type ReadingStory = Omit<(typeof data)[number], 'level' | 'courseChapter'> & { level: ReadingLevel; courseChapter: number | null; grammarFocus?: string; wordGlosses?: Record<string, string> };
-export const READING_STORIES = [...data, ...expanded, ...b2].sort((a, b) => ['A1', 'A2', 'B1', 'B2'].indexOf(a.level) - ['A1', 'A2', 'B1', 'B2'].indexOf(b.level) || a.number - b.number) as ReadingStory[];
+export const READING_STORIES = [...data, ...expanded, ...b2].map(withReadingQuiz).sort((a, b) => ['A1', 'A2', 'B1', 'B2'].indexOf(a.level) - ['A1', 'A2', 'B1', 'B2'].indexOf(b.level) || a.number - b.number) as ReadingStory[];
 export const READING_LEVELS: ReadingLevel[] = ['A1', 'A2', 'B1', 'B2'];
 export const READING_SECTIONS = {
   B2: b2Sections.titles,

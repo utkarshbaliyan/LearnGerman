@@ -56,6 +56,7 @@ test('all story levels offer one toggle for all sentence translations', async ()
     const html = await response.text();
     assert.equal((html.match(/class="reading-translation-toggle"/g) ?? []).length, 1);
     assert.match(html, /Show English translations/);
+    assert.equal((html.match(/<fieldset/g) ?? []).length, level === 'b2' ? 6 : 4, `${level}: expanded comprehension quiz`);
     assert.doesNotMatch(html, /class="reading-sentence-translation"/);
     assert.doesNotMatch(html, /Need the gist in English/);
     assert.match(html, /aria-label="Add words to review"/);

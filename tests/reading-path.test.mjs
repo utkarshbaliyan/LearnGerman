@@ -33,7 +33,7 @@ test('graded stories have complete vocabulary support, meaningful questions and 
    assert.equal(chapter.vocabulary.length,story.words.filter(word=>!word.contextOnly).length);
    assert.notEqual(chapter.listening[0].prompt,chapter.reading[0].prompt);
    }
-   assert.equal(story.questions.length,story.level === 'B2' ? 4 : 2);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
+   assert.equal(story.questions.length,story.level === 'B2' ? 6 : 4);assert.notEqual(story.questions[0].prompt,story.questions[1].prompt);
    for(const q of story.questions){assert.equal(new Set(q.options).size,3);assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<3);assert.ok(q.explanation.length>15);}
    for(const word of story.words){assert.ok(story.text.includes(word.example),`${story.id}: source example`);assert.ok(word.example.toLowerCase().includes(word.form.toLowerCase()),`${story.id}: ${word.german}`);}
    for(const link of story.revisit){assert.ok(ids.has(link.storyId));assert.ok(stories.findIndex(s=>s.id===link.storyId)<stories.indexOf(story));assert.ok(story.text.toLowerCase().includes(link.german.toLowerCase()));}
