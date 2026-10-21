@@ -11,6 +11,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { acceptsGrammarAnswer, joinGrammarTokens } from "./practice-answer";
 import { GRAMMAR_BRIEF_RULES } from "./brief-rules";
 import { LessonReference } from "./lesson-reference";
+import { LessonGuide } from "./lesson-guide";
 import { uniqueGrammarTasks, grammarChoiceOptions, grammarTaskFocus } from "./practice-sequence";
 import { SiteHeader } from "@/app/components/site-header";
 import { TopicArt } from "@/app/components/topic-art";
@@ -314,8 +315,8 @@ export default function GrammarPage() {
       <section className="grammar-hero">
         <div>
           <div className="module-kicker"><Badge className="eyebrow"><Sparkles /> A1–C1 · Grammar lessons</Badge><TopicArt kind="learn" className="topic-art--sticker" /></div>
-          <h1>Less reading.<br /><em>More doing.</em></h1>
-          <p>144 lessons from A1 to C1. Read one short rule, try it, and learn from the feedback.</p>
+          <h1>Understand the pattern.<br /><em>Make it yours.</em></h1>
+          <p>144 lessons from A1 to C1. Clear explanations, useful tables and examples to explore—then practice to make it stick.</p>
           <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Start practising <ArrowRight /></Button><button type="button" className="grammar-browse-link" onClick={() => { if (lessonBrowser.current) lessonBrowser.current.open = true; document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" }); }}>Browse lessons</button><Link href="/grammar/reference">Grammar reference →</Link><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
         </div>
         <aside className="grammar-progress-card">
@@ -366,18 +367,12 @@ export default function GrammarPage() {
             <header className="grammar-lesson-heading">
               <div><Badge>{selectedModule.level} · Module {selectedModule.number}</Badge><span>Lesson {String(selectedLesson.number).padStart(2, "0")}</span></div>
               <h2>{selectedLesson.title}</h2>
+              <p className="grammar-lesson-outcome">{selectedLesson.outcome}</p>
 
               {progress.completed.includes(selectedLessonId) && <Badge className="mastery-badge"><CheckCircle2 /> Completed · Best score {progress.scores[selectedLessonId] ?? 0}%</Badge>}
             </header>
 
-            <section className="grammar-quick-rule" aria-labelledby="quick-rule-title">
-              <span className="grammar-section-label">Start here</span>
-              <h3 id="quick-rule-title">The rule in brief</h3>
-              <p>{GRAMMAR_BRIEF_RULES[selectedLessonId]}</p>
-              <div className="grammar-pattern"><span>The pattern</span><strong lang="de">{content.pattern}</strong></div>
-              <figure className="grammar-one-example"><figcaption>See it once</figcaption><blockquote lang="de">{content.examples[0].german}</blockquote><p>{content.examples[0].english}</p></figure>
-              <a className="grammar-practice-link" href="#grammar-practice">Try it now <ArrowRight /></a>
-            </section>
+            <LessonGuide key={`guide-${selectedLessonId}`} content={content} />
 
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 

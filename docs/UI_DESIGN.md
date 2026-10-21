@@ -156,9 +156,10 @@ The combined B2 content release and UI refinement passes 140 tests and the verif
 
 ## Grammar through practice
 
-All 144 lessons now lead with a short working rule, one pattern and one example,
-followed immediately by the existing practice sets. The roadmap and fuller
-references are optional disclosures. Rule hints, keyboard focus and a direct next-set
-action keep practice moving. The display skips exact duplicate tasks and repeated
-choice labels while preserving the authored bank and progress keys. See
+All 144 lessons combine a concise rule with visible forms tables, supporting
+notes and contextual examples. Learners can switch tables, reveal English,
+browse examples and compare a taught revision before moving to the original
+exercise sets. Fuller notes remain optional; the lesson browser does not displace
+the active topic. Rule hints, keyboard focus and next-set navigation remain.
+The authored exercise bank and progress keys are preserved. See
 [the grammar audit and preservation notes](GRAMMAR_PRACTICE.md).

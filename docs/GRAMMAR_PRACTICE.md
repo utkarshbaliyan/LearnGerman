@@ -1,18 +1,26 @@
 # Practice-first grammar
 
-The 144 A1–C1 lessons open with one specific working rule (at most 45 words),
-the existing pattern and one existing German example with its English meaning.
-Practice follows immediately. The lesson browser is collapsed by default, so a
-mobile learner does not scroll through the entire roadmap before reaching a task.
-The full explanation, forms, further examples, exceptions and source links remain
-available under “Need more detail?”. Repeated reference paragraphs and generated
-practice instructions are omitted from this optional view.
+The 144 A1–C1 lessons combine a short working rule, the existing pattern, a
+visible reference table and two source-based notes explaining application.
+Learners can choose among a lesson’s tables where several exist and show or hide
+an English column. The sein lesson starts with its conjugation; adjective tables
+whose source columns contain phrase/ending pairs use matching display labels.
 
-Learners can reveal a short rule alongside a question, return to the set chooser
-or continue directly to the next set. Each new question receives keyboard focus.
-Selecting a lesson updates its URL, so reloading retains the chosen topic.
-Task text and patterns preserve German capitalisation, including sie versus Sie.
-Production remains a model-based self-check and is not independently graded.
+An example explorer presents two distinct source examples at a time, with
+meanings visible initially and a control to hide or reveal them. Previous/next
+controls make the remaining examples available without a long wall of text.
+Source grammar notes remain alongside examples where supplied. A comparison
+panel lets learners reveal a taught revision and its reason, hide it again or
+try another comparison. It is ungraded exploration; advanced alternatives are
+not labelled universally ungrammatical.
+
+Understand, Examples and Practise links let learners jump between the stages.
+The lesson browser stays collapsed by default. Fuller notes and source links
+remain optional after practice; tables and examples already present in the guide
+are not repeated there. Existing exercise-level rule hints, keyboard focus and
+direct next-set navigation remain available. Selecting a lesson updates its URL,
+so reloading retains the chosen topic. German text preserves capitalisation,
+including sie versus Sie. Production remains a model-based self-check.
 
 ## Exercise audit and preservation
 
@@ -49,9 +57,15 @@ syllabus. Existing lesson references remain accessible. Precision checks include
 and [IDS on middle-field order](https://grammis.ids-mannheim.de/progr%40mm/5261).
 No story, book, authentication, quota or database migration is changed.
 
-Validation: 183 tests, TypeScript, the production build and migration verification
-passed. Browser checks covered short introductions, optional references, choice
-feedback, typed answers, sentence building, model-based production, a completed
-five-task set, next-set navigation, score persistence, cross-level search, selected
-lesson reload, visible German capitalisation, light/dark themes and narrow/desktop
-layouts without horizontal page overflow.
+Validation is recorded in the local release receipt. Checks cover the unchanged
+exercise bank, source-based table/example/note coverage across all 144 lessons,
+accurate headers, duplicate handling and the rendered learning sequence. Browser
+checks exercise table switching and meaning controls, example pagination,
+comparison reveal/reset, existing answer feedback, lesson navigation and
+narrow/desktop layouts in both themes.
+
+Interactive-guide release validation: 185 tests, TypeScript, the production build
+and migration verification passed. Browser checks covered the regular-verbs and
+advanced infinitive lessons, table selection, English visibility, example
+pagination, revision reveal/hide/reset, unchanged exercise feedback, and narrow
+layouts in light and dark themes with scrolling confined to tables.

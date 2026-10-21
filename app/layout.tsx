@@ -7,6 +7,7 @@ import './platform-colours.css';
 import './recall-decks.css';
 import './home-sections.css';
 import './grammar-learning.css';
+import './grammar-guide.css';
 
 export const metadata: Metadata = {
   title: "LeseLaut — Learn German through stories",

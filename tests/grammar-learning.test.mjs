@@ -8,6 +8,8 @@ const { LIVE_GRAMMAR_LESSONS: lessons } = await vite.ssrLoadModule('/app/grammar
 const { GRAMMAR_BRIEF_RULES: rules } = await vite.ssrLoadModule('/app/grammar/brief-rules.ts');
 const { uniqueGrammarTasks, grammarTaskKey, grammarChoiceOptions, grammarTaskFocus, grammarReferenceParagraphs } = await vite.ssrLoadModule('/app/grammar/practice-sequence.ts');
 
+const { lessonGuideTables, lessonGuideExamples, lessonGuideNotes } = await vite.ssrLoadModule('/app/grammar/lesson-guide-data.ts');
+
 test('every grammar lesson has a short specific rule and an existing contextual example', () => {
   assert.equal(Object.keys(lessons).length, 144);
   assert.deepEqual(Object.keys(rules).sort(), Object.keys(lessons).sort());
@@ -79,4 +81,36 @@ test('optional reference removes repeated paragraphs and generic practice instru
     assert.ok(paragraphs.every(p => !/^(The central working pattern is|Build accuracy in three passes:)/u.test(p)), id);
     assert.ok(lesson.explanation.filter(p => !/^(The central working pattern is|Build accuracy in three passes:)/u.test(p)).every(p => paragraphs.includes(p.normalize('NFC').replace(/\s+/gu,' ').trim())), id);
   }
+});
+
+
+test('all 144 lessons expose accurate tables, distinct examples and supporting explanation', () => {
+  for (const [id, lesson] of Object.entries(lessons)) {
+    const before = JSON.stringify(lesson);
+    const tables = lessonGuideTables(lesson), examples = lessonGuideExamples(lesson), notes = lessonGuideNotes(lesson);
+    assert.ok(tables.length >= 1, id);
+    for (const table of tables) {
+      assert.ok(table.rows.length >= 2, id);
+      assert.ok(table.rows.every(row => row.length === table.headers.length), id);
+      assert.ok(lesson.tables.some(source => JSON.stringify(source.rows) === JSON.stringify(table.rows)), id);
+    }
+    assert.ok(examples.length >= 3, id);
+    assert.equal(new Set(examples.map(e => e.german)).size, examples.length, id);
+    const sourceExamples = [...lesson.examples, ...(lesson.sections ?? []).flatMap(s => s.examples ?? [])];
+    assert.ok(examples.every(e => sourceExamples.some(source => source.german === e.german && source.english === e.english)), id);
+    assert.equal(notes.length, 2, id);
+    assert.ok(notes.every(note => grammarReferenceParagraphs(lesson).includes(note)), id);
+    assert.equal(JSON.stringify(lesson), before, id);
+  }
+});
+
+test('table labels follow the displayed data and sein starts with its conjugation', () => {
+  for (const id of ['a2-1-6', 'a2-2-1']) {
+    const table = lessonGuideTables(lessons[id])[0];
+    assert.deepEqual(table.headers, ['Case / gender','German phrase','Ending','English']);
+    assert.ok(table.rows.every(row => row[2].startsWith('-')), id);
+  }
+  assert.match(lessonGuideTables(lessons['a1-1-1'])[0].title, /conjugation of sein/);
+  assert.equal(lessonGuideTables(lessons['a1-1-2']).length, 3);
+  assert.match(lessonGuideNotes(lessons['a1-1-2'])[0], /dictionary form.*stem/);
 });
