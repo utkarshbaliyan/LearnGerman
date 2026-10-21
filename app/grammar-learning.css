@@ -64,3 +64,5 @@
   text-transform: none;
   letter-spacing: 0;
 }
+.grammar-page .grammar-lesson-heading h2 { font-weight: 400; letter-spacing: .015em; }
+.grammar-page .practice-set-grid strong { font-family: var(--font-ui); font-size: 16px; }
