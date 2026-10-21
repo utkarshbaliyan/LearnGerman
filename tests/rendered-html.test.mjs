@@ -238,7 +238,12 @@ test('grammar presents A1–C1 counts, topic search and a complete linked refere
   assert.equal(grammar.status,200);
   const html=(await grammar.text()).replaceAll('<!-- -->','');
   assert.match(html,/A1–C1 German Grammar/);
-  assert.match(html,/144-lesson core grammar/);
+  assert.match(html,/144 lessons from A1 to C1/);
+  assert.match(html,/The rule in brief/);
+  assert.match(html,/See it once/);
+  assert.ok(html.indexOf('id="grammar-practice"') < html.indexOf('class="grammar-reference-notes"'));
+  assert.doesNotMatch(html.match(/<details class="grammar-reference-notes"[^>]*>/)?.[0] ?? '', /\bopen\b/);
+  assert.doesNotMatch(html.match(/<details class="grammar-roadmap"[^>]*>/)?.[0] ?? '', /\bopen\b/);
   assert.match(html,/Find a topic across A1–C1/);
   assert.match(html,/<b>B2<\/b><span>36 lessons<\/span>/);
   assert.match(html,/<b>C1<\/b><span>36 lessons<\/span>/);

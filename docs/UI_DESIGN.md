@@ -153,3 +153,12 @@ The user-approved release contains 307 distinct covers: all 104 A1, all 150 A2 a
 Images use square frames with `object-fit: contain` and internal padding. Images are stored in the existing R2 bucket through a restricted immutable route, avoiding the source archive size limit. A temporary upload secret is used only for signed writes. Every stored image must be downloaded and checksum-verified by `scripts/upload-story-art.mjs` before the final UI is published.
 
 The combined B2 content release and UI refinement passes 140 tests and the verified production build. Desktop browser checks confirm Noto Sans and Bebas Neue, four columns, whole images, filtering, search, level switching, English translations and quiz retry. The 307 released WebP images preserve their original dimensions and exact decoded alpha; quality is 86. Their original PNGs remain intact.
+
+## Grammar through practice
+
+All 144 lessons now lead with a short working rule, one pattern and one example,
+followed immediately by the existing practice sets. The roadmap and fuller
+references are optional disclosures. Rule hints, keyboard focus and a direct next-set
+action keep practice moving. The display skips exact duplicate tasks and repeated
+choice labels while preserving the authored bank and progress keys. See
+[the grammar audit and preservation notes](GRAMMAR_PRACTICE.md).
