@@ -8,7 +8,38 @@ const { LIVE_GRAMMAR_LESSONS: lessons } = await vite.ssrLoadModule('/app/grammar
 const { GRAMMAR_BRIEF_RULES: rules } = await vite.ssrLoadModule('/app/grammar/brief-rules.ts');
 const { uniqueGrammarTasks, grammarTaskKey, grammarChoiceOptions, grammarTaskFocus, grammarReferenceParagraphs } = await vite.ssrLoadModule('/app/grammar/practice-sequence.ts');
 
-const { lessonGuideTables, lessonGuideExamples, lessonGuideNotes } = await vite.ssrLoadModule('/app/grammar/lesson-guide-data.ts');
+const { lessonArticle, lessonGuideTables, lessonGuideExamples, lessonGuideNotes } = await vite.ssrLoadModule('/app/grammar/lesson-guide-data.ts');
+const { GRAMMAR_SCENES, lessonScene } = await vite.ssrLoadModule('/app/grammar/lesson-scenes.ts');
+
+test('all 144 topics have an original illustrated scene and an exact topic-specific sentence focus', () => {
+  assert.equal(Object.keys(GRAMMAR_SCENES).length, 24);
+  const sentences = new Set();
+  for (const [id, lesson] of Object.entries(lessons)) {
+    const { scene, focusIndex } = lessonScene(id);
+    assert.ok(scene, id);
+    assert.equal(scene.lines.length, 6, id);
+    assert.ok(scene.title && scene.setting && scene.art, id);
+    const line = scene.lines[focusIndex];
+    assert.ok(line.german.includes(line.focus), id);
+    assert.equal(line.german.split(line.focus).length, 2, `${id}: unambiguous highlight`);
+    assert.ok(line.english.length >= 15 && line.note.length >= 45, id);
+    assert.ok(!sentences.has(line.german), `${id}: unique scene sentence`);
+    sentences.add(line.german);
+    assert.ok(!('exercises' in scene), id);
+    const before = JSON.stringify(lesson);
+    const article = lessonArticle(lesson);
+    assert.equal(article.core.length, 3, id);
+    assert.ok(article.core.every(Boolean), id);
+    const displayed = [...article.core, ...article.details, article.memoryTip];
+    assert.equal(new Set(displayed).size, displayed.length, `${id}: no repeated article paragraph`);
+    assert.ok(grammarReferenceParagraphs(lesson).every(p => displayed.includes(p)), `${id}: all source explanation retained`);
+    assert.equal(JSON.stringify(lesson), before, id);
+  }
+  assert.equal(sentences.size, 144);
+  assert.match(lessonScene('a1-1-2').scene.lines[1].german, /Wir lernen/);
+  assert.match(lessonArticle(lessons['a1-1-2']).core[2], /German has one present tense/);
+  assert.match(lessonScene('c1-1-3').scene.lines[2].note, /integrated arrangement is also possible/);
+});
 
 test('every grammar lesson has a short specific rule and an existing contextual example', () => {
   assert.equal(Object.keys(lessons).length, 144);

@@ -1,6 +1,8 @@
 /* Guided explanation: a visible table, explorable examples and a clear route to practice. */
 .grammar-page .grammar-lesson-outcome { margin-top: 12px; font-size: 16px; line-height: 1.6; }
 .lesson-guide { margin-top: 24px; }
+.grammar-page .grammar-roadmap { position: static; }
+.lesson-guide > :not(.lesson-guide-nav) { max-width: 920px; margin-left: auto; margin-right: auto; }
 .lesson-guide :is(h3, h4) { font-family: var(--font-ui) !important; font-weight: 650; text-transform: none; letter-spacing: -.015em; }
 .lesson-guide-nav { display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 26px; }
 .lesson-guide-nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 30px; color: var(--ink); font-size: 13px; font-weight: 600; text-decoration: none; background: var(--white); }
@@ -9,6 +11,7 @@
 .lesson-guide-nav a span { color: var(--ink-soft); font-size: 11px; }
 .lesson-guide-nav svg { width: 15px; height: 15px; }
 .lesson-guide-intro { padding: 22px 24px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 14px; }
+.lesson-guide-intro { margin-top: 32px; }
 .lesson-guide-label { display: flex; align-items: center; gap: 9px; color: var(--section-ink); font-size: 13px; font-weight: 700; }
 .lesson-guide-label svg { width: 18px; height: 18px; }
 .lesson-guide-intro > p { max-width: 76ch; margin: 12px 0 18px; color: var(--ink); font-size: 18px; line-height: 1.65; }
@@ -79,3 +82,64 @@
   .lesson-comparison { padding: 18px; }
 }
 @media (max-width: 360px) { :is(#grammar-understand, #grammar-explore) { scroll-margin-top: 210px; } }
+
+/* A readable illustrated article, with context before rules and retrieval. */
+.grammar-article-lead { margin-top: 0; margin-bottom: 26px; color: var(--ink-soft); font-size: 17px; line-height: 1.8; }
+.grammar-editorial-kicker { color: var(--section-ink); font-size: 11px; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+.grammar-scene { overflow: hidden; border: 1px solid var(--section-line); border-radius: 18px; background: var(--paper); }
+.grammar-scene-heading { display: grid; grid-template-columns: minmax(0, 1fr) 140px; align-items: center; gap: 20px; padding: 24px 28px 18px; border-bottom: 1px solid var(--line); background: linear-gradient(115deg, var(--section-soft), var(--paper)); }
+.grammar-scene-heading h3 { margin: 9px 0; font-size: clamp(23px, 2.6vw, 31px); line-height: 1.3; color: var(--ink); }
+.grammar-scene-heading p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.grammar-scene .grammar-scene-art { display: grid; grid-template-columns: minmax(0, 1fr); width: 140px; height: 140px; min-height: 140px; aspect-ratio: 1; border-radius: 50%; transform: rotate(-3deg); }
+.grammar-scene-art .topic-art-picture { width: 90%; max-width: none; }
+.grammar-scene-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 28px 0; }
+.grammar-scene-toolbar > p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
+.grammar-scene-toolbar .lesson-text-button { font-size: 12px; background: transparent; border-color: var(--line); }
+.grammar-scene-story { padding: 18px 27px 24px; color: var(--ink); font-size: clamp(17px, 1.9vw, 20px); line-height: 2; }
+.grammar-scene-story button { display: inline; margin: 0; padding: 2px 3px; border: 0; border-radius: 4px; text-align: left; font: inherit; line-height: inherit; color: inherit; background: transparent; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.grammar-scene-story button:hover { background: var(--section-soft); }
+.grammar-scene-story button[aria-pressed="true"] { text-decoration: underline; text-decoration-color: var(--section-line); text-underline-offset: 5px; }
+.grammar-scene-story mark { color: var(--section-ink); background: var(--section-soft); font-weight: 700; padding: 2px 0; border-radius: 3px; }
+.grammar-scene-insight { margin: 0 28px; padding: 18px 20px; border-left: 3px solid var(--section-ink); background: var(--white); border-radius: 0 10px 10px 0; }
+.grammar-scene-insight-label { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: space-between; font-size: 11px; font-weight: 650; color: var(--section-ink); }
+.grammar-scene-insight-label > span[lang] { font-size: 13px; overflow-wrap: anywhere; }
+.grammar-scene-insight p { margin: 10px 0 0; font-size: 15px; line-height: 1.65; color: var(--ink); }
+.grammar-scene-insight p.grammar-scene-notice { font-size: 14px; color: var(--ink-soft); }
+.grammar-scene-insight a { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--section-ink); font-size: 13px; text-underline-offset: 4px; }
+.grammar-scene-insight a svg { width: 14px; height: 14px; }
+.grammar-scene .grammar-scene-translation { margin: 18px 28px 0; text-align: left; max-width: calc(100% - 56px); }
+.grammar-scene-english { margin: 16px 28px 0; color: var(--ink-soft); font-size: 15px; line-height: 1.8; }
+.grammar-scene-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 28px 22px; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+.grammar-scene-footer button { border: 0; border-bottom: 1px solid var(--section-line); padding: 3px 0; color: var(--section-ink); background: transparent; font-size: 12px; cursor: pointer; }
+.grammar-article-explanation { margin-top: 32px; padding: 6px 0 8px; }
+.grammar-article-explanation h3 { margin: 8px 0 18px; color: var(--ink); font-size: 26px; }
+.grammar-article-explanation > p { max-width: 80ch; margin: 15px 0; color: var(--ink); font-size: 16px; line-height: 1.85; }
+.grammar-memory { display: flex; align-items: start; gap: 13px; margin-top: 20px; padding: 18px 20px; border-radius: 10px; background: var(--section-soft); }
+.grammar-memory > svg { flex: 0 0 20px; width: 20px; margin-top: 2px; color: var(--section-ink); }
+.grammar-memory h4 { margin: 0 0 7px; color: var(--section-ink); font-size: 14px; }
+.grammar-memory p { margin: 0; color: var(--ink); font-size: 14px; line-height: 1.75; }
+.grammar-article-details { margin-top: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+.grammar-article-details summary { padding: 16px 20px; cursor: pointer; color: var(--ink); font-size: 15px; font-weight: 650; line-height: 1.6; }
+.grammar-article-details summary span { display: inline-block; margin-left: 10px; color: var(--ink-soft); font-size: 12px; font-weight: 400; }
+.grammar-article-details > div { padding: 0 20px 16px; }
+.grammar-article-details p { color: var(--ink-soft); font-size: 15px; line-height: 1.8; margin: 12px 0; }
+.lesson-guide :is(button, a, select, summary):focus-visible { outline: 2px solid var(--section-ink); outline-offset: 4px; }
+:is(#grammar-scene, #grammar-forms) { scroll-margin-top: 180px; }
+@media (max-width: 640px) {
+  .grammar-scene-heading { grid-template-columns: minmax(0, 1fr) 88px; gap: 10px; padding: 20px 18px 16px; }
+  .grammar-scene .grammar-scene-art { width: 88px; height: 88px; min-height: 88px; }
+  .grammar-scene-heading h3 { font-size: 23px; }
+  .grammar-scene-heading p { font-size: 13px; }
+  .grammar-scene-toolbar { padding: 14px 18px 0; }
+  .grammar-scene-story { padding: 16px 15px 20px; }
+  .grammar-scene-insight { margin: 0 18px; padding: 15px; }
+  .grammar-scene .grammar-scene-translation { margin-left: 18px; margin-right: 18px; max-width: calc(100% - 36px); }
+  .grammar-scene-english { margin-left: 18px; margin-right: 18px; }
+  .grammar-scene-footer { padding: 16px 18px 20px; }
+  .grammar-article-lead { font-size: 16px; }
+}
+@media (max-width: 380px) {
+  .grammar-scene-heading { grid-template-columns: minmax(0, 1fr); }
+  .grammar-scene .grammar-scene-art { display: none; }
+  :is(#grammar-scene, #grammar-forms) { scroll-margin-top: 210px; }
+}

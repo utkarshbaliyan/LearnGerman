@@ -315,8 +315,8 @@ export default function GrammarPage() {
       <section className="grammar-hero">
         <div>
           <div className="module-kicker"><Badge className="eyebrow"><Sparkles /> A1–C1 · Grammar lessons</Badge><TopicArt kind="learn" className="topic-art--sticker" /></div>
-          <h1>Understand the pattern.<br /><em>Make it yours.</em></h1>
-          <p>144 lessons from A1 to C1. Clear explanations, useful tables and examples to explore—then practice to make it stick.</p>
+          <h1>Grammar that makes sense.<br /><em>German you can use.</em></h1>
+          <p>144 lessons from A1 to C1. Follow a short story, understand the rules, explore the forms—then make them your own in practice.</p>
           <div className="grammar-hero-actions"><Button onClick={() => document.getElementById("lesson")?.scrollIntoView({ behavior: "smooth" })}>Start practising <ArrowRight /></Button><button type="button" className="grammar-browse-link" onClick={() => { if (lessonBrowser.current) lessonBrowser.current.open = true; document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" }); }}>Browse lessons</button><Link href="/grammar/reference">Grammar reference →</Link><Link href="/grammar/cheat-sheets">Case cheat sheets →</Link></div>
         </div>
         <aside className="grammar-progress-card">
@@ -372,7 +372,7 @@ export default function GrammarPage() {
               {progress.completed.includes(selectedLessonId) && <Badge className="mastery-badge"><CheckCircle2 /> Completed · Best score {progress.scores[selectedLessonId] ?? 0}%</Badge>}
             </header>
 
-            <LessonGuide key={`guide-${selectedLessonId}`} content={content} />
+            <LessonGuide key={`guide-${selectedLessonId}`} content={content} outcome={selectedLesson.outcome} />
 
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 

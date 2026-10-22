@@ -1,0 +1,210 @@
+import type { ArtKind } from '../components/topic-art';
+
+export type SceneLine = { german: string; english: string; focus: string; note: string };
+export type GrammarScene = { title: string; setting: string; art: ArtKind; lines: SceneLine[] };
+type Line = [german: string, english: string, focus: string, note: string];
+const scene = (title: string, setting: string, art: ArtKind, lines: Line[]): GrammarScene => ({
+  title, setting, art, lines: lines.map(([german, english, focus, note]) => ({ german, english, focus, note })),
+});
+
+// Original connected scenes, one per module. Each of the six lines models its
+// corresponding lesson. These are explanation material, never graded tasks.
+export const GRAMMAR_SCENES: Record<string, GrammarScene> = {
+  'a1-1': scene('A first afternoon in Bonn', 'Mia and Sam meet outside their language school.', 'friends', [
+    ['Ich bin Mia, und das ist Sam.', 'I am Mia, and this is Sam.', 'Ich bin', 'The speaker uses ich bin; das pairs with ist. Both forms come from sein.'],
+    ['Wir lernen zusammen Deutsch.', 'We are learning German together.', 'Wir lernen', 'Remove -en from lernen, then add the wir ending -en: lern-en.'],
+    ['Sam liest einen kurzen Text.', 'Sam reads a short text.', 'liest', 'Sam stands for er. With lesen, e changes to ie in the du and er/sie/es forms.'],
+    ['Heute trinken wir Kaffee.', 'Today we are having coffee.', 'trinken wir', 'Heute occupies the first element. The conjugated verb trinken is second; wir follows it.'],
+    ['Wo wohnst du, Sam?', 'Where do you live, Sam?', 'Wo wohnst du', 'A W-question starts with the question word, then the conjugated verb and subject.'],
+    ['Ich wohne nicht weit von hier.', 'I do not live far from here.', 'nicht weit', 'Nicht negates the description weit von hier. Kein would negate a noun with an indefinite or no article.'],
+  ]),
+  'a1-2': scene('A bag for the new flat', 'Mia and Sam unpack after the move.', 'home', [
+    ['Der Tisch ist klein, aber die Küche ist hell.', 'The table is small, but the kitchen is bright.', 'Der Tisch', 'Learn Tisch with der and Küche with die. Grammatical gender belongs to the noun.'],
+    ['Auf dem Tisch steht eine Lampe.', 'There is a lamp on the table.', 'eine Lampe', 'Eine introduces one feminine object that has not yet been identified.'],
+    ['Zwei Bücher liegen neben der Lampe.', 'Two books are lying next to the lamp.', 'Bücher', 'Buch has the plural Bücher: an umlaut and -er. Learn the plural with the singular.'],
+    ['Die Lampe ist neu.', 'The lamp is new.', 'Die Lampe', 'Ask who or what is new. Die Lampe is the subject, so it is nominative.'],
+    ['Sam kauft einen Stuhl.', 'Sam buys a chair.', 'einen Stuhl', 'The chair is the direct object of kaufen. Masculine ein becomes einen in the accusative.'],
+    ['Seine Tasche liegt noch im Flur.', 'His bag is still in the hallway.', 'Seine Tasche', 'Sein- refers to Sam; -e agrees with the feminine noun Tasche in the nominative.'],
+  ]),
+  'a1-3': scene('Breakfast before class', 'Mia and Sam get ready for a busy day.', 'cafe', [
+    ['Mia muss heute früh lernen.', 'Mia has to study early today.', 'muss heute früh lernen', 'The modal muss is conjugated. The main verb lernen stays in the infinitive at the end.'],
+    ['Sam steht um sieben Uhr auf.', 'Sam gets up at seven.', 'steht um sieben Uhr auf', 'Aufstehen separates in this main clause: steht is second and auf closes the sentence.'],
+    ['Komm bitte in die Küche!', 'Please come into the kitchen!', 'Komm', 'The informal singular imperative of kommen is komm. The subject du is normally omitted.'],
+    ['Ich möchte einen Tee.', 'I would like a tea.', 'möchte', 'Möchte expresses a polite wish here. Mag would express liking.'],
+    ['Es gibt auch frisches Brot.', 'There is fresh bread too.', 'Es gibt', 'Es gibt introduces something that is available; the following noun phrase is accusative.'],
+    ['Nach dem Frühstück beeilt sich Sam.', 'After breakfast, Sam hurries.', 'beeilt sich', 'Sich beeilen is reflexive. Sam uses the third-person reflexive pronoun sich.'],
+  ]),
+  'a1-4': scene('A weekend visit', 'Mia visits her friend Lena and remembers the weekend.', 'travel', [
+    ['Mia gibt ihrer Freundin ein Buch.', 'Mia gives her friend a book.', 'ihrer Freundin', 'The friend receives the book and is dative. The book is the accusative object.'],
+    ['Sie fährt mit dem Bus zu Lena.', 'She takes the bus to Lena’s place.', 'mit dem Bus', 'Mit always takes the dative: der Bus becomes dem Bus.'],
+    ['Das Buch liegt auf dem Tisch.', 'The book is lying on the table.', 'auf dem Tisch', 'This answers wo: a location. Auf therefore takes the dative here.'],
+    ['Am Samstag trinken sie zusammen Tee.', 'On Saturday, they have tea together.', 'Am Samstag', 'Use am with a day of the week. The whole time phrase is one sentence element.'],
+    ['Mia liest, und Lena kocht.', 'Mia reads, and Lena cooks.', 'und Lena kocht', 'Und joins two main clauses. Each keeps its own normal verb position.'],
+    ['Am Abend ist Mia nach Hause gefahren.', 'In the evening, Mia went home.', 'ist Mia nach Hause gefahren', 'The perfect of fahren uses sein for this journey: ist + gefahren.'],
+  ]),
+  'a2-1': scene('A small neighbourhood café', 'Lena helps a friend get a café ready to open.', 'cafe', [
+    ['Lena hilft dem neuen Nachbarn.', 'Lena helps the new neighbour.', 'dem neuen Nachbarn', 'Helfen selects a dative object. Dem and neuen mark that case; Nachbar is a weak noun.'],
+    ['Sie stellt die Tasse auf den Tisch.', 'She puts the cup onto the table.', 'auf den Tisch', 'The cup changes location toward the table: wohin, so auf takes the accusative.'],
+    ['Die Tasse ist für einen Gast.', 'The cup is for a guest.', 'für einen Gast', 'Für always takes the accusative. Masculine ein becomes einen.'],
+    ['Seit einer Woche arbeitet er im Café.', 'He has been working in the café for a week.', 'Seit einer Woche', 'Seit takes dative and describes a period continuing up to now. German uses the present tense here.'],
+    ['Die Schwester des Nachbarn bringt Blumen.', 'The neighbour’s sister brings flowers.', 'des Nachbarn', 'The genitive identifies whose sister she is. Der Nachbar becomes des Nachbarn.'],
+    ['Die frischen Blumen stehen am Fenster.', 'The fresh flowers are by the window.', 'Die frischen Blumen', 'After the definite plural article die, an attributive adjective normally takes -en.'],
+  ]),
+  'a2-2': scene('Choosing a bicycle', 'Mia and Sam compare bicycles in a shop.', 'sport', [
+    ['Mia sucht ein leichtes Fahrrad.', 'Mia is looking for a light bicycle.', 'ein leichtes Fahrrad', 'Ein has no neuter ending here, so the adjective carries -es.'],
+    ['Das blaue Rad ist leichter als das rote.', 'The blue bicycle is lighter than the red one.', 'leichter als', 'Use the comparative with als to compare unequal qualities.'],
+    ['Welches Fahrrad möchtest du ausprobieren?', 'Which bicycle would you like to try?', 'Welches Fahrrad', 'Welches agrees with neuter Fahrrad; the whole phrase is the accusative object.'],
+    ['Der Verkäufer, der neben Mia steht, lächelt.', 'The salesperson who is standing next to Mia smiles.', 'der neben Mia steht', 'Der refers to the masculine Verkäufer and is the subject inside the relative clause.'],
+    ['Das Rad, das Mia probiert, ist bequem.', 'The bicycle that Mia is trying is comfortable.', 'das Mia probiert', 'Das refers to Fahrrad but is the object of probiert inside the relative clause.'],
+    ['Mia und Sam helfen einander bei der Entscheidung.', 'Mia and Sam help each other make the decision.', 'einander', 'Einander makes the reciprocal meaning explicit: each helps the other.'],
+  ]),
+  'a2-3': scene('A delayed journey', 'Sam tells Mia what happened at the station.', 'travel', [
+    ['Ich habe gestern lange am Bahnhof gewartet.', 'I waited at the station for a long time yesterday.', 'habe gestern lange am Bahnhof gewartet', 'Warten forms its perfect with haben and the participle gewartet.'],
+    ['Ich war müde und hatte keinen Kaffee.', 'I was tired and had no coffee.', 'war müde und hatte', 'War and hatte are common preterite forms, including in everyday spoken accounts.'],
+    ['Morgen nehme ich einen früheren Zug.', 'Tomorrow I will take an earlier train.', 'Morgen nehme ich', 'A future time expression makes present-tense nehme refer to a planned future action.'],
+    ['Ich hoffe, dass der Zug pünktlich ist.', 'I hope that the train is on time.', 'dass der Zug pünktlich ist', 'Dass introduces a subordinate clause; the conjugated verb ist comes last.'],
+    ['Als ich gestern ankam, war der Bahnsteig leer.', 'When I arrived yesterday, the platform was empty.', 'Als ich gestern ankam', 'Als marks one particular past occasion. Wenn is used for repeated occasions or conditions.'],
+    ['Weißt du, wann der nächste Zug fährt?', 'Do you know when the next train leaves?', 'wann der nächste Zug fährt', 'An indirect W-question keeps its question word but puts the conjugated verb at the end.'],
+  ]),
+  'a2-4': scene('A workshop for neighbours', 'Lena organises a repair workshop at the community centre.', 'work', [
+    ['Lena plant, einen Workshop anzubieten.', 'Lena plans to offer a workshop.', 'einen Workshop anzubieten', 'With separable anbieten, zu goes between prefix and stem: anzubieten.'],
+    ['Sie öffnet früh, damit alle einen Platz finden.', 'She opens early so that everyone can find a place.', 'damit alle einen Platz finden', 'Damit allows a different subject: Lena opens; everyone finds a place.'],
+    ['Am Eingang gibt sie einem Gast den Plan.', 'At the entrance, she gives a guest the plan.', 'einem Gast den Plan', 'With two noun objects, dative recipient usually precedes accusative thing in neutral order.'],
+    ['Die Gruppe arbeitet heute konzentriert im Saal.', 'The group works with concentration in the hall today.', 'heute konzentriert im Saal', 'This neutral sequence places time before manner before place; context can motivate other orders.'],
+    ['Ein Werkzeug fehlt, trotzdem beginnen alle.', 'A tool is missing; nevertheless, everyone starts.', 'trotzdem beginnen alle', 'Trotzdem occupies the first element of its main clause, so beginnen immediately follows.'],
+    ['Am Ende werden die Fahrräder geprüft.', 'At the end, the bicycles are checked.', 'werden die Fahrräder geprüft', 'The present process passive uses werden + participle; the focus is on the bicycles being checked.'],
+  ]),
+  'b1-1': scene('A visitor at the museum', 'A new guide prepares an exhibition with a colleague.', 'culture', [
+    ['Im hellen Saal hängt ein großes Bild.', 'A large painting hangs in the bright hall.', 'ein großes Bild', 'The adjective ending depends on article, gender, number and case; neuter ein leaves -es to groß.'],
+    ['Die Rahmen der Bilder werden gereinigt.', 'The frames of the paintings are being cleaned.', 'der Bilder', 'The genitive plural names what the frames belong to.'],
+    ['Die Künstlerin, mit der wir sprechen, kommt aus Köln.', 'The artist we are speaking with comes from Cologne.', 'mit der wir sprechen', 'Mit requires dative; the feminine relative pronoun is therefore der.'],
+    ['Wir zeigen dem neuen Kollegen den Saal.', 'We show the new colleague the hall.', 'dem neuen Kollegen', 'Kollege is a weak masculine noun and takes -n outside the nominative singular.'],
+    ['Er interessiert sich dafür, wie die Ausstellung entsteht.', 'He is interested in how the exhibition comes together.', 'dafür', 'Dafür links sich interessieren für to a following clause about a thing or idea.'],
+    ['Niemand möchte etwas Wichtiges übersehen.', 'Nobody wants to overlook anything important.', 'etwas Wichtiges', 'After etwas, a nominalised adjective is capitalised and carries a neuter ending.'],
+  ]),
+  'b1-2': scene('The missing exhibition key', 'The museum team looks back on a stressful morning.', 'culture', [
+    ['Am Morgen stand die Leiterin vor der verschlossenen Tür.', 'In the morning, the director stood in front of the locked door.', 'stand', 'The preterite stand carries the sequence of events in this written narrative.'],
+    ['Jemand hatte den Schlüssel im Büro vergessen.', 'Someone had left the key in the office.', 'hatte den Schlüssel im Büro vergessen', 'The pluperfect locates the forgotten key before the past moment outside the door.'],
+    ['Der Hausmeister wird noch im Keller sein.', 'The caretaker is probably still in the basement.', 'wird noch im Keller sein', 'Werden + infinitive expresses an assumption about now here, rather than a future event.'],
+    ['Zum Glück wurde die Tür bald geöffnet.', 'Fortunately, the door was soon opened.', 'wurde die Tür bald geöffnet', 'Wurde + participle presents a past opening process without naming the actor.'],
+    ['Danach ließ sich die Ausstellung problemlos besuchen.', 'After that, the exhibition could be visited without difficulty.', 'ließ sich', 'Sich lassen + infinitive expresses feasibility, here viewed in the past.'],
+    ['Beim nächsten Mal wäre ein Ersatzschlüssel hilfreich.', 'Next time, a spare key would be helpful.', 'wäre', 'Wäre presents a hypothetical useful situation rather than a factual description.'],
+  ]),
+  'b1-3': scene('A plan for the garden', 'Neighbours discuss how to repair their shared garden.', 'nature', [
+    ['Wenn wir früher begonnen hätten, wäre der Garten jetzt fertig.', 'If we had started earlier, the garden would be finished now.', 'früher begonnen hätten', 'Hätten + participle marks an unreal past condition; wäre describes its unreal present result.'],
+    ['Falls es morgen regnet, arbeiten wir im Haus.', 'If it rains tomorrow, we will work inside.', 'Falls es morgen regnet', 'Falls presents a possible condition. Regnet goes to the end of its subordinate clause.'],
+    ['Obwohl der Boden trocken ist, wachsen einige Blumen.', 'Although the soil is dry, some flowers are growing.', 'Obwohl der Boden trocken ist', 'Obwohl introduces a concession: the flowers grow despite an expectation raised by the dry soil.'],
+    ['Bevor wir pflanzen, lockern wir die Erde.', 'Before we plant, we loosen the soil.', 'Bevor wir pflanzen', 'Bevor makes the order explicit: loosening comes before planting.'],
+    ['Mia hofft, die Arbeit bald zu beenden.', 'Mia hopes to finish the work soon.', 'die Arbeit bald zu beenden', 'Mia is the understood actor of the infinitive, so the sentence avoids repeating its subject.'],
+    ['Sowohl Mia als auch Sam bringen Werkzeug mit.', 'Both Mia and Sam bring tools.', 'Sowohl Mia als auch Sam', 'The paired conjunction links equal sentence elements; the combined subject is plural.'],
+  ]),
+  'b1-4': scene('The neighbourhood newsletter', 'Lena turns the garden project into a short report.', 'work', [
+    ['Die gemeinsame Planung hat allen geholfen.', 'Planning together helped everyone.', 'Die gemeinsame Planung', 'Planung turns the action planen into a noun and is capitalised.'],
+    ['Die frisch gepflanzten Blumen stehen am Eingang.', 'The freshly planted flowers are by the entrance.', 'frisch gepflanzten', 'The past participle becomes an attribute and takes the adjective ending -en.'],
+    ['Lena berichtet, der Garten sei nun geöffnet.', 'Lena reports that the garden is now open.', 'sei', 'Konjunktiv I attributes the statement to Lena without itself establishing whether it is true.'],
+    ['Den fertigen Text schickt sie ihm heute.', 'She sends him the finished text today.', 'schickt sie ihm', 'After the fronted object, the finite verb stays second; subject and dative pronoun follow.'],
+    ['Der Garten verbindet die Nachbarn; dadurch entstehen neue Freundschaften.', 'The garden brings the neighbours together; this creates new friendships.', 'dadurch', 'Dadurch refers back to the preceding situation and states its consequence.'],
+    ['Bitte teilen Sie uns mit, ob Sie am Fest teilnehmen.', 'Please let us know whether you will attend the celebration.', 'mit, ob Sie am Fest teilnehmen', 'The indirect question is separated by a comma and keeps its verb at the end; Sie marks formal address.'],
+  ]),
+  'b2-1': scene('Opening a repair studio', 'Nora and her team prepare a small repair business.', 'work', [
+    ['Nora hilft dem Kollegen bei der Planung und unterstützt den neuen Betrieb.', 'Nora helps her colleague with planning and supports the new business.', 'hilft dem Kollegen', 'Helfen takes dative; unterstützen takes accusative. Meaning in English does not determine the German frame.'],
+    ['Alle warten darauf, dass die Genehmigung eintrifft.', 'Everyone is waiting for the approval to arrive.', 'darauf, dass', 'Darauf connects the lexical frame warten auf to the following dass-clause.'],
+    ['Nora ist für die Sicherheit verantwortlich.', 'Nora is responsible for safety.', 'für die Sicherheit verantwortlich', 'Verantwortlich selects für + accusative; the preposition belongs to the adjective’s lexical frame.'],
+    ['Sie bittet den Kollegen, die Geräte zu prüfen.', 'She asks her colleague to check the equipment.', 'den Kollegen, die Geräte zu prüfen', 'The colleague, the object of bittet, is the understood actor of prüfen.'],
+    ['Währenddessen lässt sie das Schloss austauschen.', 'Meanwhile, she has the lock replaced.', 'lässt sie das Schloss austauschen', 'Causative lassen takes a bare infinitive, without zu. Someone else replaces the lock.'],
+    ['Sie ist müde, weil sie gestern lange hat arbeiten müssen.', 'She is tired because she had to work for a long time yesterday.', 'hat arbeiten müssen', 'In this subordinate modal perfect, hat precedes the lexical infinitive and modal Ersatzinfinitiv.'],
+  ]),
+  'b2-2': scene('The studio inspection', 'An inspector visits the repair studio before opening day.', 'work', [
+    ['Als die Prüferin ankam, hatte Nora alle Unterlagen vorbereitet.', 'When the inspector arrived, Nora had prepared all the documents.', 'hatte Nora alle Unterlagen vorbereitet', 'The pluperfect places preparation before the past arrival.'],
+    ['Bis Freitag wird das Team auch die letzte Prüfung abgeschlossen haben.', 'By Friday, the team will also have completed the final inspection.', 'wird das Team auch die letzte Prüfung abgeschlossen haben', 'Futur II presents completion by a future reference point: bis Freitag.'],
+    ['Nora freut sich, die erste Kontrolle bestanden zu haben.', 'Nora is pleased to have passed the first inspection.', 'bestanden zu haben', 'The perfect infinitive places passing before the present pleasure.'],
+    ['Die Tür ist geöffnet; nebenan wird noch ein Fenster eingebaut.', 'The door is open; next door, a window is still being installed.', 'ist geöffnet', 'Ist geöffnet describes a state. Wird eingebaut describes an ongoing process.'],
+    ['Vor der Eröffnung müssen alle Geräte geprüft werden.', 'All equipment must be checked before the opening.', 'müssen alle Geräte geprüft werden', 'The modal adds a requirement to the passive infinitive geprüft werden.'],
+    ['Nora bekommt den Prüfbericht erklärt, während im Nebenraum gearbeitet wird.', 'Nora has the inspection report explained to her while work is being done in the next room.', 'bekommt den Prüfbericht erklärt', 'The recipient passive foregrounds Nora; the second clause is an impersonal passive.'],
+  ]),
+  'b2-3': scene('A rumour about the train', 'Mia and Sam compare a station announcement with what they can see.', 'travel', [
+    ['Die Sprecherin sagt, die Strecke sei gesperrt.', 'The announcer says that the line is closed.', 'sei gesperrt', 'Konjunktiv I marks the statement as attributed to the announcer.'],
+    ['Sie erklärt, ein Baum sei in der Nacht auf die Gleise gefallen.', 'She explains that a tree fell onto the tracks during the night.', 'sei in der Nacht auf die Gleise gefallen', 'Reported perfect sei gefallen places the fall before the announcement without an automatic English-style tense shift.'],
+    ['Sam fragt, wann der Ersatzbus abfahre.', 'Sam asks when the replacement bus leaves.', 'wann der Ersatzbus abfahre', 'The reported W-question keeps wann, ends with the verb and uses Konjunktiv I here.'],
+    ['Der Bus dürfte bald hier sein; die Leute stellen sich schon an.', 'The bus is probably nearly here; people are already queuing.', 'dürfte bald hier sein', 'Dürfte expresses a cautious inference from the visible queue, rather than permission.'],
+    ['Mia muss die erste Durchsage überhört haben.', 'Mia must have missed the first announcement.', 'muss die erste Durchsage überhört haben', 'Modal + perfect infinitive presents an inference about an earlier event.'],
+    ['Ein Reisender will den Baum selbst gesehen haben.', 'A traveller claims to have seen the tree himself.', 'will den Baum selbst gesehen haben', 'Wollen + perfect infinitive attributes a claim to its own speaker; it does not express a wish here.'],
+  ]),
+  'b2-4': scene('Rain at the garden festival', 'The neighbours adjust their plans after a wet start.', 'nature', [
+    ['Hätten wir gestern ein Zelt aufgebaut, wären die Tische jetzt trocken.', 'If we had put up a tent yesterday, the tables would be dry now.', 'wären die Tische jetzt trocken', 'The condition is unreal past; the consequence is unreal present. The two time references differ.'],
+    ['Wäre doch nur die Wettervorhersage genauer gewesen!', 'If only the weather forecast had been more accurate!', 'Wäre doch nur', 'A verb-first Konjunktiv II clause with doch nur expresses an unreal wish about the past.'],
+    ['Sam tut so, als ob ihn der Regen überhaupt nicht stören würde.', 'Sam acts as if the rain did not bother him at all.', 'als ob ihn der Regen überhaupt nicht stören würde', 'Als ob introduces an unreal comparison; the sentence describes an appearance rather than asserting indifference.'],
+    ['Mia schützt die Bücher, indem sie sie ins Haus trägt.', 'Mia protects the books by carrying them inside.', 'indem sie sie ins Haus trägt', 'Indem states the method by which Mia protects the books.'],
+    ['Der Boden ist so nass, dass die Kinder nicht draußen spielen können.', 'The ground is so wet that the children cannot play outside.', 'so nass, dass', 'So + adjective + dass connects a degree with its consequence, rather than a purpose.'],
+    ['Je länger es regnet, desto voller wird das Wohnzimmer.', 'The longer it rains, the fuller the living room gets.', 'Je länger es regnet, desto voller wird', 'The je-clause is verb-final; the desto-clause starts with the comparative phrase followed by the finite verb.'],
+  ]),
+  'b2-5': scene('An exhibition for everyone', 'The museum team rewrites its visitor information.', 'culture', [
+    ['Die von einer Berliner Künstlerin entworfenen Plakate hängen im Eingang.', 'The posters designed by a Berlin artist are hanging in the entrance.', 'von einer Berliner Künstlerin entworfenen', 'The expanded participial attribute comes before Plakate; entworfenen carries the plural adjective ending.'],
+    ['Die noch zu prüfenden Texte liegen auf Noras Tisch.', 'The texts that still need to be checked are on Nora’s desk.', 'noch zu prüfenden', 'Zu + present participle expresses a passive task or requirement in this context.'],
+    ['Nach der Prüfung der Texte durch Nora beginnt der Druck.', 'Printing begins after Nora checks the texts.', 'Prüfung der Texte durch Nora', 'The nominal phrase names both what is checked and who checks it, preserving the participants.'],
+    ['Was die Besucher nicht verstehen, erklärt das Team am Eingang.', 'The team explains at the entrance whatever visitors do not understand.', 'Was die Besucher nicht verstehen', 'The free relative has no separate antecedent; the whole clause is the object of erklärt.'],
+    ['Es ist wichtig, dass die Schrift gut lesbar ist.', 'It is important that the lettering is easy to read.', 'Es ist wichtig', 'Es anticipates the later dass-clause; it does not refer to a physical object.'],
+    ['Die Lesbarkeit entscheidet darüber, ob die Hinweise helfen.', 'Readability determines whether the instructions help.', 'Lesbarkeit', 'The suffix -keit forms the feminine noun Lesbarkeit from lesbar; capitalisation marks the new word class.'],
+  ]),
+  'b2-6': scene('One last project update', 'Nora revises a message before sending it to the team.', 'technology', [
+    ['Nora hat heute ausführlich erklärt, warum die Eröffnung verschoben wird.', 'Today, Nora explained in detail why the opening is being postponed.', 'erklärt, warum die Eröffnung verschoben wird', 'The subordinate content clause follows the closed main-clause verb bracket in the Nachfeld.'],
+    ['Den neuen Termin bestätigt die Leitung morgen.', 'The management will confirm the new date tomorrow.', 'Den neuen Termin', 'The object is deliberately foregrounded. The conjugated verb still occupies the second element.'],
+    ['Nicht die Reparatur, sondern die Genehmigung verzögert den Start.', 'The approval, rather than the repair, is delaying the start.', 'Nicht die Reparatur, sondern die Genehmigung', 'Nicht negates the selected subject alternative, not the whole claim that something delays the start.'],
+    ['Nur Nora kennt den Grund; Sam fragt: „Was ist denn passiert?“', 'Only Nora knows the reason; Sam asks, “What has happened, then?”', 'Nur Nora', 'Nur restricts the person who knows. Denn adds conversational interest or surprise to Sam’s question.'],
+    ['Sie schreibt: „Wir hoffen, den Termin bald bestätigen zu können.“', 'She writes, “We hope to be able to confirm the date soon.”', 'hoffen, den Termin bald bestätigen zu können', 'The separate infinitive clause is set off with a comma; zu belongs to können in this verb group.'],
+    ['Obwohl die Prüfung abgeschlossen ist, darf das Studio erst nach der Genehmigung öffnen.', 'Although the inspection is complete, the studio may open only after approval.', 'Obwohl die Prüfung abgeschlossen ist', 'A clear update distinguishes a completed inspection from permission to open, joining the ideas with a concession.'],
+  ]),
+  'c1-1': scene('The disputed museum contract', 'An exhibition team reconstructs the history of a contract.', 'culture', [
+    ['Die Änderung des Namens bedarf der Zustimmung des Vereins.', 'Changing the name requires the association’s consent.', 'bedarf der Zustimmung', 'Bedürfen selects a genitive complement; des Namens separately illustrates the mixed declension of Name.'],
+    ['Der Verein besteht auf einer schriftlichen Zusage.', 'The association insists on a written commitment.', 'besteht auf', 'Bestehen auf + dative means insist on; bestehen aus would instead describe composition.'],
+    ['Die Leiterin hat versucht, den Streit zu klären.', 'The director has tried to resolve the dispute.', 'hat versucht, den Streit zu klären', 'This is the separate infinitive construction, with a clause boundary after versucht. An integrated arrangement is also possible.'],
+    ['Der Entwurf hätte vor der Sitzung geprüft werden müssen.', 'The draft should have been checked before the meeting.', 'hätte vor der Sitzung geprüft werden müssen', 'The chain combines an unreal past requirement, passive perspective and a modal Ersatzinfinitiv.'],
+    ['Nachdem der Vorstand beraten hatte, erklärte die Leiterin, warum sie den Text geändert hatte.', 'After the board had discussed it, the director explained why she had changed the text.', 'Nachdem der Vorstand beraten hatte', 'The pluperfect locates the board discussion before the explanation; the second pluperfect similarly marks the earlier text change.'],
+    ['Damals sagte sie, die Ausstellung werde im Herbst eröffnen.', 'At the time, she said the exhibition would open in autumn.', 'werde im Herbst eröffnen', 'The reported future is later than the past reporting point; German does not automatically replace werde with würde.'],
+  ]),
+  'c1-2': scene('A careful safety decision', 'The studio team weighs a technical report before reopening.', 'work', [
+    ['Dem Techniker wird bei der Prüfung geholfen.', 'The technician is being helped with the inspection.', 'Dem Techniker wird', 'Helfen retains its dative object in the passive; dem Techniker does not become a nominative subject.'],
+    ['Nora bekommt die Messergebnisse von ihm erläutert.', 'Nora has the measurement results explained to her by him.', 'bekommt die Messergebnisse von ihm erläutert', 'Recipient passive makes Nora the subject while retaining the explained results and the technician as agent.'],
+    ['Die Anlage lässt sich mit geringem Aufwand sichern.', 'The system can be made safe with little effort.', 'lässt sich', 'Sich lassen expresses feasibility here, not an obligation to carry out the work.'],
+    ['Eine zweite Prüfung wäre sinnvoll und könnte den Verdacht klären.', 'A second inspection would be sensible and could resolve the suspicion.', 'wäre sinnvoll und könnte', 'The concise Konjunktiv II forms wäre and könnte express a hypothetical assessment and possibility.'],
+    ['Selbst wenn die Reparatur früher erfolgt wäre, hätten wir nicht öffnen dürfen.', 'Even if the repair had happened earlier, we would not have been allowed to open.', 'Selbst wenn die Reparatur früher erfolgt wäre', 'The unreal past concession would not change the past result; hätten öffnen dürfen expresses the excluded permission.'],
+    ['Nach den bisherigen Messungen dürfte das Risiko gering sein.', 'Based on the measurements so far, the risk is probably low.', 'dürfte das Risiko gering sein', 'Dürfte presents cautious probability and names the evidence supporting it, rather than claiming certainty.'],
+  ]),
+  'c1-3': scene('Reporting on a new bus route', 'A local journalist separates official claims from checked facts.', 'travel', [
+    ['Die Sprecherin erklärte, die neue Linie sei gut ausgelastet; zusätzliche Busse seien bestellt.', 'The spokesperson explained that the new route was well used and additional buses had been ordered.', 'sei gut ausgelastet; zusätzliche Busse seien bestellt', 'Both clauses sustain Konjunktiv I so the second claim remains attributed to the same source.'],
+    ['Nach Angaben des Betriebs fahren die Busse seit Montag häufiger.', 'According to the operator, the buses have been running more frequently since Monday.', 'Nach Angaben des Betriebs', 'The source phrase attributes the claim even though the verb is indicative. Attribution is not limited to Konjunktiv I.'],
+    ['Die Taktung bleibt bestehen, sofern genügend Fahrer verfügbar sind.', 'The service frequency will remain, provided enough drivers are available.', 'sofern genügend Fahrer verfügbar sind', 'Sofern restricts the promise to an explicit condition; it is not an unconditional guarantee.'],
+    ['Obgleich die Fahrgastzahlen steigen, lehnt die Stadt eine weitere Linie ab.', 'Although passenger numbers are increasing, the city rejects another route.', 'Obgleich die Fahrgastzahlen steigen', 'Obgleich introduces a formal concession, contrasting the rising demand with the decision.'],
+    ['Da Personal fehlt, kann der Betrieb den Fahrplan vorerst nicht erweitern.', 'Because staff are lacking, the operator cannot expand the timetable for now.', 'Da Personal fehlt', 'Da gives the stated cause. It does not merely mark two simultaneous events.'],
+    ['Die Stadt unterstützt den Plan insofern, als er bestehende Verbindungen ergänzt.', 'The city supports the plan to the extent that it complements existing connections.', 'insofern, als', 'Insofern … als limits the sense in which the support applies instead of presenting unrestricted approval.'],
+  ]),
+  'c1-4': scene('Who decided what?', 'A committee rewrites an ambiguous summary of an exhibition project.', 'culture', [
+    ['Die vom Ausschuss nach der Sitzung beschlossene Änderung betrifft den Eingang.', 'The change adopted by the committee after the meeting concerns the entrance.', 'vom Ausschuss nach der Sitzung beschlossene', 'The whole pre-nominal attribute modifies Änderung; its internal time and agent belong to the decision.'],
+    ['Wir danken Frau Keller, der Leiterin des Museums, für ihre Hilfe.', 'We thank Ms Keller, the museum director, for her help.', 'der Leiterin des Museums', 'The apposition agrees in dative with Frau Keller, the object of danken.'],
+    ['Die Leiterin und ihr Stellvertreter prüfen den Bericht.', 'The director and her deputy check the report.', 'Die Leiterin und ihr Stellvertreter prüfen', 'Two people coordinated with und form a plural subject and take prüfen.'],
+    ['Die Prüfung des Berichts durch die Leiterin dauert zwei Tage.', 'The director’s review of the report takes two days.', 'Prüfung des Berichts durch die Leiterin', 'The nominalisation explicitly retains the reviewed object and reviewing agent.'],
+    ['Eine Überarbeitung ist nötig, damit niemand den Hinweis missversteht.', 'A revision is needed so that nobody misunderstands the instruction.', 'missversteht', 'Missverstehen is inseparable and means misunderstand; word formation and stress must be learned with the lexical item.'],
+    ['Die Leiterin prüft die Zahlen, ihr Stellvertreter die Quellen.', 'The director checks the figures, her deputy the sources.', 'ihr Stellvertreter die Quellen', 'The second clause omits the recoverable verb prüft. The two subject–object pairings remain explicit.'],
+  ]),
+  'c1-5': scene('A difficult team conversation', 'Nora and Sam turn a tense discussion into a useful written plan.', 'friends', [
+    ['Den Termin klären wir zuerst; über die Kosten sprechen wir danach.', 'We will settle the date first; we will discuss costs afterwards.', 'Den Termin', 'The fronted object establishes the current topic; the parallel second clause then shifts to costs.'],
+    ['Nur die Materialkosten sind gestiegen, nicht die Arbeitskosten.', 'Only material costs have risen, not labour costs.', 'Nur die Materialkosten', 'Nur restricts the subject category. It does not mean that rising is the only thing those costs did.'],
+    ['Sam sagt: „Erklär mir doch bitte, wie du gerechnet hast.“', 'Sam says, “Please explain to me how you calculated it.”', 'doch bitte', 'Doch can encourage an explanation, but tone and context determine whether it sounds inviting or impatient.'],
+    ['Nora stellt dem Team eine Übersicht zur Verfügung.', 'Nora makes an overview available to the team.', 'stellt dem Team eine Übersicht zur Verfügung', 'Zur Verfügung stellen describes making something available; zur Verfügung stehen describes its availability.'],
+    ['Im Gespräch sagt Sam: „Klingt gut.“ Im Protokoll steht: „Sam stimmt dem Vorschlag zu.“', 'In conversation, Sam says, “Sounds good.” The minutes say, “Sam agrees with the proposal.”', 'Sam stimmt dem Vorschlag zu', 'The written account makes the actor and object explicit instead of relying on a conversational ellipsis.'],
+    ['Das Team beschließt, die Zahlen zu prüfen und den Plan zu ergänzen.', 'The team decides to check the figures and add to the plan.', 'die Zahlen zu prüfen und den Plan zu ergänzen', 'Parallel infinitive groups make both actions and their objects easy to follow.'],
+  ]),
+  'c1-6': scene('The final letter', 'Nora edits a request for funding before sending it.', 'technology', [
+    ['Nora schreibt: „Wir bitten Sie, den Antrag zu prüfen; die Unterlagen liegen bei.“', 'Nora writes, “We ask you to review the application; the documents are enclosed.”', 'den Antrag zu prüfen; die Unterlagen liegen bei', 'The comma marks the infinitive clause; the semicolon joins closely related independent clauses inside the quotation.'],
+    ['Im Allgemeinen ist das Wichtigste, dass alle Angaben überprüfbar sind.', 'In general, the most important thing is that all statements can be verified.', 'das Wichtigste, dass', 'The nominalised superlative is capitalised. Das is an article here; dass introduces the following clause.'],
+    ['Wir wären Ihnen dankbar, wenn Sie uns bis Freitag eine Rückmeldung geben könnten.', 'We would be grateful if you could give us feedback by Friday.', 'wären Ihnen dankbar', 'Konjunktiv II softens the formal request; the deadline still remains explicit.'],
+    ['Zwar entstehen zusätzliche Kosten, jedoch dürfte der Nutzen langfristig überwiegen.', 'Although additional costs arise, the benefit is likely to outweigh them in the long term.', 'Zwar entstehen zusätzliche Kosten, jedoch', 'Zwar … jedoch balances a concession against a cautiously worded conclusion.'],
+    ['Laut Prüfbericht waren alle Geräte kontrolliert worden, bevor das Studio eröffnete.', 'According to the inspection report, all equipment had been checked before the studio opened.', 'waren alle Geräte kontrolliert worden', 'The source is named; pluperfect passive locates the inspection before opening without inventing an unnamed checker.'],
+    ['Nachdem Nora die Quellen geprüft hat, nennt sie im Schreiben die verbleibenden Unsicherheiten.', 'After checking the sources, Nora states the remaining uncertainties in the letter.', 'Nachdem Nora die Quellen geprüft hat', 'The final version makes actor and sequence explicit and preserves the limits of the evidence.'],
+  ]),
+};
+
+export function lessonScene(id: string) {
+  const parts = id.split('-');
+  return { scene: GRAMMAR_SCENES[parts.slice(0, 2).join('-')], focusIndex: Number(parts[2]) - 1 };
+}

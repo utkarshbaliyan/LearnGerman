@@ -163,3 +163,17 @@ exercise sets. Fuller notes remain optional; the lesson browser does not displac
 the active topic. Rule hints, keyboard focus and next-set navigation remain.
 The authored exercise bank and progress keys are preserved. See
 [the grammar audit and preservation notes](GRAMMAR_PRACTICE.md).
+
+
+### Illustrated grammar articles
+
+Grammar lessons now begin with original illustrated module scenes. Each of 24
+scenes contains six topic-specific sentences, covering all 144 lessons. Sentence
+selection reveals English and a short grammar note; a related-topic link and
+return control support exploration. Existing topic-atlas watercolors are reused.
+The article follows context → rule → three explanation paragraphs → table →
+memory aid/details → examples → practice. Fuller details remain optional and
+source paragraphs are not repeated below practice. English table columns start
+visible. The lesson browser scrolls with the page so it does not cover the article.
+Text width is capped at 920px, with readable German case, responsive artwork,
+keyboard focus, live note updates and internal table scrolling.

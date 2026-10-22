@@ -240,6 +240,13 @@ test('grammar presents A1–C1 counts, topic search and a complete linked refere
   assert.match(html,/A1–C1 German Grammar/);
   assert.match(html,/144 lessons from A1 to C1/);
   assert.match(html,/Lesson explanation/);
+  assert.match(html,/A first afternoon in Bonn/);
+  assert.match(html,/Tap a sentence to explore its meaning and grammar/);
+  assert.match(html,/When and how to use it/);
+  assert.match(html,/Details, exceptions and useful distinctions/);
+  assert.match(html,/data-art="friends"/);
+  assert.equal((html.match(/aria-label="Explore sentence /g) ?? []).length, 6);
+  assert.ok(html.indexOf('id="grammar-scene"') < html.indexOf('id="grammar-understand"'));
   assert.match(html,/Complete present-tense conjugation of sein/);
   assert.match(html,/Examples in context/);
   assert.match(html,/Reveal the revision/);

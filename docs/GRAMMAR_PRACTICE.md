@@ -1,26 +1,39 @@
-# Practice-first grammar
+# Illustrated grammar lessons
 
-The 144 A1–C1 lessons combine a short working rule, the existing pattern, a
-visible reference table and two source-based notes explaining application.
-Learners can choose among a lesson’s tables where several exist and show or hide
-an English column. The sein lesson starts with its conjugation; adjective tables
-whose source columns contain phrase/ending pairs use matching display labels.
+All 144 A1–C1 lessons use an article sequence: a short introduction, an
+illustrated scene, a concise working rule, three core explanation paragraphs,
+a forms table, a memory aid, optional details, examples and existing practice.
+The full authored explanation remains available without repeating its paragraphs
+in the article or repeating it again below the exercises. English table columns
+start visible; learners can hide them and switch between available tables.
 
-An example explorer presents two distinct source examples at a time, with
-meanings visible initially and a control to hide or reveal them. Previous/next
-controls make the remaining examples available without a long wall of text.
-Source grammar notes remain alongside examples where supplied. A comparison
-panel lets learners reveal a taught revision and its reason, hide it again or
-try another comparison. It is ungraded exploration; advanced alternatives are
-not labelled universally ungrammatical.
+`lesson-scenes.ts` contains 24 original connected scenes, one for each module.
+Each has six sentences with English meanings, exact phrase highlights and
+sentence-specific grammar notes. Each of the 144 lessons starts on its own
+sentence. Tapping another sentence reveals its explanation and offers a link to
+the related lesson; a return control restores the current lesson's sentence.
+Highlights and the full English translation can be toggled. These are ungraded
+exploration controls and do not save scores or change progress.
 
-Understand, Examples and Practise links let learners jump between the stages.
-The lesson browser stays collapsed by default. Fuller notes and source links
-remain optional after practice; tables and examples already present in the guide
-are not repeated there. Existing exercise-level rule hints, keyboard focus and
-direct next-set navigation remain available. Selecting a lesson updates its URL,
-so reloading retains the chosen topic. German text preserves capitalisation,
-including sie versus Sie. Production remains a model-based self-check.
+Existing watercolor topic illustrations provide visual context. No new images
+are generated and no story cover assignments are changed. The shared scene is
+explicitly labelled as context across a module's six topics, rather than six
+supposedly different stories. Illustrations are decorative; text conveys the
+complete lesson. Story sentences are keyboard-operable buttons with selected
+states, and the meaning/note panel announces updates politely.
+
+The article retains the full source explanation in core paragraphs and optional
+detail notes, with exact duplicate paragraphs removed. Regular present-tense
+verbs introduce stems, endings and present/future usage before spelling details.
+The sein table starts with conjugation; two adjective table display labels match
+their source phrase/ending column order. Existing examples can be browsed two at
+a time, with English meanings hidden or revealed. The revision comparison retains
+its model and reason, including valid alternatives in advanced lessons.
+
+The lesson browser is not sticky over the article. Jump links connect Scene,
+Understand, Forms and Practice. Tables scroll internally on narrow screens.
+The existing exercise-level hints, feedback, self-check production, next-set
+navigation and lesson URL persistence remain intact.
 
 ## Exercise audit and preservation
 
@@ -64,8 +77,14 @@ checks exercise table switching and meaning controls, example pagination,
 comparison reveal/reset, existing answer feedback, lesson navigation and
 narrow/desktop layouts in both themes.
 
-Interactive-guide release validation: 185 tests, TypeScript, the production build
-and migration verification passed. Browser checks covered the regular-verbs and
-advanced infinitive lessons, table selection, English visibility, example
-pagination, revision reveal/hide/reset, unchanged exercise feedback, and narrow
-layouts in light and dark themes with scrolling confined to tables.
+The article structure was informed by the sequence of context, usage, forms and
+exceptions in [Lingolia's present-tense guide](https://deutsch.lingolia.com/en/grammar/tenses/present-tense).
+No Lingolia text, stories or images were copied. New scenes were written for this
+curriculum. Advanced checks referenced IDS on the
+[Ersatzinfinitiv](https://grammis.ids-mannheim.de/systematische-grammatik/1615),
+[recipient passive](https://grammis.ids-mannheim.de/terminologie/390) and
+[seit](https://grammis.ids-mannheim.de/konnektoren/406893).
+
+Validation for the illustrated-article release is recorded in its local release
+receipt; it covers all 24 scenes and 144 lesson mappings, exact highlights,
+retained source paragraphs, unchanged exercises and browser interactions.

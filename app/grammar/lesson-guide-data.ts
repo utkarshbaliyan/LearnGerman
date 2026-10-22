@@ -3,6 +3,13 @@ import { grammarReferenceParagraphs } from './practice-sequence';
 
 export type GuideExample = { german: string; english: string; note?: string };
 
+export function lessonArticle(content: GrammarLessonContent) {
+  const paragraphs = grammarReferenceParagraphs(content).filter(paragraph => paragraph !== content.memoryTip);
+  // Teach the stem, endings and everyday time meaning before the spelling details.
+  const core = content.id === 'a1-1-2' ? [paragraphs[0], paragraphs[1], paragraphs[5]] : paragraphs.slice(0, 3);
+  return { core, details: paragraphs.filter(paragraph => !core.includes(paragraph)), memoryTip: content.memoryTip };
+}
+
 export function lessonGuideExamples(content: GrammarLessonContent): GuideExample[] {
   const seen = new Set<string>();
   return [...content.examples, ...(content.sections ?? []).flatMap(section => section.examples ?? [])]
