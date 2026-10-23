@@ -9,6 +9,7 @@ import { MAX_SPEAKING_AUDIO_BYTES, speakingAudioProblem } from '@/app/lib/speaki
 import { answerSchema, countSchema, exerciseIdSchema, levelSchema, requestIdSchema, sameAnswers, type TranslationRecord, type TranslationSession, type TranslationOperation } from '@/app/lib/translation-practice';
 import { generateTranslationSentences, checkTranslationSentences } from './_ai';
 import { getReadingStory } from '@/app/lib/reading-path';
+import { DailyQuotaError, reserveTranslationQuota, translationAllowance } from './_quota';
 import { feedbackPattern } from '@/app/lib/translation-memory';
 import { TUTOR_PATTERNS } from '@/app/lib/tutor-patterns';
 import type { TranslationLearningContext } from '@/app/lib/translation-practice';
@@ -58,18 +59,18 @@ async function authenticate(request: Request) {
 export async function GET(request: Request) {
   const auth = await authenticate(request); if (!auth.user) return auth.response;
   try {
-    const db = await getD1(), id = new URL(request.url).searchParams.get('exerciseId');
+    const db = await getD1(), params = new URL(request.url).searchParams, id = params.get('exerciseId');
+    if (params.get('allowance') === '1') return Response.json({ allowance: await translationAllowance(db, auth.user.id) }, { headers });
     if (id && !exerciseIdSchema.safeParse(id).success) return fail('Invalid exercise ID.');
     const rows = await db.prepare("SELECT task_id AS exerciseId, json_extract(data, '$.level') AS level, json_extract(data, '$.count') AS count FROM tutor_sessions WHERE user_id = ? AND task_id LIKE 'translation-%' AND json_extract(data, '$.kind') = 'translation-v1' ORDER BY updated_at DESC LIMIT 10").bind(auth.user.id).all<{ exerciseId: string; level: string; count: number }>();
     const selected = id ?? rows.results[0]?.exerciseId;
     const record = selected ? await read(db, auth.user.id, selected) : null;
     if (id && !record) return fail('Exercise not found.', 404);
-    return Response.json({ ...record, recent: rows.results }, { headers });
+    return Response.json({ ...record, recent: rows.results, allowance: await translationAllowance(db, auth.user.id) }, { headers });
   } catch { return fail('Saved exercises are temporarily unavailable. Your browser draft is safe.', 503); }
 }
 
-export async function POST(request: Request) {
-  const auth = await authenticate(request); if (!auth.user) return auth.response;
+async function post(request: Request, user: string) {
   let body: Record<string, unknown>, upload: File | undefined;
   try {
     const contentType = request.headers.get('content-type') ?? '', multipart = contentType.startsWith('multipart/form-data;');
@@ -87,7 +88,7 @@ export async function POST(request: Request) {
     if (!body || typeof body !== 'object' || Array.isArray(body)) return fail('Invalid request.');
   } catch { return fail('Invalid request.'); }
   try {
-    const db = await getD1(), user = auth.user.id, action = body.action;
+    const db = await getD1(), action = body.action;
     if (action === 'generate') {
       const config = z.object({ level: levelSchema, count: countSchema, requestId: requestIdSchema, learning: z.object({ sessionId: requestIdSchema.optional(), storyId: z.string().max(100).optional(), reviewSource: z.object({ exerciseId: exerciseIdSchema, checkId: requestIdSchema, number: z.number().int().min(1).max(12) }).optional() }).strict().optional() }).safeParse(body);
       if (!config.success) return fail('Choose a level from A1 to C1 and 1–12 sentences.');
@@ -119,14 +120,14 @@ export async function POST(request: Request) {
       const record: TranslationRecord = { exerciseId: id, version: 0, session: { kind: 'translation-v1', level, count, createdAt, draftUpdatedAt: createdAt, sentences: [], answers: Array(count).fill(''), checks: [], operations: [operation], ...(learning ? { learning } : {}) } };
       if (!await save(db, user, record)) return fail('This exercise is being generated. Reload saved work shortly.', 409);
       try {
-        if (!await reserveTutorQuota(db, user)) { operation.errorStatus = 429; throw new Error('quota'); }
+        await reserveTranslationQuota(db, user, 'generate', count);
         const history = await db.prepare("SELECT sentence.value AS sentence FROM tutor_sessions AS sessions, json_each(sessions.data, '$.sentences') AS sentence WHERE sessions.user_id = ? AND sessions.task_id LIKE 'translation-%' AND json_extract(sessions.data, '$.kind') = 'translation-v1' AND sentence.type = 'text' ORDER BY sessions.updated_at DESC, sentence.key ASC").bind(user).all<{ sentence: string }>();
         record.session.sentences = await generateTranslationSentences(level, count, requestId, history.results.map(row => row.sentence), { ...(focus ? { focus } : {}), ...(story ? { story: { title: story.title, goal: story.goal, topics: story.topics } } : {}) }); operation.status = 'complete';
       } catch (cause) {
         operation.status = 'failed';
         const busy = cause instanceof ProviderRequestError && cause.status === 429;
-        operation.error = busy ? 'The AI provider is busy. Please wait before generating a new set.' : operation.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC.' : 'Sentences could not be generated. Generate a new set to try again.';
-        operation.errorStatus ??= busy ? 429 : 502;
+        operation.error = cause instanceof DailyQuotaError ? cause.message : busy ? 'The AI provider is busy. Please wait before generating a new set.' : 'Sentences could not be generated. Generate a new set to try again.';
+        operation.errorStatus ??= cause instanceof DailyQuotaError || busy ? 429 : 502;
       }
       if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
       return operation.status === 'failed' ? fail(operation.error!, operation.errorStatus, record) : respond(record);
@@ -178,7 +179,8 @@ export async function POST(request: Request) {
     if (answers) { record.session.answers = answers; record.session.draftUpdatedAt = op.createdAt; }
     if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
     try {
-      if (!await reserveTutorQuota(db, user)) { op.errorStatus = 429; throw new Error('quota'); }
+      if (action === 'check') await reserveTranslationQuota(db, user, 'check', record.session.count);
+      else if (!await reserveTutorQuota(db, user)) throw new DailyQuotaError('Daily AI limit reached (20 requests). Try again after midnight UTC. Your answers are saved.');
       if (action === 'check') record.session.checks.push({ id: requestId, createdAt: op.createdAt, answers: answers!, feedback: await checkTranslationSentences(record.session.level, record.session.sentences, answers!), ...(body.usedHelp !== undefined || record.session.checks.length ? { usedHelp: record.session.checks.length > 0 || record.session.helpUsed === true || body.usedHelp !== false } : {}) });
       else if (action === 'speech') {
         op.text = await transcribeGerman(upload!);
@@ -191,10 +193,20 @@ export async function POST(request: Request) {
       op.status = 'complete';
     } catch (cause) {
       const busy = cause instanceof ProviderRequestError && cause.status === 429;
-      op.status = 'failed'; op.errorStatus ??= busy ? 429 : 502;
-      op.error = busy ? 'The AI provider is busy. Your answers are saved; please wait before trying a new request.' : op.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC. Your answers are saved.' : op.errorStatus === 422 ? 'The handwriting could not be read. Try a clearer photo or type your translations.' : 'The AI request did not finish reliably. Your saved answers are safe; try again with a new request.';
+      op.status = 'failed'; op.errorStatus ??= cause instanceof DailyQuotaError || busy ? 429 : 502;
+      op.error = cause instanceof DailyQuotaError ? cause.message : busy ? 'The AI provider is busy. Your answers are saved; please wait before trying a new request.' : op.errorStatus === 422 ? 'The handwriting could not be read. Try a clearer photo or type your translations.' : 'The AI request did not finish reliably. Your saved answers are safe; try again with a new request.';
     }
     if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
     return op.status === 'failed' ? fail(op.error!, op.errorStatus, record) : respond(record);
   } catch { return fail('Practice is temporarily unavailable. Your browser draft is safe; reload saved work before trying again.', 503); }
+}
+
+export async function POST(request: Request) {
+  const auth = await authenticate(request); if (!auth.user) return auth.response;
+  const response = await post(request, auth.user.id);
+  try {
+    const allowance = await translationAllowance(await getD1(), auth.user.id);
+    const payload = await response.json() as Record<string, unknown>;
+    return Response.json({ ...payload, allowance }, { status: response.status, headers });
+  } catch { return response; }
 }

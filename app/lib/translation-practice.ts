@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
 export const TRANSLATION_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'] as const;
+export const DAILY_SENTENCE_LIMIT = 12;
+export type TranslationAllowance = { day: string; resetsAt: string; limit: number; generated: number; checked: number; generationRemaining: number; checkingRemaining: number; requestsRemaining: number };
 export type TranslationLevel = typeof TRANSLATION_LEVELS[number];
 export const LEVEL_GUIDANCE: Record<TranslationLevel, { label: string; instruction: string; words: number }> = {
   A1: { label: 'Short sentences about everyday basics.', instruction: 'Concrete, high-frequency everyday language. Present tense, personal details, shopping, time, simple questions and basic nominative/accusative forms. Avoid subordinate clauses, idioms and abstract topics.', words: 12 },
@@ -23,7 +25,7 @@ export type TranslationLearningContext = { sessionId?: string; storyId?: string;
 export type TranslationOperation = { id: string; action: 'generate' | 'check' | 'speech' | 'photo'; fingerprint: string; createdAt: string; status: 'pending' | 'complete' | 'failed'; text?: string; uncertain?: boolean; sentenceIndex?: number; confirmedAt?: string; error?: string; errorStatus?: number };
 export type TranslationSession = { kind: 'translation-v1'; level: TranslationLevel; count: number; createdAt: string; draftUpdatedAt: string; sentences: string[]; answers: string[]; checks: TranslationCheck[]; operations: TranslationOperation[]; helpUsed?: boolean; learning?: TranslationLearningContext };
 export type TranslationRecord = { exerciseId: string; version: number; session: TranslationSession };
-export type TranslationResponse = TranslationRecord & { error?: string; recent?: { exerciseId: string; level: TranslationLevel; count: number }[] };
+export type TranslationResponse = TranslationRecord & { error?: string; allowance?: TranslationAllowance; recent?: { exerciseId: string; level: TranslationLevel; count: number }[] };
 
 export const sentenceKey = (sentence: string) => sentence.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 export function generatedSentences(value: unknown, level: TranslationLevel, count: number, previous: Iterable<string> = []): string[] {

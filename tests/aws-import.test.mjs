@@ -16,7 +16,7 @@ test('AWS snapshot import preserves every column, refuses live overwrites and re
   original.prepare('INSERT INTO users(id,email,display_name,username) VALUES(?,?,?,?)').run('supabase-subject','learner@example.test','Grüße','learner');
   original.prepare('INSERT INTO user_progress(user_id,scope,data) VALUES(?,?,?)').run('supabase-subject','stories',JSON.stringify({completed:['reading-b1-01-v1'],saved:'ä'.repeat(10000)}));
   original.prepare('INSERT INTO tutor_sessions VALUES(?,?,?,?,?)').run('supabase-subject','task','{"draft":"Öffnen"}',7,'2026-10-23');
-  original.prepare('INSERT INTO tutor_quotas VALUES(?,?,?)').run('supabase-subject','2026-10-23',19);
+  original.prepare('INSERT INTO tutor_quotas(user_id,day,used,generated,checked) VALUES(?,?,?,?,?)').run('supabase-subject','2026-10-23',19,12,8);
   const names=['users','user_progress','tutor_sessions','tutor_quotas'];
   const snapshot={version:1,tables:Object.fromEntries(names.map(name=>[name,original.prepare(`SELECT * FROM ${name}`).all().map(r=>({...r}))]))};original.close();
   const result=importSnapshot(target,snapshot);assert.deepEqual(Object.values(result.counts),[1,1,1,1]);
@@ -24,6 +24,9 @@ test('AWS snapshot import preserves every column, refuses live overwrites and re
   const db=new DatabaseSync(target);for(const name of names)assert.deepEqual(db.prepare(`SELECT * FROM ${name}`).all().map(r=>({...r})),snapshot.tables[name]);
   const restored=join(root,'restored.sqlite');await backup(db,restored);db.close();
   const recovery=new DatabaseSync(restored);for(const name of names)assert.deepEqual(recovery.prepare(`SELECT * FROM ${name}`).all().map(r=>({...r})),snapshot.tables[name]);recovery.close();
+  const legacy=structuredClone(snapshot);for(const row of legacy.tables.tutor_quotas){delete row.generated;delete row.checked;}
+  const legacyFile=join(root,'legacy.sqlite');applyMigrations(legacyFile,'drizzle');importSnapshot(legacyFile,legacy);
+  const legacyDb=new DatabaseSync(legacyFile);assert.deepEqual({...legacyDb.prepare('SELECT used,generated,checked FROM tutor_quotas').get()},{used:19,generated:0,checked:0});legacyDb.close();
   const bad=structuredClone(snapshot);bad.tables.users[0].unexpected='field';
   const empty=join(root,'bad.sqlite');applyMigrations(empty,'drizzle');assert.throws(()=>importSnapshot(empty,bad),/Unexpected schema/);
   const rolledBack=new DatabaseSync(empty);assert.equal(rolledBack.prepare('SELECT count(*) AS n FROM users').get().n,0);rolledBack.close();

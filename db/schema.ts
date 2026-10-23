@@ -31,4 +31,6 @@ export const tutorQuotas = sqliteTable("tutor_quotas", {
   userId: text("user_id").notNull(),
   day: text("day").notNull(),
   used: integer("used").notNull().default(0),
+  generated: integer("generated").notNull().default(0),
+  checked: integer("checked").notNull().default(0),
 }, (table) => [primaryKey({ columns: [table.userId, table.day] })]);

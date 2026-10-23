@@ -13,3 +13,11 @@ Exercises, drafts, reviewed imported text and feedback are stored in account-own
 The shared daily limit remains 20 requests, resetting at midnight UTC. Generating a set, checking a whole set, transcribing one recording and reading one photo each reserve one request. Draft saves are free. Failed provider calls also consume their reservation. Retrying the same operation ID reuses its saved result or pending state without another charge; unchanged checked answers reuse feedback. Concurrent changes use version checks and pending operations expire after two minutes.
 
 Implementation: `translation-workspace.tsx`, `translation-recording.tsx`, `app/lib/translation-practice.ts` and `app/api/active-learning/translation/`. No database migration or new provider credentials are needed. The historical course design and syllabus documents describe the retired interface.
+
+## Daily sentence allowances
+
+Each authenticated user may request **12 generated sentences and 12 sentence checks per UTC day**. A batch counts every sentence. Every revision check counts the entire saved set again, using its server-owned size. Cached feedback, duplicate request IDs and draft saves do not consume another allowance. Provider failures count as attempts; rejected quota reservations consume neither a sentence nor an AI request.
+
+The existing shared 20-request daily AI safeguard remains, including photo reading and transcription. Reservations update that request count and the relevant sentence counter in one atomic statement. `tutor_quotas` persists independently of practice history, and additive migration `0004_sentence_allowances` retains existing request usage and backfills retained sentence attempts. No learner progress or session JSON is modified. Older exports without sentence counters remain importable; new exports preserve both counters.
+
+The workspace shows remaining generation/checking allowances, blocks oversized actions and refreshes at midnight UTC and on window focus. Server enforcement remains authoritative across devices and concurrent requests.

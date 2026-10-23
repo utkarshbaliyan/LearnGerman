@@ -25,7 +25,7 @@ test('AWS SQLite preserves migrations, D1 results, transactions, CAS and atomic 
   assert.equal(results.filter(Boolean).length,20);
   assert.deepEqual(await db.prepare('SELECT used FROM tutor_quotas').raw({columnNames:true}), [['used'],[20]]);
   await assert.rejects(db.batch([
-    db.prepare('INSERT INTO tutor_quotas VALUES(?,?,?)').bind('bob','2026-10-23',1),
+    db.prepare('INSERT INTO tutor_quotas(user_id,day,used) VALUES(?,?,?)').bind('bob','2026-10-23',1),
     db.prepare('INSERT INTO users(id,email,display_name,username) VALUES(?,?,?,?)').bind('bob','bob@example.test','Bob','alice'),
   ]));
   assert.equal(await db.prepare('SELECT used FROM tutor_quotas WHERE user_id=?').bind('bob').first(),null);

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { authenticatedFetch } from '@/app/lib/authenticated-fetch';
 import { WritingPhotoUpload } from '@/app/components/writing-photo-upload';
-import { LEVEL_GUIDANCE, TRANSLATION_LEVELS, photoAnswers, sameAnswers, type TranslationLevel, type TranslationRecord, type TranslationResponse } from '@/app/lib/translation-practice';
+import { LEVEL_GUIDANCE, TRANSLATION_LEVELS, photoAnswers, sameAnswers, type TranslationLevel, type TranslationRecord, type TranslationResponse, type TranslationAllowance } from '@/app/lib/translation-practice';
 import { TranslationRecording } from './translation-recording';
 import type { TranslationLearningContext } from '@/app/lib/translation-practice';
 import { TUTOR_PATTERNS } from '@/app/lib/tutor-patterns';
@@ -18,6 +18,7 @@ const cacheKey = (owner: string, exercise: string) => `leselaut:translation-draf
 export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferredCount = 1, savedExerciseId, onRecord }: { learning?: TranslationLearningContext; preferredLevel?: TranslationLevel; preferredCount?: number; savedExerciseId?: string; onRecord?: (record: TranslationRecord) => void } = {}) {
   const inputPrefix = useId();
   const [usedHelp, setUsedHelp] = useState(false);
+  const [allowance, setAllowance] = useState<TranslationAllowance | null>(null);
   const hintOpened = useRef(false);
   const props = useRef({ learning, savedExerciseId, onRecord, preferredLevel, preferredCount }); props.current = { learning, savedExerciseId, onRecord, preferredLevel, preferredCount };
   const [level, setLevel] = useState<TranslationLevel>(preferredLevel), [count, setCount] = useState(preferredCount), [mode, setMode] = useState<Mode>('write');
@@ -41,6 +42,7 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
     const r = await authenticatedFetch(endpoint + (requested ? `?exerciseId=${encodeURIComponent(requested)}` : ''), { headers: { 'x-translation-owner': owner.current ?? '' }, signal: AbortSignal.timeout(20_000) });
     const data = await r.json() as TranslationResponse;
     if (generation !== epoch.current) return;
+    if (data.allowance) setAllowance(data.allowance);
     if (!r.ok) throw new Error(data.error ?? 'Saved exercises could not be loaded.');
     const context = props.current.learning;
     const belongs = !context || (context.sessionId ? data.session?.learning?.sessionId === context.sessionId : JSON.stringify(data.session?.learning?.reviewSource) === JSON.stringify(context.reviewSource));
@@ -55,7 +57,7 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
         const id = session?.user.id ?? null;
         if (initialized && id === owner.current) return; initialized = true;
         const generation = ++epoch.current; owner.current = id; lock.current = false; keys.current.clear();
-        setRecord(null); setAnswers([]); setRecent([]); setRecovery(null); setError(''); setBusy(''); setSaving(false); setRecording(false); setSpeechConsent(false); setSignedIn(Boolean(id)); setLoading(Boolean(id));
+        setAllowance(null); setRecord(null); setAnswers([]); setRecent([]); setRecovery(null); setError(''); setBusy(''); setSaving(false); setRecording(false); setSpeechConsent(false); setSignedIn(Boolean(id)); setLoading(Boolean(id));
         if (id) queueMicrotask(() => { if (active) void load(undefined, generation).catch(e => { if (active && generation === epoch.current) { setError(e.message); setLoading(false); } }); });
       });
       unsubscribe = () => data.subscription.unsubscribe();
@@ -88,6 +90,7 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
       const r = await authenticatedFetch(endpoint, { method: 'POST', headers, body, signal: AbortSignal.timeout(75_000) });
       const payload = await r.json() as TranslationResponse;
       if (generation !== epoch.current) return true;
+      if (payload.allowance) setAllowance(payload.allowance);
       const op = payload.session?.operations.find(o => o.id === requestId);
       terminal = op?.status === 'complete' || op?.status === 'failed' || (!payload.session && r.status !== 503 && r.status !== 502);
       if (terminal) keys.current.delete(signature);
@@ -106,6 +109,23 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
     if (!record || record.session.sentences.length !== record.session.count || loading || busy || saving || recovery || error || recording || sameAnswers(answers, record.session.answers)) return;
     const timer = setTimeout(() => { void send('draft'); }, 1200); return () => clearTimeout(timer);
   }, [answers, record, loading, busy, saving, recovery, error, recording, send]);
+  useEffect(() => {
+    if (!signedIn) return;
+    const generation = epoch.current;
+    const refresh = async () => {
+      try {
+        const response = await authenticatedFetch(`${endpoint}?allowance=1`, { headers: { 'x-translation-owner': owner.current ?? '' }, signal: AbortSignal.timeout(20_000) });
+        const data = await response.json() as TranslationResponse;
+        if (generation === epoch.current && response.ok && data.allowance) setAllowance(data.allowance);
+      } catch { /* The next action still checks the server's allowance. */ }
+    };
+    const timer = allowance ? setTimeout(() => void refresh(), Math.max(1000, Date.parse(allowance.resetsAt) - Date.now() + 250)) : undefined;
+    window.addEventListener('focus', refresh);
+    return () => { clearTimeout(timer); window.removeEventListener('focus', refresh); };
+  }, [signedIn, allowance?.resetsAt]);
+  const generationCount = learning ? preferredCount : count;
+  const generationLimited = Boolean(allowance && (allowance.generationRemaining < generationCount || !allowance.requestsRemaining));
+  const checkingLimited = Boolean(allowance && (allowance.checkingRemaining < (record?.session.count ?? 0) || !allowance.requestsRemaining));
   const locked = Boolean(busy) || saving || recording || loading || Boolean(recovery);
   const usable = record?.session.sentences.length === record?.session.count && Boolean(record?.session.count);
   const latest = record?.session.checks.at(-1);
@@ -119,8 +139,10 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
     <div className="translation-setup">
       <fieldset disabled={locked || Boolean(learning)}><legend>Your German level</legend><div className="translation-levels">{TRANSLATION_LEVELS.map(l => <button key={l} type="button" aria-pressed={level === l} onClick={() => setLevel(l)}>{l}</button>)}</div><p>{LEVEL_GUIDANCE[level].label}</p></fieldset>
       <label className="translation-count" htmlFor={`${inputPrefix}-count`}>English sentences<select id={`${inputPrefix}-count`} value={count} disabled={locked || Boolean(learning)} onChange={e => setCount(Number(e.target.value))}>{Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1} {i ? 'sentences' : 'sentence'}</option>)}</select></label>
-      <Button disabled={!signedIn || locked} onClick={() => void send('generate', { level, count: learning ? preferredCount : count, ...(learning ? { learning } : {}) })}>{record ? 'Generate new sentences' : 'Generate sentences'}</Button>
+      <Button disabled={!signedIn || locked || generationLimited} onClick={() => void send('generate', { level, count: generationCount, ...(learning ? { learning } : {}) })}>{record ? 'Generate new sentences' : 'Generate sentences'}</Button>
     </div>
+    {signedIn && allowance && <p className="translation-allowance" role="status">Today: <strong>{allowance.generationRemaining}/{allowance.limit}</strong> sentences left to generate · <strong>{allowance.checkingRemaining}/{allowance.limit}</strong> left to check. Resets at midnight UTC.</p>}
+    {signedIn && generationLimited && <p>{allowance?.requestsRemaining === 0 ? 'Your daily AI request allowance is used up. Come back after midnight UTC.' : allowance?.generationRemaining ? `Choose ${allowance.generationRemaining} sentences or fewer to generate today.` : 'You have used today’s generation allowance. You can still work on saved sets.'}</p>}
     {!signedIn && !loading && <p className="translation-signin"><Link href="/account">Sign in</Link> to generate sentences and get AI feedback.</p>}
     {loading && <p role="status">Loading your saved practice…</p>}
     {busy && <p className="translation-status" role="status">{busy}</p>}
@@ -145,11 +167,12 @@ export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferre
       })}</ol>
       {mode === 'photo' && <WritingPhotoUpload key={`${owner.current}:${record.exerciseId}:photo`} minCharacters={2} photos={photos} hasDraft={answers.some(s => s.trim())} busy={locked} onUpload={(file, id) => send('photo', {}, file, id).then(() => undefined)} onConfirm={async (text, photoId) => { try { const rows = photoAnswers(text, record.session.count); await send('draft', { answers: rows, photoId }); } catch (e) { setError(e instanceof Error ? e.message : 'Check the sentence numbers.'); } }} />}
       {!latest && <div className="translation-help-report"><label><input type="checkbox" checked={usedHelp} onChange={e => setUsedHelp(e.target.checked)} disabled={locked} />I used a hint, dictionary, translation tool or outside help.</label><p>First attempts and revisions are recorded separately. Help use is self-reported.</p>{record.session.learning?.pattern && <details onToggle={e => { if (e.currentTarget.open) { hintOpened.current = true; setUsedHelp(true); void send('draft', { usedHelp: true }); } }}><summary>Show a hint</summary><p>{TUTOR_PATTERNS[record.session.learning.pattern].question}</p><p lang="de">{TUTOR_PATTERNS[record.session.learning.pattern].example}</p></details>}</div>}
-      <div className="translation-actions"><Button disabled={locked || answers.some(s => !s.trim() || /\[unclear\]/i.test(s)) || sameAnswers(latest?.answers ?? [], answers)} onClick={() => void send('check', { usedHelp: usedHelp || hintOpened.current || Boolean(latest) })}>{latest ? 'Check my revision' : 'Check translations'}</Button><Button variant="outline" disabled={locked || sameAnswers(answers, record.session.answers)} onClick={() => void send('draft')}>Save draft</Button><span role="status">{saving ? 'Saving draft…' : answers.filter(s => s.trim()).length + ' of ' + record.session.count + ' translated'}</span></div>
+      <div className="translation-actions"><Button disabled={locked || checkingLimited || answers.some(s => !s.trim() || /\[unclear\]/i.test(s)) || sameAnswers(latest?.answers ?? [], answers)} onClick={() => void send('check', { usedHelp: usedHelp || hintOpened.current || Boolean(latest) })}>{latest ? 'Check my revision' : 'Check translations'}</Button><Button variant="outline" disabled={locked || sameAnswers(answers, record.session.answers)} onClick={() => void send('draft')}>Save draft</Button><span role="status">{saving ? 'Saving draft…' : answers.filter(s => s.trim()).length + ' of ' + record.session.count + ' translated'}</span></div>
       {pending && <p role="status">An earlier request is still processing. Reload saved work to see its result.</p>}
-      <p className="translation-guidance">Translate every sentence before checking. You can revise your answers and check again.</p>
+      <p className="translation-guidance">Translate every sentence before checking. Each check, including a revision, uses one check per sentence in this set.</p>
+      {checkingLimited && <p role="status">{allowance?.requestsRemaining === 0 ? 'Your daily AI request allowance is used up.' : `This set needs ${record.session.count} checks; you have ${allowance?.checkingRemaining} left today.`} Your draft can still be saved. Checks renew after midnight UTC.</p>}
       {cacheWarning && <p role="alert">{cacheWarning}</p>}
     </div>}
-    <p className="translation-privacy">20 AI requests per day. Generating a set, checking translations, reading a photo and transcribing a recording each use one request. Draft saves are free. Text and feedback are saved to your account; uploaded photos and recordings are not stored by LeseLaut.</p>
+    <p className="translation-privacy">12 generated sentences and 12 sentence checks per user per UTC day. Every sentence in a batch counts; revisions count again. AI attempts use the allowance even if the provider fails. A shared safeguard also limits all AI actions, including photo reading and transcription, to 20 requests per day. Reloading saved feedback and saving drafts are free. Text and feedback are saved to your account; uploaded photos and recordings are not stored by LeseLaut.</p>
   </section>;
 }

@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 
 const columns={users:['id','email','display_name','created_at','updated_at','username'],user_progress:['user_id','scope','data','updated_at'],
-  tutor_sessions:['user_id','task_id','data','version','updated_at'],tutor_quotas:['user_id','day','used']};
+  tutor_sessions:['user_id','task_id','data','version','updated_at'],tutor_quotas:['user_id','day','used','generated','checked']};
 export function importSnapshot(filename,snapshot,{replaceReadOnly=false}={}){
   if(snapshot.version!==1||!snapshot.tables||Object.keys(snapshot.tables).sort().join()!==Object.keys(columns).sort().join())throw new Error('Invalid snapshot format.');
   const db=new DatabaseSync(filename);
@@ -18,7 +18,9 @@ export function importSnapshot(filename,snapshot,{replaceReadOnly=false}={}){
     }
     const counts={};
     for(const [table,fields] of Object.entries(columns)){
-      const rows=snapshot.tables[table];if(!Array.isArray(rows))throw new Error('Invalid snapshot rows.');
+      let rows=snapshot.tables[table];if(!Array.isArray(rows))throw new Error('Invalid snapshot rows.');
+      // Accept the original export shape, without discarding newer sentence counters.
+      if(table==='tutor_quotas') rows=rows.map(row=>Object.keys(row).sort().join()==='day,used,user_id'?{...row,generated:0,checked:0}:row);
       const statement=db.prepare(`INSERT INTO ${table} (${fields.join(',')}) VALUES (${fields.map(()=>'?').join(',')})`);
       for(const row of rows){
         if(Object.keys(row).sort().join()!==[...fields].sort().join())throw new Error(`Unexpected schema for ${table}.`);

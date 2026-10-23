@@ -30,7 +30,7 @@ test('translation validation accepts alternatives, rejects invented errors and m
 });
 
 test('translation API saves account-owned exercises, checks, reviewed imports and idempotent quota reservations',async()=>{
- const db=new DatabaseSync(':memory:');db.exec(readFileSync('drizzle/0002_legal_nehzno.sql','utf8'));
+ const db=new DatabaseSync(':memory:');db.exec(readFileSync('drizzle/0002_legal_nehzno.sql','utf8'));db.exec(readFileSync('drizzle/0004_sentence_allowances.sql','utf8'));
  globalThis.__translationDb={prepare(sql){return{bind(...args){return{async first(){return db.prepare(sql).get(...args)??null;},async all(){return{results:db.prepare(sql).all(...args)};},async run(){return{meta:{changes:Number(db.prepare(sql).run(...args).changes)}};}};}};}};
  const vite=await server([{name:'translation-test-auth',enforce:'pre',transform(code,id){if(id.endsWith('/app/api/active-learning/translation/route.ts'))return code.replace("import { getD1 } from '@/db';","const getD1=async()=>globalThis.__translationDb;").replace("import { getAuthenticatedUser } from '@/app/lib/supabase-auth';","const getAuthenticatedUser=async r=>r.headers.get('x-test-user')?{id:r.headers.get('x-test-user')}:null;");}}]);
  const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';let calls=0,held=null,badFeedback=false,repeatedGeneration=0,providerBusy=false;
@@ -114,6 +114,37 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
   providerBusy=true;
   r=await post({action:'check',exerciseId:checkSet.exerciseId,version:checkSet.version,requestId:'provider-busy-check',answers:['Ich wohne in Berlin.']},'busy');
   assert.equal(r.status,429);const savedBusy=await r.json();assert.deepEqual(savedBusy.session.answers,['Ich wohne in Berlin.']);assert.match(savedBusy.error,/provider is busy/);
+  providerBusy=false;
+  // Sentence budgets are independent, weighted by the server-owned set, and idempotent.
+  const full={action:'generate',level:'A1',count:12,requestId:'twelve-sentences-set'};
+  r=await post(full,'twelve');assert.equal(r.status,200);let fullSet=await r.json();
+  assert.equal(fullSet.allowance.generationRemaining,0);assert.equal(fullSet.allowance.checkingRemaining,12);
+  const beforeDenied=calls;
+  r=await post({...full,count:1,requestId:'twelve-overflow-set'},'twelve');assert.equal(r.status,429);assert.match((await r.json()).error,/generation limit/);assert.equal(calls,beforeDenied);
+  assert.equal((await post(full,'twelve')).status,200);assert.equal(calls,beforeDenied);
+  const fullCheck={action:'check',exerciseId:fullSet.exerciseId,version:fullSet.version,answers:Array(12).fill('Ich wohne in Berlin.'),requestId:'twelve-check-first'};
+  r=await post(fullCheck,'twelve');assert.equal(r.status,200);fullSet=await r.json();assert.equal(fullSet.allowance.checkingRemaining,0);assert.equal(quota('twelve'),2);
+  const afterCheck=calls;
+  assert.equal((await post(fullCheck,'twelve')).status,200);
+  assert.equal((await post({...fullCheck,version:fullSet.version,requestId:'twelve-check-cached'},'twelve')).status,200);
+  r=await post({...fullCheck,version:fullSet.version,count:1,answers:Array(12).fill('Ich lebe in Berlin.'),requestId:'twelve-revision-over'},'twelve');
+  assert.equal(r.status,429);const deniedCheck=await r.json();assert.match(deniedCheck.error,/checking limit/);assert.deepEqual(deniedCheck.session.answers,Array(12).fill('Ich lebe in Berlin.'));assert.equal(calls,afterCheck);assert.equal(quota('twelve'),2);
+  r=await post({action:'draft',exerciseId:fullSet.exerciseId,version:deniedCheck.version,answers:Array(12).fill('Ich wohne hier.')},'twelve');assert.equal(r.status,200);assert.equal(calls,afterCheck);
+  const daily=await (await api.GET(new Request('http://local/api/active-learning/translation?allowance=1',{headers:{'x-test-user':'twelve'}}))).json();
+  assert.equal(daily.allowance.generationRemaining,0);assert.equal(daily.allowance.checkingRemaining,0);assert.equal(daily.session,undefined);
+  db.prepare('DELETE FROM tutor_sessions WHERE user_id=?').run('twelve');assert.equal((await (await get(null,'twelve')).json()).allowance.generationRemaining,0,'Deleting saved work cannot replenish the allowance');
+  r=await post({action:'generate',level:'A1',count:3,requestId:'weighted-revision-set'},'weighted');let weighted=await r.json();assert.equal(r.status,200);
+  const checkWeighted=(answers,requestId)=>post({action:'check',count:1,exerciseId:weighted.exerciseId,version:weighted.version,answers,requestId},'weighted');
+  for(let i=0;i<4;i++){
+    r=await checkWeighted(Array(3).fill(i%2?'Ich lebe in Berlin.':'Ich wohne in Berlin.'),`weighted-check-${i}-0001`);assert.equal(r.status,200);weighted=await r.json();assert.equal(weighted.allowance.checked,(i+1)*3);
+  }
+  const beforeOverflow=calls;r=await checkWeighted(Array(3).fill('Ich wohne in Berlin.'),'weighted-overflow-01');assert.equal(r.status,429);assert.equal(calls,beforeOverflow);
+  r=await post({action:'generate',level:'A1',count:8,requestId:'batch-generate-eight'},'batch');assert.equal(r.status,200);
+  const batchCalls=calls;
+  r=await post({action:'generate',level:'A1',count:5,requestId:'batch-generate-denied'},'batch');assert.equal(r.status,429);assert.equal((await r.json()).allowance.generationRemaining,4);assert.equal(quota('batch'),1);assert.equal(calls,batchCalls);
+  r=await post({action:'generate',level:'A1',count:4,requestId:'batch-generate-four'},'batch');assert.equal(r.status,200);assert.equal((await r.json()).allowance.generated,12);
+  assert.equal((await (await get(null,'new-user')).json()).allowance.generationRemaining,12,'Accounts have separate budgets');
+
  }finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GROQ_API_KEY;else process.env.GROQ_API_KEY=oldKey;delete globalThis.__translationDb;await vite.close();db.close();}
 });
 

@@ -85,6 +85,26 @@ test('real local D1 serves 100 concurrent accounts without leaks, lost progress 
     await db.prepare('INSERT INTO tutor_quotas(user_id,day,used) VALUES(?,?,20)').bind(users[2],day).run();
     assert.ok(await sessions.reserveTutorQuota(db,users[2]),'a previous UTC day must not consume today’s allowance');
 
+    const sentences=await vite.ssrLoadModule('/app/api/active-learning/translation/_quota.ts');
+    const generation=await Promise.allSettled(Array.from({length:30},()=>sentences.reserveTranslationQuota(db,users[3],'generate',3)));
+    assert.equal(generation.filter(r=>r.status==='fulfilled').length,4,'Concurrent batches must stop at exactly 12 generated sentences');
+    const checking=await Promise.allSettled(Array.from({length:30},()=>sentences.reserveTranslationQuota(db,users[3],'check',2)));
+    assert.equal(checking.filter(r=>r.status==='fulfilled').length,6,'Checks have their own atomic allowance');
+    const allowance=await sentences.translationAllowance(db,users[3]);
+    assert.equal(allowance.generated,12);assert.equal(allowance.checked,12);assert.equal(allowance.requestsRemaining,10);
+    assert.equal(generation.filter(r=>r.status==='rejected').every(r=>r.reason instanceof sentences.DailyQuotaError),true);
+    assert.equal(checking.filter(r=>r.status==='rejected').every(r=>r.reason instanceof sentences.DailyQuotaError),true);
+    await assert.rejects(()=>sentences.reserveTranslationQuota(db,users[4],'check',0),RangeError);
+    await assert.rejects(()=>sentences.reserveTranslationQuota(db,users[4],'generate',13),RangeError);
+    const midnight=new Date('2030-01-01T23:59:59.999Z'),tomorrow=new Date('2030-01-02T00:00:00Z');
+    await sentences.reserveTranslationQuota(db,users[4],'generate',12,midnight);
+    assert.equal((await sentences.translationAllowance(db,users[4],tomorrow)).generationRemaining,12);
+    await sentences.reserveTranslationQuota(db,users[4],'generate',12,tomorrow);
+    assert.equal((await sentences.translationAllowance(db,users[4],midnight)).generated,12);
+    assert.equal((await sentences.translationAllowance(db,users[4],midnight)).resetsAt,'2030-01-02T00:00:00.000Z');
+    await assert.rejects(()=>sentences.reserveTranslationQuota(db,users[0],'check',1),sentences.DailyQuotaError,'The existing request safeguard still applies');
+    assert.equal((await sentences.translationAllowance(db,users[0])).checked,0,'Request rejection cannot debit sentence checks');
+
     const record=await sessions.readTutorSession(db,users[0],'test-task');
     assert.equal(await sessions.saveTutorSession(db,users[0],'test-task',record),true);
     const results=await Promise.all(['one','two'].map(draft=>sessions.saveTutorSession(db,users[0],'test-task',{version:1,session:{draft,attempts:[]}})));

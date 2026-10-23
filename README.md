@@ -93,7 +93,7 @@ version for optimistic concurrency. Checks also require an idempotency request I
 Account changes invalidate UI requests and owner headers prevent cross-account saves.
 
 A daily atomic quota in `tutor_quotas` permits 20 AI requests (photo reads or writing checks) per account per UTC
-day across tasks and Worker instances. Provider failures count toward the budget.
+day across tasks and Worker instances. Provider failures count toward the budget. Translation practice additionally caps each user at 12 generated sentences and 12 sentence checks per UTC day; batches and revision checks count every sentence in the saved set.
 Provider requests have a 30-second deadline and a 3,000-token output limit. A stale
 pending attempt can be recovered after 60 seconds. Invalid, ambiguous, overlapping,
 or low-confidence spans are withheld and cannot support task-success evidence.
