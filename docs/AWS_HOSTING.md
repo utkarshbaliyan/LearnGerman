@@ -2,6 +2,12 @@
 
 AWS endpoint: https://d19k6l47v6hw3.cloudfront.net
 
+Cutover completed on 23 October 2026. Both this endpoint and the original Sites
+address now use AWS. Every imported table value matched the frozen D1 export;
+an isolated restore from the S3 backup matched the same digest. The original
+signed-in browser also reported that progress was synced. Temporary export
+credentials have been removed. The original D1 data remains frozen and retained.
+
 The app runs on one Amazon Linux t4g.small instance in Mumbai, behind CloudFront
 HTTPS. It retains Vinext and the existing SQLite schema and SQL. The encrypted
 10 GB data volume is separate from code releases and retained if the stack is
@@ -24,7 +30,8 @@ GitHub holds no permanent AWS access keys or AI credentials. Failed checks do no
 deploy. Deployments serialize, take a consistent database backup, apply only new
 unchanged migrations and restart the service. A readiness failure restores the
 previous code, never an older learner database. A restart causes a brief service
-interruption. Infrastructure and bootstrap changes require a reviewed manual
+interruption. Old generated releases are pruned after a healthy rollout, while
+current and previous code are protected. Infrastructure and bootstrap changes require a reviewed manual
 update; the workflow deploys application releases.
 
 The pipeline begins after a developer **commits and pushes**. It does not commit

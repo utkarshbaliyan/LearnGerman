@@ -1,5 +1,5 @@
 import {DatabaseSync} from 'node:sqlite';
-import {readFileSync, readdirSync} from 'node:fs';
+import {readFileSync, readdirSync, realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -28,7 +28,7 @@ export function applyMigrations(filename, directory) {
   } finally { db.close(); }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
   if (!process.env.LESELAUT_SQLITE_PATH) throw new Error('LESELAUT_SQLITE_PATH is required.');
   applyMigrations(process.env.LESELAUT_SQLITE_PATH, join(import.meta.dirname, 'drizzle'));
 }

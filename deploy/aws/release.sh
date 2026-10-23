@@ -32,6 +32,18 @@ ln -sfn "$release_dir" /opt/leselaut/current
 systemctl start leselaut
 for attempt in $(seq 1 45); do
   if curl -fsS http://127.0.0.1:3000/api/health >/dev/null; then
+    # Keep the small root disk bounded. Only generated release directories are
+    # pruned; learner data lives on a separate retained volume and in S3 backups.
+    touch "$release_dir"
+    release_count=0
+    while read -r candidate; do
+      [[ "$candidate" =~ ^[a-f0-9]{40}$ ]] || continue
+      release_count=$((release_count + 1))
+      candidate_dir=/opt/leselaut/releases/$candidate
+      if (( release_count > 3 )) && [[ "$candidate_dir" != "$release_dir" && "$candidate_dir" != "$old_release" ]]; then
+        rm -rf -- "$candidate_dir"
+      fi
+    done < <(find /opt/leselaut/releases -mindepth 1 -maxdepth 1 -type d -printf '%T@ %f\n' | sort -nr | awk '{print $2}')
     echo "Release $release_id healthy"
     exit 0
   fi

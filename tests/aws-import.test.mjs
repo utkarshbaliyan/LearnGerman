@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {mkdtempSync,rmSync} from 'node:fs';
+import {mkdtempSync,rmSync,copyFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {DatabaseSync,backup} from 'node:sqlite';
 import {applyMigrations} from '../deploy/aws/migrate.mjs';
 import {importSnapshot} from '../deploy/aws/import-snapshot.mjs';
+import {execFileSync} from 'node:child_process';
 
 test('AWS snapshot import preserves every column, refuses live overwrites and restores a consistent backup',async t=>{
   const root=mkdtempSync(join(tmpdir(),'leselaut-import-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
@@ -26,4 +27,15 @@ test('AWS snapshot import preserves every column, refuses live overwrites and re
   const bad=structuredClone(snapshot);bad.tables.users[0].unexpected='field';
   const empty=join(root,'bad.sqlite');applyMigrations(empty,'drizzle');assert.throws(()=>importSnapshot(empty,bad),/Unexpected schema/);
   const rolledBack=new DatabaseSync(empty);assert.equal(rolledBack.prepare('SELECT count(*) AS n FROM users').get().n,0);rolledBack.close();
+});
+
+test('a renamed AWS import helper executes its CLI and verifies the persisted learner',t=>{
+  const root=mkdtempSync(join(tmpdir(),'leselaut-import-cli-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
+  const filename=join(root,'learners.sqlite');applyMigrations(filename,'drizzle');
+  const helper=join(root,'renamed-import-helper.mjs');copyFileSync('deploy/aws/import-snapshot.mjs',helper);
+  const snapshot={version:1,tables:{users:[{id:'subject',email:'learner@example.test',display_name:'Grüße',created_at:'2026-10-23',updated_at:'2026-10-23',username:'learner'}],user_progress:[],tutor_sessions:[],tutor_quotas:[]}};
+  const output=execFileSync(process.execPath,[helper],{input:JSON.stringify(snapshot),encoding:'utf8',env:{...process.env,LESELAUT_SQLITE_PATH:filename},stdio:['pipe','pipe','pipe']});
+  assert.equal(JSON.parse(output).counts.users,1);
+  const db=new DatabaseSync(filename,{readOnly:true});
+  assert.equal(db.prepare('SELECT display_name FROM users WHERE id=?').get('subject').display_name,'Grüße');db.close();
 });
