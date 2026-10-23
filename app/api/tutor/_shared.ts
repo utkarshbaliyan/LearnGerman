@@ -1,6 +1,9 @@
 import { developmentSchema } from "@/app/lib/response-development";
 import { TUTOR_PATTERN_IDS } from "@/app/lib/tutor-patterns";
 import type { TutorContext, TutorFeedback, TutorMode } from "@/app/lib/ai-tutor-types";
+import { providerFetch } from './_usage';
+import { ProviderRequestError } from './_errors';
+export { ProviderRequestError } from './_errors';
 
 const FEEDBACK_SCHEMA = {
   type: "object",
@@ -49,12 +52,6 @@ type ProviderConfiguration = {
   transcriptionModel: string;
 };
 
-export class ProviderRequestError extends Error {
-  constructor(public status: number, message: string) {
-    super(message);
-  }
-}
-
 export function providerConfiguration(): ProviderConfiguration {
   if (process.env.GROQ_API_KEY) {
     return {
@@ -91,7 +88,7 @@ export function rateLimited(request: Request) {
 }
 
 export function tutorError(error: unknown) {
-  console.error("Feedback request failed", error instanceof Error ? error.message : "Unknown error");
+  console.error('{"event":"tutor_provider_failed"}');
   if (error instanceof ProviderRequestError && error.status === 429) {
     return Response.json({ error: "Feedback has reached its current usage limit. Please wait and try again later." }, { status: 429 });
   }
@@ -202,7 +199,7 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
   ].join(" ");
 
   const response = provider.name === "Groq"
-    ? await fetch(`${provider.baseUrl}/chat/completions`, {
+    ? await providerFetch(`${provider.baseUrl}/chat/completions`, {
       method: "POST",
       signal: AbortSignal.timeout(30_000),
       headers: { authorization: `Bearer ${provider.apiKey}`, "content-type": "application/json" },
@@ -214,7 +211,7 @@ export async function createTutorFeedback(mode: TutorMode, context: TutorContext
         response_format: { type: "json_object" },
       }),
     })
-    : await fetch(`${provider.baseUrl}/responses`, {
+    : await providerFetch(`${provider.baseUrl}/responses`, {
       method: "POST",
       signal: AbortSignal.timeout(30_000),
       headers: { authorization: `Bearer ${provider.apiKey}`, "content-type": "application/json" },
@@ -254,7 +251,7 @@ export async function transcribeGerman(audio: File) {
   data.set("model", provider.transcriptionModel);
   data.set("language", "de");
   data.set("response_format", "json");
-  const response = await fetch(`${provider.baseUrl}/audio/transcriptions`, {
+  const response = await providerFetch(`${provider.baseUrl}/audio/transcriptions`, {
     method: "POST",
     signal: AbortSignal.timeout(30_000),
     headers: { authorization: `Bearer ${provider.apiKey}` },

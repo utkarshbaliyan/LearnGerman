@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createServer } from 'vite';
@@ -10,7 +11,7 @@ test('Retired Active Learning tasks retain saved attempts and account-owned prog
   async first() { return sqlite.prepare(sql).get(...params) ?? null; }, async all() { return {results:sqlite.prepare(sql).all(...params)}; },
   async run() { return {meta:{changes:Number(sqlite.prepare(sql).run(...params).changes)}}; }
  }; }}; }};
- const vite = await createServer({configFile:false,resolve:{alias:{'@':process.cwd()}},server:{middlewareMode:true,ws:false},plugins:[{name:'active-fixtures',enforce:'pre',transform(code,id) {
+ const vite = await createServer({configFile:false,resolve:{alias:{'@':process.cwd()}},server:{middlewareMode:true,ws:false},plugins:[providerTransport,{name:'active-fixtures',enforce:'pre',transform(code,id) {
   if (/\/app\/api\/(tutor\/writing|tutor\/speaking\/drill|active-learning\/progress)\/route.ts$/.test(id)) return code.replace(/import \{ getD1 \} from ['"]@\/db['"];?/, 'const getD1 = async () => globalThis.__activeDb;').replace(/import \{ getAuthenticatedUser \} from ['"]@\/app\/lib\/supabase-auth['"];?/, "const getAuthenticatedUser = async r => r.headers.get('x-test-user') ? {id:r.headers.get('x-test-user')} : null;");
  }}]});
  const oldFetch=globalThis.fetch, oldKey=process.env.GROQ_API_KEY; process.env.GROQ_API_KEY='test-key'; let calls=0;

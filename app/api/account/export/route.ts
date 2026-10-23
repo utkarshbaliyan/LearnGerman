@@ -17,7 +17,7 @@ export async function GET(request: Request) {
       db.prepare("SELECT id, email, username, display_name, created_at, updated_at FROM users WHERE id = ?").bind(user.id),
       db.prepare("SELECT scope, data, updated_at FROM user_progress WHERE user_id = ? ORDER BY scope").bind(user.id),
       db.prepare("SELECT task_id, data, version, updated_at FROM tutor_sessions WHERE user_id = ? ORDER BY task_id").bind(user.id),
-      db.prepare("SELECT day, used FROM tutor_quotas WHERE user_id = ? ORDER BY day").bind(user.id),
+      db.prepare("SELECT day, used, generated, checked FROM tutor_quotas WHERE user_id = ? ORDER BY day").bind(user.id),
     ]);
     if (results.some((result) => !result.success)) throw new Error("Export query failed");
     return Response.json({

@@ -40,7 +40,30 @@ cat >/etc/logrotate.d/leselaut <<'ROTATE'
   copytruncate
 }
 ROTATE
+cat >/etc/systemd/system/leselaut-deletions.service <<'UNIT'
+[Unit]
+Description=Retry pending LeseLaut authentication deletions
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/leselaut/runtime.env
+WorkingDirectory=/opt/leselaut/current
+ExecCondition=/usr/local/bin/node /opt/leselaut/current/operations/retry-deletions.mjs --configured
+ExecStart=/usr/local/bin/node /opt/leselaut/current/operations/retry-deletions.mjs
+StandardOutput=append:/var/log/leselaut/application.log
+StandardError=append:/var/log/leselaut/application.log
+UNIT
+cat >/etc/systemd/system/leselaut-deletions.timer <<'UNIT'
+[Unit]
+Description=Retry pending LeseLaut deletions every five minutes
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+[Install]
+WantedBy=timers.target
+UNIT
 systemctl daemon-reload
+systemctl enable --now leselaut-deletions.timer
 systemctl enable --now leselaut-backup.timer
 if ! test -x /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl; then
   curl -fsS https://amazoncloudwatch-agent.s3.amazonaws.com/amazon_linux/arm64/latest/amazon-cloudwatch-agent.rpm -o /tmp/leselaut-cloudwatch-agent.rpm

@@ -19,6 +19,7 @@ import { BOOK_BOOKMARK_STORAGE_KEY } from './book-bookmark';
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { mergeProgress } from "./progress-merge";
 import { LEARNING_STORAGE_KEY } from './learning-state';
+import { accountWasDeleted } from './account-storage';
 
 export { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 
@@ -49,6 +50,10 @@ async function performCloudSynchronization() {
     const payload = await response.json() as { progress?: Record<string, unknown>; userId?: string };
     const remote = payload.progress ?? {};
     if (!payload.userId) throw new Error("Authenticated progress response did not include an account ID.");
+    if (accountWasDeleted(localStorage, payload.userId)) {
+      clearPendingProgress(); resumeCloudProgressSaves(false);
+      return { authenticated: false, synced: false };
+    }
     const localOwner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
     const canMergeLocal = !localOwner || localOwner === payload.userId;
     if (!canMergeLocal) {
@@ -64,7 +69,7 @@ async function performCloudSynchronization() {
       const merged = mergeProgress(scope, local, remote[scope]);
       const saved = JSON.stringify(merged) === JSON.stringify(remote[scope]) ? { data: merged }
         : await putCloudProgress(scope, merged, payload.userId);
-      if (localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY) !== payload.userId) {
+      if (accountWasDeleted(localStorage, payload.userId) || localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY) !== payload.userId) {
         resumeCloudProgressSaves(false);
         return { authenticated: false, synced: false };
       }

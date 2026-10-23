@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createServer } from 'vite';
@@ -7,7 +8,7 @@ import { readFileSync } from 'node:fs';
 test('fresh mistake reviews enforce account ownership, source validity, spacing, help history and existing quotas', async () => {
   const db = new DatabaseSync(':memory:'); db.exec(readFileSync('drizzle/0002_legal_nehzno.sql', 'utf8')); db.exec(readFileSync('drizzle/0004_sentence_allowances.sql', 'utf8'));
   globalThis.__learningTestDb = { prepare(sql) { return { bind(...args) { return { async first() { return db.prepare(sql).get(...args) ?? null; }, async all() { return { results: db.prepare(sql).all(...args) }; }, async run() { return { meta: { changes: Number(db.prepare(sql).run(...args).changes) } }; } }; } }; } };
-  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false }, plugins: [{ name: 'learning-test-auth', enforce: 'pre', transform(code, id) {
+  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false }, plugins: [providerTransport, { name: 'learning-test-auth', enforce: 'pre', transform(code, id) {
     if (id.endsWith('/app/api/active-learning/translation/route.ts') || id.endsWith('/app/api/learning/memory/route.ts')) return code.replace("import { getD1 } from '@/db';", 'const getD1 = async () => globalThis.__learningTestDb;').replace("import { getAuthenticatedUser } from '@/app/lib/supabase-auth';", "const getAuthenticatedUser = async r => r.headers.get('x-test-user') ? { id: r.headers.get('x-test-user') } : null;");
   } }] });
   const oldFetch = globalThis.fetch, oldKey = process.env.GROQ_API_KEY; process.env.GROQ_API_KEY = 'test-key';

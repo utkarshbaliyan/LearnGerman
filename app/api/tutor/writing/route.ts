@@ -1,3 +1,4 @@
+import { ProviderRequestError } from '@/app/api/tutor/_errors';
 import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
 import { readTutorSession as read, saveTutorSession as save, reserveTutorQuota as reserveQuota } from "@/app/api/tutor/_sessions";
@@ -114,7 +115,7 @@ export async function POST(request: Request) {
         if (!result) { status = 422; failure = "The German answer could not be read. Use a clearer, closer photo of one page, or type your answer."; }
         else { Object.assign(reading, result); reading.status = "complete"; }
       }
-    } catch { failure = "Photo reading is temporarily unavailable. Retry the photo or type your assignment. Your existing draft is unchanged."; }
+    } catch (cause) { if (cause instanceof ProviderRequestError && cause.status === 429) status = 429; failure = status === 429 ? "AI practice has reached its current allowance. Try again later." : "Photo reading is temporarily unavailable. Retry the photo or type your assignment. Your existing draft is unchanged."; }
     if (failure) reading.status = "failed";
     if (!await save(db, user.id, taskId, record)) return error("Your work changed. Reload saved work.", 409);
     return failure ? Response.json({ error: failure, ...publicWritingRecord(record) }, { status }) : response(record);

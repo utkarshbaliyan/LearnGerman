@@ -1,0 +1,14 @@
+import Link from 'next/link';
+import { SiteHeader } from '@/app/components/site-header';
+
+export default function PrivacyPage() {
+  return <main className="site-shell"><SiteHeader active="account" /><article className="information-page">
+    <h1>Your data at LeseLaut</h1><p>Updated 23 October 2026. LeseLaut is a German-learning beta. Contact <a href="mailto:leselaut.team@gmail.com">leselaut.team@gmail.com</a> about privacy or your account.</p>
+    <h2>What is saved</h2><p>Your account email, username and display name connect your learning history across devices. Saved data includes progress, tutor drafts, attempts, feedback, transcripts you submit and usage allowances. Supabase handles passwords and Google sign-in. LeseLaut does not store your password in its learner database.</p>
+    <h2>AI practice</h2><p>AI features send the text, photo or recording needed for your requested task to Groq, or to OpenAI when configured. A recording is transcribed; its text can then be assessed. Original uploads are processed for the request rather than stored in LeseLaut’s learner database. Transcripts, extracted text and feedback can be saved in practice history. Provider processing and retention depend on their policies and account settings. Avoid submitting sensitive information or other people’s private data.</p>
+    <h2>Browser storage</h2><p>This browser stores sign-in sessions, your theme, learning progress and recovery drafts. Clearing site data removes browser copies but does not delete your account. Other browsers and the original LeseLaut address have separate browser storage.</p>
+    <h2>How long data stays</h2><p>Saved account and practice data stays until you delete the relevant practice or your account; there is no automatic inactivity purge. AWS application logs have a seven-day retention setting. Database backups use a 30-day expiry policy, with a further seven days for older object versions. Deletion does not immediately remove those backups. A minimal record of the deleted account ID is retained to block old sessions and prevent delayed requests from recreating your data.</p>
+    <h2>Your choices</h2><p>Use <Link href="/account">Account</Link> to download your saved data or delete your account. If automatic deletion is unavailable, contact support. If deletion is queued, your learner data is removed and access is blocked while authentication deletion is retried. Clear site data on your other devices to remove local copies. Providers may retain records independently under their own policies.</p>
+    <h2>Hosting and access</h2><p>AWS hosts the application and learner database; Supabase provides authentication. Authorized operators can access account information when needed to maintain the service or resolve a support request. Do not email passwords, API keys or recordings to support.</p>
+  </article></main>;
+}

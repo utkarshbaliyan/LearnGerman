@@ -4,8 +4,9 @@ import { LoaderCircle } from "lucide-react";
 import type { EmailOtpType } from "@supabase/supabase-js";
 
 import { synchronizeCloudProgress } from "@/app/lib/cloud-progress";
-import { supabase } from "@/app/lib/supabase-client";
+import { supabase, RECOVERY_CALLBACK } from "@/app/lib/supabase-client";
 import { confirmAuthSession } from '@/app/lib/auth-confirm';
+import { recoveryCallback } from '@/app/lib/password-recovery';
 
 function callbackParameters() {
   const search = new URLSearchParams(window.location.search);
@@ -24,9 +25,13 @@ export default function AuthConfirmPage() {
     started.current = true;
     void (async () => {
       try {
+        const recovery = RECOVERY_CALLBACK || recoveryCallback(window.location.search, window.location.hash);
         await confirmAuthSession(supabase.auth, callbackParameters());
-        await synchronizeCloudProgress();
-        window.location.replace("/account?auth=confirmed");
+        if (recovery) window.location.replace('/auth/reset-password');
+        else {
+          await synchronizeCloudProgress();
+          window.location.replace("/account?auth=confirmed");
+        }
       } catch (error) {
         const message = error instanceof Error ? error.message : "Email verification failed. Please request a new link.";
         window.location.replace(`/account?auth_error=${encodeURIComponent(message)}`);

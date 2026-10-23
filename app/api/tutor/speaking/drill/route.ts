@@ -1,3 +1,4 @@
+import { ProviderRequestError } from '@/app/api/tutor/_errors';
 import { assessDevelopment, developmentRubric } from "@/app/lib/response-development";
 import { getD1 } from "@/db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
@@ -86,7 +87,7 @@ export async function POST(request: Request) {
         if (!attempt.feedback.development.sufficient) { attempt.feedback.taskSuccess = false; attempt.feedback.evidence = []; }
       }
     }
-  } catch { error = "We could not check that recording. Please try again."; }
+  } catch (cause) { if (cause instanceof ProviderRequestError && cause.status === 429) status = 429; error = status === 429 ? "AI practice has reached its current allowance. Try again later." : "We could not check that recording. Please try again."; }
   attempt.status = error ? "failed" : "complete";
   if (!await save()) return fail("Saved work changed. Reload.", 409);
   return result(error, error ? status : 200);

@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DatabaseSync } from "node:sqlite";
@@ -14,7 +15,7 @@ test("writing repair protects accounts, reserves quotas, persists revisions and 
     async run() { const result = sqlite.prepare(sql).run(...params); return { meta: { changes: Number(result.changes) } }; },
   }; } }; } };
   const vite = await createServer({ root, configFile: false, appType: "custom", resolve: { alias: { "@": root } }, server: { middlewareMode: true, ws: false },
-    plugins: [{ name: "writing-fixtures", enforce: "pre", resolveId(id) { if (id.startsWith("writing-test:")) return `\0${id}`; },
+    plugins: [providerTransport, { name: "writing-fixtures", enforce: "pre", resolveId(id) { if (id.startsWith("writing-test:")) return `\0${id}`; },
       load(id) {
         if (id === "\0writing-test:db") return "export const getD1 = async () => globalThis.__writingDb;";
         if (id === "\0writing-test:auth") return "export const getAuthenticatedUser = async r => r.headers.get('x-test-user') ? { id: r.headers.get('x-test-user') } : null;";

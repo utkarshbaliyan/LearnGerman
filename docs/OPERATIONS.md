@@ -1,5 +1,11 @@
 # Data operations
 
+Historical Sites/D1 notes. AWS is now authoritative; see
+[AWS hosting](AWS_HOSTING.md) and the current
+[launch-readiness checklist](LAUNCH_READINESS.md) for the new deletion workflow
+and outstanding production setup. The secret-rotation warning below remains
+unresolved.
+
 ## Current implementation
 
 Supabase owns authentication. Sites D1 binding `DB` owns application data in

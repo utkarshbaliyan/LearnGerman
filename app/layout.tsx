@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
+import { SiteFooter } from '@/app/components/site-footer';
 import "./globals.css";
 import "./illustrated-ui.css";
 import './learning.css';
@@ -8,6 +9,7 @@ import './recall-decks.css';
 import './home-sections.css';
 import './grammar-learning.css';
 import './grammar-guide.css';
+import './launch-readiness.css';
 
 export const metadata: Metadata = {
   title: "LeseLaut — Learn German through stories",
@@ -43,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body><CloudProgressSync />{children}</body>
+      <body><CloudProgressSync />{children}<SiteFooter /></body>
     </html>
   );
 }

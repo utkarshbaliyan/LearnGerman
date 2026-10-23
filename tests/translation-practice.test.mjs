@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createServer } from 'vite';
@@ -5,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 
 const root = process.cwd();
-function server(plugins=[]) { return createServer({configFile:false,resolve:{alias:{'@':root}},server:{middlewareMode:true,ws:false},plugins}); }
+function server(plugins=[]) { return createServer({configFile:false,resolve:{alias:{'@':root}},server:{middlewareMode:true,ws:false},plugins:[providerTransport,...plugins]}); }
 
 test('translation validation accepts alternatives, rejects invented errors and maps numbered handwriting', async()=>{
  const vite=await server();try{

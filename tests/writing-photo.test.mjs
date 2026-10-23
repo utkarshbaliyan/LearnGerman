@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DatabaseSync } from "node:sqlite";
@@ -16,7 +17,7 @@ test("photo assignments require consent, preserve handwriting errors, confirm te
     async run() { return { meta: { changes: Number(sqlite.prepare(sql).run(...params).changes) } }; },
   }; } }; } };
   const vite = await createServer({ root, configFile: false, appType: "custom", resolve: { alias: { "@": root } }, server: { middlewareMode: true, ws: false },
-    plugins: [{ name: "photo-fixtures", enforce: "pre", resolveId(id) { if (id.startsWith("photo-test:")) return `\0${id}`; },
+    plugins: [providerTransport, { name: "photo-fixtures", enforce: "pre", resolveId(id) { if (id.startsWith("photo-test:")) return `\0${id}`; },
       load(id) {
         if (id === "\0photo-test:db") return "export const getD1 = async () => globalThis.__photoDb;";
         if (id === "\0photo-test:auth") return "export const getAuthenticatedUser = async r => r.headers.get('x-test-user') ? { id: r.headers.get('x-test-user') } : null;";
