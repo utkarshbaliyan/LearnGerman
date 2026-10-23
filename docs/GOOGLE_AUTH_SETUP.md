@@ -14,6 +14,7 @@ Never put the Google client secret in this repository, browser code or chat.
    authorized JavaScript origin to:
 
    ```text
+   https://d19k6l47v6hw3.cloudfront.net
    https://leselaut-german.professor-ut7.chatgpt.site
    ```
 
@@ -28,9 +29,10 @@ Never put the Google client secret in this repository, browser code or chat.
    enable Google and save. The Google client secret belongs in Supabase, not in
    Sites runtime variables. Do not disable nonce or other security checks.
 5. In Supabase **Authentication → URL Configuration**, retain the production Site
-   URL and add this exact application callback to the redirect allowlist:
+   URL and both exact application callbacks in the redirect allowlist:
 
    ```text
+   https://d19k6l47v6hw3.cloudfront.net/auth/confirm
    https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm
    ```
 
@@ -47,10 +49,15 @@ Never put the Google client secret in this repository, browser code or chat.
    Google Testing-mode restriction. Follow the console's current requirements
    for your app's homepage, privacy information and any required verification.
 
-The application keys D1 data by the verified Supabase subject, never by a Google
+The application keys AWS SQLite data by the verified Supabase subject, never by a Google
 email or a browser-supplied ID. Supabase controls identity linking; do not manually
-merge D1 records by matching email addresses. Existing email/password sign-in stays
+merge learner records by matching email addresses. Existing email/password sign-in stays
 available. If Google is disabled or its settings cannot be loaded, no broken
 Google button is shown.
+
+After choosing the custom domain, add its HTTPS origin and `/auth/confirm`
+callback to the same settings before switching the public URL. Keep the existing
+callbacks while users migrate. A custom application domain does not require
+Supabase's optional paid custom Auth domain.
 
 Reference: [Supabase's official Google setup guide](https://supabase.com/docs/guides/auth/social-login/auth-google).

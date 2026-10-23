@@ -8,6 +8,11 @@ an isolated restore from the S3 backup matched the same digest. The original
 signed-in browser also reported that progress was synced. Temporary export
 credentials have been removed. The original D1 data remains frozen and retained.
 
+See the [live cost audit](AWS_COST_AUDIT.md) for measured storage, the $6 AWS
+billing alert and the evaluated cost reductions. All three S3 buckets abort
+incomplete multipart uploads after seven days; completed media and database
+backup retention are preserved.
+
 The app runs on one Amazon Linux t4g.small instance in Mumbai, behind CloudFront
 HTTPS. It retains Vinext and the existing SQLite schema and SQL. The encrypted
 10 GB data volume is separate from code releases and retained if the stack is

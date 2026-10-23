@@ -1,9 +1,8 @@
 # LeseLaut system and deployment design
 
-Architecture recorded on 23 October 2026 from the checked-in configuration and
-the previously verified AWS cutover. A fresh AWS inventory request during this
-documentation task was not executed because automatic approval review reached
-its usage limit; this document is not a new live infrastructure audit.
+Architecture recorded on 23 October 2026 from the checked-in configuration,
+verified AWS cutover and subsequent live inventory. The [cost audit](AWS_COST_AUDIT.md)
+records the measured resources, billing alert and tested cost controls.
 
 - AWS account: `941377117901`
 - Regional resources: Mumbai, `ap-south-1`; CloudFront is global.

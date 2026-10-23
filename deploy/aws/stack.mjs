@@ -7,7 +7,9 @@ const get = (name,attr) => ({'Fn::GetAtt':[name,attr]});
 const bucket = (extra = {}) => ({Type:'AWS::S3::Bucket',DeletionPolicy:'Retain',UpdateReplacePolicy:'Retain',Properties:{
   PublicAccessBlockConfiguration:{BlockPublicAcls:true,BlockPublicPolicy:true,IgnorePublicAcls:true,RestrictPublicBuckets:true},
   BucketEncryption:{ServerSideEncryptionConfiguration:[{ServerSideEncryptionByDefault:{SSEAlgorithm:'AES256'}}]},
-  VersioningConfiguration:{Status:'Enabled'},...extra}});
+  VersioningConfiguration:{Status:'Enabled'},...extra,
+  LifecycleConfiguration:{Rules:[...(extra.LifecycleConfiguration?.Rules??[]),
+    {Id:'AbortIncompleteUploads',Status:'Enabled',AbortIncompleteMultipartUpload:{DaysAfterInitiation:7}}]}}});
 
 export const template = {
   AWSTemplateFormatVersion:'2010-09-09',
