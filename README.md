@@ -1,8 +1,14 @@
 # LeseLaut
 
 German learning platform with Stories, Books, Active Learning, Vocabulary, Grammar
-and Account. Built with React and vinext, hosted by Sites on Cloudflare Workers.
-Supabase provides authentication; Cloudflare D1 stores learner data.
+and Account. Built with React and vinext, hosted on AWS behind CloudFront.
+Supabase provides authentication; an encrypted SQLite volume stores learner data,
+and private S3 buckets hold media and backups. The original Sites address proxies
+to AWS; its former D1 database is frozen and retained.
+
+Live: [LeseLaut on AWS](https://d19k6l47v6hw3.cloudfront.net).
+See [AWS hosting and automatic deployment](docs/AWS_HOSTING.md) for the current
+architecture, GitHub pipeline, monitoring, costs and recovery procedure.
 
 See [Project structure and performance audit](docs/PROJECT-STRUCTURE-AND-PERFORMANCE.md)
 for the current folder map, storage boundaries, measurements and optimization priorities.
@@ -16,7 +22,7 @@ Active Learning now offers [A1–C1 translation practice](docs/active-learning/T
 - macOS or Linux for development, builds and tests
 - Linux with `flock`, `curl`, and GNU `timeout` for the optional `install:ci` helper
 
-## Sites Lifecycle
+## Historical Sites Lifecycle
 
 The Sites lifecycle CLI runs the locked dependency install before returning this checkout. Edit the source under `app/`, then checkpoint when a coherent milestone is ready to inspect or share. The remote Sites builder runs `npm run build` against the pushed commit. Do not repeat install or build as a normal pre-checkpoint step.
 
@@ -32,7 +38,7 @@ Scripts that need writable project-scoped home, npm, XDG, and temporary paths us
 - `app/lib/supabase-auth.ts` verifies Supabase user sessions for protected APIs
 - `.openai/hosting.json` declares optional Sites D1 and R2 bindings
 - `vite.config.ts` simulates declared bindings for local development
-- `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
+- `db/index.ts` uses platform bindings: SQLite on AWS, D1 for the retained Sites target
 - `db/schema.ts` defines users, progress, tutor sessions and quotas
 - `drizzle.config.ts` supports local migration generation when needed
 
@@ -41,19 +47,21 @@ Scripts that need writable project-scoped home, npm, XDG, and temporary paths us
 LeseLaut uses Supabase Auth for username, email, and password accounts. The browser
 keeps the Supabase session and sends its access token to the account and progress
 APIs. Server routes verify every token against the project's JWKS before accessing
-Cloudflare D1. Supabase stores passwords; LeseLaut stores only the user's profile,
+the learner database. Supabase stores passwords; LeseLaut stores only the user's profile,
 unique username, and learning progress.
 
 Email confirmation returns through `/auth/confirm`. Both local and deployed URLs
-must be present in Supabase's redirect allow list. Production uses
-`https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm`, with the same
-origin configured as Supabase's Site URL.
+must be present in Supabase's redirect allow list. Both production origins are
+allowed: `https://d19k6l47v6hw3.cloudfront.net/auth/confirm` and
+`https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm`. Callbacks use the
+current browser origin; the original origin remains Supabase's Site URL.
 
 ## Diagnostic Commands
 
 - `npm run install:ci`: perform the one bounded lockfile install
 - `npm run dev`: start the Vite/Vinext development server
 - `npm run build`: build the deployable Sites artifact
+- `npm run build:aws`: build the standalone AWS server
 - `npm run start`: start the built Vinext application
 - `npm test`: build, then run the full content, rendering, persistence and API test suite
 - `npm run db:generate`: generate Drizzle migrations after schema changes
