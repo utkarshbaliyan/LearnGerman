@@ -1,0 +1,13 @@
+{
+  "region": "ap-south-1",
+  "stack": "leselaut",
+  "ArtifactBucket": "leselaut-artifactbucket-9mafc2ua77jv",
+  "DeployRoleArn": "arn:aws:iam::941377117901:role/leselaut-DeployRole-0HkXUqH1vFr3",
+  "BackupBucket": "leselaut-backupbucket-se0j5w5kybki",
+  "DeployDocument": "leselaut-DeployDocument-wLpktuTiXQyy",
+  "InstanceId": "i-0d750b2b379d363d9",
+  "DistributionId": "E2SHVXUOX353EM",
+  "DataVolumeId": "vol-0b208957e8cd24914",
+  "MediaBucket": "leselaut-mediabucket-e4bh4uhthaeu",
+  "SiteUrl": "https://d19k6l47v6hw3.cloudfront.net"
+}

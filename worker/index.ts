@@ -28,6 +28,11 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    if (process.env.LESELAUT_READ_ONLY === '1' && url.pathname.startsWith('/api/')
+      && !['/api/internal/migration', '/api/health'].includes(url.pathname)) {
+      return Response.json({error: 'Progress sync is briefly paused for a hosting migration.'},
+        {status: 503, headers: {'cache-control': 'no-store', 'retry-after': '60'}});
+    }
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];

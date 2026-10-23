@@ -1,0 +1,61 @@
+name: Check and deploy
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: leselaut-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check-and-deploy:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck
+        run: node node_modules/typescript/bin/tsc --noEmit
+      - name: Build existing target and run all tests
+        run: npm test
+      - name: Build AWS standalone server
+        run: npm run build:aws
+      - name: Test AWS standalone server
+        run: node scripts/smoke-aws.mjs
+      - name: Read deployment configuration
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        id: aws
+        run: |
+          node --input-type=module <<'JS' >> "$GITHUB_OUTPUT"
+          import {readFileSync} from 'node:fs';
+          const config=JSON.parse(readFileSync('deploy/aws/deployment.json','utf8'));
+          console.log(`role=${config.DeployRoleArn}`);
+          console.log(`region=${config.region}`);
+          JS
+      - name: Authenticate to AWS with short-lived GitHub identity
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ steps.aws.outputs.role }}
+          aws-region: ${{ steps.aws.outputs.region }}
+          mask-aws-account-id: true
+      - name: Deploy checked commit and verify public health
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: node scripts/deploy-aws.mjs

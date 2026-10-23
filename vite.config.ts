@@ -2,6 +2,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json" with { type: "json" };
 import { sites } from "./build/sites-vite-plugin.ts";
+import { fileURLToPath } from 'node:url';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -34,6 +35,15 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  if (process.env.LESELAUT_BUILD_TARGET === 'aws') {
+    return {
+      plugins: [{name: 'leselaut-aws-bindings', enforce: 'pre', load(id: string) {
+        if (id === fileURLToPath(new URL('./platform-bindings.ts', import.meta.url)))
+          return `export {getBindings} from './deploy/aws/runtime.mjs';`;
+      }}, vinext()],
+      environments: { rsc: { build: { minify: true } }, ssr: { build: { minify: true } } },
+    };
+  }
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";

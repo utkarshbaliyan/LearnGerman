@@ -1,8 +1,9 @@
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "./schema";
+import { getBindings } from '@/platform-bindings';
 
 export async function getD1() {
-  const { env } = await import("cloudflare:workers");
+  const env = await getBindings();
   const workerEnv = env as unknown as { DB?: D1Database };
   if (!workerEnv.DB) throw new Error("Cloudflare D1 binding `DB` is unavailable.");
   return workerEnv.DB;
