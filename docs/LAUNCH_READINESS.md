@@ -41,6 +41,30 @@ The owner explicitly deferred teacher review and beta invitations. Neither is
 marked complete. No domain was purchased. Full signup/recovery/deletion testing
 and real-phone/two-device checks remain outstanding.
 
+### Prepared owner handoff
+
+The production project's API-key form is prepared with the name
+`leselaut_account_deletion`. The owner must complete credential creation and save
+the result privately as `SUPABASE_SECRET_KEY` in ignored `.env.local`; do not put
+it in a chat, screenshot, PR or source file. Identify the previously exposed key
+and its consumers separately before revocation. Creating a replacement does not
+revoke either an old secret or legacy `service_role` key.
+
+For [Supabase SMTP configuration](https://supabase.com/dashboard/project/npnzojbbwwdtujuurkmx/auth/smtp),
+the prepared public settings are sender `leselaut.team@gmail.com`, name
+`LeseLaut`, host `email-smtp.ap-south-1.amazonaws.com`, and port `587` with STARTTLS.
+The dedicated SMTP username/password are in encrypted SSM `/leselaut/ses-smtp`;
+the operator must transfer them privately into Supabase, preserving email
+confirmation. They are not the AWS account credentials or the Supabase API key.
+The owner must complete credential entry in the dashboard.
+
+After setup, propagate the deletion key with the existing runtime configurator,
+refresh the root-only service environment without printing it, and verify an
+explicitly disposable identity through signup, recovery, independent-session
+progress sync, deletion, stale-token rejection and retry behavior. Keep actual
+test email addresses and tokens out of this public repository. No existing
+learner account is authorized for deletion testing.
+
 ## Implemented and deployed
 
 - Password-recovery request, PKCE callback routing, password confirmation and
