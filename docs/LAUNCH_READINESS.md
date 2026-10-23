@@ -4,7 +4,44 @@ Updated 23 October 2026. The existing CloudFront URL is sufficient for a small
 invited beta. A purchased domain is optional until branding and email setup need
 it. This checklist separates implemented code from production verification.
 
-## Implemented in this branch
+## Production activation, 23 October 2026
+
+- [PR #1](https://github.com/utkarshbaliyan/LearnGerman/pull/1) merged as
+  `ccad67649dfa8798606091dab158f79af7734156`.
+  [The main deployment](https://github.com/utkarshbaliyan/LearnGerman/actions/runs/39992298238)
+  completed successfully, including the full test suite and AWS smoke checks.
+- All nine read-only launch checks passed on both the CloudFront URL and the
+  original Sites compatibility address. These checks do not establish that
+  authenticated recovery or deletion works end to end.
+- The encrypted production runtime was updated with the newly created OpenAI
+  key, `LESELAUT_AI_DAILY_CALL_LIMIT=200`, and `LESELAUT_AI_ENABLED=1`. Existing
+  provider selection and enabled learner writes were preserved.
+- Maintenance units are installed. The application, daily backup timer and
+  five-minute deletion retry timer are active. A new consistent backup reached
+  private S3 at 17:10 UTC and emitted `BackupSucceeded=1`.
+- The reviewed CloudFormation change set added SNS and the missing-backup alarm,
+  wired CPU/instance alarms to SNS, and granted namespace-limited backup metric
+  publishing. The deployed EC2 definition was preserved exactly: no server
+  replacement or UserData update. All three alarms subsequently reported OK.
+- The operator confirmed the SNS subscription for `leselaut.team@gmail.com`.
+  A clearly labelled simulated alarm and its recovery successfully executed SNS
+  actions. Actual inbox receipt still needs owner confirmation; no service
+  failure was induced.
+- The owner selected AWS SES. Its support sender is verified, Mumbai production
+  access was granted, feedback forwarding remains enabled, and account-level
+  suppression covers bounces and complaints. A dedicated SMTP identity can send
+  only from the selected sender; policy simulation denied another sender and
+  unrelated AWS administration. SMTP credentials are stored only in encrypted
+  SSM `/leselaut/ses-smtp`, outside application runtime and Git.
+- SES SMTP accepted one setup message for an owner-selected disposable test
+  inbox. This was a transport check, not account signup or proof of inbox delivery.
+  Supabase SMTP configuration remains outstanding.
+
+The owner explicitly deferred teacher review and beta invitations. Neither is
+marked complete. No domain was purchased. Full signup/recovery/deletion testing
+and real-phone/two-device checks remain outstanding.
+
+## Implemented and deployed
 
 - Password-recovery request, PKCE callback routing, password confirmation and
   global session sign-out after a successful password change.
@@ -25,9 +62,9 @@ it. This checklist separates implemented code from production verification.
   broken quota database fail closed. This is a call limit, not a monetary cap.
 - Privacy, retention and beta limitations are explained in `/privacy` and
   `/support`, with `leselaut.team@gmail.com` as the contact.
-- Infrastructure source adds an optional SNS operator subscription, alarm actions
-  and a missing-backup alarm. These require a manual infrastructure update;
-  application deployment alone does not install them.
+- Infrastructure includes an optional SNS operator subscription, alarm actions
+  and a missing-backup alarm. They were activated separately from the application
+  deployment as recorded above.
 - Read-only launch smoke script: `node scripts/check-launch.mjs https://ORIGIN`.
 
 ## Production work still required
@@ -41,14 +78,17 @@ it. This checklist separates implemented code from production verification.
    enable deletion using an old exposed secret. The route returns 503 and offers
    support when the secret is absent; no data is partially removed in that case.
 3. **Email delivery:** custom SMTP was directly observed **off** in the Supabase
-   production dashboard during this task. Choose a transactional email service,
-   verify its sender, configure SMTP privately, then test signup, confirmation and
-   recovery with an unrelated address. Supabase’s built-in mailer is unsuitable
-   for public registrations. Preserve email-confirmation protections.
-4. **Runtime and operations:** after application deployment, install the updated
-   maintenance units, upload the backup helper, apply the reviewed CloudFormation
-   update with the chosen operator inbox, and have its owner confirm SNS email.
-   Verify backup success, a failure notification and pending-deletion retry.
+   production dashboard. AWS SES is now prepared as recorded above. Configure
+   Supabase privately with the stored SMTP credentials, then test signup,
+   confirmation and recovery with the owner-controlled unrelated test inbox.
+   Supabase’s built-in mailer is unsuitable for public registrations. Preserve
+   email-confirmation protections. A Gmail sender is an interim setup; a domain
+   controlled by the operator is needed for sender-domain authentication under
+   that domain and should be evaluated before public release.
+4. **Operations verification:** backup and alarm infrastructure is active, but
+   inbox receipt and a real pending-deletion retry still need verification.
+   The deletion timer cannot contact Supabase until its server credential is
+   installed; an active timer alone is not a successful deletion test.
 5. **Fresh accounts and devices:** test a fresh Google account, email account,
    recovery, sync between two devices, microphone/photo consent and failures on
    common phones. Test deletion only with an explicitly disposable test identity.
@@ -63,8 +103,8 @@ it. This checklist separates implemented code from production verification.
    `TUTOR-PILOT.md`. Keep validation/fluency claims out until supported.
 
 The new OpenAI key was created with the owner-selected **30-day** expiration and
-saved only in ignored `.env.local`. AWS runtime propagation and expiry monitoring
-remain separate operator work. Never commit the key.
+saved in ignored `.env.local`, then propagated privately to encrypted AWS runtime.
+Expiry monitoring remains operator work. Never commit the key.
 
 ## Deployment and recovery order
 
