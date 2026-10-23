@@ -4,6 +4,7 @@ umask 077
 dnf install -y nginx sqlite tar xz
 id leselaut >/dev/null 2>&1 || useradd --system --home-dir /var/lib/leselaut --shell /sbin/nologin leselaut
 mkdir -p /opt/leselaut/releases /var/lib/leselaut /var/log/leselaut /etc/leselaut
+chmod 755 /opt/leselaut /opt/leselaut/releases
 
 # The stack attaches one dedicated, encrypted EBS volume. Resolve that exact
 # device, never the root disk or an arbitrary unmounted volume.

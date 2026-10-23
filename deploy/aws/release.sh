@@ -12,6 +12,7 @@ mkdir -p "$release_dir"
 aws s3 cp "s3://$ARTIFACT_BUCKET/releases/$release_id.tgz" /tmp/leselaut-release.tgz --region "$AWS_REGION" --only-show-errors
 if tar -tzf /tmp/leselaut-release.tgz | grep -Eq '(^/|(^|/)\.\.(/|$))'; then exit 65; fi
 tar -xzf /tmp/leselaut-release.tgz --no-same-owner -C "$release_dir"
+chmod 755 /opt/leselaut /opt/leselaut/releases "$release_dir"
 rm /tmp/leselaut-release.tgz
 test -f "$release_dir/server.js"
 
@@ -19,7 +20,10 @@ test -f "$release_dir/server.js"
 # They are never build inputs, tarball contents or GitHub secrets.
 aws ssm get-parameter --name /leselaut/runtime --with-decryption --region "$AWS_REGION" --query Parameter.Value --output text > /etc/leselaut/runtime.env
 chmod 600 /etc/leselaut/runtime.env
-old_release=$(readlink -f /opt/leselaut/current || true)
+old_release=''
+if test -L /opt/leselaut/current && test -d /opt/leselaut/current; then
+  old_release=$(readlink -f /opt/leselaut/current)
+fi
 systemctl stop leselaut || true
 if test -f /var/lib/leselaut/leselaut.sqlite; then /usr/local/bin/leselaut-backup; fi
 LESELAUT_SQLITE_PATH=/var/lib/leselaut/leselaut.sqlite /usr/local/bin/node "$release_dir/migrate.mjs"
