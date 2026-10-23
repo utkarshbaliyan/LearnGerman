@@ -28,8 +28,8 @@ change. This is a single-server deployment, not a high-availability cluster.
 
 GitHub holds no permanent AWS access keys or AI credentials. Failed checks do not
 deploy. Deployments serialize, take a consistent database backup, apply only new
-unchanged migrations and restart the service. A readiness failure restores the
-previous code, never an older learner database. A restart causes a brief service
+unchanged migrations and restart the service. A failed backup, migration or
+readiness check restarts the previous code, never an older learner database. A restart causes a brief service
 interruption. Old generated releases are pruned after a healthy rollout, while
 current and previous code are protected. Infrastructure and bootstrap changes require a reviewed manual
 update; the workflow deploys application releases.

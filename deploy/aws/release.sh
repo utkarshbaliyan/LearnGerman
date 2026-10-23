@@ -24,6 +24,25 @@ old_release=''
 if test -L /opt/leselaut/current && test -d /opt/leselaut/current; then
   old_release=$(readlink -f /opt/leselaut/current)
 fi
+# A failed backup or migration must also restore service, not only a failed
+# readiness check. Keep the learner database at its latest state in all cases.
+restore_service() {
+  result=$?
+  trap - EXIT
+  if (( result != 0 )); then
+    set +e
+    systemctl stop leselaut
+    if test -n "$old_release" && test -d "$old_release"; then
+      ln -sfn "$old_release" /opt/leselaut/current
+      systemctl start leselaut
+    fi
+    echo 'Deployment failed; previous code restarted where available.' >&2
+  fi
+  exit "$result"
+}
+trap restore_service EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 systemctl stop leselaut || true
 if test -f /var/lib/leselaut/leselaut.sqlite; then /usr/local/bin/leselaut-backup; fi
 LESELAUT_SQLITE_PATH=/var/lib/leselaut/leselaut.sqlite /usr/local/bin/node "$release_dir/migrate.mjs"
@@ -49,12 +68,5 @@ for attempt in $(seq 1 45); do
   fi
   sleep 2
 done
-# Roll back application code, never restore an older learner database over new
-# writes. Migrations must remain additive and backward compatible.
-systemctl stop leselaut
-if test -n "$old_release" && test -d "$old_release"; then
-  ln -sfn "$old_release" /opt/leselaut/current
-  systemctl start leselaut
-fi
-echo 'New release failed readiness; previous code restored where available.' >&2
+echo 'New release failed readiness.' >&2
 exit 1
