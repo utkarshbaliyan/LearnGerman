@@ -1,5 +1,10 @@
 # Backend audit — 23 October 2026
 
+Historical D1 audit. AWS is now authoritative; see [AWS hosting](AWS_HOSTING.md)
+and the current [launch checklist](LAUNCH_READINESS.md). Google sign-in and an
+isolated AWS restore have since been verified. Do not use the older remaining-work
+paragraphs below as the current operational status.
+
 The core backend supports multiple authenticated accounts. This audit verifies
 correctness under concurrent local D1 operations; it does not establish a
 production user-count or throughput guarantee.

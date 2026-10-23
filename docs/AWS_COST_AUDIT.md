@@ -66,8 +66,8 @@ premature while compute is covered by the trial and demand is unvalidated.
 
 ## Before the public launch
 
-Email/password authentication already exists. Google OAuth still needs its
-owner-created client configured in Supabase; follow [the Google setup guide](GOOGLE_AUTH_SETUP.md).
+Email/password authentication already exists. Google OAuth was subsequently
+configured and an existing-account login verified; see [the Google setup guide](GOOGLE_AUTH_SETUP.md).
 Then choose the domain, configure its HTTPS/DNS and callback allowlists, and
 verify sign-in, progress synchronization and password-reset/email delivery on
 the final origin. The existing users and Supabase subject IDs must be preserved.
@@ -78,6 +78,10 @@ A separate aggregate AI allowance and paid-tier policy need agreement before a
 large unrestricted launch. Review learner privacy, retention and account deletion
 before accepting public registrations; the hosting migration did not complete
 those product requirements.
+
+The owner has since selected a 200-provider-call daily beta allowance. Its code,
+deployment requirements and remaining blockers are tracked in
+[LAUNCH_READINESS.md](LAUNCH_READINESS.md). A call allowance is not a money limit.
 
 ## References and operations
 

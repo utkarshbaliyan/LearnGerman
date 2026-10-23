@@ -7,6 +7,8 @@ and private S3 buckets hold media and backups. The original Sites address proxie
 to AWS; its former D1 database is frozen and retained.
 
 Live: [LeseLaut on AWS](https://d19k6l47v6hw3.cloudfront.net).
+
+Public launch is on hold: [launch-readiness status and remaining checks](docs/LAUNCH_READINESS.md).
 See [AWS hosting and automatic deployment](docs/AWS_HOSTING.md) for the current
 architecture, GitHub pipeline, monitoring, costs and recovery procedure.
 The [system design diagrams](docs/AWS_SYSTEM_DESIGN.md) show request paths,

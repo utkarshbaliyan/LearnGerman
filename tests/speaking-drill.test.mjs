@@ -1,3 +1,4 @@
+import { providerTransport } from './helpers/provider-transport.mjs';
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DatabaseSync } from "node:sqlite";
@@ -6,7 +7,7 @@ import { createServer } from "vite";
 test("single-question audio checks give immediate corrections with safe retries and account quotas", async () => {
   const sqlite=new DatabaseSync(":memory:"); sqlite.exec(readFileSync("drizzle/0002_legal_nehzno.sql","utf8"));
   globalThis.__drillDb={prepare(sql){return {bind(...params){return {async first(){return sqlite.prepare(sql).get(...params)??null;},async run(){return {meta:{changes:Number(sqlite.prepare(sql).run(...params).changes)}};}};}};}};
-  const vite=await createServer({configFile:false,resolve:{alias:{"@":process.cwd()}},server:{middlewareMode:true,ws:false},plugins:[{name:"drill-fixtures",enforce:"pre",transform(code,id){if(id.endsWith("/speaking/drill/route.ts")) return code.replace('import { getD1 } from "@/db";', 'const getD1=async()=>globalThis.__drillDb;').replace('import { getAuthenticatedUser } from "@/app/lib/supabase-auth";', 'const getAuthenticatedUser=async r=>r.headers.get("x-test-user")?{id:r.headers.get("x-test-user")}:null;');}}]});
+  const vite=await createServer({configFile:false,resolve:{alias:{"@":process.cwd()}},server:{middlewareMode:true,ws:false},plugins:[providerTransport,{name:"drill-fixtures",enforce:"pre",transform(code,id){if(id.endsWith("/speaking/drill/route.ts")) return code.replace('import { getD1 } from "@/db";', 'const getD1=async()=>globalThis.__drillDb;').replace('import { getAuthenticatedUser } from "@/app/lib/supabase-auth";', 'const getAuthenticatedUser=async r=>r.headers.get("x-test-user")?{id:r.headers.get("x-test-user")}:null;');}}]});
   const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY="test-key";let calls=0,fail=false;
   globalThis.fetch=async(url,init)=>{calls++; if(fail)return Response.json({}, {status:503}); if(String(url).endsWith("/audio/transcriptions"))return Response.json({text:"Ich bist Ada."}); const input=JSON.parse(init.body);assert.match(input.messages[1].content,/Answer this one question/);return Response.json({choices:[{message:{content:JSON.stringify({overallScore:70,corrections:[{original:"Ich bist",corrected:"Ich bin",explanation:"Use bin with ich.",category:"verb-agreement",patternId:"verb-agreement",hint:"Check ich.",kind:"error",severity:"major",confidence:.98}],constructionEvidence:[]})}}]});};
   try{

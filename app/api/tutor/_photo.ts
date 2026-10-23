@@ -1,3 +1,4 @@
+import { providerFetch } from '@/app/api/tutor/_usage';
 import { Buffer } from "node:buffer";
 import { z } from "zod";
 export { boundedBody } from '@/app/lib/request-body';
@@ -6,7 +7,7 @@ const extraction = z.object({ text: z.string().max(8000), readable: z.boolean(),
 
 export async function readAssignmentPhoto(bytes: Uint8Array, mime: string, minCharacters = 10) {
   if (!process.env.GROQ_API_KEY) throw new Error("Photo reading provider is not configured");
-  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+  const response = await providerFetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST", signal: AbortSignal.timeout(30_000),
     headers: { authorization: `Bearer ${process.env.GROQ_API_KEY}`, "content-type": "application/json" },
     body: JSON.stringify({

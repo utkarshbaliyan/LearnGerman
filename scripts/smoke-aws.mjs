@@ -23,7 +23,7 @@ try{
     await new Promise(r=>setTimeout(r,500));
   }
   assert.ok(ready,'Standalone AWS server must connect to its SQLite database.');
-  for(const path of ['/','/stories','/stories/reading-a1-01-v1','/grammar','/vocabulary','/books','/books/b1/zwischen-hoersaal-und-arbeitswelt/1']){
+  for(const path of ['/','/stories','/stories/reading-a1-01-v1','/grammar','/vocabulary','/books','/books/b1/zwischen-hoersaal-und-arbeitswelt/1','/account','/auth/reset-password','/privacy','/support']){
     const response=await fetch(base+path);assert.equal(response.status,200,path);
     assert.match(await response.text(),/LeseLaut/,path);
   }
@@ -32,7 +32,8 @@ try{
     assert.match(response.headers.get('cache-control'),/private, no-store/);
   }
   assert.equal((await fetch(base+'/api/internal/migration',{method:'POST'})).status,404);
-  console.log('AWS standalone smoke passed: database readiness, seven pages, protected APIs and disabled export.');
+  assert.equal((await fetch(base+'/api/account/delete',{method:'POST'})).status,401);
+  console.log('AWS standalone smoke passed: database readiness, eleven pages, protected APIs and disabled export.');
 }catch(error){console.error(logs.replace(/(?:sk-|gsk_)[A-Za-z0-9_-]+/g,'[redacted]'));throw error;}
 finally{
   child.kill('SIGTERM');await new Promise(r=>{if(child.exitCode!==null)r();else child.once('exit',r);});

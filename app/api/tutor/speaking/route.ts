@@ -1,3 +1,4 @@
+import { ProviderRequestError } from '@/app/api/tutor/_errors';
 import { speakingAudioFile, speakingAudioProblem } from "@/app/lib/speaking-audio";
 import { applyFeedbackAction } from "@/app/lib/tutor-feedback-actions";
 import { getD1 } from "@/db";
@@ -115,7 +116,7 @@ export async function POST(request: Request) {
           state.ended = state.turns.length >= mission.turns;
           if (attempt) record.session.attempts.push(attempt);
         }
-      } catch { error = "Speaking feedback is temporarily unavailable. Your saved turns are safe. Retry this response."; }
+      } catch (cause) { if (cause instanceof ProviderRequestError && cause.status === 429) status = 429; error = status === 429 ? "AI practice has reached its current allowance. Your saved turns are safe. Try again later." : "Speaking feedback is temporarily unavailable. Your saved turns are safe. Retry this response."; }
       operation.status = error ? "failed" : "complete";
       if (!await save()) return fail("Your session changed. Reload saved work.", 409);
       return error ? Response.json({ error, ...publicWritingRecord(record), mission }, { status, headers: responseHeaders }) : respond();

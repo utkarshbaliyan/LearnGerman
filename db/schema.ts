@@ -34,3 +34,15 @@ export const tutorQuotas = sqliteTable("tutor_quotas", {
   generated: integer("generated").notNull().default(0),
   checked: integer("checked").notNull().default(0),
 }, (table) => [primaryKey({ columns: [table.userId, table.day] })]);
+
+export const aiProviderUsage = sqliteTable('ai_provider_usage', {
+  day: text('day').primaryKey(),
+  calls: integer('calls').notNull().default(0),
+});
+
+// Retained through restores; contains no email, name, writing or recordings.
+export const accountDeletions = sqliteTable('account_deletions', {
+  userId: text('user_id').primaryKey(),
+  status: text('status').notNull().default('pending'),
+  createdAt: text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index('account_deletions_status_created').on(table.status, table.createdAt)]);
