@@ -1,6 +1,7 @@
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 
 const columns={users:['id','email','display_name','created_at','updated_at','username'],user_progress:['user_id','scope','data','updated_at'],
   tutor_sessions:['user_id','task_id','data','version','updated_at'],tutor_quotas:['user_id','day','used']};
@@ -34,7 +35,7 @@ export function importSnapshot(filename,snapshot,{replaceReadOnly=false}={}){
     return {counts,sha256:createHash('sha256').update(JSON.stringify(snapshot.tables)).digest('hex')};
   }catch(error){db.exec('ROLLBACK');throw error;}finally{db.close();}
 }
-if(process.argv[1]?.endsWith('/import-snapshot.mjs')){
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   const snapshot=JSON.parse(readFileSync(0,'utf8'));
   const result=importSnapshot(process.env.LESELAUT_SQLITE_PATH,snapshot,{replaceReadOnly:process.argv.includes('--replace-read-only')});
   console.log(JSON.stringify(result));
