@@ -1,7 +1,7 @@
 # Enable Google sign-in for LeseLaut
 
-Application code is ready, but Google is currently disabled in Supabase.
-Create and configure the OAuth client in the owner's Google/Supabase accounts.
+Google sign-in is enabled in Supabase and verified on the AWS website.
+Reuse the configured Google/Supabase project and OAuth client below.
 Never put the Google client secret in this repository, browser code or chat.
 
 ## Setup checkpoint — 23 October 2026
@@ -14,36 +14,43 @@ Never put the Google client secret in this repository, browser code or chat.
   the secret must be entered directly into Supabase, never into this repository.
 - Both exact application callbacks below were visibly verified in Supabase's
   redirect allowlist. The old callback was preserved.
-- The owner reported saving the Google provider, but subsequent public
-  `/auth/v1/settings` checks still returned `external.google: false`. Do not
-  describe Google sign-in as enabled until a fresh check returns `true` and a
-  real login succeeds. The Supabase dashboard also stalled while its status page
-  reported an ongoing Management API incident; that may affect configuration
-  saves, but it does not establish the cause of this project's disabled flag.
+- Supabase's Google provider is enabled with the owner's saved credentials.
+  A fresh public `/auth/v1/settings` check returned `external.google: true` and
+  `external.email: true`. Skip nonce checks and Allow users without an email
+  remain off. Email/password sign-in remains enabled.
 - Google's Audience page was separately verified as **Testing**, with no test
-  users. **Publish app** was disabled pending completion of Branding. Creating
-  the client does not make sign-in available to the public.
+  users. **Publish app** was disabled pending completion of Branding. Google
+  explicitly exempts basic identity-only sign-in from the Testing user-list and
+  seven-day authorization expiry restrictions; this app requests only those
+  identity scopes. Do not add other Google scopes without reviewing their
+  audience and verification requirements.
+- On `https://d19k6l47v6hw3.cloudfront.net/account`, the Google button was visibly
+  verified. Its redirect used the configured Supabase callback and the AWS
+  `/auth/confirm` return URL. The owner-authorized Google consent completed and
+  returned to LeseLaut, which loaded the existing account username and displayed
+  **Progress is synced**. No learner records were manually merged or reset.
 - The five Google callback/PKCE and backend authentication tests passed on Node
   22. The AWS account page, callback and health endpoints returned HTTP 200;
   unauthenticated account API access returned HTTP 401. These checks do not
   replace testing a real Google login and existing learner progress.
 
-Resume by inspecting the existing Google provider configuration, confirming its
-credentials and enabled flag, and checking the OAuth audience before testing.
-Reuse the existing project/client instead of creating duplicates. If the app is
-still in Testing, configure the intended test users or complete Google's
-production publishing requirements before offering it to everyone.
+The existing-account Google login was verified; a separate newly created Google
+user was not tested. Complete the app's homepage/privacy information and Google
+branding review for the intended public launch. Until custom branding is
+verified, Google's sign-in screen identifies the Supabase project domain.
+No application rebuild or AWS deployment is needed for this provider setting.
 
-Service status: <https://status.supabase.com/>.
+Google's audience exception:
+<https://support.google.com/cloud/answer/15549945?hl=en>.
 
 ## Configuration and verification
 
 1. In [Google Cloud Console](https://console.cloud.google.com/), create or select
    the project that should own LeseLaut's authentication. Open Google Auth Platform.
 2. Configure Branding with the app name **LeseLaut**, your support email and the
-   contact information required by Google. Select the appropriate audience; an
-   external app in Testing initially permits its configured test users only.
+   contact information required by Google. Select the appropriate audience.
    Use only basic OpenID Connect identity scopes: `openid`, `email`, `profile`.
+   These scopes qualify for Google's Testing-mode identity-only exception.
 3. Create an OAuth client with application type **Web application**. Set the
    authorized JavaScript origin to:
 
@@ -77,11 +84,11 @@ Service status: <https://status.supabase.com/>.
    the same verified email as an existing account. Confirm the existing learner
    progress remains available. Keep the original browser session signed in while
    testing so no unsynced local work is discarded.
-7. Before offering Google sign-in to everyone, satisfy Google's current publishing,
-   authorized-domain and consent-screen requirements and publish the OAuth app
-   to its intended audience. Enabling the Supabase switch does not remove a
-   Google Testing-mode restriction. Follow the console's current requirements
-   for your app's homepage, privacy information and any required verification.
+7. For public launch and custom branding, satisfy Google's current publishing,
+   authorized-domain and consent-screen requirements. Follow the console's
+   requirements for the app's homepage, privacy information and verification.
+   Basic identity-only login has a Testing-mode exception; extra scopes may
+   require listed test users, verification and production publishing.
 
 The application keys AWS SQLite data by the verified Supabase subject, never by a Google
 email or a browser-supplied ID. Supabase controls identity linking; do not manually
