@@ -4,6 +4,40 @@ Application code is ready, but Google is currently disabled in Supabase.
 Create and configure the OAuth client in the owner's Google/Supabase accounts.
 Never put the Google client secret in this repository, browser code or chat.
 
+## Setup checkpoint — 23 October 2026
+
+- Google Cloud project **LeseLaut** (`leselaut`) was created in the owner's chosen
+  existing Google account. The consent configuration was saved with an external
+  testing audience and only `openid`, `userinfo.email` and `userinfo.profile`.
+- OAuth web client **LeseLaut Web** was created with both application origins and
+  the exact Supabase callback listed below. The owner retained its credentials;
+  the secret must be entered directly into Supabase, never into this repository.
+- Both exact application callbacks below were visibly verified in Supabase's
+  redirect allowlist. The old callback was preserved.
+- The owner reported saving the Google provider, but subsequent public
+  `/auth/v1/settings` checks still returned `external.google: false`. Do not
+  describe Google sign-in as enabled until a fresh check returns `true` and a
+  real login succeeds. The Supabase dashboard also stalled while its status page
+  reported an ongoing Management API incident; that may affect configuration
+  saves, but it does not establish the cause of this project's disabled flag.
+- Google's Audience page was separately verified as **Testing**, with no test
+  users. **Publish app** was disabled pending completion of Branding. Creating
+  the client does not make sign-in available to the public.
+- The five Google callback/PKCE and backend authentication tests passed on Node
+  22. The AWS account page, callback and health endpoints returned HTTP 200;
+  unauthenticated account API access returned HTTP 401. These checks do not
+  replace testing a real Google login and existing learner progress.
+
+Resume by inspecting the existing Google provider configuration, confirming its
+credentials and enabled flag, and checking the OAuth audience before testing.
+Reuse the existing project/client instead of creating duplicates. If the app is
+still in Testing, configure the intended test users or complete Google's
+production publishing requirements before offering it to everyone.
+
+Service status: <https://status.supabase.com/>.
+
+## Configuration and verification
+
 1. In [Google Cloud Console](https://console.cloud.google.com/), create or select
    the project that should own LeseLaut's authentication. Open Google Auth Platform.
 2. Configure Branding with the app name **LeseLaut**, your support email and the
