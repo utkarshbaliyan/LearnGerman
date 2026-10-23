@@ -5,7 +5,7 @@ release_id=$1
 [[ "$release_id" =~ ^[a-f0-9]{40}$ ]] || exit 64
 source /etc/leselaut/config
 exec 9>/var/lock/leselaut-deploy.lock
-flock -n 9 || exit 75
+flock -w 300 9 || exit 75
 test -f /etc/leselaut/ready
 release_dir=/opt/leselaut/releases/$release_id
 mkdir -p "$release_dir"
