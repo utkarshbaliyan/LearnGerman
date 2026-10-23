@@ -1,4 +1,4 @@
-import { providerConfiguration, chatCompletionText, responseText } from '@/app/api/tutor/_shared';
+import { providerConfiguration, chatCompletionText, responseText, ProviderRequestError } from '@/app/api/tutor/_shared';
 import { checkedTranslations, generatedSentences, LEVEL_GUIDANCE, type TranslationLevel } from '@/app/lib/translation-practice';
 
 async function jsonAnswer(instructions: string, input: unknown, schema: object, maxTokens: number, timeout = 45_000) {
@@ -8,7 +8,7 @@ async function jsonAnswer(instructions: string, input: unknown, schema: object, 
     body: JSON.stringify(p.name === 'Groq' ? { model: p.tutorModel, reasoning_effort: 'low', max_completion_tokens: maxTokens, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: instructions }, { role: 'user', content: JSON.stringify(input) }] }
       : { model: p.tutorModel, store: false, max_output_tokens: maxTokens, instructions, input: [{ role: 'user', content: [{ type: 'input_text', text: JSON.stringify(input) }] }], text: { format: { type: 'json_schema', name: 'translation_practice', strict: true, schema } } }),
   });
-  if (!response.ok) { await response.body?.cancel(); throw new Error(`Translation provider returned ${response.status}`); }
+  if (!response.ok) { await response.body?.cancel(); throw new ProviderRequestError(response.status, `Translation provider returned ${response.status}`); }
   const payload = await response.json() as Record<string, unknown>;
   if (p.name === 'Groq' && (payload.choices as { finish_reason?: string }[] | undefined)?.[0]?.finish_reason !== 'stop') throw new Error('The translation response was incomplete.');
   if (p.name === 'OpenAI' && payload.status !== 'completed') throw new Error('The translation response was incomplete.');

@@ -8,11 +8,11 @@ export type AuthenticatedUser = { id: string; email: string; displayName: string
 
 export async function getAuthenticatedUser(request: Request): Promise<AuthenticatedUser | null> {
   const authorization = request.headers.get("authorization");
-  if (!authorization?.startsWith("Bearer ")) return null;
+  if (!authorization?.startsWith("Bearer ") || authorization.length > 16_384) return null;
   try {
-    const { payload } = await jwtVerify(authorization.slice(7), JWKS, { issuer: ISSUER, audience: "authenticated" });
+    const { payload } = await jwtVerify(authorization.slice(7), JWKS, { issuer: ISSUER, audience: "authenticated", requiredClaims: ['sub', 'exp'] });
     const email = typeof payload.email === "string" ? payload.email : "";
-    if (!payload.sub || !email) return null;
+    if (!payload.sub || !email.trim() || payload.role !== 'authenticated') return null;
     const metadata = payload.user_metadata && typeof payload.user_metadata === "object" ? payload.user_metadata as Record<string, unknown> : {};
     const name = [metadata.full_name, metadata.name, metadata.username].find((value): value is string => typeof value === "string" && value.trim().length > 0);
     return { id: payload.sub, email, displayName: (name?.trim() ?? email.split("@")[0]).slice(0, 120), requestedUsername: typeof metadata.username === "string" ? metadata.username : null };

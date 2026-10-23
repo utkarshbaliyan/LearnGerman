@@ -246,8 +246,7 @@ test("uses account-owned durable progress and production email confirmation", as
   assert.match(syncSource, /CLOUD_PROGRESS_OWNER_STORAGE_KEY/);
   assert.match(listenerSource, /onAuthStateChange/);
   assert.match(listenerSource, /addEventListener\("online"/);
-  assert.match(callbackSource, /verifyOtp/);
-  assert.match(callbackSource, /exchangeCodeForSession/);
+  assert.match(callbackSource, /confirmAuthSession/);
   assert.match(accountSource, /AUTH_CONFIRM_URL/);
   assert.doesNotMatch(accountSource, /window\.location\.origin.*auth\/confirm/);
   assert.match(apiSource, /userId: auth\.user\.id/);

@@ -1,6 +1,7 @@
 import { ALL_VOCABULARY } from '@/app/vocabulary/data';
 import { vocabularyCardKey, vocabularyProgressKeys } from '@/app/lib/progress-sync';
 import { TRANSLATION_LEVELS } from '@/app/lib/translation-practice';
+import { boundedBody } from '@/app/lib/request-body';
 
 export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
@@ -17,7 +18,9 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   let keys: string[];
   try {
-    const body = await request.json() as { keys?: unknown };
+    const bytes = await boundedBody(request, 610_000);
+    if (!bytes) return Response.json({ error: 'Send up to 500 review word keys.' }, { status: 413 });
+    const body = JSON.parse(new TextDecoder().decode(bytes)) as { keys?: unknown };
     if (!body || !Array.isArray(body.keys) || body.keys.length > 500 || body.keys.some(key => typeof key !== 'string' || !key || key.length > 200)) throw new Error('Invalid keys.');
     keys = body.keys;
   } catch { return Response.json({ error: 'Send up to 500 review word keys.' }, { status: 400 }); }

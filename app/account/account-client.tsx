@@ -7,6 +7,7 @@ import { AccountStatus } from "@/app/account/account-status";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { AUTH_CONFIRM_URL } from "@/app/lib/public-site";
 import { supabase } from "@/app/lib/supabase-client";
+import { googleProviderEnabled, signInWithGoogle } from '@/app/lib/google-auth';
 
 type Account = { email: string; displayName: string; username: string };
 
@@ -19,11 +20,19 @@ export function AccountClient() {
   const [message, setMessage] = useState("");
   const [exporting, setExporting] = useState(false);
   const [exportMessage, setExportMessage] = useState("");
+  const [googleAvailable, setGoogleAvailable] = useState(false);
+
+  useEffect(() => {
+    if (!sessionReady || user) return;
+    const controller = new AbortController();
+    void googleProviderEnabled(controller.signal).then(setGoogleAvailable).catch(() => {});
+    return () => controller.abort();
+  }, [sessionReady, user]);
 
   useEffect(() => {
     const parameters = new URLSearchParams(window.location.search);
     const authError = parameters.get("auth_error");
-    const callbackMessage = authError ?? (parameters.get("auth") === "confirmed" ? "Email verified. Your account and progress are ready." : "");
+    const callbackMessage = authError ?? (parameters.get("auth") === "confirmed" ? "Signed in. Your account and progress are ready." : "");
     const frame = requestAnimationFrame(() => {
       if (callbackMessage) setMessage(callbackMessage);
     });
@@ -31,7 +40,7 @@ export function AccountClient() {
     return () => cancelAnimationFrame(frame);
   }, []);
   useEffect(() => {
-    void supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null)).finally(() => setSessionReady(true));
+    void supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null)).catch(() => setMessage('Sign-in is temporarily unavailable. Please retry.')).finally(() => setSessionReady(true));
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
       setSessionReady(true);
@@ -47,7 +56,7 @@ export function AccountClient() {
         const payload = await response.json() as { account: Account };
         setAccount(payload.account);
       }
-    });
+    }).catch(() => {});
     return () => { cancelled = true; };
   }, [user]);
 
@@ -81,6 +90,17 @@ export function AccountClient() {
     finally { setBusy(false); }
   }
 
+  async function googleSignIn() {
+    setBusy(true); setMessage('');
+    try {
+      const { error } = await signInWithGoogle();
+      if (error) throw error;
+    } catch {
+      setBusy(false);
+      setMessage('Google sign-in is temporarily unavailable. Please try again or use your email.');
+    }
+  }
+
   async function exportData() {
     setExporting(true); setExportMessage("");
     try {
@@ -112,6 +132,7 @@ export function AccountClient() {
       </div>
       <button className="account-signout" type="button" onClick={signOut} disabled={busy || exporting}><LogOut /> Sign out</button>
     </div> : <div className="account-panel account-auth">
+      {googleAvailable && <div className="account-social-auth"><button type="button" className="account-google" onClick={googleSignIn} disabled={busy}><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.24c1.89-1.74 2.98-4.3 2.98-7.36Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.62-2.41l-3.24-2.51c-.9.6-2.05.96-3.38.96-2.6 0-4.81-1.76-5.6-4.12H3.06v2.59A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 13.92a6 6 0 0 1 0-3.84V7.49H3.06a10 10 0 0 0 0 9.02l3.34-2.59Z"/><path fill="#EA4335" d="M12 5.96c1.47 0 2.79.5 3.83 1.5l2.88-2.87A9.62 9.62 0 0 0 12 2a10 10 0 0 0-8.94 5.49l3.34 2.59A6 6 0 0 1 12 5.96Z"/></svg>{busy ? 'Connecting…' : 'Continue with Google'}</button><p>or use your email</p></div>}
       <div className="account-auth-tabs" role="tablist" aria-label="Account action"><button type="button" className={mode === "signup" ? "is-active" : ""} onClick={() => { setMode("signup"); setMessage(""); }}>Create account</button><button type="button" className={mode === "signin" ? "is-active" : ""} onClick={() => { setMode("signin"); setMessage(""); }}>Sign in</button></div>
       <form onSubmit={submit}>
         {mode === "signup" && <label>Username<input name="username" required minLength={3} maxLength={24} pattern="[A-Za-z0-9_]+" autoComplete="username" placeholder="german_learner" /></label>}

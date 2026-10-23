@@ -33,9 +33,10 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
  const db=new DatabaseSync(':memory:');db.exec(readFileSync('drizzle/0002_legal_nehzno.sql','utf8'));
  globalThis.__translationDb={prepare(sql){return{bind(...args){return{async first(){return db.prepare(sql).get(...args)??null;},async all(){return{results:db.prepare(sql).all(...args)};},async run(){return{meta:{changes:Number(db.prepare(sql).run(...args).changes)}};}};}};}};
  const vite=await server([{name:'translation-test-auth',enforce:'pre',transform(code,id){if(id.endsWith('/app/api/active-learning/translation/route.ts'))return code.replace("import { getD1 } from '@/db';","const getD1=async()=>globalThis.__translationDb;").replace("import { getAuthenticatedUser } from '@/app/lib/supabase-auth';","const getAuthenticatedUser=async r=>r.headers.get('x-test-user')?{id:r.headers.get('x-test-user')}:null;");}}]);
- const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';let calls=0,held=null,badFeedback=false,repeatedGeneration=0;
+ const oldFetch=globalThis.fetch,oldKey=process.env.GROQ_API_KEY;process.env.GROQ_API_KEY='test-key';let calls=0,held=null,badFeedback=false,repeatedGeneration=0,providerBusy=false;
  const seen=[];globalThis.fetch=async(url,init)=>{
   calls++;
+  if(providerBusy)return Response.json({error:'test-sensitive-provider-detail'},{status:429});
   if(String(url).endsWith('/audio/transcriptions'))return Response.json({text:'Ich lebe in Berlin.'});
   const input=JSON.parse(init.body),data=input.messages[1].content;
   if(Array.isArray(data))return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify({text:'1. Ich wohne in Berlin.\n2. Sie kauft Brot.',readable:true,uncertain:false})}}]});
@@ -103,6 +104,16 @@ test('translation API saves account-owned exercises, checks, reviewed imports an
   const freshResult=await post(fresh);assert.equal(freshResult.status,200);assert.deepEqual((await freshResult.json()).session.sentences,['The red bicycle is outside.']);assert.equal(calls,callsBefore+2);assert.equal(quota('alice'),usedBefore+1,'Internal repetition retries reserve only one daily request');
   assert.equal((await post(fresh)).status,200);assert.equal(calls,callsBefore+2);assert.equal(quota('alice'),usedBefore+1);
   const latest=await (await get()).json();assert.ok(latest.recent.length);assert.equal(latest.recent.every(x=>x.exerciseId.startsWith('translation-')),true);
+  providerBusy=true;
+  const busyRequest={action:'generate',level:'A1',count:1,requestId:'provider-busy-generate'};
+  r=await post(busyRequest,'busy');assert.equal(r.status,429);const busyRecord=await r.json();
+  assert.match(busyRecord.error,/provider is busy/);assert.doesNotMatch(busyRecord.error,/midnight|test-sensitive/);
+  const busyCalls=calls;assert.equal((await post(busyRequest,'busy')).status,429);assert.equal(calls,busyCalls);assert.equal(quota('busy'),1,'replaying provider backpressure cannot reserve quota again');
+  providerBusy=false;
+  r=await post({...busyRequest,requestId:'provider-busy-check-set'},'busy');const checkSet=await r.json();
+  providerBusy=true;
+  r=await post({action:'check',exerciseId:checkSet.exerciseId,version:checkSet.version,requestId:'provider-busy-check',answers:['Ich wohne in Berlin.']},'busy');
+  assert.equal(r.status,429);const savedBusy=await r.json();assert.deepEqual(savedBusy.session.answers,['Ich wohne in Berlin.']);assert.match(savedBusy.error,/provider is busy/);
  }finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GROQ_API_KEY;else process.env.GROQ_API_KEY=oldKey;delete globalThis.__translationDb;await vite.close();db.close();}
 });
 

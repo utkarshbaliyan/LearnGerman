@@ -49,7 +49,7 @@ type ProviderConfiguration = {
   transcriptionModel: string;
 };
 
-class ProviderRequestError extends Error {
+export class ProviderRequestError extends Error {
   constructor(public status: number, message: string) {
     super(message);
   }

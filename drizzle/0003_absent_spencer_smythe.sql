@@ -1,0 +1,1 @@
+CREATE INDEX `tutor_sessions_user_updated_at` ON `tutor_sessions` (`user_id`,`updated_at`);

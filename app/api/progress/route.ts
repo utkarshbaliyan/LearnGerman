@@ -5,6 +5,13 @@ import { ensureAccount } from "@/app/lib/account-db";
 import { getAuthenticatedUser } from "@/app/lib/supabase-auth";
 import { getDb } from "@/db";
 import { userProgress } from "@/db/schema";
+import { boundedBody } from '@/app/lib/request-body';
+
+export const dynamic = 'force-dynamic';
+const headers = { 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' };
+const json = (body: unknown, status = 200) => Response.json(body, { status, headers });
+// Preserve the existing character limit while staying below D1's 2 MB row limit.
+const validSize = (text: string) => text.length <= 1_000_000 && new TextEncoder().encode(text).byteLength <= 1_900_000;
 
 const SCOPES = ["course", "stories", "grammar", "vocabulary", "books", "learning"] as const;
 type ProgressScope = (typeof SCOPES)[number];
@@ -21,9 +28,9 @@ async function authenticatedDb(request: Request) {
   return { db, user };
 }
 
-export async function GET(request: Request) {
+async function getProgress(request: Request) {
   const auth = await authenticatedDb(request);
-  if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
+  if (!auth) return json({ error: "Authentication required" }, 401);
 
   const rows = await auth.db.select({ scope: userProgress.scope, data: userProgress.data })
     .from(userProgress)
@@ -31,28 +38,34 @@ export async function GET(request: Request) {
   const progress = Object.fromEntries(rows.flatMap((row) => {
     try { return [[row.scope, JSON.parse(row.data)]]; } catch { return []; }
   }));
-  return Response.json({ progress, userId: auth.user.id });
+  return json({ progress, userId: auth.user.id });
 }
 
-export async function PUT(request: Request) {
-  const auth = await authenticatedDb(request);
-  if (!auth) return Response.json({ error: "Authentication required" }, { status: 401 });
+async function putProgress(request: Request) {
+  const user = await getAuthenticatedUser(request);
+  if (!user) return json({ error: "Authentication required" }, 401);
 
   const expectedOwner = request.headers.get("x-progress-owner");
-  if (expectedOwner && expectedOwner !== auth.user.id) return Response.json({ error: "Account changed. Reload progress before saving." }, { status: 409 });
+  if (expectedOwner && expectedOwner !== user.id) return json({ error: "Account changed. Reload progress before saving." }, 409);
 
   let payload: { scope?: unknown; data?: unknown };
-  try { payload = await request.json() as { scope?: unknown; data?: unknown }; }
-  catch { return Response.json({ error: "Request body must be valid JSON" }, { status: 400 }); }
-  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return Response.json({ error: "Request body must be an object" }, { status: 400 });
+  try {
+    const bytes = await boundedBody(request, 1_950_000);
+    if (!bytes) return json({ error: 'Progress document is too large' }, 413);
+    payload = JSON.parse(new TextDecoder().decode(bytes)) as { scope?: unknown; data?: unknown };
+  } catch { return json({ error: "Request body must be valid JSON" }, 400); }
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return json({ error: "Request body must be an object" }, 400);
   const validData = payload.scope === "stories"
     ? (Array.isArray(payload.data) && payload.data.every((item) => typeof item === "string")) || (Boolean(payload.data) && typeof payload.data === "object" && !Array.isArray(payload.data))
     : Boolean(payload.data) && typeof payload.data === "object" && !Array.isArray(payload.data);
   if (!isScope(payload.scope) || !validData) {
-    return Response.json({ error: "A valid progress scope and object are required" }, { status: 400 });
+    return json({ error: "A valid progress scope and object are required" }, 400);
   }
   const serialized = JSON.stringify(payload.data);
-  if (serialized.length > 1_000_000) return Response.json({ error: "Progress document is too large" }, { status: 413 });
+  if (!validSize(serialized)) return json({ error: "Progress document is too large" }, 413);
+  const db = await getDb();
+  await ensureAccount(user);
+  const auth = { db, user };
 
   {
     const scope = payload.scope;
@@ -63,15 +76,22 @@ export async function PUT(request: Request) {
       let remote: unknown = {};
       try { remote = JSON.parse(existing?.data ?? "{}"); } catch { /* Recover malformed legacy documents. */ }
       const data = JSON.stringify(mergeProgress(scope, payload.data, remote));
-      if (data.length > 1_000_000) return Response.json({ error: "Progress document is too large" }, { status: 413 });
+      if (!validSize(data)) return json({ error: "Progress document is too large" }, 413);
       const saved = existing
         ? await auth.db.update(userProgress).set({ data, updatedAt: new Date().toISOString() })
           .where(and(eq(userProgress.userId, auth.user.id), eq(userProgress.scope, scope), eq(userProgress.data, existing.data))).returning({ scope: userProgress.scope })
         : await auth.db.insert(userProgress).values({ userId: auth.user.id, scope, data })
           .onConflictDoNothing().returning({ scope: userProgress.scope });
-      if (saved.length) return Response.json({ saved: true, scope, data: JSON.parse(data), userId: auth.user.id });
+      if (saved.length) return json({ saved: true, scope, data: JSON.parse(data), userId: auth.user.id });
     }
-    return Response.json({ error: "Progress changed concurrently. Please retry." }, { status: 409 });
+    return json({ error: "Progress changed concurrently. Please retry." }, 409);
   }
 
 }
+
+function unavailable() {
+  console.error('{"event":"progress_unavailable"}');
+  return json({ error: 'Progress is temporarily unavailable. Your browser progress is safe; please retry.' }, 503);
+}
+export async function GET(request: Request) { try { return await getProgress(request); } catch { return unavailable(); } }
+export async function PUT(request: Request) { try { return await putProgress(request); } catch { return unavailable(); } }

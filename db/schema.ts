@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { index, integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
   id: text("id").primaryKey(),
@@ -24,7 +24,7 @@ export const tutorSessions = sqliteTable("tutor_sessions", {
   data: text("data").notNull(),
   version: integer("version").notNull().default(0),
   updatedAt: text("updated_at").notNull(),
-}, (table) => [primaryKey({ columns: [table.userId, table.taskId] })]);
+}, (table) => [primaryKey({ columns: [table.userId, table.taskId] }), index('tutor_sessions_user_updated_at').on(table.userId, table.updatedAt)]);
 
 // Contains no learner text; deletion of practice cannot reset the daily budget.
 export const tutorQuotas = sqliteTable("tutor_quotas", {

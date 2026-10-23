@@ -1,5 +1,6 @@
 import { Buffer } from "node:buffer";
 import { z } from "zod";
+export { boundedBody } from '@/app/lib/request-body';
 
 const extraction = z.object({ text: z.string().max(8000), readable: z.boolean(), uncertain: z.boolean() });
 
@@ -23,23 +24,4 @@ export async function readAssignmentPhoto(bytes: Uint8Array, mime: string, minCh
   const value = extraction.parse(JSON.parse(payload.choices[0].message?.content ?? ""));
   if (!value.readable || value.text.trim().length < minCharacters) return null;
   return { text: value.text, uncertain: value.uncertain || /\[unclear\]/i.test(value.text) };
-}
-
-// Cap the stream before parsing multipart so an oversized upload cannot fill Worker memory.
-export async function boundedBody(request: Request, limit: number) {
-  const reader = request.body?.getReader();
-  if (!reader) return new Uint8Array();
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    size += value.byteLength;
-    if (size > limit) { await reader.cancel(); return null; }
-    chunks.push(value);
-  }
-  const bytes = new Uint8Array(size);
-  let offset = 0;
-  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-  return bytes;
 }

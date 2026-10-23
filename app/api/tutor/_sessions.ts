@@ -12,5 +12,6 @@ export async function saveTutorSession(db: D1Database, user: string, task: strin
   return true;
 }
 export async function reserveTutorQuota(db: D1Database, userId: string, units = 1) {
+  if (!Number.isInteger(units) || units < 1 || units > 20) throw new RangeError('Quota units must be between 1 and 20.');
   return db.prepare("INSERT INTO tutor_quotas (user_id, day, used) VALUES (?, ?, ?) ON CONFLICT (user_id, day) DO UPDATE SET used = used + excluded.used WHERE used + excluded.used <= 20 RETURNING used").bind(userId, new Date().toISOString().slice(0, 10), units).first();
 }

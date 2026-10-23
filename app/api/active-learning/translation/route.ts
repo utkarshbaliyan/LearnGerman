@@ -3,7 +3,7 @@ import { getD1 } from '@/db';
 import { getAuthenticatedUser } from '@/app/lib/supabase-auth';
 import { reserveTutorQuota } from '@/app/api/tutor/_sessions';
 import { boundedBody, readAssignmentPhoto } from '@/app/api/tutor/_photo';
-import { transcribeGerman } from '@/app/api/tutor/_shared';
+import { transcribeGerman, ProviderRequestError } from '@/app/api/tutor/_shared';
 import { MAX_PHOTO_BYTES, photoProblem } from '@/app/lib/writing-photo';
 import { MAX_SPEAKING_AUDIO_BYTES, speakingAudioProblem } from '@/app/lib/speaking-audio';
 import { answerSchema, countSchema, exerciseIdSchema, levelSchema, requestIdSchema, sameAnswers, type TranslationRecord, type TranslationSession, type TranslationOperation } from '@/app/lib/translation-practice';
@@ -122,7 +122,12 @@ export async function POST(request: Request) {
         if (!await reserveTutorQuota(db, user)) { operation.errorStatus = 429; throw new Error('quota'); }
         const history = await db.prepare("SELECT sentence.value AS sentence FROM tutor_sessions AS sessions, json_each(sessions.data, '$.sentences') AS sentence WHERE sessions.user_id = ? AND sessions.task_id LIKE 'translation-%' AND json_extract(sessions.data, '$.kind') = 'translation-v1' AND sentence.type = 'text' ORDER BY sessions.updated_at DESC, sentence.key ASC").bind(user).all<{ sentence: string }>();
         record.session.sentences = await generateTranslationSentences(level, count, requestId, history.results.map(row => row.sentence), { ...(focus ? { focus } : {}), ...(story ? { story: { title: story.title, goal: story.goal, topics: story.topics } } : {}) }); operation.status = 'complete';
-      } catch { operation.status = 'failed'; operation.error = operation.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC.' : 'Sentences could not be generated. Generate a new set to try again.'; operation.errorStatus ??= 502; }
+      } catch (cause) {
+        operation.status = 'failed';
+        const busy = cause instanceof ProviderRequestError && cause.status === 429;
+        operation.error = busy ? 'The AI provider is busy. Please wait before generating a new set.' : operation.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC.' : 'Sentences could not be generated. Generate a new set to try again.';
+        operation.errorStatus ??= busy ? 429 : 502;
+      }
       if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
       return operation.status === 'failed' ? fail(operation.error!, operation.errorStatus, record) : respond(record);
     }
@@ -184,9 +189,10 @@ export async function POST(request: Request) {
         op.text = value.text; op.uncertain = value.uncertain;
       }
       op.status = 'complete';
-    } catch {
-      op.status = 'failed'; op.errorStatus ??= 502;
-      op.error = op.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC. Your answers are saved.' : op.errorStatus === 422 ? 'The handwriting could not be read. Try a clearer photo or type your translations.' : 'The AI request did not finish reliably. Your saved answers are safe; try again with a new request.';
+    } catch (cause) {
+      const busy = cause instanceof ProviderRequestError && cause.status === 429;
+      op.status = 'failed'; op.errorStatus ??= busy ? 429 : 502;
+      op.error = busy ? 'The AI provider is busy. Your answers are saved; please wait before trying a new request.' : op.errorStatus === 429 ? 'Daily AI limit reached (20 requests). Try again after midnight UTC. Your answers are saved.' : op.errorStatus === 422 ? 'The handwriting could not be read. Try a clearer photo or type your translations.' : 'The AI request did not finish reliably. Your saved answers are safe; try again with a new request.';
     }
     if (!await save(db, user, record)) return fail('Your exercise changed. Reload saved work.', 409);
     return op.status === 'failed' ? fail(op.error!, op.errorStatus, record) : respond(record);
