@@ -46,8 +46,11 @@ Never overwrite a populated live database with a staging snapshot.
 
 The new domain must be allowed in Supabase URL Configuration. Users sign in again
 on the new origin. Cloud progress transfers with the unchanged Supabase subject;
-browser-only state is scoped to its original domain and needs separate handling
-before redirecting the old site.
+browser-only state is scoped to its original domain. The old address therefore
+remains as a compatibility proxy to AWS rather than forcing a redirect. Set
+`LESELAUT_AWS_ORIGIN` only after final data import; proxy failures return 503 and
+never silently write to the retired D1 database. Both origins then use the same
+authoritative AWS backend.
 
 ## Monitoring and recovery
 

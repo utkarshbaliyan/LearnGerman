@@ -46,10 +46,12 @@ CONFIG
 chmod 600 /etc/leselaut/config
 origin_token=$(aws ssm get-parameter --region '${AWS::Region}' --name /leselaut/origin-token --with-decryption --query Parameter.Value --output text)
 cat >/etc/nginx/conf.d/leselaut.conf <<NGINX
+log_format leselaut_safe '\$request_method \$uri \$status \$request_time';
 server {
   listen 80 default_server;
   server_name _;
   client_max_body_size 12m;
+  access_log /var/log/nginx/leselaut-access.log leselaut_safe;
   if (\$http_x_leselaut_origin != "$origin_token") { return 403; }
   location / {
     proxy_pass http://127.0.0.1:3000;

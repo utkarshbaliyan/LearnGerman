@@ -1,6 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 umask 077
+python3 - <<'PY'
+from pathlib import Path
+p=Path('/etc/nginx/conf.d/leselaut.conf')
+s=p.read_text()
+if 'log_format leselaut_safe' not in s:
+ s="log_format leselaut_safe '$request_method $uri $status $request_time';\n"+s
+ s=s.replace('client_max_body_size 12m;','client_max_body_size 12m;\n  access_log /var/log/nginx/leselaut-access.log leselaut_safe;')
+ p.write_text(s)
+PY
+nginx -t
+systemctl reload nginx
 cat >/etc/systemd/system/leselaut-backup.service <<'UNIT'
 [Unit]
 Description=Consistent LeseLaut database backup
