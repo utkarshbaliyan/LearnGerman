@@ -10,6 +10,7 @@ import { supabase } from "@/app/lib/supabase-client";
 import { googleProviderEnabled, signInWithGoogle } from '@/app/lib/google-auth';
 import { AccountDeletion } from './account-deletion';
 import { requestRecovery } from '@/app/lib/password-recovery';
+import { browserSession } from '@/app/lib/browser-session';
 
 type Account = { email: string; displayName: string; username: string };
 
@@ -43,7 +44,7 @@ export function AccountClient() {
     return () => cancelAnimationFrame(frame);
   }, []);
   useEffect(() => {
-    void supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null)).catch(() => setMessage('Sign-in is temporarily unavailable. Please retry.')).finally(() => setSessionReady(true));
+    void browserSession().then(session => setUser(session?.user ?? null)).catch(() => setMessage('Sign-in is temporarily unavailable. Please retry.')).finally(() => setSessionReady(true));
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
       setSessionReady(true);

@@ -7,6 +7,8 @@ import { clearPendingProgress, setCloudAuthenticated } from "@/app/lib/cloud-pro
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_STORAGE_KEYS, PROGRESS_SYNCED_EVENT } from "@/app/lib/cloud-progress-keys";
 import { VOCABULARY_LEGACY_STORAGE_KEYS } from "@/app/lib/progress-sync";
 import { supabase } from "@/app/lib/supabase-client";
+import { browserSession } from '@/app/lib/browser-session';
+import { clearAccountDrafts } from '@/app/lib/account-storage';
 
 export function CloudProgressSync() {
   useEffect(() => {
@@ -22,19 +24,21 @@ export function CloudProgressSync() {
       });
     };
 
-    void supabase.auth.getSession().then(({ data }) => {
-      activeUserId = data.session?.user.id ?? null;
+    void browserSession().then(session => {
+      activeUserId = session?.user.id ?? null;
       if (activeUserId) synchronize();
       else setCloudAuthenticated(false);
-    });
+    }).catch(() => setCloudAuthenticated(false));
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       const userId = session?.user.id ?? null;
       if (!userId) {
+        const previousOwner = activeUserId ?? localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
         activeUserId = null;
         setCloudAuthenticated(false);
         if (event === "SIGNED_OUT") {
           clearPendingProgress();
+          if (previousOwner) clearAccountDrafts(localStorage, previousOwner);
           for (const key of Object.values(PROGRESS_STORAGE_KEYS)) localStorage.removeItem(key);
           for (const key of VOCABULARY_LEGACY_STORAGE_KEYS) localStorage.removeItem(key);
           localStorage.removeItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
@@ -43,6 +47,7 @@ export function CloudProgressSync() {
         return;
       }
       if (event === "SIGNED_IN" || event === "INITIAL_SESSION" || userId !== activeUserId) {
+        if (userId !== activeUserId) clearPendingProgress();
         activeUserId = userId;
         synchronize();
       } else if (event === "TOKEN_REFRESHED") {

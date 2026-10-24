@@ -1,9 +1,11 @@
 "use client";
+import { browserSession } from './browser-session';
 
 export async function authenticatedFetch(input: RequestInfo | URL, init: RequestInit = {}) {
-  const { supabase } = await import("@/app/lib/supabase-client");
-  const { data } = await supabase.auth.getSession();
+  const signal = init.signal ?? AbortSignal.timeout(20_000);
+  const session = await browserSession(signal);
   const headers = new Headers(init.headers);
-  if (data.session?.access_token) headers.set("authorization", `Bearer ${data.session.access_token}`);
-  return fetch(input, { ...init, headers, credentials: "same-origin" });
+  if (session?.access_token) headers.set("authorization", `Bearer ${session.access_token}`);
+  signal.throwIfAborted();
+  return fetch(input, { ...init, headers, signal, credentials: "same-origin" });
 }

@@ -1,0 +1,37 @@
+{
+  "kind": "bounded authenticated production HTTP check; no browser rendering or AI calls",
+  "origin": "https://d19k6l47v6hw3.cloudfront.net",
+  "startedAt": "2026-10-24T11:58:10.607Z",
+  "fixtureAccounts": 10,
+  "stages": [
+    {
+      "concurrency": 1,
+      "requests": 12,
+      "durationMs": 8985,
+      "p50Ms": 258,
+      "p95Ms": 633,
+      "maxMs": 633
+    },
+    {
+      "concurrency": 5,
+      "requests": 60,
+      "durationMs": 9793,
+      "p50Ms": 325,
+      "p95Ms": 755,
+      "maxMs": 783
+    },
+    {
+      "concurrency": 10,
+      "requests": 120,
+      "durationMs": 10698,
+      "p50Ms": 264,
+      "p95Ms": 1206,
+      "maxMs": 1229
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-24T11:58:47.784Z",
+  "requests": 215,
+  "conflictsRetried": 0,
+  "httpFailures": 0
+}

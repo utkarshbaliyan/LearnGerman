@@ -14,9 +14,13 @@ const savingScopes = new Set<CloudProgressScope>();
 let cloudAuthenticated: boolean | null = null;
 let savesPaused = 0;
 let nextRevision = 0;
+let ownerGeneration = 0;
 const lastQueued = new Map<CloudProgressScope, string>();
 
-export function clearPendingProgress() {
+export function cloudProgressGeneration() { return ownerGeneration; }
+
+export function clearPendingProgress(invalidateInFlight = true) {
+  if (invalidateInFlight) ownerGeneration++;
   pendingProgress.clear();
   lastQueued.clear();
   for (const timer of saveTimers.values()) clearTimeout(timer);
@@ -56,10 +60,10 @@ export function pauseCloudProgressSaves() {
   saveTimers.clear();
 }
 
-export function resumeCloudProgressSaves(authenticated: boolean | null) {
+export function resumeCloudProgressSaves(authenticated: boolean | null | undefined) {
   savesPaused = Math.max(0, savesPaused - 1);
-  cloudAuthenticated = authenticated;
-  if (savesPaused === 0 && authenticated !== false) {
+  if (authenticated !== undefined) cloudAuthenticated = authenticated;
+  if (savesPaused === 0 && cloudAuthenticated !== false) {
     for (const scope of pendingProgress.keys()) scheduleCloudProgress(scope, 0);
   }
 }
@@ -74,13 +78,16 @@ export function acknowledgeCloudProgress(scope: CloudProgressScope, throughRevis
 }
 
 export async function putCloudProgress(scope: CloudProgressScope, data: unknown, owner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) {
+  const generation = ownerGeneration;
   const response = await authenticatedFetch("/api/progress", {
     method: "PUT",
     headers: { "content-type": "application/json", ...(owner ? { "x-progress-owner": owner } : {}) },
     body: JSON.stringify({ scope, data }),
   });
-  if (response.status === 401) cloudAuthenticated = false;
-  else if (response.ok) cloudAuthenticated = true;
+  if (generation === ownerGeneration) {
+    if (response.status === 401) cloudAuthenticated = false;
+    else if (response.ok) cloudAuthenticated = true;
+  }
   if (!response.ok) throw new Error(`Progress save failed with ${response.status}`);
   const payload = await response.json() as { data?: unknown; userId?: string };
   return payload;
@@ -89,26 +96,28 @@ export async function putCloudProgress(scope: CloudProgressScope, data: unknown,
 export async function flushCloudProgress(scope: CloudProgressScope) {
   if (savingScopes.has(scope) || cloudSavesBlocked()) return;
   savingScopes.add(scope);
+  const generation = ownerGeneration;
   try {
-    while (pendingProgress.has(scope) && !cloudSavesBlocked()) {
+    while (pendingProgress.has(scope) && !cloudSavesBlocked() && generation === ownerGeneration) {
       const pending = pendingProgress.get(scope);
       if (!pending) break;
       pendingProgress.delete(scope);
       try {
         const saved = await putCloudProgress(scope, pending.data, pending.owner);
-        if (saved.data !== undefined && saved.userId === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) {
+        if (generation === ownerGeneration && saved.data !== undefined && saved.userId === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) {
           let local: unknown = {};
           try { local = JSON.parse(localStorage.getItem(PROGRESS_STORAGE_KEYS[scope]) ?? "{}"); } catch { /* Use the saved record. */ }
           cacheCloudProgress(scope, mergeProgress(scope, local, saved.data));
         }
       } catch {
-        if (!pendingProgress.has(scope) && pending.owner === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) pendingProgress.set(scope, pending);
+        if (generation === ownerGeneration && !pendingProgress.has(scope) && pending.owner === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) pendingProgress.set(scope, pending);
         if (!cloudSavesBlocked()) scheduleCloudProgress(scope, 1_500);
         break;
       }
     }
   } finally {
     savingScopes.delete(scope);
+    if (generation !== ownerGeneration && pendingProgress.has(scope) && !cloudSavesBlocked()) scheduleCloudProgress(scope, 0);
   }
 }
 

@@ -8,17 +8,21 @@ import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 
 export function AccountStatus() {
   const [status, setStatus] = useState<"syncing" | "ready" | "error">("syncing");
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let active = true;
     Promise.all([
       authenticatedFetch("/api/account", { cache: "no-store" }),
       synchronizeCloudProgress(),
-    ]).then(([account, sync]) => setStatus(account.ok && sync.synced ? "ready" : "error"))
-      .catch(() => setStatus("error"));
-  }, []);
+    ]).then(([account, sync]) => { if (active) setStatus(account.ok && sync.synced ? "ready" : "error"); })
+      .catch(() => { if (active) setStatus("error"); });
+    return () => { active = false; };
+  }, [attempt]);
 
   return <div className={`account-sync-status is-${status}`} aria-live="polite">
     {status === "syncing" ? <LoaderCircle className="is-spinning" /> : status === "ready" ? <CheckCircle2 /> : <Cloud />}
     <span><strong>{status === "syncing" ? "Syncing your learning data" : status === "ready" ? "Progress is synced" : "Cloud sync is temporarily unavailable"}</strong><small>{status === "ready" ? "Your stories, grammar, vocabulary, and Active Learning follow this account." : status === "error" ? "Your progress is still saved on this device and will retry automatically." : "Merging this device with your account…"}</small></span>
+    {status === 'error' && <button type="button" onClick={() => { setStatus('syncing'); setAttempt(value => value + 1); }}>Retry sync</button>}
   </div>;
 }

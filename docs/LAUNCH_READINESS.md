@@ -132,6 +132,9 @@ it. This checklist separates implemented code from production verification.
 - The owner confirmed the requested fresh disposable-account flow in iPhone
   Safari: signup, email confirmation, recovery through a new email link,
   password update, sign-in with the new password and account deletion.
+- The owner subsequently confirmed a fresh Google signup/sign-in in a private
+  window. Production capacity and fault-handling evidence is recorded in
+  [reading beta verification](RELEASE_VERIFICATION.md).
 
 These are owner-reported functional passes, not an instrumented audit of content
 quality, denied permissions, network failures or every phone/browser combination.
@@ -140,10 +143,12 @@ The disposable authentication identity was deleted. Private operator test files
 are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Fresh Google signup, detailed browser
-cleanup checks, broader device/failure coverage and capacity/cost checks remain
-outstanding. The completed checks above do not
-establish public-launch readiness.
+marked complete. No domain was purchased. Fresh Google signup and a bounded
+production capacity check have now passed. The latest release also checks local
+draft cleanup and network-failure recovery; see the evidence and limits in
+[reading beta verification](RELEASE_VERIFICATION.md). Broader device coverage,
+larger-scale capacity and AI billing setup remain outside the verified reading
+beta scope.
 
 ### Active Learning paused, 24 October 2026
 
@@ -212,12 +217,13 @@ learner account is authorized for deletion testing.
   deployment as recorded above.
 - Read-only launch smoke script: `node scripts/check-launch.mjs https://ORIGIN`.
 
-## Production work still required
+## Reading beta scope and deferred work
 
 1. **Deletion cleanup verification:** disposable-account API deletion, stale-token
    rejection and deleted-identity worker retry passed. The owner also confirmed
-   disposable-account deletion in iPhone Safari. Audit local-cache and other-device
-   cleanup explicitly; provider-outage behavior is covered by automated tests.
+   disposable-account deletion in iPhone Safari. Fault-injection tests now verify
+   both draft formats and in-flight sync cleanup. Other devices need sign-out or
+   manual site-data cleanup; provider-outage behavior is covered by automated tests.
 2. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
    An earlier recovery needed manual navigation past a stalled callback; after the
@@ -226,16 +232,21 @@ learner account is authorized for deletion testing.
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
-3. **Fresh accounts and devices:** test a fresh Google account. Fresh email signup,
+3. **Fresh accounts and devices:** fresh Google signup passed in the owner's
+   private-window test. Fresh email signup,
    recovery, new-password sign-in and deletion passed in the owner's iPhone Safari
    test. Story audio, two-device progress sync, microphone/transcription and
    photo/feedback also passed on the owner's iPhone.
-   Permission denial, network failures and broader device coverage still need
-   checks. Test deletion only with an explicitly disposable test identity.
+   Network-failure/reconnect and stalled-request tests now pass. Microphone and
+   camera permission-denial checks are deferred with Active Learning; broader
+   device coverage remains limited. Test deletion only with a disposable identity.
    An existing-account Google login and an isolated AWS backup restore were
    already documented; those do not cover these new flows.
-4. **Capacity and cost:** measure realistic authenticated production traffic and
-   AI latency/429/503 rates. The server is a single SQLite host. Configure provider
+4. **Capacity and cost:** a real authenticated production check passed at 1, 5
+   and 10 concurrent disposable accounts: 215 requests, no HTTP errors and a
+   ten-client p95 of 1,206 ms. This is a bounded reading-beta check on the single
+   SQLite host, not a maximum-capacity guarantee. AI latency and billing checks
+   are deferred while AI is disabled. Before re-enabling, configure provider
    billing controls and review actual cost per activity; 200 calls can have
    different costs. Budget notifications alone do not stop expenditure.
    The owner selected **INR 600 per month for AI** on 24 October 2026. This is a
@@ -257,7 +268,9 @@ Expiry monitoring remains operator work. Never commit the key.
 Deploy migration `0005_launch_readiness.sql` before the new server accepts traffic;
 the existing AWS release process applies migrations before service restart.
 Deploy the checked application release, configure runtime privately and install
-maintenance units. Keep launch on hold until the production checks above pass.
+maintenance units. Keep Active Learning off until its deferred cost and review
+work is resumed. Use the current verification evidence for a small reading beta;
+do not infer readiness for an unmeasured large-scale launch.
 
 Before restoring an older database, preserve the newest deletion ledger and
 reapply each pending/completed deletion to the restored copy. Keep the service
