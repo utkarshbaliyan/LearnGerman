@@ -49,6 +49,9 @@ test('callback accepts SDK-completed OAuth once, preserves email verification, a
     await assert.rejects(()=>confirmAuthSession(auth,{...empty,error:'Provider denied sign-in'}),/Provider denied/);
     await assert.rejects(()=>confirmAuthSession({...auth,initialize:async()=>({error:new Error('invalid code')})},empty),/invalid code/);
     await assert.rejects(()=>confirmAuthSession({...auth,getSession:async()=>({data:{session:null},error:null})},empty),/expired/);
+    await assert.rejects(()=>confirmAuthSession({...auth,initialize:()=>new Promise(()=>{})},empty,20),/taking too long/,'initialization cannot leave the callback spinning indefinitely');
+    await assert.rejects(()=>confirmAuthSession({...auth,getSession:()=>new Promise(()=>{})},empty,20),/taking too long/,'a stalled session read has the same bounded failure');
+    await assert.rejects(()=>confirmAuthSession({...auth,verifyOtp:()=>new Promise(()=>{})},{...empty,tokenHash:'email-token'},20),/taking too long/,'a stalled email verification is bounded too');
   }finally{await vite.close();}
 });
 

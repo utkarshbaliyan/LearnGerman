@@ -1,6 +1,6 @@
 # Public launch remains on hold
 
-Updated 23 October 2026. The existing CloudFront URL is sufficient for a small
+Updated 24 October 2026. The existing CloudFront URL is sufficient for a small
 invited beta. A purchased domain is optional until branding and email setup need
 it. This checklist separates implemented code from production verification.
 
@@ -35,33 +35,87 @@ it. This checklist separates implemented code from production verification.
   SSM `/leselaut/ses-smtp`, outside application runtime and Git.
 - SES SMTP accepted one setup message for an owner-selected disposable test
   inbox. This was a transport check, not account signup or proof of inbox delivery.
-  Supabase SMTP configuration remains outstanding.
+  Supabase SMTP configuration was completed on 24 October as recorded below.
+
+### Email setup and verification, 24 October 2026
+
+- [PR #2](https://github.com/utkarshbaliyan/LearnGerman/pull/2) merged as
+  `04bdb46642c7c6326b4282f26234de58c02e26af`; its
+  [main deployment](https://github.com/utkarshbaliyan/LearnGerman/actions/runs/40066537989)
+  passed. The nine read-only live checks passed again during setup.
+- The operator entered SES credentials and saved custom SMTP. A dashboard reload
+  confirmed it remained enabled with the intended host and sender. The public
+  Auth settings still require email confirmation. The temporary private SMTP
+  handoff file was removed after setup; its encrypted AWS source remains.
+- Supabase accepted a real signup for the explicitly disposable test inbox. The
+  owner received its confirmation message but reported no usable visible link.
+  The existing template contained a standard confirmation anchor; the exact
+  inbox-rendering cause has not been established.
+- Confirmation and recovery templates now have distinct LeseLaut subjects, a
+  prominent action, and a complete confirmation address as fallback. Both were
+  saved in Supabase and inspected in Preview. Their maintainable sources and
+  manual application procedure are in [deploy/supabase/emails](../deploy/supabase/emails/README.md).
+  The owner received the revised confirmation and confirmed successfully.
+- Fresh API sign-in verified email confirmation. Two independently signed-in
+  sessions read the same saved test progress; a mismatched progress owner was
+  rejected with 409. Account and export ownership matched the disposable identity.
+  The signup was an API transport test using an implicit callback; the current
+  browser PKCE flow still needs its own end-to-end verification.
+- The owner saved the new `leselaut_account_deletion` key privately. Its format,
+  dashboard prefix and a non-existent-user admin request were checked without
+  printing the credential or reading other identities. It is now installed in
+  encrypted AWS runtime; the service is healthy and the retry worker ran
+  successfully with no pending rows. Existing-key revocation remains unverified.
+- The first recovery link opened the site instead of the reset form. The
+  dashboard allowed `/auth/confirm` but omitted the recovery request's
+  `?intent=recovery` variant. Both supported origins now have that explicit
+  callback, verified after a dashboard reload. A fresh recovery message was
+  accepted. Safari subsequently remained on the callback after saving its session.
+  Opening the reset page in that same tab reached the form; the owner submitted
+  a private password and the browser reported success. The old password and a
+  pre-recovery refresh token were rejected. The owner selected their own password,
+  so automated new-password sign-in was not performed with that password.
+- Callback session checks now have a 15-second deadline with recovery/sign-in
+  links on failure. The reset page uses the same deadline. Ordinary sign-in no
+  longer waits for progress synchronization before navigation; the root layout
+  continues handling sync. The exact cause of Safari's stalled callback has not
+  been established; these changes bound the wait and provide an escape path.
+- The disposable account's deletion returned 200/complete. Its still-unexpired
+  token then received 401 for account, progress and export reads and for a progress
+  write. Supabase admin lookup returned 404. Scoped production database checks
+  found zero rows in all four learner tables and a completed deletion ledger.
+  Replaying only that already-deleted identity through the scheduled worker
+  completed successfully and left all four tables empty. This verifies idempotent
+  retry after provider deletion, not a simulated provider outage.
+
+The disposable authentication identity was deleted. Private operator test files
+are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Full signup/recovery/deletion testing
-and real-phone/two-device checks remain outstanding.
+marked complete. No domain was purchased. Browser PKCE, corrected callback and
+real-phone/two-device checks remain outstanding. Recovery and deletion verification
+above do not establish public-launch readiness.
 
-### Prepared owner handoff
+### Private runtime and remaining verification
 
-The production project's API-key form is prepared with the name
-`leselaut_account_deletion`. The owner must complete credential creation and save
-the result privately as `SUPABASE_SECRET_KEY` in ignored `.env.local`; do not put
+The production runtime now uses the key `leselaut_account_deletion` as
+`SUPABASE_SECRET_KEY`. Its local copy remains in ignored `.env.local`; do not put
 it in a chat, screenshot, PR or source file. Identify the previously exposed key
 and its consumers separately before revocation. Creating a replacement does not
 revoke either an old secret or legacy `service_role` key.
 
 For [Supabase SMTP configuration](https://supabase.com/dashboard/project/npnzojbbwwdtujuurkmx/auth/smtp),
-the prepared public settings are sender `leselaut.team@gmail.com`, name
+the saved public settings are sender `leselaut.team@gmail.com`, name
 `LeseLaut`, host `email-smtp.ap-south-1.amazonaws.com`, and port `587` with STARTTLS.
 The dedicated SMTP username/password are in encrypted SSM `/leselaut/ses-smtp`;
-the operator must transfer them privately into Supabase, preserving email
+the operator completed their private transfer into Supabase, preserving email
 confirmation. They are not the AWS account credentials or the Supabase API key.
-The owner must complete credential entry in the dashboard.
 
-After setup, propagate the deletion key with the existing runtime configurator,
-refresh the root-only service environment without printing it, and verify an
-explicitly disposable identity through signup, recovery, independent-session
-progress sync, deletion, stale-token rejection and retry behavior. Keep actual
+The runtime configurator propagated the key, the root-only service environment
+was refreshed, and the application and retry timer are active. Recovery, deletion,
+stale-token rejection, deleted-identity retry and independent-session API progress
+sync passed with the explicitly disposable identity. Physical-device behavior
+still needs verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
 
@@ -97,22 +151,21 @@ learner account is authorized for deletion testing.
    secret with unverified revocation. Determine exactly which key was exposed,
    check its consumers and revoke it safely. A new OpenAI key does not fix a
    Supabase exposure. Do not paste either secret into chat or GitHub.
-2. **Deletion credential:** put a new server-only `SUPABASE_SECRET_KEY` into the
-   encrypted AWS runtime. The public browser key cannot delete identities. Do not
-   enable deletion using an old exposed secret. The route returns 503 and offers
-   support when the secret is absent; no data is partially removed in that case.
-3. **Email delivery:** custom SMTP was directly observed **off** in the Supabase
-   production dashboard. AWS SES is now prepared as recorded above. Configure
-   Supabase privately with the stored SMTP credentials, then test signup,
-   confirmation and recovery with the owner-controlled unrelated test inbox.
-   Supabase’s built-in mailer is unsuitable for public registrations. Preserve
-   email-confirmation protections. A Gmail sender is an interim setup; a domain
+2. **Deletion browser verification:** the new server-only credential is installed,
+   and disposable-account API deletion, stale-token rejection and deleted-identity
+   worker retry passed. Check the browser confirmation and cleanup experience on
+   real devices; provider-outage behavior is covered by automated tests.
+3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
+   updated confirmation message reached the inbox and confirmation passed.
+   Recovery completed in the owner browser with manual navigation past the stalled
+   callback. Verify the corrected callback and current browser PKCE flow. Preserve email-confirmation
+   protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
 4. **Operations verification:** backup and alarm infrastructure is active, but
-   inbox receipt and a real pending-deletion retry still need verification.
-   The deletion timer cannot contact Supabase until its server credential is
-   installed; an active timer alone is not a successful deletion test.
+   actual alert inbox receipt still needs owner confirmation. The retry worker
+   completed an intentionally requeued, already-deleted disposable identity;
+   no real provider outage was induced.
 5. **Fresh accounts and devices:** test a fresh Google account, email account,
    recovery, sync between two devices, microphone/photo consent and failures on
    common phones. Test deletion only with an explicitly disposable test identity.
