@@ -55,26 +55,34 @@ it. This checklist separates implemented code from production verification.
   prominent action, and a complete confirmation address as fallback. Both were
   saved in Supabase and inspected in Preview. Their maintainable sources and
   manual application procedure are in [deploy/supabase/emails](../deploy/supabase/emails/README.md).
-  A fresh confirmation was accepted for sending; completion is still unverified.
-- An API sign-in check returned `email_not_confirmed`. No successful fresh-account
-  sign-in, independent-session progress sync, recovery or deletion is claimed.
+  The owner received the revised confirmation and confirmed successfully.
+- Fresh API sign-in verified email confirmation. Two independently signed-in
+  sessions read the same saved test progress; a mismatched progress owner was
+  rejected with 409. Account and export ownership matched the disposable identity.
   The signup was an API transport test using an implicit callback; the current
   browser PKCE flow still needs its own end-to-end verification.
-- A new `leselaut_account_deletion` key exists in the dashboard, but a presence-only
-  file check still found no `SUPABASE_SECRET_KEY` in ignored `.env.local`. It has
-  not been installed in production. Existing-key revocation remains unverified.
+- The owner saved the new `leselaut_account_deletion` key privately. Its format,
+  dashboard prefix and a non-existent-user admin request were checked without
+  printing the credential or reading other identities. It is now installed in
+  encrypted AWS runtime; the service is healthy and the retry worker ran
+  successfully with no pending rows. Existing-key revocation remains unverified.
+- The first recovery link opened the site instead of the reset form. The
+  dashboard allowed `/auth/confirm` but omitted the recovery request's
+  `?intent=recovery` variant. Both supported origins now have that explicit
+  callback, verified after a dashboard reload. A fresh recovery message was
+  accepted; password submission and session-revocation verification are pending.
 
 The disposable authentication identity and its private operator test state must
 be cleaned up after the workflow. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Full signup/recovery/deletion testing
+marked complete. No domain was purchased. Browser signup/recovery/deletion testing
 and real-phone/two-device checks remain outstanding.
 
-### Prepared owner handoff
+### Private runtime and remaining verification
 
-The production project now lists the key `leselaut_account_deletion`. The owner
-must save its value privately as `SUPABASE_SECRET_KEY` in ignored `.env.local`; do not put
+The production runtime now uses the key `leselaut_account_deletion` as
+`SUPABASE_SECRET_KEY`. Its local copy remains in ignored `.env.local`; do not put
 it in a chat, screenshot, PR or source file. Identify the previously exposed key
 and its consumers separately before revocation. Creating a replacement does not
 revoke either an old secret or legacy `service_role` key.
@@ -86,10 +94,11 @@ The dedicated SMTP username/password are in encrypted SSM `/leselaut/ses-smtp`;
 the operator completed their private transfer into Supabase, preserving email
 confirmation. They are not the AWS account credentials or the Supabase API key.
 
-After setup, propagate the deletion key with the existing runtime configurator,
-refresh the root-only service environment without printing it, and verify an
-explicitly disposable identity through signup, recovery, independent-session
-progress sync, deletion, stale-token rejection and retry behavior. Keep actual
+The runtime configurator propagated the key, the root-only service environment
+was refreshed, and the application and retry timer are active. Complete recovery,
+deletion, stale-token rejection and retry behavior with the explicitly disposable
+identity. Independent-session API progress sync passed; physical-device behavior
+still needs verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
 
@@ -125,20 +134,20 @@ learner account is authorized for deletion testing.
    secret with unverified revocation. Determine exactly which key was exposed,
    check its consumers and revoke it safely. A new OpenAI key does not fix a
    Supabase exposure. Do not paste either secret into chat or GitHub.
-2. **Deletion credential:** put a new server-only `SUPABASE_SECRET_KEY` into the
-   encrypted AWS runtime. The public browser key cannot delete identities. Do not
-   enable deletion using an old exposed secret. The route returns 503 and offers
-   support when the secret is absent; no data is partially removed in that case.
-3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. Verify the
-   updated confirmation message in the test inbox, then complete confirmation,
-   the current browser PKCE flow and recovery. Preserve email-confirmation
+2. **Deletion verification:** the new server-only credential is installed in
+   encrypted AWS runtime. Complete the disposable-account deletion, stale-token
+   rejection and retry checks. Installation alone does not establish successful
+   identity deletion.
+3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
+   updated confirmation message reached the inbox and confirmation passed.
+   Complete the current browser PKCE flow and recovery. Preserve email-confirmation
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
 4. **Operations verification:** backup and alarm infrastructure is active, but
    inbox receipt and a real pending-deletion retry still need verification.
-   The deletion timer cannot contact Supabase until its server credential is
-   installed; an active timer alone is not a successful deletion test.
+   The deletion timer now has its server credential, but an empty successful
+   worker run alone is not a successful deletion test.
 5. **Fresh accounts and devices:** test a fresh Google account, email account,
    recovery, sync between two devices, microphone/photo consent and failures on
    common phones. Test deletion only with an explicitly disposable test identity.
