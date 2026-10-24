@@ -59,8 +59,8 @@ it. This checklist separates implemented code from production verification.
 - Fresh API sign-in verified email confirmation. Two independently signed-in
   sessions read the same saved test progress; a mismatched progress owner was
   rejected with 409. Account and export ownership matched the disposable identity.
-  The signup was an API transport test using an implicit callback; the current
-  browser PKCE flow still needs its own end-to-end verification.
+  That signup was an API transport test using an implicit callback. The later
+  owner-reported browser lifecycle pass is recorded under device verification.
 - The owner saved the new `leselaut_account_deletion` key privately. Its format,
   dashboard prefix and a non-existent-user admin request were checked without
   printing the credential or reading other identities. It is now installed in
@@ -129,6 +129,9 @@ it. This checklist separates implemented code from production verification.
 - The owner confirmed receipt of both the earlier AWS/CloudWatch ALARM and OK
   test emails. This verifies the inbox delivery leg separately from the recorded
   successful SNS actions.
+- The owner confirmed the requested fresh disposable-account flow in iPhone
+  Safari: signup, email confirmation, recovery through a new email link,
+  password update, sign-in with the new password and account deletion.
 
 These are owner-reported functional passes, not an instrumented audit of content
 quality, denied permissions, network failures or every phone/browser combination.
@@ -137,9 +140,9 @@ The disposable authentication identity was deleted. Private operator test files
 are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Fresh-browser PKCE, automatic recovery
-from a new link, browser deletion cleanup, broader device/failure coverage and
-capacity/cost checks remain outstanding. The completed checks above do not
+marked complete. No domain was purchased. Fresh Google signup, detailed browser
+cleanup checks, broader device/failure coverage and capacity/cost checks remain
+outstanding. The completed checks above do not
 establish public-launch readiness.
 
 ### Private runtime and remaining verification
@@ -162,8 +165,8 @@ The runtime configurator propagated the key, the root-only service environment
 was refreshed, and the application and retry timer are active. Recovery, deletion,
 stale-token rejection, deleted-identity retry and independent-session API progress
 sync passed with the explicitly disposable identity. Owner-reported phone and
-two-device passes are recorded above; fresh-account lifecycle and failure cases
-still need verification. Keep actual
+two-device and fresh email-account lifecycle passes are recorded above; failure
+cases and broader device coverage still need verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
 
@@ -195,20 +198,22 @@ learner account is authorized for deletion testing.
 
 ## Production work still required
 
-1. **Deletion browser verification:** the new server-only credential is installed,
-   and disposable-account API deletion, stale-token rejection and deleted-identity
-   worker retry passed. Check the browser confirmation and cleanup experience on
-   real devices; provider-outage behavior is covered by automated tests.
+1. **Deletion cleanup verification:** disposable-account API deletion, stale-token
+   rejection and deleted-identity worker retry passed. The owner also confirmed
+   disposable-account deletion in iPhone Safari. Audit local-cache and other-device
+   cleanup explicitly; provider-outage behavior is covered by automated tests.
 2. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
-   Recovery completed in the owner browser with manual navigation past the stalled
-   callback. Verify the corrected callback and current browser PKCE flow. Preserve email-confirmation
+   An earlier recovery needed manual navigation past a stalled callback; after the
+   fixes, the owner confirmed a fresh browser signup and recovery flow through a
+   new email link, including new-password sign-in. Preserve email-confirmation
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
-3. **Fresh accounts and devices:** test a fresh Google account, email account,
-   recovery and deletion cleanup. Story audio, two-device progress sync,
-   microphone/transcription and photo/feedback passed on the owner's iPhone.
+3. **Fresh accounts and devices:** test a fresh Google account. Fresh email signup,
+   recovery, new-password sign-in and deletion passed in the owner's iPhone Safari
+   test. Story audio, two-device progress sync, microphone/transcription and
+   photo/feedback also passed on the owner's iPhone.
    Permission denial, network failures and broader device coverage still need
    checks. Test deletion only with an explicitly disposable test identity.
    An existing-account Google login and an isolated AWS backup restore were
