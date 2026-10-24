@@ -66,9 +66,11 @@ authoritative AWS backend.
 
 ## Monitoring and recovery
 
-- EC2 console: CPU, status checks and network usage. CloudWatch alarms flag
-  sustained CPU pressure or an instance status failure; email delivery is not
-  configured automatically.
+- EC2 console: CPU, status checks and network usage. CloudWatch CPU, instance
+  health and missing-backup alarms now publish to an SNS topic with a confirmed
+  operator email subscription. A labelled alarm simulation successfully executed
+  its SNS action; owner inbox receipt is a separate check. See the current
+  [activation record](LAUNCH_READINESS.md).
 - CloudWatch Logs: `/leselaut/application`, retained for seven days.
 - Systems Manager: deployment command status and service administration.
 - Billing console: credits, current spend and free-tier usage. A budget alert
@@ -77,6 +79,9 @@ authoritative AWS backend.
   after 30 days. Deployment also makes a backup before applying migrations.
   Validate `PRAGMA integrity_check`, table counts and application ownership on an
   isolated restored database before attempting production recovery.
+- Account-deletion retries run every five minutes after their server-only
+  Supabase credential is installed. The timer is installed, but missing
+  credentials deliberately skip work; an active timer is not deletion proof.
 
 The application and backend concurrency tests do not establish a production user
 capacity guarantee. Scale requires production measurements; another server
