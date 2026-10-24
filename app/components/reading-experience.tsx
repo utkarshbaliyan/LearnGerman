@@ -24,14 +24,14 @@ function sentenceNarrationTokens(paragraphs: ReadingSentenceTranslation[][]) {
 }
 
 export function ReadingText({ story, glosses, sentenceTranslations }: { story: ReadingStory; glosses: Record<string, string>; sentenceTranslations?: ReadingSentenceTranslation[][] | null }) {
-  const { activeWord } = useReadingNarration();
+  const { registerText } = useReadingNarration();
   const [showTranslations, setShowTranslations] = useState(false);
   const [openedGloss, setOpenedGloss] = useState<string | null>(null);
   const { collect, stack } = useReaderWordStack({ kind: 'story', id: story.id, title: story.title, href: `/stories/${story.id}`, level: story.level });
   const sentenceRows = useMemo(() => sentenceTranslations ? sentenceNarrationTokens(sentenceTranslations) : null,
     [sentenceTranslations]);
   const renderWords = (parts: { text: string; wordIndex: number | null }[], context: string) => parts.map((part, k) =>
-    <span key={k} data-reading-word={part.wordIndex ?? undefined} className={part.wordIndex !== null && part.wordIndex === activeWord ? 'reading-spoken-word' : undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
+    <span key={k} data-reading-word={part.wordIndex ?? undefined}>{part.text.split(/([\p{L}]+(?:[-’'][\p{L}]+)*)/gu).map((token, j) => {
       const meaning = glosses[wordKey(token)];
       const glossId = `${part.wordIndex}-${j}`;
       return meaning ? <Tooltip key={j} open={openedGloss === glossId} onOpenChange={open => setOpenedGloss(current => open ? glossId : current === glossId ? null : current)}><TooltipTrigger asChild><button type="button" className="reading-word" aria-label={`${token}: ${meaning}`} onClick={event => { event.preventDefault(); setOpenedGloss(glossId); collect(token, meaning, context); }}>{token}</button></TooltipTrigger><TooltipContent className="story-word-gloss"><strong lang="en">{meaning}</strong></TooltipContent></Tooltip> : <span key={j}>{token}</span>;
@@ -39,7 +39,7 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
   return <div className="reading-content reading-with-stack"><div className="reading-copy">
     <p className="reading-help">Tap a word for its meaning.</p>
     {sentenceRows && <button type="button" className="reading-translation-toggle" aria-pressed={showTranslations} onClick={() => setShowTranslations(value => !value)}>{showTranslations ? 'Hide English translations' : 'Show English translations'}</button>}
-    <TooltipProvider delayDuration={100}><article lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
+    <TooltipProvider delayDuration={100}><article ref={registerText} lang="de" className={`reading-prose reading-prose-${story.level.toLowerCase()}`}>
       {sentenceRows ? sentenceRows.map((paragraph, index) => <div className="reading-sentence-paragraph" key={index}>
         {paragraph.map((sentence, sentenceIndex) => <div className="reading-sentence" key={sentenceIndex}>
           <p lang="de">{renderWords(sentence.parts, sentence.de)}</p>
