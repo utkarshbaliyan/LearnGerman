@@ -222,6 +222,12 @@ learner account is authorized for deletion testing.
    AI latency/429/503 rates. The server is a single SQLite host. Configure provider
    billing controls and review actual cost per activity; 200 calls can have
    different costs. Budget notifications alone do not stop expenditure.
+   The owner selected **INR 600 per month for AI** on 24 October 2026. This is a
+   requested budget, not a verified configured limit. The existing AWS USD 6
+   account budget is separate and sends notifications only. OpenAI now documents
+   an optional [enforced project spend limit](https://developers.openai.com/api/docs/guides/spend-limits);
+   verify it in the project that owns the runtime key, allowing for currency,
+   taxes and delayed enforcement before claiming the INR budget is protected.
 5. **Learning review:** have a German teacher review the initial path, recordings
    and false corrections, then run the learner pilot in `reception/REVIEW.md` and
    `TUTOR-PILOT.md`. Keep validation/fluency claims out until supported.
