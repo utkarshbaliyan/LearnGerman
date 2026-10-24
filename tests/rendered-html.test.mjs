@@ -41,6 +41,7 @@ test("Home offers compact Flashcards and Review cards and preserves review bookm
   assert.match(todayHtml, /aria-label="Flashcards and Review"/);
   assert.match(todayHtml, /Practice flashcards/);
   assert.match(todayHtml, /Open review/);
+  assert.doesNotMatch(todayHtml, /href="\/active-learning"|data-area="active"/);
   assert.doesNotMatch(todayHtml, /role="tablist"|aria-label="Today and Review"/);
   const oldReview = await renderRoute('/review');
   assert.equal(oldReview.status, 307);
@@ -52,7 +53,7 @@ test("Home offers compact Flashcards and Review cards and preserves review bookm
   assert.equal(stories.status, 200);
   const html = await stories.text();
   assert.match(html, /<main class="reading-path">/);
-  assert.match(html, /Active Learning/);
+  assert.doesNotMatch(html, /href="\/active-learning"/);
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
 
@@ -173,11 +174,10 @@ test("grammar exposes complete, accessible case recall tables without loading ex
 });
 
 
-test("renders translation practice with five levels and redirects retired task links", async () => {
+test("shows paused Active Learning without practice controls and redirects retired task links", async () => {
   const home = await renderRoute("/active-learning"); assert.equal(home.status, 200);
-  const html = await home.text(); assert.match(html, /<main class="active-learning translation-page">/); assert.match(html, /Generate sentences/);
-  for (const level of ["A1", "A2", "B1", "B2", "C1"]) assert.ok(html.includes(`>${level}</button>`));
-  assert.match(html, /<option value="12">12(?:<!-- -->)? (?:<!-- -->)?sentences<\/option>/); assert.doesNotMatch(html, /active-a1-m01|German you can use|MODULE|Try a new introduction/);
+  const html = await home.text(); assert.match(html, /<main class="active-learning translation-page">/); assert.match(html, /Active Learning is paused/); assert.doesNotMatch(html, /Generate sentences|href="\/active-learning"/);
+  assert.doesNotMatch(html, /<textarea|type="file"|Start recording/); assert.doesNotMatch(html, /active-a1-m01|German you can use|MODULE|Try a new introduction/);
   for (const id of ["active-a1-m01-l01-v1", "active-a2-m09-l03-v1", "active-b1-m12-l04-v1"]) {
     const old = await renderRoute(`/active-learning/${id}`); assert.equal(old.status, 307); assert.equal(new URL(old.headers.get("location"), "http://localhost").pathname, "/active-learning");
   }

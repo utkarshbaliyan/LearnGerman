@@ -25,8 +25,8 @@ it. This checklist separates implemented code from production verification.
   replacement or UserData update. All three alarms subsequently reported OK.
 - The operator confirmed the SNS subscription for `leselaut.team@gmail.com`.
   A clearly labelled simulated alarm and its recovery successfully executed SNS
-  actions. Actual inbox receipt still needs owner confirmation; no service
-  failure was induced.
+  actions. The owner subsequently confirmed receiving both ALARM and OK messages
+  in the support inbox on 24 October; no service failure was induced.
 - The owner selected AWS SES. Its support sender is verified, Mumbai production
   access was granted, feedback forwarding remains enabled, and account-level
   suppression covers bounces and complaints. A dedicated SMTP identity can send
@@ -59,8 +59,8 @@ it. This checklist separates implemented code from production verification.
 - Fresh API sign-in verified email confirmation. Two independently signed-in
   sessions read the same saved test progress; a mismatched progress owner was
   rejected with 409. Account and export ownership matched the disposable identity.
-  The signup was an API transport test using an implicit callback; the current
-  browser PKCE flow still needs its own end-to-end verification.
+  That signup was an API transport test using an implicit callback. The later
+  owner-reported browser lifecycle pass is recorded under device verification.
 - The owner saved the new `leselaut_account_deletion` key privately. Its format,
   dashboard prefix and a non-existent-user admin request were checked without
   printing the credential or reading other identities. It is now installed in
@@ -109,15 +109,59 @@ it. This checklist separates implemented code from production verification.
 - These checks establish retirement of the older API-key paths. The exact value
   of the historical exposure was not recovered. JWT signing keys were not rotated.
 
+### Owner device verification, 24 October 2026
+
+- Story audio initially failed or stopped early on the owner's iPhone in Safari.
+  [PR #5](https://github.com/utkarshbaliyan/LearnGerman/pull/5) deployed AAC versions
+  of all 654 existing A1–B2 recordings and removed per-word passage re-renders.
+  All 213 tests and both builds passed; the
+  [production deployment](https://github.com/utkarshbaliyan/LearnGerman/actions/runs/40072719317)
+  succeeded. Live probes, seeking and tail ranges passed across all four levels.
+  The owner confirmed that the affected story plays fully and smoothly in Safari
+  on their physical iPhone. The exact original decoder failure remains unconfirmed.
+- The owner confirmed the requested progress-sync test: a story completed on
+  iPhone appeared on the laptop after refresh, and the reverse direction worked.
+- In Active Learning, the owner confirmed the microphone test: recording a German
+  translation, stopping/transcribing it, playing the recording and seeing the
+  recognized text worked on the iPhone.
+- The owner confirmed the photo flow: upload a handwritten translation, review
+  and confirm its recognized text, then receive translation feedback.
+- The owner confirmed receipt of both the earlier AWS/CloudWatch ALARM and OK
+  test emails. This verifies the inbox delivery leg separately from the recorded
+  successful SNS actions.
+- The owner confirmed the requested fresh disposable-account flow in iPhone
+  Safari: signup, email confirmation, recovery through a new email link,
+  password update, sign-in with the new password and account deletion.
+
+These are owner-reported functional passes, not an instrumented audit of content
+quality, denied permissions, network failures or every phone/browser combination.
+
 The disposable authentication identity was deleted. Private operator test files
 are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Browser PKCE, fresh-link automatic recovery and
-real-phone/two-device checks remain outstanding. Recovery and deletion verification
-above do not establish public-launch readiness.
+marked complete. No domain was purchased. Fresh Google signup, detailed browser
+cleanup checks, broader device/failure coverage and capacity/cost checks remain
+outstanding. The completed checks above do not
+establish public-launch readiness.
 
-### Private runtime and remaining verification
+### Active Learning paused, 24 October 2026
+
+After the functional checks, the owner requested keeping Active Learning off.
+The encrypted production runtime and ignored local settings now set
+`LESELAUT_AI_ENABLED=0`; the application restarted successfully. The shared
+provider gate rejects outbound AI requests before reserving usage or contacting
+Groq/OpenAI. Existing learner records are retained. The UI hides the navigation
+and home card, and direct or embedded workspaces show a paused message. Reading
+sessions can still finish as reading practice. To resume, explicitly restore the
+UI feature flag and runtime AI gate after reviewing costs.
+
+Groq is the selected provider while its configured key is present; the OpenAI
+key is a configured alternative, not an automatic failover. Groq billing could
+not be inspected without signing in. The owner deferred that setup when pausing
+Active Learning. The requested INR 600/month AI budget remains unconfigured.
+
+### Private runtime configuration
 
 The production runtime now uses the key `leselaut_account_deletion` as
 `SUPABASE_SECRET_KEY`. Its local copy remains in ignored `.env.local`; do not put
@@ -136,8 +180,9 @@ confirmation. They are not the AWS account credentials or the Supabase API key.
 The runtime configurator propagated the key, the root-only service environment
 was refreshed, and the application and retry timer are active. Recovery, deletion,
 stale-token rejection, deleted-identity retry and independent-session API progress
-sync passed with the explicitly disposable identity. Physical-device behavior
-still needs verification. Keep actual
+sync passed with the explicitly disposable identity. Owner-reported phone and
+two-device and fresh email-account lifecycle passes are recorded above; failure
+cases and broader device coverage still need verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
 
@@ -169,31 +214,37 @@ learner account is authorized for deletion testing.
 
 ## Production work still required
 
-1. **Deletion browser verification:** the new server-only credential is installed,
-   and disposable-account API deletion, stale-token rejection and deleted-identity
-   worker retry passed. Check the browser confirmation and cleanup experience on
-   real devices; provider-outage behavior is covered by automated tests.
+1. **Deletion cleanup verification:** disposable-account API deletion, stale-token
+   rejection and deleted-identity worker retry passed. The owner also confirmed
+   disposable-account deletion in iPhone Safari. Audit local-cache and other-device
+   cleanup explicitly; provider-outage behavior is covered by automated tests.
 2. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
-   Recovery completed in the owner browser with manual navigation past the stalled
-   callback. Verify the corrected callback and current browser PKCE flow. Preserve email-confirmation
+   An earlier recovery needed manual navigation past a stalled callback; after the
+   fixes, the owner confirmed a fresh browser signup and recovery flow through a
+   new email link, including new-password sign-in. Preserve email-confirmation
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
-3. **Operations verification:** backup and alarm infrastructure is active, but
-   actual alert inbox receipt still needs owner confirmation. The retry worker
-   completed an intentionally requeued, already-deleted disposable identity;
-   no real provider outage was induced.
-4. **Fresh accounts and devices:** test a fresh Google account, email account,
-   recovery, sync between two devices, microphone/photo consent and failures on
-   common phones. Test deletion only with an explicitly disposable test identity.
+3. **Fresh accounts and devices:** test a fresh Google account. Fresh email signup,
+   recovery, new-password sign-in and deletion passed in the owner's iPhone Safari
+   test. Story audio, two-device progress sync, microphone/transcription and
+   photo/feedback also passed on the owner's iPhone.
+   Permission denial, network failures and broader device coverage still need
+   checks. Test deletion only with an explicitly disposable test identity.
    An existing-account Google login and an isolated AWS backup restore were
    already documented; those do not cover these new flows.
-5. **Capacity and cost:** measure realistic authenticated production traffic and
+4. **Capacity and cost:** measure realistic authenticated production traffic and
    AI latency/429/503 rates. The server is a single SQLite host. Configure provider
    billing controls and review actual cost per activity; 200 calls can have
    different costs. Budget notifications alone do not stop expenditure.
-6. **Learning review:** have a German teacher review the initial path, recordings
+   The owner selected **INR 600 per month for AI** on 24 October 2026. This is a
+   requested budget, not a verified configured limit. The existing AWS USD 6
+   account budget is separate and sends notifications only. OpenAI now documents
+   an optional [enforced project spend limit](https://developers.openai.com/api/docs/guides/spend-limits);
+   verify it in the project that owns the runtime key, allowing for currency,
+   taxes and delayed enforcement before claiming the INR budget is protected.
+5. **Learning review:** have a German teacher review the initial path, recordings
    and false corrections, then run the learner pilot in `reception/REVIEW.md` and
    `TUTOR-PILOT.md`. Keep validation/fluency claims out until supported.
 
