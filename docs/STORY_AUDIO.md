@@ -63,3 +63,8 @@ with a visible passage-render count. This validates playback and removal of
 repeated passage renders; it does not replace a pass on the owner's physical
 iPhone. After deployment, test play through the final sentence, pause/resume,
 restart, seeking and speed changes in Safari on that phone.
+
+On 24 October 2026 the owner confirmed that the affected story plays fully and
+smoothly in Safari on their physical iPhone. Production deployment and live
+A1–B2 media delivery checks also passed. This confirms the reported playback
+problem is resolved on that device; it does not establish coverage of all phones.

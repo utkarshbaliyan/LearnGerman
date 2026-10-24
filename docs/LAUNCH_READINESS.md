@@ -25,8 +25,8 @@ it. This checklist separates implemented code from production verification.
   replacement or UserData update. All three alarms subsequently reported OK.
 - The operator confirmed the SNS subscription for `leselaut.team@gmail.com`.
   A clearly labelled simulated alarm and its recovery successfully executed SNS
-  actions. Actual inbox receipt still needs owner confirmation; no service
-  failure was induced.
+  actions. The owner subsequently confirmed receiving both ALARM and OK messages
+  in the support inbox on 24 October; no service failure was induced.
 - The owner selected AWS SES. Its support sender is verified, Mumbai production
   access was granted, feedback forwarding remains enabled, and account-level
   suppression covers bounces and complaints. A dedicated SMTP identity can send
@@ -109,13 +109,38 @@ it. This checklist separates implemented code from production verification.
 - These checks establish retirement of the older API-key paths. The exact value
   of the historical exposure was not recovered. JWT signing keys were not rotated.
 
+### Owner device verification, 24 October 2026
+
+- Story audio initially failed or stopped early on the owner's iPhone in Safari.
+  [PR #5](https://github.com/utkarshbaliyan/LearnGerman/pull/5) deployed AAC versions
+  of all 654 existing A1–B2 recordings and removed per-word passage re-renders.
+  All 213 tests and both builds passed; the
+  [production deployment](https://github.com/utkarshbaliyan/LearnGerman/actions/runs/40072719317)
+  succeeded. Live probes, seeking and tail ranges passed across all four levels.
+  The owner confirmed that the affected story plays fully and smoothly in Safari
+  on their physical iPhone. The exact original decoder failure remains unconfirmed.
+- The owner confirmed the requested progress-sync test: a story completed on
+  iPhone appeared on the laptop after refresh, and the reverse direction worked.
+- In Active Learning, the owner confirmed the microphone test: recording a German
+  translation, stopping/transcribing it, playing the recording and seeing the
+  recognized text worked on the iPhone.
+- The owner confirmed the photo flow: upload a handwritten translation, review
+  and confirm its recognized text, then receive translation feedback.
+- The owner confirmed receipt of both the earlier AWS/CloudWatch ALARM and OK
+  test emails. This verifies the inbox delivery leg separately from the recorded
+  successful SNS actions.
+
+These are owner-reported functional passes, not an instrumented audit of content
+quality, denied permissions, network failures or every phone/browser combination.
+
 The disposable authentication identity was deleted. Private operator test files
 are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Browser PKCE, fresh-link automatic recovery and
-real-phone/two-device checks remain outstanding. Recovery and deletion verification
-above do not establish public-launch readiness.
+marked complete. No domain was purchased. Fresh-browser PKCE, automatic recovery
+from a new link, browser deletion cleanup, broader device/failure coverage and
+capacity/cost checks remain outstanding. The completed checks above do not
+establish public-launch readiness.
 
 ### Private runtime and remaining verification
 
@@ -136,8 +161,9 @@ confirmation. They are not the AWS account credentials or the Supabase API key.
 The runtime configurator propagated the key, the root-only service environment
 was refreshed, and the application and retry timer are active. Recovery, deletion,
 stale-token rejection, deleted-identity retry and independent-session API progress
-sync passed with the explicitly disposable identity. Physical-device behavior
-still needs verification. Keep actual
+sync passed with the explicitly disposable identity. Owner-reported phone and
+two-device passes are recorded above; fresh-account lifecycle and failure cases
+still need verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
 
@@ -180,20 +206,18 @@ learner account is authorized for deletion testing.
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
-3. **Operations verification:** backup and alarm infrastructure is active, but
-   actual alert inbox receipt still needs owner confirmation. The retry worker
-   completed an intentionally requeued, already-deleted disposable identity;
-   no real provider outage was induced.
-4. **Fresh accounts and devices:** test a fresh Google account, email account,
-   recovery, sync between two devices, microphone/photo consent and failures on
-   common phones. Test deletion only with an explicitly disposable test identity.
+3. **Fresh accounts and devices:** test a fresh Google account, email account,
+   recovery and deletion cleanup. Story audio, two-device progress sync,
+   microphone/transcription and photo/feedback passed on the owner's iPhone.
+   Permission denial, network failures and broader device coverage still need
+   checks. Test deletion only with an explicitly disposable test identity.
    An existing-account Google login and an isolated AWS backup restore were
    already documented; those do not cover these new flows.
-5. **Capacity and cost:** measure realistic authenticated production traffic and
+4. **Capacity and cost:** measure realistic authenticated production traffic and
    AI latency/429/503 rates. The server is a single SQLite host. Configure provider
    billing controls and review actual cost per activity; 200 calls can have
    different costs. Budget notifications alone do not stop expenditure.
-6. **Learning review:** have a German teacher review the initial path, recordings
+5. **Learning review:** have a German teacher review the initial path, recordings
    and false corrections, then run the learner pilot in `reception/REVIEW.md` and
    `TUTOR-PILOT.md`. Keep validation/fluency claims out until supported.
 
