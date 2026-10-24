@@ -10,12 +10,18 @@ import { LEVEL_GUIDANCE, TRANSLATION_LEVELS, photoAnswers, sameAnswers, type Tra
 import { TranslationRecording } from './translation-recording';
 import type { TranslationLearningContext } from '@/app/lib/translation-practice';
 import { TUTOR_PATTERNS } from '@/app/lib/tutor-patterns';
+import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
+import { ActiveLearningPaused } from '@/app/components/active-learning-paused';
 
 type Mode = 'write' | 'speak' | 'photo';
 type Recent = NonNullable<TranslationResponse['recent']>;
 const endpoint = '/api/active-learning/translation';
 const cacheKey = (owner: string, exercise: string) => `leselaut:translation-draft:v1:${owner}:${exercise}`;
-export function TranslationWorkspace({ learning, preferredLevel = 'A1', preferredCount = 1, savedExerciseId, onRecord }: { learning?: TranslationLearningContext; preferredLevel?: TranslationLevel; preferredCount?: number; savedExerciseId?: string; onRecord?: (record: TranslationRecord) => void } = {}) {
+type WorkspaceProps = { learning?: TranslationLearningContext; preferredLevel?: TranslationLevel; preferredCount?: number; savedExerciseId?: string; onRecord?: (record: TranslationRecord) => void };
+export function TranslationWorkspace(props: WorkspaceProps = {}) {
+  return ACTIVE_LEARNING_ENABLED ? <TranslationWorkspaceContent {...props} /> : <ActiveLearningPaused />;
+}
+function TranslationWorkspaceContent({ learning, preferredLevel = 'A1', preferredCount = 1, savedExerciseId, onRecord }: WorkspaceProps) {
   const inputPrefix = useId();
   const [usedHelp, setUsedHelp] = useState(false);
   const [allowance, setAllowance] = useState<TranslationAllowance | null>(null);

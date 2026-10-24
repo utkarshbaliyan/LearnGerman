@@ -8,6 +8,7 @@ import { readCourseProgress, readGrammarProgress, VOCABULARY_LEGACY_STORAGE_KEYS
 import { grammarOverview, type HomeGrammarLesson, type VocabularyOverview } from '@/app/lib/home-progress';
 import type { ReadingSummary } from '@/app/lib/reading-path';
 import type { TranslationMemory } from '@/app/lib/translation-memory';
+import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
 
 const number = (n: number) => n.toLocaleString('en');
 function Meter({ value, total, label }: { value: number; total: number; label: string }) {
@@ -79,13 +80,13 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
           {words ? <><div className="home-word-meter" role="img" aria-label={`${words.learned} learned, ${words.review} in review, ${words.unlearned} unlearned`}><span className="is-learned" style={{ width: `${words.total ? words.learned / words.total * 100 : 0}%` }} /><span className="is-review" style={{ width: `${words.total ? words.review / words.total * 100 : 0}%` }} /><span className="is-unlearned" style={{ width: `${words.total ? words.unlearned / words.total * 100 : 0}%` }} /></div><dl className="home-word-counts"><div><dt>Learned</dt><dd>{number(words.learned)}</dd></div><div><dt>Review</dt><dd>{number(words.review)}</dd></div><div><dt>Unlearned</dt><dd>{number(words.unlearned)}</dd></div></dl></> : <p role="status">Loading your word progress…</p>}
         </>}<div className="home-section-footer"><a href="/?view=review">Practise your review deck</a><Link href="/vocabulary">Open word library <ArrowUpRight aria-hidden="true" /></Link></div></div>
       </article>
-      <article className="home-section-card" data-area="active" aria-labelledby="home-active-title">
+      {ACTIVE_LEARNING_ENABLED && <article className="home-section-card" data-area="active" aria-labelledby="home-active-title">
         <div className="home-section-art"><img src="/illustrations/home-active-learning.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div className="home-section-copy"><span className="home-section-label"><PenLine aria-hidden="true" /> Put German to use · A1–C1</span><h3 id="home-active-title">Active Learning</h3><p>Translate fresh sentences by typing, speaking or handwriting. Check your work and revise with AI feedback.</p></div>
         <div className="home-section-progress">{memoryLoading ? <p role="status">Loading your saved practice…</p> : !signedIn ? <p className="home-active-empty"><Link href="/account">Sign in</Link> to see saved translation practice and feedback.</p> : memoryError || !activity ? <p className="home-section-error">Practice progress is unavailable. Open Active Learning to reload your history.</p> : <>
           <div className="home-section-stat"><strong>{number(activity.checkedSets)}</strong><span>of {number(activity.savedSets)} saved sets checked</span></div><Meter value={activity.checkedSets} total={activity.savedSets} label={`Active Learning: ${activity.checkedSets} of ${activity.savedSets} saved sets checked`} /><div className="home-active-counts"><span><b>{number(activity.checkedSentences)}</b> sentences checked</span><span><b>{number(memory?.due ?? 0)}</b> mistake reviews due</span></div><p className="home-activity-note">Recent saved practice, up to 200 sets. Activity counts include helped attempts.</p>
         </>}<div className="home-section-footer"><span>Turn feedback into another attempt.</span><Link href="/active-learning">Practise German <ArrowUpRight aria-hidden="true" /></Link></div></div>
-      </article>
+      </article>}
     </div>
   </section>;
 }

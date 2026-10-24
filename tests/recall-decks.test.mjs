@@ -3,7 +3,7 @@ import test, { after } from 'node:test';
 import { createServer } from 'vite';
 import { createElement, Fragment } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, ws: false, watch: null } });
+const vite = await createServer({ configFile: false, plugins: [{ name: 'enabled-workspace-forms', enforce: 'pre', transform(code, id) { if (id.endsWith('/app/lib/feature-availability.ts')) return code.replace('ACTIVE_LEARNING_ENABLED = false', 'ACTIVE_LEARNING_ENABLED = true'); } }], resolve: { alias: { '@': process.cwd() } }, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, ws: false, watch: null } });
 after(() => vite.close());
 const p = await vite.ssrLoadModule('/app/lib/recall-decks.ts');
 const learning = await vite.ssrLoadModule('/app/lib/learning-state.ts');

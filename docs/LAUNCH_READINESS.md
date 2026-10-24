@@ -145,7 +145,23 @@ cleanup checks, broader device/failure coverage and capacity/cost checks remain
 outstanding. The completed checks above do not
 establish public-launch readiness.
 
-### Private runtime and remaining verification
+### Active Learning paused, 24 October 2026
+
+After the functional checks, the owner requested keeping Active Learning off.
+The encrypted production runtime and ignored local settings now set
+`LESELAUT_AI_ENABLED=0`; the application restarted successfully. The shared
+provider gate rejects outbound AI requests before reserving usage or contacting
+Groq/OpenAI. Existing learner records are retained. The UI hides the navigation
+and home card, and direct or embedded workspaces show a paused message. Reading
+sessions can still finish as reading practice. To resume, explicitly restore the
+UI feature flag and runtime AI gate after reviewing costs.
+
+Groq is the selected provider while its configured key is present; the OpenAI
+key is a configured alternative, not an automatic failover. Groq billing could
+not be inspected without signing in. The owner deferred that setup when pausing
+Active Learning. The requested INR 600/month AI budget remains unconfigured.
+
+### Private runtime configuration
 
 The production runtime now uses the key `leselaut_account_deletion` as
 `SUPABASE_SECRET_KEY`. Its local copy remains in ignored `.env.local`; do not put
