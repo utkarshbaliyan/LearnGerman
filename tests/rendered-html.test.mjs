@@ -26,6 +26,13 @@ async function renderRoute(pathname) {
   );
 }
 
+function assertStoryAudio(html) {
+  const audio=html.match(/<audio\b[^>]*>[\s\S]*?<\/audio>/)?.[0]??'';
+  assert.match(audio,/<source[^>]+src="\/media\/stories\/compatible\/reading-[^"]+\.m4a"[^>]+type="audio\/mp4"/);
+  assert.match(audio,/<source[^>]+src="\/audio\/reading\/reading-[^"]+\.webm"[^>]+type="audio\/webm"/);
+  assert.ok(audio.indexOf('type="audio/mp4"')<audio.indexOf('type="audio/webm"'),'the compatible recording must be selected first');
+}
+
 test("Home offers compact Flashcards and Review cards and preserves review bookmarks and the story library", async () => {
   const response = await renderRoute("/");
   assert.equal(response.status, 200);
@@ -193,7 +200,7 @@ test("renders the graded reading path and independent story pages", async () => 
     assert.match(html, /Check my answers/);
     assert.doesNotMatch(html, /Notice the grammar|Practice this grammar|useful words &amp; phrases/);
     assert.doesNotMatch(html, /src=["'][^"']*story-\d+\.webm/);
-    assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
+    assertStoryAudio(html);
     assert.match(html, /aria-label="Narration speed"/);
     assert.match(html, /data-reading-word="0"/);
     assert.doesNotMatch(html, /Device voice/);
@@ -204,7 +211,7 @@ test("renders the graded reading path and independent story pages", async () => 
     const html = await response.text();
     assert.match(html, /Comprehension quiz/);
     assert.doesNotMatch(html, /Notice the grammar|Open grammar recall tables/);
-    assert.match(html, /<audio[^>]+\/audio\/reading\/reading-/);
+    assertStoryAudio(html);
     assert.doesNotMatch(html, /Narration is unavailable/);
     assert.ok(html.replace(/<!--.*?-->/gs, "").includes(`${total}/${total}`));
   }
