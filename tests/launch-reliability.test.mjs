@@ -105,3 +105,46 @@ test('deletion removes both draft formats and prevents an in-flight sync from re
   assert.equal(localStorage.getItem('leselaut:theme'), 'dark'); assert.equal(localStorage.getItem('leselaut:translation-draft:v1:bob:other'), 'other owner');
   assert.equal((await synchronizeCloudProgress()).synced, false); assert.equal(writes, 1, 'a deleted identity cannot replay queued progress');
 }));
+
+test('a late progress response after sign-out cannot restore the signed-out account cache', async () => fixture(async (vite, save) => {
+  const keys = await vite.ssrLoadModule('/app/lib/cloud-progress-keys.ts');
+  const { synchronizeCloudProgress } = await vite.ssrLoadModule('/app/lib/cloud-progress.ts');
+  let release, entered;
+  const started = new Promise(resolve => { entered = resolve; });
+  localStorage.setItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY, 'alice');
+  globalThis.fetch = async () => { entered(); return new Promise(resolve => { release = resolve; }); };
+  const old = synchronizeCloudProgress(); await started;
+  save.clearPendingProgress(); save.setCloudAuthenticated(false);
+  localStorage.removeItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY);
+  release(Response.json({ userId: 'alice', progress: { stories: ['private-alice-story'] } }));
+  assert.equal((await old).synced, false);
+  assert.equal(localStorage.getItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY), null);
+  for (const key of Object.values(keys.PROGRESS_STORAGE_KEYS)) assert.equal(localStorage.getItem(key), null);
+}));
+
+test('account switching starts a fresh sync and ignores the previous account delayed response', async () => fixture(async (vite, save) => {
+  const keys = await vite.ssrLoadModule('/app/lib/cloud-progress-keys.ts');
+  const { synchronizeCloudProgress } = await vite.ssrLoadModule('/app/lib/cloud-progress.ts');
+  const { mergeProgress } = await vite.ssrLoadModule('/app/lib/progress-merge.ts');
+  let release, entered, first = true;
+  const started = new Promise(resolve => { entered = resolve; });
+  let bob = { stories: ['bob-remote'] };
+  globalThis.fetch = async (_url, init) => {
+    if (first) { first = false; entered(); return new Promise(resolve => { release = resolve; }); }
+    if (!init.method) return Response.json({ userId: 'bob', progress: bob });
+    assert.equal(init.headers.get('x-progress-owner'), 'bob');
+    const { scope, data } = JSON.parse(init.body); bob[scope] = mergeProgress(scope, data, bob[scope]);
+    return Response.json({ userId: 'bob', data: bob[scope] });
+  };
+  localStorage.setItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY, 'alice');
+  const old = synchronizeCloudProgress(); await started;
+  save.clearPendingProgress();
+  localStorage.setItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY, 'bob');
+  localStorage.setItem(keys.PROGRESS_STORAGE_KEYS.stories, '["bob-local"]');
+  globalThis.__reliabilitySession = async () => ({ data: { session: { access_token: 'bob-token', user: { id: 'bob' } } }, error: null });
+  assert.equal((await synchronizeCloudProgress()).synced, true, 'the new account must not inherit the old pending sync promise');
+  release(Response.json({ userId: 'alice', progress: { stories: ['alice-private'] } }));
+  assert.equal((await old).synced, false);
+  assert.equal(localStorage.getItem(keys.CLOUD_PROGRESS_OWNER_STORAGE_KEY), 'bob');
+  assert.deepEqual(Object.keys(JSON.parse(localStorage.getItem(keys.PROGRESS_STORAGE_KEYS.stories)).entries).sort(), ['bob-local', 'bob-remote']);
+}));

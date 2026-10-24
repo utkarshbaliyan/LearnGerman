@@ -49,6 +49,11 @@ on retry. Session lookup and normal authenticated HTTP requests now have deadlin
 callers with a longer explicit signal retain that deadline. Sync status provides
 an explicit retry action.
 
+Account changes invalidate in-flight synchronization and queued saves. Tests also
+delay a response until after sign-out or a second account's completed sync and
+verify that the old reply cannot restore the signed-out account or overwrite the
+new owner's cache.
+
 Deletion now removes both legacy tutor drafts and current translation drafts.
 Sign-out and account switching clear the previous owner's drafts too. Tests check
 that another owner's draft and the theme setting remain, while late sync replies

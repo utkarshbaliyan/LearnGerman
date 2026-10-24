@@ -47,6 +47,7 @@ export function CloudProgressSync() {
         return;
       }
       if (event === "SIGNED_IN" || event === "INITIAL_SESSION" || userId !== activeUserId) {
+        if (userId !== activeUserId) clearPendingProgress();
         activeUserId = userId;
         synchronize();
       } else if (event === "TOKEN_REFRESHED") {

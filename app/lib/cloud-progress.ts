@@ -8,6 +8,7 @@ import {
 import {
   acknowledgeCloudProgress,
   clearPendingProgress,
+  cloudProgressGeneration,
   pauseCloudProgressSaves,
   putCloudProgress,
   queuedCloudProgressRevision,
@@ -40,14 +41,21 @@ function readLocal(scope: CloudProgressScope) {
 }
 
 async function performCloudSynchronization() {
+  const generation = cloudProgressGeneration();
   pauseCloudProgressSaves();
   try {
     const response = await authenticatedFetch("/api/progress", { cache: "no-store" });
+    if (generation !== cloudProgressGeneration()) {
+      resumeCloudProgressSaves(undefined); return { authenticated: false, synced: false };
+    }
     if (!response.ok) {
       resumeCloudProgressSaves(response.status === 401 ? false : null);
       return { authenticated: false, synced: false };
     }
     const payload = await response.json() as { progress?: Record<string, unknown>; userId?: string };
+    if (generation !== cloudProgressGeneration()) {
+      resumeCloudProgressSaves(undefined); return { authenticated: false, synced: false };
+    }
     const remote = payload.progress ?? {};
     if (!payload.userId) throw new Error("Authenticated progress response did not include an account ID.");
     if (accountWasDeleted(localStorage, payload.userId)) {
@@ -57,7 +65,7 @@ async function performCloudSynchronization() {
     const localOwner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
     const canMergeLocal = !localOwner || localOwner === payload.userId;
     if (!canMergeLocal) {
-      clearPendingProgress();
+      clearPendingProgress(false);
       clearAccountDrafts(localStorage, localOwner);
       for (const key of Object.values(STORAGE_KEYS)) localStorage.removeItem(key);
       window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT));
@@ -70,8 +78,8 @@ async function performCloudSynchronization() {
       const merged = mergeProgress(scope, local, remote[scope]);
       const saved = JSON.stringify(merged) === JSON.stringify(remote[scope]) ? { data: merged }
         : await putCloudProgress(scope, merged, payload.userId);
-      if (accountWasDeleted(localStorage, payload.userId) || localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY) !== payload.userId) {
-        resumeCloudProgressSaves(false);
+      if (generation !== cloudProgressGeneration() || accountWasDeleted(localStorage, payload.userId) || localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY) !== payload.userId) {
+        resumeCloudProgressSaves(generation !== cloudProgressGeneration() ? undefined : false);
         return { authenticated: false, synced: false };
       }
       // Include actions taken while the network request was in flight.
@@ -84,16 +92,19 @@ async function performCloudSynchronization() {
     window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT));
     return { authenticated: true, synced: true };
   } catch (error) {
-    resumeCloudProgressSaves(null);
+    resumeCloudProgressSaves(generation !== cloudProgressGeneration() ? undefined : null);
     throw error;
   }
 }
 
 let activeSynchronization: Promise<{ authenticated: boolean; synced: boolean }> | null = null;
+let activeGeneration = -1;
 
 export function synchronizeCloudProgress() {
-  if (!activeSynchronization) {
-    activeSynchronization = performCloudSynchronization().finally(() => { activeSynchronization = null; });
+  if (!activeSynchronization || activeGeneration !== cloudProgressGeneration()) {
+    activeGeneration = cloudProgressGeneration();
+    const current = performCloudSynchronization().finally(() => { if (activeSynchronization === current) activeSynchronization = null; });
+    activeSynchronization = current;
   }
   return activeSynchronization;
 }
