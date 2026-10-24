@@ -19,7 +19,7 @@ import { BOOK_BOOKMARK_STORAGE_KEY } from './book-bookmark';
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { mergeProgress } from "./progress-merge";
 import { LEARNING_STORAGE_KEY } from './learning-state';
-import { accountWasDeleted } from './account-storage';
+import { accountWasDeleted, clearAccountDrafts } from './account-storage';
 
 export { PROGRESS_SYNCED_EVENT, STORY_PROGRESS_STORAGE_KEY } from "@/app/lib/cloud-progress-keys";
 
@@ -58,6 +58,7 @@ async function performCloudSynchronization() {
     const canMergeLocal = !localOwner || localOwner === payload.userId;
     if (!canMergeLocal) {
       clearPendingProgress();
+      clearAccountDrafts(localStorage, localOwner);
       for (const key of Object.values(STORAGE_KEYS)) localStorage.removeItem(key);
       window.dispatchEvent(new CustomEvent(PROGRESS_SYNCED_EVENT));
     }

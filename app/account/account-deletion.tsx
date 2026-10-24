@@ -4,6 +4,7 @@ import { supabase } from '@/app/lib/supabase-client';
 import { authenticatedFetch } from '@/app/lib/authenticated-fetch';
 import { clearAccountStorage } from '@/app/lib/account-storage';
 import { clearPendingProgress, setCloudAuthenticated } from '@/app/lib/cloud-progress-save';
+import { browserSession } from '@/app/lib/browser-session';
 
 export function AccountDeletion({ userId, email }: { userId: string; email: string }) {
   const [open, setOpen] = useState(false);
@@ -14,8 +15,8 @@ export function AccountDeletion({ userId, email }: { userId: string; email: stri
     const form = new FormData(event.currentTarget);
     setBusy(true); setMessage('');
     try {
-      const { data } = await supabase.auth.getSession();
-      if (data.session?.user.id !== userId) throw new Error('Account changed. Reload before continuing.');
+      const session = await browserSession();
+      if (session?.user.id !== userId) throw new Error('Account changed. Reload before continuing.');
       const response = await authenticatedFetch('/api/account/delete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: form.get('email'), confirmation: form.get('confirmation') }) });
       const payload = await response.json() as { error?: string; status?: string };
       if (!response.ok) throw new Error(payload.error ?? 'Deletion could not be confirmed.');
