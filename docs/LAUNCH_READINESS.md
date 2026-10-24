@@ -65,7 +65,7 @@ it. This checklist separates implemented code from production verification.
   dashboard prefix and a non-existent-user admin request were checked without
   printing the credential or reading other identities. It is now installed in
   encrypted AWS runtime; the service is healthy and the retry worker ran
-  successfully with no pending rows. Existing-key revocation remains unverified.
+  successfully with no pending rows. The later credential retirement is recorded below.
 - The first recovery link opened the site instead of the reset form. The
   dashboard allowed `/auth/confirm` but omitted the recovery request's
   `?intent=recovery` variant. Both supported origins now have that explicit
@@ -87,12 +87,33 @@ it. This checklist separates implemented code from production verification.
   Replaying only that already-deleted identity through the scheduled worker
   completed successfully and left all four tables empty. This verifies idempotent
   retry after provider deletion, not a simulated provider outage.
+- [PR #3](https://github.com/utkarshbaliyan/LearnGerman/pull/3) merged as
+  `9379ec20066a02ec254dfce9f1f3ad448934515f`. The
+  [main deployment](https://github.com/utkarshbaliyan/LearnGerman/actions/runs/40070065992)
+  passed all build/test/deployment steps. A local browser test with deliberately
+  stalled authentication displayed the timeout and recovery links. Live callback
+  error handling displayed its navigation options, and all nine read-only launch
+  checks passed on both supported site origins.
+
+### Credential retirement, 24 October 2026
+
+- The owner deleted the older secret API key named `default`. A dashboard reload
+  verified it was absent while the publishable key and `leselaut_account_deletion`
+  remained. The owner then disabled legacy JWT-based API keys. After reloading,
+  the legacy-key page offered **Re-enable JWT-based API keys**, confirming the
+  disabled state.
+- The retained publishable key still returned 200 for Auth settings, with email
+  confirmation required. The replacement server secret returned 404 for a random,
+  non-existent admin user, confirming credential acceptance without reading any
+  learner identity. No key values were printed or committed.
+- These checks establish retirement of the older API-key paths. The exact value
+  of the historical exposure was not recovered. JWT signing keys were not rotated.
 
 The disposable authentication identity was deleted. Private operator test files
 are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Browser PKCE, corrected callback and
+marked complete. No domain was purchased. Browser PKCE, fresh-link automatic recovery and
 real-phone/two-device checks remain outstanding. Recovery and deletion verification
 above do not establish public-launch readiness.
 
@@ -100,9 +121,10 @@ above do not establish public-launch readiness.
 
 The production runtime now uses the key `leselaut_account_deletion` as
 `SUPABASE_SECRET_KEY`. Its local copy remains in ignored `.env.local`; do not put
-it in a chat, screenshot, PR or source file. Identify the previously exposed key
-and its consumers separately before revocation. Creating a replacement does not
-revoke either an old secret or legacy `service_role` key.
+it in a chat, screenshot, PR or source file. The older secret was deleted and
+legacy `anon`/`service_role` API-key access disabled separately; creating a
+replacement by itself would not revoke them. Known application consumers use the
+retained keys. Do not re-enable retired credentials to work around a stale client.
 
 For [Supabase SMTP configuration](https://supabase.com/dashboard/project/npnzojbbwwdtujuurkmx/auth/smtp),
 the saved public settings are sender `leselaut.team@gmail.com`, name
@@ -147,35 +169,31 @@ learner account is authorized for deletion testing.
 
 ## Production work still required
 
-1. **Supabase secret rotation:** the earlier operations note records a disclosed
-   secret with unverified revocation. Determine exactly which key was exposed,
-   check its consumers and revoke it safely. A new OpenAI key does not fix a
-   Supabase exposure. Do not paste either secret into chat or GitHub.
-2. **Deletion browser verification:** the new server-only credential is installed,
+1. **Deletion browser verification:** the new server-only credential is installed,
    and disposable-account API deletion, stale-token rejection and deleted-identity
    worker retry passed. Check the browser confirmation and cleanup experience on
    real devices; provider-outage behavior is covered by automated tests.
-3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
+2. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
    Recovery completed in the owner browser with manual navigation past the stalled
    callback. Verify the corrected callback and current browser PKCE flow. Preserve email-confirmation
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
-4. **Operations verification:** backup and alarm infrastructure is active, but
+3. **Operations verification:** backup and alarm infrastructure is active, but
    actual alert inbox receipt still needs owner confirmation. The retry worker
    completed an intentionally requeued, already-deleted disposable identity;
    no real provider outage was induced.
-5. **Fresh accounts and devices:** test a fresh Google account, email account,
+4. **Fresh accounts and devices:** test a fresh Google account, email account,
    recovery, sync between two devices, microphone/photo consent and failures on
    common phones. Test deletion only with an explicitly disposable test identity.
    An existing-account Google login and an isolated AWS backup restore were
    already documented; those do not cover these new flows.
-6. **Capacity and cost:** measure realistic authenticated production traffic and
+5. **Capacity and cost:** measure realistic authenticated production traffic and
    AI latency/429/503 rates. The server is a single SQLite host. Configure provider
    billing controls and review actual cost per activity; 200 calls can have
    different costs. Budget notifications alone do not stop expenditure.
-7. **Learning review:** have a German teacher review the initial path, recordings
+6. **Learning review:** have a German teacher review the initial path, recordings
    and false corrections, then run the learner pilot in `reception/REVIEW.md` and
    `TUTOR-PILOT.md`. Keep validation/fluency claims out until supported.
 

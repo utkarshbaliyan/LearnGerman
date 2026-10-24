@@ -3,8 +3,8 @@
 Historical Sites/D1 notes. AWS is now authoritative; see
 [AWS hosting](AWS_HOSTING.md) and the current
 [launch-readiness checklist](LAUNCH_READINESS.md) for the new deletion workflow
-and outstanding production setup. The secret-rotation warning below remains
-unresolved.
+and outstanding production setup. The API-key retirement update below was
+verified on 24 October 2026.
 
 ## Current implementation
 
@@ -73,8 +73,11 @@ memory, quotas, backups, and external AI-provider processing before introducing
 purges. Audit provider retention independently; absence from D1 is not proof of
 deletion by an external provider.
 
-The previously disclosed Supabase secret's rotation status is unverified. The
-project's public client key is not a secret. An authorized Supabase operator must
-verify/revoke the disclosed secret and update any legitimate server consumers;
-never paste the replacement into chat or commit it. This release does not rotate
-Supabase keys or require a Supabase admin key.
+The historical exposure's exact key value was not recovered. On 24 October 2026,
+the owner deleted the older secret API key named `default` and disabled legacy
+JWT-based `anon`/`service_role` API keys. Dashboard reloads verified both changes.
+The retained publishable key and replacement `leselaut_account_deletion` secret
+still passed scoped Auth checks. The replacement server key is installed only in
+private local configuration and encrypted AWS runtime. No JWT signing-key rotation
+was performed. See the current launch checklist for evidence and remaining work;
+never paste a credential into chat or commit it.
