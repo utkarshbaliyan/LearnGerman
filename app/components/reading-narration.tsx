@@ -2,14 +2,14 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { RotateCcw } from 'lucide-react';
-import { spokenWordAt, validNarrationTiming, type NarrationAsset, type NarrationTiming } from '@/app/lib/reading-narration';
+import { createNarrationHighlighter, spokenWordAt, validNarrationTiming, type NarrationAsset, type NarrationTiming } from '@/app/lib/reading-narration';
 import { Button } from '@/components/ui/button';
 
-const NarrationContext = createContext<{ activeWord: number; setActiveWord: (word: number) => void }>({ activeWord: -1, setActiveWord: () => {} });
+const NarrationContext = createContext<{ registerText: (element: HTMLElement | null) => void; setActiveWord: (word: number) => void }>({ registerText: () => {}, setActiveWord: () => {} });
 
 export function ReadingNarrationProvider({ children }: { children: ReactNode }) {
-  const [activeWord, setActiveWord] = useState(-1);
-  return <NarrationContext.Provider value={{ activeWord, setActiveWord }}>{children}</NarrationContext.Provider>;
+  const [highlighter] = useState(createNarrationHighlighter);
+  return <NarrationContext.Provider value={highlighter}>{children}</NarrationContext.Provider>;
 }
 
 export function useReadingNarration() { return useContext(NarrationContext); }
@@ -22,6 +22,7 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
   const initialSpeed = storyId.startsWith('reading-a1-') ? .85 : 1;
   const [speed, setSpeed] = useState(initialSpeed);
   const [error, setError] = useState('');
+  const [buffering, setBuffering] = useState(false);
   const [timingError, setTimingError] = useState(false);
   const [retry, setRetry] = useState(0);
 
@@ -66,13 +67,17 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
 
   if (!asset) return <p role="status">Narration is unavailable for this story.</p>;
   return <div className="reading-audio">
-    <audio ref={audio} src={asset.src} controls preload="metadata" aria-label="German story narration"
-      onPlay={() => { setError(''); follow(); }} onPlaying={follow}
-      onPause={() => { cancelAnimationFrame(frame.current); syncWord(); }}
+    <audio ref={audio} controls playsInline preload="metadata" aria-label="German story narration"
+      onPlay={() => { setError(''); follow(); }} onPlaying={() => { setBuffering(false); follow(); }}
+      onWaiting={() => setBuffering(true)} onStalled={() => { if (audio.current && !audio.current.paused) setBuffering(true); }}
+      onPause={() => { setBuffering(false); cancelAnimationFrame(frame.current); syncWord(); }}
       onSeeking={syncWord} onSeeked={syncWord} onTimeUpdate={syncWord}
-      onEnded={() => { cancelAnimationFrame(frame.current); setActiveWord(-1); onFinished?.(); }}
+      onEnded={() => { setBuffering(false); cancelAnimationFrame(frame.current); setActiveWord(-1); onFinished?.(); }}
       onRateChange={() => setSpeed(audio.current?.playbackRate ?? 1)}
-      onError={() => { cancelAnimationFrame(frame.current); setActiveWord(-1); setError('The recording could not load. Check your connection and try again.'); }} />
+      onError={() => { setBuffering(false); cancelAnimationFrame(frame.current); setActiveWord(-1); setError('The recording could not load. Check your connection and try again.'); }}>
+      {asset.compatibleSrc && <source src={asset.compatibleSrc} type="audio/mp4" />}
+      <source src={asset.src} type={asset.src.endsWith('.webm') ? 'audio/webm' : 'audio/mp4'} onError={() => { setBuffering(false); setError('The recording could not load. Check your connection and try again.'); }} />
+    </audio>
     <label>Speed <select aria-label="Narration speed" value={speed} onChange={event => {
       const rate = Number(event.target.value);
       setSpeed(rate);
@@ -82,6 +87,7 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
     </select></label>
     <Button variant="outline" onClick={() => { if (audio.current) { audio.current.currentTime = 0; syncWord(); } }}><RotateCcw size={16} />Restart</Button>
     <span>Recorded German · AI voice</span>
+    {buffering && !error && <p role="status">Buffering audio…</p>}
     {error && <p role="alert">{error} <button type="button" onClick={() => { setError(''); audio.current?.load(); }}>Reload audio</button></p>}
     {timingError && <p role="status">Word highlighting could not load. <button type="button" onClick={() => { setTimingError(false); setRetry(value => value + 1); }}>Retry highlighting</button></p>}
   </div>;

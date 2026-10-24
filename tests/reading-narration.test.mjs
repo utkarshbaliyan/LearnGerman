@@ -12,19 +12,44 @@ test('narration renders accessible native controls, available speeds and slower 
   const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false } });
   try {
     const { ReadingAudio, ReadingNarrationProvider } = await vite.ssrLoadModule('/app/components/reading-narration.tsx');
+    const { getReadingContent } = await vite.ssrLoadModule('/app/lib/reading-content.ts');
     const manifest = await json('../app/lib/reading-audio-manifest.json');
     for (const level of ['a1', 'a2', 'b1']) {
       const editions = await json('../app/lib/reading-editions.json');
       const storyId = `reading-${level}-02-v${editions[level.toUpperCase()]}`;
-      const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null, React.createElement(ReadingAudio, { storyId, asset: manifest[storyId] })));
+      const asset=getReadingContent(storyId).audio;
+      assert.equal(asset.src,manifest[storyId].src,'the original recording remains available');
+      const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null, React.createElement(ReadingAudio, { storyId, asset })));
       assert.match(html, /<audio[^>]+controls=""[^>]+aria-label="German story narration"/);
       assert.match(html, /<select aria-label="Narration speed">/);
       assert.match(html, new RegExp(`<option value="${level === 'a1' ? '0.85' : '1'}" selected="">`));
       for (const rate of [.75, .85, 1, 1.15, 1.25, 1.5]) assert.ok(html.includes(`value="${rate}"`));
       assert.match(html, /Restart/);
+      assert.ok(html.indexOf('type="audio/mp4"')<html.indexOf('type="audio/webm"'),'Safari-compatible AAC is offered before the original WebM');
+      assert.ok(html.includes(asset.compatibleSrc));
       assert.doesNotMatch(html, /<select[^>]+disabled/);
     }
   } finally { await vite.close(); }
+});
+
+test('spoken-word highlighting changes only the old and new word and clears on unmount', async () => {
+  const vite=await createServer({configFile:false,server:{middlewareMode:true,ws:false,watch:null}});
+  try{
+    const {createNarrationHighlighter}=await vite.ssrLoadModule('/app/lib/reading-narration.ts');
+    const first=new Set(),second=new Set(),replacement=new Set();let queries=0;
+    const element=classes=>({classList:{add:name=>classes.add(name),remove:name=>classes.delete(name)}});
+    const nodes=[element(first),element(second)];
+    const highlighter=createNarrationHighlighter();
+    highlighter.registerText({querySelector:selector=>{queries++;return nodes[Number(selector.match(/"(\d+)"/)[1])];}});
+    highlighter.setActiveWord(0);assert.ok(first.has('reading-spoken-word'));
+    for(let frame=0;frame<60;frame++)highlighter.setActiveWord(0);
+    assert.equal(queries,1,'animation frames for the same word do not touch the story DOM');
+    highlighter.setActiveWord(1);assert.equal(first.size,0);assert.ok(second.has('reading-spoken-word'));
+    highlighter.registerText({querySelector:()=>element(replacement)});
+    assert.equal(second.size,0);assert.ok(replacement.has('reading-spoken-word'),'a replacement passage receives the current highlight');
+    highlighter.registerText(null);assert.equal(replacement.size,0);
+    highlighter.setActiveWord(-1);
+  }finally{await vite.close();}
 });
 
 test('every graded story has a current recording and one validated timing per visible word', async () => {

@@ -1,0 +1,15 @@
+{
+  "format": "AAC-LC in fast-start MP4",
+  "bitrate": 48000,
+  "sampleRate": 24000,
+  "channels": 1,
+  "encoder": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+  "recordings": 654,
+  "source": "Existing release recordings; source SHA-256 pinned per manifest entry",
+  "checks": [
+    "Source integrity",
+    "Full AAC decode",
+    "Duration within 150 ms of original",
+    "moov precedes mdat"
+  ]
+}
