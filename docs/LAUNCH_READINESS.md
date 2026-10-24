@@ -80,13 +80,21 @@ it. This checklist separates implemented code from production verification.
   longer waits for progress synchronization before navigation; the root layout
   continues handling sync. The exact cause of Safari's stalled callback has not
   been established; these changes bound the wait and provide an escape path.
+- The disposable account's deletion returned 200/complete. Its still-unexpired
+  token then received 401 for account, progress and export reads and for a progress
+  write. Supabase admin lookup returned 404. Scoped production database checks
+  found zero rows in all four learner tables and a completed deletion ledger.
+  Replaying only that already-deleted identity through the scheduled worker
+  completed successfully and left all four tables empty. This verifies idempotent
+  retry after provider deletion, not a simulated provider outage.
 
-The disposable authentication identity and its private operator test state must
-be cleaned up after the workflow. No existing learner account is a test target.
+The disposable authentication identity was deleted. Private operator test files
+are removed after verification. No existing learner account is a test target.
 
 The owner explicitly deferred teacher review and beta invitations. Neither is
-marked complete. No domain was purchased. Browser signup/recovery/deletion testing
-and real-phone/two-device checks remain outstanding.
+marked complete. No domain was purchased. Browser PKCE, corrected callback and
+real-phone/two-device checks remain outstanding. Recovery and deletion verification
+above do not establish public-launch readiness.
 
 ### Private runtime and remaining verification
 
@@ -104,9 +112,9 @@ the operator completed their private transfer into Supabase, preserving email
 confirmation. They are not the AWS account credentials or the Supabase API key.
 
 The runtime configurator propagated the key, the root-only service environment
-was refreshed, and the application and retry timer are active. Complete recovery,
-deletion, stale-token rejection and retry behavior with the explicitly disposable
-identity. Password recovery and independent-session API progress sync passed; physical-device behavior
+was refreshed, and the application and retry timer are active. Recovery, deletion,
+stale-token rejection, deleted-identity retry and independent-session API progress
+sync passed with the explicitly disposable identity. Physical-device behavior
 still needs verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
@@ -143,10 +151,10 @@ learner account is authorized for deletion testing.
    secret with unverified revocation. Determine exactly which key was exposed,
    check its consumers and revoke it safely. A new OpenAI key does not fix a
    Supabase exposure. Do not paste either secret into chat or GitHub.
-2. **Deletion verification:** the new server-only credential is installed in
-   encrypted AWS runtime. Complete the disposable-account deletion, stale-token
-   rejection and retry checks. Installation alone does not establish successful
-   identity deletion.
+2. **Deletion browser verification:** the new server-only credential is installed,
+   and disposable-account API deletion, stale-token rejection and deleted-identity
+   worker retry passed. Check the browser confirmation and cleanup experience on
+   real devices; provider-outage behavior is covered by automated tests.
 3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
    Recovery completed in the owner browser with manual navigation past the stalled
@@ -155,9 +163,9 @@ learner account is authorized for deletion testing.
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.
 4. **Operations verification:** backup and alarm infrastructure is active, but
-   inbox receipt and a real pending-deletion retry still need verification.
-   The deletion timer now has its server credential, but an empty successful
-   worker run alone is not a successful deletion test.
+   actual alert inbox receipt still needs owner confirmation. The retry worker
+   completed an intentionally requeued, already-deleted disposable identity;
+   no real provider outage was induced.
 5. **Fresh accounts and devices:** test a fresh Google account, email account,
    recovery, sync between two devices, microphone/photo consent and failures on
    common phones. Test deletion only with an explicitly disposable test identity.
