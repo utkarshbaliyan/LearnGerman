@@ -70,7 +70,16 @@ it. This checklist separates implemented code from production verification.
   dashboard allowed `/auth/confirm` but omitted the recovery request's
   `?intent=recovery` variant. Both supported origins now have that explicit
   callback, verified after a dashboard reload. A fresh recovery message was
-  accepted; password submission and session-revocation verification are pending.
+  accepted. Safari subsequently remained on the callback after saving its session.
+  Opening the reset page in that same tab reached the form; the owner submitted
+  a private password and the browser reported success. The old password and a
+  pre-recovery refresh token were rejected. The owner selected their own password,
+  so automated new-password sign-in was not performed with that password.
+- Callback session checks now have a 15-second deadline with recovery/sign-in
+  links on failure. The reset page uses the same deadline. Ordinary sign-in no
+  longer waits for progress synchronization before navigation; the root layout
+  continues handling sync. The exact cause of Safari's stalled callback has not
+  been established; these changes bound the wait and provide an escape path.
 
 The disposable authentication identity and its private operator test state must
 be cleaned up after the workflow. No existing learner account is a test target.
@@ -97,7 +106,7 @@ confirmation. They are not the AWS account credentials or the Supabase API key.
 The runtime configurator propagated the key, the root-only service environment
 was refreshed, and the application and retry timer are active. Complete recovery,
 deletion, stale-token rejection and retry behavior with the explicitly disposable
-identity. Independent-session API progress sync passed; physical-device behavior
+identity. Password recovery and independent-session API progress sync passed; physical-device behavior
 still needs verification. Keep actual
 test email addresses and tokens out of this public repository. No existing
 learner account is authorized for deletion testing.
@@ -140,7 +149,8 @@ learner account is authorized for deletion testing.
    identity deletion.
 3. **Email delivery:** AWS SES custom SMTP is now saved and enabled. The
    updated confirmation message reached the inbox and confirmation passed.
-   Complete the current browser PKCE flow and recovery. Preserve email-confirmation
+   Recovery completed in the owner browser with manual navigation past the stalled
+   callback. Verify the corrected callback and current browser PKCE flow. Preserve email-confirmation
    protections. A Gmail sender is an interim setup; a domain
    controlled by the operator is needed for sender-domain authentication under
    that domain and should be evaluated before public release.

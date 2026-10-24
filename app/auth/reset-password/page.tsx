@@ -3,16 +3,17 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/app/lib/supabase-client';
 import { updateRecoveredPassword } from '@/app/lib/password-recovery';
+import { confirmAuthSession } from '@/app/lib/auth-confirm';
 
 export default function ResetPasswordPage() {
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('Checking your recovery session…');
   useEffect(() => {
-    void supabase.auth.getSession().then(({ data, error }) => {
-      setReady(!error && Boolean(data.session));
-      setMessage(error || !data.session ? 'Your recovery link is invalid or has expired. Request another from the sign-in page.' : 'Choose a new password for your account.');
-    }).catch(() => setMessage('Recovery is unavailable. Request another link from the sign-in page.'));
+    void confirmAuthSession(supabase.auth, { error: null, tokenHash: null, type: null }).then(() => {
+      setReady(true);
+      setMessage('Choose a new password for your account.');
+    }).catch(() => setMessage('Your recovery session could not be confirmed. Check your connection or request another link from the sign-in page.'));
   }, []);
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setMessage('');
