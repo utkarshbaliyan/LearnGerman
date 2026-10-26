@@ -92,6 +92,12 @@ test('account deletion requires a recent verified identity and confirmation, iso
     const proxied = new Request('http://site.example.test/api/account/delete', { method: 'POST', headers: { 'x-test-user': 'alice', origin: 'https://site.example.test', 'x-forwarded-proto': 'https', 'content-type': 'application/json' }, body: JSON.stringify({ confirmation: 'DELETE', email: 'alice@example.test' }) });
     assert.equal((await POST(proxied)).status, 503, 'TLS termination must not reject a legitimate deletion request');
     assert.equal((await POST(request('alice', {}, { origin: 'https://leselaut-german.professor-ut7.chatgpt.site' }))).status, 503, 'the compatibility proxy must remain supported');
+    for (const origin of ['https://leselaut.com', 'https://www.leselaut.com']) {
+      assert.equal((await POST(request('alice', {}, { origin }))).status, 503, 'the custom domain must reach the same protected deletion handler');
+    }
+    for (const origin of ['http://leselaut.com', 'https://leselaut.com.evil.example', 'https://evil.leselaut.com']) {
+      assert.equal((await POST(request('alice', {}, { origin }))).status, 403, 'custom-domain permission must not include insecure or lookalike origins');
+    }
     assert.equal(db.sqlite.prepare('SELECT count(*) AS n FROM account_deletions').get().n, 0, 'missing configuration cannot partially delete an account');
     process.env.SUPABASE_SECRET_KEY = 'server-test-secret';
     assert.equal((await POST(request('alice', {}, { 'x-login-age': '601' }))).status, 403);
