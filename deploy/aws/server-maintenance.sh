@@ -70,8 +70,15 @@ if ! test -x /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl; t
   rpm -U /tmp/leselaut-cloudwatch-agent.rpm
   rm /tmp/leselaut-cloudwatch-agent.rpm
 fi
-cat >/opt/aws/amazon-cloudwatch-agent/etc/leselaut.json <<'JSON'
-{"logs":{"logs_collected":{"files":{"collect_list":[{"file_path":"/var/log/leselaut/application.log","log_group_name":"/leselaut/application","log_stream_name":"{instance_id}"}]}}}}
-JSON
+python3 - <<'PY'
+from pathlib import Path
+import json
+p=Path('/opt/aws/amazon-cloudwatch-agent/etc/leselaut.json')
+config=json.loads(p.read_text()) if p.exists() else {}
+items=config.setdefault('logs',{}).setdefault('logs_collected',{}).setdefault('files',{}).setdefault('collect_list',[])
+entry={'file_path':'/var/log/leselaut/application.log','log_group_name':'/leselaut/application','log_stream_name':'{instance_id}'}
+items[:]=[item for item in items if item.get('log_group_name')!='/leselaut/application']+[entry]
+p.write_text(json.dumps(config))
+PY
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/leselaut.json
 echo 'Daily backups and application log collection enabled.'

@@ -14,7 +14,7 @@ try{
   const localSettings=parseEnv(readFileSync('.env.local','utf8'));
   let input='';for await(const chunk of process.stdin)input+=chunk;
   const publicSettings=input.trim()?JSON.parse(input):{};
-  const allowed=['GROQ_TRANSCRIBE_MODEL','GROQ_TUTOR_MODEL','OPENAI_TRANSCRIBE_MODEL','OPENAI_TUTOR_MODEL','GROQ_VISION_MODEL','LESELAUT_AI_DAILY_CALL_LIMIT','LESELAUT_AI_ENABLED'];
+  const allowed=['GROQ_TRANSCRIBE_MODEL','GROQ_TUTOR_MODEL','OPENAI_TRANSCRIBE_MODEL','OPENAI_TUTOR_MODEL','GROQ_VISION_MODEL','LESELAUT_AI_DAILY_CALL_LIMIT','LESELAUT_AI_ENABLED','LESELAUT_RUM_ENABLED'];
   const values={LESELAUT_AI_DAILY_CALL_LIMIT:'200',LESELAUT_AI_ENABLED:'1',...previous,AWS_REGION:config.region,LESELAUT_SQLITE_PATH:'/var/lib/leselaut/leselaut.sqlite',LESELAUT_MEDIA_BUCKET:config.MediaBucket,
     LESELAUT_READ_ONLY:process.argv.includes('--enable-writes')?'0':'1'};
   for(const key of ['GROQ_API_KEY','OPENAI_API_KEY']){

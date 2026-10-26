@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "appMonitorId": "118b2039-e9ef-487d-a2e5-9ecd052d77c7",
+  "appMonitorName": "leselaut-web",
+  "identityPoolId": "ap-south-1:a81d1b81-0bf4-4f47-b7a1-702c784d98bb",
+  "rumLogGroup": "/aws/vendedlogs/RUMService_leselaut-web118b2039"
+}

@@ -72,6 +72,9 @@ authoritative AWS backend.
   its SNS action; owner inbox receipt is a separate check. See the current
   [activation record](LAUNCH_READINESS.md).
 - CloudWatch Logs: `/leselaut/application`, retained for seven days.
+
+For external visitor sessions, near-live browsers, visit timestamps and the
+production dashboard, see [AWS observability](AWS_OBSERVABILITY.md).
 - Systems Manager: deployment command status and service administration.
 - Billing console: credits, current spend and free-tier usage. A budget alert
   does not cap expenditure.
