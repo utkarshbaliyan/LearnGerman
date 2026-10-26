@@ -38,12 +38,17 @@ the application. Search optimization does not change DNS or hosting.
 ## Search Console
 
 The owner verified the `leselaut.com` domain property in Google Search Console
-under `professor.ut7@gmail.com`. Keep its Google verification TXT record in DNS.
+in the owner’s Google account. Keep its Google verification TXT record in DNS.
 This record does not route web traffic or move the site away from AWS.
 
-After the checked deployment, submit `https://leselaut.com/sitemap.xml` in
-**Indexing → Sitemaps**. Inspect the homepage and the main story/course pages,
-test the live URL and request indexing where offered. A sitemap or indexing
+The checked AWS release is live. Google processed
+`https://leselaut.com/sitemap.xml` successfully on 26 October 2026 and reported
+**1,425 discovered pages**. All 227 regression tests and both build targets passed.
+Public checks confirmed metadata, canonicals, private-page noindex and image
+assets. The sanitized results are in `verification/seo-2026-10-26.json`.
+
+Use **URL inspection** for the homepage and main story/course pages, test the
+live URL and request indexing where offered. A sitemap or indexing
 request is a discovery signal, not a promise of indexing or ranking. Search
 Console's initial reports need time to collect data.
 

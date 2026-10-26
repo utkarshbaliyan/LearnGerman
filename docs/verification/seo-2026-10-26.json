@@ -1,0 +1,151 @@
+{
+  "sitemapUrls": 1425,
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Learn German with Stories, Audio & Practice | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 308364
+    },
+    {
+      "path": "/stories",
+      "status": 200,
+      "title": "German Stories with Audio and English Translations | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 31690
+    },
+    {
+      "path": "/stories/a1",
+      "status": 200,
+      "title": "A1 German Stories for Beginners with Audio | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories/a1"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 118655
+    },
+    {
+      "path": "/stories/a2",
+      "status": 200,
+      "title": "A2 German Stories with Audio and English Translations | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories/a2"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 163403
+    },
+    {
+      "path": "/stories/b1",
+      "status": 200,
+      "title": "B1 German Stories for Intermediate Reading Practice | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories/b1"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 217918
+    },
+    {
+      "path": "/stories/b2",
+      "status": 200,
+      "title": "B2 German Stories with Audio for Reading Practice | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories/b2"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 245741
+    },
+    {
+      "path": "/course",
+      "status": 200,
+      "title": "Free German Course — Learn with Stories from A1 to B2 | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/course"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 30247
+    },
+    {
+      "path": "/grammar/lessons/a1-4-1",
+      "status": 200,
+      "title": "The dative: first steps — A1 German Grammar | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/grammar/lessons/a1-4-1"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 38916
+    },
+    {
+      "path": "/grammar/lessons/c1-1-1",
+      "status": 200,
+      "title": "Rare case frames and mixed declension — C1 German Grammar | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/grammar/lessons/c1-1-1"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 41297
+    },
+    {
+      "path": "/stories/reading-a1-09-v1",
+      "status": 200,
+      "title": "Äpfel für den Kuchen — A1 German Story | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/stories/reading-a1-09-v1"
+      ],
+      "robots": "default index",
+      "jsonld": 2,
+      "bytes": 77331
+    },
+    {
+      "path": "/books/a1/der-schluessel-im-blauen-korb/1",
+      "status": 200,
+      "title": "Die Ankunft — A1 German Reader, Page 1 | LeseLaut",
+      "canonical": [
+        "https://leselaut.com/books/a1/der-schluessel-im-blauen-korb/1"
+      ],
+      "robots": "default index",
+      "jsonld": 1,
+      "bytes": 46114
+    },
+    {
+      "path": "/account",
+      "status": 200,
+      "title": "Your account | LeseLaut",
+      "canonical": [],
+      "robots": "noindex, follow",
+      "jsonld": 0,
+      "bytes": 16861
+    },
+    {
+      "path": "/auth/reset-password",
+      "status": 200,
+      "title": "Account verification | LeseLaut",
+      "canonical": [],
+      "robots": "noindex, follow",
+      "jsonld": 0,
+      "bytes": 8775
+    }
+  ],
+  "robots": "User-Agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: https://leselaut.com/sitemap.xml\n",
+  "date": "2026-10-26",
+  "searchConsole": {
+    "domainVerified": true,
+    "sitemapStatus": "processed successfully",
+    "discoveredPages": 1425
+  }
+}
