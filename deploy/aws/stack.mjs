@@ -61,7 +61,7 @@ export const template = {
       CacheBehaviors:['/assets/*','/audio/*','/images/*','/fonts/*','/media/*'].map(PathPattern=>({PathPattern,TargetOriginId:'web',ViewerProtocolPolicy:'redirect-to-https',AllowedMethods:['GET','HEAD','OPTIONS'],
         CachedMethods:['GET','HEAD'],Compress:true,CachePolicyId:ref('CacheOptimizedPolicy')})),
       Aliases:{'Fn::If':['HasCustomDomain',[ref('CustomDomainName'),sub('www.${CustomDomainName}')],ref('AWS::NoValue')]},
-      ViewerCertificate:{'Fn::If':['HasCustomDomain',{ACMCertificateArn:ref('CustomCertificateArn'),SslSupportMethod:'sni-only',MinimumProtocolVersion:'TLSv1.2_2021'},{CloudFrontDefaultCertificate:true}]},
+      ViewerCertificate:{'Fn::If':['HasCustomDomain',{AcmCertificateArn:ref('CustomCertificateArn'),SslSupportMethod:'sni-only',MinimumProtocolVersion:'TLSv1.2_2021'},{CloudFrontDefaultCertificate:true}]},
     }}},
     DeployDocument:{Type:'AWS::SSM::Document',Properties:{DocumentType:'Command',Content:{schemaVersion:'2.2',description:'Deploy a checked LeseLaut release',parameters:{Release:{type:'String',allowedPattern:'^[a-f0-9]{40}$'}},
       mainSteps:[{action:'aws:runShellScript',name:'deploy',inputs:{timeoutSeconds:'600',runCommand:['/usr/local/bin/leselaut-deploy "{{Release}}"']}}]}}},

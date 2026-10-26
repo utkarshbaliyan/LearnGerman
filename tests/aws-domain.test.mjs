@@ -10,6 +10,8 @@ test('optional custom domains preserve the default CloudFront certificate and re
   assert.deepEqual(config.ViewerCertificate['Fn::If'][2], { CloudFrontDefaultCertificate: true });
   assert.equal(config.ViewerCertificate['Fn::If'][1].MinimumProtocolVersion, 'TLSv1.2_2021');
   assert.equal(config.ViewerCertificate['Fn::If'][1].SslSupportMethod, 'sni-only');
+  // CloudFormation uses AcmCertificateArn; the CloudFront API uses ACMCertificateArn.
+  assert.deepEqual(Object.keys(config.ViewerCertificate['Fn::If'][1]).sort(), ['AcmCertificateArn', 'MinimumProtocolVersion', 'SslSupportMethod']);
   assert.deepEqual(config.Aliases['Fn::If'][2], { Ref: 'AWS::NoValue' });
 });
 
@@ -25,6 +27,7 @@ assert after['Resources']['Instance']==before['Resources']['Instance']
 assert after['Resources']['DataVolume']==before['Resources']['DataVolume']
 assert after['Resources']['Distribution']['Properties']['DistributionConfig']['Origins']==before['Resources']['Distribution']['Properties']['DistributionConfig']['Origins']
 assert after['Parameters']['OriginToken']==before['Parameters']['OriginToken']
+assert set(after['Resources']['Distribution']['Properties']['DistributionConfig']['ViewerCertificate']['Fn::If'][1])=={'AcmCertificateArn','MinimumProtocolVersion','SslSupportMethod'}
 change={'ResourceChange':{'LogicalResourceId':'Distribution','Action':'Modify','Replacement':'False'}}
 assert m.safe_changes([change])
 assert not m.safe_changes([])
