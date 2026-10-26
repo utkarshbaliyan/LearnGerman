@@ -27,7 +27,7 @@ def domain_template(current):
     distribution = result['Resources']['Distribution']['Properties']['DistributionConfig']
     distribution['Aliases'] = {'Fn::If': ['HasCustomDomain', [ref('CustomDomainName'), {'Fn::Sub': 'www.${CustomDomainName}'}], ref('AWS::NoValue')]}
     distribution['ViewerCertificate'] = {'Fn::If': ['HasCustomDomain', {
-        'ACMCertificateArn': ref('CustomCertificateArn'), 'SslSupportMethod': 'sni-only',
+        'AcmCertificateArn': ref('CustomCertificateArn'), 'SslSupportMethod': 'sni-only',
         'MinimumProtocolVersion': 'TLSv1.2_2021',
     }, {'CloudFrontDefaultCertificate': True}]}
     return result
