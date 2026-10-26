@@ -21,12 +21,16 @@ In Authentication → URL Configuration, allow both `/auth/confirm` and
 
 - `https://d19k6l47v6hw3.cloudfront.net`
 - `https://leselaut-german.professor-ut7.chatgpt.site`
+- `https://leselaut.com`
+- `https://www.leselaut.com`
 
 The recovery request includes the `intent=recovery` query parameter. Allowing
 only the callback without that query can make recovery fall back to the Site
 URL, consistent with the reported landing page. Both recovery entries were saved and verified after reloading the
 dashboard on 24 October 2026. Keep these entries scoped to the supported sites;
-do not add a wildcard across unrelated origins.
+do not add a wildcard across unrelated origins. On 26 October 2026, the four
+custom-domain redirect entries and `https://leselaut.com` Site URL were saved
+and verified in Supabase.
 
 Use an owner-controlled disposable identity for delivery and callback tests. Check
 the latest message by its subject, complete the link in the intended browser,
