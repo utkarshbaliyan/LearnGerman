@@ -1,6 +1,7 @@
 # AWS hosting and automatic deployment
 
-AWS endpoint: https://d19k6l47v6hw3.cloudfront.net
+Primary address: https://leselaut.com (also https://www.leselaut.com).
+The original AWS endpoint remains https://d19k6l47v6hw3.cloudfront.net.
 
 Cutover completed on 23 October 2026. Both this endpoint and the original Sites
 address now use AWS. Every imported table value matched the frozen D1 export;

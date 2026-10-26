@@ -27,7 +27,7 @@ test('Google OAuth uses PKCE, the production callback and provider availability 
     const url=new URL(result.data.url);
     assert.equal(url.pathname,'/auth/v1/authorize');
     assert.equal(url.searchParams.get('provider'),'google');
-    assert.equal(url.searchParams.get('redirect_to'),'https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm');
+    assert.equal(url.searchParams.get('redirect_to'),'https://leselaut.com/auth/confirm');
     assert.equal(url.searchParams.get('code_challenge_method'),'s256');
     assert.ok(url.searchParams.get('code_challenge')?.length>=40);
     assert.equal(url.searchParams.has('client_secret'),false);

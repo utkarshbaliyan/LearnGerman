@@ -57,6 +57,8 @@ Google's audience exception:
    ```text
    https://d19k6l47v6hw3.cloudfront.net
    https://leselaut-german.professor-ut7.chatgpt.site
+   https://leselaut.com
+   https://www.leselaut.com
    ```
 
    Set the authorized redirect URI to Supabase's callback, exactly:
@@ -75,6 +77,8 @@ Google's audience exception:
    ```text
    https://d19k6l47v6hw3.cloudfront.net/auth/confirm
    https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm
+   https://leselaut.com/auth/confirm
+   https://www.leselaut.com/auth/confirm
    ```
 
    Google redirects first to Supabase; Supabase redirects to this application
@@ -96,9 +100,9 @@ merge learner records by matching email addresses. Existing email/password sign-
 available. If Google is disabled or its settings cannot be loaded, no broken
 Google button is shown.
 
-After choosing the custom domain, add its HTTPS origin and `/auth/confirm`
-callback to the same settings before switching the public URL. Keep the existing
-callbacks while users migrate. A custom application domain does not require
-Supabase's optional paid custom Auth domain.
+The custom-domain callbacks and recovery variants were added to Supabase on
+26 October 2026, and its Site URL was switched to `https://leselaut.com`.
+Keep the existing callbacks while users migrate. A custom application domain
+does not require Supabase's optional paid custom Auth domain.
 
 Reference: [Supabase's official Google setup guide](https://supabase.com/docs/guides/auth/social-login/auth-google).
