@@ -10,3 +10,10 @@
 .account-delete input { width: 100%; max-width: 100%; padding: .75rem; border: 1px solid currentColor; border-radius: .5rem; background: transparent; color: inherit; }
 
 html[data-theme] .account-page .account-panel button.account-submit { color: var(--section-on); }
+.analytics-preferences { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+.analytics-consent { position: fixed; z-index: 60; bottom: 1rem; left: 50%; transform: translateX(-50%); width: min(760px, calc(100% - 2rem)); padding: 1.25rem; border: 1px solid currentColor; border-radius: 1rem; background: #fffdf9; color: #20392f; box-shadow: 0 8px 36px #0003; }
+.analytics-consent p { margin: .5rem 0; line-height: 1.5; }
+.analytics-consent-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.analytics-consent-actions button { padding: .6rem .9rem; border: 1px solid currentColor; border-radius: .5rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.analytics-consent-actions button:disabled { opacity: .5; cursor: default; }
+html[data-theme="dark"] .analytics-consent { background: #20392f; color: #fffdf9; }
