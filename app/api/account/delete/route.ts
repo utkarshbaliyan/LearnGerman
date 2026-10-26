@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     // TLS terminates at CloudFront; nginx sets this header. The original Sites
     // address is a compatibility proxy to the same backend and learner database.
     if (request.headers.get('x-forwarded-proto') === 'https') endpoint.protocol = 'https:';
-    const allowed = new Set([endpoint.origin, 'https://d19k6l47v6hw3.cloudfront.net', 'https://leselaut-german.professor-ut7.chatgpt.site']);
+    const allowed = new Set([endpoint.origin, 'https://d19k6l47v6hw3.cloudfront.net', 'https://leselaut-german.professor-ut7.chatgpt.site', 'https://leselaut.com', 'https://www.leselaut.com']);
     if (origin && !allowed.has(origin)) return json({ error: 'Request origin does not match.' }, 403);
     const bytes = await boundedBody(request, 1024);
     if (!bytes) return json({ error: 'Invalid deletion request.' }, 413);
