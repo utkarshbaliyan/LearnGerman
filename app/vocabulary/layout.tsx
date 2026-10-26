@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from '@/app/lib/seo';
 
-import { VOCABULARY_LEVEL_COUNTS } from "@/app/vocabulary/data";
 
-export const metadata: Metadata = {
-  title: "A1–C1 Vocabulary — LeseLaut",
-  description: `Study ${VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} deduplicated A1–C1 German vocabulary cards by level, topic, word class, and verb type.`,
-};
+export const metadata = pageMetadata('German Vocabulary Practice — A1 to C1', 'Learn German vocabulary with free flashcards, word meanings and review by level, topic and word class, from A1 to C1.', '/vocabulary');
 
 export default function VocabularyLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return children;

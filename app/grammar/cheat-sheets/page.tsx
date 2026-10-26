@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from '@/app/lib/seo';
 import Link from "next/link";
 import { SiteHeader } from "@/app/components/site-header";
 import { RECALL_SHEETS } from "./sheets";
 
-export const metadata: Metadata = {
-  title: "German Case Cheat Sheets — LeseLaut",
-  description: "Recall tables for all four German cases: articles, pronouns, adjective endings, noun declension, prepositions and verb patterns.",
-};
+export const metadata = pageMetadata('German Cases Cheat Sheet — Articles and Endings', 'German case tables for nominative, accusative, dative and genitive. Review articles, pronouns, adjective endings, prepositions and verb patterns.', '/grammar/cheat-sheets');
 export default function GrammarCheatSheets() {
   return <main className="site-shell grammar-page" id="top">
     <SiteHeader active="grammar" />

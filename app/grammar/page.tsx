@@ -377,7 +377,7 @@ export default function GrammarPage() {
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 
             <LessonReference key={`reference-${selectedLessonId}`} content={content} />
-            <nav className="grammar-help-links" aria-label="Grammar references"><Link href="/grammar/reference">Grammar reference</Link><Link href="/grammar/cheat-sheets">Case cheat sheets</Link></nav>
+            <nav className="grammar-help-links" aria-label="Grammar references"><Link href={`/grammar/lessons/${selectedLessonId}`}>Read this lesson</Link><Link href="/grammar/lessons">All grammar lessons</Link><Link href="/grammar/reference">Grammar reference</Link><Link href="/grammar/cheat-sheets">Case cheat sheets</Link></nav>
 
             {nextLesson && <button type="button" className="next-grammar-lesson" onClick={() => selectLesson(nextLesson.id)}><span>Next lesson</span><strong>{nextLesson.title}</strong><ArrowRight /></button>}
           </article>

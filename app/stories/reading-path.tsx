@@ -9,7 +9,7 @@ import { useStoryProgress } from '@/app/hooks/use-story-progress';
 import type { ReadingLevel, ReadingSummary } from '@/app/lib/reading-path';
 import { filterReadingStories } from '@/app/lib/reading-library';
 import topicLabels from '@/app/lib/reading-topics.json';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { STORY_LEVELS, storyLevelPath } from '@/app/lib/story-levels';
 import { Progress } from '@/components/ui/progress';
 
 const topicLabel = (topic: string) => (topicLabels as Record<string, string>)[topic] ?? topic.replaceAll('-', ' ');
@@ -17,7 +17,7 @@ const topicLabel = (topic: string) => (topicLabels as Record<string, string>)[to
 export function ReadingPath({ stories, initialLevel }: {
   stories: ReadingSummary[]; sections: Record<ReadingLevel, string[]>; goals: Record<ReadingLevel, string[]>; initialLevel: ReadingLevel;
 }) {
-  const [level, setLevel] = useState<ReadingLevel>(initialLevel);
+  const level = initialLevel;
   const [topic, setTopic] = useState('all');
   const [query, setQuery] = useState('');
   const { completedIds, hydrated } = useStoryProgress();
@@ -28,8 +28,8 @@ export function ReadingPath({ stories, initialLevel }: {
   const topics = [...new Set(selected.flatMap(story => story.topics))].sort((a,b) => topicLabel(a).localeCompare(topicLabel(b)));
   const filtering = topic !== 'all' || !!query.trim();
   return <div className="site-shell"><SiteHeader active="stories" /><main className="reading-path">
-    <header className="reading-heading"><p className="reading-breadcrumb">German <span aria-hidden="true">›</span> Stories</p><h1>German Stories</h1><p>Explore {stories.length} German stories about everyday life. Read and listen, discover word meanings, check the English translation and practise with a comprehension quiz.</p></header>
-    <Tabs value={level} onValueChange={value => { setLevel(value as ReadingLevel); setTopic('all'); }}><TabsList aria-label="Story level">{[...new Set(stories.map(story => story.level))].map(item => <TabsTrigger key={item} value={item}>{item} / {item === 'A1' ? 'Beginner' : item === 'A2' ? 'Elementary' : item === 'B1' ? 'Intermediate' : 'Upper intermediate'}</TabsTrigger>)}</TabsList></Tabs>
+    <header className="reading-heading"><p className="reading-breadcrumb"><Link href="/stories">German stories</Link> <span aria-hidden="true">›</span> {level}</p><h1>{level} German stories with audio</h1><p>{STORY_LEVELS[level].introduction}</p><p>{stories.length} free stories with narration, English translations, word meanings and comprehension quizzes.</p></header>
+    <nav className="story-level-nav" aria-label="Story level">{(Object.keys(STORY_LEVELS) as ReadingLevel[]).map(item => <Link key={item} href={storyLevelPath(item)} aria-current={level === item ? 'page' : undefined}>{item} / {STORY_LEVELS[item].label}</Link>)}</nav>
     {level === 'A1' && <p className="book-from-stories">Ready for a longer read? <Link href="/books">Explore the A1 book · 200 pages <ArrowRight size={16} /></Link></p>}
     <div className="reading-filters" role="search" aria-label="Find a story">
       <label>Search stories<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="House, hospital, dative, café…" /></label>

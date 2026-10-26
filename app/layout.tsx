@@ -10,14 +10,18 @@ import './home-sections.css';
 import './grammar-learning.css';
 import './grammar-guide.css';
 import './launch-readiness.css';
+import './discovery.css';
+import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 
 export const metadata: Metadata = {
-  title: "LeseLaut — Learn German through stories",
-  description:
-    "Learn German with illustrated story libraries, narrated books, vocabulary, grammar practice, and saved progress.",
+  metadataBase: new URL(SITE_ORIGIN),
+  applicationName: 'LeseLaut',
+  title: 'Learn German with Stories, Audio & Practice | LeseLaut',
+  description: SITE_DESCRIPTION,
   icons: {
-    icon: "/favicon.svg",
+    icon: [{ url: '/icon-192.png', sizes: '192x192', type: 'image/png' }, { url: '/favicon.svg', type: 'image/svg+xml' }],
     shortcut: "/favicon.svg",
+    apple: '/apple-touch-icon.png',
   },
 };
 

@@ -1,3 +1,5 @@
+import { pageMetadata } from '@/app/lib/seo';
+export const metadata = pageMetadata('LeseLaut Help and Contact', 'Get help with your LeseLaut account, saved progress and German learning materials. Contact the team or report a content problem.', '/support');
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
 

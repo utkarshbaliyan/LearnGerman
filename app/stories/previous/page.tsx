@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
+import { absoluteUrl } from '@/app/lib/seo';
 
 export default function PreviousStories() {
-  redirect('/stories');
+  permanentRedirect(absoluteUrl('/stories'));
 }

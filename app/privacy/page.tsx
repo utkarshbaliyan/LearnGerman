@@ -1,3 +1,5 @@
+import { pageMetadata } from '@/app/lib/seo';
+export const metadata = pageMetadata('Privacy and Your Learning Data', 'How LeseLaut stores learning progress, handles authentication, uses optional analytics and supports data export and account deletion.', '/privacy');
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
 

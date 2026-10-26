@@ -33,6 +33,25 @@ function assertStoryAudio(html) {
   assert.ok(audio.indexOf('type="audio/mp4"')<audio.indexOf('type="audio/webm"'),'the compatible recording must be selected first');
 }
 
+test('public pages expose one canonical, crawlable topic guides and private-page noindex in server HTML', async () => {
+  for (const path of ['/course', '/stories/a2', '/grammar/lessons', '/grammar/lessons/a1-4-1', '/grammar/lessons/c1-1-1']) {
+    const response = await renderRoute(path); assert.equal(response.status, 200, path);
+    const html = await response.text();
+    const canonicals = [...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/g)].map(match => match[1]);
+    assert.deepEqual(canonicals, [`https://leselaut.com${path}`]);
+    assert.match(html, /property="og:image" content="https:\/\/leselaut.com\/social-card.png"/);
+    if (path === '/grammar/lessons/a1-4-1') { assert.match(html, /Common mistakes/); assert.match(html, /German examples with English meanings/); }
+  }
+  for (const path of ['/account', '/auth/reset-password', '/auth/confirm', '/active-learning']) {
+    const html = await (await renderRoute(path)).text();
+    assert.match(html, /<meta name="robots" content="[^"]*noindex/, path);
+  }
+  const sitemap = await renderRoute('/sitemap.xml'); assert.equal(sitemap.status, 200);
+  const xml = await sitemap.text(); assert.match(xml, /<loc>https:\/\/leselaut.com\/grammar\/lessons\/a1-4-1<\/loc>/); assert.doesNotMatch(xml, /<loc>[^<]*(?:\/auth\/|\/account|cloudfront|chatgpt)/);
+  const robots = await renderRoute('/robots.txt'); assert.equal(robots.status, 200); assert.match(await robots.text(), /Sitemap: https:\/\/leselaut.com\/sitemap.xml/);
+  assert.equal((await renderRoute('/grammar/lessons/not-a-lesson')).status, 404);
+});
+
 test("Home offers compact Flashcards and Review cards and preserves review bookmarks and the story library", async () => {
   const response = await renderRoute("/");
   assert.equal(response.status, 200);
@@ -52,7 +71,8 @@ test("Home offers compact Flashcards and Review cards and preserves review bookm
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();
-  assert.match(html, /<main class="reading-path">/);
+  assert.match(html, /<main class="discovery-page">/);
+  for (const level of ["a1", "a2", "b1", "b2"]) assert.ok(html.includes(`href="/stories/${level}"`));
   assert.doesNotMatch(html, /href="\/active-learning"/);
   assert.doesNotMatch(html, /<span>Course<\/span>/);
 });
@@ -112,7 +132,7 @@ test("A1 Books keeps the source paragraphs with one audio control, one English t
   }
   assert.equal((await renderRoute('/books/a1/der-schluessel-im-blauen-korb/201')).status, 404);
   const oldPage = await renderRoute('/books/a1/unser-leben-in-lindenstadt/21');
-  assert.equal(oldPage.status, 307);
+  assert.equal(oldPage.status, 308);
   assert.equal(new URL(oldPage.headers.get('location'), 'http://localhost').pathname, '/books/a1/der-schluessel-im-blauen-korb/21');
 });
 
@@ -127,7 +147,8 @@ test("old chapter bookmarks open their matching stories", async () => {
     "/course/b1/chapter-24",
   ]) {
     const response = await renderRoute(pathname);
-    assert.equal(response.status, 307, pathname);
+    assert.equal(response.status, 308, pathname);
+    assert.equal(new URL(response.headers.get("location")).origin,"https://leselaut.com");
     const match = /\/course\/(a1|a2|b1)\/chapter-(\d+)/.exec(pathname);
     assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname,
       `/stories/${editionId(match[1], match[2])}`);
@@ -145,9 +166,9 @@ test("writing tutor requires account authentication before invoking a provider",
 });
 
 test("retired library and daily practice bookmarks redirect to current learning", async () => {
-  for (const [from, to] of [["/stories/previous", "/stories"], ["/practice", "/active-learning"]]) {
+  for (const [from, to, status] of [["/stories/previous", "/stories", 308], ["/practice", "/active-learning", 307]]) {
     const response = await renderRoute(from);
-    assert.equal(response.status, 307);
+    assert.equal(response.status, status);
     assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, to);
   }
 });
@@ -187,7 +208,9 @@ test("shows paused Active Learning without practice controls and redirects retir
 
 test("renders the graded reading path and independent story pages", async () => {
   for (const level of ["A1", "A2", "B1"]) {
-    const response = await renderRoute(`/stories?level=${level}`); assert.equal(response.status, 200);
+    const old = await renderRoute(`/stories?level=${level}`); assert.equal(old.status,308);
+    assert.equal(old.headers.get("location"), `https://leselaut.com/stories/${level.toLowerCase()}`);
+    const response = await renderRoute(`/stories/${level.toLowerCase()}`); assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /<main class="reading-path">/); assert.doesNotMatch(html, /Previous story library/);
     assert.ok(html.includes(editionId(level, 1)));
@@ -233,7 +256,7 @@ test('old B1 story bookmarks open the current edition and invalid editions remai
   if (editions.B1 === 2) for (const number of [1, 24, 200]) {
     const oldId = `reading-b1-${String(number).padStart(2, '0')}-v1`;
     const response = await renderRoute(`/stories/${oldId}`);
-    assert.equal(response.status, 307);
+    assert.equal(response.status, 308);
     assert.equal(new URL(response.headers.get('location'), 'http://localhost').pathname, `/stories/${editionId('B1', number)}`);
   }
   for (const id of ['reading-b1-999-v1', 'reading-b1-01-v99'])
@@ -244,7 +267,7 @@ test('grammar presents A1–C1 counts, topic search and a complete linked refere
   const grammar=await renderRoute('/grammar');
   assert.equal(grammar.status,200);
   const html=(await grammar.text()).replaceAll('<!-- -->','');
-  assert.match(html,/A1–C1 German Grammar/);
+  assert.match(html,/German Grammar Practice — A1 to C1/);
   assert.match(html,/144 lessons from A1 to C1/);
   assert.match(html,/Lesson explanation/);
   assert.match(html,/A first afternoon in Bonn/);

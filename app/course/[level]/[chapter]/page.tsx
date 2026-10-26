@@ -1,5 +1,6 @@
 import { readingEditionId } from '@/app/lib/reading-progress';
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { absoluteUrl } from '@/app/lib/seo';
 
 import { CHAPTERS_PER_LEVEL, COURSE_LEVELS, type CourseLevel } from "@/app/course/course-data";
 
@@ -13,6 +14,6 @@ export default async function CourseChapterPage({ params }: { params: Promise<{ 
   const level = rawLevel.toUpperCase() as CourseLevel;
   const number = parseChapter(rawChapter);
 
-  if (!COURSE_LEVELS.includes(level) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();
-  redirect(`/stories/${readingEditionId(level, number)}`);
+  if (!COURSE_LEVELS.includes(level) || !Number.isInteger(number) || number < 1 || number > CHAPTERS_PER_LEVEL) notFound();
+  permanentRedirect(absoluteUrl(`/stories/${readingEditionId(level, number)}`));
 }
