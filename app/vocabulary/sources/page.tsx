@@ -1,8 +1,8 @@
+import { pageMetadata } from '@/app/lib/seo';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { SiteHeader } from '@/app/components/site-header';
 
-export const metadata: Metadata = { title: 'Vocabulary Sources and Levels — LeseLaut' };
+export const metadata = pageMetadata('German Vocabulary Sources and Level Guide', 'See the dictionary sources, licensing and editorial level placement behind LeseLaut German vocabulary cards.', '/vocabulary/sources');
 
 export default function VocabularySources() {
   return <main className="site-shell vocabulary-sources-page">

@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/app/lib/seo';
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
 import { TopicArt } from '@/app/components/topic-art';
@@ -7,11 +8,11 @@ import { B1_BOOK_INFO, B1_BOOK_PATH } from '@/app/lib/b1-book-info';
 
 const bookPath = '/books/a1/der-schluessel-im-blauen-korb';
 
-export const metadata = { title: 'Books · LeseLaut', description: 'A1, A2 and B1 German readers on LeseLaut.' };
+export const metadata = pageMetadata('Free German Books with Audio — A1, A2 and B1', 'Read German books at A1, A2 and B1, with audio, English translations and word meanings. Explore three free 200-page readers and save your place.', '/books');
 
 export default function BooksPage() {
   return <div className="site-shell"><SiteHeader active="books" /><main className="book-library">
-    <header className="illustrated-intro"><div><span className="reading-eyebrow">A longer read. A bigger adventure.</span><h1>Find your<br /><em>next chapter.</em></h1><p>Three German readers. 200 pages each. Read, listen, and pick up where you left off.</p></div><TopicArt kind="learn" className="topic-art--intro" /></header>
+    <header className="illustrated-intro"><div><span className="reading-eyebrow">A longer read. A bigger adventure.</span><h1>German books.<br /><em>Your next chapter.</em></h1><p>Three German readers. 200 pages each. Read, listen, and pick up where you left off.</p></div><TopicArt kind="learn" className="topic-art--intro" /></header>
     <div className="illustrated-bookshelf">
     <section className="book-shelf" aria-labelledby="a1-books-heading">
       <h2 id="a1-books-heading">A1</h2>

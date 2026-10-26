@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
+import { absoluteUrl } from '@/app/lib/seo';
 
 export default function ChapterOnePage() {
-  redirect('/stories/reading-a1-01-v1');
+  permanentRedirect(absoluteUrl('/stories/reading-a1-01-v1'));
 }
