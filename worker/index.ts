@@ -3,6 +3,7 @@ import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } fr
 import handler from "vinext/server/app-router-entry";
 import {proxyToAws} from '../app/lib/hosting-proxy.mjs';
 import {transferAuthorized, transferResponse} from '../deploy/cloudflare/transfer.mjs';
+import {secureResponse} from '../deploy/cloudflare/security-response.mjs';
 
 interface Env {
   ASSETS: Fetcher;
@@ -32,6 +33,9 @@ const worker = {
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/transfer') return transferResponse(request, env);
     if (process.env.LESELAUT_AWS_ORIGIN && !await transferAuthorized(request)) return proxyToAws(request, process.env.LESELAUT_AWS_ORIGIN);
+    // With asset-first routing, existing media is served directly by Cloudflare.
+    // Missing keys must stay 404 without falling through to an R2 dependency.
+    if (process.env.LESELAUT_STATIC_MEDIA === '1' && url.pathname.startsWith('/media/')) return new Response(null, { status: 404 });
     if (process.env.LESELAUT_READ_ONLY === '1' && url.pathname.startsWith('/api/')
       && !['/api/internal/migration', '/api/health'].includes(url.pathname)) {
       return Response.json({error: 'Progress sync is briefly paused for a hosting migration.'},
@@ -53,4 +57,8 @@ const worker = {
   },
 };
 
-export default worker;
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    return secureResponse(await worker.fetch(request, env, ctx), process.env.LESELAUT_STAGING === '1');
+  },
+};
