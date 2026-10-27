@@ -2,10 +2,7 @@
 // settings. It never accepts SQL, credentials, arbitrary keys, or table names.
 import { boundedBody } from '../../app/lib/request-body';
 import { immutableMediaResponse } from '../../app/lib/book-object-media.mjs';
-import book from '../../content/books/zwischen-hoersaal-und-arbeitswelt/media-registry.json';
-import stories from '../../content/reading/b2/media-registry.json';
-import art from '../../content/illustrations/story-art-registry.json';
-import compatible from '../../content/reading/compatible/media-registry.json';
+import { mediaRegistry as media } from './media-registry.mjs';
 
 export const transferColumns = {
   users: ['id','email','display_name','created_at','updated_at','username'],
@@ -15,7 +12,6 @@ export const transferColumns = {
   account_deletions: ['user_id','status','created_at'],
   ai_provider_usage: ['day','calls'],
 };
-const media = { ...book, ...stories, ...art, ...compatible };
 const headers = { 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' };
 const json = (value, status = 200) => Response.json(value, { status, headers });
 const hex = value => [...new Uint8Array(value)].map(n => n.toString(16).padStart(2,'0')).join('');
