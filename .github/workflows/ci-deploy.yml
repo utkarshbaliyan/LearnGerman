@@ -39,8 +39,10 @@ jobs:
             ${{ runner.os }}-${{ runner.arch }}-typescript-${{ hashFiles('package-lock.json', 'tsconfig.json') }}-
       - name: Typecheck
         run: node node_modules/typescript/bin/tsc --noEmit
-      - name: Build existing target and run all tests
-        run: npm test
+      - name: Build Cloudflare target
+        run: npm run build
+      - name: Run all tests
+        run: npm run test:checks
       - name: Build AWS standalone server
         run: npm run build:aws
       - name: Test AWS standalone server
