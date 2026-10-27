@@ -5,9 +5,9 @@ export function recoveryCallback(search: string, hash: string) {
   return query.get('intent') === 'recovery' || query.get('type') === 'recovery' || new URLSearchParams(hash.replace(/^#/, '')).get('type') === 'recovery';
 }
 
-export async function requestRecovery(auth: Pick<SupabaseClient['auth'], 'resetPasswordForEmail'>, email: string, callback: string) {
+export async function requestRecovery(auth: Pick<SupabaseClient['auth'], 'resetPasswordForEmail'>, email: string, callback: string, captchaToken?: string) {
   const target = new URL(callback); target.searchParams.set('intent', 'recovery');
-  const { error } = await auth.resetPasswordForEmail(email, { redirectTo: target.href });
+  const { error } = await auth.resetPasswordForEmail(email, { redirectTo: target.href, captchaToken });
   if (error) throw error;
 }
 

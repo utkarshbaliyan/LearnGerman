@@ -14,7 +14,7 @@ test("speaking confirms transcripts, saves goal-based turns, supports focused re
     async first() { return sqlite.prepare(sql).get(...params) ?? null; },
     async run() { return { meta: { changes: Number(sqlite.prepare(sql).run(...params).changes) } }; },
   }; } }; } };
-  const vite = await createServer({ root, configFile: false, appType: "custom", resolve: { alias: { "@": root } }, server: { middlewareMode: true, ws: false },
+  const vite = await createServer({ root, configFile: false, appType: "custom", resolve: { alias: { "@": root } }, server: { middlewareMode: true, ws: false, watch: null },
     plugins: [providerTransport, { name: "speaking-fixtures", enforce: "pre", resolveId(id) { if (id.startsWith("speaking-test:")) return `\0${id}`; },
       load(id) {
         if (id === "\0speaking-test:db") return "export const getD1 = async () => globalThis.__speakingDb;";

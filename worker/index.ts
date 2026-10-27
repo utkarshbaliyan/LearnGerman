@@ -2,6 +2,7 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 import {proxyToAws} from '../app/lib/hosting-proxy.mjs';
+import {transferAuthorized, transferResponse} from '../deploy/cloudflare/transfer.mjs';
 
 interface Env {
   ASSETS: Fetcher;
@@ -29,7 +30,8 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
-    if (process.env.LESELAUT_AWS_ORIGIN) return proxyToAws(request, process.env.LESELAUT_AWS_ORIGIN);
+    if (url.pathname === '/api/internal/transfer') return transferResponse(request, env);
+    if (process.env.LESELAUT_AWS_ORIGIN && !await transferAuthorized(request)) return proxyToAws(request, process.env.LESELAUT_AWS_ORIGIN);
     if (process.env.LESELAUT_READ_ONLY === '1' && url.pathname.startsWith('/api/')
       && !['/api/internal/migration', '/api/health'].includes(url.pathname)) {
       return Response.json({error: 'Progress sync is briefly paused for a hosting migration.'},

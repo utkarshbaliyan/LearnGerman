@@ -14,7 +14,7 @@ const wordSchema = z.object({
 export type RecallDeckWord = z.infer<typeof wordSchema>;
 const answerSchema = z.object({ id, key: id, at: time, correct: z.boolean(), assisted: z.boolean(), elapsedDays: z.number().min(0).max(100000), action: z.enum(['flashcard', 'read']).optional(), rating: z.number().int().min(1).max(4).optional() });
 export type DeckAnswer = z.infer<typeof answerSchema>;
-const runSchema = z.object({ id, startedAt: time, updatedAt: time, order: z.array(id).min(1).max(MAX_RECALL_WORDS), answers: z.record(answerSchema) });
+const runSchema = z.object({ id, startedAt: time, updatedAt: time, order: z.array(id).min(1).max(MAX_RECALL_WORDS), answers: z.record(id, answerSchema) });
 const deckSchema = z.object({
   id, name: z.string().trim().min(1).max(80), createdAt: time, updatedAt: time,
   words: z.array(wordSchema).min(1).max(MAX_RECALL_WORDS), run: runSchema.optional(), kind: z.literal('review').optional(),
