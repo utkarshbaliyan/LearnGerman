@@ -6,11 +6,12 @@ import { staticMediaResponse } from '../deploy/cloudflare/static-media-response.
 const bytes = new TextEncoder().encode('0123456789abcdef');
 const entry = { bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'), contentType: 'audio/mp4' };
 const key = 'stories/test.m4a', url = 'https://example.test/media/' + key;
-function fixture({ size = bytes.length, status = 200 } = {}) {
+function fixture({ size = bytes.length, status = 200, omitLength = false } = {}) {
   const calls = []; let cancelled = false, readBytes = 0;
   const assets = { async fetch(request) {
     calls.push(request);
     const headers = { 'content-length': String(size), 'content-type': 'audio/mp4', etag: '"asset-fixture"' };
+    if (omitLength) delete headers['content-length'];
     if (request.method === 'HEAD' || status !== 200) return new Response(null, { status, headers });
     let cursor = 0;
     return new Response(new ReadableStream({
@@ -18,8 +19,18 @@ function fixture({ size = bytes.length, status = 200 } = {}) {
       cancel() { cancelled = true; },
     }), { headers }); // Deliberately ignores Range, as the static service does.
   } };
-  return { assets, registry: { [key]: entry }, calls, cancelled: () => cancelled, readBytes: () => readBytes };
+  return { assets, registry: { [key]: entry, '/audio/legacy.m4a': entry }, calls, cancelled: () => cancelled, readBytes: () => readBytes };
 }
+test('real ASSETS responses without Content-Length use trusted registry metadata', async () => {
+  for (const path of [url, 'https://example.test/audio/legacy.m4a']) {
+    const f = fixture({ omitLength: true });
+    const head = await staticMediaResponse(new Request(path, { method: 'HEAD' }), f);
+    assert.equal(head.status, 200); assert.equal(head.headers.get('content-length'), '16');
+    const r = await staticMediaResponse(new Request(path, { headers: { range: 'bytes=0-1' } }), f);
+    assert.equal(r.status, 206); assert.equal(r.headers.get('content-range'), 'bytes 0-1/16');
+    assert.deepEqual(new Uint8Array(await r.arrayBuffer()), bytes.subarray(0, 2));
+  }
+});
 test('static-backed audio supports Safari byte probes, seeks and suffix ranges', async () => {
   for (const [range, start, end] of [['bytes=0-1', 0, 1], ['bytes=4-7', 4, 7], ['bytes=-4', 12, 15], ['bytes=10-100', 10, 15]]) {
     const f = fixture(); const r = await staticMediaResponse(new Request(url, { headers: { range } }), f);

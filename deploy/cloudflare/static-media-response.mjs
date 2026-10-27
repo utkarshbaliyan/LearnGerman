@@ -32,24 +32,26 @@ function fixedLength(body, length) {
 // stream without buffering a recording or adding a billed storage service.
 export async function staticMediaResponse(request, { assets, registry }) {
   const url = new URL(request.url); url.search = ''; url.hash = '';
-  let key;
-  try { key = decodeURIComponent(url.pathname.slice('/media/'.length)); } catch { return new Response(null, { status: 404 }); }
-  const registered = url.pathname.startsWith('/media/') && Object.hasOwn(registry, key) ? registry[key] : null;
   const legacy = url.pathname.startsWith('/audio/');
-  if (!registered && !legacy) return new Response(null, { status: 404 });
+  let key;
+  try { key = decodeURIComponent(legacy ? url.pathname : url.pathname.slice('/media/'.length)); } catch { return new Response(null, { status: 404 }); }
+  const registered = (legacy || url.pathname.startsWith('/media/')) && Object.hasOwn(registry, key) ? registry[key] : null;
+  if (!registered) return new Response(null, { status: 404 });
   if (!['GET', 'HEAD'].includes(request.method)) return new Response(null, { status: 405, headers: { Allow: 'GET, HEAD' } });
   if (!assets) return new Response(null, { status: 503 });
   const init = method => ({ method, headers: { 'accept-encoding': 'identity' }, redirect: 'manual' });
   const head = await assets.fetch(new Request(url, init('HEAD')));
   await head.body?.cancel();
   if (!head.ok) return new Response(null, { status: head.status === 404 ? 404 : 503 });
-  const size = Number(head.headers.get('content-length'));
-  const type = registered?.contentType ?? head.headers.get('content-type')?.split(';')[0].replace(/^video\/webm$/, 'audio/webm');
-  if (!Number.isSafeInteger(size) || size <= 0 || size > 25 * 1024 * 1024 || (registered && size !== registered.bytes)
-    || (!registered && !/^(audio\/|application\/json$)/.test(type ?? ''))) return new Response(null, { status: 503 });
-  const etag = registered ? `"${registered.sha256}"` : head.headers.get('etag');
+  // ASSETS omits Content-Length even for HEAD. Use verified build metadata;
+  // FixedLengthStream still aborts a truncated or inconsistent response body.
+  const size = registered.bytes, reportedSize = head.headers.get('content-length');
+  const type = registered.contentType;
+  if (!Number.isSafeInteger(size) || size <= 0 || size > 25 * 1024 * 1024
+    || (reportedSize !== null && Number(reportedSize) !== size)) return new Response(null, { status: 503 });
+  const etag = `"${registered.sha256}"`;
   const headers = new Headers({ 'Content-Type': type, 'Content-Length': String(size), 'Accept-Ranges': 'bytes',
-    'Cache-Control': registered ? 'public, max-age=31536000, immutable' : 'public, max-age=0, must-revalidate', 'X-Content-Type-Options': 'nosniff' });
+    'Cache-Control': legacy ? 'public, max-age=0, must-revalidate' : 'public, max-age=31536000, immutable', 'X-Content-Type-Options': 'nosniff' });
   if (etag) headers.set('ETag', etag);
   if (registered) headers.set('X-Media-SHA256', registered.sha256);
   if (etag && request.headers.get('if-none-match')?.split(',').some(value => value.trim() === '*' || value.trim().replace(/^W\//, '') === etag)) {
