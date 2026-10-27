@@ -487,15 +487,6 @@ function uniqueHeadwords(words: VocabularyWord[]) {
   }
   return [...byHeadword.values()];
 }
-const legacyHeadwords = new Set(LEGACY_VOCABULARY.map((word) => vocabularyHeadwordKey(word.german)));
-if (B2_LEXICON.length !== 3300 || B2_LEXICON.some((word) => legacyHeadwords.has(vocabularyHeadwordKey(word.german)))) {
-  throw new Error("B2 must add exactly 3,300 headwords without overlap with A1–B1.");
-}
-const earlierHeadwords = new Set([...legacyHeadwords, ...B2_LEXICON.map(word => vocabularyHeadwordKey(word.german))]);
-const c1Headwords = C1_LEXICON.map(word => vocabularyHeadwordKey(word.german));
-if (C1_LEXICON.length !== 10000 || new Set(c1Headwords).size !== 10000 || c1Headwords.some(key => earlierHeadwords.has(key))) {
-  throw new Error("C1 must add exactly 10,000 unique headwords without overlap with A1–B2.");
-}
 export const ALL_VOCABULARY = uniqueHeadwords([...LEGACY_VOCABULARY, ...B2_LEXICON, ...C1_LEXICON]);
 export const A1_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A1");
 export const EXTENDED_A2_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A2");
@@ -512,16 +503,25 @@ export const VOCABULARY_LEVEL_COUNTS = {
   all: ALL_VOCABULARY.length,
 } as const;
 
-const vocabularyIds = new Set(ALL_VOCABULARY.map((word) => word.id));
-
-// Up to 5,000 original candidates, 3,300 B2 additions and 10,000 C1 additions.
-if (ALL_VOCABULARY.length > TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
-  throw new Error(`The A1–C1 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
-}
-if (B2_VOCABULARY.length !== 3300) throw new Error("Duplicate B2 headwords were found.");
-
-for (const category of VOCABULARY_CATEGORIES) {
-  if (!ALL_VOCABULARY.some((word) => word.category === category)) {
-    throw new Error(`Die Wortschatzkategorie ${category} ist leer.`);
+// These checks validate committed content, not request data. Keep them in
+// development and CI instead of rebuilding large validation sets per isolate.
+export function assertVocabularyRelease() {
+  const legacyHeadwords = new Set(LEGACY_VOCABULARY.map(word => vocabularyHeadwordKey(word.german)));
+  if (B2_LEXICON.length !== 3300 || B2_LEXICON.some(word => legacyHeadwords.has(vocabularyHeadwordKey(word.german)))) {
+    throw new Error("B2 must add exactly 3,300 headwords without overlap with A1–B1.");
+  }
+  const earlierHeadwords = new Set([...legacyHeadwords, ...B2_LEXICON.map(word => vocabularyHeadwordKey(word.german))]);
+  const c1Headwords = C1_LEXICON.map(word => vocabularyHeadwordKey(word.german));
+  if (C1_LEXICON.length !== 10000 || new Set(c1Headwords).size !== 10000 || c1Headwords.some(key => earlierHeadwords.has(key))) {
+    throw new Error("C1 must add exactly 10,000 unique headwords without overlap with A1–B2.");
+  }
+  const vocabularyIds = new Set(ALL_VOCABULARY.map(word => word.id));
+  if (ALL_VOCABULARY.length > TOTAL_VOCABULARY_TARGET || vocabularyIds.size !== ALL_VOCABULARY.length) {
+    throw new Error(`The A1–C1 vocabulary library must contain at most ${TOTAL_VOCABULARY_TARGET} uniquely identified learning cards.`);
+  }
+  if (B2_VOCABULARY.length !== 3300) throw new Error("Duplicate B2 headwords were found.");
+  for (const category of VOCABULARY_CATEGORIES) {
+    if (!ALL_VOCABULARY.some(word => word.category === category)) throw new Error(`Die Wortschatzkategorie ${category} ist leer.`);
   }
 }
+if (process.env.NODE_ENV !== 'production') assertVocabularyRelease();
