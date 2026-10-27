@@ -2,6 +2,7 @@ import { getAuthenticatedUser } from '@/app/lib/supabase-auth';
 import { boundedBody } from '@/app/lib/request-body';
 import { deleteAccount } from '@/app/lib/account-deletion';
 import { getD1 } from '@/db';
+import { stagingDeletionAllowed } from '@/app/lib/staging-safety.mjs';
 
 export const dynamic = 'force-dynamic';
 const headers = { 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' };
@@ -11,6 +12,7 @@ export async function POST(request: Request) {
   try {
     const user = await getAuthenticatedUser(request, { includeDeleting: true });
     if (!user) return json({ error: 'Sign in to delete your account.' }, 401);
+    if (!stagingDeletionAllowed(user.email)) return json({ error: 'This test site can delete only its designated test account. Manage your main account at leselaut.com.' }, 409);
     const origin = request.headers.get('origin');
     const endpoint = new URL(request.url);
     // TLS terminates at CloudFront; nginx sets this header. The original Sites
