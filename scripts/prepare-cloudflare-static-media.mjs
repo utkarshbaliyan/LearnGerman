@@ -18,19 +18,25 @@ export async function prepareStaticMedia({ registryFiles, sourceDir, outputDir }
     }
   }
   const source = await realpath(sourceDir);
+  const batches = async action => {
+    const items = [...entries];
+    for (let offset = 0; offset < items.length; offset += 16) {
+      await Promise.all(items.slice(offset, offset + 16).map(([key, entry]) => action(key, entry)));
+    }
+  };
   // Validate the complete allowlist before putting any bytes in public output.
-  for (const [key, entry] of entries) {
+  await batches(async (key, entry) => {
     const file = path.join(source, key);
     const resolved = await realpath(file);
     if (!resolved.startsWith(source + path.sep) || !(await lstat(file)).isFile()) throw new Error('Unsafe media source.');
     const bytes = await readFile(file);
     if (bytes.length !== entry.bytes || createHash('sha256').update(bytes).digest('hex') !== entry.sha256) throw new Error('Media integrity check failed.');
-  }
+  });
   await mkdir(outputDir, { recursive: true });
   const output = await realpath(outputDir);
   if (source === output || output.startsWith(source + path.sep) || source.startsWith(output + path.sep)) throw new Error('Media input and output must be separate.');
   let totalBytes = 0;
-  for (const [key, entry] of entries) {
+  await batches(async (key, entry) => {
     const target = path.join(output, key);
     await mkdir(path.dirname(target), { recursive: true });
     const parent = await realpath(path.dirname(target));
@@ -39,7 +45,7 @@ export async function prepareStaticMedia({ registryFiles, sourceDir, outputDir }
     if (existing && !existing.isFile()) throw new Error('Unsafe media output.');
     await copyFile(path.join(source, key), target);
     totalBytes += entry.bytes;
-  }
+  });
   return { files: entries.size, bytes: totalBytes };
 }
 

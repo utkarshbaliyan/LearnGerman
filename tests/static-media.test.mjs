@@ -17,10 +17,14 @@ async function fixture(t) {
   return { root, sourceDir, outputDir, registryFiles: [file], entry, bytes, set: value => writeFile(file, JSON.stringify(value)) };
 }
 test('static media output includes only checksum-verified allowlisted files', async t => {
-  const f = await fixture(t); await f.set({ 'stories/test.m4a': f.entry });
+  const f = await fixture(t);
+  const alignment = Buffer.from('{"words":[]}');
+  await writeFile(path.join(f.sourceDir, 'stories/test.json'), alignment);
+  await f.set({ 'stories/test.m4a': f.entry, 'stories/test.json': { bytes: alignment.length, sha256: createHash('sha256').update(alignment).digest('hex'), contentType: 'application/json' } });
   await writeFile(path.join(f.sourceDir, 'private-snapshot.json'), 'private fixture');
-  assert.deepEqual(await prepareStaticMedia(f), { files: 1, bytes: f.bytes.length });
+  assert.deepEqual(await prepareStaticMedia(f), { files: 2, bytes: f.bytes.length + alignment.length });
   assert.deepEqual(await readFile(path.join(f.outputDir, 'stories/test.m4a')), f.bytes);
+  assert.deepEqual(await readFile(path.join(f.outputDir, 'stories/test.json')), alignment);
   assert.deepEqual(await readdir(f.outputDir), ['stories']);
 });
 test('static publication rejects traversal and non-media entries', async t => {
