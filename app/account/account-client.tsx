@@ -123,7 +123,7 @@ export function AccountClient() {
   const displayName = account?.displayName ?? user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Learner";
   if (!sessionReady) return <section className="account-shell"><div className="account-panel account-session-loading" aria-live="polite">Checking your account…</div></section>;
   if (user) return <section className="account-shell account-shell--signed-in">
-    <h1 className="account-simple-name">{displayName}</h1>
+    <h1 className="account-simple-name">Welcome, {displayName}.</h1>
     <div className="account-actions">
       <AccountDeletion userId={user.id} email={user.email ?? ''} />
       <button className="account-action" type="button" onClick={signOut} disabled={busy}><LogOut aria-hidden="true" /> Sign out</button>
