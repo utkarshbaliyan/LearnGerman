@@ -17,6 +17,7 @@
 .account-action svg { width: 18px; height: 18px; }
 .account-action--delete { color: var(--orange-dark); }
 .account-delete form { max-width: 480px; margin: 12px 0; }
+.account-page .account-delete button.account-submit { color: var(--section-on); }
 .account-delete h2 { margin: 0; font-size: 20px; }
 .account-delete p { color: var(--ink-soft); line-height: 1.6; }
 .privacy-data-export { margin: 16px 0 24px; }
