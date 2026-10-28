@@ -1,9 +1,8 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { Cloud, Download, LockKeyhole, LogOut, ShieldCheck } from "lucide-react";
+import { LogOut, ShieldCheck } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
-import { AccountStatus } from "@/app/account/account-status";
 import { authenticatedFetch } from "@/app/lib/authenticated-fetch";
 import { AUTH_CONFIRM_URL } from "@/app/lib/public-site";
 import { supabase } from "@/app/lib/supabase-client";
@@ -22,8 +21,6 @@ export function AccountClient() {
   const [mode, setMode] = useState<"signin" | "signup" | "recover">("signup");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
-  const [exporting, setExporting] = useState(false);
-  const [exportMessage, setExportMessage] = useState("");
   const [googleAvailable, setGoogleAvailable] = useState(false);
   const [captcha, setCaptcha] = useState<CaptchaConfig | null>(null);
   const [captchaToken, setCaptchaToken] = useState('');
@@ -103,7 +100,11 @@ export function AccountClient() {
   }
   async function signOut() {
     setBusy(true);
-    try { await supabase.auth.signOut(); setMessage("Signed out."); }
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      setMessage("Signed out.");
+    }
     catch { setMessage("Sign-out failed. Please try again."); }
     finally { setBusy(false); }
   }
@@ -119,38 +120,19 @@ export function AccountClient() {
     }
   }
 
-  async function exportData() {
-    setExporting(true); setExportMessage("");
-    try {
-      const response = await authenticatedFetch("/api/account/export", { cache: "no-store" });
-      if (!response.ok) throw new Error("Export unavailable");
-      const url = URL.createObjectURL(await response.blob());
-      const link = document.createElement("a");
-      link.href = url; link.download = "leselaut-account-data.json";
-      document.body.appendChild(link); link.click(); link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      setExportMessage("Download started. Keep this file private: it contains your learning history.");
-    } catch {
-      setExportMessage("Download failed. Check your connection and sign-in, then try again.");
-    } finally { setExporting(false); }
-  }
-
   const displayName = account?.displayName ?? user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Learner";
-  return <section className="account-shell">
-    <div className="account-intro"><span><ShieldCheck /> LeseLaut account</span><h1>{user ? `Welcome, ${displayName}.` : mode === "recover" ? "Recover your account." : "Keep your German progress with you."}</h1><p>{user ? "Your learning history is attached to this account and available whenever you sign in." : mode === "recover" ? "Enter your account email to request a password recovery link. Open it in this browser." : "Create a secure LeseLaut account with a username, email, and password. Your progress will follow you across devices."}</p></div>
-    {!sessionReady ? <div className="account-panel account-session-loading" aria-live="polite">Checking your account…</div> : user ? <div className="account-panel">
-      <div className="account-profile"><span>{displayName.slice(0, 1).toLocaleUpperCase()}</span><div><small>Signed in as</small><strong>{displayName}</strong><p>{account ? `@${account.username} · ` : ""}{user.email}</p></div></div>
-      <AccountStatus />
-      <div className="account-benefits"><div><Cloud /><span><b>Cross-device progress</b><small>Stories, grammar, vocabulary, and Active Learning sync automatically.</small></span></div><div><LockKeyhole /><span><b>Private by account</b><small>Every saved record is isolated by your authenticated user ID.</small></span></div></div>
-      <div className="account-data-export">
-        <h2>Your saved data</h2>
-        <p>Download your server-saved profile, progress, tutor drafts, attempts, feedback, and AI usage as JSON. Unsynced browser drafts and original photos or recordings are not included.</p>
-        <button className="account-signout" type="button" onClick={exportData} disabled={busy || exporting}><Download /> {exporting ? "Preparing download…" : "Download my data"}</button>
-        {exportMessage && <p role="status">{exportMessage}</p>}
-      </div>
+  if (!sessionReady) return <section className="account-shell"><div className="account-panel account-session-loading" aria-live="polite">Checking your account…</div></section>;
+  if (user) return <section className="account-shell account-shell--signed-in">
+    <h1 className="account-simple-name">{displayName}</h1>
+    <div className="account-actions">
       <AccountDeletion userId={user.id} email={user.email ?? ''} />
-      <button className="account-signout" type="button" onClick={signOut} disabled={busy || exporting}><LogOut /> Sign out</button>
-    </div> : <div className="account-panel account-auth">
+      <button className="account-action" type="button" onClick={signOut} disabled={busy}><LogOut aria-hidden="true" /> Sign out</button>
+    </div>
+    {message === "Sign-out failed. Please try again." && <p role="alert">{message}</p>}
+  </section>;
+  return <section className="account-shell">
+    <div className="account-intro"><span><ShieldCheck /> LeseLaut account</span><h1>{mode === "recover" ? "Recover your account." : "Keep your German progress with you."}</h1><p>{mode === "recover" ? "Enter your account email to request a password recovery link. Open it in this browser." : "Create a secure LeseLaut account with a username, email, and password. Your progress will follow you across devices."}</p></div>
+    <div className="account-panel account-auth">
       {googleAvailable && <div className="account-social-auth"><button type="button" className="account-google" onClick={googleSignIn} disabled={busy}><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.24c1.89-1.74 2.98-4.3 2.98-7.36Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.62-2.41l-3.24-2.51c-.9.6-2.05.96-3.38.96-2.6 0-4.81-1.76-5.6-4.12H3.06v2.59A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 13.92a6 6 0 0 1 0-3.84V7.49H3.06a10 10 0 0 0 0 9.02l3.34-2.59Z"/><path fill="#EA4335" d="M12 5.96c1.47 0 2.79.5 3.83 1.5l2.88-2.87A9.62 9.62 0 0 0 12 2a10 10 0 0 0-8.94 5.49l3.34 2.59A6 6 0 0 1 12 5.96Z"/></svg>{busy ? 'Connecting…' : 'Continue with Google'}</button><p>or use your email</p></div>}
       <div className="account-auth-tabs" role="tablist" aria-label="Account action"><button type="button" className={mode === "signup" ? "is-active" : ""} onClick={() => { setMode("signup"); setMessage(""); }}>Create account</button><button type="button" className={mode === "signin" ? "is-active" : ""} onClick={() => { setMode("signin"); setMessage(""); }}>Sign in</button></div>
       <form onSubmit={submit}>
@@ -165,6 +147,6 @@ export function AccountClient() {
       <button className="account-signout" type="button" disabled={busy} onClick={() => { setMode(mode === 'recover' ? 'signin' : 'recover'); setMessage(''); }}>{mode === 'recover' ? 'Back to sign in' : 'Forgot password?'}</button>
       {message && <p className="account-auth-message" aria-live="polite">{message}</p>}
       <small>Passwords are securely handled by Supabase and are never stored by LeseLaut.</small>
-    </div>}
+    </div>
   </section>;
 }

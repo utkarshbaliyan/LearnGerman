@@ -2,6 +2,7 @@ import { pageMetadata } from '@/app/lib/seo';
 export const metadata = pageMetadata('Privacy and Your Learning Data', 'How LeseLaut stores learning progress, handles authentication, uses optional analytics and supports data export and account deletion.', '/privacy');
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
+import { AccountDataExport } from '@/app/account/account-data-export';
 
 export default function PrivacyPage() {
   return <main className="site-shell"><SiteHeader active="account" /><article className="information-page">
@@ -13,7 +14,8 @@ export default function PrivacyPage() {
     <p>Analytics stay off until you opt in. Your browser’s Do Not Track or Global Privacy Control signal also disables them. Use Analytics preferences on this page to decline later; this stops browser telemetry and removes its RUM cookies and cached telemetry credentials. The random browser cookie lasts up to 30 days. The preference is remembered for up to 180 days. AWS retains RUM events for 30 days; the additional CloudWatch log copy is retained for seven days. Analytics identifiers are separate from your LeseLaut account, so deleting that account does not identify or erase these separate visitor records. You can contact support about those records using the random visitor/session IDs if available.</p>
     <h2>Operational logs</h2><p>The server records request time, method, path, status, duration and response size for operations and security. These access logs exclude query strings, client IP addresses, request bodies, cookies and authorization headers, and have seven-day CloudWatch retention. They count requests, including bots, rather than named visitors. AWS necessarily receives connection information to deliver its services; its processing is governed by its policies.</p>
     <h2>How long data stays</h2><p>Saved account and practice data stays until you delete the relevant practice or your account; there is no automatic inactivity purge. AWS application logs have a seven-day retention setting. Database backups use a 30-day expiry policy, with a further seven days for older object versions. Deletion does not immediately remove those backups. A minimal record of the deleted account ID is retained to block old sessions and prevent delayed requests from recreating your data.</p>
-    <h2>Your choices</h2><p>Use <Link href="/account">Account</Link> to download your saved data or delete your account. If automatic deletion is unavailable, contact support. If deletion is queued, your learner data is removed and access is blocked while authentication deletion is retried. Clear site data on your other devices to remove local copies. Providers may retain records independently under their own policies.</p>
+    <h2>Your choices</h2><p>Download your saved data below, or use <Link href="/account">Account</Link> to delete your account. If automatic deletion is unavailable, contact support. If deletion is queued, your learner data is removed and access is blocked while authentication deletion is retried. Clear site data on your other devices to remove local copies. Providers may retain records independently under their own policies.</p>
+    <AccountDataExport />
     <h2>Hosting and access</h2><p>AWS hosts the application and learner database; Supabase provides authentication. Authorized operators can access account information when needed to maintain the service or resolve a support request. Do not email passwords, API keys or recordings to support.</p>
   </article></main>;
 }
