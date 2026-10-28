@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import { SiteFooter } from '@/app/components/site-footer';
+import { RumMonitoring } from '@/app/components/rum-monitoring';
 import "./globals.css";
 import "./illustrated-ui.css";
 import './learning.css';
@@ -11,6 +12,7 @@ import './grammar-learning.css';
 import './grammar-guide.css';
 import './launch-readiness.css';
 import './discovery.css';
+import './site-menu.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
 
@@ -55,7 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {isStaging() && <aside role="status" style={{ padding: '12px 20px', background: '#fff2c7', color: '#322800', textAlign: 'center' }}>
           Test site — use a separate test account. Your main account is at <a href="https://leselaut.com" style={{ textDecoration: 'underline' }}>leselaut.com</a>.
         </aside>}
-        <CloudProgressSync />{children}<SiteFooter />
+        <CloudProgressSync />{children}<RumMonitoring /><SiteFooter />
       </body>
     </html>
   );
