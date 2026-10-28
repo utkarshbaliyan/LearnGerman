@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
+import {spawn,execFileSync} from 'node:child_process';
 import {mkdtempSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
@@ -23,6 +23,8 @@ try{
     await new Promise(r=>setTimeout(r,500));
   }
   assert.ok(ready,'Standalone AWS server must connect to its SQLite database.');
+  const health=await(await fetch(`${base}/api/health`)).json();
+  assert.equal(health.release,process.env.GITHUB_SHA??execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),'AWS build must embed the checked commit');
   for(const path of ['/','/stories','/stories/reading-a1-01-v1','/grammar','/vocabulary','/books','/books/b1/zwischen-hoersaal-und-arbeitswelt/1','/account','/auth/reset-password','/privacy','/support']){
     const response=await fetch(base+path);assert.equal(response.status,200,path);
     assert.match(await response.text(),/LeseLaut/,path);

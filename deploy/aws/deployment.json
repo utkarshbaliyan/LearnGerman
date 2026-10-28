@@ -9,5 +9,6 @@
   "DistributionId": "E2SHVXUOX353EM",
   "DataVolumeId": "vol-0b208957e8cd24914",
   "MediaBucket": "leselaut-mediabucket-e4bh4uhthaeu",
-  "SiteUrl": "https://d19k6l47v6hw3.cloudfront.net"
+  "SiteUrl": "https://d19k6l47v6hw3.cloudfront.net",
+  "ProductionUrl": "https://leselaut.com"
 }

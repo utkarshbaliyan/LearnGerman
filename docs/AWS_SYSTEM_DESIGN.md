@@ -100,7 +100,7 @@ flowchart TD
   CI --> CHECK["Locked install and TypeScript<br/>Existing build + test suite<br/>AWS build + standalone smoke test"]
   CHECK -->|"Failure"| STOP["Stop; running release stays unchanged"]
   CHECK -->|"PR passes"| REVIEW["Checks complete; no deployment"]
-  CHECK -->|"Main passes"| ROLE["OIDC: temporary AWS deployment role"]
+  CHECK -->|"Main passes: separate deploy job"| ROLE["OIDC: temporary AWS deployment role"]
   ROLE --> S3["Upload release keyed by commit SHA<br/>Private S3 artifacts bucket"]
   ROLE --> SSM["SSM runs the fixed deploy helper"]
   S3 --> DEPLOY["Lock deployment; download release<br/>Read runtime secrets"]
@@ -108,26 +108,41 @@ flowchart TD
   DEPLOY --> BACK["Stop app and back up SQLite to S3"]
   BACK --> MIG["Verify and apply new migrations"]
   MIG --> SWITCH["Switch current release and start app"]
-  SWITCH --> HEALTH["Local database readiness<br/>Public HTTPS health check"]
+  SWITCH --> HEALTH["Local database readiness + exact commit<br/>Custom domain and CloudFront probes"]
   HEALTH -->|"Healthy"| LIVE["Release live"]
   BACK -->|"Backup failure"| ROLLBACK["Restart previous code<br/>Keep latest learner database"]
   MIG -->|"Migration failure"| ROLLBACK
-  SWITCH -->|"Startup or local readiness failure"| ROLLBACK
+  SWITCH -->|"Startup, readiness or public probe failure"| ROLLBACK
 ```
 
-The deployment helper rolls back code after a stopped-phase failure when a
-previous release exists. A public health failure detected later by GitHub marks
-the workflow failed; it does not itself invoke another rollback. Database
-migrations must remain additive and backward compatible because the database is
-never rolled back over newer learner data.
+The root-owned deployment helper rolls back code after a stopped-phase failure,
+including public probes, when a previous release exists. It verifies rollback
+readiness and retains the latest learner database. Migrations must be additive
+and backward compatible. A later public failure detected independently by GitHub
+marks the deployment failed; it does not trigger another automatic rollback.
 
-GitHub uses short-lived OIDC credentials scoped to this repository's `main`
-branch. It can upload releases and invoke the fixed deployment document, but
-cannot retrieve runtime secrets. Deployments serialize and briefly interrupt
-service during restart. Application pushes deploy automatically; infrastructure
-and bootstrap changes require a separate reviewed update. Documentation-only
-commits may explicitly skip CI. The last verified application pipeline passed
-203 tests and deployed commit `649d6620b0fd57c1ce949c5540c90d3c9f2e038c`.
+Checks and deployment are separate jobs. PRs cannot request OIDC credentials.
+The main deployment downloads the archive produced by its successful check job;
+it never rebuilds unchecked code. GitHub uses short-lived OIDC credentials scoped
+to this repository's `main` branch. It can upload releases and invoke the fixed
+SSM deployment document, but cannot retrieve runtime secrets. The deployment
+script records production status through GitHub's Deployments API while retaining
+the branch OIDC subject. It checks the current main SHA before starting, serializes
+deployments and reports the SSM command ID in the workflow summary.
+
+Both `https://leselaut.com` and the original CloudFront hostname must return the
+checked commit from uncached `/api/health`. Read-only probes also verify pages,
+JavaScript, auth boundaries, disabled browser monitoring and audio seeking.
+These probes do not establish a signed-in user's full Supabase login/progress
+sync experience; isolated auth/storage tests cover those paths without modifying
+production users. The health endpoint itself checks database connectivity, not
+all external services.
+
+Main protection requires an up-to-date PR and `check-and-deploy`, including for
+admins, and disallows force pushes/deletion. It requires zero human approvals.
+Application pushes deploy automatically after checks; infrastructure and installed
+root helpers require a separate reviewed update. See the [hosting guide](AWS_HOSTING.md)
+for failure diagnosis, rollback and the audited rules.
 
 ## Security and operations
 
@@ -142,8 +157,8 @@ commits may explicitly skip CI. The last verified application pipeline passed
 | Data persistence | Encrypted EBS data volume separate from application releases and retained by the stack |
 | Database backups | Daily and before deployment; private encrypted S3; 30-day retention; one restore independently verified during cutover |
 | Logs | CloudWatch log group `/leselaut/application`, seven-day retention |
-| Alarms | Sustained CPU and instance-status alarms; notification destinations are not configured |
-| Release diagnosis | GitHub Actions logs, SSM command results and `/api/health` |
+| Alarms | Sustained CPU and instance-status alarms; SNS notification destination configured; operator receipt requires separate verification |
+| Release diagnosis | Separate GitHub check/deploy jobs, deployment history, SSM command IDs and commit-bearing `/api/health` |
 
 CloudFormation defines the AWS resources. The instance, data volume and buckets
 have retention settings; deleting the stack is not a complete cleanup and may
@@ -161,7 +176,7 @@ and load balancer, but it is not guaranteed to cost zero.
 - Production user capacity is not established by unit or concurrency tests.
   Measure latency, memory, CPU, database contention and AI provider limits before
   increasing traffic or choosing a scaling target.
-- The health endpoint checks database readiness. It is not an independent uptime
+- The health endpoint reports the release commit and checks database readiness. It is not an independent uptime
   monitor and does not prove Supabase or the AI providers are healthy.
 
 Implementation: [hosting guide](AWS_HOSTING.md), [CloudFormation source](../deploy/aws/stack.mjs),
