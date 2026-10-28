@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { secureResponse } from '../deploy/cloudflare/security-response.mjs';
+import { secureResponse } from '../deploy/security-response.mjs';
 
-test('Cloudflare hardening preserves streaming bodies and application response headers', async () => {
+test('response hardening preserves streaming bodies and application response headers', async () => {
   const original = new Response('response fixture', { status: 503, headers: { 'cache-control': 'private, no-store', 'retry-after': '60', 'set-cookie': 'fixture=value; Secure; HttpOnly' } });
   const secured = secureResponse(original);
   assert.equal(secured.status, 503); assert.equal(await secured.text(), 'response fixture');

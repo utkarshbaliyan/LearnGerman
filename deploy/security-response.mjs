@@ -1,4 +1,4 @@
-import securityHeaders from '../security-headers.json' with { type: 'json' };
+import securityHeaders from './security-headers.json' with { type: 'json' };
 
 export function secureResponse(response, staging = false) {
   const headers = new Headers(response.headers);
