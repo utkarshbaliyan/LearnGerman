@@ -9,7 +9,8 @@ import { AUTH_CONFIRM_URL } from "@/app/lib/public-site";
 import { supabase } from "@/app/lib/supabase-client";
 import { googleProviderEnabled, signInWithGoogle } from '@/app/lib/google-auth';
 import { AccountDeletion } from './account-deletion';
-import { requestRecovery } from '@/app/lib/password-recovery';
+import { submitEmailAuth, type CaptchaConfig } from '@/app/lib/auth-captcha';
+import { AuthCaptcha } from '@/app/components/auth-captcha';
 import { browserSession } from '@/app/lib/browser-session';
 
 type Account = { email: string; displayName: string; username: string };
@@ -24,6 +25,22 @@ export function AccountClient() {
   const [exporting, setExporting] = useState(false);
   const [exportMessage, setExportMessage] = useState("");
   const [googleAvailable, setGoogleAvailable] = useState(false);
+  const [captcha, setCaptcha] = useState<CaptchaConfig | null>(null);
+  const [captchaToken, setCaptchaToken] = useState('');
+  const [captchaAttempt, setCaptchaAttempt] = useState(0);
+  const [configAttempt, setConfigAttempt] = useState(0);
+  const [captchaError, setCaptchaError] = useState('');
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetch('/api/auth/config', { cache: 'no-store', signal: controller.signal }).then(async response => {
+      if (!response.ok) throw new Error();
+      const value = await response.json() as CaptchaConfig;
+      if (typeof value.enabled !== 'boolean' || (value.enabled && !value.siteKey)) throw new Error();
+      setCaptcha(value); setCaptchaError('');
+    }).catch(() => { if (!controller.signal.aborted) setCaptchaError('Security check is temporarily unavailable.'); });
+    return () => controller.abort();
+  }, [configAttempt]);
 
   useEffect(() => {
     if (!sessionReady || user) return;
@@ -75,20 +92,12 @@ export function AccountClient() {
       setBusy(false); setMessage("The passwords do not match."); return;
     }
     try {
-      if (mode === 'recover') {
-        await requestRecovery(supabase.auth, email, AUTH_CONFIRM_URL);
-        setMessage('If an account exists for this email, a recovery link will be sent. Open it in this browser.');
-        return;
-      }
-      const result = mode === "signup"
-        ? await supabase.auth.signUp({ email, password, options: { data: { username }, emailRedirectTo: AUTH_CONFIRM_URL } })
-        : await supabase.auth.signInWithPassword({ email, password });
-      if (result.error) setMessage(result.error.message);
-      else if (mode === "signup" && !result.data.session) setMessage("Check your email to confirm your account, then sign in.");
-      else setMessage("Signed in successfully.");
-    } catch {
-      setMessage("Sign-in is temporarily unavailable. Please check your connection and try again.");
+      if (!captcha) throw new Error('Security check is temporarily unavailable. Please retry.');
+      setMessage(await submitEmailAuth(supabase.auth, { mode, email, password, username, callback: AUTH_CONFIRM_URL, captcha, token: captchaToken }));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Sign-in is temporarily unavailable. Please check your connection and try again.");
     } finally {
+      setCaptchaToken(''); setCaptchaAttempt(value => value + 1);
       setBusy(false);
     }
   }
@@ -149,7 +158,9 @@ export function AccountClient() {
         <label>Email<input name="email" required type="email" autoComplete="email" placeholder="you@example.com" /></label>
         {mode !== 'recover' && <label>Password<input name="password" required type="password" minLength={8} maxLength={128} autoComplete={mode === "signup" ? "new-password" : "current-password"} placeholder="At least 8 characters" /></label>}
         {mode === "signup" && <label>Confirm password<input name="passwordConfirmation" required type="password" minLength={8} autoComplete="new-password" placeholder="Enter the password again" /></label>}
-        <button className="account-submit" type="submit" disabled={busy}>{busy ? "Please wait…" : mode === 'recover' ? 'Send recovery link' : mode === "signup" ? "Create account" : "Sign in"}</button>
+        {captcha?.enabled && captcha.siteKey && <AuthCaptcha key={`${mode}:${captchaAttempt}`} siteKey={captcha.siteKey} onToken={setCaptchaToken} />}
+        {captchaError && <p role="alert">{captchaError} <button type="button" onClick={() => setConfigAttempt(value => value + 1)}>Retry</button></p>}
+        <button className="account-submit" type="submit" disabled={busy || !captcha || (captcha.enabled && !captchaToken)}>{busy ? "Please wait…" : mode === 'recover' ? 'Send recovery link' : mode === "signup" ? "Create account" : "Sign in"}</button>
       </form>
       <button className="account-signout" type="button" disabled={busy} onClick={() => { setMode(mode === 'recover' ? 'signin' : 'recover'); setMessage(''); }}>{mode === 'recover' ? 'Back to sign in' : 'Forgot password?'}</button>
       {message && <p className="account-auth-message" aria-live="polite">{message}</p>}

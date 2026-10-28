@@ -12,12 +12,14 @@ import './grammar-guide.css';
 import './launch-readiness.css';
 import './discovery.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
+import { isStaging } from './lib/staging-safety.mjs';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   applicationName: 'LeseLaut',
   title: 'Learn German with Stories, Audio & Practice | LeseLaut',
   description: SITE_DESCRIPTION,
+  ...(isStaging() ? { robots: { index: false, follow: false } } : {}),
   icons: {
     icon: [{ url: '/icon-192.png', sizes: '192x192', type: 'image/png' }, { url: '/favicon.svg', type: 'image/svg+xml' }],
     shortcut: "/favicon.svg",
@@ -49,7 +51,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body><CloudProgressSync />{children}<SiteFooter /></body>
+      <body>
+        {isStaging() && <aside role="status" style={{ padding: '12px 20px', background: '#fff2c7', color: '#322800', textAlign: 'center' }}>
+          Test site — use a separate test account. Your main account is at <a href="https://leselaut.com" style={{ textDecoration: 'underline' }}>leselaut.com</a>.
+        </aside>}
+        <CloudProgressSync />{children}<SiteFooter />
+      </body>
     </html>
   );
 }

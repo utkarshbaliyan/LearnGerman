@@ -16,6 +16,14 @@ const words=data.C1_VOCABULARY;
 const rows=JSON.parse(readFileSync('app/vocabulary/c1-data.json','utf8'));
 const manifest=JSON.parse(readFileSync('app/vocabulary/c1-provenance.json','utf8'));
 
+test('release checks and German case normalization remain valid for the complete catalogue',()=>{
+  assert.doesNotThrow(()=>data.assertVocabularyRelease());
+  for(const word of data.ALL_VOCABULARY){
+    const text=word.german.normalize('NFKC');
+    assert.equal(text.toLowerCase(),text.toLocaleLowerCase('de'));
+  }
+});
+
 test('C1 adds 10000 dictionary lemmas while every earlier card and alias remains unchanged',()=>{
   assert.equal(words.length,10000);
   assert.equal(data.ALL_VOCABULARY.length,17397);

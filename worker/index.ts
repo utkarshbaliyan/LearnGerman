@@ -2,6 +2,7 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 import {proxyToAws} from '../app/lib/hosting-proxy.mjs';
+import {secureResponse} from '../deploy/security-response.mjs';
 
 interface Env {
   ASSETS: Fetcher;
@@ -51,4 +52,8 @@ const worker = {
   },
 };
 
-export default worker;
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    return secureResponse(await worker.fetch(request, env, ctx), process.env.LESELAUT_STAGING === '1');
+  },
+};

@@ -20,7 +20,6 @@ In Authentication → URL Configuration, allow both `/auth/confirm` and
 `/auth/confirm?intent=recovery` on each supported site origin:
 
 - `https://d19k6l47v6hw3.cloudfront.net`
-- `https://leselaut-german.professor-ut7.chatgpt.site`
 - `https://leselaut.com`
 - `https://www.leselaut.com`
 

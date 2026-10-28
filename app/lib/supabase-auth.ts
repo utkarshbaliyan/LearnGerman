@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { getD1 } from '@/db';
+import { stagingIdentityIsCurrent } from './staging-safety.mjs';
 
 const SUPABASE_URL = "https://npnzojbbwwdtujuurkmx.supabase.co";
 const ISSUER = `${SUPABASE_URL}/auth/v1`;
@@ -15,6 +16,7 @@ export async function getAuthenticatedUser(request: Request, options: { includeD
     const email = typeof payload.email === "string" ? payload.email : "";
     if (!payload.sub || !email.trim() || payload.role !== 'authenticated') return null;
     if (!options.includeDeleting && await (await getD1()).prepare('SELECT 1 AS deleting FROM account_deletions WHERE user_id = ?').bind(payload.sub).first()) return null;
+    if (!await stagingIdentityIsCurrent(request, payload.sub)) return null;
     const metadata = payload.user_metadata && typeof payload.user_metadata === "object" ? payload.user_metadata as Record<string, unknown> : {};
     const name = [metadata.full_name, metadata.name, metadata.username].find((value): value is string => typeof value === "string" && value.trim().length > 0);
     const authentications = Array.isArray(payload.amr) ? payload.amr : [];

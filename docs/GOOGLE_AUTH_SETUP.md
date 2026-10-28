@@ -56,7 +56,6 @@ Google's audience exception:
 
    ```text
    https://d19k6l47v6hw3.cloudfront.net
-   https://leselaut-german.professor-ut7.chatgpt.site
    https://leselaut.com
    https://www.leselaut.com
    ```
@@ -76,7 +75,6 @@ Google's audience exception:
 
    ```text
    https://d19k6l47v6hw3.cloudfront.net/auth/confirm
-   https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm
    https://leselaut.com/auth/confirm
    https://www.leselaut.com/auth/confirm
    ```
