@@ -23,25 +23,70 @@ change. This is a single-server deployment, not a high-availability cluster.
 
 ## GitHub workflow
 
-`.github/workflows/ci-deploy.yml` runs on pull requests and pushes to `main`:
+`.github/workflows/ci-deploy.yml` runs on pull requests, pushes to `main`, and
+manual dispatch. The path from a change to production is:
 
-1. Install the lockfile with Node 22 on an ARM Linux runner.
-2. Run TypeScript, the existing Cloudflare build and all tests.
-3. Build and smoke-test the standalone AWS server with a disposable database.
-4. On `main` only, assume a narrowly scoped AWS role using GitHub OIDC.
-5. Upload the exact commit's release and run the fixed SSM deployment document.
-6. Check database readiness locally and through the public HTTPS endpoint.
+1. Commit locally, push a branch, and open a PR targeting `main`.
+2. The required `check-and-deploy` job installs the lockfile with Node 22 on ARM
+   Linux, checks TypeScript, builds the existing target, runs all tests, and
+   builds and smoke-tests the AWS standalone server using a disposable database.
+3. Merge the passing, up-to-date PR. The push to `main` repeats those checks.
+4. Only after success, the separate `deploy` job downloads that run's checked
+   archive. It uses GitHub OIDC to obtain temporary AWS credentials, uploads the
+   archive to private S3, and invokes the fixed SSM deployment document.
+5. The server locks deployment, backs up SQLite, verifies/applies migrations,
+   switches code, and checks local readiness plus both public HTTPS endpoints.
+6. Production is successful only when health reports the exact checked commit
+   and the public page, JavaScript, account page, protected APIs, disabled browser
+   monitoring, and audio byte ranges pass. GitHub independently repeats these
+   public probes after SSM completes.
 
-GitHub holds no permanent AWS access keys or AI credentials. Failed checks do not
-deploy. Deployments serialize, take a consistent database backup, apply only new
-unchanged migrations and restart the service. A failed backup, migration or
-readiness check restarts the previous code, never an older learner database. A restart causes a brief service
-interruption. Old generated releases are pruned after a healthy rollout, while
-current and previous code are protected. Infrastructure and bootstrap changes require a reviewed manual
-update; the workflow deploys application releases.
+PR checks have no OIDC permission. The AWS role trusts this repository's `main`
+branch only, can upload releases and invoke the fixed deployment document, and
+cannot retrieve runtime secrets. The deployment job records production status
+and a link in GitHub's Deployments view through the REST API; it deliberately
+keeps branch-based OIDC identity (a job-level environment would change it).
+Deployments serialize without cancelling an active rollout. Superseded commits
+are skipped before deployment. Checked archives expire from GitHub after one day.
 
-The pipeline begins after a developer **commits and pushes**. It does not commit
-or upload unsaved local edits automatically.
+### Branch protection and visible failures
+
+Live rules verified on 28 October 2026: PR required; `check-and-deploy` required
+and branch must be up to date; admins included; force pushes and branch deletion
+blocked. Stale reviews are dismissed, but **zero human approvals are required**.
+The agent reviews its diff before publishing; branch protection does not promise
+an independent human review. Keep the required job name when editing the workflow.
+
+Use **Actions → Check and deploy** for separate check/deploy results, the step
+summary for the commit and SSM command ID, and **Deployments → production** for
+release history and production links. A failed check prevents the deploy job.
+An SSM failure marks deployment failed and identifies the command to inspect;
+logs never print runtime secrets. A timeout or cancelled job can leave an SSM
+command running: inspect that command before retrying. A public failure detected
+after SSM success is reported as a failure, with no claim that rollback occurred.
+
+### Rollback and bootstrap updates
+
+The root-owned `/usr/local/bin/leselaut-deploy` is installed separately from app
+code. Changes to `deploy/aws/release.sh` must be reviewed and tested, uploaded to
+`bootstrap/release.sh` in the artifact bucket, then installed atomically through
+SSM after checking its SHA-256. Merely merging this file does not update the live
+helper. Keep the old helper for recovery; do not rerun server bootstrap or replace
+the instance to update it. Infrastructure changes also require a separate update.
+
+A failed backup, migration, startup, local readiness or server-side public probe
+restarts the previous code and reports whether database readiness recovered.
+Rollback **never restores an older learner database**. Migrations must remain
+additive and backward compatible. Isolated tests inject backup, migration,
+readiness and public-check failures, assert the previous release returns, and
+assert the learner database is unchanged. Production is never deliberately broken
+for this drill. To undo a bad application change, revert it in a new PR, pass the
+checks, and merge; the new main commit follows this same pipeline. Restoring data
+from backup is a separate destructive recovery operation requiring owner approval.
+
+A restart causes a brief service interruption on this single server. Old generated
+releases are pruned only after a healthy rollout; current and previous code are
+protected. Unsaved local edits are never uploaded automatically.
 
 ## Secrets and data
 

@@ -37,6 +37,7 @@ const localBindingConfig = {
 export default defineConfig(async () => {
   if (process.env.LESELAUT_BUILD_TARGET === 'aws') {
     return {
+      define: { 'process.env.LESELAUT_RELEASE': JSON.stringify(process.env.LESELAUT_RELEASE ?? 'development') },
       plugins: [{name: 'leselaut-aws-bindings', enforce: 'pre', load(id: string) {
         if (id === fileURLToPath(new URL('./platform-bindings.ts', import.meta.url)))
           return `export {getBindings} from './deploy/aws/runtime.mjs';`;

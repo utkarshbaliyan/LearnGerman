@@ -66,7 +66,7 @@ const current=describe();
 console.log(`Stack status: ${current.StackStatus}`);
 if(current.StackStatus==='CREATE_COMPLETE'||current.StackStatus==='UPDATE_COMPLETE'){
   const outputs=Object.fromEntries(current.Outputs.map(x=>[x.OutputKey,x.OutputValue]));
-  const config={region,stack,...outputs};
+  const config={region,stack,...outputs,ProductionUrl:'https://leselaut.com'};
   writeFileSync(`${state}/deployment.json`,JSON.stringify(config,null,2)+'\n',{mode:0o600});
   // Deployment identifiers are public configuration, never credentials.
   writeFileSync('deploy/aws/deployment.json',JSON.stringify(config,null,2)+'\n');

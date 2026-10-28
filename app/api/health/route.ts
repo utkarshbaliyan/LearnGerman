@@ -9,7 +9,7 @@ export async function GET() {
     const database = await getD1();
     const result = await database.prepare('SELECT 1 AS ready').first<{ ready: number }>();
     if (result?.ready !== 1) throw new Error('not ready');
-    return Response.json({ status: 'ok' }, { headers });
+    return Response.json({ status: 'ok', release: process.env.LESELAUT_RELEASE ?? 'development' }, { headers });
   } catch {
     console.error('{"event":"database_unavailable"}');
     return Response.json({ status: 'unavailable' }, { status: 503, headers });
