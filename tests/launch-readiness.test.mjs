@@ -91,7 +91,7 @@ test('account deletion requires a recent verified identity and confirmation, iso
     assert.equal((await POST(request('alice'))).status, 503);
     const proxied = new Request('http://site.example.test/api/account/delete', { method: 'POST', headers: { 'x-test-user': 'alice', origin: 'https://site.example.test', 'x-forwarded-proto': 'https', 'content-type': 'application/json' }, body: JSON.stringify({ confirmation: 'DELETE', email: 'alice@example.test' }) });
     assert.equal((await POST(proxied)).status, 503, 'TLS termination must not reject a legitimate deletion request');
-    assert.equal((await POST(request('alice', {}, { origin: 'https://leselaut-german.professor-ut7.chatgpt.site' }))).status, 503, 'the compatibility proxy must remain supported');
+    assert.equal((await POST(request('alice', {}, { origin: 'https://leselaut-german.professor-ut7.chatgpt.site' }))).status, 403, 'the retired hosting origin must not be trusted');
     for (const origin of ['https://leselaut.com', 'https://www.leselaut.com']) {
       assert.equal((await POST(request('alice', {}, { origin }))).status, 503, 'the custom domain must reach the same protected deletion handler');
     }

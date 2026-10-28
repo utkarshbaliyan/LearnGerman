@@ -3,10 +3,10 @@
 German learning platform with Stories, Books, Active Learning, Vocabulary, Grammar
 and Account. Built with React and vinext, hosted on AWS behind CloudFront.
 Supabase provides authentication; an encrypted SQLite volume stores learner data,
-and private S3 buckets hold media and backups. The original Sites address proxies
-to AWS; its former D1 database is frozen and retained.
+and private S3 buckets hold media and backups. The former Sites hosting target is
+retired; production deployment goes only to AWS.
 
-Live: [LeseLaut on AWS](https://d19k6l47v6hw3.cloudfront.net).
+Live: [LeseLaut on AWS](https://leselaut.com).
 
 Public launch is on hold: [launch-readiness status and remaining checks](docs/LAUNCH_READINESS.md).
 See [AWS hosting and automatic deployment](docs/AWS_HOSTING.md) for the current
@@ -40,7 +40,7 @@ Scripts that need writable project-scoped home, npm, XDG, and temporary paths us
 
 - edit site code under `app/`
 - `app/lib/supabase-auth.ts` verifies Supabase user sessions for protected APIs
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
+- `.openai/hosting.json` declares local compatibility bindings, with no active Site identity
 - `vite.config.ts` simulates declared bindings for local development
 - `db/index.ts` uses platform bindings: SQLite on AWS, D1 for the retained Sites target
 - `db/schema.ts` defines users, progress, tutor sessions and quotas
@@ -56,9 +56,10 @@ unique username, and learning progress.
 
 Email confirmation returns through `/auth/confirm`. Both local and deployed URLs
 must be present in Supabase's redirect allow list. Both production origins are
-allowed: `https://d19k6l47v6hw3.cloudfront.net/auth/confirm` and
-`https://leselaut-german.professor-ut7.chatgpt.site/auth/confirm`. Callbacks use the
-current browser origin; the original origin remains Supabase's Site URL.
+allowed: `https://leselaut.com/auth/confirm` and
+`https://www.leselaut.com/auth/confirm`. The CloudFront distribution callback is
+also retained. Callbacks use the current browser origin; Supabase's Site URL is
+`https://leselaut.com`. Retired hosting addresses must be removed from the allowlist.
 
 ## Diagnostic Commands
 

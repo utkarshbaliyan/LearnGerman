@@ -15,13 +15,17 @@ try{
   let input='';for await(const chunk of process.stdin)input+=chunk;
   const publicSettings=input.trim()?JSON.parse(input):{};
   const allowed=['GROQ_TRANSCRIBE_MODEL','GROQ_TUTOR_MODEL','OPENAI_TRANSCRIBE_MODEL','OPENAI_TUTOR_MODEL','GROQ_VISION_MODEL','LESELAUT_AI_DAILY_CALL_LIMIT','LESELAUT_AI_ENABLED','LESELAUT_RUM_ENABLED'];
-  const values={LESELAUT_AI_DAILY_CALL_LIMIT:'200',LESELAUT_AI_ENABLED:'1',...previous,AWS_REGION:config.region,LESELAUT_SQLITE_PATH:'/var/lib/leselaut/leselaut.sqlite',LESELAUT_MEDIA_BUCKET:config.MediaBucket,
+  const values={LESELAUT_AI_DAILY_CALL_LIMIT:'200',LESELAUT_AI_ENABLED:'0',LESELAUT_RUM_ENABLED:'0',...previous,AWS_REGION:config.region,LESELAUT_SQLITE_PATH:'/var/lib/leselaut/leselaut.sqlite',LESELAUT_MEDIA_BUCKET:config.MediaBucket,
     LESELAUT_READ_ONLY:process.argv.includes('--enable-writes')?'0':'1'};
-  for(const key of ['GROQ_API_KEY','OPENAI_API_KEY']){
-    if(!localSettings[key])throw new Error('Existing local AI credentials are missing.');
-    values[key]=localSettings[key];
-  }
   for(const key of allowed)if(publicSettings[key]??localSettings[key])values[key]=publicSettings[key]??localSettings[key];
+  if(!['0','1'].includes(values.LESELAUT_AI_ENABLED)||!['0','1'].includes(values.LESELAUT_RUM_ENABLED))throw new Error('AI and monitoring flags must be 0 or 1.');
+  for(const key of ['GROQ_API_KEY','OPENAI_API_KEY']){
+    if(values.LESELAUT_AI_ENABLED==='0')delete values[key];
+    else{
+      if(!localSettings[key])throw new Error('AI credentials are required only when AI is enabled.');
+      values[key]=localSettings[key];
+    }
+  }
   if(localSettings.SUPABASE_SECRET_KEY)values.SUPABASE_SECRET_KEY=localSettings.SUPABASE_SECRET_KEY;
   for(const value of Object.values(values))if(typeof value!=='string'||!value||/[\r\n]/.test(value))throw new Error('Invalid runtime setting.');
   const content=Object.entries(values).map(([key,value])=>`${key}=${JSON.stringify(value)}`).join('\n')+'\n';
