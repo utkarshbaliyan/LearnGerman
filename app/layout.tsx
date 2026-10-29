@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { CloudProgressSync } from "@/app/components/cloud-progress-sync";
 import { SiteFooter } from '@/app/components/site-footer';
 import { RumMonitoring } from '@/app/components/rum-monitoring';
+import { ResponsiveAudit } from '@/app/components/responsive-audit';
 import "./globals.css";
 import "./illustrated-ui.css";
 import './learning.css';
@@ -15,6 +16,7 @@ import './site-menu.css';
 import './account/account-simple.css';
 import './vocabulary/word-list.css';
 import './platform-colours.css';
+import './responsive.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
 
@@ -34,6 +36,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: 'cover',
+  interactiveWidget: 'resizes-content',
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fffdf9" },
     { media: "(prefers-color-scheme: dark)", color: "#141b1a" },
@@ -60,6 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Test site — use a separate test account. Your main account is at <a href="https://leselaut.com" style={{ textDecoration: 'underline' }}>leselaut.com</a>.
         </aside>}
         <CloudProgressSync />{children}<RumMonitoring /><SiteFooter />
+        {process.env.NODE_ENV !== 'production' && process.env.LESELAUT_LAYOUT_AUDIT === '1' && <ResponsiveAudit />}
       </body>
     </html>
   );
