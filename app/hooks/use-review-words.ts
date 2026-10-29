@@ -54,7 +54,7 @@ export function useReviewWords(vocabulary: VocabularyProgress, ready: boolean, e
   }, [enabled, ready, owner, lookup, revision]);
   const current = ready && result?.owner === owner && result?.lookup === lookup && result?.revision === revision ? result : undefined;
   const catalog = current?.catalog;
-  const pool = useMemo(() => sharedReviewWords(catalog ?? [], vocabulary), [catalog, vocabulary]);
+  const pool = useMemo(() => ready && owner !== undefined ? sharedReviewWords(catalog ?? [], vocabulary) : [], [catalog, vocabulary, ready, owner]);
   const dueWords = useMemo(() => pool.filter(word => (vocabulary.cards?.[word.key]?.dueAt ?? 0) <= now), [pool, vocabulary, now]);
   const retry = useCallback(() => setRevision(n => n + 1), []);
   return { catalog: catalog ?? [], pool, dueWords, loading: !current && (!ready || owner !== undefined), error: ready && owner === undefined ? 'Enable browser storage to load your review words.' : current?.error ?? '', retry, now };

@@ -12,7 +12,7 @@ export function useStoryProgress() {
   useEffect(() => {
     const refresh = () => {
       try { setProgress(readStoryProgress(JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]"))); setStorageError(''); }
-      catch { setStorageError('Your story progress could not load. Enable browser storage and try again.'); }
+      catch { setProgress({ entries: {} }); setStorageError('Your story progress could not load. Enable browser storage and try again.'); }
       setHydrated(true);
     };
     const frame = requestAnimationFrame(refresh);

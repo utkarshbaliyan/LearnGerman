@@ -59,7 +59,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
   const [active, setActive] = useState<ActiveRound | null>(null), [pending, setPending] = useState<PendingSave | null>(null), [busy, setBusy] = useState(false), [actionError, setActionError] = useState('');
   const [accountOwner, setAccountOwner] = useState<string | null | undefined>(undefined);
   const owner = useRef<string | null | undefined>(undefined), saving = useRef(false);
-  const ready = hydrated && wordsReady;
+  const ready = hydrated && wordsReady && !storageError && !wordStorageError;
   const ownWords = useReviewWords(vocabulary, ready, !sharedWords);
   const { catalog, pool, dueWords, loading, error: loadError, retry } = sharedWords ?? ownWords;
   const due = dueWords.length;
@@ -167,6 +167,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
     setStage(kind === 'flashcards' && pool.length ? 'size' : 'box');
   }
   return <Dialog open={panel !== null} onOpenChange={value => { if (!value) close(); }}>
+    {!compact && (storageError || wordStorageError) && <p role="alert">{storageError || wordStorageError}</p>}
     <section className="home-practice-cards" aria-label="Flashcards and Review">
       <article className="home-practice-card" data-kind="flashcards"><div><h2>Flashcards</h2><p>Recall the German. Turn the card. Make it stick.</p><span className="home-practice-count">{ready && !loading && !loadError ? pool.length : '…'} words saved for practice</span></div><TopicArt kind="learn" /><div className="home-practice-actions"><Button disabled={!ready || busy || Boolean(pending)} onClick={e => open('flashcards', e.currentTarget)}>Practice flashcards</Button>{resumable && <Button variant="ghost" disabled={!canAct} onClick={e => { launcher.current = e.currentTarget; setPanel('flashcards'); openRound(); }}>Resume round</Button>}</div></article>
       <article className="home-practice-card" data-kind="review"><div><h2>Review</h2><p>Your saved words and mistakes, ready to revisit.</p><span className="home-practice-count">{ready && !loading && !loadError ? due : '…'} words due{mistakeDue !== undefined ? ` · ${mistakeDue} mistake reviews due` : ''}</span></div><TopicArt kind="work" /><div className="home-practice-actions"><Button ref={reviewLauncher} variant="outline" disabled={!ready || busy || Boolean(pending)} onClick={e => open('review', e.currentTarget)}>Open review</Button></div></article>
