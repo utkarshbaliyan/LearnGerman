@@ -2,10 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {verifyPublic,verifyWithRetry} from '../scripts/verify-public.mjs';
 const release='b'.repeat(40);
+const homepage='<title>LeseLaut</title><script src="/assets/app.js"></script>';
+const homepageHeaders={'x-frame-options':'DENY','x-content-type-options':'nosniff','content-security-policy':"frame-ancestors 'none'"};
 function fixture(change) {
   const responses=new Map([
     ['/api/health',()=>Response.json({status:'ok',release},{headers:{'cache-control':'no-store'}})],
-    ['/',()=>new Response('<title>LeseLaut</title><script src="/assets/app.js"></script>')],
+    ['/',()=>new Response(homepage,{headers:homepageHeaders})],
     ['/assets/app.js',()=>new Response(null,{headers:{'content-type':'text/javascript'}})],
     ['/account',()=>new Response('Sign in')],
     ['/api/auth/config',()=>Response.json({enabled:false})],
@@ -25,6 +27,14 @@ function fixture(change) {
 }
 test('public verification covers release identity, assets, auth boundary, disabled monitoring and audio ranges',async()=>{
   await verifyPublic('https://fixture.test',release,{request:fixture()});
+});
+for(const [header,message] of [
+  ['x-frame-options','Homepage framing protection'],
+  ['x-content-type-options','Homepage content sniffing protection'],
+  ['content-security-policy','Homepage CSP framing protection'],
+])test(`public verification rejects a homepage missing ${header}`,async()=>{
+  const headers={...homepageHeaders};delete headers[header];
+  await assert.rejects(verifyPublic('https://fixture.test',release,{request:fixture(map=>map.set('/',()=>new Response(homepage,{headers})))}),new RegExp(message));
 });
 for(const [name,path,response] of [
   ['old release','/api/health',()=>Response.json({status:'ok',release:'a'.repeat(40)},{headers:{'cache-control':'no-store'}})],

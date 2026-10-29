@@ -155,3 +155,12 @@ Primary references:
 - https://aws.amazon.com/free/free-tier-faqs/
 - https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+
+### Homepage response headers
+
+Keep both `/` and `/:path*` rules in `next.config.ts`: the locked Vinext matcher
+skips the empty path segment for the catch-all rule. The explicit root rule
+applies the same existing security policy to the homepage as to other pages.
+The AWS standalone smoke test checks the public-page headers. Public deployment
+verification rejects a homepage missing CSP framing protection, `X-Frame-Options`
+or `X-Content-Type-Options`, so this gap cannot silently return after deployment.

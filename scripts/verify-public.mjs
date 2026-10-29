@@ -13,6 +13,9 @@ export async function verifyPublic(base, release, {healthOnly=false, request=fet
   if(healthOnly)return;
   const home=await get('/');
   assert.equal(home.status,200,'Homepage');
+  assert.equal(home.headers.get('x-frame-options'),'DENY','Homepage framing protection');
+  assert.equal(home.headers.get('x-content-type-options'),'nosniff','Homepage content sniffing protection');
+  assert.ok((home.headers.get('content-security-policy')??'').includes("frame-ancestors 'none'"),'Homepage CSP framing protection');
   const html=await home.text();
   assert.match(html,/LeseLaut/,'Homepage content');
   const asset=html.match(/(?:src|href)="(\/assets\/[^"?#]+\.js)(?:[?#][^"]*)?"/);
@@ -62,7 +65,7 @@ if(process.argv[1]===fileURLToPath(import.meta.url)) {
   const healthOnly=flags.includes('--health-only');
   try {
     await verifyWithRetry(base,release,{healthOnly,attempts:healthOnly?30:3,delayMs:2000});
-    console.log(`Verified ${release} at ${new URL(base).origin}${healthOnly?' (database readiness)':' (readiness, pages, assets, auth boundary, monitoring off, audio)'}`);
+    console.log(`Verified ${release} at ${new URL(base).origin}${healthOnly?' (database readiness)':' (readiness, pages, security headers, assets, auth boundary, monitoring off, audio)'}`);
   }catch(error) {
     // Deliberately omit response bodies and runtime configuration.
     console.error(`Health verification failed at ${new URL(base).origin}: ${error.message.split('\n')[0]}`);
