@@ -30,6 +30,10 @@ export function readDailyLearningSettings(value: unknown): DailyLearningSettings
 export function mergeDailyLearningSettings(a: unknown, b: unknown) {
   return [readDailyLearningSettings(a), readDailyLearningSettings(b)].filter(v => v !== undefined).sort((x, y) => x.startedAt - y.startedAt || (x.timeZone === y.timeZone ? 0 : x.timeZone < y.timeZone ? -1 : 1))[0];
 }
+/** A later unmark changes status, but does not make a story new again. */
+export function previouslyCompletedStories(progress: StoryProgress) {
+  return new Set(Object.entries(progress.entries).filter(([, entry]) => entry.completed || validActivityTime(entry.firstCompletedAt)).map(([id]) => id));
+}
 function calendarDay(at: number, formatter: Intl.DateTimeFormat) {
   const parts = formatter.formatToParts(at);
   const part = (name: string) => Number(parts.find(p => p.type === name)?.value);

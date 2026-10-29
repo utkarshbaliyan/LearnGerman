@@ -57,6 +57,12 @@ test('existing learned marks and story completions remain intact without inventi
   words = v.markVocabularyRead(words, word('Haus'), now + 1);
   assert.equal(v.isVocabularyLearned(words, word('Haus')), true); assert.equal(summary(undefined, words).words, 0);
   assert.equal(summary(old).streak, 0);
+  const unmarked = s.markStory(reread, 'old-story', false, now + 1);
+  const neverCompleted = s.markStory(unmarked, 'new-story', false, now + 2);
+  const completedBefore = d.previouslyCompletedStories(neverCompleted);
+  assert.deepEqual([...completedBefore], ['old-story']);
+  const catalog = ['old-story', 'new-story'].map((id, i) => ({ id, level: 'A1', number: i, topics: [] }));
+  assert.equal(learning.recommendStory(catalog, { level: 'A1', goal: 'everyday' }, completedBefore, []).id, 'new-story');
 });
 
 test('correct guesses count once; saving or scheduling a review does not earn new-word credit', () => {
@@ -99,9 +105,16 @@ test('cloud merges keep first achievements even when a newer device changes stat
   const later = { entries: { story: { completed: false, updatedAt: now + 100 } } };
   const a = sync.mergeProgress('stories', story, later), b = sync.mergeProgress('stories', later, story);
   assert.deepEqual(a, b); assert.equal(a.entries.story.completed, false); assert.equal(summary(a).streak, 1);
+  assert.equal(summary(sync.mergeProgress('stories', story, { entries: { story: { completed: true, updatedAt: now + 100 } } })).streak, 1, 'a newer legacy client cannot erase an existing first achievement');
   const words = fiveWords(now, 1), oldClient = { cards: { 'de:haus': { status: 'review', updatedAt: now + 100, dueAt: now + 200, intervalMinutes: 1 } } };
   const x = sync.mergeProgress('vocabulary', words, oldClient), y = sync.mergeProgress('vocabulary', oldClient, words);
   assert.deepEqual(x.cards, y.cards); assert.equal(x.cards['de:haus'].status, 'review'); assert.equal(summary(undefined, x).words, 1);
+  const previouslyLearned = { cards: { 'de:haus': { status: 'learned', updatedAt: now - 100, dueAt: now, intervalMinutes: 0 } } };
+  const laterLearned = { cards: { 'de:haus': { ...previouslyLearned.cards['de:haus'], updatedAt: now + 100 } } };
+  assert.equal(summary(undefined, sync.mergeProgress('vocabulary', words, laterLearned)).words, 1);
+  const anotherFirst = fiveWords(now + 200, 1);
+  const merge = v.mergeVocabularyProgress;
+  assert.deepEqual(merge(merge(words, laterLearned), anotherFirst).cards, merge(words, merge(laterLearned, anotherFirst)).cards, 'achievement merges are independent of arrival order across three devices');
   const olderFirst = v.setVocabularyStatus(v.emptyVocabularyProgress(), word('Haus'), 'learned', now - 50);
   assert.equal(v.mergeVocabularyProgress(words, olderFirst).cards['de:haus'].firstLearned.at, now - 50);
   const laterSettings = { timeZone: 'Europe/Berlin', startedAt: settings.startedAt + 100 };
@@ -128,7 +141,7 @@ test('normalization, personal-word migration and catalog aliases retain achievem
 test('daily goals provide separate accessible progress bars, a seven-day history and a clear either-task rule', async () => {
   const { DailyLearning } = await vite.ssrLoadModule('/app/components/daily-learning.tsx');
   const markup = renderToStaticMarkup(React.createElement(DailyLearning, { summary: summary(), level: 'A1', signedIn: false }));
-  assert.match(markup, /Complete either task/); assert.match(markup, /href="\/vocabulary\?level=A1"/);
+  assert.match(markup, /Complete either task/); assert.match(markup, /href="\/vocabulary\?level=A1&amp;goal=daily"/);
   assert.equal((markup.match(/<progress /g) ?? []).length, 2); assert.equal((markup.match(/goal not complete/g) ?? []).length, 7);
   assert.match(markup, /Your next completed goal starts your streak/);
 });

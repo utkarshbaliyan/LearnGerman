@@ -14,6 +14,8 @@ A streak covers consecutive completed calendar days. Yesterday's streak stays av
 - Guests save in browser storage; signed-in accounts use existing Supabase authentication and the AWS progress API. Signing into another account uses the existing scope clearing rules. The streak has no separate storage key to leak across accounts.
 - Home refreshes time at minute boundaries and on focus/visibility changes. This changes the displayed date and due counts without adding network polling.
 
+Daily story suggestions skip all previously completed stories, including ones later unmarked. The Learn words link opens a visible daily-goal filter at the selected level, excluding currently familiar and previously learned words; saved review words remain eligible for their first learning achievement.
+
 ## Review and session consistency
 
 Home and Review share one resolved word pool, including legacy marks, catalog aliases and saved reading words. The session warm-up uses that same due list, limited to three, five or eight words for the selected duration. A saved unfinished session displays its original level and duration even if future session preferences change. Missing/retired stories do not prevent starting another session.

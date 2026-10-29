@@ -7,7 +7,7 @@ import type { ReadingSummary } from '@/app/lib/reading-path';
 export function DailyLearning({ summary, story, level, signedIn }: { summary: ReturnType<typeof dailyLearningSummary>; story?: ReadingSummary; level: string; signedIn: boolean }) {
   const goals = [
     { title: 'Discover a new story', detail: 'Complete one story you haven’t finished before.', count: summary.stories, target: 1, href: story ? `/stories/${story.id}` : '/stories', action: 'Read a story', Icon: BookOpen },
-    { title: 'Make five words familiar', detail: 'Mark new words learned, or recall them correctly.', count: summary.words, target: DAILY_WORD_GOAL, href: `/vocabulary?level=${level}`, action: 'Learn words', Icon: Sprout },
+    { title: 'Make five words familiar', detail: 'Mark new words learned, or recall them correctly.', count: summary.words, target: DAILY_WORD_GOAL, href: `/vocabulary?level=${level}&goal=daily`, action: 'Learn words', Icon: Sprout },
   ];
   return <section className="daily-learning" aria-labelledby="daily-learning-heading">
     <div className="daily-learning-heading"><div><span className="reading-eyebrow">Your daily goal</span><h2 id="daily-learning-heading">A little German, every day</h2><p>Complete either task to keep your streak going.</p></div><div className="daily-streak"><Flame aria-hidden="true" /><div><strong>{summary.streak}</strong><span>day{summary.streak === 1 ? '' : 's'} in a row</span></div></div></div>

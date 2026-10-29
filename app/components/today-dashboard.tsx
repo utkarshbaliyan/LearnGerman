@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useReviewWords } from '@/app/hooks/use-review-words';
-import { dailyLearningSummary } from '@/app/lib/daily-learning';
+import { dailyLearningSummary, previouslyCompletedStories } from '@/app/lib/daily-learning';
 import { DailyLearning } from './daily-learning';
 import { useLearningProgress } from '@/app/hooks/use-learning-progress';
 import { useVocabularyProgress } from '@/app/hooks/use-vocabulary-progress';
@@ -51,6 +51,8 @@ export function TodayDashboard({ stories, grammarLessons, initialReview = false 
   const session = activeId ? progress.sessions[activeId] : undefined;
   const prefs = progress.preferences;
   const recommended = prefs ? recommendStory(stories, prefs, completedIds, sessions) : undefined;
+  const completedBefore = previouslyCompletedStories(storyProgress);
+  const dailyStory = prefs ? recommendStory(stories, prefs, completedBefore, sessions) : stories.find(s => s.level === 'A1' && !completedBefore.has(s.id));
   const featuredStory = unfinished ? stories.find(s => s.id === unfinished.storyId) : recommended;
   const plan = unfinished ?? prefs;
   const now = reviewWords.now;
@@ -91,7 +93,7 @@ export function TodayDashboard({ stories, grammarLessons, initialReview = false 
     {!session && <ReviewDeck sharedWords={reviewWords} compact initialOpen={initialReview} mistakeDue={memory?.due} reviewExtra={<TranslationMistakeReview state={{ memory, loading: memoryLoading, error: memoryError, signedIn, refresh }} />} />}
     {!hydrated || !vocabReady || !storiesReady ? <p role="status">Loading your learning plan…</p> : <>
     {(storageError || vocabularyError || storyError) && <p role="alert">{storageError || vocabularyError || storyError}</p>}
-    {!session && progress.daily && <DailyLearning summary={daily} story={recommended && !completedIds.has(recommended.id) ? recommended : stories.find(s => s.level === (prefs?.level === 'C1' ? 'B2' : prefs?.level ?? 'A1') && !completedIds.has(s.id))} level={prefs?.level ?? 'A1'} signedIn={signedIn} />}
+    {!session && progress.daily && <DailyLearning summary={daily} story={dailyStory && !completedBefore.has(dailyStory.id) ? dailyStory : undefined} level={prefs?.level ?? 'A1'} signedIn={signedIn} />}
     {!session && reviewWords.error && <p role="alert">{reviewWords.error} <button type="button" onClick={reviewWords.retry}>Retry loading words</button></p>}
     {(!prefs || settings) && <Setup key={prefs?.updatedAt ?? 'new'} preferences={prefs} onSave={p => { if (update(state => ({ ...state, preferences: p }))) { setSettings(false); if (!prefs) start(p); } }} />}
     {!session && prefs && <section className="learning-start"><TopicArt kind={storyArt(featuredStory?.topics ?? [])} className="learning-feature-art" /><div><span className="reading-eyebrow">{plan?.level} · {plan?.minutes} minute plan</span><h2>{unfinished ? 'Pick up where you left off' : 'Your next useful session'}</h2><p className="learning-feature-title" lang="de">{featuredStory?.title}</p><p className="learning-due-summary">{reviewWords.loading || reviewWords.error ? '…' : reviewWords.dueWords.length} word reviews due{memory ? ` · ${memory.due} mistake reviews due` : ''}</p></div><div className="learning-actions"><Button onClick={() => start()} disabled={Boolean(storageError || vocabularyError || storyError || (!unfinished && (reviewWords.loading || reviewWords.error)))}>{unfinished ? 'Resume session' : 'Start session'}</Button><Button variant="outline" onClick={() => setSettings(!settings)}>Change preferences</Button><Link href="/review">Personal review →</Link></div><div className="learning-feature-note">{plan?.level === 'C1' && <p>C1 output practice uses B2 stories: our reading library currently ends at B2.</p>}<p>Time is a guide. Longer stories can take more than one visit.</p></div></section>}
