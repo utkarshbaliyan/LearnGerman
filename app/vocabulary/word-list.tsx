@@ -81,7 +81,7 @@ export function VocabularyRow({ word, saved, translationVisible, completed, revi
       {hydrated && review && <small className="vocab-row-due">{dueAt === 0 ? "Ready for review" : `Due ${new Date(dueAt).toLocaleDateString()}`}</small>}
     </td>
     <td className="vocab-col-learned"><button type="button" className={`vocab-familiar-toggle${completed ? " is-active" : ""}`} aria-label={`Mark ${word.german} as familiar`} aria-pressed={completed} disabled={!hydrated} title={completed ? "Remove familiar mark" : "Mark familiar"} onClick={onComplete}><Check aria-hidden="true" /></button></td>
-    <td className="vocab-col-review"><button type="button" className={`vocab-review-toggle${review ? " is-active" : ""}`} aria-label={`Review ${word.german}`} aria-pressed={review} disabled={!hydrated} title={review ? "Remove from review" : "Add to review"} onClick={onReview}><Bookmark aria-hidden="true" />Review</button></td>
+    <td className="vocab-col-review"><button type="button" className={`vocab-review-toggle${review ? " is-active" : ""}`} aria-label={`Review ${word.german}`} aria-pressed={review} disabled={!hydrated} title={review ? "Remove from review" : "Add to review"} onClick={onReview}><Bookmark aria-hidden="true" /></button></td>
     <td className="vocab-col-audio"><button type="button" className={`vocab-list-audio${speaking ? " is-speaking" : ""}`} aria-label={`Pronounce ${word.german} in German`} title={speaking ? "Playing" : "Listen"} onClick={onPronounce}><Volume2 aria-hidden="true" /></button></td>
   </tr>;
 }
