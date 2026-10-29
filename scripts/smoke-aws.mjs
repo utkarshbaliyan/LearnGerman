@@ -27,6 +27,9 @@ try{
   assert.equal(health.release,process.env.GITHUB_SHA??execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),'AWS build must embed the checked commit');
   for(const path of ['/','/stories','/stories/reading-a1-01-v1','/grammar','/vocabulary','/books','/books/b1/zwischen-hoersaal-und-arbeitswelt/1','/account','/auth/reset-password','/privacy','/support']){
     const response=await fetch(base+path);assert.equal(response.status,200,path);
+    assert.equal(response.headers.get('x-frame-options'),'DENY',`framing protection: ${path}`);
+    assert.equal(response.headers.get('x-content-type-options'),'nosniff',`content sniffing protection: ${path}`);
+    assert.ok((response.headers.get('content-security-policy')??'').includes("frame-ancestors 'none'"),`CSP framing protection: ${path}`);
     const html=await response.text();
     assert.match(html,/LeseLaut/,path);
     assert.doesNotMatch(html,/data-layout-audit|RESPONSIVE_AUDIT|Local responsive audit/,`development audit must never render in production: ${path}`);
