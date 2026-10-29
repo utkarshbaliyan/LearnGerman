@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Volume2, X } from 'lucide-react';
@@ -8,9 +8,9 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/compone
 import { useLearningProgress } from '@/app/hooks/use-learning-progress';
 import { useVocabularyProgress } from '@/app/hooks/use-vocabulary-progress';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY } from '@/app/lib/cloud-progress-keys';
-import type { VocabularyIdentity } from '@/app/lib/progress-sync';
+import { useReviewWords, type ReviewWordsState } from '@/app/hooks/use-review-words';
 import { recordDeckAnswer, type DeckAnswer } from '@/app/lib/recall-decks';
-import { REVIEW_SIZES, reviewLookupKeys, sharedReviewWords, startSharedReviewSession, remainingReviewWords, type ReviewSize, type SharedReviewWord } from '@/app/lib/review-deck';
+import { REVIEW_SIZES, startSharedReviewSession, remainingReviewWords, type ReviewSize, type SharedReviewWord } from '@/app/lib/review-deck';
 import { FLASHCARD_RATINGS, flashcardOptions, flashcardInterval, type FlashcardRating } from '@/app/lib/flashcard-scheduler';
 import { TopicArt } from './topic-art';
 
@@ -48,59 +48,37 @@ function ReviewFlashcard({ word, options, busy, onAction }: {
   </section>;
 }
 
-export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, reviewExtra }: { compact?: boolean; initialOpen?: boolean; mistakeDue?: number; reviewExtra?: ReactNode }) {
+export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, reviewExtra, sharedWords }: { sharedWords?: ReviewWordsState; compact?: boolean; initialOpen?: boolean; mistakeDue?: number; reviewExtra?: ReactNode }) {
   const router = useRouter();
   const [panel, setPanel] = useState<'flashcards' | 'review' | null>(initialOpen ? 'review' : null);
   const launcher = useRef<HTMLButtonElement | null>(null);
   const reviewLauncher = useRef<HTMLButtonElement | null>(null);
   const { progress, hydrated, update, storageError } = useLearningProgress();
   const { progress: vocabulary, hydrated: wordsReady, rateFlashcard, markAsRead, storageError: wordStorageError } = useVocabularyProgress();
-  const [catalog, setCatalog] = useState<VocabularyIdentity[]>([]), [loading, setLoading] = useState(true), [loadError, setLoadError] = useState(''), [reload, setReload] = useState(0);
   const [stage, setStage] = useState<'box' | 'size' | 'round'>('box'), [size, setSize] = useState<ReviewSize>(8), [query, setQuery] = useState('');
   const [active, setActive] = useState<ActiveRound | null>(null), [pending, setPending] = useState<PendingSave | null>(null), [busy, setBusy] = useState(false), [actionError, setActionError] = useState('');
   const [accountOwner, setAccountOwner] = useState<string | null | undefined>(undefined);
   const owner = useRef<string | null | undefined>(undefined), saving = useRef(false);
-  const ready = hydrated && wordsReady;
+  const ready = hydrated && wordsReady && !storageError && !wordStorageError;
+  const ownWords = useReviewWords(vocabulary, ready, !sharedWords);
+  const { catalog, pool, dueWords, loading, error: loadError, retry } = sharedWords ?? ownWords;
+  const due = dueWords.length;
   useEffect(() => {
     if (initialOpen) {
       setPanel('review'); launcher.current = reviewLauncher.current;
       if (!busy && !pending) { setStage('box'); setQuery(''); }
     } else if (!busy && !pending) setPanel(null);
   }, [initialOpen]);
-  const lookup = JSON.stringify(reviewLookupKeys(vocabulary));
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || storageError || wordStorageError) return;
     const currentOwner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
     if (owner.current !== undefined && owner.current !== currentOwner) {
-      setCatalog([]); setActive(null); setPending(null); setStage('box'); setQuery(''); setActionError(''); setPanel(null);
+      setActive(null); setPending(null); setStage('box'); setQuery(''); setActionError(''); setPanel(null);
     }
     owner.current = currentOwner;
     if (accountOwner !== currentOwner) setAccountOwner(currentOwner);
     if (active && (active.owner !== currentOwner || progress.reviewSession?.id !== active.sessionId || progress.reviewSession.run?.id !== active.runId)) { setActive(null); setPending(null); setStage('box'); }
-  }, [ready, progress, vocabulary, active, accountOwner]);
-  useEffect(() => {
-    if (!ready || accountOwner === undefined) return;
-    const controller = new AbortController(), currentOwner = localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY);
-    const keys = JSON.parse(lookup) as string[];
-    setLoading(true); setLoadError('');
-    async function load() {
-      try {
-        const batches: string[][] = [];
-        for (let i = 0; i < keys.length; i += 500) batches.push(keys.slice(i, i + 500));
-        const results = await Promise.all(batches.map(async batch => {
-          const response = await fetch('/api/learning/words', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ keys: batch }), signal: controller.signal });
-          const data = await response.json() as { words?: VocabularyIdentity[] };
-          if (!response.ok || !Array.isArray(data.words)) throw new Error('Your review words could not load.');
-          return data.words;
-        }));
-        if (!controller.signal.aborted && currentOwner === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) setCatalog(results.flat());
-      } catch { if (!controller.signal.aborted && currentOwner === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) setLoadError('Your review words could not load. Retry before starting practice.'); }
-      finally { if (!controller.signal.aborted && currentOwner === localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY)) setLoading(false); }
-    }
-    void load(); return () => controller.abort();
-  }, [ready, lookup, reload, accountOwner]);
-  const pool = useMemo(() => sharedReviewWords(catalog, vocabulary), [catalog, vocabulary]);
-  const due = pool.filter(word => (vocabulary.cards?.[word.key]?.dueAt ?? 0) <= Date.now()).length;
+  }, [ready, progress, vocabulary, active, accountOwner, storageError, wordStorageError]);
   const matches = pool.filter(word => `${word.german} ${word.english}`.toLocaleLowerCase('de').includes(query.trim().toLocaleLowerCase('de')));
   const session = active && progress.reviewSession?.id === active.sessionId && progress.reviewSession.run?.id === active.runId ? progress.reviewSession : undefined;
   const remaining = session ? remainingReviewWords(session, pool) : [];
@@ -152,7 +130,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
   const content = <section className="recall-decks" aria-label="Your review deck">
     {!compact && <header className="recall-decks-heading"><TopicArt kind="learn" /><div><span className="reading-eyebrow">Your words, together</span><h2>Your review deck</h2><p>Words you add to Review in the word library, stories and books appear here.</p></div></header>}
     {!ready ? <p role="status">Loading your review deck…</p> : <>
-      {(loadError || storageError || wordStorageError || actionError) && <p role="alert">{loadError || storageError || wordStorageError || actionError}{loadError && <Button variant="outline" onClick={() => setReload(n => n + 1)}>Retry loading words</Button>}</p>}
+      {(loadError || storageError || wordStorageError || actionError) && <p role="alert">{loadError || storageError || wordStorageError || actionError}{loadError && <Button variant="outline" onClick={retry}>Retry loading words</Button>}</p>}
       {stage === 'round' && session?.run ? <section className="recall-round" aria-label="Flashcard round">
         <div className="recall-round-top"><div><span className="reading-eyebrow">{session.words.length} word round</span><h3>Review flashcards</h3></div><Button variant="outline" disabled={busy || Boolean(pending)} onClick={() => { if (compact) { close(); return; } setStage('box'); setActive(null); setPending(null); }}>Save & leave practice</Button></div>
         <progress max={session.words.length} value={session.words.length - remaining.length} aria-label="Flashcard round progress" />
@@ -189,6 +167,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
     setStage(kind === 'flashcards' && pool.length ? 'size' : 'box');
   }
   return <Dialog open={panel !== null} onOpenChange={value => { if (!value) close(); }}>
+    {!compact && (storageError || wordStorageError) && <p role="alert">{storageError || wordStorageError}</p>}
     <section className="home-practice-cards" aria-label="Flashcards and Review">
       <article className="home-practice-card" data-kind="flashcards"><div><h2>Flashcards</h2><p>Recall the German. Turn the card. Make it stick.</p><span className="home-practice-count">{ready && !loading && !loadError ? pool.length : '…'} words saved for practice</span></div><TopicArt kind="learn" /><div className="home-practice-actions"><Button disabled={!ready || busy || Boolean(pending)} onClick={e => open('flashcards', e.currentTarget)}>Practice flashcards</Button>{resumable && <Button variant="ghost" disabled={!canAct} onClick={e => { launcher.current = e.currentTarget; setPanel('flashcards'); openRound(); }}>Resume round</Button>}</div></article>
       <article className="home-practice-card" data-kind="review"><div><h2>Review</h2><p>Your saved words and mistakes, ready to revisit.</p><span className="home-practice-count">{ready && !loading && !loadError ? due : '…'} words due{mistakeDue !== undefined ? ` · ${mistakeDue} mistake reviews due` : ''}</span></div><TopicArt kind="work" /><div className="home-practice-actions"><Button ref={reviewLauncher} variant="outline" disabled={!ready || busy || Boolean(pending)} onClick={e => open('review', e.currentTarget)}>Open review</Button></div></article>

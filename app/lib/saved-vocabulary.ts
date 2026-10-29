@@ -1,3 +1,4 @@
+import { firstWordLearning } from './daily-learning';
 import { readLearningProgress } from './learning-state';
 import { mergeVocabularyProgress, readCollectedWords, vocabularyCardKey, type VocabularyProgress } from './progress-sync';
 import type { VocabularyWord } from '@/app/vocabulary/data';
@@ -11,7 +12,9 @@ export function migrateReadingVocabulary(progress: VocabularyProgress, legacy: u
     const level = word.storyId.match(/reading-(a1|a2|b1|b2)-/i)?.[1].toUpperCase() ?? 'A1';
     if (!words[key]) words[key] = readCollectedWords({ [key]: { ...word, context: word.context.slice(0, 600), source: { kind: 'story', id: word.storyId, href: `/stories/${word.storyId}`, title: 'Saved story', level }, progressByHeadword: true } })[key];
     const card = word.card ?? { status: 'review' as const, updatedAt: word.updatedAt, dueAt: word.dueAt, intervalMinutes: Math.max(0, (word.dueAt - word.updatedAt) / 60000) };
-    if (!cards[key] || card.updatedAt > cards[key].updatedAt) cards[key] = card;
+    const firstLearned = firstWordLearning(card.firstLearned, cards[key]?.firstLearned);
+    const winner = !cards[key] || card.updatedAt > cards[key].updatedAt ? card : cards[key];
+    cards[key] = { ...winner, ...(firstLearned ? { firstLearned } : {}) };
   }
   return mergeVocabularyProgress({ ...progress, words: readCollectedWords(words), cards }, { recalls: learning.recalls });
 }

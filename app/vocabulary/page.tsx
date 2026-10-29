@@ -35,7 +35,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-type ProgressFilter = "all" | "unlearned" | "completed" | "review";
+type ProgressFilter = "all" | "unlearned" | "completed" | "review" | "new";
 type LevelFilter = "all" | VocabularyWord["level"];
 type WordClassFilter = VocabularyWordClass | `verb:${VocabularyVerbType}` | "all";
 const VISIBLE_BATCH = 120;
@@ -72,7 +72,7 @@ export default function VocabularyPage() {
 
   const catalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabularyProgress), [vocabularyProgress]);
   const levelWords = useMemo(() => catalog.filter(word => level === "all" || word.level === level), [catalog, level]);
-  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); }, []);
+  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); if (params.get('goal') === 'daily') setProgressFilter('new'); const requestedLevel = params.get('level'); if (requestedLevel && ['A1', 'A2', 'B1', 'B2', 'C1'].includes(requestedLevel)) setLevel(requestedLevel as LevelFilter); }, []);
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
@@ -83,10 +83,11 @@ export default function VocabularyPage() {
     VOCABULARY_VERB_TYPES.map((name) => [name, levelWords.filter((word) => vocabularyVerbType(word) === name).length]),
   ) as Record<VocabularyVerbType, number>, [levelWords]);
 
+  const sourceWords = useMemo(() => progressFilter === 'new' ? levelWords.filter(word => !isLearned(word) && !vocabularyProgress.cards?.[vocabularyCardKey(word)]?.firstLearned) : levelWords, [progressFilter, levelWords, isLearned, vocabularyProgress.cards]);
   const visibleWords = useMemo(() => {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
     const verbTypeFilter = selectedVerbType(wordClassFilter);
-    return sortVocabularyWords(levelWords.filter((word) => {
+    return sortVocabularyWords(sourceWords.filter((word) => {
       if (category !== "all" && word.category !== category) return false;
       if (verbTypeFilter && vocabularyVerbType(word) !== verbTypeFilter) return false;
       if (!verbTypeFilter && wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
@@ -95,10 +96,10 @@ export default function VocabularyPage() {
       if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
     }), sortDirection);
-  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter, sortDirection]);
+  }, [category, deferredQuery, isLearned, isReview, sourceWords, progressFilter, wordClassFilter, sortDirection]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
-  const practiceWords = useMemo(() => levelWords.filter((word) => category === "all" || word.category === category), [category, levelWords]);
+  const practiceWords = useMemo(() => sourceWords.filter((word) => category === "all" || word.category === category), [category, sourceWords]);
 
   useEffect(() => () => {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -209,6 +210,7 @@ export default function VocabularyPage() {
         <div className="vocabulary-toolbar">
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
+            {progressFilter === "new" && <button type="button" className="is-active" onClick={() => chooseProgressFilter("new")}><BookOpen /> New for your daily goal</button>}
             <button type="button" className={progressFilter === "all" ? "is-active" : ""} onClick={() => chooseProgressFilter("all")}>All <b>{levelWords.length}</b></button>
             <button type="button" className={progressFilter === "unlearned" ? "is-active" : ""} onClick={() => chooseProgressFilter("unlearned")}><BookOpen /> Not marked familiar <b>{selectedUnlearned}</b></button>
             <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => chooseProgressFilter("completed")}><CheckCircle2 /> Marked familiar <b>{selectedCompleted}</b></button>
@@ -248,7 +250,7 @@ export default function VocabularyPage() {
 
 
         <div className="vocabulary-list-heading">
-          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to explore" : progressFilter === "completed" ? "Marked familiar words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
+          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "new" ? "New words for today" : progressFilter === "unlearned" ? "Words to explore" : progressFilter === "completed" ? "Marked familiar words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 

@@ -52,16 +52,17 @@ export function ReadingText({ story, glosses, sentenceTranslations }: { story: R
 }
 
 export function ReadingCheck({ story, onScore }: { story: ReadingStory; onScore?: (score: number) => void }) {
-  const { completedIds, hydrated, setStoryCompleted } = useStoryProgress();
+  const { completedIds, hydrated, setStoryCompleted, storageError } = useStoryProgress();
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [checked, setChecked] = useState(false);
   const correct = story.questions.filter((question, i) => answers[i] === question.answer).length;
   function check() {
+    if (correct === story.questions.length && !setStoryCompleted(story.id, true)) return;
     setChecked(true);
     onScore?.(Math.round(correct / story.questions.length * 100));
-    if (correct === story.questions.length) setStoryCompleted(story.id, true);
   }
   return <section className="reading-check" aria-label="Reading practice">
+    {storageError && <p role="alert">{storageError}</p>}
     <span className="reading-eyebrow">Check your understanding</span><h2>Comprehension quiz</h2>
     {story.questions.map((question, i) => <fieldset key={question.prompt}><legend>{question.prompt}</legend>{question.options.map((option, j) => <label key={option}><input type="radio" name={`${story.id}-q${i}`} checked={answers[i] === j} disabled={checked} onChange={() => setAnswers(current => ({ ...current, [i]: j }))} />{option}</label>)}{checked && <p className={answers[i] === question.answer ? 'reading-correct' : 'reading-retry'}>{answers[i] === question.answer ? 'Yes. ' : 'Read that part once more. '}{question.explanation}</p>}</fieldset>)}
     <div aria-live="polite">{checked && correct === story.questions.length ? <div className="reading-finished"><CheckCircle2 /><div><strong>Story complete.</strong><p>You followed a German story and checked its meaning.</p></div></div> : checked ? <p>You found {correct} of {story.questions.length}. Take another look, then try again.</p> : hydrated && completedIds.has(story.id) ? <p>You completed this story before. You can practise it again.</p> : null}</div>
