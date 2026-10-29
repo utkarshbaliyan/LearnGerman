@@ -13,6 +13,7 @@ import './launch-readiness.css';
 import './discovery.css';
 import './site-menu.css';
 import './account/account-simple.css';
+import './vocabulary/word-list.css';
 import './platform-colours.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
