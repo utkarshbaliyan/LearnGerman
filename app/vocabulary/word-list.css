@@ -1,0 +1,70 @@
+/* A continuous word list, with the existing vocabulary progress actions. */
+.vocabulary-table-wrap { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--white); }
+.vocabulary-table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: left; font: 400 15px/1.5 var(--font-ui); }
+.vocabulary-table th { padding: 14px 12px; background: var(--section-soft); color: var(--section-ink); font-size: 13px; font-weight: 650; border-bottom: 1px solid var(--section-line); vertical-align: middle; }
+.vocabulary-table th button { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; border: 0; padding: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; text-align: left; }
+.vocabulary-table th button svg { width: 14px; height: 14px; }
+.vocabulary-table .vocab-translation-toggle { text-decoration: underline; text-underline-offset: 3px; }
+.vocabulary-table td { padding: 16px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; overflow-wrap: anywhere; }
+.vocabulary-row:last-child td { border-bottom: 0; }
+.vocabulary-row:hover { background: color-mix(in srgb, var(--section-soft) 22%, var(--white)); }
+.vocabulary-table .vocab-col-review { width: 62px; text-align: center; }
+.vocabulary-table .vocab-col-level { width: 64px; }
+.vocabulary-table .vocab-col-word { width: 25%; }
+.vocabulary-table .vocab-col-progress { width: 132px; }
+.vocabulary-table .vocab-col-learned { width: 78px; text-align: center; }
+.vocabulary-table .vocab-col-audio { width: 54px; text-align: center; }
+.vocab-row-level { display: inline-block; font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+.vocab-review-check { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; cursor: pointer; }
+.vocabulary-table .vocab-review-check input { width: 19px; height: 19px; margin: 0; accent-color: var(--tone-butter-ink); cursor: pointer; }
+.vocab-review-check input:disabled { cursor: wait; }
+.vocabulary-table .vocab-word-toggle { display: inline; min-height: 36px; padding: 0; border: 0; background: transparent; color: var(--ink); text-align: left; font: 600 19px/1.5 var(--font-ui); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 5px; cursor: pointer; overflow-wrap: anywhere; }
+.vocabulary-table .vocab-word-toggle:hover { color: var(--section-ink); text-decoration-color: currentColor; }
+.vocab-word-article { color: var(--ink-soft); font-size: 15px; font-weight: 400; }
+.vocab-word-meta, .vocab-row-source { display: block; font-size: 11px; line-height: 1.6; color: var(--ink-soft); margin-top: 3px; }
+.vocab-row-source { width: fit-content; color: var(--section-ink); text-underline-offset: 3px; }
+.vocab-translation-text { color: var(--ink); font-size: 16px; line-height: 1.65; white-space: pre-line; }
+.vocabulary-table .vocab-show-translation { border: 0; padding: 6px 0; min-height: 36px; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; text-align: left; cursor: pointer; }
+.vocab-row-status { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.vocab-row-status > span { width: 7px; height: 7px; flex-shrink: 0; border-radius: 50%; background: var(--progress-unlearned); }
+.vocab-row-status.is-familiar { color: var(--tone-sage-ink); }
+.vocab-row-status.is-familiar > span { background: var(--progress-learned); }
+.vocab-row-status.is-review { color: var(--tone-butter-ink); }
+.vocab-row-status.is-review > span { background: var(--progress-review); }
+.vocab-row-due { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 10px; }
+.vocabulary-table :is(.vocab-familiar-toggle, .vocab-list-audio) { width: 38px; height: 38px; padding: 0; display: inline-grid; place-items: center; border: 1px solid transparent; border-radius: 50%; background: transparent; color: var(--ink-soft); cursor: pointer; }
+.vocabulary-table :is(.vocab-familiar-toggle, .vocab-list-audio) svg { width: 20px; height: 20px; }
+.vocabulary-table :is(.vocab-familiar-toggle, .vocab-list-audio):hover { background: var(--muted); border-color: var(--line); }
+.vocabulary-table .vocab-familiar-toggle.is-active { background: var(--tone-sage); color: var(--tone-sage-ink); }
+.vocabulary-table .vocab-list-audio.is-speaking { background: var(--tone-sky); color: var(--tone-sky-ink); }
+.vocabulary-table .vocab-familiar-toggle:disabled { opacity: .5; cursor: wait; }
+.vocab-mobile-label, .vocab-mobile-level { display: none; }
+@media (max-width: 900px) {
+  .vocabulary-table .vocab-col-level { display: none; }
+  .vocab-mobile-level { display: inline; }
+  .vocabulary-table .vocab-col-review { width: 54px; }
+  .vocabulary-table .vocab-col-progress { width: 104px; }
+  .vocabulary-table .vocab-col-learned { width: 68px; }
+  .vocabulary-table .vocab-col-audio { width: 48px; }
+  .vocabulary-table th, .vocabulary-table td { padding-left: 9px; padding-right: 9px; }
+}
+@media (max-width: 640px) {
+  .vocabulary-table, .vocabulary-table thead, .vocabulary-table tbody { display: block; }
+  .vocabulary-table thead tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--section-soft); border-bottom: 1px solid var(--section-line); }
+  .vocabulary-table thead :is(.vocab-col-review, .vocab-col-progress, .vocab-col-learned, .vocab-col-audio) { display: none; }
+  .vocabulary-table thead :is(.vocab-col-word, .vocab-col-translation) { display: block; width: auto; padding: 9px 12px; border: 0; }
+  .vocabulary-table tbody tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-areas: "word word translation translation" "progress review learned audio"; column-gap: 8px; row-gap: 10px; padding: 14px 12px; border-bottom: 1px solid var(--line); }
+  .vocabulary-table tbody tr:last-child { border-bottom: 0; }
+  .vocabulary-table tbody td { width: auto; padding: 0; border: 0; min-width: 0; align-self: center; }
+  .vocabulary-table tbody :is(.vocab-col-word, .vocab-col-translation, .vocab-col-progress, .vocab-col-review, .vocab-col-learned, .vocab-col-audio) { width: auto; }
+  .vocabulary-table tbody .vocab-col-word { grid-area: word; align-self: start; }
+  .vocabulary-table tbody .vocab-col-translation { grid-area: translation; align-self: start; padding-left: 6px; }
+  .vocabulary-table tbody .vocab-col-progress { grid-area: progress; }
+  .vocabulary-table tbody .vocab-col-review { grid-area: review; text-align: left; }
+  .vocabulary-table tbody .vocab-col-learned { grid-area: learned; }
+  .vocabulary-table tbody .vocab-col-audio { grid-area: audio; }
+  .vocabulary-table .vocab-word-toggle { font-size: 17px; line-height: 1.5; }
+  .vocab-translation-text { font-size: 15px; }
+  .vocab-mobile-label { display: inline; font-size: 11px; color: var(--ink-soft); }
+  .vocab-row-status { font-size: 11px; gap: 5px; }
+}

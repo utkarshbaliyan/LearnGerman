@@ -143,8 +143,6 @@ test("emits the catalog's animation and scrolling utilities", async () => {
     globals,
     /html\[data-theme="dark"\] \.level-switcher button\.is-active :where\(b, span\)\s*\{\s*color:\s*#f7f7f8;/,
   );
-  assert.match(globals, /\.vocabulary-card \{[^}]*min-height:\s*208px;/s);
-  assert.match(globals, /\.vocabulary-reveal \{[^}]*min-height:\s*154px;/s);
 });
 
 test("keeps shared button and inverse-surface colors readable in both themes", async () => {
@@ -380,13 +378,53 @@ test("opens vocabulary on the word library with practice and review available", 
   assert.match(html, /Explore vocabulary/);
   assert.match(html, /Search English or German/);
   assert.match(html, /aria-label="Filter by vocabulary topic"/);
-  assert.equal((html.match(/<article class="vocabulary-card/g) ?? []).length, 120);
-  assert.match(html, /aria-label="Pronounce this word in German"/);
+  assert.equal((html.match(/<tr class="vocabulary-row/g) ?? []).length, 120);
+  assert.match(html, /<table class="vocabulary-table"/);
+  assert.match(html, /aria-sort="ascending"/);
+  assert.match(html, /aria-label="Hide English translations"/);
+  assert.match(html, /aria-label="Pronounce [^"]+ in German"/);
+  assert.doesNotMatch(html, /vocabulary-grid|vocabulary-card|Show German/);
   assert.doesNotMatch(html, /Learning sets|study sets|Choose your next set|vocab-set-card/i);
   assert.doesNotMatch(html, /aria-label="Choose the German answer"/);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
   assert.doesNotMatch(html, /Phrase \/ other|Phrases &amp; other/);
+});
+
+test("vocabulary list sorting uses German headwords across the whole collection", async () => {
+  const { sortVocabularyWords } = await vite.ssrLoadModule("/app/vocabulary/word-list.tsx");
+  const words = ["der Zug", "die Ärzte", "der Apfel", "sich ärgern"].map((german, index) => ({ id: String(index), german }));
+  const before = words.map(word => word.german);
+  const ascending = sortVocabularyWords(words, "asc").map(word => word.german);
+  assert.deepEqual(ascending, ["der Apfel", "sich ärgern", "die Ärzte", "der Zug"]);
+  assert.deepEqual(sortVocabularyWords(words, "desc").map(word => word.german), [...ascending].reverse());
+  assert.deepEqual(words.map(word => word.german), before);
+});
+
+test("vocabulary rows expose translations and real progress without changing word identities", async () => {
+  const { VocabularyRow } = await vite.ssrLoadModule("/app/vocabulary/word-list.tsx");
+  const word = { id: "apple", german: "der Apfel", english: "apple; fruit", level: "A1", category: "Essen & Trinken" };
+  const render = (overrides = {}) => renderToStaticMarkup(React.createElement("table", null,
+    React.createElement("tbody", null, React.createElement(VocabularyRow, {
+      word, translationVisible: true, completed: false, review: false, dueAt: 0,
+      speaking: false, hydrated: true, onReveal() {}, onComplete() {}, onReview() {}, onPronounce() {}, ...overrides,
+    })),
+  ));
+  const fresh = render();
+  assert.match(fresh, /lang="de"/); assert.match(fresh, /apple\nfruit/);
+  assert.match(fresh, /aria-label="Review der Apfel"/);
+  assert.match(fresh, /aria-label="Mark der Apfel as familiar" aria-pressed="false"/);
+  assert.match(fresh, /aria-label="Pronounce der Apfel in German"/);
+  assert.match(fresh, />New<\/span>/);
+  const learned = render({ completed: true });
+  assert.match(learned, />Familiar<\/span>/); assert.match(learned, /aria-pressed="true"/);
+  const review = render({ review: true });
+  assert.match(review, /checked=""/); assert.match(review, /In review/); assert.match(review, /Ready for review/);
+  const concealed = render({ translationVisible: false });
+  assert.doesNotMatch(concealed, /apple|fruit/); assert.match(concealed, /Show English translation for der Apfel/);
+  const loading = render({ hydrated: false });
+  assert.equal((loading.match(/disabled=""/g) ?? []).length, 2);
+  assert.match(loading, /Loading…/);
 });
 
 test("preserves duplicate vocabulary IDs and the latest FSRS history during consolidation", async () => {
