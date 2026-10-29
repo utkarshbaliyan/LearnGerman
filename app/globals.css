@@ -9,22 +9,6 @@
   --font-book: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   --font-ui: "DM Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Bricolage Grotesque", "DM Sans", ui-sans-serif, sans-serif;
-  --ink: #171719;
-  --ink-soft: #62636a;
-  --paper: #f7f7f5;
-  --white: #ffffff;
-  --blue: #315ee8;
-  --green-accent: #247a58;
-  --amber: #865000;
-  --inverse-accent: #b8c7ff;
-  --inverse-foreground: #f7f7f8;
-  --inverse-muted: #c7c8ce;
-  --inverse-surface: #171719;
-  --orange: var(--blue);
-  --orange-dark: #2448b8;
-  --green: #1c1d20;
-  --mint: #e9eefc;
-  --line: #dedee2;
   --background: var(--paper);
   --foreground: var(--ink);
   --card: var(--white);
@@ -32,17 +16,12 @@
   --popover: var(--white);
   --popover-foreground: var(--ink);
   --primary: var(--orange);
-  --primary-foreground: #ffffff;
   --secondary: var(--mint);
   --secondary-foreground: var(--green);
-  --muted: #efeff1;
   --muted-foreground: var(--ink-soft);
-  --accent: #e9eefc;
   --accent-foreground: var(--orange-dark);
-  --destructive: #a9680b;
   --border: var(--line);
   --input: var(--line);
-  --ring: #7292f2;
   --radius: 0.75rem;
 }
 
@@ -50,31 +29,7 @@
   .account-shell { grid-template-columns: 1fr; padding: 44px 16px 72px; }
 }
 
-html[data-theme="dark"] {
-  color-scheme: dark;
-  --ink: #f2f2f3;
-  --ink-soft: #a9aab0;
-  --paper: #101114;
-  --white: #18191d;
-  --blue: #83a3ff;
-  --green-accent: #70c79e;
-  --amber: #e4ad58;
-  --primary-foreground: #0c1224;
-  --inverse-accent: #a9bcff;
-  --inverse-foreground: #f7f7f8;
-  --inverse-muted: #c7c8ce;
-  --inverse-surface: #090a0d;
-  --orange: var(--blue);
-  --orange-dark: #a9bcff;
-  --green: #090a0d;
-  --mint: #202a42;
-  --line: #303137;
-  --muted: #24252a;
-  --accent: #202a42;
-  --destructive: #e4ad58;
-  --popover: #1b1c20;
-  --secondary-foreground: #f2f2f3;
-}
+html[data-theme="dark"] { color-scheme: dark; }
 
 @theme inline {
   --color-background: var(--background);

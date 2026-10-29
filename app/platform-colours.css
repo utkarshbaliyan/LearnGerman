@@ -1,4 +1,5 @@
-/* Shared editorial palette. Decorative colour never replaces progress labels. */
+/* Single source of truth for both themes. Keep this import after component styles.
+   Neutral reading surfaces; one consistent accent per section; labelled status colours. */
 :root {
   --paper: #fffdf9;
   --white: #ffffff;
@@ -20,6 +21,20 @@
   --tone-peach-ink: #9b492a;
   --tone-butter: #fbf1d3;
   --tone-butter-ink: #825b17;
+  --progress-learned: #2d8062;
+  --progress-review: #c68a24;
+  --progress-unlearned: #8a9bad;
+  --inverse-surface: #173f32;
+  --inverse-foreground: #eff4f1;
+  --inverse-muted: #c4d9ce;
+  --inverse-accent: #f0d393;
+  --art-sage: var(--tone-sage);
+  --art-blue: var(--tone-sky);
+  --art-lilac: var(--tone-lilac);
+  --art-peach: var(--tone-peach);
+  --art-butter: var(--tone-butter);
+  --primary-foreground: #ffffff;
+  --destructive: var(--tone-peach-ink);
   --section-soft: var(--tone-sage);
   --section-ink: var(--tone-sage-ink);
   --section-on: #ffffff;
@@ -45,9 +60,21 @@ html[data-theme="dark"] {
   --tone-peach-ink: #f2b99d;
   --tone-butter: #37301e;
   --tone-butter-ink: #f0d393;
+  --progress-learned: #70bda0;
+  --progress-review: #e6b75c;
+  --progress-unlearned: #667d93;
+  --inverse-surface: #102820;
   --section-on: #10211b;
 }
 body {
+  --learning-sage: var(--tone-sage);
+  --learning-lilac: var(--tone-lilac);
+  --learning-butter: var(--tone-butter);
+  --learning-peach: var(--tone-peach);
+  --learning-panel: var(--white);
+  --learning-accent: var(--section-ink);
+  --learning-on-accent: var(--section-on);
+  --learning-accent-ink: var(--section-ink);
   --orange: var(--section-ink);
   --orange-dark: var(--section-ink);
   --primary: var(--section-ink);
@@ -60,13 +87,14 @@ body {
   --ring: var(--section-ink);
   --section-line: color-mix(in srgb, var(--section-ink) 25%, var(--line));
 }
-body:has(.topbar[data-section="vocabulary"]) { --section-soft: var(--muted); --section-ink: var(--blue); --section-line: var(--line); }
-body:has(.topbar[data-section="grammar"]), body:has(.topbar[data-section="account"]) { --section-soft: var(--tone-sky); --section-ink: var(--tone-sky-ink); }
-body:has(.topbar[data-section="active-learning"]) { --section-soft: var(--tone-lilac); --section-ink: var(--tone-lilac-ink); }
-body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"]) { --section-soft: var(--tone-butter); --section-ink: var(--tone-butter-ink); }
+/* Section identity is the same in navigation, home cards and nested routes. */
+body:has(.topbar[data-section="vocabulary"]) { --section-soft: var(--tone-sky); --section-ink: var(--tone-sky-ink); }
+body:has(.topbar[data-section="grammar"]), body:has(.topbar[data-section="active-learning"]) { --section-soft: var(--tone-lilac); --section-ink: var(--tone-lilac-ink); }
+body:has(.topbar[data-section="books"]) { --section-soft: var(--tone-peach); --section-ink: var(--tone-peach-ink); }
+body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="review"]) { --section-soft: var(--tone-butter); --section-ink: var(--tone-butter-ink); }
 
 /* The navigation and shared controls connect every route to its section. */
-.topbar { background: color-mix(in srgb, var(--section-soft) 35%, var(--white)); border-bottom: 2px solid var(--section-line); }
+.topbar { background: var(--white); border-bottom: 1px solid var(--line); }
 .topnav > a[aria-current="page"] { background: var(--section-soft); color: var(--section-ink); box-shadow: inset 0 -2px var(--section-ink); }
 .topnav > a:hover { color: var(--section-ink); }
 .theme-toggle { background: var(--white); border-color: var(--section-line); color: var(--section-ink); }
@@ -87,8 +115,7 @@ body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="books"])
 /* Vocabulary stays neutral, with colour reserved for progress and state cues. */
 .vocab-page-heading { padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; }
 .vocab-page-heading h1 { color: var(--ink); }
-.vocabulary-page { --vocab-learned: #2d8062; --vocab-review: #c68a24; --vocab-unlearned: #8a9bad; }
-html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-review: #e6b75c; --vocab-unlearned: #667d93; }
+.vocabulary-page { --vocab-learned: var(--progress-learned); --vocab-review: var(--progress-review); --vocab-unlearned: var(--progress-unlearned); }
 .vocab-progress-summary { display: grid; grid-template-columns: 128px minmax(0, 1fr) minmax(240px, .6fr); align-items: center; gap: 28px; padding: 22px 28px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--tone-sky) 40%, var(--white)); }
 .vocab-progress-pie { width: 128px; max-width: 100%; height: auto; }
 .vocab-pie-learned { fill: var(--vocab-learned); background: var(--vocab-learned); }
@@ -133,7 +160,7 @@ html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-rev
 .vocabulary-sources-content { background: var(--white); border-top: 4px solid var(--section-ink); }
 .vocabulary-sources-content h1, .vocabulary-sources-content a { color: var(--section-ink); }
 
-/* Grammar: blue landmarks, coloured patterns and quiet reference tables. */
+/* Grammar: lilac landmarks, coloured patterns and quiet reference tables. */
 .grammar-page .grammar-hero { width: 1180px; max-width: calc(100% - 64px); margin: 32px auto; padding: 32px; background: var(--section-soft); border: 1px solid var(--section-line); border-radius: 18px; }
 .grammar-hero h1, .grammar-hero h1 em { color: var(--section-ink); }
 .grammar-hero > div, .grammar-progress-card { min-width: 0; }
@@ -181,10 +208,10 @@ html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-rev
 .reading-reader > header h1 { color: var(--section-ink); }
 .reading-check fieldset { background: color-mix(in srgb, var(--section-soft) 35%, var(--white)); }
 .reception-teaser, .reception-later { background: var(--section-soft); border-color: var(--section-line); }
-.book-page-header { background: #faf0d6; padding: 22px; border-radius: 10px; }
+.book-page-header { background: var(--section-soft); padding: 22px; border-radius: 10px; }
 .book-page-header h1 { color: var(--book-ink); }
 .book-page-sheet .reading-help { color: var(--book-muted); }
-.book-volume--front .book-front-page { background: #fff9ea; }
+.book-volume--front .book-front-page { background: var(--white); }
 
 /* Active Learning, course chapters, accounts and supporting routes. */
 .translation-setup, .active-workspace { border-top: 4px solid var(--section-ink); background: var(--white); }
@@ -211,6 +238,67 @@ html[data-theme="dark"] .vocabulary-page { --vocab-learned: #70bda0; --vocab-rev
 .account-benefits > div { background: var(--section-soft); }
 .auth-callback { background: var(--tone-sage); color: var(--tone-sage-ink); }
 .route-loading-line { background: linear-gradient(90deg, var(--tone-sage), var(--tone-butter), var(--tone-sage)); background-size: 200% 100%; }
+
+/* Shared surfaces and feedback also cover supporting pages and portal content. */
+.site-footer { border-top: 1px solid var(--line); color: var(--ink-soft); }
+.site-footer a { color: var(--ink); }
+.site-footer a:hover, .information-page a, .discovery-guide a { color: var(--section-ink); }
+.information-page h1, .discovery-intro h1, .discovery-guide > h1 { color: var(--section-ink); }
+.site-menu-trigger { border-color: var(--line); background: var(--white); color: var(--ink); }
+.site-menu-panel > a[aria-current="page"] { background: var(--section-soft); color: var(--section-ink); }
+html[data-theme] .analytics-consent { background: var(--white); color: var(--ink); border-color: var(--line); }
+:is(a, button, input, textarea, select, summary):focus-visible { outline: 2px solid var(--section-ink); outline-offset: 3px; }
+.site-shell :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, select) { background-color: var(--white); color: var(--ink); border-color: var(--line); }
+
+/* Controls use the same accent pair in light mode, dark mode and reader dialogs. */
+html[data-theme] :is(.reading-primary, .account-submit, .grammar-level-switcher button.is-active, .level-switcher button.is-active, .vocabulary-levels button.is-active) { background: var(--section-ink); color: var(--section-on); border-color: var(--section-ink); }
+html[data-theme] :is(.grammar-level-switcher, .level-switcher, .vocabulary-levels) button.is-active :is(b, span) { color: var(--section-on); }
+html[data-theme] :is(.grammar-pattern, .audio-bar) { background: var(--section-soft); color: var(--section-ink); border-color: var(--section-line); }
+html[data-theme] .audio-bar > button:last-child { color: var(--section-ink); }
+html[data-theme] .grammar-pattern span { color: inherit; }
+html[data-theme] .grammar-reference-table th { background: var(--section-soft); color: var(--ink); }
+.grammar-module-card button { border-bottom-color: var(--line); }
+.grammar-module-card button:hover:not(:disabled) { background: var(--section-soft); }
+.grammar-page :is(.grammar-explanation p, .grammar-deep-dive > p, .grammar-memory-tip p) { color: var(--ink); }
+.grammar-page :is(.grammar-examples article, .grammar-deep-dive article, .exercise-card, .next-grammar-lesson) { background: var(--white); border-color: var(--line); }
+.grammar-page .grammar-examples small { background: var(--section-soft); color: var(--section-ink); }
+html[data-theme] :is(.choice-grid button.is-selected, .choice-grid button:hover:not(:disabled), .order-answer button) { background: var(--section-soft); color: var(--section-ink); border-color: var(--section-ink); }
+html[data-theme] :is(.exercise-feedback.is-correct, .vocabulary-quiz-answers button.is-correct, .complete-story-button.is-completed, .grammar-lesson-heading .mastery-badge) { background: var(--tone-sage); color: var(--tone-sage-ink); border-color: var(--tone-sage-ink); }
+html[data-theme] :is(.exercise-feedback.is-wrong, .vocabulary-quiz-answers button.is-wrong) { background: var(--tone-peach); color: var(--tone-peach-ink); border-color: var(--tone-peach-ink); }
+html[data-theme] :is(.vocabulary-empty, .grammar-release-note, .level-switcher, .vocabulary-levels button:not(.is-active), .order-answer) { background: var(--white); color: var(--ink); border-color: var(--line); }
+
+/* Repeated information cards share the same five restrained tints. */
+.discovery-levels > article:nth-child(5n+1), .level-journey-grid > article:nth-child(5n+1) { background: var(--tone-sage); }
+.discovery-levels > article:nth-child(5n+2), .level-journey-grid > article:nth-child(5n+2) { background: var(--tone-sky); }
+.discovery-levels > article:nth-child(5n+3), .level-journey-grid > article:nth-child(5n+3) { background: var(--tone-lilac); }
+.discovery-levels > article:nth-child(5n+4), .level-journey-grid > article:nth-child(5n+4) { background: var(--tone-peach); }
+.discovery-levels > article:nth-child(5n+5), .level-journey-grid > article:nth-child(5n+5) { background: var(--tone-butter); }
+
+/* Book pages follow the selected theme instead of staying bright at night. */
+.book-volume { --book-paper: var(--white); --book-ink: var(--ink); --book-muted: var(--ink-soft); --book-line: var(--line); box-shadow: 3px 3px 0 var(--line), 6px 6px 0 var(--muted); }
+.book-volume--front .book-front-page { background: var(--book-paper); }
+html[data-theme] .book-cover { background: var(--tone-peach); color: var(--tone-peach-ink); border-color: var(--section-line); }
+html[data-theme] .illustrated-bookshelf .book-shelf:nth-child(3n+1) .book-cover { background: var(--tone-sage); color: var(--tone-sage-ink); }
+html[data-theme] .illustrated-bookshelf .book-shelf:nth-child(3n+2) .book-cover { background: var(--tone-sky); color: var(--tone-sky-ink); }
+html[data-theme] .illustrated-bookshelf .book-shelf:nth-child(3n+3) .book-cover { background: var(--tone-lilac); color: var(--tone-lilac-ink); }
+html[data-theme] .book-cover :is(strong, h1, .book-cover-level) { color: inherit; border-color: currentColor; }
+.book-volume :is(a, button):focus-visible { outline-color: var(--section-ink); }
+.book-volume :is(.book-page-navigation a:not(.reading-primary), .book-chapter-item a:hover, .book-chapter-item a svg, .book-page-header .reading-eyebrow, .reading-translation-toggle) { color: var(--section-ink); }
+.book-page-header progress { accent-color: var(--section-ink); }
+.book-bookmark-button[aria-pressed="true"] { background: var(--section-soft); color: var(--section-ink); border-color: var(--section-ink); }
+.book-bookmark-button:hover { color: var(--section-ink); border-color: var(--section-ink); }
+.book-audio-error { color: var(--tone-peach-ink); }
+html[data-theme] .reading-spoken-word { background: var(--tone-butter); color: var(--tone-butter-ink); box-shadow: 0 0 0 2px var(--tone-butter); }
+.reading-spoken-word .reading-word { text-decoration-color: currentColor; }
+html[data-theme] :is(.story-word:hover, .story-word:focus-visible, .chapter-story-copy .story-word:hover, .chapter-story-copy .story-word:focus-visible) { background: var(--tone-butter); color: var(--tone-butter-ink); outline-color: var(--tone-butter-ink); }
+html[data-theme] .story-word.is-active { background: var(--tone-sky); color: var(--tone-sky-ink); outline-color: var(--tone-sky-ink); box-shadow: 2px 0 0 var(--tone-sky), -2px 0 0 var(--tone-sky); }
+.story-word-gloss[data-slot="tooltip-content"] { background: var(--ink); color: var(--paper); border-color: var(--line); }
+.story-word-gloss strong { color: inherit; }
+.story-word-gloss [data-radix-popper-arrow] { background: var(--ink); fill: var(--ink); }
+.reception-tabs button[aria-pressed="true"] { background: var(--section-ink); color: var(--section-on); border-color: var(--section-ink); }
+.reception-option input { accent-color: var(--section-ink); }
+.reception-questions blockquote { border-color: var(--section-ink); }
+.reception-tabs button:focus-visible, .reception-option:focus-within { outline-color: var(--section-ink); }
 
 @media (max-width: 760px) {
   .vocab-progress-summary { grid-template-columns: 104px minmax(0, 1fr); padding: 20px; gap: 20px; }
