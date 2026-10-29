@@ -1,5 +1,4 @@
-.learning-page { --learning-sage: #edf5eb; --learning-lilac: #f1edfa; --learning-butter: #fff3d3; --learning-peach: #fceee6; --learning-panel: #fff; --learning-accent: #255d49; --learning-on-accent: #fff; --learning-accent-ink: #255d49; max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; color: var(--ink); }
-html[data-theme="dark"] .learning-page { --learning-sage: #24362d; --learning-lilac: #302b41; --learning-butter: #3c3322; --learning-peach: #3d2c28; --learning-panel: #202321; --learning-accent: #bde5cc; --learning-on-accent: #17342a; --learning-accent-ink: #bde5cc; }
+.learning-page { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; color: var(--ink); }
 .learning-header { margin-bottom: 36px; max-width: 760px; }
 .learning-header h1 { font-family: var(--font-display), sans-serif; font-size: clamp(54px, 8vw, 90px); line-height: 1; margin: 12px 0 20px; font-weight: 400; }
 .learning-header p { font-size: 18px; line-height: 1.7; }

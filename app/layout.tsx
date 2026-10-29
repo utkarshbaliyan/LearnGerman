@@ -5,7 +5,6 @@ import { RumMonitoring } from '@/app/components/rum-monitoring';
 import "./globals.css";
 import "./illustrated-ui.css";
 import './learning.css';
-import './platform-colours.css';
 import './recall-decks.css';
 import './home-sections.css';
 import './grammar-learning.css';
@@ -14,6 +13,7 @@ import './launch-readiness.css';
 import './discovery.css';
 import './site-menu.css';
 import './account/account-simple.css';
+import './platform-colours.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
 

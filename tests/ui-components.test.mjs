@@ -151,10 +151,30 @@ test("keeps shared button and inverse-surface colors readable in both themes", a
   const globals = await readFile(path.join(root, "app/globals.css"), "utf8");
   const button = await readFile(path.join(root, "components/ui/button.tsx"), "utf8");
 
-  assert.ok(contrastRatio("#ffffff", "#315ee8") >= 4.5);
-  assert.ok(contrastRatio("#0c1224", "#83a3ff") >= 4.5);
-  assert.ok(contrastRatio("#f7f7f8", "#171719") >= 4.5);
-  assert.ok(contrastRatio("#f7f7f8", "#090a0d") >= 4.5);
+  const palette = await readFile(path.join(root, "app/platform-colours.css"), "utf8");
+  const readColors = (block) => Object.fromEntries(
+    [...block.matchAll(/--([\w-]+):\s*(#[a-f\d]{6})\s*;/gi)].map(([, name, value]) => [name, value]),
+  );
+  const light = readColors(palette.match(/:root\s*\{([^}]+)\}/s)[1]);
+  const dark = { ...light, ...readColors(palette.match(/html\[data-theme="dark"\]\s*\{([^}]+)\}/s)[1]) };
+  for (const [theme, colors] of Object.entries({ light, dark })) {
+    const readable = (foreground, background) => assert.ok(
+      contrastRatio(colors[foreground], colors[background]) >= 4.5,
+      `${theme}: ${foreground} on ${background} must meet normal-text contrast`,
+    );
+    for (const surface of ["paper", "white"]) {
+      readable("ink", surface);
+      readable("ink-soft", surface);
+    }
+    for (const tone of ["sage", "sky", "lilac", "peach", "butter"]) {
+      readable(`tone-${tone}-ink`, `tone-${tone}`);
+      readable("section-on", `tone-${tone}-ink`);
+      readable("ink", `tone-${tone}`);
+      readable("ink-soft", `tone-${tone}`);
+    }
+    readable("inverse-foreground", "inverse-surface");
+    readable("inverse-muted", "inverse-surface");
+  }
   assert.match(globals, /button:not\(\[data-slot="button"\]\)/);
   assert.match(globals, /\[data-slot="button"\]:disabled\s*\{[^}]*background:\s*var\(--muted\)[^}]*color:\s*var\(--muted-foreground\)[^}]*opacity:\s*1/s);
   assert.doesNotMatch(button, /disabled:opacity-50/);
