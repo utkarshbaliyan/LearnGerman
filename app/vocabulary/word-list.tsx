@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowUp, Star, Volume2 } from "lucide-react";
+import { ArrowDown, ArrowUp, Bookmark, Check, Volume2 } from "lucide-react";
 import Link from "next/link";
 import { useId, type ReactNode } from "react";
 import { vocabularyVerbType, vocabularyWordClass, VOCABULARY_VERB_TYPE_LABELS, VOCABULARY_WORD_CLASS_LABELS, type VocabularyWord } from "./data";
@@ -29,7 +29,6 @@ export function VocabularyTable({ children, direction, translationsVisible, onSo
     <table className="vocabulary-table">
       <caption className="sr-only">German vocabulary, English translations and saved learning status</caption>
       <thead><tr>
-        <th scope="col" className="vocab-col-review">Review</th>
         <th scope="col" className="vocab-col-level">Level</th>
         <th scope="col" className="vocab-col-word" aria-sort={direction === "asc" ? "ascending" : "descending"}>
           <button type="button" onClick={onSort} aria-label={`Sort German words ${direction === "asc" ? "Z to A" : "A to Z"}`}>Word <SortIcon aria-hidden="true" /></button>
@@ -37,6 +36,7 @@ export function VocabularyTable({ children, direction, translationsVisible, onSo
         <th scope="col" className="vocab-col-translation">Translation <button type="button" className="vocab-translation-toggle" onClick={onToggleTranslations} aria-label={translationsVisible ? "Hide English translations" : "Show English translations"} aria-pressed={!translationsVisible}>({translationsVisible ? "hide" : "show"})</button></th>
         <th scope="col" className="vocab-col-progress">Progress</th>
         <th scope="col" className="vocab-col-learned">Learned</th>
+        <th scope="col" className="vocab-col-review">Review</th>
         <th scope="col" className="vocab-col-audio"><span className="sr-only">Audio</span></th>
       </tr></thead>
       <tbody>{children}</tbody>
@@ -64,10 +64,6 @@ export function VocabularyRow({ word, saved, translationVisible, completed, revi
   const grammarLabel = verbType ? VOCABULARY_VERB_TYPE_LABELS[verbType] : VOCABULARY_WORD_CLASS_LABELS[vocabularyWordClass(word)];
   const status = !hydrated ? "Loading…" : completed ? "Familiar" : review ? "In review" : "New";
   return <tr className={`vocabulary-row${completed ? " is-completed" : review ? " is-review" : ""}`}>
-    <td className="vocab-col-review"><label className="vocab-review-check">
-      <input type="checkbox" checked={review} disabled={!hydrated} onChange={onReview} aria-label={`Review ${word.german}`} />
-      <span className="vocab-mobile-label">Review</span>
-    </label></td>
     <td className="vocab-col-level"><span className="vocab-row-level">{word.level}</span></td>
     <td className="vocab-col-word">
       <button type="button" className="vocab-word-toggle" lang="de" onClick={onReveal} aria-expanded={translationVisible} aria-controls={translationId} title={translationVisible ? "Hide English translation" : "Show English translation"}>
@@ -84,7 +80,8 @@ export function VocabularyRow({ word, saved, translationVisible, completed, revi
       <span className={`vocab-row-status${hydrated && completed ? " is-familiar" : hydrated && review ? " is-review" : ""}`}><span aria-hidden="true" />{status}</span>
       {hydrated && review && <small className="vocab-row-due">{dueAt === 0 ? "Ready for review" : `Due ${new Date(dueAt).toLocaleDateString()}`}</small>}
     </td>
-    <td className="vocab-col-learned"><button type="button" className={`vocab-familiar-toggle${completed ? " is-active" : ""}`} aria-label={`Mark ${word.german} as familiar`} aria-pressed={completed} disabled={!hydrated} title={completed ? "Remove familiar mark" : "Mark familiar"} onClick={onComplete}><Star aria-hidden="true" fill={completed ? "currentColor" : "none"} /></button></td>
+    <td className="vocab-col-learned"><button type="button" className={`vocab-familiar-toggle${completed ? " is-active" : ""}`} aria-label={`Mark ${word.german} as familiar`} aria-pressed={completed} disabled={!hydrated} title={completed ? "Remove familiar mark" : "Mark familiar"} onClick={onComplete}><Check aria-hidden="true" /></button></td>
+    <td className="vocab-col-review"><button type="button" className={`vocab-review-toggle${review ? " is-active" : ""}`} aria-label={`Review ${word.german}`} aria-pressed={review} disabled={!hydrated} title={review ? "Remove from review" : "Add to review"} onClick={onReview}><Bookmark aria-hidden="true" />Review</button></td>
     <td className="vocab-col-audio"><button type="button" className={`vocab-list-audio${speaking ? " is-speaking" : ""}`} aria-label={`Pronounce ${word.german} in German`} title={speaking ? "Playing" : "Listen"} onClick={onPronounce}><Volume2 aria-hidden="true" /></button></td>
   </tr>;
 }
