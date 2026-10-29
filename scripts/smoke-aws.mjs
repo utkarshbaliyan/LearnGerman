@@ -12,7 +12,7 @@ applyMigrations(database,'drizzle');
 const probe=createServer();await new Promise(r=>probe.listen(0,'127.0.0.1',r));
 const port=probe.address().port;await new Promise(r=>probe.close(r));
 const child=spawn(process.execPath,['server.js'],{cwd:resolve('dist/standalone'),env:{...process.env,
-  HOST:'127.0.0.1',PORT:String(port),LESELAUT_SQLITE_PATH:database,LESELAUT_MEDIA_BUCKET:'smoke-test-no-network'},stdio:['ignore','pipe','pipe']});
+  HOST:'127.0.0.1',PORT:String(port),LESELAUT_SQLITE_PATH:database,LESELAUT_MEDIA_BUCKET:'smoke-test-no-network',LESELAUT_LAYOUT_AUDIT:'1'},stdio:['ignore','pipe','pipe']});
 let logs='';child.stdout.on('data',c=>logs+=c);child.stderr.on('data',c=>logs+=c);
 const base=`http://127.0.0.1:${port}`;
 try{
@@ -27,7 +27,16 @@ try{
   assert.equal(health.release,process.env.GITHUB_SHA??execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),'AWS build must embed the checked commit');
   for(const path of ['/','/stories','/stories/reading-a1-01-v1','/grammar','/vocabulary','/books','/books/b1/zwischen-hoersaal-und-arbeitswelt/1','/account','/auth/reset-password','/privacy','/support']){
     const response=await fetch(base+path);assert.equal(response.status,200,path);
-    assert.match(await response.text(),/LeseLaut/,path);
+    const html=await response.text();
+    assert.match(html,/LeseLaut/,path);
+    assert.doesNotMatch(html,/data-layout-audit|RESPONSIVE_AUDIT|Local responsive audit/,`development audit must never render in production: ${path}`);
+    if(path==='/') {
+      const viewports=[...html.matchAll(/<meta[^>]*name="viewport"[^>]*>/g)].map(match=>match[0]);
+      assert.equal(viewports.length,1,'one viewport tag');
+      assert.match(viewports[0],/viewport-fit=cover/,'safe-area viewport');
+      assert.match(viewports[0],/interactive-widget=resizes-content/,'keyboard-aware viewport');
+      assert.doesNotMatch(viewports[0],/user-scalable=no|maximum-scale=1(?:[,"\s])/,'pinch zoom remains available');
+    }
   }
   for(const path of ['/', '/stories', '/stories/a1', '/stories/a2', '/stories/b1', '/stories/b2', '/course', '/grammar/reference', '/grammar/lessons', '/grammar/lessons/a1-4-1', '/grammar/lessons/c1-1-1', '/books/a1/der-schluessel-im-blauen-korb/1']) {
     const response=await fetch(base+path), html=await response.text();

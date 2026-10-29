@@ -50,7 +50,7 @@
   .vocabulary-table .vocab-col-audio { width: 48px; }
   .vocabulary-table th, .vocabulary-table td { padding-left: 9px; padding-right: 9px; }
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .vocabulary-table, .vocabulary-table thead, .vocabulary-table tbody { display: block; }
   .vocabulary-table thead tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--section-soft); border-bottom: 1px solid var(--section-line); }
   .vocabulary-table thead :is(.vocab-col-review, .vocab-col-progress, .vocab-col-learned, .vocab-col-audio) { display: none; }

@@ -1,0 +1,100 @@
+/* Shared layout rules. Section colours stay in platform-colours.css. */
+:root { --site-header-offset: calc(72px + env(safe-area-inset-top)); }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--site-header-offset) + 16px); }
+:where(main, section, article, aside, header, footer, form, fieldset) { min-inline-size: 0; }
+:where(img, video, canvas, audio) { max-inline-size: 100%; }
+audio { min-inline-size: 0; }
+.site-menu-panel { max-inline-size: calc(100vw - 32px); max-block-size: calc(100dvh - 80px); overflow-y: auto; overscroll-behavior: contain; }
+.topbar .brand { display: inline-flex; align-items: center; min-height: 44px; }
+.reading-word { touch-action: manipulation; }
+.site-footer { padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+.book-page-navigation, .book-navigation { flex-wrap: wrap; }
+.vocabulary-table .vocab-col-audio { width: 68px; }
+
+@media (min-width: 768px) {
+  .topbar { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto; min-height: 72px; gap: clamp(12px, 2vw, 24px); padding: calc(12px + env(safe-area-inset-top)) max(24px, calc((100% - 1280px) / 2), env(safe-area-inset-right)) 12px max(24px, calc((100% - 1280px) / 2), env(safe-area-inset-left)); }
+  .topbar .topnav { grid-column: 2; grid-row: 1; display: flex; width: auto; height: auto; flex-wrap: nowrap; justify-content: flex-end; gap: 4px; position: static; margin: 0; }
+  .topbar .topnav > a { min-height: 44px; padding: 0 10px; font-size: 14px; white-space: nowrap; }
+  .topbar > .site-menu { grid-column: 3; grid-row: 1; }
+}
+@media (min-width: 1024px) { .topbar .topnav > a { font-size: 15px; padding-inline: 12px; } }
+
+@media (max-width: 767px) {
+  :root { --site-header-offset: calc(115px + env(safe-area-inset-top)); }
+  .topbar { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 44px 44px; min-height: 0; gap: 6px 16px; padding: calc(10px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left)); }
+  .topbar .brand { min-width: 0; align-self: center; }
+  .topbar .brand strong { font-size: 29px; }
+  .topbar > .site-menu { grid-column: 2; grid-row: 1; }
+  .topbar .topnav { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: 100%; gap: 2px; height: 44px; position: static; margin: 0; overflow: visible; }
+  .topbar .topnav > a { min-width: 0; min-height: 44px; justify-content: center; padding: 0; font-size: 13px; white-space: nowrap; }
+  .topbar .topnav > a svg { display: none; }
+  .home-practice-card p, .home-section-copy p, .learning-page .daily-goal-copy p { font-size: 14px; }
+  .home-practice-count { font-size: 12px; }
+  .home-sections-heading, .learning-actions, .reading-actions, .book-page-navigation { gap: 12px; }
+  .learning-actions > *, .reading-back, .book-page-navigation a { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .learning-page .learning-feature-title { overflow-wrap: anywhere; }
+  .learning-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); min-width: 0; }
+  .learning-steps li { min-width: 0; overflow-wrap: anywhere; }
+  .home-practice-dialog[data-slot="dialog-content"] { max-height: calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); overscroll-behavior: contain; }
+  .review-flashcard-ratings button, .review-deck-box .learning-actions > button { white-space: normal; height: auto; }
+  .review-size-options { width: 100%; }
+  .review-size-options label { min-width: 0; padding-inline: 10px; }
+  .vocab-word-meta, .vocab-row-source, .vocab-row-due { font-size: 12px; }
+  .vocab-row-status { font-size: 12px; }
+  .reading-check label { min-height: 44px; }
+  .reading-back, .book-page-navigation a, .lesson-guide-nav a, .story-level-nav a, .site-footer nav a, .home-section-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  .site-footer nav { gap: 8px 24px; }
+}
+
+/* The logo remains the Home link; four full-size tabs fit even a 320px phone. */
+@media (max-width: 420px) {
+  .topbar .topnav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .topbar .topnav > a[href="/"] { display: none; }
+}
+
+/* Preserve pinch zoom. A 16px field avoids automatic focus zoom on iOS. */
+@media (max-width: 1023px), (pointer: coarse) {
+  body :is(input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], select, textarea, [role="combobox"]) { font-size: 16px; min-height: 44px; max-inline-size: 100%; }
+  body button:not(.reading-word):not(.grammar-scene-story button), body [role="button"], body [role="tab"] { min-height: 44px; min-width: 44px; max-inline-size: 100%; touch-action: manipulation; }
+  .account-auth-tabs button, .account-submit, .account-text-button { font-size: 14px; }
+  .vocabulary-table :is(.vocab-familiar-toggle, .vocab-review-toggle, .vocab-list-audio) { width: 44px; height: 44px; min-height: 44px; }
+  .vocabulary-table :is(.vocab-word-toggle, .vocab-show-translation) { min-height: 44px; }
+  .vocabulary-table th button { min-height: 44px; }
+  .home-practice-actions button { min-height: 44px; font-size: 14px; }
+  .home-practice-card .home-practice-actions { align-items: stretch; }
+  .learning-actions [data-slot="button"] { min-height: 44px; height: auto; white-space: normal; }
+  .lesson-example-pager button { min-width: 44px; min-height: 44px; }
+  .reading-speed select, .book-page-audio select, .reading-audio select { min-height: 44px; font-size: 16px; }
+  .vocabulary-search { min-width: 0; }
+  .vocabulary-search input { min-width: 0; height: auto; }
+  .vocabulary-organized .vocabulary-search input { font-size: 16px; }
+  .reading-filters input[type="search"], .reading-filters select { font-size: 16px; min-height: 44px; }
+  .account-auth button { font-size: 14px; line-height: 1.5; }
+}
+
+@media (max-width: 767px) {
+  .vocabulary-table thead tr { position: relative; }
+  /* Keep action column names available to screen readers in the stacked list. */
+  .vocabulary-table thead :is(.vocab-col-progress, .vocab-col-learned, .vocab-col-review, .vocab-col-audio) { display: block; position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .vocabulary-table tbody tr { grid-template-columns: minmax(84px, 1.4fr) repeat(3, minmax(44px, 1fr)); gap: 10px 6px; }
+}
+@media (max-width: 480px) {
+  .vocabulary-table tbody tr { grid-template-areas: "word word word word" "translation translation translation translation" "progress learned review audio"; }
+  .vocabulary-table tbody .vocab-col-translation { padding-left: 0; }
+  .vocabulary-table .vocab-word-toggle { font-size: 19px; }
+  .vocab-translation-text { font-size: 16px; }
+  .vocabulary-page .progress-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .vocabulary-page .progress-filters button { width: 100%; min-width: 0; min-height: 58px; height: auto; white-space: normal; font-size: 13px; padding: 8px; overflow-wrap: anywhere; }
+  .vocabulary-page .progress-filters button b { flex-shrink: 0; }
+}
+
+/* Short landscape screens need the content space more than a sticky header. */
+@media (max-height: 500px) and (max-width: 1023px) {
+  :root { --site-header-offset: 0px; }
+  .topbar { position: static; }
+  .learning-word-save { position: static; }
+}
+@media (orientation: landscape) and (max-width: 1023px) {
+  :is(.learning-page, .reading-reader, .book-reader, .discovery-page, .vocabulary-page, .account-shell, .grammar-hero, .grammar-course, .site-footer) { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
