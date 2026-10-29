@@ -8,7 +8,7 @@
 .vocabulary-table td { padding: 16px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; overflow-wrap: anywhere; }
 .vocabulary-row:last-child td { border-bottom: 0; }
 .vocabulary-row:hover { background: color-mix(in srgb, var(--section-soft) 22%, var(--white)); }
-.vocabulary-table .vocab-col-review { width: 110px; text-align: center; }
+.vocabulary-table .vocab-col-review { width: 78px; text-align: center; }
 .vocabulary-table .vocab-col-level { width: 64px; }
 .vocabulary-table .vocab-col-word { width: 25%; }
 .vocabulary-table .vocab-col-progress { width: 132px; }
@@ -35,8 +35,8 @@
 .vocabulary-table .vocab-familiar-toggle.is-active { background: var(--tone-sage); color: var(--tone-sage-ink); }
 .vocabulary-table .vocab-list-audio.is-speaking { background: var(--tone-sky); color: var(--tone-sky-ink); }
 .vocabulary-table .vocab-familiar-toggle:disabled { opacity: .5; cursor: wait; }
-.vocabulary-table .vocab-review-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 38px; padding: 6px 9px; white-space: nowrap; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-soft); font: 600 12px/1.3 var(--font-ui); cursor: pointer; }
-.vocabulary-table .vocab-review-toggle svg { width: 14px; height: 14px; }
+.vocabulary-table .vocab-review-toggle { display: inline-flex; align-items: center; justify-content: center; width: 38px; min-height: 38px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-soft); font: 600 12px/1.3 var(--font-ui); cursor: pointer; }
+.vocabulary-table .vocab-review-toggle svg { width: 20px; height: 20px; }
 .vocabulary-table .vocab-review-toggle:hover { background: var(--muted); color: var(--ink); }
 .vocabulary-table .vocab-review-toggle.is-active { background: var(--tone-butter); color: var(--tone-butter-ink); border-color: var(--tone-butter-ink); }
 .vocabulary-table .vocab-review-toggle:disabled { opacity: .5; cursor: wait; }
@@ -44,7 +44,7 @@
 @media (max-width: 900px) {
   .vocabulary-table .vocab-col-level { display: none; }
   .vocab-mobile-level { display: inline; }
-  .vocabulary-table .vocab-col-review { width: 110px; }
+  .vocabulary-table .vocab-col-review { width: 68px; }
   .vocabulary-table .vocab-col-progress { width: 104px; }
   .vocabulary-table .vocab-col-learned { width: 68px; }
   .vocabulary-table .vocab-col-audio { width: 48px; }
@@ -67,7 +67,5 @@
   .vocabulary-table tbody .vocab-col-audio { grid-area: audio; }
   .vocabulary-table .vocab-word-toggle { font-size: 17px; line-height: 1.5; }
   .vocab-translation-text { font-size: 15px; }
-  .vocabulary-table .vocab-review-toggle { padding: 6px 4px; font-size: 11px; }
-  .vocabulary-table .vocab-review-toggle svg { display: none; }
   .vocab-row-status { font-size: 11px; gap: 5px; }
 }
