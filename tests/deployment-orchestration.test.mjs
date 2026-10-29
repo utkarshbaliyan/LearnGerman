@@ -6,7 +6,7 @@ import {mkdtempSync,mkdirSync,copyFileSync,writeFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 
-for(const scenario of ['superseded','ssm-failure','success'])test(`deployment orchestration: ${scenario}`,async t=>{
+for(const scenario of ['superseded','ssm-failure','missing-homepage-headers','success'])test(`deployment orchestration: ${scenario}`,async t=>{
   const root=mkdtempSync(join(tmpdir(),'leselaut-deploy-test-'));
   t.after(()=>rmSync(root,{recursive:true,force:true}));
   for(const dir of ['scripts','deploy/aws','bin'])mkdirSync(join(root,dir),{recursive:true});
@@ -24,7 +24,11 @@ for(const scenario of ['superseded','ssm-failure','success'])test(`deployment or
     }
     if(req.url.endsWith('/statuses')){states.push(JSON.parse(body).state);return json({id:states.length});}
     if(req.url==='/api/health')return json({status:'ok',release},200,{'cache-control':'no-store'});
-    if(req.url==='/')return res.end('<title>LeseLaut</title><script src="/assets/app.js"></script>');
+    if(req.url==='/'){
+      const headers={'content-type':'text/html; charset=utf-8'};
+      if(scenario!=='missing-homepage-headers')Object.assign(headers,{'x-frame-options':'DENY','x-content-type-options':'nosniff','content-security-policy':"frame-ancestors 'none'"});
+      res.writeHead(200,headers);return res.end('<title>LeseLaut</title><script src="/assets/app.js"></script>');
+    }
     if(req.url==='/assets/app.js'){res.writeHead(200,{'content-type':'text/javascript'});return res.end();}
     if(req.url==='/account')return res.end('Sign in');
     if(req.url==='/api/auth/config'||req.url==='/api/telemetry/config')return json({enabled:false});
@@ -44,9 +48,10 @@ for(const scenario of ['superseded','ssm-failure','success'])test(`deployment or
   let logs='';child.stdout.on('data',chunk=>logs+=chunk);child.stderr.on('data',chunk=>logs+=chunk);
   const code=await new Promise(resolve=>child.once('exit',resolve));
   assert.doesNotMatch(logs,/fixture-secret-must-not-be-printed/);
-  assert.equal(code,scenario==='ssm-failure'?1:0,logs);
+  assert.equal(code,['ssm-failure','missing-homepage-headers'].includes(scenario)?1:0,logs);
   assert.deepEqual(states,scenario==='superseded'?[]:['in_progress',scenario==='success'?'success':'failure']);
   if(scenario==='superseded'){assert.equal(calls.length,1);assert.match(logs,/No deployment started/);}
   if(scenario==='ssm-failure'){assert.ok(!calls.includes('/api/health'));assert.match(logs,/fixture-command/);}
+  if(scenario==='missing-homepage-headers'){assert.ok(calls.includes('/api/health'));assert.match(logs,/Homepage framing protection/);}
   if(scenario==='success')assert.match(logs,/Production verified/);
 });
