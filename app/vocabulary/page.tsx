@@ -72,7 +72,7 @@ export default function VocabularyPage() {
 
   const catalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabularyProgress), [vocabularyProgress]);
   const levelWords = useMemo(() => catalog.filter(word => level === "all" || word.level === level), [catalog, level]);
-  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); }, []);
+  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); const requestedLevel = params.get('level'); if (requestedLevel && ['A1', 'A2', 'B1', 'B2', 'C1'].includes(requestedLevel)) setLevel(requestedLevel as LevelFilter); }, []);
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);

@@ -7,11 +7,12 @@ import { markStory, readStoryProgress, type StoryProgress } from "@/app/lib/stor
 export function useStoryProgress() {
   const [progress, setProgress] = useState<StoryProgress>({ entries: {} });
   const [hydrated, setHydrated] = useState(false);
+  const [storageError, setStorageError] = useState('');
   const completedIds = useMemo(() => new Set(Object.entries(progress.entries).filter(([, item]) => item.completed).map(([id]) => id)), [progress]);
   useEffect(() => {
     const refresh = () => {
-      try { setProgress(readStoryProgress(JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]"))); }
-      catch { setProgress({ entries: {} }); }
+      try { setProgress(readStoryProgress(JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? "[]"))); setStorageError(''); }
+      catch { setStorageError('Your story progress could not load. Enable browser storage and try again.'); }
       setHydrated(true);
     };
     const frame = requestAnimationFrame(refresh);
@@ -19,14 +20,15 @@ export function useStoryProgress() {
     window.addEventListener("storage", refresh);
     return () => { cancelAnimationFrame(frame); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); window.removeEventListener("storage", refresh); };
   }, []);
-  useEffect(() => {
-    if (hydrated) queueCloudProgress("stories", progress);
-  }, [hydrated, progress]);
-  const setStoryCompleted = useCallback((id: string, completed = true) => {
-    setProgress((current) => markStory(current, id, completed));
+  const changeStory = useCallback((id: string, completed?: boolean) => {
+    try {
+      // Other tabs/components may have saved since this hook last rendered.
+      const latest = readStoryProgress(JSON.parse(localStorage.getItem(STORY_PROGRESS_STORAGE_KEY) ?? '[]'));
+      const next = markStory(latest, id, completed ?? !latest.entries[id]?.completed);
+      queueCloudProgress('stories', next); setProgress(next); setStorageError(''); return true;
+    } catch { setStorageError('Your story progress could not be saved. Enable browser storage and try again.'); return false; }
   }, []);
-  const toggleStoryCompleted = useCallback((id: string) => {
-    setProgress((current) => markStory(current, id, !current.entries[id]?.completed));
-  }, []);
-  return { completedIds, hydrated, setStoryCompleted, toggleStoryCompleted };
+  const setStoryCompleted = useCallback((id: string, completed = true) => changeStory(id, completed), [changeStory]);
+  const toggleStoryCompleted = useCallback((id: string) => changeStory(id), [changeStory]);
+  return { progress, completedIds, hydrated, storageError, setStoryCompleted, toggleStoryCompleted };
 }

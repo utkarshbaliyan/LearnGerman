@@ -1,3 +1,4 @@
+import { firstWordLearning, readFirstWordLearning, type FirstWordLearning } from './daily-learning';
 import { germanVerbLemma } from "@/app/vocabulary/verb-forms";
 import { validFlashcardMemory, type FlashcardMemory } from "./flashcard-memory";
 
@@ -93,6 +94,7 @@ export type VocabularyReviewCard = {
   dueAt: number;
   intervalMinutes: number;
   memory?: FlashcardMemory;
+  firstLearned?: FirstWordLearning;
 };
 
 export function readReviewCards(value: unknown): Record<string, VocabularyReviewCard> {
@@ -103,6 +105,10 @@ export function readReviewCards(value: unknown): Record<string, VocabularyReview
       && [card.updatedAt, card.dueAt, card.intervalMinutes].every((n) => Number.isFinite(n) && n >= 0)
       && card.intervalMinutes <= 52560000
       && (card.memory === undefined || validFlashcardMemory(card.memory));
+  }).map(([key, card]) => {
+    const { firstLearned: raw, ...rest } = card;
+    const firstLearned = readFirstWordLearning(raw);
+    return [key, { ...rest, ...(firstLearned ? { firstLearned } : {}) }];
   }));
 }
 
@@ -127,8 +133,10 @@ export function mergeVocabularyProgress(local: unknown, remote: unknown): Vocabu
   const guessStreak = streaks.length ? { ...streaks[0], best: Math.max(...streaks.map((s) => s.best)) } : undefined;
   const cards = { ...readReviewCards(a.cards) };
   for (const [key, card] of Object.entries(readReviewCards(b.cards))) {
-    if (!cards[key] || card.updatedAt > cards[key].updatedAt
-      || (card.updatedAt === cards[key].updatedAt && JSON.stringify(card) > JSON.stringify(cards[key]))) cards[key] = card;
+    const previous = cards[key];
+    const winner = !previous || card.updatedAt > previous.updatedAt || (card.updatedAt === previous.updatedAt && JSON.stringify(card) > JSON.stringify(previous)) ? card : previous;
+    const firstLearned = firstWordLearning(card.firstLearned, previous?.firstLearned);
+    cards[key] = { ...winner, ...(firstLearned ? { firstLearned } : {}) };
   }
   const learned = new Set([...stringArray(a.learnedKeys), ...stringArray(b.learnedKeys)]);
   const review = new Set([...stringArray(a.reviewKeys), ...stringArray(b.reviewKeys)]);
@@ -237,6 +245,7 @@ export function setVocabularyStatus(
   word: VocabularyIdentity,
   status: "learned" | "review" | "unlearned",
   now = Date.now(),
+  recordLearning = true,
 ): VocabularyProgress {
   const keys = vocabularyProgressKeys(word);
   const learned = new Set(current.learnedKeys);
@@ -252,8 +261,10 @@ export function setVocabularyStatus(
 
   const key = vocabularyCardKey(word);
   const updatedAt = Math.max(now, (current.cards?.[key]?.updatedAt ?? 0) + 1);
+  const firstLearned = firstWordLearning(...keys.map(k => current.cards?.[k]?.firstLearned))
+    ?? (isVocabularyLearned(current, word) ? { key, at: 0 } : status === 'learned' ? { key, at: recordLearning ? now : 0 } : undefined);
   return { ...current, learnedKeys: [...learned], reviewKeys: [...review], legacyMigrated: current.legacyMigrated,
-    cards: { ...current.cards, [key]: { status, updatedAt, dueAt: now, intervalMinutes: 0 } } };
+    cards: { ...current.cards, [key]: { status, updatedAt, dueAt: now, intervalMinutes: 0, ...(firstLearned ? { firstLearned } : {}) } } };
 }
 
 export function scheduleVocabularyReview(current: VocabularyProgress, word: VocabularyIdentity, minutes: number, now = Date.now()): VocabularyProgress {
@@ -267,7 +278,7 @@ export function scheduleVocabularyReview(current: VocabularyProgress, word: Voca
 export function markVocabularyRead(current: VocabularyProgress, word: VocabularyIdentity, now = Date.now()): VocabularyProgress {
   const next = setVocabularyStatus(current, word, 'learned', now);
   const key = vocabularyCardKey(word), previous = current.cards?.[key];
-  if (previous) next.cards![key] = { ...previous, status: 'learned', updatedAt: next.cards![key].updatedAt };
+  if (previous) next.cards![key] = { ...previous, status: 'learned', updatedAt: next.cards![key].updatedAt, firstLearned: next.cards![key].firstLearned };
   return next;
 }
 
@@ -332,7 +343,10 @@ export function readVocabularyProgress(storage: StorageLike, catalog: Vocabulary
       const left = JSON.stringify(a); const right = JSON.stringify(b);
       return b.updatedAt - a.updatedAt || (left === right ? 0 : right > left ? 1 : -1);
     });
-    if (candidates.length) cards[key] = candidates[0];
+    if (candidates.length) {
+      const firstLearned = firstWordLearning(...candidates.map(c => c.firstLearned));
+      cards[key] = { ...candidates[0], ...(firstLearned ? { firstLearned } : {}) };
+    }
     if (keys.some((value) => learned.has(value))) learned.add(key);
     if (keys.some((value) => review.has(value))) review.add(key);
   }

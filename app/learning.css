@@ -97,3 +97,41 @@
 @media (max-width: 760px) { .learning-page { padding: 24px 20px 56px; } .learning-hero { display: block; position: relative; padding: 24px; margin-bottom: 24px; } .learning-hero-copy > .reading-eyebrow, .learning-hero h1 { max-width: calc(100% - 112px); } .learning-hero-copy > .reading-eyebrow { display: block; } .learning-hero h1 { font-size: 54px; margin: 12px 0 20px; } .learning-hero p { font-size: 16px; margin-bottom: 18px; } .learning-hero-art { position: absolute; top: 28px; right: 20px; width: 116px; } .learning-hero--review .learning-hero-art { min-height: 116px; } .learning-hero-book.topic-art { width: 116px; min-height: 116px; } .learning-hero-book .topic-art-picture { width: 110px; } .learning-hero-plant.topic-art { width: 48px; min-height: 48px; right: -8px; } .learning-hero-plant .topic-art-picture { width: 46px; } .learning-hero-tags { gap: 6px; } .learning-hero-tags > span { font-size: 11px; padding: 5px 8px; } .learning-setup, .learning-session, .learning-review-section { padding: 20px; } .learning-setup-fields, .learning-evidence-grid { grid-template-columns: 1fr; gap: 18px; } .learning-start { grid-template-columns: 72px minmax(0, 1fr); padding: 20px; gap: 16px; align-items: start; } .learning-start h2 { font-size: 27px; } .learning-feature-art.topic-art { min-height: 72px; } .learning-feature-art .topic-art-picture { width: 68px; } .learning-start > .learning-actions { grid-column: 1 / -1; margin: 0; } .learning-feature-title { font-size: 17px; } .learning-steps { gap: 8px; font-size: 11px; } .learning-word-save { top: 4px; } .learning-review-heading { gap: 14px; } .learning-review-heading .topic-art { flex-basis: 64px; width: 64px; min-height: 64px; } .learning-review-heading .topic-art-picture { width: 60px; } .learning-review-heading h2 { font-size: 27px; } .learning-review-heading .reading-eyebrow { font-size: 10px; } .learning-review-list article { align-items: flex-start; } .learning-review-list button { max-width: 140px; white-space: normal; } .learning-next > div { grid-template-columns: repeat(2, minmax(0, 1fr)); } .learning-next > div > a { padding: 14px; } .topbar .topnav { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 380px) { .topbar .topnav { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .learning-feature-note { grid-column: 1 / -1; } }
+
+/* Daily goals share the Home palette in both themes. */
+.daily-learning { border: 1px solid var(--line); border-radius: 18px; padding: 28px; margin: 0 0 28px; background: var(--white); }
+.daily-learning-heading { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.learning-page .daily-learning-heading h2 { margin: 8px 0; font-size: clamp(28px, 3vw, 38px); }
+.learning-page .daily-learning-heading p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+.daily-streak { display: flex; align-items: center; flex-shrink: 0; gap: 10px; padding: 14px 18px; background: var(--tone-butter); color: var(--tone-butter-ink); border-radius: 16px; }
+.daily-streak > svg { width: 30px; height: 36px; }
+.daily-streak strong { display: block; font-size: 32px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.daily-streak span { font-size: 12px; }
+.daily-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin: 24px 0; padding: 20px 0; border-block: 1px solid var(--line); }
+.daily-day { display: grid; justify-items: center; gap: 8px; color: var(--ink-soft); font-size: 12px; }
+.daily-day-mark { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; font-size: 13px; font-weight: 600; }
+.daily-day-mark svg { width: 18px; height: 18px; }
+.daily-day.is-today { color: var(--tone-butter-ink); font-weight: 700; }
+.daily-day.is-today .daily-day-mark { outline: 2px solid var(--tone-butter-ink); outline-offset: 3px; }
+.daily-day.is-complete .daily-day-mark { background: var(--tone-sage); color: var(--tone-sage-ink); border-color: var(--tone-sage-ink); }
+.daily-goals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.daily-goals article { display: flex; align-items: flex-start; gap: 14px; border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.daily-goal-icon { flex: 0 0 38px; display: grid; place-items: center; width: 38px; height: 38px; background: var(--tone-butter); color: var(--tone-butter-ink); border-radius: 10px; }
+.daily-goal-icon svg { width: 20px; height: 20px; }
+.daily-goals article.is-complete .daily-goal-icon { background: var(--tone-sage); color: var(--tone-sage-ink); }
+.daily-goal-copy { min-width: 0; flex: 1; }
+.daily-goal-copy h3 { font-family: var(--font-ui), sans-serif; font-size: 15px; font-weight: 700; line-height: 1.5; }
+.learning-page .daily-goal-copy p { font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin: 5px 0 12px; }
+.daily-goal-progress { display: flex; gap: 10px; align-items: center; font-size: 12px; margin: 10px 0; }
+.daily-goal-progress progress { display: block; width: 100%; height: 6px; border: 0; border-radius: 8px; overflow: hidden; accent-color: var(--tone-butter-ink); background: var(--line); }
+.daily-goal-progress progress::-webkit-progress-bar { background: var(--line); }
+.daily-goal-progress progress::-webkit-progress-value { background: var(--tone-butter-ink); border-radius: 8px; }
+.daily-goal-progress progress::-moz-progress-bar { background: var(--tone-butter-ink); border-radius: 8px; }
+.daily-goal-progress > span { flex-shrink: 0; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.learning-page .daily-goal-copy a { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; }
+.daily-learning-note { margin-top: 20px; }
+.learning-page .daily-learning-note p { font-size: 14px; margin: 0 0 6px; }
+.daily-learning-note > span { display: block; color: var(--ink-soft); font-size: 12px; overflow-wrap: anywhere; }
+@media (max-width: 760px) { .daily-learning { padding: 20px; } .daily-goals { grid-template-columns: 1fr; gap: 12px; } .daily-learning-heading { align-items: flex-start; gap: 12px; } .daily-streak { padding: 12px; gap: 6px; } .daily-streak > svg { width: 22px; } .daily-streak strong { font-size: 28px; } }
+@media (max-width: 420px) { .daily-learning-heading { flex-wrap: wrap; } .daily-streak { width: 100%; } .daily-streak > div { display: flex; align-items: baseline; gap: 8px; } .daily-week { gap: 4px; } .daily-day-mark { width: 30px; height: 30px; } .daily-goals article { padding: 14px; gap: 10px; } }
+.learning-page .daily-goal-copy h3 { font-family: var(--font-ui), sans-serif !important; text-transform: none; font-size: 15px; font-weight: 700; letter-spacing: 0; }
