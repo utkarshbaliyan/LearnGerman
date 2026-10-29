@@ -244,6 +244,8 @@ body:has(.topbar[data-section="today"]), body:has(.topbar[data-section="review"]
 .site-footer a { color: var(--ink); }
 .site-footer a:hover, .information-page a, .discovery-guide a { color: var(--section-ink); }
 .information-page h1, .discovery-intro h1, .discovery-guide > h1 { color: var(--section-ink); }
+.account-page button.account-action--delete { color: var(--destructive); }
+html[data-theme] .account-page .account-delete button.account-submit { background: var(--destructive); color: var(--section-on); border-color: var(--destructive); }
 .site-menu-trigger { border-color: var(--line); background: var(--white); color: var(--ink); }
 .site-menu-panel > a[aria-current="page"] { background: var(--section-soft); color: var(--section-ink); }
 html[data-theme] .analytics-consent { background: var(--white); color: var(--ink); border-color: var(--line); }

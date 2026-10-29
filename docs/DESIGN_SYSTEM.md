@@ -6,8 +6,8 @@ another theme. Neutral page and card surfaces keep learning content readable.
 
 | Area | Accent |
 | --- | --- |
-| Home | Butter |
-| Stories, account and supporting routes | Sage |
+| Home, review and About | Butter |
+| Stories, account, privacy and help | Sage |
 | Books | Peach |
 | Vocabulary | Sky |
 | Grammar and Active Learning | Lilac |
