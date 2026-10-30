@@ -2,13 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {verifyPublic,verifyWithRetry} from '../scripts/verify-public.mjs';
 const release='b'.repeat(40);
-const homepage='<title>LeseLaut</title><script src="/assets/app.js"></script>';
-const homepageHeaders={'x-frame-options':'DENY','x-content-type-options':'nosniff','content-security-policy':"frame-ancestors 'none'"};
+const homepage='<title>LeseLaut</title><script id="leselaut-analytics-boundary" src="/analytics-boundary.js"></script><script src="/assets/app.js"></script>';
+const homepageHeaders={'x-frame-options':'DENY','x-content-type-options':'nosniff','content-security-policy':"frame-ancestors 'none'",'referrer-policy':'strict-origin'};
 function fixture(change) {
   const responses=new Map([
     ['/api/health',()=>Response.json({status:'ok',release},{headers:{'cache-control':'no-store'}})],
     ['/',()=>new Response(homepage,{headers:homepageHeaders})],
     ['/assets/app.js',()=>new Response(null,{headers:{'content-type':'text/javascript'}})],
+    ['/analytics-boundary.js',()=>new Response(null,{headers:{'content-type':'text/javascript'}})],
     ['/account',()=>new Response('Sign in')],
     ['/api/auth/config',()=>Response.json({enabled:false})],
     ['/api/account',()=>new Response(null,{status:401,headers:{'cache-control':'private, no-store'}})],
@@ -32,6 +33,7 @@ for(const [header,message] of [
   ['x-frame-options','Homepage framing protection'],
   ['x-content-type-options','Homepage content sniffing protection'],
   ['content-security-policy','Homepage CSP framing protection'],
+  ['referrer-policy','Private paths must not leak in referrers'],
 ])test(`public verification rejects a homepage missing ${header}`,async()=>{
   const headers={...homepageHeaders};delete headers[header];
   await assert.rejects(verifyPublic('https://fixture.test',release,{request:fixture(map=>map.set('/',()=>new Response(homepage,{headers})))}),new RegExp(message));
@@ -40,6 +42,9 @@ for(const [name,path,response] of [
   ['old release','/api/health',()=>Response.json({status:'ok',release:'a'.repeat(40)},{headers:{'cache-control':'no-store'}})],
   ['database unavailable','/api/health',()=>new Response(null,{status:503})],
   ['missing built asset','/assets/app.js',()=>new Response(null,{status:404})],
+  ['missing privacy guard asset','/analytics-boundary.js',()=>new Response(null,{status:404})],
+  ['missing privacy guard','/',()=>new Response('<title>LeseLaut</title><script src="/assets/app.js"></script>',{headers:homepageHeaders})],
+  ['injected beacon before consent','/',()=>new Response(homepage+'<script src="https://static.cloudflareinsights.com/beacon.min.js"></script>',{headers:homepageHeaders})],
   ['broken sign-in page','/account',()=>new Response(null,{status:500})],
   ['unprotected progress','/api/progress',()=>new Response(null,{status:200})],
   ['paid monitoring enabled','/api/telemetry/config',()=>Response.json({enabled:true})],

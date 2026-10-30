@@ -16,8 +16,14 @@ export async function verifyPublic(base, release, {healthOnly=false, request=fet
   assert.equal(home.headers.get('x-frame-options'),'DENY','Homepage framing protection');
   assert.equal(home.headers.get('x-content-type-options'),'nosniff','Homepage content sniffing protection');
   assert.ok((home.headers.get('content-security-policy')??'').includes("frame-ancestors 'none'"),'Homepage CSP framing protection');
+  assert.equal(home.headers.get('referrer-policy'),'strict-origin','Private paths must not leak in referrers');
   const html=await home.text();
   assert.match(html,/LeseLaut/,'Homepage content');
+  assert.match(html,/<script[^>]+id="leselaut-analytics-boundary"/,'Consent navigation guard');
+  assert.doesNotMatch(html,/<script[^>]+src=["']https:\/\/static\.cloudflareinsights\.com\//,'No beacon before browser consent');
+  const boundary=await get('/analytics-boundary.js',{method:'HEAD'});
+  assert.equal(boundary.status,200,'Analytics privacy guard asset');
+  assert.match(boundary.headers.get('content-type')??'',/javascript/,'Privacy guard JavaScript MIME type');
   const asset=html.match(/(?:src|href)="(\/assets\/[^"?#]+\.js)(?:[?#][^"]*)?"/);
   assert.ok(asset,'Homepage must reference a built JavaScript asset');
   const js=await get(asset[1],{method:'HEAD'});
