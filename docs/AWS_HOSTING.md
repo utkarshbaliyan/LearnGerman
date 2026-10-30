@@ -119,7 +119,8 @@ authoritative AWS backend.
   [activation record](LAUNCH_READINESS.md).
 - CloudWatch Logs: `/leselaut/application`, retained for seven days.
 
-For external visitor sessions, near-live browsers, visit timestamps and the
+For free visitor visits and page views, see [Cloudflare Web Analytics](CLOUDFLARE_ANALYTICS.md).
+Paid AWS browser RUM remains disabled. For infrastructure health and the
 production dashboard, see [AWS observability](AWS_OBSERVABILITY.md).
 - Systems Manager: deployment command status and service administration.
 - Billing console: credits, current spend and free-tier usage. A budget alert

@@ -30,10 +30,13 @@ try{
     assert.equal(response.headers.get('x-frame-options'),'DENY',`framing protection: ${path}`);
     assert.equal(response.headers.get('x-content-type-options'),'nosniff',`content sniffing protection: ${path}`);
     assert.ok((response.headers.get('content-security-policy')??'').includes("frame-ancestors 'none'"),`CSP framing protection: ${path}`);
+    assert.equal(response.headers.get('referrer-policy'),'strict-origin',`private referrer protection: ${path}`);
     const html=await response.text();
     assert.match(html,/LeseLaut/,path);
     assert.doesNotMatch(html,/data-layout-audit|RESPONSIVE_AUDIT|Local responsive audit/,`development audit must never render in production: ${path}`);
+    assert.doesNotMatch(html,/<script[^>]+src=["']https:\/\/static\.cloudflareinsights\.com\//,`no beacon before consent: ${path}`);
     if(path==='/') {
+      assert.match(html.slice(0,html.indexOf('</head>')),/<script[^>]+id="leselaut-analytics-boundary"/,'privacy guard must load in the document head');
       const viewports=[...html.matchAll(/<meta[^>]*name="viewport"[^>]*>/g)].map(match=>match[0]);
       assert.equal(viewports.length,1,'one viewport tag');
       assert.match(viewports[0],/viewport-fit=cover/,'safe-area viewport');
@@ -41,6 +44,9 @@ try{
       assert.doesNotMatch(viewports[0],/user-scalable=no|maximum-scale=1(?:[,"\s])/,'pinch zoom remains available');
     }
   }
+  const guard=await fetch(base+'/analytics-boundary.js');
+  assert.equal(guard.status,200,'privacy guard asset');
+  assert.match(guard.headers.get('content-type')??'',/javascript/,'privacy guard MIME type');
   for(const path of ['/', '/stories', '/stories/a1', '/stories/a2', '/stories/b1', '/stories/b2', '/course', '/grammar/reference', '/grammar/lessons', '/grammar/lessons/a1-4-1', '/grammar/lessons/c1-1-1', '/books/a1/der-schluessel-im-blauen-korb/1']) {
     const response=await fetch(base+path), html=await response.text();
     assert.equal(response.status,200,path);

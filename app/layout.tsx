@@ -19,6 +19,11 @@ import './platform-colours.css';
 import './responsive.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
+import analytics from '@/deploy/cloudflare/analytics-public.json';
+import securityHeaders from '@/deploy/security-headers.json';
+import { PUBLIC_ANALYTICS_PATH } from './lib/rum-privacy';
+
+const analyticsStopPolicy = securityHeaders['Content-Security-Policy'].split(';').find(value => value.trim().startsWith('connect-src '))?.replace(' https://cloudflareinsights.com/cdn-cgi/rum', '').trim();
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
@@ -58,7 +63,9 @@ const themeScript = `(() => {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
+      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script suppressHydrationWarning id="leselaut-analytics-boundary" src="/analytics-boundary.js" data-analytics-hosts={analytics.enabled && !isStaging() ? analytics.hosts.join(',') : ''} data-analytics-public-pattern={PUBLIC_ANALYTICS_PATH.source} data-analytics-stop-policy={analyticsStopPolicy} />
+      </head>
       <body>
         {isStaging() && <aside role="status" style={{ padding: '12px 20px', background: '#fff2c7', color: '#322800', textAlign: 'center' }}>
           Test site — use a separate test account. Your main account is at <a href="https://leselaut.com" style={{ textDecoration: 'underline' }}>leselaut.com</a>.
