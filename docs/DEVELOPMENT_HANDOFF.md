@@ -78,8 +78,8 @@ D1/Sites deployment wording is historical.
 
 ```mermaid
 flowchart TD
-  U[Browser: React and local progress] --> D[Cloudflare DNS]
-  D --> C[AWS CloudFront: HTTPS edge and caching]
+  D[Cloudflare DNS] -. Domain points to .-> C[AWS CloudFront: HTTPS edge and caching]
+  U[Browser: React and local progress] --> C
   C --> N[Nginx on EC2]
   N --> A[Node 22 / Vinext: pages and backend APIs]
   U <--> S[Supabase Auth: identities and sessions]
@@ -231,6 +231,9 @@ Supabase signs the browser in, stores/refreshes its session and issues access
 tokens. Authenticated API requests send a bearer token; the backend checks the
 Supabase signing keys, issuer, audience, expiry and role, then enforces ownership.
 Public client configuration in source is not the server administrative secret.
+Local OAuth/confirmation/recovery callbacks need the appropriate local URL in
+Supabase's redirect allowlist. Use the actual development-server URL; preserve
+production callbacks and email-confirmation protections when adjusting local setup.
 
 Local/staging preview still uses the configured real Supabase project unless
 explicitly separated. Signing up can create a real authentication identity;
