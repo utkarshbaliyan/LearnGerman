@@ -404,6 +404,26 @@ Prefer fresh source, health, protected workflow and cloud configuration over an
 older narrative. Never solve a documentation mismatch by redeploying the legacy
 host, overwriting a populated database, deleting progress or enabling AI.
 
+## 10. Open maintenance work at the handoff date
+
+GitHub also has unmerged Dependabot PRs. Their existence does not mean those
+versions are running in production, and some proposed versions are already in
+current main through other changes. Check the actual diff and current lockfile
+before choosing one as development work; do not merge the whole queue blindly.
+
+| PR | Proposal |
+| --- | --- |
+| #36 | Compatible dependency group across 28 updates |
+| #21 | `@types/node` from the Node 22 series to the Node 26 series |
+| #19 | `satori` and Vinext updates |
+| #18 / #17 | GitHub checkout/setup-node action updates |
+| #16 / #15 / #14 | Next, fast-uri and Zod updates |
+
+These were only inventoried, not reviewed or merged for this handoff. In
+particular, align Node types with the intended runtime and preserve the locked
+Vinext compatibility fixes until replacement behavior has been verified.
+This handoff itself is [PR #37](https://github.com/utkarshbaliyan/LearnGerman/pull/37).
+
 Official Claude Code references:
 [project instructions](https://code.claude.com/docs/en/memory) and
 [starting a session](https://code.claude.com/docs/en/quickstart).
