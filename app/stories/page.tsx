@@ -13,7 +13,7 @@ export default async function StoriesPage({ searchParams }: { searchParams: Prom
   if (level) permanentRedirect(absoluteUrl(storyLevelPath(level)));
   return <div className="site-shell"><SiteHeader active="stories" /><main className="discovery-page">
     <StructuredData data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'German stories', path: '/stories' }])} />
-    <header className="discovery-intro"><span className="reading-eyebrow">Read & listen · A1 to B2</span><h1>German stories with audio and English translations</h1><p>Explore {READING_STORIES.length} free German short stories about everyday life. Choose a level, listen to the narration and use the English translation or word meanings when you need help.</p></header>
+    <header className="discovery-intro"><h1>German stories with audio and English translations</h1><p>Explore {READING_STORIES.length} free German short stories about everyday life. Choose a level, listen to the narration and use the English translation or word meanings when you need help.</p></header>
     <div className="discovery-levels">{READING_LEVELS.map(level => {
       const stories = READING_STORIES.filter(story => story.level === level), info = STORY_LEVELS[level];
       return <section className="discovery-level" key={level}><h2><Link href={storyLevelPath(level)}>{level} German stories</Link></h2><p className="reading-eyebrow">{info.label} · {stories.length} stories</p><p>{info.introduction}</p>

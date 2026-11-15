@@ -128,7 +128,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
   }
 
   const content = <section className="recall-decks" aria-label="Your review deck">
-    {!compact && <header className="recall-decks-heading"><TopicArt kind="learn" /><div><span className="reading-eyebrow">Your words, together</span><h2>Your review deck</h2><p>Words you add to Review in the word library, stories and books appear here.</p></div></header>}
+    {!compact && <header className="recall-decks-heading"><TopicArt kind="learn" /><div><h2>Your review deck</h2><p>Words you add to Review in the word library, stories and books appear here.</p></div></header>}
     {!ready ? <p role="status">Loading your review deck…</p> : <>
       {(loadError || storageError || wordStorageError || actionError) && <p role="alert">{loadError || storageError || wordStorageError || actionError}{loadError && <Button variant="outline" onClick={retry}>Retry loading words</Button>}</p>}
       {stage === 'round' && session?.run ? <section className="recall-round" aria-label="Flashcard round">
@@ -140,7 +140,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
           <ReviewFlashcard key={`${session.run.id}:${currentWord.key}`} word={currentWord} options={flashcardOptions(vocabulary.cards?.[currentWord.key], Date.now())} busy={!canAct} onAction={(action, rating) => void complete(action, rating)} />
         </> : !loading && !loadError && <div className="recall-round-finished" aria-live="polite"><span className="reading-eyebrow">Round complete</span><h3>{answers.length} {answers.length === 1 ? 'word' : 'words'} practised.</h3><p>{answers.filter(a => a.action === 'read').length} marked as read. Your ratings and familiar words are synced with Vocabulary and Today.</p><p>Words you removed from Review elsewhere are skipped.</p><Button onClick={() => { setStage('box'); setActive(null); }}>Back to review deck</Button></div>}
       </section> : stage === 'size' ? <section className="review-practice-setup" aria-label="Choose practice size">
-        <span className="reading-eyebrow">A small round of your own words</span><h3>How many words do you want to practise?</h3>
+        <h3>How many words do you want to practise?</h3>
         <fieldset className="review-size-options"><legend>Words to practise</legend>{REVIEW_SIZES.map(count => <label key={count} className={size === count ? 'is-selected' : ''}><input type="radio" name="review-size" value={count} checked={size === count} onChange={() => setSize(count)} /><strong>{count}</strong><span>words</span></label>)}</fieldset>
         <p>{loading ? 'Loading your review words…' : `${pool.length} words in your deck. This round will use ${Math.min(size, pool.length)}.`}</p>
         {pool.length < size && !loading && <p className="review-rating-note">You have fewer than {size} words, so we’ll practise all available words.</p>}

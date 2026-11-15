@@ -1,0 +1,25 @@
+/* Calmer headings: Bebas Neue is kept for page titles (h1) only.
+   Section and card headings use the reading font in sentence case. */
+:where(h2, h3, h4) { font-family: var(--font-ui) !important; text-transform: none !important; font-weight: 700 !important; }
+main h2, main h3, main h4, [role="dialog"] h2 { letter-spacing: -.015em; line-height: 1.25; }
+main h2 { font-size: clamp(1.3rem, 2.4vw, 1.65rem); }
+main h3 { font-size: clamp(1.05rem, 1.8vw, 1.2rem); }
+main h4 { font-size: 1rem; }
+.learning-page h2, .story-preview-copy h2, .learning-setup h2, .daily-learning h2 { font-size: clamp(1.3rem, 2.4vw, 1.65rem); letter-spacing: -.015em; }
+.home-section-copy h3, .recall-decks h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); letter-spacing: -.015em; line-height: 1.25; }
+.home-practice-dialog-heading [data-slot="dialog-title"] { font: 700 1.6rem/1.2 var(--font-ui); letter-spacing: -.015em; }
+
+/* Small labels: sentence case, not shouty capitals */
+.reading-eyebrow { font: 600 13px/1.5 var(--font-ui); letter-spacing: .01em; text-transform: none; }
+.reading-next .reading-eyebrow { font-size: 12px; }
+
+/* Size caps: the reading font is much wider than the old condensed display face */
+main .grammar-lesson-heading h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem) !important; letter-spacing: -.025em; }
+main .grammar-roadmap-heading h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem) !important; }
+main h3 { max-width: 100%; }
+main .grammar-scene-heading h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem) !important; }
+@media (max-width: 600px) {
+  main h2 { font-size: 1.35rem !important; }
+  main h3 { font-size: 1.1rem !important; }
+  main .grammar-lesson-heading h2 { font-size: 1.6rem !important; }
+}
