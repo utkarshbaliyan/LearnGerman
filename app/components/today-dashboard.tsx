@@ -27,6 +27,7 @@ import { TopicArt, storyArt } from './topic-art';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY } from '@/app/lib/cloud-progress-keys';
 import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
 import { ActiveLearningPaused } from './active-learning-paused';
+import { StoryPreview, type StoryPreviewData } from './story-preview';
 
 type Material = { content: ReturnType<typeof getReadingContent>; words: VocabularyIdentity[] };
 const steps = ['Recall', 'Read & listen', 'Understand', 'Use German', 'Finished'];
@@ -34,7 +35,7 @@ function Setup({ preferences, onSave }: { preferences?: LearningPreferences; onS
   const [level, setLevel] = useState(preferences?.level ?? 'A1'), [goal, setGoal] = useState(preferences?.goal ?? 'everyday'), [minutes, setMinutes] = useState(preferences?.minutes ?? 15);
   return <form className="learning-setup" onSubmit={e => { e.preventDefault(); onSave({ level, goal, minutes, updatedAt: Date.now() }); }}><h2>{preferences ? 'Your session preferences' : 'Make German part of your day'}</h2><p>Choose a starting level. You can change it as you find what feels useful.</p><div className="learning-setup-fields"><label>Your level<select value={level} onChange={e => setLevel(e.target.value as typeof level)}>{TRANSLATION_LEVELS.map(l => <option key={l}>{l}</option>)}</select></label><label>Your goal<select value={goal} onChange={e => setGoal(e.target.value as typeof goal)}><option value="everyday">Everyday life</option><option value="work">Work & professional life</option><option value="study">Study & learning</option></select></label><label>Available time<select value={minutes} onChange={e => setMinutes(Number(e.target.value) as typeof minutes)}>{[10, 15, 20].map(m => <option key={m} value={m}>{m} minutes</option>)}</select></label></div><Button type="submit">{preferences ? 'Save preferences' : 'Save and get started'}</Button></form>;
 }
-export function TodayDashboard({ stories, grammarLessons, initialReview = false }: { stories: ReadingSummary[]; grammarLessons: HomeGrammarLesson[]; initialReview?: boolean }) {
+export function TodayDashboard({ stories, grammarLessons, initialReview = false, preview }: { preview?: StoryPreviewData; stories: ReadingSummary[]; grammarLessons: HomeGrammarLesson[]; initialReview?: boolean }) {
   const { progress, hydrated, update, storageError } = useLearningProgress(), { progress: vocabulary, hydrated: vocabReady, storageError: vocabularyError } = useVocabularyProgress(), { progress: storyProgress, completedIds, hydrated: storiesReady, storageError: storyError } = useStoryProgress();
   const reviewWords = useReviewWords(vocabulary, hydrated && vocabReady && !storageError && !vocabularyError);
   useEffect(() => {
@@ -89,11 +90,14 @@ export function TodayDashboard({ stories, grammarLessons, initialReview = false 
   const content = material?.content;
   const checked = output?.session.checks.at(-1);
   const outputReady = checked && (checked.feedback.every(f => f.verdict === 'correct') || output!.session.checks.length > 1);
+  const ready = hydrated && vocabReady && storiesReady;
+  const firstVisit = ready && !signedIn && !memoryLoading && !prefs && sessions.length === 0 && completedIds.size === 0 && Object.keys(vocabulary.words ?? {}).length === 0 && reviewWords.dueWords.length === 0;
   return <div className="learning-today-panel">
-    {!session && <ReviewDeck sharedWords={reviewWords} compact initialOpen={initialReview} mistakeDue={memory?.due} reviewExtra={<TranslationMistakeReview state={{ memory, loading: memoryLoading, error: memoryError, signedIn, refresh }} />} />}
+    {!session && !initialReview && (!ready || firstVisit) && preview && <StoryPreview preview={preview} />}
+    {!session && (initialReview || (ready && !firstVisit)) && <ReviewDeck sharedWords={reviewWords} compact initialOpen={initialReview} mistakeDue={memory?.due} reviewExtra={<TranslationMistakeReview state={{ memory, loading: memoryLoading, error: memoryError, signedIn, refresh }} />} />}
     {!hydrated || !vocabReady || !storiesReady ? <p role="status">Loading your learning plan…</p> : <>
     {(storageError || vocabularyError || storyError) && <p role="alert">{storageError || vocabularyError || storyError}</p>}
-    {!session && progress.daily && !storageError && !vocabularyError && !storyError && <DailyLearning summary={daily} story={dailyStory && !completedBefore.has(dailyStory.id) ? dailyStory : undefined} level={prefs?.level ?? 'A1'} signedIn={signedIn} />}
+    {!session && !firstVisit && progress.daily && !storageError && !vocabularyError && !storyError && <DailyLearning summary={daily} story={dailyStory && !completedBefore.has(dailyStory.id) ? dailyStory : undefined} level={prefs?.level ?? 'A1'} signedIn={signedIn} />}
     {!session && reviewWords.error && <p role="alert">{reviewWords.error} <button type="button" onClick={reviewWords.retry}>Retry loading words</button></p>}
     {(!prefs || settings) && <Setup key={prefs?.updatedAt ?? 'new'} preferences={prefs} onSave={p => { if (update(state => ({ ...state, preferences: p }))) { setSettings(false); if (!prefs) start(p); } }} />}
     {!session && prefs && <section className="learning-start"><TopicArt kind={storyArt(featuredStory?.topics ?? [])} className="learning-feature-art" /><div><span className="reading-eyebrow">{plan?.level} · {plan?.minutes} minute plan</span><h2>{unfinished ? 'Pick up where you left off' : 'Your next useful session'}</h2><p className="learning-feature-title" lang="de">{featuredStory?.title}</p><p className="learning-due-summary">{reviewWords.loading || reviewWords.error ? '…' : reviewWords.dueWords.length} word reviews due{memory ? ` · ${memory.due} mistake reviews due` : ''}</p></div><div className="learning-actions"><Button onClick={() => start()} disabled={Boolean(storageError || vocabularyError || storyError || (!unfinished && (reviewWords.loading || reviewWords.error)))}>{unfinished ? 'Resume session' : 'Start session'}</Button><Button variant="outline" onClick={() => setSettings(!settings)}>Change preferences</Button><Link href="/review">Personal review →</Link></div><div className="learning-feature-note">{plan?.level === 'C1' && <p>C1 output practice uses B2 stories: our reading library currently ends at B2.</p>}<p>Time is a guide. Longer stories can take more than one visit.</p></div></section>}
