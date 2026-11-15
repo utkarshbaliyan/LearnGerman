@@ -8,7 +8,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 const json = async path => JSON.parse(await readFile(new URL(path, import.meta.url), 'utf8'));
 
-test('narration renders accessible native controls, available speeds and slower A1 playback', async () => {
+test('narration renders an accessible custom player, available speeds and slower A1 playback', async () => {
   const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false } });
   try {
     const { ReadingAudio, ReadingNarrationProvider } = await vite.ssrLoadModule('/app/components/reading-narration.tsx');
@@ -20,7 +20,12 @@ test('narration renders accessible native controls, available speeds and slower 
       const asset=getReadingContent(storyId).audio;
       assert.equal(asset.src,manifest[storyId].src,'the original recording remains available');
       const html = renderToStaticMarkup(React.createElement(ReadingNarrationProvider, null, React.createElement(ReadingAudio, { storyId, asset })));
-      assert.match(html, /<audio[^>]+controls=""[^>]+aria-label="German story narration"/);
+      assert.match(html, /<audio[^>]+aria-label="German story narration"/);
+      assert.doesNotMatch(html, /<audio[^>]+controls/);
+      assert.match(html, /<button type="button" class="narration-play" aria-label="Play narration">/);
+      assert.match(html, /<input type="range" class="narration-seek" aria-label="Narration position"/);
+      assert.match(html, /Back 5s/);
+      assert.doesNotMatch(html, /AI voice/);
       assert.match(html, /<select aria-label="Narration speed">/);
       assert.match(html, new RegExp(`<option value="${level === 'a1' ? '0.85' : '1'}" selected="">`));
       for (const rate of [.75, .85, 1, 1.15, 1.25, 1.5]) assert.ok(html.includes(`value="${rate}"`));
