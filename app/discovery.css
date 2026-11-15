@@ -65,3 +65,8 @@
 @media (max-width:900px){.stories-level-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.stories-level-grid{gap:.7rem}.stories-card strong{font-size:.95rem}}
 @media (prefers-reduced-motion:reduce){.stories-card{transition:none}.stories-card:hover{transform:none}}
+
+/* Home: what's included */
+.home-facts{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:1rem 0 .25rem;padding:0;color:var(--muted-foreground);font-size:.95rem}
+.home-facts strong{color:var(--foreground);font-weight:700}
+.home-facts li{white-space:nowrap}

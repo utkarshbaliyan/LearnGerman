@@ -23,3 +23,9 @@ main .grammar-scene-heading h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem) !import
   main h3 { font-size: 1.1rem !important; }
   main .grammar-lesson-heading h2 { font-size: 1.6rem !important; }
 }
+
+/* Quiz questions: keep the question inside its box instead of on the border */
+.reading-check fieldset > legend { float: left; width: 100%; padding: 0; margin: 0 0 .75rem; font-size: 1.05rem; font-weight: 600; line-height: 1.45; }
+.reading-check fieldset > legend + * { clear: both; }
+/* Disabled practice buttons stay legible while progress loads */
+.home-practice-actions [data-slot="button"]:disabled { opacity: .7; }
