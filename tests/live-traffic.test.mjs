@@ -79,3 +79,58 @@ test('installed recorder wraps the named node:http createServer import used by V
     delete globalThis.__leselautTraffic;
   }
 });
+
+test('traffic history keeps daily counts, counts visitors once per day and deletes old visitor hashes', async () => {
+  const { createTrafficStore, trafficDay } = await import('../deploy/aws/traffic-store.mjs');
+  const { mkdtempSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { DatabaseSync } = await import('node:sqlite');
+  const file = join(mkdtempSync(join(tmpdir(), 'leselaut-traffic-')), 'traffic.sqlite');
+  let clock = Date.UTC(2026, 10, 10, 6, 0, 0);
+  const store = createTrafficStore(file, { now: () => clock });
+  const visit = (address, path = '/stories', extra = {}) => store.add({ time: clock, kind: 'page', status: 200, bot: false, address, userAgent: 'Safari', path, ...extra });
+  visit('203.0.113.1'); visit('203.0.113.1', '/books'); visit('203.0.113.2');
+  store.add({ time: clock, kind: 'page', status: 200, bot: true, address: '192.0.2.9', userAgent: 'Googlebot', path: '/' });
+  store.add({ time: clock, kind: 'api', status: 503, bot: false, address: '203.0.113.2', userAgent: 'Safari', path: '/api/progress' });
+  store.flush();
+  // Same visitor again later that day (after a "restart") is not double counted.
+  store.close();
+  const reopened = createTrafficStore(file, { now: () => clock });
+  reopened.add({ time: clock, kind: 'page', status: 200, bot: false, address: '203.0.113.1', userAgent: 'Safari', path: '/stories' });
+  clock += 3 * 86_400_000;
+  reopened.add({ time: clock, kind: 'page', status: 200, bot: false, address: '203.0.113.1', userAgent: 'Safari', path: '/' });
+  const history = reopened.history(30);
+  assert.equal(history.series.length, 30);
+  assert.equal(history.to, trafficDay(clock));
+  const first = history.series.find(day => day.day === '2026-11-10');
+  assert.deepEqual({ visitors: first.visitors, pageviews: first.pageviews, errors5xx: first.errors5xx, bots: first.bots }, { visitors: 2, pageviews: 5, errors5xx: 1, bots: 1 });
+  assert.equal(history.totals.visitorDays, 3);
+  assert.equal(history.totals.activeDays, 2);
+  assert.deepEqual(history.totals.peakDay, { day: '2026-11-10', visitors: 2 });
+  assert.deepEqual(history.topPages.slice(0, 2), [{ path: '/stories', views: 3 }, { path: '/', views: 1 }]);
+  reopened.close();
+  const db = new DatabaseSync(file);
+  assert.deepEqual(db.prepare('SELECT DISTINCT day FROM traffic_day_visitors').all().map(row => row.day), ['2026-11-13'], 'hashes older than yesterday are deleted');
+  assert.deepEqual(db.prepare('SELECT day FROM traffic_salts').all().map(row => row.day), ['2026-11-13']);
+  const everything = JSON.stringify(db.prepare('SELECT * FROM traffic_daily').all()) + JSON.stringify(db.prepare('SELECT * FROM traffic_day_visitors').all());
+  assert.doesNotMatch(everything, /203\.0\.113|Safari/);
+  db.close();
+});
+
+test('day boundaries follow India time', async () => {
+  const { trafficDay } = await import('../deploy/aws/traffic-store.mjs');
+  assert.equal(trafficDay(Date.UTC(2026, 10, 15, 18, 29)), '2026-11-15');
+  assert.equal(trafficDay(Date.UTC(2026, 10, 15, 18, 31)), '2026-11-16');
+});
+
+test('recorder passes requests to the history store and exposes history', () => {
+  const added = [];
+  const recorder = createTrafficRecorder({ store: { add: value => added.push(value), history: days => ({ days }) } });
+  recorder.record({ url: '/stories?x=1', status: 200, address: 'a', userAgent: 'Safari' });
+  recorder.record({ url: '/api/health', status: 200, address: 'a', userAgent: 'curl' });
+  assert.equal(added.length, 1);
+  assert.equal(added[0].path, '/stories');
+  assert.deepEqual(recorder.history(30), { days: 30 });
+  assert.equal(createTrafficRecorder().history(30), null);
+});

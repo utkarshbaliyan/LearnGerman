@@ -26,3 +26,16 @@
 .live-traffic-table tr[data-error] td{color:#d9534f}
 @media (max-width:760px){.live-traffic-columns{grid-template-columns:1fr}.live-traffic-stats strong{font-size:1.5rem}}
 .live-traffic-panel>*{min-width:0}
+.live-traffic-ranges{display:inline-flex;flex-wrap:wrap;gap:.35rem;padding:.3rem;border:1px solid var(--border);border-radius:999px;background:var(--card);justify-self:start}
+.live-traffic-ranges button{padding:.4rem .9rem;border:0;border-radius:999px;background:transparent;color:var(--muted-foreground);font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;min-height:0}
+.live-traffic-ranges button[aria-pressed=true]{background:var(--primary);color:var(--primary-foreground,var(--background))}
+.live-traffic-ranges button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.live-traffic-days span{position:relative;display:flex;align-items:flex-end;justify-content:center;height:100%;background:none!important;opacity:1}
+.live-traffic-days i{position:absolute;bottom:0;left:0;right:0;border-radius:3px 3px 0 0}
+.live-traffic-bar-views{background:color-mix(in srgb,var(--primary) 30%,transparent)}
+.live-traffic-bar-visitors{left:22%!important;right:22%!important;background:var(--primary)}
+.live-traffic-bar-visitors[data-error]{background:#d9534f}
+.live-traffic-axis{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted-foreground);margin-top:-.4rem}
+.live-traffic-key{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;vertical-align:-1px;margin:0 .1rem 0 .4rem}
+.live-traffic-key-visitors{background:var(--primary)}
+.live-traffic-key-views{background:color-mix(in srgb,var(--primary) 30%,transparent)}
