@@ -1,4 +1,5 @@
 import { getAuthenticatedUser } from '@/app/lib/supabase-auth';
+import { SITE_OWNER_EMAIL } from '@/app/lib/site-owner';
 
 export const dynamic = 'force-dynamic';
 const headers = { 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff', 'x-robots-tag': 'noindex' };
@@ -7,9 +8,7 @@ type TrafficRecorder = { snapshot(): unknown };
 
 // The team address is already public on /support; LESELAUT_OWNER_EMAILS in the
 // SSM runtime config can replace it (an empty value disables the page).
-const DEFAULT_OWNER = 'leselaut.team@gmail.com';
-
-function ownerEmails(value = process.env.LESELAUT_OWNER_EMAILS ?? DEFAULT_OWNER) {
+function ownerEmails(value = process.env.LESELAUT_OWNER_EMAILS ?? SITE_OWNER_EMAIL) {
   return new Set(value.split(',').map(email => email.trim().toLowerCase()).filter(Boolean));
 }
 
