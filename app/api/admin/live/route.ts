@@ -5,7 +5,11 @@ const headers = { 'cache-control': 'private, no-store', 'x-content-type-options'
 
 type TrafficRecorder = { snapshot(): unknown };
 
-function ownerEmails(value = process.env.LESELAUT_OWNER_EMAILS ?? '') {
+// The team address is already public on /support; LESELAUT_OWNER_EMAILS in the
+// SSM runtime config can replace it (an empty value disables the page).
+const DEFAULT_OWNER = 'leselaut.team@gmail.com';
+
+function ownerEmails(value = process.env.LESELAUT_OWNER_EMAILS ?? DEFAULT_OWNER) {
   return new Set(value.split(',').map(email => email.trim().toLowerCase()).filter(Boolean));
 }
 
