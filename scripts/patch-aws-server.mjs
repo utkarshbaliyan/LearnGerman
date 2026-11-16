@@ -12,5 +12,9 @@ if (!source.includes(anchor)) throw new Error(`Unexpected standalone server entr
 const patch = `${anchor}
 ${marker}
 import { CONTENT_TYPES } from "./node_modules/vinext/dist/server/static-file-cache.js";
-Object.assign(CONTENT_TYPES, { ".webm": "audio/webm", ".m4a": "audio/mp4", ".mp4": "video/mp4", ".mp3": "audio/mpeg", ".ogg": "audio/ogg", ".wav": "audio/wav", ".vtt": "text/vtt", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml", ".webmanifest": "application/manifest+json" });`;
+Object.assign(CONTENT_TYPES, { ".webm": "audio/webm", ".m4a": "audio/mp4", ".mp4": "video/mp4", ".mp3": "audio/mpeg", ".ogg": "audio/ogg", ".wav": "audio/wav", ".vtt": "text/vtt", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml", ".webmanifest": "application/manifest+json" });
+// leselaut: in-memory live traffic counter (owner-only /admin/live)
+import leselautHttp from "node:http";
+import { installTrafficRecorder } from "./traffic.mjs";
+installTrafficRecorder(leselautHttp);`;
 writeFileSync(file, source.replace(anchor, patch));
