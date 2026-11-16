@@ -81,3 +81,19 @@
 .story-preview-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
 .story-preview-actions a{font-weight:650}
 .story-preview-actions .reading-primary{text-decoration:none;font-size:1rem}
+
+/* Story narration player */
+.reading-audio audio{display:none}
+.narration-player{display:flex;align-items:center;gap:.9rem;flex-basis:100%;min-width:0;padding:.6rem .9rem .6rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+.reading-audio .narration-play{display:grid;place-items:center;flex:0 0 auto;width:48px;height:48px;border:0;border-radius:50%;background:var(--section-ink,var(--primary));color:var(--background);cursor:pointer}
+.reading-audio .narration-play svg{width:20px;height:20px;fill:currentColor}
+.narration-play:focus-visible,.narration-seek:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.narration-seek{flex:1 1 auto;min-width:0;height:28px;margin:0;background:transparent;appearance:none;-webkit-appearance:none;cursor:pointer;--track:color-mix(in srgb,var(--foreground) 16%,transparent);--fill:var(--section-ink,var(--primary))}
+.narration-seek::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(to right,var(--fill) var(--narration-progress,0%),var(--track) var(--narration-progress,0%))}
+.narration-seek::-moz-range-track{height:6px;border-radius:999px;background:var(--track)}
+.narration-seek::-moz-range-progress{height:6px;border-radius:999px;background:var(--fill)}
+.narration-seek::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border-radius:50%;background:var(--foreground);border:0}
+.narration-seek::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--foreground);border:0}
+.narration-time{flex:0 0 auto;font-size:.875rem;font-variant-numeric:tabular-nums;color:var(--muted-foreground)}
+.narration-options{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1rem}
+@media (max-width:480px){.narration-player{gap:.6rem;padding-right:.7rem}.narration-time{font-size:.8rem}}
