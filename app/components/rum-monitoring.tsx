@@ -80,7 +80,8 @@ export function RumMonitoring() {
   return <>
     {choiceError && <p role="status" className="privacy-analytics-settings">Analytics are off in this tab. Your browser could not save that choice; check site storage settings before reloading.</p>}
     {pathname === "/privacy" && <div className="privacy-analytics-settings"><button type="button" className="analytics-preferences" onClick={() => setOpen(true)}>Analytics preferences</button></div>}
-    {ready && (open || (enabled && publicPage && choice === null && !restricted)) && <section className="analytics-consent" aria-label="Optional analytics preferences">
+    {/* No automatic popup: analytics stay off unless chosen from Privacy → Analytics preferences. */}
+    {ready && open && <section className="analytics-consent" aria-label="Optional analytics preferences">
       <div><strong>Help improve LeseLaut</strong><p>{cloudflare ? 'Optional Cloudflare analytics measure public-page visits, page views and page speed without identifying your account.' : 'Optional usage analytics help us find slow pages and browser problems.'} Your choice does not affect learning. <Link href="/privacy">Privacy details</Link></p>
         {restricted && <p>Your browser privacy signal disables optional analytics.</p>}
         {!enabled && <p>Optional analytics are currently unavailable.</p>}
