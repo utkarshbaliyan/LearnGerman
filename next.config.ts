@@ -5,7 +5,9 @@ const nextConfig: NextConfig = {
   ...(process.env.LESELAUT_BUILD_TARGET === 'aws' ? { output: 'standalone' as const } : {}),
   poweredByHeader: false,
   async headers() {
-    return [{ source: '/:path*', headers: Object.entries(securityHeaders).map(([key, value]) => ({ key, value })) }];
+    const headers = Object.entries(securityHeaders).map(([key, value]) => ({ key, value }));
+    // The locked Vinext matcher treats /:path* as non-empty and skips the homepage.
+    return [{ source: '/', headers }, { source: '/:path*', headers }];
   },
 };
 

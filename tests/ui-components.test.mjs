@@ -143,18 +143,36 @@ test("emits the catalog's animation and scrolling utilities", async () => {
     globals,
     /html\[data-theme="dark"\] \.level-switcher button\.is-active :where\(b, span\)\s*\{\s*color:\s*#f7f7f8;/,
   );
-  assert.match(globals, /\.vocabulary-card \{[^}]*min-height:\s*208px;/s);
-  assert.match(globals, /\.vocabulary-reveal \{[^}]*min-height:\s*154px;/s);
 });
 
 test("keeps shared button and inverse-surface colors readable in both themes", async () => {
   const globals = await readFile(path.join(root, "app/globals.css"), "utf8");
   const button = await readFile(path.join(root, "components/ui/button.tsx"), "utf8");
 
-  assert.ok(contrastRatio("#ffffff", "#315ee8") >= 4.5);
-  assert.ok(contrastRatio("#0c1224", "#83a3ff") >= 4.5);
-  assert.ok(contrastRatio("#f7f7f8", "#171719") >= 4.5);
-  assert.ok(contrastRatio("#f7f7f8", "#090a0d") >= 4.5);
+  const palette = await readFile(path.join(root, "app/platform-colours.css"), "utf8");
+  const readColors = (block) => Object.fromEntries(
+    [...block.matchAll(/--([\w-]+):\s*(#[a-f\d]{6})\s*;/gi)].map(([, name, value]) => [name, value]),
+  );
+  const light = readColors(palette.match(/:root\s*\{([^}]+)\}/s)[1]);
+  const dark = { ...light, ...readColors(palette.match(/html\[data-theme="dark"\]\s*\{([^}]+)\}/s)[1]) };
+  for (const [theme, colors] of Object.entries({ light, dark })) {
+    const readable = (foreground, background) => assert.ok(
+      contrastRatio(colors[foreground], colors[background]) >= 4.5,
+      `${theme}: ${foreground} on ${background} must meet normal-text contrast`,
+    );
+    for (const surface of ["paper", "white"]) {
+      readable("ink", surface);
+      readable("ink-soft", surface);
+    }
+    for (const tone of ["sage", "sky", "lilac", "peach", "butter"]) {
+      readable(`tone-${tone}-ink`, `tone-${tone}`);
+      readable("section-on", `tone-${tone}-ink`);
+      readable("ink", `tone-${tone}`);
+      readable("ink-soft", `tone-${tone}`);
+    }
+    readable("inverse-foreground", "inverse-surface");
+    readable("inverse-muted", "inverse-surface");
+  }
   assert.match(globals, /button:not\(\[data-slot="button"\]\)/);
   assert.match(globals, /\[data-slot="button"\]:disabled\s*\{[^}]*background:\s*var\(--muted\)[^}]*color:\s*var\(--muted-foreground\)[^}]*opacity:\s*1/s);
   assert.doesNotMatch(button, /disabled:opacity-50/);
@@ -360,13 +378,56 @@ test("opens vocabulary on the word library with practice and review available", 
   assert.match(html, /Explore vocabulary/);
   assert.match(html, /Search English or German/);
   assert.match(html, /aria-label="Filter by vocabulary topic"/);
-  assert.equal((html.match(/<article class="vocabulary-card/g) ?? []).length, 120);
-  assert.match(html, /aria-label="Pronounce this word in German"/);
+  assert.equal((html.match(/<tr class="vocabulary-row/g) ?? []).length, 120);
+  assert.match(html, /<table class="vocabulary-table"/);
+  assert.match(html, /aria-sort="ascending"/);
+  assert.match(html, /aria-label="Hide English translations"/);
+  assert.match(html, /aria-label="Pronounce [^"]+ in German"/);
+  assert.doesNotMatch(html, /vocabulary-grid|vocabulary-card|Show German/);
   assert.doesNotMatch(html, /Learning sets|study sets|Choose your next set|vocab-set-card/i);
   assert.doesNotMatch(html, /aria-label="Choose the German answer"/);
   assert.doesNotMatch(html, /aria-label="Filter by verb type"/);
   assert.doesNotMatch(html, /aria-label="Sort vocabulary"/);
   assert.doesNotMatch(html, /Phrase \/ other|Phrases &amp; other/);
+});
+
+test("vocabulary list sorting uses German headwords across the whole collection", async () => {
+  const { sortVocabularyWords } = await vite.ssrLoadModule("/app/vocabulary/word-list.tsx");
+  const words = ["der Zug", "die Ärzte", "der Apfel", "sich ärgern"].map((german, index) => ({ id: String(index), german }));
+  const before = words.map(word => word.german);
+  const ascending = sortVocabularyWords(words, "asc").map(word => word.german);
+  assert.deepEqual(ascending, ["der Apfel", "sich ärgern", "die Ärzte", "der Zug"]);
+  assert.deepEqual(sortVocabularyWords(words, "desc").map(word => word.german), [...ascending].reverse());
+  assert.deepEqual(words.map(word => word.german), before);
+});
+
+test("vocabulary rows expose translations and real progress without changing word identities", async () => {
+  const { VocabularyRow } = await vite.ssrLoadModule("/app/vocabulary/word-list.tsx");
+  const word = { id: "apple", german: "der Apfel", english: "apple; fruit", level: "A1", category: "Essen & Trinken" };
+  const render = (overrides = {}) => renderToStaticMarkup(React.createElement("table", null,
+    React.createElement("tbody", null, React.createElement(VocabularyRow, {
+      word, translationVisible: true, completed: false, review: false, dueAt: 0,
+      speaking: false, hydrated: true, onReveal() {}, onComplete() {}, onReview() {}, onPronounce() {}, ...overrides,
+    })),
+  ));
+  const fresh = render();
+  assert.match(fresh, /lang="de"/); assert.match(fresh, /apple\nfruit/);
+  assert.match(fresh, /aria-label="Review der Apfel" aria-pressed="false"/);
+  assert.doesNotMatch(fresh, /type="checkbox"|lucide-star/);
+  assert.match(fresh, /lucide-check/);
+  assert.ok(fresh.indexOf('class="vocab-col-learned"') < fresh.indexOf('class="vocab-col-review"'));
+  assert.match(fresh, /aria-label="Mark der Apfel as familiar" aria-pressed="false"/);
+  assert.match(fresh, /aria-label="Pronounce der Apfel in German"/);
+  assert.match(fresh, />New<\/span>/);
+  const learned = render({ completed: true });
+  assert.match(learned, />Familiar<\/span>/); assert.match(learned, /aria-pressed="true"/);
+  const review = render({ review: true });
+  assert.match(review, /aria-label="Review der Apfel" aria-pressed="true"/); assert.match(review, /In review/); assert.match(review, /Ready for review/);
+  const concealed = render({ translationVisible: false });
+  assert.doesNotMatch(concealed, /apple|fruit/); assert.match(concealed, /Show English translation for der Apfel/);
+  const loading = render({ hydrated: false });
+  assert.equal((loading.match(/disabled=""/g) ?? []).length, 2);
+  assert.match(loading, /Loading…/);
 });
 
 test("preserves duplicate vocabulary IDs and the latest FSRS history during consolidation", async () => {

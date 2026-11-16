@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  Bookmark, BookOpen, Check, CheckCircle2, ChevronDown,
-  RotateCcw, Search, SlidersHorizontal, Volume2, X,
+  Bookmark, BookOpen, CheckCircle2, ChevronDown,
+  RotateCcw, Search, SlidersHorizontal, X,
 } from "lucide-react";
 import Link from "next/link";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
@@ -27,14 +27,15 @@ import {
 } from "@/app/vocabulary/data";
 import { VocabularyPractice } from "@/app/vocabulary/practice";
 import { VocabularyProgressChart } from "@/app/vocabulary/progress-chart";
+import { VocabularyRow, VocabularyTable, sortVocabularyWords, type VocabularySortDirection } from "@/app/vocabulary/word-list";
 import { connectedVocabulary } from '@/app/lib/saved-vocabulary';
-import { vocabularyCardKey, vocabularyReviewDueAt, type CollectedVocabularyWord } from "@/app/lib/progress-sync";
+import { vocabularyCardKey, vocabularyReviewDueAt } from "@/app/lib/progress-sync";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-type ProgressFilter = "all" | "unlearned" | "completed" | "review";
+type ProgressFilter = "all" | "unlearned" | "completed" | "review" | "new";
 type LevelFilter = "all" | VocabularyWord["level"];
 type WordClassFilter = VocabularyWordClass | `verb:${VocabularyVerbType}` | "all";
 const VISIBLE_BATCH = 120;
@@ -53,66 +54,6 @@ function vocabularyFilterLabel(filter: WordClassFilter): string {
   return VOCABULARY_WORD_CLASS_LABELS[filter].toLocaleLowerCase("en");
 }
 
-const WORD_CLASS_CARD_LABELS: Record<VocabularyWordClass, string> = {
-  noun: "Noun",
-  pronoun: "Pronoun",
-  verb: "Verb",
-  adjective: "Adjective",
-  adverb: "Adverb",
-  preposition: "Preposition",
-  conjunction: "Conjunction",
-  "number-time": "Number / time",
-  "phrase-other": "Other words",
-};
-
-function GermanAnswer({ answer }: { answer: string }) {
-  const [first, ...rest] = answer.split(" ");
-  const hasArticle = /^(der|die|das)(\/die)?$/.test(first);
-  return (
-    <span className="vocabulary-answer" lang="de">
-      {hasArticle && <small>{first}</small>}
-      <strong>{hasArticle ? rest.join(" ") : answer}</strong>
-    </span>
-  );
-}
-
-function VocabularyCard({ word, saved, revealed, completed, review, dueAt, speaking, onReveal, onComplete, onReview, onPronounce }: {
-  word: VocabularyWord;
-  saved?: CollectedVocabularyWord;
-  revealed: boolean;
-  completed: boolean;
-  review: boolean;
-  dueAt: number;
-  speaking: boolean;
-  onReveal: () => void;
-  onComplete: () => void;
-  onReview: () => void;
-  onPronounce: () => void;
-}) {
-  const wordClass = vocabularyWordClass(word);
-  const verbType = vocabularyVerbType(word);
-  const grammarLabel = verbType ? VOCABULARY_VERB_TYPE_LABELS[verbType] : WORD_CLASS_CARD_LABELS[wordClass];
-  return (
-    <article
-      className={`vocabulary-card${revealed ? " is-revealed" : ""}${completed ? " is-completed" : ""}${review ? " is-review" : ""}`}
-    >
-      <button type="button" className="vocabulary-reveal" aria-expanded={revealed} onClick={onReveal}>
-        <span className="vocabulary-card-top"><small>{word.level} · {grammarLabel}</small><ChevronDown /></span>
-        <span className="vocabulary-prompt" lang="en">{word.english}</span>
-        {revealed ? <GermanAnswer answer={word.german} /> : <span className="vocabulary-hint">Show German</span>}
-      </button>
-      {word.sourceUrl && <a className="vocabulary-source" href={word.sourceUrl} target="_blank" rel="noreferrer">Dictionary source ↗</a>}
-      {saved && <p className="vocabulary-source"><Link href={saved.source.href}>{saved.source.kind === 'book' ? 'From your book' : 'From your story'} →</Link></p>}
-      {review && <p className="vocabulary-due-date">{dueAt === 0 ? "Ready for review" : `Review: ${new Date(dueAt).toLocaleString()}`}</p>}
-      <div className="vocabulary-card-actions">
-        <button type="button" className={completed ? "is-active" : ""} aria-pressed={completed} onClick={onComplete}><Check /> Marked familiar</button>
-        <button type="button" className={review ? "is-active" : ""} aria-pressed={review} onClick={onReview}><Bookmark /> Review</button>
-        <button type="button" className={speaking ? "is-speaking" : ""} aria-label="Pronounce this word in German" onClick={onPronounce}><Volume2 /> {speaking ? "Playing" : "Listen"}</button>
-      </div>
-    </article>
-  );
-}
-
 export default function VocabularyPage() {
   const [view, setView] = useState("library");
   const [query, setQuery] = useState("");
@@ -120,7 +61,9 @@ export default function VocabularyPage() {
   const [category, setCategory] = useState<VocabularyCategory | "all">("all");
   const [progressFilter, setProgressFilter] = useState<ProgressFilter>("all");
   const [wordClassFilter, setWordClassFilter] = useState<WordClassFilter>("all");
-  const [revealed, setRevealed] = useState<Set<string>>(new Set());
+  const [translationOverrides, setTranslationOverrides] = useState<Set<string>>(new Set());
+  const [translationsVisible, setTranslationsVisible] = useState(true);
+  const [sortDirection, setSortDirection] = useState<VocabularySortDirection>("asc");
   const [visibleLimit, setVisibleLimit] = useState(VISIBLE_BATCH);
   const [speakingWordId, setSpeakingWordId] = useState<string | null>(null);
   const [pronunciationUnavailable, setPronunciationUnavailable] = useState(false);
@@ -129,7 +72,7 @@ export default function VocabularyPage() {
 
   const catalog = useMemo(() => connectedVocabulary(ALL_VOCABULARY, vocabularyProgress), [vocabularyProgress]);
   const levelWords = useMemo(() => catalog.filter(word => level === "all" || word.level === level), [catalog, level]);
-  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); }, []);
+  useEffect(() => { const params = new URLSearchParams(window.location.search); if (params.get('view') === 'practice') setView('practice'); if (params.get('goal') === 'daily') setProgressFilter('new'); const requestedLevel = params.get('level'); if (requestedLevel && ['A1', 'A2', 'B1', 'B2', 'C1'].includes(requestedLevel)) setLevel(requestedLevel as LevelFilter); }, []);
   const selectedCompleted = useMemo(() => levelWords.filter(isLearned).length, [isLearned, levelWords]);
   const selectedReview = useMemo(() => levelWords.filter(isReview).length, [isReview, levelWords]);
   const selectedUnlearned = useMemo(() => levelWords.filter((word) => !isLearned(word) && !isReview(word)).length, [isLearned, isReview, levelWords]);
@@ -140,10 +83,11 @@ export default function VocabularyPage() {
     VOCABULARY_VERB_TYPES.map((name) => [name, levelWords.filter((word) => vocabularyVerbType(word) === name).length]),
   ) as Record<VocabularyVerbType, number>, [levelWords]);
 
+  const sourceWords = useMemo(() => progressFilter === 'new' ? levelWords.filter(word => !isLearned(word) && !vocabularyProgress.cards?.[vocabularyCardKey(word)]?.firstLearned) : levelWords, [progressFilter, levelWords, isLearned, vocabularyProgress.cards]);
   const visibleWords = useMemo(() => {
     const needle = deferredQuery.trim().toLocaleLowerCase("de");
     const verbTypeFilter = selectedVerbType(wordClassFilter);
-    return levelWords.filter((word) => {
+    return sortVocabularyWords(sourceWords.filter((word) => {
       if (category !== "all" && word.category !== category) return false;
       if (verbTypeFilter && vocabularyVerbType(word) !== verbTypeFilter) return false;
       if (!verbTypeFilter && wordClassFilter !== "all" && vocabularyWordClass(word) !== wordClassFilter) return false;
@@ -151,11 +95,11 @@ export default function VocabularyPage() {
       if (progressFilter === "completed" && !isLearned(word)) return false;
       if (progressFilter === "review" && !isReview(word)) return false;
       return !needle || `${word.english} ${word.german}`.toLocaleLowerCase("de").includes(needle);
-    });
-  }, [category, deferredQuery, isLearned, isReview, levelWords, progressFilter, wordClassFilter]);
+    }), sortDirection);
+  }, [category, deferredQuery, isLearned, isReview, sourceWords, progressFilter, wordClassFilter, sortDirection]);
 
   const renderedWords = visibleWords.slice(0, visibleLimit);
-  const practiceWords = useMemo(() => levelWords.filter((word) => category === "all" || word.category === category), [category, levelWords]);
+  const practiceWords = useMemo(() => sourceWords.filter((word) => category === "all" || word.category === category), [category, sourceWords]);
 
   useEffect(() => () => {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -190,8 +134,8 @@ export default function VocabularyPage() {
     setVisibleLimit(VISIBLE_BATCH);
   }
 
-  function toggleRevealed(id: string) {
-    setRevealed((current) => {
+  function toggleTranslation(id: string) {
+    setTranslationOverrides((current) => {
       const next = new Set(current);
       if (next.has(id)) next.delete(id); else next.add(id);
       return next;
@@ -238,7 +182,7 @@ export default function VocabularyPage() {
 
       <section className="vocabulary-workspace vocabulary-organized">
         <header className="vocab-page-heading">
-          <div><span className="reading-eyebrow">Every word opens a door.</span><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
+          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
           <TopicArt kind="shopping" className="topic-art--sticker" />
           <label className="vocab-level-picker"><span>Study level</span>
             <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>
@@ -266,6 +210,7 @@ export default function VocabularyPage() {
         <div className="vocabulary-toolbar">
           <label className="vocabulary-search"><Search /><Input value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Search English or German" />{query && <button type="button" onClick={() => changeQuery("")} aria-label="Clear search"><X /></button>}</label>
           <div className="progress-filters">
+            {progressFilter === "new" && <button type="button" className="is-active" onClick={() => chooseProgressFilter("new")}><BookOpen /> New for your daily goal</button>}
             <button type="button" className={progressFilter === "all" ? "is-active" : ""} onClick={() => chooseProgressFilter("all")}>All <b>{levelWords.length}</b></button>
             <button type="button" className={progressFilter === "unlearned" ? "is-active" : ""} onClick={() => chooseProgressFilter("unlearned")}><BookOpen /> Not marked familiar <b>{selectedUnlearned}</b></button>
             <button type="button" className={progressFilter === "completed" ? "is-active" : ""} onClick={() => chooseProgressFilter("completed")}><CheckCircle2 /> Marked familiar <b>{selectedCompleted}</b></button>
@@ -305,7 +250,7 @@ export default function VocabularyPage() {
 
 
         <div className="vocabulary-list-heading">
-          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "unlearned" ? "Words to explore" : progressFilter === "completed" ? "Marked familiar words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
+          <div><span>{`${levelLabel} · ${category === "all" ? "all topics" : category} · ${wordClassLabel}`}</span><h2>{progressFilter === "new" ? "New words for today" : progressFilter === "unlearned" ? "Words to explore" : progressFilter === "completed" ? "Marked familiar words" : progressFilter === "review" ? "Your review list" : "Explore vocabulary"}</h2></div>
           <p><strong>{visibleWords.length}</strong> {visibleWords.length === 1 ? "word" : "words"}</p>
         </div>
 
@@ -313,7 +258,14 @@ export default function VocabularyPage() {
 
         {visibleWords.length ? (
           <>
-            <div className="vocabulary-grid">{renderedWords.map((word) => <VocabularyCard key={word.id} word={word} saved={vocabularyProgress.words?.[vocabularyCardKey(word)]} revealed={revealed.has(word.id)} completed={isLearned(word)} review={isReview(word)} dueAt={vocabularyReviewDueAt(vocabularyProgress, word)} speaking={speakingWordId === word.id} onReveal={() => toggleRevealed(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} onPronounce={() => pronounceWord(word)} />)}</div>
+            <VocabularyTable direction={sortDirection} translationsVisible={translationsVisible}
+              onSort={() => { setSortDirection(current => current === "asc" ? "desc" : "asc"); setVisibleLimit(VISIBLE_BATCH); }}
+              onToggleTranslations={() => { setTranslationsVisible(current => !current); setTranslationOverrides(new Set()); }}>
+              {renderedWords.map((word) => <VocabularyRow key={word.id} word={word} saved={vocabularyProgress.words?.[vocabularyCardKey(word)]}
+                translationVisible={translationsVisible !== translationOverrides.has(word.id)} completed={isLearned(word)} review={isReview(word)}
+                dueAt={vocabularyReviewDueAt(vocabularyProgress, word)} speaking={speakingWordId === word.id} hydrated={hydrated}
+                onReveal={() => toggleTranslation(word.id)} onComplete={() => markCompleted(word)} onReview={() => markReview(word)} onPronounce={() => pronounceWord(word)} />)}
+            </VocabularyTable>
             {renderedWords.length < visibleWords.length && <Button className="show-more-vocabulary" variant="outline" onClick={() => setVisibleLimit((current) => current + VISIBLE_BATCH)}>Show {Math.min(VISIBLE_BATCH, visibleWords.length - renderedWords.length)} more words</Button>}
           </>
         ) : (
@@ -334,7 +286,7 @@ export default function VocabularyPage() {
         </Tabs>
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary cards across A1–C1. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/vocabulary/sources">Vocabulary sources</Link><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary words across A1–C1. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/vocabulary/sources">Vocabulary sources</Link><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

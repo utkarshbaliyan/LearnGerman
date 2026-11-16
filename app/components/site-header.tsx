@@ -1,7 +1,7 @@
-import { BookMarked, BookOpen, CircleUserRound, GraduationCap, Languages } from "lucide-react";
+import { BookMarked, BookOpen, GraduationCap, Languages } from "lucide-react";
 import Link from "next/link";
 
-import { ThemeToggle } from "@/app/components/theme-toggle";
+import { SiteMenu } from "@/app/components/site-menu";
 import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
 
 type SiteHeaderProps = {
@@ -11,7 +11,7 @@ type SiteHeaderProps = {
 export function SiteHeader({ active }: SiteHeaderProps) {
   return (
     <header className="topbar" data-section={active}>
-      <Link href="/" prefetch={false} className="brand" aria-label="LeseLaut home">
+      <Link href="/" prefetch={false} className="brand" aria-label="LeseLaut home" aria-current={active === 'today' || active === 'review' ? 'page' : undefined}>
         <span className="brand-mark" aria-hidden="true">ä</span>
         <span><strong>LeseLaut</strong><small>German through stories</small></span>
       </Link>
@@ -22,9 +22,8 @@ export function SiteHeader({ active }: SiteHeaderProps) {
         {ACTIVE_LEARNING_ENABLED && <Link href="/active-learning" prefetch={false} aria-current={active === "active-learning" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Active Learning</span></Link>}
         <Link href="/vocabulary" prefetch={false} aria-current={active === "vocabulary" ? "page" : undefined}><Languages aria-hidden="true" /><span>Vocabulary</span></Link>
         <Link href="/grammar" prefetch={false} aria-current={active === "grammar" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Grammar</span></Link>
-        <Link href="/account" prefetch={false} aria-current={active === "account" ? "page" : undefined}><CircleUserRound aria-hidden="true" /><span>Account</span></Link>
       </nav>
-      <ThemeToggle />
+      <SiteMenu accountActive={active === "account"} />
     </header>
   );
 }

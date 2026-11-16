@@ -1,0 +1,35 @@
+/* Account and appearance stay within reach without crowding navigation. */
+.site-menu { position: relative; z-index: 61; justify-self: end; }
+.site-menu-trigger {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--white); color: var(--ink); cursor: pointer;
+}
+.site-menu-trigger:hover, .site-menu-trigger[aria-expanded="true"] { background: var(--muted); }
+.site-menu-trigger svg { width: 20px; height: 20px; }
+.site-menu-panel {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 40;
+  width: 210px; padding: 6px; display: grid; gap: 2px;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--white); color: var(--ink); box-shadow: 0 12px 30px rgb(0 0 0 / .16);
+}
+.site-menu-panel > a, .site-menu-panel > .theme-toggle {
+  width: 100%; min-width: 0; height: auto; min-height: 44px; padding: 10px 12px;
+  display: flex; justify-content: flex-start; align-items: center; gap: 12px;
+  border: 0; border-radius: 6px; background: transparent; color: var(--ink);
+  text-decoration: none; text-align: left; font: 500 14px/1.3 var(--font-ui); cursor: pointer;
+}
+.site-menu-panel > a:hover, .site-menu-panel > a[aria-current="page"],
+.site-menu-panel > .theme-toggle:hover { background: var(--muted); }
+.site-menu-panel svg { width: 18px; height: 18px; flex: 0 0 auto; }
+.site-menu-panel .theme-toggle .theme-label-light { display: inline; }
+.site-menu-panel .theme-toggle .theme-label-dark { display: none; }
+html[data-theme="dark"] .site-menu-panel .theme-toggle .theme-label-light { display: none; }
+html[data-theme="dark"] .site-menu-panel .theme-toggle .theme-label-dark { display: inline; }
+.privacy-analytics-settings { max-width: 1280px; margin: 0 auto; padding: 0 max(1rem, env(safe-area-inset-left)); }
+@media (max-width: 720px) {
+  .topbar > .site-menu { grid-column: 2; grid-row: 1; }
+  .topbar .topnav { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .topbar .topnav > a { padding: 0 2px; font-size: clamp(10px, 2.5vw, 13px); }
+  .topbar .topnav > a svg { display: none; }
+}

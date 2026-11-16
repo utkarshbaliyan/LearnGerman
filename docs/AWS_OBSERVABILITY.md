@@ -1,5 +1,12 @@
 # AWS observability
 
+**Current visitor analytics:** [free Cloudflare Web Analytics](CLOUDFLARE_ANALYTICS.md).
+`LESELAUT_RUM_ENABLED=0` remains the production requirement, enforced by deployment
+health checks. The existing AWS RUM resources and browser widgets below are
+inactive; empty widgets do not mean the site has no visitors. Do not activate
+paid AWS RUM without the owner's approval. Cloudflare is preferred if both
+providers are configured, so the browser never runs both integrations.
+
 Monitoring lives in the AWS account, outside LeseLaut. Access uses AWS IAM;
 there is no website admin dashboard or special permission for an email address.
 
@@ -7,7 +14,7 @@ there is no website admin dashboard or special permission for an email address.
 - [Browser monitoring](https://ap-south-1.console.aws.amazon.com/cloudwatch/home?region=ap-south-1#rum:appMonitor=leselaut-web)
 - [CloudWatch Logs](https://ap-south-1.console.aws.amazon.com/cloudwatch/home?region=ap-south-1#logsV2:log-groups)
 
-## What to read
+## Legacy AWS browser views (inactive) and current infrastructure views
 
 | Question | AWS view | Meaning |
 | --- | --- | --- |

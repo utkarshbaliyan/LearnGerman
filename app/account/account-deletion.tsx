@@ -30,10 +30,10 @@ export function AccountDeletion({ userId, email }: { userId: string; email: stri
       setBusy(false);
     }
   }
-  return <section className="account-data-export account-delete">
-    <h2>Delete your account</h2>
-    <p>This permanently removes your profile, synced progress and saved practice. Download your data first if you want a copy. Backups expire on their own schedule.</p>
-    {!open ? <button className="account-signout" type="button" onClick={() => setOpen(true)}>Delete my account…</button> : <form onSubmit={submit}>
+  return <section className="account-delete">
+    {!open ? <button className="account-action account-action--delete" type="button" onClick={() => setOpen(true)}>Delete account</button> : <form onSubmit={submit}>
+      <h2>Delete your account</h2>
+      <p>This permanently removes your profile, synced progress and saved practice. Download your data from the Privacy page first if you want a copy. Backups expire on their own schedule.</p>
       <label>Confirm your email<input name="email" type="email" required autoComplete="email" placeholder={email} disabled={busy} /></label>
       <label>Type DELETE to confirm<input name="confirmation" required pattern="DELETE" autoComplete="off" disabled={busy} /></label>
       <p>Local data in this browser will be cleared. Clear LeseLaut site data on your other browsers and devices too.</p>

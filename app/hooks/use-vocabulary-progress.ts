@@ -80,7 +80,7 @@ export function useVocabularyProgress(catalog: VocabularyIdentity[] = EMPTY_CATA
     return update((current) => {
       let next = current;
       for (const word of words) {
-        if (!isVocabularyLearned(next, word) && !isVocabularyReview(next, word)) next = setVocabularyStatus(next, word, "learned");
+        if (!isVocabularyLearned(next, word) && !isVocabularyReview(next, word)) next = setVocabularyStatus(next, word, "learned", Date.now(), false);
       }
       return next;
     });
