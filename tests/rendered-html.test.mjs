@@ -52,14 +52,14 @@ test('public pages expose one canonical, crawlable topic guides and private-page
   assert.equal((await renderRoute('/grammar/lessons/not-a-lesson')).status, 404);
 });
 
-test("Home offers compact Flashcards and Review cards and preserves review bookmarks and the story library", async () => {
+test("Home previews a story for new visitors, keeps Flashcards and Review cards and preserves review bookmarks and the story library", async () => {
   const response = await renderRoute("/");
   assert.equal(response.status, 200);
   const todayHtml = await response.text();
   assert.match(todayHtml, /Home/);
-  assert.match(todayHtml, /aria-label="Flashcards and Review"/);
-  assert.match(todayHtml, /Practice flashcards/);
-  assert.match(todayHtml, /Open review/);
+  assert.match(todayHtml, /Try it: tap any German word/);
+  assert.match(todayHtml, /class="story-preview-word"/);
+  assert.match(todayHtml, /href="\/stories\/reading-a1-01-v1"[^>]*>Read the full story/);
   assert.doesNotMatch(todayHtml, /href="\/active-learning"|data-area="active"/);
   assert.doesNotMatch(todayHtml, /role="tablist"|aria-label="Today and Review"/);
   const oldReview = await renderRoute('/review');
@@ -67,7 +67,11 @@ test("Home offers compact Flashcards and Review cards and preserves review bookm
   assert.equal(new URL(oldReview.headers.get('location'), 'http://localhost').search, '?view=review');
   const review = await renderRoute('/?view=review');
   assert.equal(review.status, 200);
-  assert.match(await review.text(), /aria-label="Flashcards and Review"/);
+  const reviewHtml = await review.text();
+  assert.match(reviewHtml, /aria-label="Flashcards and Review"/);
+  assert.match(reviewHtml, /Practice flashcards/);
+  assert.match(reviewHtml, /Open review/);
+  assert.doesNotMatch(reviewHtml, /Try it: tap any German word/);
   const stories = await renderRoute("/stories");
   assert.equal(stories.status, 200);
   const html = await stories.text();

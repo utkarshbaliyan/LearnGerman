@@ -84,7 +84,7 @@ test('B2 filtering, narrator controls, next-story routing and saved progress wor
     assert.equal(content.glosses.flachen,'flat / low');assert.equal(content.glosses.rollen,'roll');
     assert.equal(content.glosses.streifen,'strip / stripe / brush against');assert.equal(content.glosses.wagen,'car / carriage / dare');
     const html=renderToStaticMarkup(React.createElement(ReadingNarrationProvider,null,React.createElement(ReadingAudio,{storyId:content.story.id,asset:content.audio})));
-    assert.match(html,/<audio[^>]+controls=""/);assert.match(html,/\/media\/stories\/b2\//);assert.match(html,/<option value="1" selected="">/);
+    assert.match(html,/<audio[^>]+aria-label="German story narration"/);assert.match(html,/aria-label="Play narration"/);assert.match(html,/\/media\/stories\/b2\//);assert.match(html,/<option value="1" selected="">/);
     const old=markStory({entries:{}},'reading-b1-200-v2',true,100);
     const merged=mergeStoryProgress(markStory(old,'reading-b2-01-v1',true,200),old);
     assert.equal(merged.entries['reading-b1-200-v2'].completed,true);assert.equal(merged.entries['reading-b2-01-v1'].completed,true);

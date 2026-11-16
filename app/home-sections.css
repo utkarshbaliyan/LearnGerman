@@ -66,3 +66,34 @@
 @media (max-width: 1000px) { .home-section-card { grid-template-columns: 125px minmax(0, 1fr); } .home-section-copy { padding: 20px 18px; } .home-section-label { font-size: 9px; } }
 @media (max-width: 700px) { .home-section-grid { grid-template-columns: 1fr; } .home-section-card { grid-template-columns: 145px minmax(0, 1fr); } .home-sections-heading { align-items: start; flex-direction: column; gap: 14px; } .home-sections-heading h2 { font-size: 32px; } }
 @media (max-width: 430px) { .home-section-card { display: flex; flex-direction: column; } .home-section-art { height: 154px; padding: 14px; } .home-section-art img { width: auto; max-width: 100%; height: 100%; } .home-section-copy, .home-section-progress { padding: 20px; } .home-section-copy h3 { margin: 10px 0; } .home-section-label { font-size: 10px; } .home-section-stat { gap: 10px; } .home-word-counts { gap: 8px; } .home-word-counts dd { font-size: 14px; } .home-section-footer { align-items: start; flex-direction: column; } }
+
+/* First-visit story preview */
+.story-preview{display:grid;gap:1.1rem;padding:clamp(1.25rem,3vw,2rem);margin:0 0 2rem;border:1px solid var(--border);border-radius:20px;background:var(--card)}
+.story-preview-copy h2{font-size:clamp(1.35rem,2.6vw,1.8rem);margin:0 0 .4rem}
+.story-preview-copy p{margin:0;color:var(--muted-foreground);line-height:1.6;max-width:44rem}
+.story-preview-text{font-size:clamp(1.1rem,2vw,1.3rem);line-height:1.9}
+.story-preview-text p{margin:0 0 .35rem}
+.story-preview-word{font:inherit;color:inherit;background:none;border:0;padding:0 .05em;border-radius:4px;border-bottom:1px dotted color-mix(in srgb,var(--foreground) 28%,transparent);min-height:0;line-height:inherit;cursor:pointer}
+.story-preview-word:hover,.story-preview-word[aria-pressed=true]{background:color-mix(in srgb,var(--section-ink,var(--primary)) 18%,transparent)}
+.story-preview-word:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.story-preview-meaning{min-height:2.75rem;margin:0;padding:.7rem 1rem;border-radius:12px;background:color-mix(in srgb,var(--foreground) 6%,transparent);color:var(--muted-foreground)}
+.story-preview-meaning strong{color:var(--foreground)}
+.story-preview-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
+.story-preview-actions a{font-weight:650}
+.story-preview-actions .reading-primary{text-decoration:none;font-size:1rem}
+
+/* Story narration player */
+.reading-audio audio{display:none}
+.narration-player{display:flex;align-items:center;gap:.9rem;flex-basis:100%;min-width:0;padding:.6rem .9rem .6rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+.reading-audio .narration-play{display:grid;place-items:center;flex:0 0 auto;width:48px;height:48px;border:0;border-radius:50%;background:var(--section-ink,var(--primary));color:var(--background);cursor:pointer}
+.reading-audio .narration-play svg{width:20px;height:20px;fill:currentColor}
+.narration-play:focus-visible,.narration-seek:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.narration-seek{flex:1 1 auto;min-width:0;height:28px;margin:0;background:transparent;appearance:none;-webkit-appearance:none;cursor:pointer;--track:color-mix(in srgb,var(--foreground) 16%,transparent);--fill:var(--section-ink,var(--primary))}
+.narration-seek::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(to right,var(--fill) var(--narration-progress,0%),var(--track) var(--narration-progress,0%))}
+.narration-seek::-moz-range-track{height:6px;border-radius:999px;background:var(--track)}
+.narration-seek::-moz-range-progress{height:6px;border-radius:999px;background:var(--fill)}
+.narration-seek::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border-radius:50%;background:var(--foreground);border:0}
+.narration-seek::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--foreground);border:0}
+.narration-time{flex:0 0 auto;font-size:.875rem;font-variant-numeric:tabular-nums;color:var(--muted-foreground)}
+.narration-options{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1rem}
+@media (max-width:480px){.narration-player{gap:.6rem;padding-right:.7rem}.narration-time{font-size:.8rem}}

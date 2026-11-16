@@ -42,7 +42,7 @@ function ReviewFlashcard({ word, options, busy, onAction }: {
         {FLASHCARD_RATINGS.map(({ rating, label, hint }) => <Button key={rating} variant="outline" title={hint} disabled={busy} onClick={() => onAction('flashcard', rating)}><span>{label}</span><small>{flashcardInterval(options[rating].card.due.getTime(), Date.now())}</small></Button>)}
       </div>
       <Button className="review-mark-read" variant="outline" disabled={busy} onClick={() => onAction('read')}>Mark as read</Button>
-      <p className="review-rating-note">Mark as read = marked familiar. It leaves Review and updates your word progress.</p>
+      <p className="review-rating-note">“Mark as read” means you know it. The word leaves Review.</p>
     </>}
     {audioError && <p role="alert">{audioError}</p>}
   </section>;
@@ -128,7 +128,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
   }
 
   const content = <section className="recall-decks" aria-label="Your review deck">
-    {!compact && <header className="recall-decks-heading"><TopicArt kind="learn" /><div><span className="reading-eyebrow">Your words, together</span><h2>Your review deck</h2><p>Words you add to Review in the word library, stories and books appear here.</p></div></header>}
+    {!compact && <header className="recall-decks-heading"><TopicArt kind="learn" /><div><h2>Your review deck</h2><p>Words you add to Review in the word library, stories and books appear here.</p></div></header>}
     {!ready ? <p role="status">Loading your review deck…</p> : <>
       {(loadError || storageError || wordStorageError || actionError) && <p role="alert">{loadError || storageError || wordStorageError || actionError}{loadError && <Button variant="outline" onClick={retry}>Retry loading words</Button>}</p>}
       {stage === 'round' && session?.run ? <section className="recall-round" aria-label="Flashcard round">
@@ -138,9 +138,9 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
         {pending ? <div role="alert"><p>Your word progress is saved, but your place in the round could not save.</p><Button onClick={() => { if (pending && savePlace(pending.answer)) setPending(null); }}>Retry saving round</Button></div> : currentWord ? <>
           <p className="recall-round-count">{remaining.length} words remaining · {answers.length} practised</p>
           <ReviewFlashcard key={`${session.run.id}:${currentWord.key}`} word={currentWord} options={flashcardOptions(vocabulary.cards?.[currentWord.key], Date.now())} busy={!canAct} onAction={(action, rating) => void complete(action, rating)} />
-        </> : !loading && !loadError && <div className="recall-round-finished" aria-live="polite"><span className="reading-eyebrow">Round complete</span><h3>{answers.length} {answers.length === 1 ? 'word' : 'words'} practised.</h3><p>{answers.filter(a => a.action === 'read').length} marked as read. Your ratings and familiar words are synced with Vocabulary and Today.</p><p>Words removed from Review elsewhere are skipped. Flashcard ratings are self-assessments.</p><Button onClick={() => { setStage('box'); setActive(null); }}>Back to review deck</Button></div>}
+        </> : !loading && !loadError && <div className="recall-round-finished" aria-live="polite"><span className="reading-eyebrow">Round complete</span><h3>{answers.length} {answers.length === 1 ? 'word' : 'words'} practised.</h3><p>{answers.filter(a => a.action === 'read').length} marked as read. Your ratings and familiar words are synced with Vocabulary and Today.</p><p>Words you removed from Review elsewhere are skipped.</p><Button onClick={() => { setStage('box'); setActive(null); }}>Back to review deck</Button></div>}
       </section> : stage === 'size' ? <section className="review-practice-setup" aria-label="Choose practice size">
-        <span className="reading-eyebrow">A small round of your own words</span><h3>How many words do you want to practise?</h3>
+        <h3>How many words do you want to practise?</h3>
         <fieldset className="review-size-options"><legend>Words to practise</legend>{REVIEW_SIZES.map(count => <label key={count} className={size === count ? 'is-selected' : ''}><input type="radio" name="review-size" value={count} checked={size === count} onChange={() => setSize(count)} /><strong>{count}</strong><span>words</span></label>)}</fieldset>
         <p>{loading ? 'Loading your review words…' : `${pool.length} words in your deck. This round will use ${Math.min(size, pool.length)}.`}</p>
         {pool.length < size && !loading && <p className="review-rating-note">You have fewer than {size} words, so we’ll practise all available words.</p>}
@@ -150,7 +150,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
         <div className="review-deck-box-heading"><div><h3>Words in Review <span>{loading ? '…' : pool.length}</span></h3><p>One deck across the word library, books and stories.</p></div><div className="learning-actions">{resumable && <Button variant="outline" disabled={!canAct} onClick={openRound}>Resume flashcards</Button>}<Button disabled={!canAct || !pool.length} onClick={() => { setActionError(''); setStage('size'); }}>Practice</Button></div></div>
         {loading && <p role="status">Loading your review words…</p>}
         {pool.length ? <><label className="review-deck-search">Find a review word<input type="search" maxLength={100} placeholder="Search your review deck" value={query} onChange={e => setQuery(e.target.value)} /></label><ul className="review-deck-words">{matches.map(word => <li key={word.key}><div><strong lang="de">{word.german}</strong><span>{word.english}</span><small>{word.sourceKind === 'vocabulary' ? 'Word library' : word.sourceKind === 'book' ? 'Book' : 'Story'}{word.sourceTitle ? ` · ${word.sourceTitle}` : ''}</small></div><Button variant="outline" size="sm" disabled={!canAct} aria-label={`Mark ${word.german} as read`} onClick={() => markRead(word)}>Mark as read</Button></li>)}</ul>{!matches.length && <p>No matching review words. Change your search.</p>}</> : !loading && !loadError && <div className="learning-empty"><p>Your review deck is empty. Choose Review on a word-library card, or select words in a story or book and choose Add to review.</p><div className="learning-actions"><Link href="/vocabulary">Open word library →</Link><Link href="/stories">Read stories →</Link><Link href="/books">Read books →</Link></div></div>}
-        <p className="review-rating-note">Mark as read marks a word familiar and removes it from Review. Add it again from its source whenever you want to revisit it.</p>
+        <p className="review-rating-note">“Mark as read” removes a word you know from Review. You can add it again any time.</p>
       </section>}
       <p className="learning-save-note">Your words, schedules and unfinished round save here. Sign in to sync across devices.</p>
     </>}
@@ -173,7 +173,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
       <article className="home-practice-card" data-kind="review"><div><h2>Review</h2><p>Your saved words and mistakes, ready to revisit.</p><span className="home-practice-count">{ready && !loading && !loadError ? due : '…'} words due{mistakeDue !== undefined ? ` · ${mistakeDue} mistake reviews due` : ''}</span></div><TopicArt kind="work" /><div className="home-practice-actions"><Button ref={reviewLauncher} variant="outline" disabled={!ready || busy || Boolean(pending)} onClick={e => open('review', e.currentTarget)}>Open review</Button></div></article>
     </section>
     <DialogContent className="learning-page home-practice-dialog" showCloseButton={false} onCloseAutoFocus={event => { event.preventDefault(); (launcher.current ?? reviewLauncher.current)?.focus(); }}>
-      <header className="home-practice-dialog-heading"><div><DialogTitle>{panel === 'flashcards' ? 'Flashcards' : 'Review'}</DialogTitle><DialogDescription>Only words you add from the word library, stories and books. One shared deck.</DialogDescription></div><Button variant="outline" size="icon" aria-label="Close practice" disabled={busy || Boolean(pending)} onClick={close}><X aria-hidden="true" /></Button></header>
+      <header className="home-practice-dialog-heading"><div><DialogTitle>{panel === 'flashcards' ? 'Flashcards' : 'Review'}</DialogTitle><DialogDescription>Words you save from stories, books and the word library.</DialogDescription></div><Button variant="outline" size="icon" aria-label="Close practice" disabled={busy || Boolean(pending)} onClick={close}><X aria-hidden="true" /></Button></header>
       {content}
       {panel === 'review' && reviewExtra}
     </DialogContent>
