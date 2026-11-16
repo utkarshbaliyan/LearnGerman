@@ -17,6 +17,7 @@ import './account/account-simple.css';
 import './vocabulary/word-list.css';
 import './platform-colours.css';
 import './responsive.css';
+import './typography.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';
 import { isStaging } from './lib/staging-safety.mjs';
 import analytics from '@/deploy/cloudflare/analytics-public.json';

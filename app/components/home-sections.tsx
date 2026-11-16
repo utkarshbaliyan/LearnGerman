@@ -60,7 +60,7 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
   const storyCount = stories.filter(story => completedIds.has(story.id)).length;
   const activity = memory?.activity;
   return <section className="home-sections" aria-labelledby="home-sections-title">
-    <header className="home-sections-heading"><div><span className="reading-eyebrow">A little progress in every direction</span><h2 id="home-sections-title">Your German, at a glance</h2><p>Pick the kind of practice you need today.</p></div><Link href="/books">Continue a book <ArrowUpRight aria-hidden="true" /></Link></header>
+    <header className="home-sections-heading"><div><h2 id="home-sections-title">Your German, at a glance</h2><p>Pick the kind of practice you need today.</p></div><Link href="/books">Continue a book <ArrowUpRight aria-hidden="true" /></Link></header>
     <div className="home-section-grid">
       <article className="home-section-card" data-area="stories" aria-labelledby="home-stories-title">
         <div className="home-section-art"><img src="/illustrations/reading-room.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" /></div>

@@ -182,7 +182,7 @@ export default function VocabularyPage() {
 
       <section className="vocabulary-workspace vocabulary-organized">
         <header className="vocab-page-heading">
-          <div><span className="reading-eyebrow">Every word opens a door.</span><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
+          <div><h1>Vocabulary</h1><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1</p></div>
           <TopicArt kind="shopping" className="topic-art--sticker" />
           <label className="vocab-level-picker"><span>Study level</span>
             <Select value={level} onValueChange={(value) => chooseLevel(value as LevelFilter)}>

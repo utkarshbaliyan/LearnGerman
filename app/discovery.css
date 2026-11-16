@@ -39,3 +39,34 @@
 .grammar-public-pattern{padding:1rem;background:var(--muted);border-radius:12px;font-weight:700}
 
 .discovery-level h2{font-size:1.6rem}.discovery-level h3{font-size:1.4rem}
+
+/* Stories index: visual level rows */
+.stories-start-hint{margin:.25rem 0 2rem;color:var(--muted-foreground)}
+.stories-start-hint a{font-weight:650}
+.stories-levels{display:grid;gap:2.5rem;margin:0 0 3rem}
+.stories-level{scroll-margin-top:96px}
+.stories-level-header{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem 2rem;flex-wrap:wrap;margin-bottom:1rem}
+.stories-level-header>div{max-width:46rem}
+.stories-level-header h2{margin:0 0 .25rem}
+.stories-level-header h2 a{text-decoration:none}
+.stories-level-header p{margin:.2rem 0;line-height:1.6}
+.stories-level-header .discovery-more{white-space:nowrap;font-weight:650}
+.stories-level-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.stories-card{display:flex;flex-direction:column;gap:.35rem;height:100%;padding:.6rem .6rem .9rem;border:1px solid var(--border);border-radius:16px;background:var(--card);text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.stories-card:hover{border-color:var(--section-ink,var(--primary));transform:translateY(-2px)}
+.stories-card:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.stories-card .stories-card-art{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:11px;margin-bottom:.4rem;}
+.stories-level-grid>li:nth-child(4n+1) .story-art{background:var(--tone-sage)}
+.stories-level-grid>li:nth-child(4n+2) .story-art{background:var(--tone-lilac)}
+.stories-level-grid>li:nth-child(4n+3) .story-art{background:var(--tone-butter)}
+.stories-level-grid>li:nth-child(4n+4) .story-art{background:var(--tone-sky)}
+.stories-card strong{font-size:1.02rem;font-weight:650;line-height:1.35;padding:0 .2rem}
+.stories-card span:last-child{font-size:.85rem;color:var(--muted-foreground);padding:0 .2rem}
+@media (max-width:900px){.stories-level-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.stories-level-grid{gap:.7rem}.stories-card strong{font-size:.95rem}}
+@media (prefers-reduced-motion:reduce){.stories-card{transition:none}.stories-card:hover{transform:none}}
+
+/* Home: what's included */
+.home-facts{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:1rem 0 .25rem;padding:0;color:var(--muted-foreground);font-size:.95rem}
+.home-facts strong{color:var(--foreground);font-weight:700}
+.home-facts li{white-space:nowrap}
