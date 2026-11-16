@@ -4,6 +4,8 @@
 // query strings, IP addresses, account IDs and headers are never stored.
 import { createHash, randomBytes } from 'node:crypto';
 import { syncBuiltinESMExports } from 'node:module';
+import { dirname, join } from 'node:path';
+import { createTrafficStore } from './traffic-store.mjs';
 
 const MINUTES = 60, RECENT = 60, VISITOR_WINDOW_MS = 30 * 60_000, MAX_VISITORS = 50_000, MAX_PATHS_PER_MINUTE = 300;
 const BOT = /bot|crawl|spider|slurp|curl|wget|python|httpclient|headless|lighthouse|monitor|uptime|preview|facebookexternalhit|node-fetch|go-http|okhttp|java\//i;
@@ -22,7 +24,7 @@ export function normalisePath(url) {
   return path.length > 160 ? `${path.slice(0, 157)}...` : path;
 }
 
-export function createTrafficRecorder({ now = () => Date.now(), saltHours = 6 } = {}) {
+export function createTrafficRecorder({ now = () => Date.now(), saltHours = 6, store = null } = {}) {
   let salt = randomBytes(16), saltSince = now();
   const minutes = new Map(), visitors = new Map(), recent = [];
   const startedAt = now();
@@ -47,6 +49,7 @@ export function createTrafficRecorder({ now = () => Date.now(), saltHours = 6 } 
     const path = normalisePath(url), kind = classify(path);
     if (kind === 'ignored') return;
     const time = now(), entry = bucket(time), bot = BOT.test(userAgent) || !userAgent;
+    if (store) { try { store.add({ time, kind, status, bot, address, userAgent, path }); } catch { /* history is best effort */ } }
     entry.requests++; entry.totalMs += durationMs;
     if (durationMs > 1000) entry.slow++;
     if (status >= 500) entry.errors5xx++; else if (status >= 400) entry.errors4xx++;
@@ -92,11 +95,30 @@ export function createTrafficRecorder({ now = () => Date.now(), saltHours = 6 } 
     };
   }
 
-  return { record, snapshot };
+  function history(days) { return store ? store.history(days) : null; }
+
+  return { record, snapshot, history };
 }
 
 // Wraps Node's HTTP request handler without changing responses.
-export function installTrafficRecorder(http, recorder = createTrafficRecorder()) {
+function defaultRecorder() {
+  let store = null;
+  const database = process.env.LESELAUT_SQLITE_PATH;
+  if (database) {
+    try {
+      store = createTrafficStore(join(dirname(database), 'traffic.sqlite'));
+      const timer = setInterval(() => { try { store.flush(); } catch (error) { console.error(JSON.stringify({ event: 'traffic_flush_failed', message: String(error?.message ?? error).slice(0, 200) })); } }, 60_000);
+      timer.unref();
+      process.once('exit', () => { try { store.flush(); } catch { /* shutting down */ } });
+    } catch (error) {
+      store = null;
+      console.error(JSON.stringify({ event: 'traffic_store_unavailable', message: String(error?.message ?? error).slice(0, 200) }));
+    }
+  }
+  return createTrafficRecorder({ store });
+}
+
+export function installTrafficRecorder(http, recorder = defaultRecorder()) {
   globalThis.__leselautTraffic = recorder;
   const original = http.createServer;
   http.createServer = function createServer(...args) {

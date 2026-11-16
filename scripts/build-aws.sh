@@ -4,7 +4,7 @@ export LESELAUT_BUILD_TARGET=aws
 export LESELAUT_RELEASE="${GITHUB_SHA:-$(git rev-parse HEAD)}"
 node scripts/run-bounded.mjs 5m 10s node_modules/.bin/vinext build
 node scripts/patch-aws-server.mjs dist/standalone/server.js
-cp deploy/aws/traffic.mjs dist/standalone/traffic.mjs
+cp deploy/aws/traffic.mjs deploy/aws/traffic-store.mjs dist/standalone/
 cp -R drizzle dist/standalone/drizzle
 cp deploy/aws/migrate.mjs dist/standalone/migrate.mjs
 mkdir -p dist/standalone/operations
