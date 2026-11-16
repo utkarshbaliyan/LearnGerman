@@ -28,7 +28,9 @@ The public, ingestion-only beacon ID is in
 `deploy/cloudflare/analytics-public.json`; it is not a Cloudflare API credential.
 No new package, AWS service, paid plan or paid browser monitoring is activated.
 
-The existing preferences UI gates the official Cloudflare beacon on approved
+Since November 2026 there is no automatic consent popup: the choice is offered
+only from Privacy → Analytics preferences, so analytics stay off for visitors who
+never open it. The existing preferences UI gates the official Cloudflare beacon on approved
 production hostnames and public paths only. Its new provider-specific consent
 key never reuses an AWS opt-in; an existing opt-out remains effective. The
 180-day choice does not change Supabase sessions, theme or learning storage.
