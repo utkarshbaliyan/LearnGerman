@@ -9,13 +9,24 @@ test('sitemap covers the published catalog once and excludes private, filtered a
     const { READING_STORIES } = await vite.ssrLoadModule('/app/lib/reading-path.ts');
     const entries = sitemap(), urls = new Set(entries.map(row => row.url));
     assert.equal(urls.size, entries.length);
-    assert.ok(urls.size > 700);
+    assert.ok(urls.size > 700);  // stories and grammar; single book pages are excluded
     const { ALL_GRAMMAR_LESSONS } = await vite.ssrLoadModule('/app/grammar/course.ts');
-    for (const lesson of ALL_GRAMMAR_LESSONS.filter(item => item.released)) assert.ok(urls.has(`https://leselaut.com/grammar/lessons/${lesson.id}`));
+    const { GRAMMAR_SEO, grammarLessonPath, resolveGrammarLessonParam } = await vite.ssrLoadModule('/app/grammar/seo.ts');
+    for (const lesson of ALL_GRAMMAR_LESSONS.filter(item => item.released)) assert.ok(urls.has(`https://leselaut.com${grammarLessonPath(lesson.id)}`), lesson.id);
+    for (const lesson of ALL_GRAMMAR_LESSONS.filter(item => GRAMMAR_SEO[item.id])) assert.ok(!urls.has(`https://leselaut.com/grammar/lessons/${lesson.id}`), `old URL ${lesson.id} must not be listed`);
+    const slugs = Object.values(GRAMMAR_SEO).map(seo => seo.slug), ids = new Set(ALL_GRAMMAR_LESSONS.map(item => item.id));
+    assert.equal(new Set(slugs).size, slugs.length, 'grammar slugs are unique');
+    for (const [id, seo] of Object.entries(GRAMMAR_SEO)) {
+      assert.ok(ids.has(id), `unknown lesson ${id}`); assert.ok(!ids.has(seo.slug), `slug ${seo.slug} collides with an ID`);
+      assert.match(seo.slug, /^[a-z0-9]+(?:-[a-z0-9]+)*$/, seo.slug);
+      assert.ok(seo.title.length <= 52, `title too long: ${seo.title}`); assert.ok(seo.description.length <= 160, `description too long: ${id}`);
+      assert.deepEqual(resolveGrammarLessonParam(seo.slug), { id, redirect: false }); assert.deepEqual(resolveGrammarLessonParam(id), { id, redirect: true });
+    }
+    assert.deepEqual(resolveGrammarLessonParam('c1-1-1'), { id: 'c1-1-1', redirect: false });
     for (const story of READING_STORIES) assert.ok(urls.has(`https://leselaut.com/stories/${story.id}`), story.id);
     for (const base of ['/books/a1/der-schluessel-im-blauen-korb', '/books/a2/nicht-nur-ein-profil', '/books/b1/zwischen-hoersaal-und-arbeitswelt']) {
       assert.ok(urls.has(`https://leselaut.com${base}`));
-      for (let page = 1; page <= 200; page++) assert.ok(urls.has(`https://leselaut.com${base}/${page}`));
+      for (const page of [1, 100, 200]) assert.ok(!urls.has(`https://leselaut.com${base}/${page}`), 'single book pages are noindex and not listed');
     }
     for (const row of entries) {
       const url = new URL(row.url);
