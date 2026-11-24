@@ -2,36 +2,27 @@ import { pageMetadata } from '@/app/lib/seo';
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
 import { TopicArt } from '@/app/components/topic-art';
-import { A1_BOOK } from '@/app/lib/book-data';
-import { A2_BOOK_INFO, A2_BOOK_PATH } from '@/app/lib/a2-book-info';
-import { B1_BOOK_INFO, B1_BOOK_PATH } from '@/app/lib/b1-book-info';
-
-const bookPath = '/books/a1/der-schluessel-im-blauen-korb';
+import { BOOK_CATALOG } from '@/app/lib/book-catalog';
 
 export const metadata = pageMetadata('Free German Books with Audio — A1, A2 and B1', 'Read German books at A1, A2 and B1, with audio, English translations and word meanings. Explore three free 200-page readers and save your place.', '/books');
 
 export default function BooksPage() {
   return <div className="site-shell"><SiteHeader active="books" /><main className="book-library">
-    <header className="illustrated-intro"><div><h1>German books.<br /><em>Your next chapter.</em></h1><p>Three German readers. 200 pages each. Read, listen, and pick up where you left off.</p></div><TopicArt kind="learn" className="topic-art--intro" /></header>
+    <header className="illustrated-intro"><div><h1>German books.<br /><em>Your next chapter.</em></h1><p>Three German readers. 200 pages each — about one minute per page. Read, listen, tap any word, and pick up where you left off.</p></div><TopicArt kind="learn" className="topic-art--intro" /></header>
     <div className="illustrated-bookshelf">
-    <section className="book-shelf" aria-labelledby="a1-books-heading">
-      <h2 id="a1-books-heading">A1</h2>
-      <Link className="book-shelf-item" href={bookPath} aria-label={`Open ${A1_BOOK.title}`}>
-        <span className="book-cover book-cover--shelf book-cover--illustrated" aria-hidden="true"><span className="book-cover-level">A1</span><TopicArt kind="home" /><strong lang="de">{A1_BOOK.title}</strong><small>200 pages · Read & listen</small></span>
+    {BOOK_CATALOG.map(book => <section className="book-shelf" key={book.id} aria-labelledby={`${book.level.toLowerCase()}-books-heading`}>
+      <h2 id={`${book.level.toLowerCase()}-books-heading`}>{book.level}</h2>
+      <Link className="book-shelf-item" href={book.path} aria-label={`Open ${book.title}`}>
+        <span className={`book-cover book-cover--shelf book-cover--illustrated${book.level === 'B1' ? ' book-cover--b1' : ''}`} aria-hidden="true">
+          <span className="book-cover-level">{book.level}</span>
+          <TopicArt kind={book.artKind} />
+          <strong lang="de">{book.title}</strong>
+          <span className="book-cover-en">{book.englishTitle}</span>
+          <span className="book-cover-hook">{book.hook}</span>
+          <small>200 pages · Read & listen</small>
+        </span>
       </Link>
-    </section>
-    <section className="book-shelf" aria-labelledby="a2-books-heading">
-      <h2 id="a2-books-heading">A2</h2>
-      <Link className="book-shelf-item" href={A2_BOOK_PATH} aria-label={`Open ${A2_BOOK_INFO.title}`}>
-        <span className="book-cover book-cover--shelf book-cover--illustrated" aria-hidden="true"><span className="book-cover-level">A2</span><TopicArt kind="technology" /><strong lang="de">{A2_BOOK_INFO.title}</strong><small>200 pages · Read & listen</small></span>
-      </Link>
-    </section>
-    <section className="book-shelf" aria-labelledby="b1-books-heading">
-      <h2 id="b1-books-heading">B1</h2>
-      <Link className="book-shelf-item" href={B1_BOOK_PATH} aria-label={`Open ${B1_BOOK_INFO.title}`}>
-        <span className="book-cover book-cover--shelf book-cover--b1 book-cover--illustrated" aria-hidden="true"><span className="book-cover-level">B1</span><TopicArt kind="work" /><strong lang="de">{B1_BOOK_INFO.title}</strong><small>200 pages · Read & listen</small></span>
-      </Link>
-    </section>
+    </section>)}
     </div>
   </main></div>;
 }

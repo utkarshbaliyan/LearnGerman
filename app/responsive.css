@@ -55,7 +55,7 @@ audio { min-inline-size: 0; }
 /* Preserve pinch zoom. A 16px field avoids automatic focus zoom on iOS. */
 @media (max-width: 1023px), (pointer: coarse) {
   body :is(input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], select, textarea, [role="combobox"]) { font-size: 16px; min-height: 44px; max-inline-size: 100%; }
-  body button:not(.reading-word):not(.story-preview-word):not(.grammar-scene-story button), body [role="button"], body [role="tab"] { min-height: 44px; min-width: 44px; max-inline-size: 100%; touch-action: manipulation; }
+  body button:not(.reading-word):not(.story-preview-word):not(.gloss-save-btn):not(.sentence-seek-btn):not(.grammar-scene-story button), body [role="button"], body [role="tab"] { min-height: 44px; min-width: 44px; max-inline-size: 100%; touch-action: manipulation; }
   .account-auth-tabs button, .account-submit, .account-text-button { font-size: 14px; }
   .vocabulary-table :is(.vocab-familiar-toggle, .vocab-review-toggle, .vocab-list-audio) { width: 44px; height: 44px; min-height: 44px; }
   .vocabulary-table :is(.vocab-word-toggle, .vocab-show-translation) { min-height: 44px; }

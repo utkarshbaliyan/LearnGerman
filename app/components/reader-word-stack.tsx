@@ -19,7 +19,23 @@ export function useReaderWordStack(source: WordSource) {
     const key = vocabularyCardKey(word);
     setWords(current => [word, ...current.filter(w => vocabularyCardKey(w) !== key)].slice(0, 50));
   }
-  return { collect, stack: <ReaderWordStack words={words} sourceKind={source.kind} vocabulary={vocabulary} remove={key => setWords(current => current.filter(w => vocabularyCardKey(w) !== key))} /> };
+  function isSavedWord(german: string, english: string) {
+    const word: CollectWordInput = { german, english, context: '', source };
+    const key = vocabularyCardKey(word);
+    return Boolean(vocabulary.progress.words?.[key]) && isVocabularyReview(vocabulary.progress, word);
+  }
+  function saveSingleWord(german: string, english: string, context: string) {
+    const word: CollectWordInput = { german, english, context: context.slice(0, 600), source };
+    collect(german, english, context);
+    if (!vocabulary.hydrated) return false;
+    return vocabulary.saveWords([word]);
+  }
+  return {
+    collect,
+    isSavedWord,
+    saveSingleWord,
+    stack: <ReaderWordStack words={words} sourceKind={source.kind} vocabulary={vocabulary} remove={key => setWords(current => current.filter(w => vocabularyCardKey(w) !== key))} />,
+  };
 }
 
 function ReaderWordStack({ words, sourceKind, vocabulary, remove }: { words: CollectWordInput[]; sourceKind: WordSource['kind']; vocabulary: ReturnType<typeof useVocabularyProgress>; remove: (key: string) => void }) {

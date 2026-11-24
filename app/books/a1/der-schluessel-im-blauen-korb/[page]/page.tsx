@@ -19,11 +19,13 @@ export default async function BookPage({ params }: { params: Promise<{ page: str
   if (!/^[1-9]\d*$/.test(raw)) notFound();
   const page = getBookPage(Number(raw));
   if (!page) notFound();
+  const previous = page.number > 1 ? getBookPage(page.number - 1) : null;
   return <div className="site-shell"><SiteHeader active="books" /><main className="book-reader book-reader--page" key={page.number}>
     <Link className="reading-back" href="/books/a1/der-schluessel-im-blauen-korb"><ArrowLeft size={17} />{A1_BOOK.title} · Contents</Link>
     <StructuredData data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'German books', path: '/books' }, { name: A1_BOOK.title, path: '/books/a1/der-schluessel-im-blauen-korb' }, { name: `Page ${page.number}`, path: `/books/a1/der-schluessel-im-blauen-korb/${page.number}` }])} />
     <article className="book-volume book-volume--page">
       <header className="book-page-header"><span className="book-page-running-title" lang="de">{A1_BOOK.title}</span><span className="reading-eyebrow">Chapter {page.chapter} · {page.chapterTitle}</span><h1 lang="de">{page.title}</h1><p>Page {page.number} of 200</p><progress value={page.number} max={200} aria-label={`Page ${page.number} of 200`} /><BookBookmarkButton page={page.number} /></header>
+      {previous?.summaries?.length ? <details className="book-recap"><summary>Previously on Page {previous.number}</summary><p lang="en">{previous.summaries.join(' ')}</p></details> : null}
       <BookPageReader paragraphs={page.paragraphs} translations={page.translations} glosses={page.glosses} audio={page.audio} source={{ kind: 'book', id: A1_BOOK.id, title: `${A1_BOOK.title} · Page ${page.number}`, href: `/books/a1/der-schluessel-im-blauen-korb/${page.number}`, level: 'A1' }} />
       <BookPageNavigation page={page.number} />
       <p className="book-leaf-number" aria-hidden="true">{page.number}</p>
