@@ -389,8 +389,8 @@ incur charges; historical trial/pricing notes are not proof of today's bill.
 2. `package.json`, `vite.config.ts`, `next.config.ts`, `platform-bindings.ts`.
 3. `docs/AWS_HOSTING.md` and `.github/workflows/ci-deploy.yml`.
 4. `docs/AWS_SYSTEM_DESIGN.md`, `db/schema.ts`, AWS runtime/SQLite adapters.
-5. `docs/DAILY_LEARNING.md`, `docs/CLOUDFLARE_ANALYTICS.md`, `docs/DESIGN_SYSTEM.md`
-   and the relevant feature source/tests.
+5. `docs/DAILY_LEARNING.md`, `docs/CLOUDFLARE_ANALYTICS.md`, `docs/DESIGN_SYSTEM.md`,
+   `docs/SECURITY_HARDENING.md` and the relevant feature source/tests.
 6. `docs/RESPONSIVE_QA.md`, `docs/RELEASE_VERIFICATION.md` and
    `docs/LAUNCH_READINESS.md` for dated verification and remaining work.
 

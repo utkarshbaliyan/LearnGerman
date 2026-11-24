@@ -12,7 +12,7 @@ export async function getAuthenticatedUser(request: Request, options: { includeD
   const authorization = request.headers.get("authorization");
   if (!authorization?.startsWith("Bearer ") || authorization.length > 16_384) return null;
   try {
-    const { payload } = await jwtVerify(authorization.slice(7), JWKS, { issuer: ISSUER, audience: "authenticated", requiredClaims: ['sub', 'exp'] });
+    const { payload } = await jwtVerify(authorization.slice(7), JWKS, { issuer: ISSUER, audience: "authenticated", algorithms: ["ES256", "RS256"], requiredClaims: ['sub', 'exp'] });
     const email = typeof payload.email === "string" ? payload.email : "";
     if (!payload.sub || !email.trim() || payload.role !== 'authenticated') return null;
     if (!options.includeDeleting && await (await getD1()).prepare('SELECT 1 AS deleting FROM account_deletions WHERE user_id = ?').bind(payload.sub).first()) return null;

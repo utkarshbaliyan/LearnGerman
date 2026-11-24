@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import http, { createServer } from 'node:http';
-import { createTrafficRecorder, installTrafficRecorder, normalisePath, classify } from '../deploy/aws/traffic.mjs';
+import { clientAddress, createTrafficRecorder, installTrafficRecorder, normalisePath, classify } from '../deploy/aws/traffic.mjs';
 
 const browser = 'Mozilla/5.0 (Macintosh) AppleWebKit/605.1.15 Safari/605.1.15';
 
@@ -133,4 +133,32 @@ test('recorder passes requests to the history store and exposes history', () => 
   assert.equal(added[0].path, '/stories');
   assert.deepEqual(recorder.history(30), { days: 30 });
   assert.equal(createTrafficRecorder().history(30), null);
+});
+
+test('clientAddress uses the CloudFront-appended hop and ignores spoofed leftmost X-Forwarded-For values', async () => {
+  assert.equal(clientAddress({ 'x-forwarded-for': '1.1.1.1, 203.0.113.9, 10.0.0.1' }, '127.0.0.1'), '203.0.113.9');
+  assert.equal(clientAddress({ 'x-forwarded-for': '2.2.2.2, 3.3.3.3, 203.0.113.9, 10.0.0.1' }, '127.0.0.1'), '203.0.113.9');
+  assert.equal(clientAddress({ 'x-forwarded-for': '203.0.113.9, 10.0.0.1' }, '127.0.0.1'), '203.0.113.9');
+  assert.equal(clientAddress({ 'x-forwarded-for': '203.0.113.9' }, '127.0.0.1'), '203.0.113.9');
+  assert.equal(clientAddress({}, '127.0.0.1'), '127.0.0.1');
+
+  const original = http.createServer;
+  try {
+    installTrafficRecorder(http, createTrafficRecorder());
+    const server = createServer((_request, response) => { response.statusCode = 200; response.end('ok'); });
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address();
+    for (const spoof of ['198.51.100.1', '198.51.100.2', '198.51.100.3']) {
+      const response = await fetch(`http://127.0.0.1:${port}/stories`, {
+        headers: { 'user-agent': browser, 'x-forwarded-for': `${spoof}, 203.0.113.9, 10.0.0.1` },
+      });
+      await response.text();
+    }
+    await new Promise(resolve => setTimeout(resolve, 20));
+    await new Promise(resolve => server.close(resolve));
+    assert.equal(globalThis.__leselautTraffic.snapshot().activeVisitors.last5, 1);
+  } finally {
+    http.createServer = original;
+    delete globalThis.__leselautTraffic;
+  }
 });

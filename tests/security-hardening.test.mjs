@@ -41,3 +41,42 @@ test('CAPTCHA config fails closed when required; signup, sign-in and recovery se
     assert.ok(calls[2].body.code_challenge.length > 40);
   } finally { await client.auth.stopAutoRefresh(); await vite.close(); }
 });
+
+test('progress mergers drop prototype-polluting keys and handle Object.prototype property names safely', async () => {
+  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false, watch: null } });
+  try {
+    const { mergeProgress } = await vite.ssrLoadModule('/app/lib/progress-merge.ts');
+    const { markStory, mergeStoryProgress } = await vite.ssrLoadModule('/app/lib/story-progress.ts');
+    const shared = await vite.ssrLoadModule('/app/api/tutor/_shared.ts');
+    assert.equal('rateLimited' in shared, false, 'spoofable IP header rate limiter must stay removed');
+
+    const evilCourse = JSON.parse('{"chapters":{"__proto__":{"completed":true,"checkpointScore":99},"constructor":{"completed":true},"prototype":{"completed":true},"a1-01":{"skillScores":{"__proto__":10,"toString":75,"reading":80}}}}');
+    const mergedCourse = mergeProgress('course', evilCourse, {});
+    assert.equal(({}).completed, undefined);
+    assert.equal(Object.getPrototypeOf(mergedCourse.chapters), Object.prototype);
+    assert.deepEqual(Object.keys(mergedCourse.chapters), ['a1-01']);
+    assert.equal(mergedCourse.chapters['a1-01'].skillScores.toString, 75);
+    assert.equal(mergedCourse.chapters['a1-01'].skillScores.reading, 80);
+    assert.equal(Object.hasOwn(mergedCourse.chapters['a1-01'].skillScores, '__proto__'), false);
+
+    const evilGrammar = JSON.parse('{"completed":["g1"],"scores":{"__proto__":5,"toString":90},"sets":{"__proto__":{"a":1},"constructor":{"a":2},"g1":{"__proto__":3,"valueOf":88}}}');
+    const mergedGrammar = mergeProgress('grammar', evilGrammar, {});
+    assert.equal(Object.getPrototypeOf(mergedGrammar.sets), Object.prototype);
+    assert.deepEqual(Object.keys(mergedGrammar.sets), ['g1']);
+    assert.equal(mergedGrammar.scores.toString, 90);
+    assert.equal(mergedGrammar.sets.g1.valueOf, 88);
+    assert.equal(Object.hasOwn(mergedGrammar.scores, '__proto__'), false);
+
+    const evilStories = JSON.parse('{"entries":{"__proto__":{"completed":true,"updatedAt":100},"constructor":{"completed":true,"updatedAt":100},"toString":{"completed":true,"updatedAt":100},"reading-a1-01-v1":{"completed":true,"updatedAt":100}}}');
+    const mergedStories = mergeStoryProgress(evilStories, {});
+    assert.equal(Object.getPrototypeOf(mergedStories.entries), Object.prototype);
+    assert.equal(Object.hasOwn(mergedStories.entries, '__proto__'), false);
+    assert.equal(Object.hasOwn(mergedStories.entries, 'constructor'), false);
+    assert.equal(mergedStories.entries['reading-a1-01-v1'].completed, true);
+    assert.equal(mergedStories.entries.toString.completed, true);
+    const unchanged = markStory(mergedStories, '__proto__', true, 200);
+    assert.equal(unchanged, mergedStories);
+  } finally {
+    await vite.close();
+  }
+});

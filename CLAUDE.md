@@ -3,6 +3,8 @@
 Read `docs/DEVELOPMENT_HANDOFF.md` before the first implementation change. It
 contains the architecture, laptop storage layout, development commands, known
 documentation errors and verification evidence. Snapshot: 14 November 2026.
+Also review `docs/SECURITY_HARDENING.md` (updated 24 November 2026) before
+modifying auth, API routes, proxy/IP handling, or progress merge logic.
 
 ## Owner's requirements
 
@@ -85,6 +87,11 @@ has its own runtime configuration. Do not point local tests at live learner data
   views, not deduplicated people or completed-lesson activity.
 - Preserve `public/analytics-boundary.js`: private routes must not share a
   document with the active analytics SDK. See `docs/CLOUDFLARE_ANALYTICS.md`.
+- Security invariants (see `docs/SECURITY_HARDENING.md`): keep explicit
+  `algorithms: ['ES256', 'RS256']` on `jwtVerify`, never trust `cf-connecting-ip`
+  or leftmost `x-forwarded-for` on AWS, use `crypto.timingSafeEqual` /
+  `crypto.subtle.verify` for secret checks, and block `__proto__`/`constructor`/
+  `prototype` keys when merging client JSON progress.
 
 ## Feature invariants
 

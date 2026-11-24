@@ -42,8 +42,6 @@ const FEEDBACK_SCHEMA = {
   },
 } as const;
 
-const attempts = new Map<string, { count: number; resetAt: number }>();
-
 type ProviderConfiguration = {
   name: "Groq" | "OpenAI";
   apiKey: string;
@@ -72,19 +70,6 @@ export function providerConfiguration(): ProviderConfiguration {
     };
   }
   throw new Error("No feedback provider is configured");
-}
-
-export function rateLimited(request: Request) {
-  const forwarded = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
-  const key = forwarded.split(",")[0].trim();
-  const now = Date.now();
-  const current = attempts.get(key);
-  if (!current || current.resetAt <= now) {
-    attempts.set(key, { count: 1, resetAt: now + 10 * 60_000 });
-    return false;
-  }
-  current.count += 1;
-  return current.count > 12;
 }
 
 export function tutorError(error: unknown) {
