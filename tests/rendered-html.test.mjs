@@ -34,22 +34,28 @@ function assertStoryAudio(html) {
 }
 
 test('public pages expose one canonical, crawlable topic guides and private-page noindex in server HTML', async () => {
-  for (const path of ['/course', '/stories/a2', '/grammar/lessons', '/grammar/lessons/a1-4-1', '/grammar/lessons/c1-1-1']) {
+  for (const path of ['/course', '/stories/a2', '/grammar/lessons', '/grammar/lessons/dative-case-basics', '/grammar/lessons/c1-1-1']) {
     const response = await renderRoute(path); assert.equal(response.status, 200, path);
     const html = await response.text();
     const canonicals = [...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/g)].map(match => match[1]);
     assert.deepEqual(canonicals, [`https://leselaut.com${path}`]);
     assert.match(html, /property="og:image" content="https:\/\/leselaut.com\/social-card.png"/);
-    if (path === '/grammar/lessons/a1-4-1') { assert.match(html, /Common mistakes/); assert.match(html, /German examples with English meanings/); }
+    if (path === '/grammar/lessons/dative-case-basics') { assert.match(html, /Common mistakes/); assert.match(html, /German examples with English meanings/); assert.match(html, /<h1>German Dative Case for Beginners<\/h1>/); assert.match(html, /"@type":"LearningResource"/); }
   }
   for (const path of ['/account', '/auth/reset-password', '/auth/confirm', '/active-learning']) {
     const html = await (await renderRoute(path)).text();
     assert.match(html, /<meta name="robots" content="[^"]*noindex/, path);
   }
   const sitemap = await renderRoute('/sitemap.xml'); assert.equal(sitemap.status, 200);
-  const xml = await sitemap.text(); assert.match(xml, /<loc>https:\/\/leselaut.com\/grammar\/lessons\/a1-4-1<\/loc>/); assert.doesNotMatch(xml, /<loc>[^<]*(?:\/auth\/|\/account|cloudfront|chatgpt)/);
+  const xml = await sitemap.text(); assert.match(xml, /<loc>https:\/\/leselaut.com\/grammar\/lessons\/dative-case-basics<\/loc>/); assert.doesNotMatch(xml, /\/grammar\/lessons\/a1-4-1</); assert.doesNotMatch(xml, /der-schluessel-im-blauen-korb\/\d+</); assert.doesNotMatch(xml, /<loc>[^<]*(?:\/auth\/|\/account|cloudfront|chatgpt)/);
   const robots = await renderRoute('/robots.txt'); assert.equal(robots.status, 200); assert.match(await robots.text(), /Sitemap: https:\/\/leselaut.com\/sitemap.xml/);
   assert.equal((await renderRoute('/grammar/lessons/not-a-lesson')).status, 404);
+  const vocab = await renderRoute('/vocabulary/a1'); assert.equal(vocab.status, 200); const vocabHtml = await vocab.text();
+  assert.match(vocabHtml, /<h1>A1 German vocabulary list<\/h1>/); assert.match(vocabHtml, /<td lang="de">der Abend<\/td><td>evening<\/td>/); assert.match(vocabHtml, /rel="canonical" href="https:\/\/leselaut.com\/vocabulary\/a1"/);
+  assert.equal((await renderRoute('/vocabulary/c9')).status, 404); assert.equal((await renderRoute('/vocabulary/sources')).status, 200);
+  const moved = await renderRoute('/grammar/lessons/a1-4-1'); assert.ok([301, 308].includes(moved.status), `old lesson URL status ${moved.status}`);
+  assert.match(moved.headers.get('location') ?? '', /\/grammar\/lessons\/dative-case-basics$/);
+  const bookPage = await (await renderRoute('/books/a1/der-schluessel-im-blauen-korb/1')).text(); assert.match(bookPage, /<meta name="robots" content="noindex, follow"/);
 });
 
 test("Home previews a story for new visitors, keeps Flashcards and Review cards and preserves review bookmarks and the story library", async () => {

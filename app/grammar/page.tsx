@@ -33,6 +33,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { grammarLessonPath } from "./seo";
 
 const REQUIRED_GRAMMAR_SETS = Object.fromEntries(Object.entries(LIVE_GRAMMAR_LESSONS).map(([lessonId, lesson]) => [
   lessonId,
@@ -377,7 +378,7 @@ export default function GrammarPage() {
             <PracticePanel key={selectedLessonId} lessonId={selectedLessonId} completedSets={progress.sets[selectedLessonId] ?? {}} onFinish={finishSet} />
 
             <LessonReference key={`reference-${selectedLessonId}`} content={content} />
-            <nav className="grammar-help-links" aria-label="Grammar references"><Link href={`/grammar/lessons/${selectedLessonId}`}>Read this lesson</Link><Link href="/grammar/lessons">All grammar lessons</Link><Link href="/grammar/reference">Grammar reference</Link><Link href="/grammar/cheat-sheets">Case cheat sheets</Link></nav>
+            <nav className="grammar-help-links" aria-label="Grammar references"><Link href={grammarLessonPath(selectedLessonId)}>Read this lesson</Link><Link href="/grammar/lessons">All grammar lessons</Link><Link href="/grammar/reference">Grammar reference</Link><Link href="/grammar/cheat-sheets">Case cheat sheets</Link></nav>
 
             {nextLesson && <button type="button" className="next-grammar-lesson" onClick={() => selectLesson(nextLesson.id)}><span>Next lesson</span><strong>{nextLesson.title}</strong><ArrowRight /></button>}
           </article>

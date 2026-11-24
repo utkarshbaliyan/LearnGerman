@@ -286,7 +286,7 @@ export default function VocabularyPage() {
         </Tabs>
       </section>
 
-      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary words across A1–C1. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/vocabulary/sources">Vocabulary sources</Link><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
+      <footer><Link href="/" prefetch className="brand footer-brand"><span className="brand-mark">ä</span><span><strong>LeseLaut</strong><small>German through stories</small></span></Link><p>{VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} vocabulary words across A1–C1. Level placements are editorial and have not been independently CEFR-certified.</p><div><Link href="/vocabulary/sources">Vocabulary sources</Link><Link href="/vocabulary/a1">A1 word list</Link><Link href="/vocabulary/a2">A2 word list</Link><Link href="/vocabulary/b1">B1 word list</Link><Link href="/stories" prefetch>Stories</Link><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

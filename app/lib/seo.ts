@@ -25,8 +25,11 @@ export const PRIVATE_PAGE_METADATA: Metadata = { robots: { index: false, follow:
 export function bookPageMetadata(book: string, level: string, path: string, page: { number: number; title: string; paragraphs: string[] } | null): Metadata {
   if (!page) return { title: 'Page not found', ...PRIVATE_PAGE_METADATA };
   const excerpt = page.paragraphs.join(' ').replace(/\s+/g, ' ').slice(0, 90);
-  return pageMetadata(`${page.title} — ${level} German Reader, Page ${page.number}`,
-    `${level} German reading with audio and English help. ${book}, page ${page.number}. ${excerpt}`.slice(0, 165).trimEnd() + '…', `${path}/${page.number}`);
+  // Single book pages are short (~120 words each). Keep them out of Google's index so hundreds of
+  // thin pages do not weigh on the site; links stay followable and each book's contents page is indexed.
+  return { ...pageMetadata(`${page.title} — ${level} German Reader, Page ${page.number}`,
+    `${level} German reading with audio and English help. ${book}, page ${page.number}. ${excerpt}`.slice(0, 165).trimEnd() + '…', `${path}/${page.number}`),
+    robots: { index: false, follow: true } };
 }
 
 export function breadcrumbs(items: { name: string; path: string }[]) {
