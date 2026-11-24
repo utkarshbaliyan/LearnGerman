@@ -47,7 +47,7 @@ try{
   const guard=await fetch(base+'/analytics-boundary.js');
   assert.equal(guard.status,200,'privacy guard asset');
   assert.match(guard.headers.get('content-type')??'',/javascript/,'privacy guard MIME type');
-  for(const path of ['/', '/stories', '/stories/a1', '/stories/a2', '/stories/b1', '/stories/b2', '/course', '/grammar/reference', '/grammar/lessons', '/grammar/lessons/a1-4-1', '/grammar/lessons/c1-1-1', '/books/a1/der-schluessel-im-blauen-korb/1']) {
+  for(const path of ['/', '/stories', '/stories/a1', '/stories/a2', '/stories/b1', '/stories/b2', '/course', '/grammar/reference', '/grammar/lessons', '/grammar/lessons/dative-case-basics', '/grammar/lessons/c1-1-1', '/books/a1/der-schluessel-im-blauen-korb']) {
     const response=await fetch(base+path), html=await response.text();
     assert.equal(response.status,200,path);
     const canonicals=[...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
@@ -57,6 +57,11 @@ try{
     if(path==='/stories') for(const level of ['a1','a2','b1','b2']) assert.match(html,new RegExp(`href="/stories/${level}"`));
     if(path==='/') assert.match(html,/<h1[^>]*>Learn German, one story at a time\.<\/h1>/);
   }
+  const moved=await fetch(base+'/grammar/lessons/a1-4-1',{redirect:'manual'});
+  assert.ok([301,308].includes(moved.status),'old grammar lesson URL redirects permanently');
+  assert.equal(new URL(moved.headers.get('location'),base).pathname,'/grammar/lessons/dative-case-basics');
+  const bookPage=await (await fetch(base+'/books/a1/der-schluessel-im-blauen-korb/1')).text();
+  assert.match(bookPage,/<meta name="robots" content="noindex, follow"/,'single book pages stay out of the index');
   for(const path of ['/account','/auth/confirm','/auth/reset-password','/active-learning','/practice/tutor']) {
     const html=await(await fetch(base+path)).text();
     assert.match(html,/<meta name="robots" content="[^"]*noindex/,`private ${path}`);
