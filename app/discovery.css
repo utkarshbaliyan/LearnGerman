@@ -61,7 +61,42 @@
 .stories-level-grid>li:nth-child(4n+3) .story-art{background:var(--tone-butter)}
 .stories-level-grid>li:nth-child(4n+4) .story-art{background:var(--tone-sky)}
 .stories-card strong{font-size:1.02rem;font-weight:650;line-height:1.35;padding:0 .2rem}
-.stories-card span:last-child{font-size:.85rem;color:var(--muted-foreground);padding:0 .2rem}
+.stories-card-goal{font-size:.86rem;line-height:1.45;color:var(--muted-foreground);padding:0 .2rem}
+.stories-card span:last-child{font-size:.82rem;color:var(--muted-foreground);padding:0 .2rem;margin-top:auto}
+
+/* 30-second level finder */
+.level-finder{margin:0 0 2rem;border:1px solid var(--border);border-radius:16px;background:var(--card);overflow:hidden}
+.level-finder>summary{display:flex;align-items:center;gap:.6rem;padding:1rem 1.2rem;font-weight:650;cursor:pointer;list-style:none}
+.level-finder>summary::-webkit-details-marker{display:none}
+.level-finder>summary::after{content:'+';margin-left:auto;font-size:1.15rem}
+.level-finder[open]>summary::after{content:'−'}
+.level-finder-body{padding:0 1.2rem 1.2rem;display:grid;gap:1rem}
+.level-finder-body>p{margin:0;color:var(--muted-foreground);font-size:.95rem}
+.level-finder-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.level-finder-grid button{display:flex;flex-direction:column;gap:.35rem;text-align:left;padding:.9rem 1rem;border:1px solid var(--border);border-radius:12px;background:var(--background);color:var(--foreground);cursor:pointer;line-height:1.5;transition:border-color .15s}
+.level-finder-grid button:hover,.level-finder-grid button.is-selected{border-color:var(--section-ink,var(--primary));background:color-mix(in srgb,var(--section-soft,var(--muted)) 60%,var(--background))}
+.level-finder-tag{font-size:.78rem;font-weight:700;color:var(--section-ink,var(--primary))}
+.level-finder-result{padding:1rem;border-radius:12px;background:color-mix(in srgb,var(--section-soft,var(--muted)) 55%,var(--card));display:grid;gap:.75rem}
+.level-finder-result p{margin:0;line-height:1.55}
+.level-finder-links{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;font-size:.95rem}
+.level-finder-links a{font-weight:650}
+
+/* Story filters: topic chips & unread toggle */
+.reading-unread-toggle{display:inline-flex;flex-direction:row;align-items:center;gap:.5rem;align-self:end;min-height:44px;cursor:pointer;font-weight:600}
+.reading-unread-toggle input{width:18px;height:18px;margin:0}
+.reading-topic-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 1.25rem}
+.reading-topic-chips button{padding:.45rem .85rem;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--foreground);font-size:.86rem;font-weight:550;cursor:pointer}
+.reading-topic-chips button[aria-pressed=true]{background:var(--section-ink,var(--primary));color:var(--section-on,var(--background));border-color:var(--section-ink,var(--primary))}
+
+/* Books shelf blurbs & page recap */
+.book-cover-en{display:block;font-size:.84rem;font-weight:600;color:var(--section-ink,var(--ink));opacity:.9}
+.book-cover-hook{display:block;font-size:.82rem;line-height:1.45;color:var(--ink-soft,var(--muted-foreground))}
+.book-meta-line{font-size:.9rem;color:var(--ink-soft,var(--muted-foreground));margin:.5rem 0 1rem}
+.book-recap{max-width:760px;margin:0 0 1.25rem;border:1px solid var(--line,var(--border));border-radius:12px;background:color-mix(in srgb,var(--section-soft,var(--muted)) 45%,var(--white,var(--card)))}
+.book-recap>summary{padding:.75rem 1rem;font-size:.9rem;font-weight:650;cursor:pointer;color:var(--section-ink,var(--foreground))}
+.book-recap>p{margin:0;padding:0 1rem .95rem;font-size:.92rem;line-height:1.6;color:var(--ink-soft,var(--muted-foreground))}
+
+@media (max-width:650px){.level-finder-grid{grid-template-columns:1fr}}
 @media (max-width:900px){.stories-level-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.stories-level-grid{gap:.7rem}.stories-card strong{font-size:.95rem}}
 @media (prefers-reduced-motion:reduce){.stories-card{transition:none}.stories-card:hover{transform:none}}

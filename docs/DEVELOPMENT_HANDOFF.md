@@ -42,9 +42,9 @@ teacher review and broader launch work were deferred.
 
 | Area | Behavior and important implementation |
 | --- | --- |
-| Home `/` | Learning hub, Flashcards/Review, resumable plan, daily goals, streak and progress summaries |
-| Stories `/stories` | A1–B2 reading library, narration, word highlighting, English support, quizzes and completion |
-| Books `/books` | A1/A2/B1 readers, page audio, glosses, translations, bookmarks and word collection |
+| Home `/` | Learning hub, Flashcards/Review, resumable plan, daily goals, streak and progress summaries (including Stories, Books, Grammar and Vocabulary cards) |
+| Stories `/stories` | A1–B2 reading library, 30-second level finder, topic chips, unread filter, reading time, custom narration with click-sentence-to-seek and saved speed, 1-click tooltip word saving, English support, per-story OG artwork, and retry-missed-only comprehension quizzes with streak/next-story momentum |
+| Books `/books` | A1/A2/B1 200-page readers with English subtitles/hooks and Schema.org `Book` metadata, custom page narration player with saved speed & paragraph seek, auto-saved forward bookmarks, keyboard page turning, A1 previous-page recaps, glosses, translations and 1-click word saving |
 | Vocabulary `/vocabulary` | List/table with words, translations, progress, learned check marks, icon-only Review controls and pronunciation |
 | Review | Shared saved-word deck and FSRS scheduling; `/review` redirects into Home's review view |
 | Grammar `/grammar` | Reference, lessons and practice, with current/legacy progress compatibility |
@@ -389,8 +389,8 @@ incur charges; historical trial/pricing notes are not proof of today's bill.
 2. `package.json`, `vite.config.ts`, `next.config.ts`, `platform-bindings.ts`.
 3. `docs/AWS_HOSTING.md` and `.github/workflows/ci-deploy.yml`.
 4. `docs/AWS_SYSTEM_DESIGN.md`, `db/schema.ts`, AWS runtime/SQLite adapters.
-5. `docs/DAILY_LEARNING.md`, `docs/CLOUDFLARE_ANALYTICS.md`, `docs/DESIGN_SYSTEM.md`
-   and the relevant feature source/tests.
+5. `docs/DAILY_LEARNING.md`, `docs/CLOUDFLARE_ANALYTICS.md`, `docs/DESIGN_SYSTEM.md`,
+   `docs/SECURITY_HARDENING.md` and the relevant feature source/tests.
 6. `docs/RESPONSIVE_QA.md`, `docs/RELEASE_VERIFICATION.md` and
    `docs/LAUNCH_READINESS.md` for dated verification and remaining work.
 

@@ -34,6 +34,11 @@ test('real JWT verification rejects forged identity, wrong issuer/audience, expi
     assert.equal((await getAuthenticatedUser(request(await token({amr:[{method:'password',timestamp:123},{method:'token_refresh',timestamp:999}]})))).authenticatedAt,123,'refreshing a token is not fresh authentication');
     const other=await generateKeyPair('ES256');
     assert.equal(await getAuthenticatedUser(request(await token({},other.privateKey))),null);
+    const hsToken=await new SignJWT({sub:'test-user',email:'learner@example.test',role:'authenticated',aud:'authenticated',iss:issuer,iat:Math.floor(Date.now()/1000),exp:Math.floor(Date.now()/1000)+3600}).setProtectedHeader({alg:'HS256',kid:'fixture'}).sign(new TextEncoder().encode('symmetric-secret'));
+    assert.equal(await getAuthenticatedUser(request(hsToken)),null,'symmetric HS256 tokens must be rejected by asymmetric JWKS allowlist');
+    const unsignedPayload=Buffer.from(JSON.stringify({sub:'test-user',email:'learner@example.test',role:'authenticated',aud:'authenticated',iss:issuer,exp:Math.floor(Date.now()/1000)+3600})).toString('base64url');
+    const noneToken=`${Buffer.from(JSON.stringify({alg:'none',typ:'JWT'})).toString('base64url')}.${unsignedPayload}.`;
+    assert.equal(await getAuthenticatedUser(request(noneToken)),null,'alg:none tokens must be rejected');
     const google=await getAuthenticatedUser(request(await token({user_metadata:{full_name:'A Google Learner',avatar_url:'https://example.test/avatar'}})));
     assert.equal(google.displayName,'A Google Learner');
     assert.equal(google.id,'test-user','Google metadata must never replace the stable Supabase subject');

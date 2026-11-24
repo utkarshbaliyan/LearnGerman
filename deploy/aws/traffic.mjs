@@ -118,6 +118,19 @@ function defaultRecorder() {
   return createTrafficRecorder({ store });
 }
 
+// CloudFront appends the real viewer IP and Nginx appends CloudFront's edge IP
+// (`client-spoofed..., viewer, cloudfront-edge`), so the second-to-last hop
+// prevents callers from forging arbitrary leftmost X-Forwarded-For addresses.
+export function clientAddress(headers, remoteAddress = '') {
+  const raw = Array.isArray(headers?.['x-forwarded-for'])
+    ? headers['x-forwarded-for'].join(',')
+    : String(headers?.['x-forwarded-for'] ?? '');
+  const hops = raw.split(',').map(part => part.trim()).filter(Boolean);
+  if (hops.length >= 2) return hops[hops.length - 2];
+  if (hops.length === 1) return hops[0];
+  return String(remoteAddress || '');
+}
+
 export function installTrafficRecorder(http, recorder = defaultRecorder()) {
   globalThis.__leselautTraffic = recorder;
   const original = http.createServer;
@@ -129,8 +142,8 @@ export function installTrafficRecorder(http, recorder = defaultRecorder()) {
         const started = process.hrtime.bigint();
         response.once('finish', () => {
           try {
-            const forwarded = String(request.headers['x-forwarded-for'] ?? '').split(',')[0].trim();
-            recorder.record({ method: request.method, url: request.url, status: response.statusCode, durationMs: Number(process.hrtime.bigint() - started) / 1e6, address: forwarded || request.socket?.remoteAddress || '', userAgent: String(request.headers['user-agent'] ?? '') });
+            const address = clientAddress(request.headers, request.socket?.remoteAddress);
+            recorder.record({ method: request.method, url: request.url, status: response.statusCode, durationMs: Number(process.hrtime.bigint() - started) / 1e6, address, userAgent: String(request.headers['user-agent'] ?? '') });
           } catch { /* never affect serving */ }
         });
         return handler.call(this, request, response);

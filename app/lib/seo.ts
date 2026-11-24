@@ -5,13 +5,18 @@ export const SITE_NAME = 'LeseLaut';
 export const SITE_DESCRIPTION = 'Learn German with free A1–B2 stories, audio, English translations, vocabulary and grammar practice. Read at your level and save your progress.';
 export const absoluteUrl = (path = '/') => new URL(path, SITE_ORIGIN).href;
 
-export function pageMetadata(title: string, description: string, path: string): Metadata {
+export type PageImage = { url: string; width?: number; height?: number; alt?: string };
+
+export function pageMetadata(title: string, description: string, path: string, image?: PageImage): Metadata {
   const url = absoluteUrl(path), fullTitle = `${title} | ${SITE_NAME}`;
+  const ogImage = image
+    ? { url: absoluteUrl(image.url), width: image.width ?? 1024, height: image.height ?? 1024, alt: image.alt ?? fullTitle }
+    : { url: absoluteUrl('/social-card.png'), width: 1200, height: 630, alt: 'LeseLaut — German through stories' };
   return {
     title: { absolute: fullTitle }, description, alternates: { canonical: url },
     openGraph: { type: 'website', locale: 'en_US', siteName: SITE_NAME, title: fullTitle, description, url,
-      images: [{ url: absoluteUrl('/social-card.png'), width: 1200, height: 630, alt: 'LeseLaut — German through stories' }] },
-    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [absoluteUrl('/social-card.png')] },
+      images: [ogImage] },
+    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImage.url] },
   };
 }
 

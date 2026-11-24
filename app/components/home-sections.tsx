@@ -1,9 +1,12 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, BookOpen, GraduationCap, Languages, PenLine } from 'lucide-react';
+import { ArrowUpRight, BookMarked, BookOpen, GraduationCap, Languages, PenLine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_SYNCED_EVENT } from '@/app/lib/cloud-progress-keys';
+import { readBookBookmark, BOOK_PAGE_COUNT } from '@/app/lib/book-bookmark';
+import { BOOK_CATALOG, type BookCatalogEntry } from '@/app/lib/book-catalog';
+import { TopicArt } from './topic-art';
 import { readCourseProgress, readGrammarProgress, VOCABULARY_LEGACY_STORAGE_KEYS, type VocabularyProgress } from '@/app/lib/progress-sync';
 import { grammarOverview, type HomeGrammarLesson, type VocabularyOverview } from '@/app/lib/home-progress';
 import type { ReadingSummary } from '@/app/lib/reading-path';
@@ -23,12 +26,17 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
   const [grammar, setGrammar] = useState<ReturnType<typeof grammarOverview> | null>(null), [grammarError, setGrammarError] = useState(false);
   const [owner, setOwner] = useState<string | null | undefined>(undefined);
   const [words, setWords] = useState<VocabularyOverview | null>(null), [wordError, setWordError] = useState(''), [retry, setRetry] = useState(0);
+  const [activeBook, setActiveBook] = useState<{ book: BookCatalogEntry; page: number } | null>(null);
   useEffect(() => {
     function refresh() {
       try {
         setOwner(localStorage.getItem(CLOUD_PROGRESS_OWNER_STORAGE_KEY));
         setGrammar(grammarOverview(readGrammarProgress(localStorage), readCourseProgress(localStorage), grammarLessons));
         setGrammarError(false);
+        const bookmarks = BOOK_CATALOG.map(book => ({ book, mark: readBookBookmark(localStorage, book.id) }))
+          .filter((entry): entry is { book: BookCatalogEntry; mark: { page: number; updatedAt: number } } => Boolean(entry.mark))
+          .sort((a, b) => b.mark.updatedAt - a.mark.updatedAt);
+        setActiveBook(bookmarks[0] ? { book: bookmarks[0].book, page: bookmarks[0].mark.page } : null);
       } catch { setGrammar(null); setGrammarError(true); }
     }
     const frame = requestAnimationFrame(refresh);
@@ -66,6 +74,11 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
         <div className="home-section-art"><img src="/illustrations/reading-room.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" /></div>
         <div className="home-section-copy"><span className="home-section-label"><BookOpen aria-hidden="true" /> Read & listen · A1–B2</span><h3 id="home-stories-title">Stories</h3><p>Follow everyday life in German with narration, English translations and comprehension questions.</p></div>
         <div className="home-section-progress"><div className="home-section-stat"><strong>{storiesReady ? number(storyCount) : '…'}</strong><span>of {number(stories.length)} stories completed</span></div><Meter value={storiesReady ? storyCount : 0} total={stories.length} label={`Stories: ${storyCount} of ${stories.length} completed`} /><div className="home-section-footer"><span>Save useful words as you read.</span><Link href="/stories">Explore stories <ArrowUpRight aria-hidden="true" /></Link></div></div>
+      </article>
+      <article className="home-section-card" data-area="books" aria-labelledby="home-books-title">
+        <div className="home-section-art"><TopicArt kind={activeBook?.book.artKind ?? 'learn'} /></div>
+        <div className="home-section-copy"><span className="home-section-label"><BookMarked aria-hidden="true" /> Graded novels · A1–B1</span><h3 id="home-books-title">Books</h3><p>{activeBook ? `Continue “${activeBook.book.title}” (${activeBook.book.level}) right where you left off.` : 'Three 200-page German readers with audio, English help and tap-to-save words.'}</p></div>
+        <div className="home-section-progress"><div className="home-section-stat"><strong>{activeBook ? number(activeBook.page) : '3'}</strong><span>{activeBook ? `of ${BOOK_PAGE_COUNT} pages · ${activeBook.book.level}` : 'full 200-page novels · A1, A2 & B1'}</span></div><Meter value={activeBook ? activeBook.page : 0} total={BOOK_PAGE_COUNT} label={activeBook ? `${activeBook.book.title}: page ${activeBook.page} of ${BOOK_PAGE_COUNT}` : 'Books: 0 of 200 pages'} /><div className="home-section-footer"><span>{activeBook ? activeBook.book.englishTitle : 'About one minute per page.'}</span><Link href={activeBook ? `${activeBook.book.path}/${activeBook.page}` : '/books'}>{activeBook ? `Continue page ${activeBook.page}` : 'Explore books'} <ArrowUpRight aria-hidden="true" /></Link></div></div>
       </article>
       <article className="home-section-card" data-area="grammar" aria-labelledby="home-grammar-title">
         <div className="home-section-art"><img src="/illustrations/home-grammar.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async" /></div>

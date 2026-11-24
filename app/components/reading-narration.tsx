@@ -10,17 +10,53 @@ function clock(seconds: number) {
   return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
 }
 
-const NarrationContext = createContext<{ registerText: (element: HTMLElement | null) => void; setActiveWord: (word: number) => void }>({ registerText: () => {}, setActiveWord: () => {} });
+const NARRATION_SPEED_KEY = 'leselaut:narration-speed';
+const ALLOWED_SPEEDS = [.75, .85, 1, 1.15, 1.25, 1.5];
+
+export function readSavedNarrationSpeed(): number | null {
+  try {
+    const value = Number(localStorage.getItem(NARRATION_SPEED_KEY));
+    return ALLOWED_SPEEDS.includes(value) ? value : null;
+  } catch { return null; }
+}
+
+export function writeSavedNarrationSpeed(rate: number) {
+  try {
+    if (ALLOWED_SPEEDS.includes(rate)) localStorage.setItem(NARRATION_SPEED_KEY, String(rate));
+  } catch {}
+}
+
+type NarrationContextValue = {
+  registerText: (element: HTMLElement | null) => void;
+  setActiveWord: (word: number) => void;
+  registerSeeker: (seeker: ((wordIndex: number) => void) | null) => void;
+  seekToWord: (wordIndex: number) => void;
+  hasTiming: boolean;
+  setHasTiming: (ready: boolean) => void;
+};
+
+const NarrationContext = createContext<NarrationContextValue>({
+  registerText: () => {},
+  setActiveWord: () => {},
+  registerSeeker: () => {},
+  seekToWord: () => {},
+  hasTiming: false,
+  setHasTiming: () => {},
+});
 
 export function ReadingNarrationProvider({ children }: { children: ReactNode }) {
   const [highlighter] = useState(createNarrationHighlighter);
-  return <NarrationContext.Provider value={highlighter}>{children}</NarrationContext.Provider>;
+  const seekerRef = useRef<((wordIndex: number) => void) | null>(null);
+  const [hasTiming, setHasTiming] = useState(false);
+  const registerSeeker = useCallback((seeker: ((wordIndex: number) => void) | null) => { seekerRef.current = seeker; }, []);
+  const seekToWord = useCallback((wordIndex: number) => { seekerRef.current?.(wordIndex); }, []);
+  return <NarrationContext.Provider value={{ ...highlighter, registerSeeker, seekToWord, hasTiming, setHasTiming }}>{children}</NarrationContext.Provider>;
 }
 
 export function useReadingNarration() { return useContext(NarrationContext); }
 
 export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; asset?: NarrationAsset; onFinished?: () => void }) {
-  const { setActiveWord } = useReadingNarration();
+  const { setActiveWord, registerSeeker, setHasTiming } = useReadingNarration();
   const audio = useRef<HTMLAudioElement>(null);
   const timing = useRef<NarrationTiming | null>(null);
   const frame = useRef(0);
@@ -47,9 +83,37 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
   }, [syncWord]);
 
   useEffect(() => {
-    if (!asset) return;
+    registerSeeker((wordIndex: number) => {
+      const player = audio.current, data = timing.current;
+      if (!player || !data || wordIndex < 0 || wordIndex >= data.starts.length) return;
+      const target = Math.max(0, data.starts[wordIndex]);
+      player.currentTime = target;
+      setPosition(target);
+      syncWord();
+      if (player.paused || player.ended) {
+        player.play().catch(() => setError('The recording could not play. Check your connection and try again.'));
+      }
+    });
+    return () => registerSeeker(null);
+  }, [registerSeeker, syncWord]);
+
+  useEffect(() => {
+    const saved = readSavedNarrationSpeed();
+    if (saved !== null) {
+      setSpeed(saved);
+      if (audio.current) {
+        audio.current.preservesPitch = true;
+        audio.current.defaultPlaybackRate = saved;
+        audio.current.playbackRate = saved;
+      }
+    }
+  }, [storyId]);
+
+  useEffect(() => {
+    if (!asset) { setHasTiming(false); return; }
     const controller = new AbortController();
     timing.current = null;
+    setHasTiming(false);
     fetch(asset.timingSrc, { signal: controller.signal }).then(response => {
       if (!response.ok) throw new Error('Timing unavailable');
       return response.json();
@@ -57,18 +121,20 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
       if (controller.signal.aborted) return;
       if (!validNarrationTiming(data, asset)) throw new Error('Timing does not match this story');
       timing.current = data;
+      setHasTiming(true);
       setTimingError(false);
       syncWord();
-    }).catch(() => { if (!controller.signal.aborted) setTimingError(true); });
-    return () => controller.abort();
-  }, [asset, retry, syncWord]);
+    }).catch(() => { if (!controller.signal.aborted) { setHasTiming(false); setTimingError(true); } });
+    return () => { controller.abort(); setHasTiming(false); };
+  }, [asset, retry, syncWord, setHasTiming]);
 
   useEffect(() => {
     const player = audio.current;
+    const activeRate = readSavedNarrationSpeed() ?? initialSpeed;
     if (player) {
       player.preservesPitch = true;
-      player.defaultPlaybackRate = initialSpeed;
-      player.playbackRate = initialSpeed;
+      player.defaultPlaybackRate = activeRate;
+      player.playbackRate = activeRate;
       if (!player.paused) follow();
     }
     return () => { cancelAnimationFrame(frame.current); player?.pause(); setActiveWord(-1); };
@@ -106,9 +172,10 @@ export function ReadingAudio({ storyId, asset, onFinished }: { storyId: string; 
     <label>Speed <select aria-label="Narration speed" value={speed} onChange={event => {
       const rate = Number(event.target.value);
       setSpeed(rate);
+      writeSavedNarrationSpeed(rate);
       if (audio.current) { audio.current.preservesPitch = true; audio.current.defaultPlaybackRate = rate; audio.current.playbackRate = rate; }
-    }}>{[.75, .85, 1, 1.15, 1.25, 1.5].map(rate => <option key={rate} value={rate}>{rate}×{rate === 1 ? ' · Normal' : ''}</option>)}
-      {![.75, .85, 1, 1.15, 1.25, 1.5].includes(speed) && <option value={speed}>{speed}×</option>}
+    }}>{ALLOWED_SPEEDS.map(rate => <option key={rate} value={rate}>{rate}×{rate === 1 ? ' · Normal' : ''}</option>)}
+      {!ALLOWED_SPEEDS.includes(speed) && <option value={speed}>{speed}×</option>}
     </select></label>
     <Button variant="outline" onClick={() => { if (audio.current) { audio.current.currentTime = Math.max(0, audio.current.currentTime - 5); syncWord(); } }}><Undo2 size={16} aria-hidden="true" />Back 5s</Button>
     <Button variant="outline" onClick={() => { if (audio.current) { audio.current.currentTime = 0; syncWord(); } }}><RotateCcw size={16} aria-hidden="true" />Restart</Button>

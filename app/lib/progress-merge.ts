@@ -6,8 +6,15 @@ import { mergeStoryProgress } from "./story-progress";
 import { mergeBookBookmark } from './book-bookmark';
 import { mergeLearningProgress } from './learning-state';
 import type { CloudProgressScope } from "./cloud-progress-save";
+const UNSAFE_KEYS = new Set(["__proto__", "constructor", "prototype"]);
+const safeKey = (key: string) => !UNSAFE_KEYS.has(key);
+
 function object(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
+}
+
+function safeRecord(value: unknown): Record<string, unknown> {
+  return Object.fromEntries(Object.entries(object(value)).filter(([key]) => safeKey(key)));
 }
 
 function strings(value: unknown) {
@@ -15,12 +22,19 @@ function strings(value: unknown) {
 }
 
 function numbers(value: unknown) {
-  return Object.fromEntries(Object.entries(object(value)).filter((entry): entry is [string, number] => typeof entry[1] === "number" && Number.isFinite(entry[1])));
+  return Object.fromEntries(
+    Object.entries(object(value)).filter(
+      (entry): entry is [string, number] => safeKey(entry[0]) && typeof entry[1] === "number" && Number.isFinite(entry[1]),
+    ),
+  );
 }
 
 function maxNumbers(left: unknown, right: unknown) {
-  const result = { ...numbers(left) };
-  for (const [key, value] of Object.entries(numbers(right))) result[key] = Math.max(result[key] ?? 0, value);
+  const result: Record<string, number> = { ...numbers(left) };
+  for (const [key, value] of Object.entries(numbers(right))) {
+    if (!safeKey(key)) continue;
+    result[key] = Math.max(Object.hasOwn(result, key) ? result[key] : 0, value);
+  }
   return result;
 }
 
@@ -29,8 +43,9 @@ function mergeCourse(local: unknown, remote: unknown) {
   const remoteChapters = object(object(remote).chapters);
   const chapters: Record<string, unknown> = {};
   for (const id of new Set([...Object.keys(remoteChapters), ...Object.keys(localChapters)])) {
-    const a = object(remoteChapters[id]);
-    const b = object(localChapters[id]);
+    if (!safeKey(id)) continue;
+    const a = safeRecord(Object.hasOwn(remoteChapters, id) ? remoteChapters[id] : undefined);
+    const b = safeRecord(Object.hasOwn(localChapters, id) ? localChapters[id] : undefined);
     chapters[id] = {
       ...a,
       ...b,
@@ -55,7 +70,13 @@ function mergeGrammar(local: unknown, remote: unknown) {
   const sets: Record<string, Record<string, number>> = {};
   const remoteSets = object(a.sets);
   const localSets = object(b.sets);
-  for (const id of new Set([...Object.keys(remoteSets), ...Object.keys(localSets)])) sets[id] = maxNumbers(remoteSets[id], localSets[id]);
+  for (const id of new Set([...Object.keys(remoteSets), ...Object.keys(localSets)])) {
+    if (!safeKey(id)) continue;
+    sets[id] = maxNumbers(
+      Object.hasOwn(remoteSets, id) ? remoteSets[id] : undefined,
+      Object.hasOwn(localSets, id) ? localSets[id] : undefined,
+    );
+  }
   return {
     completed: [...new Set([...strings(a.completed), ...strings(b.completed)])],
     scores: maxNumbers(a.scores, b.scores),
