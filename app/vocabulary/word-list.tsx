@@ -71,7 +71,7 @@ export function VocabularyRow({ word, saved, translationVisible, completed, revi
       </button>
       <span className="vocab-word-meta"><span className="vocab-mobile-level">{word.level} · </span>{grammarLabel}</span>
       {word.sourceUrl && <a className="vocab-row-source" href={word.sourceUrl} target="_blank" rel="noreferrer">Dictionary ↗</a>}
-      {saved && <Link className="vocab-row-source" href={saved.source.href}>{saved.source.kind === "book" ? "From your book" : "From your story"} →</Link>}
+      {saved && <Link className="vocab-row-source" href={saved.source.href}>{saved.source.kind === "book" ? "From your book" : saved.source.kind === "course" ? "From your course" : "From your story"} →</Link>}
     </td>
     <td className="vocab-col-translation" id={translationId}>
       {translationVisible ? <span lang="en" className="vocab-translation-text">{word.english.replace(/\s*;\s*|\s+\/\s+/g, "\n")}</span> : <button type="button" className="vocab-show-translation" onClick={onReveal} aria-label={`Show English translation for ${word.german}`}>Show translation</button>}

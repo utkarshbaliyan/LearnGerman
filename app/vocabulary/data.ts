@@ -1,5 +1,6 @@
 import READING_VOCABULARY from "./reading-data.json";
 import B1_STORY_VOCABULARY from "./b1-story-data.json";
+import VIDEO_COURSE_A1 from "./video-course-a1.json";
 import { GLOSSARY } from "@/app/curriculum/a1";
 import { A2_VOCABULARY } from "@/app/vocabulary/a2-data";
 import { buildB1Vocabulary } from "@/app/vocabulary/b1-data";
@@ -487,7 +488,16 @@ function uniqueHeadwords(words: VocabularyWord[]) {
   }
   return [...byHeadword.values()];
 }
-export const ALL_VOCABULARY = uniqueHeadwords([...LEGACY_VOCABULARY, ...B2_LEXICON, ...C1_LEXICON]);
+// Single-word headwords from the A1 video course that the catalogue doesn't have yet. Appended last
+// with their own stable IDs, so no earlier card ID, alias or placement changes.
+const TAKEN_HEADWORDS = new Set([...LEGACY_VOCABULARY, ...B2_LEXICON, ...C1_LEXICON]
+  .flatMap((word) => [word, ...word.progressAliases ?? []]).map((word) => vocabularyHeadwordKey(word.german)));
+export const VIDEO_COURSE_VOCABULARY: VocabularyWord[] = (VIDEO_COURSE_A1 as { german: string; english: string; category: VocabularyCategory }[])
+  .map((word) => ({ id: `vc-a1-${vocabularyHeadwordKey(word.german)}`, german: word.german, english: word.english, category: word.category, level: "A1" as const }))
+  .filter((word) => isStandaloneVocabularyHeadword(word) && !TAKEN_HEADWORDS.has(vocabularyHeadwordKey(word.german))
+    && (TAKEN_HEADWORDS.add(vocabularyHeadwordKey(word.german)), true))
+  .map((word) => ({ ...word, wordClass: vocabularyWordClass(word) }));
+export const ALL_VOCABULARY = uniqueHeadwords([...LEGACY_VOCABULARY, ...B2_LEXICON, ...C1_LEXICON, ...VIDEO_COURSE_VOCABULARY]);
 export const A1_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A1");
 export const EXTENDED_A2_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "A2");
 export const B1_VOCABULARY = ALL_VOCABULARY.filter((word) => word.level === "B1");

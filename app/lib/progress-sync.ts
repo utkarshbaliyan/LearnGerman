@@ -43,7 +43,7 @@ export function readVocabularyRecalls(value: unknown): Record<string, Vocabulary
   }).sort((a, b) => (a[1] as VocabularyRecallAttempt).at - (b[1] as VocabularyRecallAttempt).at || String(a[0]).localeCompare(String(b[0]))).slice(-1000)) as Record<string, VocabularyRecallAttempt>;
 }
 
-export type WordSource = { kind: 'story' | 'book'; id: string; title: string; href: string; level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' };
+export type WordSource = { kind: 'story' | 'book' | 'course'; id: string; title: string; href: string; level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' };
 export type CollectedVocabularyWord = { german: string; english: string; context: string; source: WordSource; createdAt: number; updatedAt: number; progressByHeadword: true };
 export type CollectWordInput = Omit<CollectedVocabularyWord, 'createdAt' | 'updatedAt' | 'progressByHeadword'>;
 export const MAX_COLLECTED_WORDS = 500;
@@ -54,8 +54,8 @@ export function readCollectedWords(value: unknown): Record<string, CollectedVoca
     if (!raw || typeof raw !== 'object') return [];
     const w = raw as CollectedVocabularyWord, s = w.source;
     if (typeof w.german !== 'string' || !w.german.trim() || w.german.length > 100 || typeof w.english !== 'string' || !w.english.trim() || w.english.length > 600 || typeof w.context !== 'string' || w.context.length > 600
-      || !s || !['story', 'book'].includes(s.kind) || typeof s.id !== 'string' || !/^[a-zA-Z0-9_-]{1,200}$/.test(s.id) || typeof s.title !== 'string' || s.title.length > 200
-      || typeof s.href !== 'string' || !/^\/(?:stories\/[a-zA-Z0-9_-]+|books\/(?:a1|a2|b1)\/[a-z0-9-]+\/[1-9]\d*)$/.test(s.href) || !['A1', 'A2', 'B1', 'B2', 'C1'].includes(s.level)
+      || !s || !['story', 'book', 'course'].includes(s.kind) || typeof s.id !== 'string' || !/^[a-zA-Z0-9_-]{1,200}$/.test(s.id) || typeof s.title !== 'string' || s.title.length > 200
+      || typeof s.href !== 'string' || !/^\/(?:stories\/[a-zA-Z0-9_-]+|books\/(?:a1|a2|b1)\/[a-z0-9-]+\/[1-9]\d*|video-course\/a1\/episode-[1-9]\d?)$/.test(s.href) || !['A1', 'A2', 'B1', 'B2', 'C1'].includes(s.level)
       || ![w.createdAt, w.updatedAt].every(n => Number.isSafeInteger(n) && n >= 0) || key !== vocabularyCardKey(w)) return [];
     return [[key, { german: w.german, english: w.english, context: w.context, source: { kind: s.kind, id: s.id, title: s.title, href: s.href, level: s.level }, createdAt: w.createdAt, updatedAt: w.updatedAt, progressByHeadword: true }]];
   }).sort((a, b) => (a[1] as CollectedVocabularyWord).updatedAt - (b[1] as CollectedVocabularyWord).updatedAt || String(a[0]).localeCompare(String(b[0])))) as Record<string, CollectedVocabularyWord>;

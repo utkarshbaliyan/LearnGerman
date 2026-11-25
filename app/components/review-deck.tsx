@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { playVocabularyWord } from '@/app/lib/vocabulary-audio';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Volume2, X } from 'lucide-react';
@@ -23,10 +24,8 @@ function ReviewFlashcard({ word, options, busy, onAction }: {
 }) {
   const [revealed, setRevealed] = useState(false), [audioError, setAudioError] = useState('');
   function listen() {
-    if (!('speechSynthesis' in window)) { setAudioError('Pronunciation is unavailable in this browser.'); return; }
-    const voice = new SpeechSynthesisUtterance(word.german); voice.lang = 'de-DE';
-    voice.onerror = () => setAudioError('Pronunciation is unavailable in this browser.');
-    window.speechSynthesis.cancel(); window.speechSynthesis.speak(voice);
+    setAudioError('');
+    void playVocabularyWord(word).then(ok => { if (!ok) setAudioError('Pronunciation is unavailable in this browser.'); });
   }
   return <section className="review-flashcard" aria-label="Review flashcard">
     <span className="reading-eyebrow">Recall the German before turning the card</span>
@@ -149,7 +148,7 @@ export function ReviewDeck({ compact = false, initialOpen = false, mistakeDue, r
       </section> : <section className="review-deck-box" aria-label="Words in your review deck">
         <div className="review-deck-box-heading"><div><h3>Words in Review <span>{loading ? '…' : pool.length}</span></h3><p>One deck across the word library, books and stories.</p></div><div className="learning-actions">{resumable && <Button variant="outline" disabled={!canAct} onClick={openRound}>Resume flashcards</Button>}<Button disabled={!canAct || !pool.length} onClick={() => { setActionError(''); setStage('size'); }}>Practice</Button></div></div>
         {loading && <p role="status">Loading your review words…</p>}
-        {pool.length ? <><label className="review-deck-search">Find a review word<input type="search" maxLength={100} placeholder="Search your review deck" value={query} onChange={e => setQuery(e.target.value)} /></label><ul className="review-deck-words">{matches.map(word => <li key={word.key}><div><strong lang="de">{word.german}</strong><span>{word.english}</span><small>{word.sourceKind === 'vocabulary' ? 'Word library' : word.sourceKind === 'book' ? 'Book' : 'Story'}{word.sourceTitle ? ` · ${word.sourceTitle}` : ''}</small></div><Button variant="outline" size="sm" disabled={!canAct} aria-label={`Mark ${word.german} as read`} onClick={() => markRead(word)}>Mark as read</Button></li>)}</ul>{!matches.length && <p>No matching review words. Change your search.</p>}</> : !loading && !loadError && <div className="learning-empty"><p>Your review deck is empty. Choose Review on a word-library card, or select words in a story or book and choose Add to review.</p><div className="learning-actions"><Link href="/vocabulary">Open word library →</Link><Link href="/stories">Read stories →</Link><Link href="/books">Read books →</Link></div></div>}
+        {pool.length ? <><label className="review-deck-search">Find a review word<input type="search" maxLength={100} placeholder="Search your review deck" value={query} onChange={e => setQuery(e.target.value)} /></label><ul className="review-deck-words">{matches.map(word => <li key={word.key}><div><strong lang="de">{word.german}</strong><span>{word.english}</span><small>{word.sourceKind === 'vocabulary' ? 'Word library' : word.sourceKind === 'book' ? 'Book' : word.sourceKind === 'course' ? 'Video course' : 'Story'}{word.sourceTitle ? ` · ${word.sourceTitle}` : ''}</small></div><Button variant="outline" size="sm" disabled={!canAct} aria-label={`Mark ${word.german} as read`} onClick={() => markRead(word)}>Mark as read</Button></li>)}</ul>{!matches.length && <p>No matching review words. Change your search.</p>}</> : !loading && !loadError && <div className="learning-empty"><p>Your review deck is empty. Choose Review on a word-library card, or select words in a story or book and choose Add to review.</p><div className="learning-actions"><Link href="/vocabulary">Open word library →</Link><Link href="/stories">Read stories →</Link><Link href="/books">Read books →</Link></div></div>}
         <p className="review-rating-note">“Mark as read” removes a word you know from Review. You can add it again any time.</p>
       </section>}
       <p className="learning-save-note">Your words, schedules and unfinished round save here. Sign in to sync across devices.</p>

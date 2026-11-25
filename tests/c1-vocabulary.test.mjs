@@ -26,10 +26,10 @@ test('release checks and German case normalization remain valid for the complete
 
 test('C1 adds 10000 dictionary lemmas while every earlier card and alias remains unchanged',()=>{
   assert.equal(words.length,10000);
-  assert.equal(data.ALL_VOCABULARY.length,17397);
-  assert.equal(hash(JSON.stringify(data.ALL_VOCABULARY.filter(w=>w.level!=='C1'))),'d7ef2eeab115b60cc15d72b32da658d130a32e7ffd0d71975ce7767b58a11db9');
-  assert.equal(new Set(data.ALL_VOCABULARY.map(w=>vocabularyHeadwordKey(w.german))).size,17397);
-  assert.equal(new Set(data.ALL_VOCABULARY.map(w=>w.id)).size,17397);
+  assert.equal(data.ALL_VOCABULARY.length,17397+data.VIDEO_COURSE_VOCABULARY.length);
+  assert.equal(hash(JSON.stringify(data.ALL_VOCABULARY.filter(w=>w.level!=='C1'&&!w.id.startsWith('vc-')))),'d7ef2eeab115b60cc15d72b32da658d130a32e7ffd0d71975ce7767b58a11db9');
+  assert.equal(new Set(data.ALL_VOCABULARY.map(w=>vocabularyHeadwordKey(w.german))).size,data.ALL_VOCABULARY.length);
+  assert.equal(new Set(data.ALL_VOCABULARY.map(w=>w.id)).size,data.ALL_VOCABULARY.length);
   const previous=new Set(data.ALL_VOCABULARY.filter(w=>w.level!=='C1').flatMap(w=>[w,...w.progressAliases??[]]).map(w=>vocabularyHeadwordKey(w.german)));
   assert.ok(words.every(w=>!previous.has(vocabularyHeadwordKey(w.german))));
   assert.ok(words.every(w=>w.id===`lexicon-c1-${vocabularyHeadwordKey(w.german)}`));
