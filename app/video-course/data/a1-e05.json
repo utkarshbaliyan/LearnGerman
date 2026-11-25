@@ -1,0 +1,1501 @@
+{
+ "episode": 5,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which word does Frau Weber say?",
+     "at": "0:49",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Bahnhof",
+        "der Beruf",
+        "der Baum"
+       ],
+       "answer": "der Bahnhof",
+       "audio": {
+        "who": "T",
+        "text": "der Bahnhof"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "das Hotel",
+        "der Hafen",
+        "das Haus"
+       ],
+       "answer": "das Hotel",
+       "audio": {
+        "who": "T",
+        "text": "das Hotel"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "das Wetter",
+        "der Wind",
+        "der Winter"
+       ],
+       "answer": "das Wetter",
+       "audio": {
+        "who": "T",
+        "text": "das Wetter"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Wind",
+        "das Wetter",
+        "die Welt"
+       ],
+       "answer": "der Wind",
+       "audio": {
+        "who": "T",
+        "text": "der Wind"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "draußen",
+        "dreißig",
+        "drinnen"
+       ],
+       "answer": "draußen",
+       "audio": {
+        "who": "T",
+        "text": "draußen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Post",
+        "der Park",
+        "der Platz"
+       ],
+       "answer": "die Post",
+       "audio": {
+        "who": "T",
+        "text": "die Post"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Kirche",
+        "der Kiosk",
+        "das Kino"
+       ],
+       "answer": "die Kirche",
+       "audio": {
+        "who": "T",
+        "text": "die Kirche"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Brücke",
+        "das Büro",
+        "die Blume"
+       ],
+       "answer": "die Brücke",
+       "audio": {
+        "who": "T",
+        "text": "die Brücke"
+       }
+      }
+     ]
+    },
+    {
+     "id": "places",
+     "title": "Places in the city",
+     "instructions": "Pick the right German place for each situation.",
+     "at": "0:49",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Trains arrive and leave here: der ___",
+       "options": [
+        "Bahnhof",
+        "Hafen",
+        "Supermarkt"
+       ],
+       "answer": "Bahnhof"
+      },
+      {
+       "type": "choice",
+       "prompt": "You send a letter or parcel here: die ___",
+       "options": [
+        "Post",
+        "Bank",
+        "Kirche"
+       ],
+       "answer": "Post"
+      },
+      {
+       "type": "choice",
+       "prompt": "You sleep here on holiday: das ___",
+       "options": [
+        "Hotel",
+        "Rathaus",
+        "Geschäft"
+       ],
+       "answer": "Hotel"
+      },
+      {
+       "type": "choice",
+       "prompt": "You cross a river on this: die ___",
+       "options": [
+        "Brücke",
+        "Straße",
+        "Blume"
+       ],
+       "answer": "Brücke"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ships arrive here: der ___",
+       "options": [
+        "Hafen",
+        "Bahnhof",
+        "Kiosk"
+       ],
+       "answer": "Hafen"
+      },
+      {
+       "type": "choice",
+       "prompt": "The mayor works here: das ___",
+       "options": [
+        "Rathaus",
+        "Krankenhaus",
+        "Haus"
+       ],
+       "answer": "Rathaus"
+      },
+      {
+       "type": "choice",
+       "prompt": "Very small, not a big city: das ___",
+       "options": [
+        "Dorf",
+        "Meer",
+        "Geschäft"
+       ],
+       "answer": "Dorf"
+      },
+      {
+       "type": "choice",
+       "prompt": "Big green trees and flowers in the city: der ___",
+       "options": [
+        "Park",
+        "Platz",
+        "Kiosk"
+       ],
+       "answer": "Park"
+      }
+     ]
+    },
+    {
+     "id": "weather-time",
+     "title": "Weather, seasons & months",
+     "instructions": "Weather words, the 4 seasons and the 12 months.",
+     "at": "3:04",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Sunny day: Die Sonne ___.",
+       "options": [
+        "scheint",
+        "regnet",
+        "spielt"
+       ],
+       "answer": "scheint"
+      },
+      {
+       "type": "choice",
+       "prompt": "Take an umbrella: Es ___.",
+       "options": [
+        "regnet",
+        "scheint",
+        "wohnt"
+       ],
+       "answer": "regnet"
+      },
+      {
+       "type": "choice",
+       "prompt": "25 °C: Es sind fünfundzwanzig ___.",
+       "options": [
+        "Grad",
+        "Winde",
+        "Monate"
+       ],
+       "answer": "Grad"
+      },
+      {
+       "type": "choice",
+       "prompt": "Not inside: ___ scheint die Sonne.",
+       "options": [
+        "Draußen",
+        "Oft",
+        "Lang"
+       ],
+       "answer": "Draußen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Frühling, Sommer, ___, Winter",
+       "options": [
+        "Herbst",
+        "März",
+        "August"
+       ],
+       "answer": "Herbst"
+      },
+      {
+       "type": "choice",
+       "prompt": "Januar, Februar, ___",
+       "options": [
+        "März",
+        "Mai",
+        "April"
+       ],
+       "answer": "März"
+      },
+      {
+       "type": "choice",
+       "prompt": "September, Oktober, November, ___",
+       "options": [
+        "Dezember",
+        "August",
+        "Januar"
+       ],
+       "answer": "Dezember"
+      }
+     ]
+    },
+    {
+     "id": "opposites",
+     "title": "Match · adjectives & opposites",
+     "instructions": "Tap each German word, then tap its opposite or meaning.",
+     "at": "2:21",
+     "items": [
+      {
+       "type": "match",
+       "prompt": "City adjectives & weather",
+       "pairs": [
+        [
+         "groß",
+         "klein (opposite)"
+        ],
+        [
+         "lang",
+         "kurz (opposite)"
+        ],
+        [
+         "hoch",
+         "tall / high"
+        ],
+        [
+         "bekannt",
+         "well-known"
+        ],
+        [
+         "draußen",
+         "outside"
+        ],
+        [
+         "schön",
+         "beautiful / nice"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "articles",
+     "title": "Sort · der, die or das?",
+     "instructions": "Sort each city or nature noun into its article bucket.",
+     "at": "0:49",
+     "items": [
+      {
+       "type": "sort",
+       "prompt": "Place every noun in the right bucket:",
+       "buckets": [
+        {
+         "id": "der",
+         "label": "der",
+         "tone": "sky"
+        },
+        {
+         "id": "die",
+         "label": "die",
+         "tone": "peach"
+        },
+        {
+         "id": "das",
+         "label": "das",
+         "tone": "sage"
+        }
+       ],
+       "cards": [
+        {
+         "text": "Bahnhof",
+         "bucket": "der",
+         "note": "train station"
+        },
+        {
+         "text": "Post",
+         "bucket": "die",
+         "note": "post office"
+        },
+        {
+         "text": "Hotel",
+         "bucket": "das",
+         "note": "hotel"
+        },
+        {
+         "text": "See",
+         "bucket": "der",
+         "note": "lake"
+        },
+        {
+         "text": "Straße",
+         "bucket": "die",
+         "note": "street"
+        },
+        {
+         "text": "Meer",
+         "bucket": "das",
+         "note": "sea"
+        },
+        {
+         "text": "Kirche",
+         "bucket": "die",
+         "note": "church"
+        },
+        {
+         "text": "Park",
+         "bucket": "der",
+         "note": "park"
+        },
+        {
+         "text": "Wetter",
+         "bucket": "das",
+         "note": "weather"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "at": "0:49",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "train station (with article)",
+       "answer": "der Bahnhof"
+      },
+      {
+       "type": "type",
+       "prompt": "street (with article)",
+       "answer": "die Straße"
+      },
+      {
+       "type": "type",
+       "prompt": "village (with article)",
+       "answer": "das Dorf"
+      },
+      {
+       "type": "type",
+       "prompt": "weather (with article)",
+       "answer": "das Wetter"
+      },
+      {
+       "type": "type",
+       "prompt": "sun (with article)",
+       "answer": "die Sonne"
+      },
+      {
+       "type": "type",
+       "prompt": "to rain",
+       "answer": "regnen"
+      },
+      {
+       "type": "type",
+       "prompt": "to shine",
+       "answer": "scheinen"
+      },
+      {
+       "type": "type",
+       "prompt": "outside",
+       "answer": "draußen"
+      },
+      {
+       "type": "type",
+       "prompt": "beautiful",
+       "answer": "schön"
+      },
+      {
+       "type": "type",
+       "prompt": "well-known",
+       "answer": "bekannt"
+      }
+     ]
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "More sightseeing and weather words. Learn them with the bonus flashcards above.",
+     "bonus": true,
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You pick up a city map here: die ___",
+       "options": [
+        "Touristeninformation",
+        "Bibliothek",
+        "Altstadt"
+       ],
+       "answer": "Touristeninformation",
+       "note": "tourist information"
+      },
+      {
+       "type": "choice",
+       "prompt": "A paper map of the city: der ___",
+       "options": [
+        "Stadtplan",
+        "Fluss",
+        "Turm"
+       ],
+       "answer": "Stadtplan",
+       "note": "city map"
+      },
+      {
+       "type": "choice",
+       "prompt": "The historic centre of a city: die ___",
+       "options": [
+        "Altstadt",
+        "Bibliothek",
+        "Markt"
+       ],
+       "answer": "Altstadt",
+       "note": "old town"
+      },
+      {
+       "type": "choice",
+       "prompt": "A king or queen lived here: das ___",
+       "options": [
+        "Schloss",
+        "Stadion",
+        "Dorf"
+       ],
+       "answer": "Schloss",
+       "note": "castle"
+      },
+      {
+       "type": "choice",
+       "prompt": "You borrow books here: die ___",
+       "options": [
+        "Bibliothek",
+        "Altstadt",
+        "Touristeninformation"
+       ],
+       "answer": "Bibliothek",
+       "note": "library"
+      },
+      {
+       "type": "choice",
+       "prompt": "Football matches happen here: das ___",
+       "options": [
+        "Stadion",
+        "Schloss",
+        "Geschäft"
+       ],
+       "answer": "Stadion",
+       "note": "stadium"
+      },
+      {
+       "type": "choice",
+       "prompt": "White flakes in winter: Es ___.",
+       "options": [
+        "schneit",
+        "scheint",
+        "regnet"
+       ],
+       "answer": "schneit",
+       "note": "schneien = to snow"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lots of grey clouds in the sky: Es ist ___.",
+       "options": [
+        "bewölkt",
+        "heiß",
+        "bekannt"
+       ],
+       "answer": "bewölkt",
+       "note": "cloudy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "der / das → ein / kein · die → eine / keine · Plural: no ein, negation is always keine. Never say nicht ein — always use kein / keine.",
+   "sections": [
+    {
+     "id": "ein-kein",
+     "title": "ein / eine · kein / keine",
+     "instructions": "Write ein, eine, kein or keine.",
+     "at": "5:16",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Bahnhof.",
+       "answer": "ein",
+       "hint": "der Bahnhof"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Hotel.",
+       "answer": "ein",
+       "hint": "das Hotel"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Kirche.",
+       "answer": "eine",
+       "hint": "die Kirche"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Post.",
+       "answer": "eine",
+       "hint": "die Post"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Park, das ist ein Platz.",
+       "answer": "kein",
+       "hint": "der Park (not a)"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Hotel, das ist das Rathaus.",
+       "answer": "kein",
+       "hint": "das Hotel (not a)"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist",
+       "after": "Kirche, das ist eine Bank.",
+       "answer": "keine",
+       "hint": "die Kirche (not a)"
+      },
+      {
+       "type": "gap",
+       "before": "Das sind",
+       "after": "Parks.",
+       "answer": "keine",
+       "hint": "Plural (no)"
+      },
+      {
+       "type": "gap",
+       "before": "Das sind",
+       "after": "Blumen.",
+       "answer": "keine",
+       "hint": "Plural (no)"
+      },
+      {
+       "type": "gap",
+       "before": "Im Sommer ist",
+       "after": "Regen!",
+       "answer": "kein",
+       "hint": "der Regen (no)"
+      }
+     ]
+    },
+    {
+     "id": "choose-article",
+     "title": "ein, eine, kein or keine?",
+     "instructions": "Pick the correct German sentence.",
+     "at": "5:16",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "That is not a hotel.",
+       "options": [
+        "Das ist kein Hotel.",
+        "Das ist nicht ein Hotel.",
+        "Das ist keine Hotel."
+       ],
+       "answer": "Das ist kein Hotel.",
+       "note": "Never nicht ein — always kein!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Is that a church?",
+       "options": [
+        "Ist das eine Kirche?",
+        "Ist das ein Kirche?",
+        "Ist das kein Kirche?"
+       ],
+       "answer": "Ist das eine Kirche?"
+      },
+      {
+       "type": "choice",
+       "prompt": "That is not a train station.",
+       "options": [
+        "Das ist kein Bahnhof.",
+        "Das ist keine Bahnhof.",
+        "Das ist nicht ein Bahnhof."
+       ],
+       "answer": "Das ist kein Bahnhof."
+      },
+      {
+       "type": "choice",
+       "prompt": "Those are not trees (Plural).",
+       "options": [
+        "Das sind keine Bäume.",
+        "Das sind kein Bäume.",
+        "Das sind ein Bäume."
+       ],
+       "answer": "Das sind keine Bäume."
+      },
+      {
+       "type": "choice",
+       "prompt": "In summer the city is very nice.",
+       "options": [
+        "Im Sommer ist die Stadt sehr schön.",
+        "Am Sommer ist die Stadt sehr schön.",
+        "In Sommer die Stadt ist sehr schön."
+       ],
+       "answer": "Im Sommer ist die Stadt sehr schön.",
+       "note": "Seasons and months take im."
+      },
+      {
+       "type": "choice",
+       "prompt": "What's the weather like?",
+       "options": [
+        "Wie ist das Wetter?",
+        "Was ist das Wetter?",
+        "Wer ist das Wetter?"
+       ],
+       "answer": "Wie ist das Wetter?"
+      }
+     ]
+    },
+    {
+     "id": "talk",
+     "title": "Ask them",
+     "instructions": "Look at who it is, then write the question. du or Sie?",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Ask her if that is a church.",
+       "answer": "Ist das eine Kirche?",
+       "image": "yuki"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him what the weather is like today.",
+       "answer": "Wie ist das Wetter heute?",
+       "image": "mateo"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she knows the town hall.",
+       "answer": "Kennen Sie das Rathaus?",
+       "image": "weber"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him if Munich is big.",
+       "answer": "Ist München groß?",
+       "image": "arjun"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if the sun is shining.",
+       "answer": "Scheint die Sonne?",
+       "image": "amara"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if that is the train station.",
+       "answer": "Ist das der Bahnhof?",
+       "image": "schulz"
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "at": "6:51",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Das ist nicht ein Hotel.",
+       "answer": "Das ist kein Hotel."
+      },
+      {
+       "type": "fix",
+       "wrong": "Das ist ein Kirche.",
+       "answer": "Das ist eine Kirche."
+      },
+      {
+       "type": "fix",
+       "wrong": "Das ist keine Bahnhof.",
+       "answer": "Das ist kein Bahnhof."
+      },
+      {
+       "type": "fix",
+       "wrong": "Das sind kein Blumen.",
+       "answer": "Das sind keine Blumen."
+      },
+      {
+       "type": "fix",
+       "wrong": "Ist das eine Rathaus?",
+       "answer": "Ist das ein Rathaus?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Am Sommer scheint die Sonne.",
+       "answer": "Im Sommer scheint die Sonne."
+      },
+      {
+       "type": "fix",
+       "wrong": "Im Sommer die Stadt ist schön.",
+       "answer": "Im Sommer ist die Stadt schön."
+      }
+     ]
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order. Remember: time first? The verb stays second!",
+     "at": "7:37",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "Kirche",
+        "eine",
+        "das",
+        "Ist"
+       ],
+       "answer": "Ist das eine Kirche?",
+       "en": "Is that a church?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "keine",
+        "ist",
+        "Das",
+        "Kirche"
+       ],
+       "answer": "Das ist keine Kirche.",
+       "en": "That is not a church."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "ist",
+        "schön",
+        "Im Sommer",
+        "die Stadt",
+        "sehr"
+       ],
+       "answer": "Im Sommer ist die Stadt sehr schön.",
+       "en": "In summer the city is very beautiful."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "scheint",
+        "Die",
+        "draußen",
+        "Sonne"
+       ],
+       "answer": "Die Sonne scheint draußen.",
+       "en": "The sun is shining outside."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "ist",
+        "Das",
+        "Hotel",
+        "kein"
+       ],
+       "answer": "Das ist kein Hotel.",
+       "en": "That is not a hotel."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "das",
+        "ist",
+        "Wetter",
+        "Wie"
+       ],
+       "answer": "Wie ist das Wetter?",
+       "en": "What is the weather like?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "In the exam you read short signs in the city and listen to short descriptions of places and weather. Watch out for ein / kein and geschlossen / offen.",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "What is the building really?",
+       "options": [
+        "the town hall",
+        "a church",
+        "a hotel"
+       ],
+       "answer": "the town hall",
+       "audio": {
+        "who": "Y",
+        "text": "Nein, das ist keine Kirche, das ist das Rathaus."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What is NOT a hotel?",
+       "options": [
+        "the post office",
+        "the station",
+        "the park"
+       ],
+       "answer": "the post office",
+       "audio": {
+        "who": "N",
+        "text": "Nein, Arjun! Das ist kein Hotel, das ist die Post!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What is the weather like today?",
+       "options": [
+        "sunny, 20 degrees",
+        "rainy, 10 degrees",
+        "cold, 0 degrees"
+       ],
+       "answer": "sunny, 20 degrees",
+       "audio": {
+        "who": "M",
+        "text": "Wie ist das Wetter heute? Die Sonne scheint! Es sind zwanzig Grad!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What is the weather like in autumn?",
+       "options": [
+        "often rainy and windy",
+        "sunny and 30 degrees",
+        "cold, 0 degrees"
+       ],
+       "answer": "often rainy and windy",
+       "audio": {
+        "who": "A",
+        "text": "Im Herbst regnet es oft, und es ist Wind draußen."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What does Yuki ask for at the tourist information?",
+       "options": [
+        "a city map",
+        "a hotel",
+        "a train ticket"
+       ],
+       "answer": "a city map",
+       "audio": {
+        "who": "Y",
+        "text": "Guten Tag! Ein Stadtplan, bitte!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What are the two well-known places Frau Schulz mentions?",
+       "options": [
+        "the old town and the station",
+        "the lake and the sea",
+        "the school and the hospital"
+       ],
+       "answer": "the old town and the station",
+       "audio": {
+        "who": "S",
+        "text": "Ja, gern! Hier ist der Stadtplan. Die Altstadt und der Bahnhof sind sehr bekannt."
+       }
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type it.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Das ist der Bahnhof.",
+       "audio": {
+        "who": "T",
+        "text": "Das ist der Bahnhof."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ist das eine Kirche?",
+       "audio": {
+        "who": "T",
+        "text": "Ist das eine Kirche?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Das ist kein Hotel.",
+       "audio": {
+        "who": "T",
+        "text": "Das ist kein Hotel."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Im Sommer ist die Stadt sehr schön.",
+       "audio": {
+        "who": "T",
+        "text": "Im Sommer ist die Stadt sehr schön."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Wie ist das Wetter? Die Sonne scheint.",
+       "audio": {
+        "who": "T",
+        "text": "Wie ist das Wetter? Die Sonne scheint."
+       }
+      }
+     ]
+    },
+    {
+     "id": "roleplay",
+     "title": "Roleplay · City walk & Tourist Info",
+     "instructions": "Play each clip and choose the natural German reply.",
+     "at": "8:25",
+     "items": [
+      {
+       "type": "chat",
+       "title": "Stadtzentrum München",
+       "setting": "Touristeninformation & city walk",
+       "turns": [
+        {
+         "who": "S",
+         "text": "Ja, gern! Hier ist der Stadtplan. Die Altstadt und der Bahnhof sind sehr bekannt.",
+         "en": "Yes, gladly! Here is the city map. The old town and the station are very well-known.",
+         "audio": {
+          "who": "S",
+          "text": "Ja, gern! Hier ist der Stadtplan. Die Altstadt und der Bahnhof sind sehr bekannt."
+         },
+         "reply": {
+          "prompt": "Thank Frau Schulz and ask if that building is a church.",
+          "options": [
+           "Vielen Dank! Ist das eine Kirche?",
+           "Vielen Dank! Ist das ein Kirche?",
+           "Vielen Dank! Das ist nicht eine Kirche."
+          ],
+          "answer": "Vielen Dank! Ist das eine Kirche?",
+          "note": "die Kirche → eine Kirche"
+         }
+        },
+        {
+         "who": "Y",
+         "text": "Nein, das ist keine Kirche, das ist das Rathaus.",
+         "en": "No, that is not a church, that is the town hall.",
+         "audio": {
+          "who": "Y",
+          "text": "Nein, das ist keine Kirche, das ist das Rathaus."
+         },
+         "reply": {
+          "prompt": "Agree and ask about the weather today!",
+          "options": [
+           "Aha, schön! Wie ist das Wetter heute?",
+           "Aha, schön! Was ist das Wetter heute?",
+           "Aha, schön! Wer ist das Wetter heute?"
+          ],
+          "answer": "Aha, schön! Wie ist das Wetter heute?"
+         }
+        },
+        {
+         "who": "M",
+         "text": "Wie ist das Wetter heute? Die Sonne scheint! Es sind zwanzig Grad!",
+         "en": "What is the weather like today? The sun is shining! It is 20 degrees!",
+         "audio": {
+          "who": "M",
+          "text": "Wie ist das Wetter heute? Die Sonne scheint! Es sind zwanzig Grad!"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading signs & notices",
+     "instructions": "Read the city guide note. Richtig (true) or falsch (false)?",
+     "text": {
+      "style": "card",
+      "meta": "Bodensee · City Guide",
+      "title": "Willkommen in Lindau!",
+      "body": "Lindau ist klein und sehr schön. Die Stadt liegt am Bodensee. Hier sind ein Hafen, ein Rathaus und ein Bahnhof. Die Altstadt ist sehr bekannt, aber hier ist kein Meer — der Bodensee ist ein See! Im Sommer scheint die Sonne oft und es sind 25 Grad. Die Touristeninformation am Bahnhof ist von Montag bis Samstag offen. Am Sonntag ist sie geschlossen.",
+      "glossary": [
+       [
+        "am Bodensee",
+        "on Lake Constance"
+       ],
+       [
+        "liegt",
+        "is located"
+       ],
+       [
+        "von … bis",
+        "from … to"
+       ],
+       [
+        "offen",
+        "open"
+       ],
+       [
+        "geschlossen",
+        "closed"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Lindau ist groß.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "In Lindau sind ein Hafen und ein Rathaus.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lindau liegt am Meer.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Im Sommer sind es oft 25 Grad.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Die Touristeninformation ist am Bahnhof.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Am Sonntag ist die Touristeninformation offen.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the city card",
+     "instructions": "Read Mateo's note about his hometown, then fill in the city card.",
+     "text": {
+      "style": "chat",
+      "meta": "Mateo · Kursgruppe A1",
+      "title": "Mateos Stadt",
+      "body": "Hallo! Meine Heimatstadt heißt Florianópolis. Sie liegt in Brasilien am Meer.\nDie Stadt ist groß und sehr schön. Hier ist keine U-Bahn, aber hier sind viele Busse und eine Brücke.\nIm Januar ist Sommer — es sind 30 Grad und die Sonne scheint!",
+      "glossary": [
+       [
+        "die Heimatstadt",
+        "hometown"
+       ],
+       [
+        "liegt",
+        "is located"
+       ],
+       [
+        "viele Busse",
+        "many buses"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Stadtkarte",
+       "fields": [
+        {
+         "label": "Stadt",
+         "answer": "Florianópolis"
+        },
+        {
+         "label": "Land",
+         "answer": "Brasilien"
+        },
+        {
+         "label": "Wasser",
+         "answer": "Meer"
+        },
+        {
+         "label": "Monat (Sommer)",
+         "answer": "Januar"
+        },
+        {
+         "label": "Temperatur",
+         "answer": "30 Grad"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Describe your city",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "Describe your city or village in 4–5 short sentences: its name, what it is like (groß/klein/schön), what is there (with ein/eine), what is NOT there (with kein/keine), and what the weather is like in one season.",
+       "checks": [
+        {
+         "label": "Name of your city or village (Meine Stadt heißt … / Ich wohne in …)",
+         "pattern": "\\b(meine stadt|mein dorf|ich wohne in)\\b"
+        },
+        {
+         "label": "An adjective (groß, klein, schön, neu, bekannt …)",
+         "pattern": "\\b(groß|gross|klein|schön|schoen|neu|hoch|lang|kurz|bekannt)\\b"
+        },
+        {
+         "label": "Something with ein or eine",
+         "pattern": "\\bein(e)?\\s+[a-zäöüß]+"
+        },
+        {
+         "label": "Something with kein or keine",
+         "pattern": "\\bkein(e)?\\s+[a-zäöüß]+"
+        },
+        {
+         "label": "Weather or a season (Sonne, Regen, Sommer, Winter, Grad …)",
+         "pattern": "\\b(sonne|scheint|regen|regnet|wind|wetter|grad|frühling|fruehling|sommer|herbst|winter)\\b"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "\\bnicht ein(e)?\\b",
+         "message": "Never say nicht ein — use kein / keine: Das ist kein Hotel."
+        },
+        {
+         "pattern": "\\bein (kirche|post|bank|straße|strasse|blume|stadt|brücke|bruecke|sonne)\\b",
+         "message": "Feminine (die) nouns take eine: eine Kirche, eine Straße."
+        },
+        {
+         "pattern": "\\beine (bahnhof|park|platz|see|baum|kiosk|hafen|supermarkt|hotel|haus|dorf|meer|geschäft|rathaus)\\b",
+         "message": "der and das nouns take ein: ein Bahnhof, ein Hotel."
+        },
+        {
+         "pattern": "\\bam (frühling|fruehling|sommer|herbst|winter|januar|februar|märz|maerz|april|mai|juni|juli|august|september|oktober|november|dezember)\\b",
+         "message": "Seasons and months use im, not am: im Sommer, im Januar."
+        }
+       ],
+       "model": "Ich wohne in München. Meine Stadt ist groß und sehr schön. Hier ist ein Park und ein Bahnhof, aber kein Meer. Im Sommer scheint die Sonne und es sind dreißig Grad."
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "Yuki asks you about your city. Record your answer, listen back, then compare with the model.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Say the name of your city or village.",
+       "audio": {
+        "who": "Y",
+        "text": "Wie heißt deine Stadt, oder dein Dorf?"
+       },
+       "modelText": "Meine Stadt heißt München. / Ich wohne in Berlin.",
+       "model": {
+        "who": "Y",
+        "text": "Okay, los geht's! Das ist der Bahnhof. Er ist groß und neu."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Describe what your city is like.",
+       "audio": {
+        "who": "Y",
+        "text": "Wie ist deine Stadt? Groß, klein, schön?"
+       },
+       "modelText": "Im Sommer ist die Stadt sehr schön.",
+       "model": {
+        "who": "T",
+        "text": "Im Sommer ist die Stadt sehr schön."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say one thing your city has and one thing it does NOT have (use kein).",
+       "audio": {
+        "who": "Y",
+        "text": "Was ist da, und was ist NICHT da? Benutze kein!"
+       },
+       "modelText": "Hier ist ein Park, aber kein Meer.",
+       "model": {
+        "who": "Y",
+        "text": "Nein, das ist keine Kirche, das ist das Rathaus."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Describe the weather outside today.",
+       "audio": {
+        "who": "Y",
+        "text": "Wie ist das Wetter heute draußen?"
+       },
+       "modelText": "Die Sonne scheint. Es sind zwanzig Grad.",
+       "model": {
+        "who": "M",
+        "text": "Wie ist das Wetter heute? Die Sonne scheint! Es sind zwanzig Grad!"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 5.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 5 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Das ist ___ Bahnhof. (a)",
+       "options": [
+        "ein",
+        "eine",
+        "keine"
+       ],
+       "answer": "ein"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ist das ___ Post? (a)",
+       "options": [
+        "eine",
+        "ein",
+        "kein"
+       ],
+       "answer": "eine"
+      },
+      {
+       "type": "choice",
+       "prompt": "Das ist ___ Hotel. (not a)",
+       "options": [
+        "kein",
+        "nicht ein",
+        "keine"
+       ],
+       "answer": "kein"
+      },
+      {
+       "type": "choice",
+       "prompt": "Das sind ___ Blumen. (no, Pl.)",
+       "options": [
+        "keine",
+        "kein",
+        "ein"
+       ],
+       "answer": "keine"
+      },
+      {
+       "type": "type",
+       "prompt": "That is not a church.",
+       "answer": "Das ist keine Kirche."
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Rathaus",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Brücke",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Hafen",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der"
+      },
+      {
+       "type": "choice",
+       "prompt": "Opposite of lang:",
+       "options": [
+        "kurz",
+        "hoch",
+        "neu"
+       ],
+       "answer": "kurz"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Sommer scheint die Sonne.",
+       "options": [
+        "Im",
+        "Am",
+        "Aus"
+       ],
+       "answer": "Im"
+      },
+      {
+       "type": "choice",
+       "prompt": "Mai, Juni, ___",
+       "options": [
+        "Juli",
+        "April",
+        "August"
+       ],
+       "answer": "Juli"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "ist",
+        "Das",
+        "kein",
+        "Park"
+       ],
+       "answer": "Das ist kein Park.",
+       "en": "That is not a park."
+      },
+      {
+       "type": "fix",
+       "wrong": "Das ist nicht ein Dorf.",
+       "answer": "Das ist kein Dorf."
+      },
+      {
+       "type": "type",
+       "prompt": "What is the weather like?",
+       "answer": "Wie ist das Wetter?"
+      },
+      {
+       "type": "choice",
+       "prompt": "What is the weather in winter according to Mateo?",
+       "options": [
+        "cold, 0 degrees",
+        "sunny, 30 degrees",
+        "rainy, 20 degrees"
+       ],
+       "answer": "cold, 0 degrees",
+       "audio": {
+        "who": "M",
+        "text": "Im Winter ist es kalt. Null Grad! Kein Park für mich!"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1582 @@
+{
+ "episode": 4,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which word does Frau Weber say?",
+     "at": "0:51",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Beruf",
+        "das Büro",
+        "der Brief"
+       ],
+       "answer": "der Beruf",
+       "audio": {
+        "who": "T",
+        "text": "der Beruf"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Firma",
+        "die Freizeit",
+        "der Film"
+       ],
+       "answer": "die Firma",
+       "audio": {
+        "who": "T",
+        "text": "die Firma"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Arzt",
+        "das Alter",
+        "die Arbeit"
+       ],
+       "answer": "der Arzt",
+       "audio": {
+        "who": "T",
+        "text": "der Arzt"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "das Formular",
+        "der Familienstand",
+        "der Fußball"
+       ],
+       "answer": "das Formular",
+       "audio": {
+        "who": "T",
+        "text": "das Formular"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Kellner",
+        "der Lehrer",
+        "der Schüler"
+       ],
+       "answer": "der Kellner",
+       "audio": {
+        "who": "T",
+        "text": "der Kellner"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Programmierer",
+        "der Student",
+        "der Ingenieur"
+       ],
+       "answer": "der Programmierer",
+       "audio": {
+        "who": "T",
+        "text": "der Programmierer"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Geburtsort",
+        "das Geburtsjahr",
+        "das Geburtsdatum"
+       ],
+       "answer": "der Geburtsort",
+       "audio": {
+        "who": "T",
+        "text": "der Geburtsort"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Schule",
+        "das Studium",
+        "der Schüler"
+       ],
+       "answer": "die Schule",
+       "audio": {
+        "who": "T",
+        "text": "die Schule"
+       }
+      }
+     ]
+    },
+    {
+     "id": "jobs",
+     "title": "Jobs and workplaces",
+     "instructions": "Pick the right job or workplace for each situation.",
+     "at": "0:51",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You help sick people in a hospital. Ich bin ___.",
+       "options": [
+        "Arzt",
+        "Kellner",
+        "Lehrer"
+       ],
+       "answer": "Arzt"
+      },
+      {
+       "type": "choice",
+       "prompt": "You write software for an IT company. Ich bin ___.",
+       "options": [
+        "Programmierer",
+        "Schüler",
+        "Hausmann"
+       ],
+       "answer": "Programmierer"
+      },
+      {
+       "type": "choice",
+       "prompt": "You teach German to a class. Ich bin ___.",
+       "options": [
+        "Lehrerin",
+        "Ärztin",
+        "Kellnerin"
+       ],
+       "answer": "Lehrerin"
+      },
+      {
+       "type": "choice",
+       "prompt": "You bring coffee and food in a café. Ich bin ___.",
+       "options": [
+        "Kellner",
+        "Ingenieur",
+        "Arzt"
+       ],
+       "answer": "Kellner"
+      },
+      {
+       "type": "choice",
+       "prompt": "You are at university. Ich ___.",
+       "options": [
+        "studiere",
+        "kreuze an",
+        "fülle aus"
+       ],
+       "answer": "studiere"
+      },
+      {
+       "type": "choice",
+       "prompt": "You work for yourself, not for a company. Ich bin ___.",
+       "options": [
+        "selbstständig",
+        "arbeitslos",
+        "geboren"
+       ],
+       "answer": "selbstständig"
+      },
+      {
+       "type": "choice",
+       "prompt": "You do not have a job right now. Ich bin ___.",
+       "options": [
+        "arbeitslos",
+        "selbstständig",
+        "jung"
+       ],
+       "answer": "arbeitslos"
+      },
+      {
+       "type": "choice",
+       "prompt": "Doctors work here: das ___",
+       "options": [
+        "Krankenhaus",
+        "Büro",
+        "Formular"
+       ],
+       "answer": "Krankenhaus"
+      }
+     ]
+    },
+    {
+     "id": "form-words",
+     "title": "On a German form",
+     "instructions": "Words you see on every form in Germany.",
+     "at": "3:01",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "The box asks for \"Geburtsort\". You write:",
+       "options": [
+        "Bangalore",
+        "27",
+        "ledig"
+       ],
+       "answer": "Bangalore",
+       "note": "der Geburtsort = place of birth"
+      },
+      {
+       "type": "choice",
+       "prompt": "The box asks for \"Postleitzahl\". You write:",
+       "options": [
+        "80331",
+        "München",
+        "Sharma"
+       ],
+       "answer": "80331",
+       "note": "die Postleitzahl (PLZ) = postcode"
+      },
+      {
+       "type": "choice",
+       "prompt": "The box asks for \"Familienstand\". You write:",
+       "options": [
+        "ledig",
+        "Programmierer",
+        "Indien"
+       ],
+       "answer": "ledig",
+       "note": "der Familienstand = marital status"
+      },
+      {
+       "type": "choice",
+       "prompt": "The box asks for \"Geburtsjahr\". You write:",
+       "options": [
+        "1999",
+        "München",
+        "weiblich"
+       ],
+       "answer": "1999",
+       "note": "das Geburtsjahr = year of birth"
+      },
+      {
+       "type": "choice",
+       "prompt": "Tick the box! = ___ Sie bitte an!",
+       "options": [
+        "Kreuzen",
+        "Füllen",
+        "Arbeiten"
+       ],
+       "answer": "Kreuzen",
+       "note": "ankreuzen = to tick / cross"
+      },
+      {
+       "type": "choice",
+       "prompt": "Fill in the form! = ___ Sie das Formular aus!",
+       "options": [
+        "Füllen",
+        "Kreuzen",
+        "Studieren"
+       ],
+       "answer": "Füllen",
+       "note": "ausfüllen = to fill in"
+      },
+      {
+       "type": "choice",
+       "prompt": "\"weiblich\" means:",
+       "options": [
+        "female",
+        "male",
+        "married"
+       ],
+       "answer": "female"
+      }
+     ]
+    },
+    {
+     "id": "numbers",
+     "title": "Zahlen 21–100",
+     "instructions": "Numbers up to 100. Remember: ones come before tens (einundzwanzig).",
+     "at": "4:16",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "21",
+       "answer": "einundzwanzig"
+      },
+      {
+       "type": "choice",
+       "prompt": "27 = ?",
+       "options": [
+        "siebenundzwanzig",
+        "zwanzigsieben",
+        "siebzig"
+       ],
+       "answer": "siebenundzwanzig"
+      },
+      {
+       "type": "type",
+       "prompt": "30 (careful with ß!)",
+       "answer": "dreißig"
+      },
+      {
+       "type": "choice",
+       "prompt": "50 = ?",
+       "options": [
+        "fünfzig",
+        "fünfzehn",
+        "vierzig"
+       ],
+       "answer": "fünfzig"
+      },
+      {
+       "type": "type",
+       "prompt": "70",
+       "answer": "siebzig"
+      },
+      {
+       "type": "choice",
+       "prompt": "90 = ?",
+       "options": [
+        "neunzig",
+        "neunzehn",
+        "achtzig"
+       ],
+       "answer": "neunzig"
+      }
+     ]
+    },
+    {
+     "id": "articles",
+     "title": "Sort · der, die or das?",
+     "instructions": "Sort each work or form noun into its article bucket.",
+     "at": "0:51",
+     "items": [
+      {
+       "type": "sort",
+       "prompt": "Place every noun in the right bucket:",
+       "buckets": [
+        {
+         "id": "der",
+         "label": "der",
+         "tone": "sky"
+        },
+        {
+         "id": "die",
+         "label": "die",
+         "tone": "peach"
+        },
+        {
+         "id": "das",
+         "label": "das",
+         "tone": "sage"
+        }
+       ],
+       "cards": [
+        {
+         "text": "Beruf",
+         "bucket": "der",
+         "note": "profession"
+        },
+        {
+         "text": "Firma",
+         "bucket": "die",
+         "note": "company"
+        },
+        {
+         "text": "Formular",
+         "bucket": "das",
+         "note": "form"
+        },
+        {
+         "text": "Arbeitsplatz",
+         "bucket": "der",
+         "note": "workplace"
+        },
+        {
+         "text": "Schule",
+         "bucket": "die",
+         "note": "school"
+        },
+        {
+         "text": "Studium",
+         "bucket": "das",
+         "note": "university studies"
+        },
+        {
+         "text": "Job",
+         "bucket": "der",
+         "note": "job"
+        },
+        {
+         "text": "Arbeit",
+         "bucket": "die",
+         "note": "work"
+        },
+        {
+         "text": "Büro",
+         "bucket": "das",
+         "note": "office"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "at": "0:51",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "to work",
+       "answer": "arbeiten"
+      },
+      {
+       "type": "type",
+       "prompt": "to study (at university)",
+       "answer": "studieren"
+      },
+      {
+       "type": "type",
+       "prompt": "to have",
+       "answer": "haben"
+      },
+      {
+       "type": "type",
+       "prompt": "to fill in",
+       "answer": "ausfüllen"
+      },
+      {
+       "type": "type",
+       "prompt": "born",
+       "answer": "geboren"
+      },
+      {
+       "type": "type",
+       "prompt": "young",
+       "answer": "jung"
+      },
+      {
+       "type": "type",
+       "prompt": "old",
+       "answer": "alt"
+      },
+      {
+       "type": "type",
+       "prompt": "company (with article)",
+       "answer": "die Firma"
+      },
+      {
+       "type": "type",
+       "prompt": "hospital (with article)",
+       "answer": "das Krankenhaus"
+      },
+      {
+       "type": "type",
+       "prompt": "postcode (with article)",
+       "answer": "die Postleitzahl"
+      }
+     ]
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "More job-fair words. Learn them with the bonus flashcards above.",
+     "bonus": true,
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "An event where companies look for workers: die ___",
+       "options": [
+        "Jobmesse",
+        "Visitenkarte",
+        "Teilzeit"
+       ],
+       "answer": "Jobmesse",
+       "note": "job fair"
+      },
+      {
+       "type": "choice",
+       "prompt": "A small card with your name, job and phone number: die ___",
+       "options": [
+        "Visitenkarte",
+        "Bewerbung",
+        "Schule"
+       ],
+       "answer": "Visitenkarte",
+       "note": "business card"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your work history on paper for a job: der ___",
+       "options": [
+        "Lebenslauf",
+        "Stand",
+        "Koch"
+       ],
+       "answer": "Lebenslauf",
+       "note": "CV / résumé"
+      },
+      {
+       "type": "choice",
+       "prompt": "You send this when you want a job: die ___",
+       "options": [
+        "Bewerbung",
+        "Jobmesse",
+        "Vollzeit"
+       ],
+       "answer": "Bewerbung",
+       "note": "application"
+      },
+      {
+       "type": "choice",
+       "prompt": "Working 20 hours a week instead of 40: die ___",
+       "options": [
+        "Teilzeit",
+        "Vollzeit",
+        "Arbeit"
+       ],
+       "answer": "Teilzeit",
+       "note": "part-time"
+      },
+      {
+       "type": "choice",
+       "prompt": "A person who cuts your hair: der ___",
+       "options": [
+        "Friseur",
+        "Mechaniker",
+        "Polizist"
+       ],
+       "answer": "Friseur",
+       "note": "hairdresser"
+      },
+      {
+       "type": "choice",
+       "prompt": "A person who repairs cars: der ___",
+       "options": [
+        "Mechaniker",
+        "Verkäufer",
+        "Koch"
+       ],
+       "answer": "Mechaniker",
+       "note": "mechanic"
+      },
+      {
+       "type": "choice",
+       "prompt": "A person who cooks in a restaurant: der ___",
+       "options": [
+        "Koch",
+        "Kellner",
+        "Polizist"
+       ],
+       "answer": "Koch",
+       "note": "cook"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "der / die / das — Plural is always die. Female jobs add -in (die Lehrerin → die Lehrerinnen). haben: du hast, er hat (no b!). Age uses sein: Ich bin 27 Jahre alt.",
+   "sections": [
+    {
+     "id": "haben-sein",
+     "title": "haben & sein",
+     "instructions": "Write the correct form of haben or sein.",
+     "at": "6:50",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "Zeit.",
+       "answer": "habe",
+       "hint": "haben"
+      },
+      {
+       "type": "gap",
+       "before": "Du",
+       "after": "zwei Kinder.",
+       "answer": "hast",
+       "hint": "haben"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "eine Firma in München.",
+       "answer": "hat",
+       "hint": "haben"
+      },
+      {
+       "type": "gap",
+       "before": "Wir",
+       "after": "heute Unterricht.",
+       "answer": "haben",
+       "hint": "haben"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "Sie Kinder?",
+       "answer": "Haben",
+       "hint": "haben"
+      },
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "27 Jahre alt.",
+       "answer": "bin",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Wie alt",
+       "after": "du?",
+       "answer": "bist",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Yuki",
+       "after": "Studentin.",
+       "answer": "ist",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Wir",
+       "after": "in München.",
+       "answer": "sind",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Was",
+       "after": "Sie von Beruf?",
+       "answer": "sind",
+       "hint": "sein"
+      }
+     ]
+    },
+    {
+     "id": "articles-plural",
+     "title": "der / die / das · Plural · -in",
+     "instructions": "Pick the correct form. Plural always takes die; no article before a job with sein.",
+     "at": "5:56",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Female teacher: der Lehrer → ___",
+       "options": [
+        "die Lehrerin",
+        "der Lehrerin",
+        "das Lehrerin"
+       ],
+       "answer": "die Lehrerin"
+      },
+      {
+       "type": "choice",
+       "prompt": "Female doctor: der Arzt → ___",
+       "options": [
+        "die Ärztin",
+        "die Arztin",
+        "der Ärztin"
+       ],
+       "answer": "die Ärztin"
+      },
+      {
+       "type": "choice",
+       "prompt": "Plural of das Formular: ___ Formulare",
+       "options": [
+        "die",
+        "das",
+        "der"
+       ],
+       "answer": "die"
+      },
+      {
+       "type": "choice",
+       "prompt": "Plural of die Lehrerin: die ___",
+       "options": [
+        "Lehrerinnen",
+        "Lehrerin",
+        "Lehrerins"
+       ],
+       "answer": "Lehrerinnen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Plural of die Firma: die ___",
+       "options": [
+        "Firmen",
+        "Firmas",
+        "Firmes"
+       ],
+       "answer": "Firmen"
+      },
+      {
+       "type": "choice",
+       "prompt": "I'm a programmer.",
+       "options": [
+        "Ich bin Programmierer.",
+        "Ich bin ein Programmierer.",
+        "Ich habe Programmierer."
+       ],
+       "answer": "Ich bin Programmierer.",
+       "note": "No ein/eine before jobs with sein."
+      },
+      {
+       "type": "choice",
+       "prompt": "I'm 27 years old.",
+       "options": [
+        "Ich bin 27 Jahre alt.",
+        "Ich habe 27 Jahre.",
+        "Ich heiße 27 Jahre."
+       ],
+       "answer": "Ich bin 27 Jahre alt.",
+       "note": "Age always uses sein, never haben."
+      }
+     ]
+    },
+    {
+     "id": "talk",
+     "title": "Ask them",
+     "instructions": "Look at who it is, then write the question. du or Sie?",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Ask her how old she is.",
+       "answer": "Wie alt bist du?",
+       "image": "yuki"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him if he has time.",
+       "answer": "Hast du Zeit?",
+       "image": "mateo"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her what her job is.",
+       "answer": "Was sind Sie von Beruf?",
+       "image": "weber"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him where he works.",
+       "answer": "Wo arbeiten Sie?",
+       "image": "oezdemir"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she studies medicine.",
+       "answer": "Studierst du Medizin?",
+       "image": "amara"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she has children.",
+       "answer": "Haben Sie Kinder?",
+       "image": "schulz"
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "at": "7:59",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Ich habe 27 Jahre.",
+       "answer": [
+        "Ich bin 27 Jahre alt.",
+        "Ich bin 27.",
+        "Ich bin siebenundzwanzig Jahre alt."
+       ]
+      },
+      {
+       "type": "fix",
+       "wrong": "Du habst ein Formular.",
+       "answer": "Du hast ein Formular."
+      },
+      {
+       "type": "fix",
+       "wrong": "Er habt zwei Kinder.",
+       "answer": "Er hat zwei Kinder."
+      },
+      {
+       "type": "fix",
+       "wrong": "Der Lehrerinnen sind nett.",
+       "answer": "Die Lehrerinnen sind nett."
+      },
+      {
+       "type": "fix",
+       "wrong": "Was bist Sie von Beruf?",
+       "answer": "Was sind Sie von Beruf?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Das Formulare sind neu.",
+       "answer": "Die Formulare sind neu."
+      },
+      {
+       "type": "fix",
+       "wrong": "Wir hast heute Zeit.",
+       "answer": "Wir haben heute Zeit."
+      }
+     ]
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order.",
+     "at": "8:47",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "von Beruf",
+        "Sie",
+        "sind",
+        "Was"
+       ],
+       "answer": "Was sind Sie von Beruf?",
+       "en": "What is your job?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Programmierer",
+        "bin",
+        "Ich"
+       ],
+       "answer": "Ich bin Programmierer.",
+       "en": "I am a programmer."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "einer Firma",
+        "bei",
+        "arbeite",
+        "Ich",
+        "in München"
+       ],
+       "answer": "Ich arbeite bei einer Firma in München.",
+       "en": "I work at a company in Munich."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Kinder",
+        "Sie",
+        "Haben"
+       ],
+       "answer": "Haben Sie Kinder?",
+       "en": "Do you have children?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "alt",
+        "du",
+        "Wie",
+        "bist"
+       ],
+       "answer": "Wie alt bist du?",
+       "en": "How old are you?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "bin",
+        "siebenundzwanzig",
+        "alt",
+        "Jahre",
+        "Ich"
+       ],
+       "answer": "Ich bin siebenundzwanzig Jahre alt.",
+       "en": "I am 27 years old."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "In the exam you hear short introductions with jobs and ages, and you fill in a form from a short text. Catch the job, the workplace, the age and the postcode.",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "What is Arjun’s job?",
+       "options": [
+        "programmer",
+        "teacher",
+        "waiter"
+       ],
+       "answer": "programmer",
+       "audio": {
+        "who": "A",
+        "text": "Ich bin Programmierer."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Where does Arjun work?",
+       "options": [
+        "at a company in Munich",
+        "at a hospital",
+        "at a school"
+       ],
+       "answer": "at a company in Munich",
+       "audio": {
+        "who": "A",
+        "text": "Ich arbeite bei einer Firma in München."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "How old is Arjun and where was he born?",
+       "options": [
+        "27, Bangalore",
+        "21, Bangalore",
+        "27, Munich"
+       ],
+       "answer": "27, Bangalore",
+       "audio": {
+        "who": "A",
+        "text": "Ich bin siebenundzwanzig Jahre alt. Ich bin in Bangalore geboren."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What does Amara actually do right now?",
+       "options": [
+        "She studies medicine.",
+        "She works in a hospital.",
+        "She is a teacher."
+       ],
+       "answer": "She studies medicine.",
+       "audio": {
+        "who": "N",
+        "text": "Ähm ... noch nicht! Ich studiere Medizin."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What is Yuki’s age and field of study?",
+       "options": [
+        "24, design",
+        "20, medicine",
+        "24, medicine"
+       ],
+       "answer": "24, design",
+       "audio": {
+        "who": "Y",
+        "text": "Ich bin vierundzwanzig. Ich studiere Design."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Where does Frau Weber work?",
+       "options": [
+        "in a school",
+        "in a hospital",
+        "in a café"
+       ],
+       "answer": "in a school",
+       "audio": {
+        "who": "T",
+        "text": "Und ich bin Lehrerin. Ich arbeite in einer Schule."
+       }
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type it.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Was sind Sie von Beruf?",
+       "audio": {
+        "who": "T",
+        "text": "Was sind Sie von Beruf?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ich bin Programmierer.",
+       "audio": {
+        "who": "A",
+        "text": "Ich bin Programmierer."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Wo arbeiten Sie?",
+       "audio": {
+        "who": "T",
+        "text": "Wo arbeiten Sie?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ich arbeite bei einer Firma in München.",
+       "audio": {
+        "who": "A",
+        "text": "Ich arbeite bei einer Firma in München."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Haben Sie Kinder?",
+       "audio": {
+        "who": "S",
+        "text": "Haben Sie Kinder?"
+       }
+      }
+     ]
+    },
+    {
+     "id": "roleplay",
+     "title": "Roleplay · At the Jobmesse stand",
+     "instructions": "Frau Schulz interviews you at Stand 4. Play each question and pick the natural German answer.",
+     "at": "9:37",
+     "items": [
+      {
+       "type": "chat",
+       "title": "Jobmesse München · Stand 4",
+       "setting": "Polite Sie conversation",
+       "turns": [
+        {
+         "who": "S",
+         "text": "Was sind Sie von Beruf?",
+         "en": "What is your profession?",
+         "audio": {
+          "who": "S",
+          "text": "Was sind Sie von Beruf?"
+         },
+         "reply": {
+          "prompt": "Answer: I am a programmer.",
+          "options": [
+           "Ich bin Programmierer.",
+           "Ich bin ein Programmierer.",
+           "Ich habe Programmierer."
+          ],
+          "answer": "Ich bin Programmierer.",
+          "note": "No ein/eine before jobs with sein."
+         }
+        },
+        {
+         "who": "S",
+         "text": "Wo arbeiten Sie?",
+         "en": "Where do you work?",
+         "audio": {
+          "who": "S",
+          "text": "Wo arbeiten Sie?"
+         },
+         "reply": {
+          "prompt": "Answer: I work at a company in Munich.",
+          "options": [
+           "Ich arbeite bei einer Firma in München.",
+           "Ich bin bei einer Firma.",
+           "Ich studiere im Büro."
+          ],
+          "answer": "Ich arbeite bei einer Firma in München."
+         }
+        },
+        {
+         "who": "S",
+         "text": "Wie alt sind Sie?",
+         "en": "How old are you?",
+         "audio": {
+          "who": "S",
+          "text": "Wie alt sind Sie?"
+         },
+         "reply": {
+          "prompt": "Say you are 27 years old (use sein!).",
+          "options": [
+           "Ich bin 27 Jahre alt.",
+           "Ich habe 27 Jahre.",
+           "Ich heiße 27 Jahre alt."
+          ],
+          "answer": "Ich bin 27 Jahre alt.",
+          "note": "Age in German always uses sein, never haben."
+         }
+        },
+        {
+         "who": "S",
+         "text": "Haben Sie Kinder?",
+         "en": "Do you have children?",
+         "audio": {
+          "who": "S",
+          "text": "Haben Sie Kinder?"
+         },
+         "reply": {
+          "prompt": "Answer politely: No, I am single.",
+          "options": [
+           "Nein, ich bin ledig.",
+           "Nein, ich habe ledig.",
+           "Nein, ich bin geboren."
+          ],
+          "answer": "Nein, ich bin ledig."
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading",
+     "instructions": "Read the job-fair profile. Richtig (true) or falsch (false)?",
+     "text": {
+      "style": "ad",
+      "meta": "Jobmesse München · Stand 4",
+      "title": "Profil auf der Jobmesse",
+      "body": "Guten Tag! Ich heiße Lukas Weber und bin 34 Jahre alt. Ich bin in Hamburg geboren, aber jetzt wohne ich in 80331 München. Ich bin Ingenieur und arbeite bei einer Firma im Büro. Ich bin verheiratet und habe zwei Kinder. Meine Frau ist Ärztin. Sie arbeitet im Krankenhaus. Wir arbeiten gern in München.",
+      "glossary": [
+       [
+        "aber",
+        "but"
+       ],
+       [
+        "jetzt",
+        "now"
+       ],
+       [
+        "verheiratet",
+        "married"
+       ],
+       [
+        "meine Frau",
+        "my wife"
+       ],
+       [
+        "im Büro",
+        "in the office"
+       ],
+       [
+        "im Krankenhaus",
+        "in the hospital"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Lukas ist 34 Jahre alt.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lukas ist in München geboren.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lukas ist Programmierer von Beruf.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lukas hat zwei Kinder.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Seine Frau arbeitet im Krankenhaus.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lukas wohnt in Hamburg.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the form",
+     "instructions": "Like exam part 1: read Yuki's profile, then fill in the form for her.",
+     "text": {
+      "style": "email",
+      "meta": "Von: Yuki Tanaka · Betreff: Jobmesse",
+      "title": "Yukis Nachricht",
+      "body": "Hallo! Ich heiße Yuki Tanaka und bin 24 Jahre alt. Ich bin in Osaka geboren.\nJetzt wohne ich in 80801 München. Ich bin Studentin und studiere Design.\nIch bin ledig und habe keine Kinder.",
+      "glossary": [
+       [
+        "ledig",
+        "single"
+       ],
+       [
+        "keine Kinder",
+        "no children"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Anmeldung – Jobmesse München",
+       "fields": [
+        {
+         "label": "Vorname",
+         "answer": "Yuki"
+        },
+        {
+         "label": "Familienname",
+         "answer": "Tanaka"
+        },
+        {
+         "label": "Alter",
+         "answer": "24"
+        },
+        {
+         "label": "Geburtsort",
+         "answer": "Osaka"
+        },
+        {
+         "label": "Postleitzahl",
+         "answer": "80801"
+        },
+        {
+         "label": "Beruf",
+         "answer": "Studentin"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Write a short profile",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "Write a short profile for a German job fair: your name, your age, your job (or what you study), where you work or live, and end with a polite question using Sie.",
+       "checks": [
+        {
+         "label": "Your name (Ich bin … / Ich heiße …)",
+         "pattern": "\\bich (bin|heiße|heisse)\\b"
+        },
+        {
+         "label": "Your age with sein (Ich bin … Jahre alt / Ich bin 25)",
+         "pattern": "\\bich bin \\d{2}\\b|\\bich bin [a-zäöüß]+(zwanzig|dreißig|dreissig|vierzig|fünfzig|fuenfzig|sechzig|siebzig|achtzig|neunzig)\\b|\\bjahre alt\\b"
+        },
+        {
+         "label": "Your job or studies (Ich bin … / Ich studiere …)",
+         "pattern": "\\bich (studiere|bin [a-zäöüß]+(er|in|arzt|ärztin|student|schüler|koch|ingenieur))\\b|\\bvon beruf\\b"
+        },
+        {
+         "label": "Workplace or city (Ich arbeite … / Ich wohne …)",
+         "pattern": "\\bich (arbeite|wohne)\\b"
+        },
+        {
+         "label": "A polite question with Sie (… Sie …?)",
+         "pattern": "\\bSie\\b[^.!?]*\\?"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "\\bich habe \\d+\\s*jahr",
+         "message": "Use sein for age, not haben: Ich bin 27 Jahre alt."
+        },
+        {
+         "pattern": "\\bdu habst\\b",
+         "message": "haben with du drops the b: du hast."
+        },
+        {
+         "pattern": "\\b(er|sie|es) habt\\b",
+         "message": "haben with er/sie/es drops the b: er hat."
+        },
+        {
+         "pattern": "\\bwas bist sie\\b",
+         "message": "Polite Sie takes sind: Was sind Sie von Beruf?"
+        },
+        {
+         "pattern": "\\bich bin ein(e)? (programmierer|lehrer|arzt|ärztin|student|studentin|kellner|ingenieur)",
+         "message": "Drop ein/eine before jobs: Ich bin Programmierer."
+        }
+       ],
+       "model": "Guten Tag! Ich heiße Arjun Sharma und ich bin 27 Jahre alt. Ich bin Programmierer und arbeite bei einer Firma in München. Haben Sie noch Fragen?"
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "Frau Schulz asks you at the job fair. Record your answer, listen back, then compare with the model.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Say what your job is (or what you study).",
+       "audio": {
+        "who": "S",
+        "text": "Was sind Sie von Beruf?"
+       },
+       "modelText": "Ich bin Programmierer. / Ich studiere Medizin.",
+       "model": {
+        "who": "A",
+        "text": "Ich bin Programmierer."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say where you work.",
+       "audio": {
+        "who": "S",
+        "text": "Wo arbeiten Sie?"
+       },
+       "modelText": "Ich arbeite bei einer Firma in München.",
+       "model": {
+        "who": "A",
+        "text": "Ich arbeite bei einer Firma in München."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say your age.",
+       "audio": {
+        "who": "S",
+        "text": "Wie alt sind Sie?"
+       },
+       "modelText": "Ich bin siebenundzwanzig Jahre alt.",
+       "model": {
+        "who": "N",
+        "text": "Ich bin einundzwanzig Jahre alt. Bald bin ich Ärztin!"
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Answer whether you have children.",
+       "audio": {
+        "who": "S",
+        "text": "Haben Sie Kinder?"
+       },
+       "modelText": "Nein, ich bin ledig.",
+       "model": {
+        "who": "A",
+        "text": "Nein, ich bin ledig."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say your postcode.",
+       "audio": {
+        "who": "S",
+        "text": "Wie ist Ihre Postleitzahl?"
+       },
+       "modelText": "80331 München.",
+       "model": {
+        "who": "A",
+        "text": "Acht, null, drei, drei, eins, München."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 4.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 4 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Ich ___ 29 Jahre alt.",
+       "options": [
+        "bin",
+        "habe",
+        "heiße"
+       ],
+       "answer": "bin"
+      },
+      {
+       "type": "choice",
+       "prompt": "Du ___ ein Formular.",
+       "options": [
+        "hast",
+        "habst",
+        "hat"
+       ],
+       "answer": "hast"
+      },
+      {
+       "type": "choice",
+       "prompt": "Er ___ zwei Kinder.",
+       "options": [
+        "hat",
+        "habt",
+        "hast"
+       ],
+       "answer": "hat"
+      },
+      {
+       "type": "choice",
+       "prompt": "Plural: ___ Firmen sind in München.",
+       "options": [
+        "Die",
+        "Der",
+        "Das"
+       ],
+       "answer": "Die"
+      },
+      {
+       "type": "type",
+       "prompt": "What is your job? (polite Sie)",
+       "answer": "Was sind Sie von Beruf?"
+      },
+      {
+       "type": "type",
+       "prompt": "I am a teacher. (female)",
+       "answer": "Ich bin Lehrerin."
+      },
+      {
+       "type": "choice",
+       "prompt": "Which number is 30?",
+       "options": [
+        "dreißig",
+        "dreizig",
+        "dreizehn"
+       ],
+       "answer": "dreißig"
+      },
+      {
+       "type": "choice",
+       "prompt": "48 = ?",
+       "options": [
+        "achtundvierzig",
+        "vierundachtzig",
+        "achtzigvier"
+       ],
+       "answer": "achtundvierzig"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Krankenhaus",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Arbeitsplatz",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Sie",
+        "arbeiten",
+        "Wo"
+       ],
+       "answer": "Wo arbeiten Sie?",
+       "en": "Where do you work?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ich habe 25 Jahre.",
+       "answer": [
+        "Ich bin 25 Jahre alt.",
+        "Ich bin 25.",
+        "Ich bin fünfundzwanzig Jahre alt."
+       ]
+      },
+      {
+       "type": "type",
+       "prompt": "marital status (with article)",
+       "answer": "der Familienstand"
+      },
+      {
+       "type": "choice",
+       "prompt": "You tick a box on a form: ___",
+       "options": [
+        "ankreuzen",
+        "ausfüllen",
+        "studieren"
+       ],
+       "answer": "ankreuzen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Where was Arjun born?",
+       "options": [
+        "Bangalore",
+        "Mumbai",
+        "Munich"
+       ],
+       "answer": "Bangalore",
+       "audio": {
+        "who": "A",
+        "text": "Ich bin siebenundzwanzig Jahre alt. Ich bin in Bangalore geboren."
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -3,7 +3,7 @@ import { createReviewSession, startRecallDeck, type RecallDeck } from './recall-
 
 export const REVIEW_SIZES = [8, 10, 12] as const;
 export type ReviewSize = typeof REVIEW_SIZES[number];
-export type SharedReviewWord = VocabularyIdentity & { key: string; context?: string; sourceHref?: string; sourceTitle?: string; sourceKind: 'vocabulary' | 'story' | 'book' };
+export type SharedReviewWord = VocabularyIdentity & { key: string; context?: string; sourceHref?: string; sourceTitle?: string; sourceKind: 'vocabulary' | 'story' | 'book' | 'course' };
 
 export function reviewLookupKeys(progress: VocabularyProgress): string[] {
   return [...new Set([...progress.reviewKeys, ...Object.entries(progress.cards ?? {}).filter(([, card]) => card.status === 'review').map(([key]) => key)])]

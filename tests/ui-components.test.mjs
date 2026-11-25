@@ -302,6 +302,7 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
     B2_VOCABULARY,
     TOTAL_VOCABULARY_TARGET,
     VOCABULARY_LEVEL_COUNTS,
+    VIDEO_COURSE_VOCABULARY,
     isStandaloneVocabularyHeadword,
     vocabularyVerbLemmaKey,
     vocabularyVerbType,
@@ -310,9 +311,13 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
   const word = (german, english, category) => ({ id: "test", german, english, category, level: "B1" });
 
   assert.equal(TOTAL_VOCABULARY_TARGET, 18300);
-  assert.equal(ALL_VOCABULARY.length, 17397);
+  // The A1 video course appends its new single-word headwords (IDs vc-a1-*) after the original catalogue.
+  const course = VIDEO_COURSE_VOCABULARY.length;
+  assert.ok(course >= 7); // grows as more episodes join the catalogue
+  assert.ok(VIDEO_COURSE_VOCABULARY.every((word) => word.id.startsWith("vc-a1-") && word.level === "A1"));
+  assert.equal(ALL_VOCABULARY.length, 17397 + course);
   assert.equal(CORE_VOCABULARY.length, 2011);
-  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 870, A2: 1079, B1: 2148, B2: 3300, C1: 10000, all: 17397 });
+  assert.deepEqual(VOCABULARY_LEVEL_COUNTS, { A1: 870 + course, A2: 1079, B1: 2148, B2: 3300, C1: 10000, all: 17397 + course });
   // This digest covers every old ID, translation, headword, class and placement.
   assert.equal(createHash("sha256").update(JSON.stringify(LEGACY_VOCABULARY)).digest("hex"),
     "11e18ba658a07480488a42bb8392d318be7eec58f894074a739688a1d56f279f");
@@ -369,9 +374,10 @@ test("provides a deduplicated vocabulary catalog with infinitive verb headwords"
 
 test("opens vocabulary on the word library with practice and review available", async () => {
   const { default: VocabularyPage } = await vite.ssrLoadModule("/app/vocabulary/page.tsx");
+  const { VOCABULARY_LEVEL_COUNTS } = await vite.ssrLoadModule("/app/vocabulary/data.ts");
   const html = renderToStaticMarkup(React.createElement(VocabularyPage));
 
-  assert.match(html, /17,397 words · A1 to C1/);
+  assert.match(html, new RegExp(`${VOCABULARY_LEVEL_COUNTS.all.toLocaleString("en")} words · A1 to C1`));
   assert.match(html, /Word library/);
   assert.match(html, /Practice &amp; review/);
   assert.match(html, /aria-label="Vocabulary sections"/);
@@ -468,11 +474,13 @@ test("preserves duplicate vocabulary IDs and the latest FSRS history during cons
 
 test("configures vocabulary pronunciation for German speech", async () => {
   const pageSource = await readFile(path.join(root, "app/vocabulary/page.tsx"), "utf8");
+  const audioSource = await readFile(path.join(root, "app/lib/vocabulary-audio.ts"), "utf8");
 
-  assert.match(pageSource, /new SpeechSynthesisUtterance\(word\.german\)/);
-  assert.match(pageSource, /utterance\.lang = "de-DE"/);
-  assert.match(pageSource, /utterance\.rate = 0\.82/);
-  assert.match(pageSource, /voice\.lang\.toLocaleLowerCase\(\)\.startsWith\("de"\)/);
+  assert.match(pageSource, /playVocabularyWord\(word\)/);
+  assert.match(audioSource, /new SpeechSynthesisUtterance\(text\)/);
+  assert.match(audioSource, /u\.lang = 'de-DE'/);
+  assert.match(audioSource, /rate = 0\.82/);
+  assert.match(audioSource, /v\.lang\.toLowerCase\(\)\.startsWith\('de'\)/);
   assert.match(pageSource, /Pronunciation is not available in this browser\./);
 });
 

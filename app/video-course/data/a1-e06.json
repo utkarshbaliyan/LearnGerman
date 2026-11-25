@@ -1,0 +1,1540 @@
+{
+ "episode": 6,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which word does Frau Weber say?",
+     "at": "0:45",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Bus",
+        "der Bahnhof",
+        "die Bahn"
+       ],
+       "answer": "der Bus",
+       "audio": {
+        "who": "T",
+        "text": "der Bus"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "das Fahrrad",
+        "der Fahrer",
+        "fahren"
+       ],
+       "answer": "das Fahrrad",
+       "audio": {
+        "who": "T",
+        "text": "das Fahrrad"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Autobahn",
+        "die Auskunft",
+        "die Ampel"
+       ],
+       "answer": "die Autobahn",
+       "audio": {
+        "who": "T",
+        "text": "die Autobahn"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Haltestelle",
+        "die Hauptstraße",
+        "die Heimat"
+       ],
+       "answer": "die Haltestelle",
+       "audio": {
+        "who": "T",
+        "text": "die Haltestelle"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "nehmen",
+        "nah",
+        "nach"
+       ],
+       "answer": "nehmen",
+       "audio": {
+        "who": "T",
+        "text": "nehmen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "geradeaus",
+        "aussteigen",
+        "gegenüber"
+       ],
+       "answer": "geradeaus",
+       "audio": {
+        "who": "T",
+        "text": "geradeaus"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "weiter",
+        "weit",
+        "Wetter"
+       ],
+       "answer": "weiter",
+       "audio": {
+        "who": "T",
+        "text": "weiter"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "viel",
+        "weit",
+        "vier"
+       ],
+       "answer": "viel",
+       "audio": {
+        "who": "T",
+        "text": "viel"
+       }
+      }
+     ]
+    },
+    {
+     "id": "transport",
+     "title": "Getting around · transport",
+     "instructions": "Pick the right German word for each vehicle or place.",
+     "at": "0:45",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Underground train in the city: die ___",
+       "options": [
+        "U-Bahn",
+        "S-Bahn",
+        "Autobahn"
+       ],
+       "answer": "U-Bahn"
+      },
+      {
+       "type": "choice",
+       "prompt": "Suburban train: die ___",
+       "options": [
+        "S-Bahn",
+        "Straßenbahn",
+        "Haltestelle"
+       ],
+       "answer": "S-Bahn"
+      },
+      {
+       "type": "choice",
+       "prompt": "Tram on street tracks: die ___",
+       "options": [
+        "Straßenbahn",
+        "Autobahn",
+        "Ecke"
+       ],
+       "answer": "Straßenbahn"
+      },
+      {
+       "type": "choice",
+       "prompt": "Two wheels, no engine: das ___",
+       "options": [
+        "Fahrrad",
+        "Auto",
+        "Taxi"
+       ],
+       "answer": "Fahrrad"
+      },
+      {
+       "type": "choice",
+       "prompt": "Big cargo truck: der ___",
+       "options": [
+        "Lkw",
+        "Bus",
+        "Fahrer"
+       ],
+       "answer": "Lkw"
+      },
+      {
+       "type": "choice",
+       "prompt": "You wait for the bus here: die ___",
+       "options": [
+        "Haltestelle",
+        "Kreuzung",
+        "Ampel"
+       ],
+       "answer": "Haltestelle"
+      },
+      {
+       "type": "choice",
+       "prompt": "No bus, no car — walking: ___",
+       "options": [
+        "zu Fuß",
+        "weiter",
+        "geradeaus"
+       ],
+       "answer": "zu Fuß"
+      },
+      {
+       "type": "choice",
+       "prompt": "The person driving the bus or taxi: der ___",
+       "options": [
+        "Fahrer",
+        "Lkw",
+        "Bahnhof"
+       ],
+       "answer": "Fahrer"
+      }
+     ]
+    },
+    {
+     "id": "directions-verbs",
+     "title": "Match the pairs",
+     "instructions": "Tap a German card on the left, then its English meaning or opposite on the right.",
+     "at": "2:31",
+     "items": [
+      {
+       "type": "match",
+       "prompt": "Opposites & direction words",
+       "pairs": [
+        [
+         "links",
+         "rechts (opposite)"
+        ],
+        [
+         "weit",
+         "nah (opposite)"
+        ],
+        [
+         "einsteigen",
+         "aussteigen (opposite)"
+        ],
+        [
+         "geradeaus",
+         "straight ahead"
+        ],
+        [
+         "zu Fuß",
+         "on foot"
+        ],
+        [
+         "die Ampel",
+         "traffic lights"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ei-ie",
+     "title": "Sort · ei vs ie",
+     "instructions": "Always say the second letter! Sort each word into ei (\"eye\") or ie (\"ee\").",
+     "at": "3:38",
+     "items": [
+      {
+       "type": "sort",
+       "prompt": "Listen in your head and sort:",
+       "buckets": [
+        {
+         "id": "ei",
+         "label": "ei  (\"eye\")",
+         "tone": "butter"
+        },
+        {
+         "id": "ie",
+         "label": "ie  (long \"ee\")",
+         "tone": "sky"
+        }
+       ],
+       "cards": [
+        {
+         "text": "weit",
+         "bucket": "ei",
+         "note": "far"
+        },
+        {
+         "text": "viel",
+         "bucket": "ie",
+         "note": "much / a lot"
+        },
+        {
+         "text": "einsteigen",
+         "bucket": "ei",
+         "note": "to get on"
+        },
+        {
+         "text": "hier",
+         "bucket": "ie",
+         "note": "here"
+        },
+        {
+         "text": "weiter",
+         "bucket": "ei",
+         "note": "further"
+        },
+        {
+         "text": "die",
+         "bucket": "ie",
+         "note": "the (f./Pl.)"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "articles",
+     "title": "Sort · der, die or das?",
+     "instructions": "Sort each transport or street noun into its article bucket.",
+     "at": "0:45",
+     "items": [
+      {
+       "type": "sort",
+       "prompt": "Place every noun in the right bucket:",
+       "buckets": [
+        {
+         "id": "der",
+         "label": "der",
+         "tone": "sky"
+        },
+        {
+         "id": "die",
+         "label": "die",
+         "tone": "peach"
+        },
+        {
+         "id": "das",
+         "label": "das",
+         "tone": "sage"
+        }
+       ],
+       "cards": [
+        {
+         "text": "Bus",
+         "bucket": "der",
+         "note": "bus"
+        },
+        {
+         "text": "U-Bahn",
+         "bucket": "die",
+         "note": "underground"
+        },
+        {
+         "text": "Fahrrad",
+         "bucket": "das",
+         "note": "bicycle"
+        },
+        {
+         "text": "Haltestelle",
+         "bucket": "die",
+         "note": "stop"
+        },
+        {
+         "text": "Fahrer",
+         "bucket": "der",
+         "note": "driver"
+        },
+        {
+         "text": "Auto",
+         "bucket": "das",
+         "note": "car"
+        },
+        {
+         "text": "Ampel",
+         "bucket": "die",
+         "note": "traffic lights"
+        },
+        {
+         "text": "Lkw",
+         "bucket": "der",
+         "note": "truck"
+        },
+        {
+         "text": "Taxi",
+         "bucket": "das",
+         "note": "taxi"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "at": "0:45",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "straight ahead",
+       "answer": "geradeaus"
+      },
+      {
+       "type": "type",
+       "prompt": "left",
+       "answer": "links"
+      },
+      {
+       "type": "type",
+       "prompt": "right",
+       "answer": "rechts"
+      },
+      {
+       "type": "type",
+       "prompt": "far",
+       "answer": "weit"
+      },
+      {
+       "type": "type",
+       "prompt": "near",
+       "answer": "nah"
+      },
+      {
+       "type": "type",
+       "prompt": "on foot",
+       "answer": "zu Fuß"
+      },
+      {
+       "type": "type",
+       "prompt": "to take",
+       "answer": "nehmen"
+      },
+      {
+       "type": "type",
+       "prompt": "to get off",
+       "answer": "aussteigen"
+      },
+      {
+       "type": "type",
+       "prompt": "bus (with article)",
+       "answer": "der Bus"
+      },
+      {
+       "type": "type",
+       "prompt": "bicycle (with article)",
+       "answer": "das Fahrrad"
+      }
+     ]
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "More public transport and direction words. Learn them with the bonus flashcards above.",
+     "bonus": true,
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Shows when every bus or train leaves: der ___",
+       "options": [
+        "Fahrplan",
+        "Ausgang",
+        "Stau"
+       ],
+       "answer": "Fahrplan",
+       "note": "timetable"
+      },
+      {
+       "type": "choice",
+       "prompt": "U3 or Bus 42 — each route is a: die ___",
+       "options": [
+        "Linie",
+        "Station",
+        "Richtung"
+       ],
+       "answer": "Linie",
+       "note": "line"
+      },
+      {
+       "type": "choice",
+       "prompt": "Way out of the U-Bahn station: der ___",
+       "options": [
+        "Ausgang",
+        "Fahrplan",
+        "Kontrolleur"
+       ],
+       "answer": "Ausgang",
+       "note": "exit"
+      },
+      {
+       "type": "choice",
+       "prompt": "Red machine where you buy tickets: der ___",
+       "options": [
+        "Fahrkartenautomat",
+        "Fahrplan",
+        "Stau"
+       ],
+       "answer": "Fahrkartenautomat",
+       "note": "ticket machine"
+      },
+      {
+       "type": "choice",
+       "prompt": "Valid for all buses and trains for one day: die ___",
+       "options": [
+        "Tageskarte",
+        "Richtung",
+        "Station"
+       ],
+       "answer": "Tageskarte",
+       "note": "day ticket"
+      },
+      {
+       "type": "choice",
+       "prompt": "Stamp your paper ticket before boarding: ___",
+       "options": [
+        "entwerten",
+        "einsteigen",
+        "aussteigen"
+       ],
+       "answer": "entwerten",
+       "note": "to validate"
+      },
+      {
+       "type": "choice",
+       "prompt": "Checks tickets on the U-Bahn: der ___",
+       "options": [
+        "Kontrolleur",
+        "Fahrer",
+        "Ausgang"
+       ],
+       "answer": "Kontrolleur",
+       "note": "ticket inspector"
+      },
+      {
+       "type": "choice",
+       "prompt": "Cars stuck on the motorway: der ___",
+       "options": [
+        "Stau",
+        "Ausgang",
+        "Fahrplan"
+       ],
+       "answer": "Stau",
+       "note": "traffic jam"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "Polite command (Sie-imperative): Verb 1st, Sie 2nd — Gehen Sie geradeaus! · Plural pronouns: ihr (you all) takes -t (no vowel change: ihr fahrt, ihr nehmt), sie (they) takes -en (sie gehen, sie fahren).",
+   "sections": [
+    {
+     "id": "imperativ-gap",
+     "title": "Imperativ mit Sie",
+     "instructions": "Write the polite Sie-imperative (Verb first, then Sie).",
+     "at": "4:13",
+     "items": [
+      {
+       "type": "gap",
+       "before": "",
+       "after": "geradeaus!",
+       "answer": "Gehen Sie",
+       "hint": "gehen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "rechts!",
+       "answer": "Fahren Sie",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "die U3!",
+       "answer": "Nehmen Sie",
+       "hint": "nehmen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "hier links!",
+       "answer": "Gehen Sie",
+       "hint": "gehen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "den Bus!",
+       "answer": "Nehmen Sie",
+       "hint": "nehmen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "am Marienplatz aus!",
+       "answer": "Steigen Sie",
+       "hint": "aussteigen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "bitte hier ein!",
+       "answer": "Steigen Sie",
+       "hint": "einsteigen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "weiter bis zur Ampel!",
+       "answer": "Gehen Sie",
+       "hint": "gehen"
+      }
+     ]
+    },
+    {
+     "id": "ihr-sie-gap",
+     "title": "ihr (you all) & sie (they)",
+     "instructions": "Write the verb form for ihr (-t, no vowel change) or sie (they, -en).",
+     "at": "4:57",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Ihr",
+       "after": "zum Bahnhof.",
+       "answer": "geht",
+       "hint": "gehen"
+      },
+      {
+       "type": "gap",
+       "before": "Ihr",
+       "after": "mit dem Bus.",
+       "answer": "fahrt",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "Ihr",
+       "after": "die U3.",
+       "answer": "nehmt",
+       "hint": "nehmen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "ihr heute mit dem Fahrrad?",
+       "answer": "Fahrt",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "Sie (they)",
+       "after": "zu Fuß.",
+       "answer": "gehen",
+       "hint": "gehen"
+      },
+      {
+       "type": "gap",
+       "before": "Sie (they)",
+       "after": "mit der Straßenbahn.",
+       "answer": "fahren",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "Sie (they)",
+       "after": "ein Taxi.",
+       "answer": "nehmen",
+       "hint": "nehmen"
+      },
+      {
+       "type": "gap",
+       "before": "Yuki und Amara",
+       "after": "oft zu Fuß.",
+       "answer": "gehen",
+       "hint": "gehen"
+      }
+     ]
+    },
+    {
+     "id": "choose-grammar",
+     "title": "Pick the right German",
+     "instructions": "Check verb position and pronoun endings carefully.",
+     "at": "4:13",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Polite command: Go straight ahead!",
+       "options": [
+        "Gehen Sie geradeaus!",
+        "Sie gehen geradeaus!",
+        "Geht Sie geradeaus!"
+       ],
+       "answer": "Gehen Sie geradeaus!",
+       "note": "Sie-imperative: Verb 1st, Sie 2nd."
+      },
+      {
+       "type": "choice",
+       "prompt": "Polite command: Take the U3!",
+       "options": [
+        "Nehmen Sie die U3!",
+        "Nimmt Sie die U3!",
+        "Sie nehmen die U3!"
+       ],
+       "answer": "Nehmen Sie die U3!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Polite command: Get off at Marienplatz!",
+       "options": [
+        "Steigen Sie am Marienplatz aus!",
+        "Aussteigen Sie am Marienplatz!",
+        "Sie steigen am Marienplatz aus!"
+       ],
+       "answer": "Steigen Sie am Marienplatz aus!",
+       "note": "Separable prefix aus goes to the end!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Asking two friends: Are you two taking the bus?",
+       "options": [
+        "Fahrt ihr mit dem Bus?",
+        "Fährt ihr mit dem Bus?",
+        "Fahren ihr mit dem Bus?"
+       ],
+       "answer": "Fahrt ihr mit dem Bus?",
+       "note": "ihr takes -t, with NO vowel change (fahrt, not fährt)."
+      },
+      {
+       "type": "choice",
+       "prompt": "Talking about Arjun and Mateo: They are taking the U-Bahn.",
+       "options": [
+        "Sie nehmen die U-Bahn.",
+        "Sie nimmt die U-Bahn.",
+        "Sie nehmt die U-Bahn."
+       ],
+       "answer": "Sie nehmen die U-Bahn."
+      },
+      {
+       "type": "choice",
+       "prompt": "Asking a stranger the way:",
+       "options": [
+        "Entschuldigung, wie komme ich zum Bahnhof?",
+        "Entschuldigung, wie ich komme zum Bahnhof?",
+        "Entschuldigung, wohin ist der Bahnhof?"
+       ],
+       "answer": "Entschuldigung, wie komme ich zum Bahnhof?"
+      }
+     ]
+    },
+    {
+     "id": "talk",
+     "title": "Give directions or ask",
+     "instructions": "Look at who it is, then write the German. Polite Sie or friendly du / ihr?",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Tell him politely: Go straight ahead!",
+       "answer": "Gehen Sie geradeaus!",
+       "image": "oezdemir"
+      },
+      {
+       "type": "type",
+       "prompt": "Tell her politely: Take the U3!",
+       "answer": "Nehmen Sie die U3!",
+       "image": "schulz"
+      },
+      {
+       "type": "type",
+       "prompt": "Tell him politely: Go left!",
+       "answer": "Gehen Sie links!",
+       "image": "oezdemir"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her politely: Excuse me, where is the train station?",
+       "answer": "Entschuldigung, wo ist der Bahnhof?",
+       "image": "weber"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him if it is far.",
+       "answer": "Ist das weit?",
+       "image": "mateo"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him and Mateo: Are you two taking the bus? (fahren)",
+       "answer": "Fahrt ihr mit dem Bus?",
+       "image": "arjun"
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "at": "5:35",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Geht Sie geradeaus!",
+       "answer": "Gehen Sie geradeaus!"
+      },
+      {
+       "type": "fix",
+       "wrong": "Nimmt Sie den Bus!",
+       "answer": "Nehmen Sie den Bus!"
+      },
+      {
+       "type": "fix",
+       "wrong": "Fahrt Sie rechts!",
+       "answer": "Fahren Sie rechts!"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ihr gehen zum Bahnhof.",
+       "answer": "Ihr geht zum Bahnhof."
+      },
+      {
+       "type": "fix",
+       "wrong": "Ihr fährt mit der U-Bahn.",
+       "answer": "Ihr fahrt mit der U-Bahn."
+      },
+      {
+       "type": "fix",
+       "wrong": "Sie (they) kommt mit dem Bus.",
+       "answer": "Sie kommen mit dem Bus."
+      },
+      {
+       "type": "fix",
+       "wrong": "Aussteigen Sie am Marienplatz!",
+       "answer": "Steigen Sie am Marienplatz aus!"
+      }
+     ]
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order.",
+     "at": "6:20",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "geradeaus",
+        "Sie",
+        "Gehen"
+       ],
+       "answer": "Gehen Sie geradeaus!",
+       "en": "Go straight ahead!"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "die U3",
+        "Sie",
+        "Nehmen"
+       ],
+       "answer": "Nehmen Sie die U3!",
+       "en": "Take the U3!"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "am Marienplatz",
+        "Sie",
+        "Steigen",
+        "aus"
+       ],
+       "answer": "Steigen Sie am Marienplatz aus!",
+       "en": "Get off at Marienplatz!"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "mit dem Bus",
+        "ihr",
+        "Fahrt",
+        "heute"
+       ],
+       "answer": "Fahrt ihr heute mit dem Bus?",
+       "en": "Are you all taking the bus today?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "wo",
+        "der Bahnhof",
+        "ist",
+        "Entschuldigung,"
+       ],
+       "answer": "Entschuldigung, wo ist der Bahnhof?",
+       "en": "Excuse me, where is the station?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "zu Fuß",
+        "nur",
+        "fünf Minuten",
+        "Nein,"
+       ],
+       "answer": "Nein, nur fünf Minuten zu Fuß.",
+       "en": "No, only five minutes on foot."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "In Listening Part 2 of the A1 exam, you hear public announcements at stations, on the U-Bahn, or on buses. Listen for line numbers, stop names, and nicht!",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening (Announcements & directions)",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "at": "11:23",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Alle steigen am Hauptbahnhof aus.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig",
+       "audio": {
+        "who": "S",
+        "text": "Nächste Haltestelle: Hauptbahnhof. Bitte alle aussteigen!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Der Bus 42 fährt heute zum Marienplatz.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch",
+       "audio": {
+        "who": "S",
+        "text": "Achtung! Der Bus zweiundvierzig fährt heute nicht zum Marienplatz. Bitte nehmen Sie die U drei."
+       },
+       "note": "Watch for nicht! Take the U3 instead."
+      },
+      {
+       "type": "choice",
+       "prompt": "Die Straßenbahn fährt in drei Minuten.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig",
+       "audio": {
+        "who": "S",
+        "text": "Die Straßenbahn neunzehn fährt in drei Minuten von hier nach Pasing."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "How long does it take to walk?",
+       "options": [
+        "five minutes",
+        "fifteen minutes",
+        "fifty minutes"
+       ],
+       "answer": "five minutes",
+       "audio": {
+        "who": "M",
+        "text": "Nein, nur fünf Minuten zu Fuß. Oder nehmen Sie den Bus!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Which U-Bahn line should you take, and where do you get off?",
+       "options": [
+        "U3 · get off at Hauptbahnhof",
+        "U6 · get off at Marienplatz",
+        "Bus 42 · get off at Pasing"
+       ],
+       "answer": "U3 · get off at Hauptbahnhof",
+       "audio": {
+        "who": "Y",
+        "text": "Oder nehmen Sie hier die U drei. Steigen Sie am Hauptbahnhof aus! Das ist schnell."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "How does Amara go to class?",
+       "options": [
+        "by bicycle",
+        "by U-Bahn",
+        "by taxi"
+       ],
+       "answer": "by bicycle",
+       "audio": {
+        "who": "N",
+        "text": "Ich fahre mit dem Fahrrad. Es ist nah!"
+       }
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type it.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Entschuldigung, wo ist der Bahnhof?",
+       "audio": {
+        "who": "O",
+        "text": "Entschuldigung, wo ist der Bahnhof?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Gehen Sie geradeaus!",
+       "audio": {
+        "who": "T",
+        "text": "Gehen Sie geradeaus!"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Nehmen Sie die U3!",
+       "audio": {
+        "who": "T",
+        "text": "Nehmen Sie die U drei!"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Steigen Sie am Marienplatz aus!",
+       "audio": {
+        "who": "T",
+        "text": "Steigen Sie am Marienplatz aus!"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ist das weit?",
+       "audio": {
+        "who": "O",
+        "text": "Ist das weit?"
+       }
+      }
+     ]
+    },
+    {
+     "id": "roleplay",
+     "title": "Roleplay · At Marienplatz U-Bahn",
+     "instructions": "Herr Özdemir asks you for directions. Play each clip and pick the natural German reply to keep the conversation going.",
+     "at": "7:19",
+     "items": [
+      {
+       "type": "chat",
+       "title": "U-Bahn-Station Marienplatz",
+       "setting": "Giving polite directions",
+       "turns": [
+        {
+         "who": "O",
+         "text": "Entschuldigung! Wie komme ich zum Bahnhof?",
+         "en": "Excuse me! How do I get to the station?",
+         "audio": {
+          "who": "O",
+          "text": "Entschuldigung! Wie komme ich zum Bahnhof?"
+         },
+         "reply": {
+          "prompt": "Tell him politely: Go straight ahead and then right!",
+          "options": [
+           "Gehen Sie geradeaus und dann rechts!",
+           "Sie gehen geradeaus und dann rechts!",
+           "Geht Sie geradeaus und dann rechts!"
+          ],
+          "answer": "Gehen Sie geradeaus und dann rechts!",
+          "note": "Sie-imperative: Verb 1st, Sie 2nd."
+         }
+        },
+        {
+         "who": "O",
+         "text": "Ist das weit?",
+         "en": "Is that far?",
+         "audio": {
+          "who": "O",
+          "text": "Ist das weit?"
+         },
+         "reply": {
+          "prompt": "Reassure him: No, only 5 minutes on foot — or take the U3!",
+          "options": [
+           "Nein, nur fünf Minuten zu Fuß. Oder nehmen Sie die U3!",
+           "Ja, zwanzig Stunden.",
+           "Nimmt Sie bitte das Fahrrad!"
+          ],
+          "answer": "Nein, nur fünf Minuten zu Fuß. Oder nehmen Sie die U3!"
+         }
+        },
+        {
+         "who": "Y",
+         "text": "Oder nehmen Sie hier die U3. Steigen Sie am Hauptbahnhof aus! Das ist schnell.",
+         "en": "Or take the U3 here. Get off at Hauptbahnhof! That is fast.",
+         "audio": {
+          "who": "Y",
+          "text": "Oder nehmen Sie hier die U drei. Steigen Sie am Hauptbahnhof aus! Das ist schnell."
+         },
+         "reply": {
+          "prompt": "Say: Great, thank you very much!",
+          "options": [
+           "Wunderbar, vielen Dank!",
+           "Nein, kein Problem!",
+           "Wo ist der Fahrer?"
+          ],
+          "answer": "Wunderbar, vielen Dank!"
+         }
+        },
+        {
+         "who": "O",
+         "text": "Vielen Dank! Auf Wiedersehen!",
+         "en": "Thank you very much! Goodbye!",
+         "audio": {
+          "who": "O",
+          "text": "Vielen Dank! Auf Wiedersehen!"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading a station notice",
+     "instructions": "Read the U-Bahn notice. Richtig (true) or falsch (false)?",
+     "text": {
+      "style": "sign",
+      "meta": "MVG · U3 / U6 · Marienplatz",
+      "title": "MVG Info · Haltestelle Marienplatz",
+      "body": "Achtung, liebe Fahrgäste! Die Straßenbahn 19 fährt heute nicht über den Marienplatz. Bitte nehmen Sie die U3 oder die U6 Richtung Hauptbahnhof. Die U3 fährt alle fünf Minuten. Der Ausgang zum Bus 42 ist links. Fahrkarten kaufen Sie am roten Fahrkartenautomat. Bitte entwerten Sie Ihre Fahrkarte vor dem Einsteigen!",
+      "glossary": [
+       [
+        "liebe Fahrgäste",
+        "dear passengers"
+       ],
+       [
+        "Richtung",
+        "direction / towards"
+       ],
+       [
+        "alle fünf Minuten",
+        "every five minutes"
+       ],
+       [
+        "kaufen",
+        "buy"
+       ],
+       [
+        "vor dem Einsteigen",
+        "before boarding"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Die Straßenbahn 19 fährt heute über den Marienplatz.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Die U3 fährt Richtung Hauptbahnhof.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Die U3 fährt alle fünf Minuten.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Der Ausgang zum Bus 42 ist rechts.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Man kauft Fahrkarten am roten Fahrkartenautomat.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Man muss die Fahrkarte vor dem Einsteigen entwerten.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the travel card",
+     "instructions": "Read the short message from Yuki, then fill in the travel card.",
+     "text": {
+      "style": "chat",
+      "meta": "Yuki · 08:15",
+      "title": "Weg zum Sprachkurs",
+      "body": "Hallo! Unser Sprachkurs ist ganz nah am Marienplatz.\nNehmen Sie am Hauptbahnhof die S-Bahn S1 oder die U-Bahn U3. Steigen Sie am Marienplatz aus!\nNehmen Sie Ausgang B. Dann gehen Sie geradeaus bis zur Ampel und links. Das sind nur drei Minuten zu Fuß!",
+      "glossary": [
+       [
+        "unser",
+        "our"
+       ],
+       [
+        "Ausgang B",
+        "Exit B"
+       ]
+      ]
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Weg-Info",
+       "fields": [
+        {
+         "label": "U-Bahn-Linie",
+         "answer": "U3"
+        },
+        {
+         "label": "Haltestelle (Ausstieg)",
+         "answer": "Marienplatz"
+        },
+        {
+         "label": "Ausgang",
+         "answer": "B"
+        },
+        {
+         "label": "An der Ampel",
+         "answer": "links"
+        },
+        {
+         "label": "Zu Fuß",
+         "answer": "3 Minuten"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Give directions",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "A tourist asks you how to get from the U-Bahn station to the train station. Write 4–5 short sentences: give polite directions with Sie (geradeaus, links/rechts, Ampel), suggest a bus or U-Bahn (Nehmen Sie …), say where to get off or how far it is (weit/nah, zu Fuß), and say how you or your friends usually travel.",
+       "checks": [
+        {
+         "label": "A polite Sie-imperative (Gehen Sie … / Fahren Sie … / Nehmen Sie …)",
+         "pattern": "\\b(gehen|fahren|nehmen|steigen)\\s+sie\\b"
+        },
+        {
+         "label": "A direction word (geradeaus, links, rechts, weiter, Ampel, Kreuzung, Ecke)",
+         "pattern": "\\b(geradeaus|links|rechts|weiter|ampel|kreuzung|ecke)\\b"
+        },
+        {
+         "label": "A means of transport or zu Fuß (Bus, U-Bahn, S-Bahn, Straßenbahn, Fahrrad, Taxi, Auto, zu Fuß)",
+         "pattern": "\\b(bus|u-bahn|ubahn|s-bahn|sbahn|straßenbahn|strassenbahn|bahn|fahrrad|taxi|auto|zu fuß|zu fuss)\\b"
+        },
+        {
+         "label": "Distance or time (weit, nah, Minuten, schnell)",
+         "pattern": "\\b(weit|nah|minuten|schnell)\\b"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "\\b(geht|fahrt|nimmt|steigt)\\s+sie\\b",
+         "message": "Polite Sie-imperative always uses the -en form: Gehen Sie, Fahren Sie, Nehmen Sie, Steigen Sie!"
+        },
+        {
+         "pattern": "\\bihr\\s+(gehen|fahren|nehmen|kommen|fährt|nimmt)\\b",
+         "message": "ihr takes -t with no vowel change: ihr geht, ihr fahrt, ihr nehmt, ihr kommt."
+        },
+        {
+         "pattern": "\\baussteigen\\s+sie\\b",
+         "message": "aussteigen splits! Put aus at the end: Steigen Sie hier aus!"
+        },
+        {
+         "pattern": "\\beinsteigen\\s+sie\\b",
+         "message": "einsteigen splits! Put ein at the end: Steigen Sie hier ein!"
+        }
+       ],
+       "model": "Gehen Sie geradeaus bis zur Ampel, dann rechts. Ist das weit? Nein, nur fünf Minuten zu Fuß. Oder nehmen Sie hier die U3 und steigen Sie am Hauptbahnhof aus! Ich fahre oft mit dem Fahrrad."
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "Yuki asks you for directions. Record your answer, listen back, then compare with the model.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Tell her to go straight ahead.",
+       "audio": {
+        "who": "Y",
+        "text": "Entschuldigung, wie komme ich zur Post?"
+       },
+       "modelText": "Gehen Sie geradeaus!",
+       "model": {
+        "who": "T",
+        "text": "Gehen Sie geradeaus!"
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Tell her to go straight ahead and then left (or right).",
+       "audio": {
+        "who": "Y",
+        "text": "Und wo ist der Bahnhof?"
+       },
+       "modelText": "Gehen Sie geradeaus und dann links!",
+       "model": {
+        "who": "M",
+        "text": "Kein Problem! Gehen Sie geradeaus und dann links!"
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say it is close — only five minutes on foot.",
+       "audio": {
+        "who": "Y",
+        "text": "Ist der Bahnhof weit oder nah?"
+       },
+       "modelText": "Nein, nur fünf Minuten zu Fuß.",
+       "model": {
+        "who": "M",
+        "text": "Nein, nur fünf Minuten zu Fuß. Oder nehmen Sie den Bus!"
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say how you usually get around (bus, U-Bahn, bicycle, or on foot).",
+       "audio": {
+        "who": "Y",
+        "text": "Fährst du oft mit dem Bus oder mit der U-Bahn?"
+       },
+       "modelText": "Ich fahre mit der U-Bahn. / Ich gehe zu Fuß.",
+       "model": {
+        "who": "A",
+        "text": "Ich fahre mit der U-Bahn zum Kurs."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 6.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 6 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Polite command: ___ Sie geradeaus!",
+       "options": [
+        "Gehen",
+        "Geht",
+        "Gehe"
+       ],
+       "answer": "Gehen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Polite command: ___ Sie die U3!",
+       "options": [
+        "Nehmen",
+        "Nimmt",
+        "Nehmt"
+       ],
+       "answer": "Nehmen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Polite command: ___ Sie am Marienplatz aus!",
+       "options": [
+        "Steigen",
+        "Steigt",
+        "Aussteigen"
+       ],
+       "answer": "Steigen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ihr ___ heute mit dem Bus.",
+       "options": [
+        "fahrt",
+        "fährt",
+        "fahren"
+       ],
+       "answer": "fahrt"
+      },
+      {
+       "type": "choice",
+       "prompt": "Sie (they) ___ oft zu Fuß.",
+       "options": [
+        "gehen",
+        "geht",
+        "gehe"
+       ],
+       "answer": "gehen"
+      },
+      {
+       "type": "type",
+       "prompt": "Go straight ahead! (polite Sie)",
+       "answer": "Gehen Sie geradeaus!"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Fahrrad",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Ampel",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Bus",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der"
+      },
+      {
+       "type": "choice",
+       "prompt": "Opposite of weit:",
+       "options": [
+        "nah",
+        "schnell",
+        "weiter"
+       ],
+       "answer": "nah"
+      },
+      {
+       "type": "choice",
+       "prompt": "Get off a train =",
+       "options": [
+        "aussteigen",
+        "einsteigen",
+        "entwerten"
+       ],
+       "answer": "aussteigen"
+      },
+      {
+       "type": "choice",
+       "prompt": "Which word has the \"eye\" sound (ei)?",
+       "options": [
+        "weit",
+        "viel",
+        "hier"
+       ],
+       "answer": "weit"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Sie",
+        "die U3",
+        "Nehmen"
+       ],
+       "answer": "Nehmen Sie die U3!",
+       "en": "Take the U3!"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ihr gehen zum Bahnhof.",
+       "answer": "Ihr geht zum Bahnhof."
+      },
+      {
+       "type": "choice",
+       "prompt": "Listen to the announcement: Does Bus 42 go to Marienplatz today?",
+       "options": [
+        "No — take the U3 instead",
+        "Yes, every 5 minutes",
+        "Yes, in 3 minutes"
+       ],
+       "answer": "No — take the U3 instead",
+       "audio": {
+        "who": "S",
+        "text": "Achtung! Der Bus zweiundvierzig fährt heute nicht zum Marienplatz. Bitte nehmen Sie die U drei."
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
