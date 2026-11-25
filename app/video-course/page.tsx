@@ -14,6 +14,13 @@ export const metadata = {
   ...(VIDEO_COURSE_PUBLIC ? {} : { robots: { index: false, follow: false } }),
 };
 
+const CAST = ['weber', 'oezdemir', 'arjun', 'amara', 'mateo', 'yuki', 'schulz'] as const;
+const MODULES = [
+  { id: 'm1', title: 'Module 1 · First steps & daily life', range: [1, 8] as const, open: true },
+  { id: 'm2', title: 'Module 2 · Routines, friends & work', range: [9, 16] as const, open: false },
+  { id: 'm3', title: 'Module 3 · Home, travel & full A1', range: [17, 24] as const, open: false },
+];
+
 export default function VideoCoursePage() {
   const dashEpisodes = A1_EPISODES.map(e => ({ n: e.n, slug: e.slug, title: e.title, english: e.english, hasFull: hasFullPractice(e.n) }));
   return <div className="site-shell"><SiteHeader active="course" /><main className="discovery-page vc-page">
@@ -23,18 +30,26 @@ export default function VideoCoursePage() {
       <h1>German A1 video course</h1>
       <p>Each episode: watch the lesson in Frau Weber&apos;s class, then practise the words and grammar here. You pass an episode at 80 %.</p></header>
     <CourseDashboard episodes={dashEpisodes} />
-    <ol className="vc-episode-list">
-      {A1_EPISODES.map(e => <li key={e.n}>
-        <Link href={episodePath(e.n)} className="vc-episode-card">
-          <span className="vc-ep-num">{String(e.n).padStart(2, '0')}</span>
-          <span className="vc-ep-body"><strong>{e.title}</strong><span>{e.english} · {e.location}</span></span>
-          <span className="vc-ep-meta">{hasFullPractice(e.n) && <span className="vc-tag">Full practice</span>}{youtubeIdFor(e.n) ? '▶ Video' : 'Video soon'}<EpisodeProgressBadge episode={e.n} /></span>
-        </Link>
-        {A1_MOCKS.filter(m => m.afterEpisode === e.n).map(m => <div key={m.id} className="vc-episode-card vc-mock">
-          <span className="vc-ep-num">{m.id.toUpperCase()}</span><span className="vc-ep-body"><strong>Practice exam {m.id.slice(1)}</strong><span>Exam prep · episodes {e.n - 7}–{e.n}</span></span><span className="vc-ep-meta">Coming soon</span>
-        </div>)}
-      </li>)}
-    </ol>
+    <div className="vc-modules">{MODULES.map(mod => {
+      const eps = A1_EPISODES.filter(e => e.n >= mod.range[0] && e.n <= mod.range[1]);
+      const readyCount = eps.filter(e => hasFullPractice(e.n)).length;
+      const list = <ol className="vc-episode-list">
+        {eps.map(e => <li key={e.n}>
+          <Link href={episodePath(e.n)} className="vc-episode-card">
+            <img className="vc-ep-avatar" src={`/video-course/img/${CAST[(e.n - 1) % CAST.length]}.webp`} alt="" width={44} height={44} loading="lazy" />
+            <span className="vc-ep-num">{String(e.n).padStart(2, '0')}</span>
+            <span className="vc-ep-body"><strong lang="de">{e.title}</strong><span>{e.english} · {e.location}</span></span>
+            <span className="vc-ep-meta">{hasFullPractice(e.n) && <span className="vc-tag">Full practice</span>}{youtubeIdFor(e.n) ? '▶ Video' : ''}<EpisodeProgressBadge episode={e.n} /></span>
+          </Link>
+          {A1_MOCKS.filter(m => m.afterEpisode === e.n).map(m => <div key={m.id} className="vc-episode-card vc-mock">
+            <span className="vc-ep-num">{m.id.toUpperCase()}</span><span className="vc-ep-body"><strong>Practice exam {m.id.slice(1)}</strong><span>Exam prep · episodes {e.n - 7}–{e.n}</span></span><span className="vc-ep-meta">Coming soon</span>
+          </div>)}
+        </li>)}
+      </ol>;
+      return mod.open
+        ? <section key={mod.id} className="vc-module"><h2>{mod.title} <small>{readyCount > 0 ? `${readyCount} of ${eps.length} full practice ready` : `Episodes ${mod.range[0]}–${mod.range[1]}`}</small></h2>{list}</section>
+        : <details key={mod.id} className="vc-module vc-module-toggle"><summary><span>{mod.title}</span><small>Episodes {mod.range[0]}–{mod.range[1]} · {readyCount > 0 ? `${readyCount} ready` : 'Coming soon'}</small></summary>{list}</details>;
+    })}</div>
     </VideoCourseGate>
   </main></div>;
 }

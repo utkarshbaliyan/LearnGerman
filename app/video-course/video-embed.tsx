@@ -17,7 +17,7 @@ export function VideoEmbed({ youtubeId, title, chapters }: { youtubeId: string; 
   }, []);
 
   let player;
-  if (!youtubeId) player = <div className="vc-video vc-video-soon"><PlayCircle aria-hidden="true" /><p><strong>Video coming soon.</strong> The practice below already works.</p></div>;
+  if (!youtubeId) player = <div className="vc-video-soon-bar" role="note"><PlayCircle aria-hidden="true" /><span><strong>Video coming soon</strong> — all interactive practice below is ready now.</span></div>;
   else if (start !== null) player = <div className="vc-video"><iframe key={start} src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&start=${start}`} title={title} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin" /></div>;
   else player = <button type="button" className="vc-video vc-video-poster" onClick={() => setStart(0)} aria-label={`Play video: ${title}`}>
     <img src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`} alt="" loading="lazy" /><PlayCircle aria-hidden="true" /><span>Play · loads YouTube</span>
@@ -25,8 +25,8 @@ export function VideoEmbed({ youtubeId, title, chapters }: { youtubeId: string; 
 
   return <div ref={box} className="vc-video-wrap">
     {player}
-    {chapters.length > 0 && <details className="vc-chapters"><summary>Chapters ({chapters.length})</summary><ol>
-      {chapters.map(c => <li key={c.t}><button type="button" disabled={!youtubeId} onClick={() => setStart(toSeconds(c.t))}><span>{c.t}</span>{c.title}</button></li>)}
+    {youtubeId && chapters.length > 0 && <details className="vc-chapters"><summary>Chapters ({chapters.length})</summary><ol>
+      {chapters.map(c => <li key={c.t}><button type="button" onClick={() => setStart(toSeconds(c.t))}><span>{c.t}</span>{c.title}</button></li>)}
     </ol></details>}
   </div>;
 }

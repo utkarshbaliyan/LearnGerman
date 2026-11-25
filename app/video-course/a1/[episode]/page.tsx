@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { Download } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/app/components/site-header';
 import { StructuredData } from '@/app/components/structured-data';
 import { pageMetadata, breadcrumbs } from '@/app/lib/seo';
+import { getReadingStory } from '@/app/lib/reading-path';
 import { A1_EPISODES, blocksFor, episodePath, getEpisode, hasFullPractice, youtubeIdFor } from '@/app/video-course/course';
 import { courseWords } from '@/app/video-course/course-vocab';
 import { LessonWords } from '@/app/video-course/lesson-words';
@@ -39,6 +40,7 @@ export default async function EpisodePage({ params }: Props) {
   const e = getEpisode((await params).episode);
   if (!e) notFound();
   const prev = A1_EPISODES.find(x => x.n === e.n - 1), next = A1_EPISODES.find(x => x.n === e.n + 1);
+  const matchingStory = getReadingStory(`reading-a1-${String(e.n).padStart(2, '0')}-v1`);
   const blocks = blocksFor(e);
   const source = { episode: e.n, title: e.title, href: episodePath(e.n) };
   const main = courseWords(e, ['core', 'topic', 'sentence']), bonus = courseWords(e, ['website']);
@@ -58,13 +60,18 @@ export default async function EpisodePage({ params }: Props) {
     <StructuredData data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Video course', path: '/video-course' }, { name: `Episode ${e.n}`, path: episodePath(e.n) }])} />
     <VideoCourseGate>
     <nav className="vc-crumbs"><Link href="/video-course">← A1 video course</Link></nav>
-    <header className="vc-head vc-hero"><span className="reading-eyebrow">A1 · Episode {e.n} · {e.location}</span><h1>{e.title}</h1>
+    <header className="vc-head vc-hero"><span className="reading-eyebrow">A1 · Episode {e.n} · {e.location}</span><h1 lang="de">{e.title}</h1>
       <p>{/[.!?]$/.test(e.english) ? e.english : `${e.english}.`} <strong>After this episode you can:</strong> {e.goal.charAt(0).toLowerCase() + e.goal.slice(1)}</p>
-      {pdf && <a className="vc-download" href={pdf} download><Download aria-hidden="true" /> Download PDF · all exercises + answers + word list</a>}</header>
+      <div className="vc-hero-actions">
+        <a className="vc-btn vc-hero-start" href="#vc-blocks">Start practice <ArrowDown aria-hidden="true" /></a>
+        {pdf && <a className="vc-btn-ghost vc-download-ghost" href={pdf} download><Download aria-hidden="true" /> Worksheet PDF</a>}
+      </div></header>
 
     <VideoEmbed youtubeId={youtubeIdFor(e.n)} title={`LeseLaut A1 Episode ${e.n}: ${e.title}`} chapters={e.chapters} />
 
-    <EpisodeBlocks episode={e.n} blocks={blocks} extras={extras} next={next ? { href: episodePath(next.n), title: `Episode ${next.n}: ${next.title}` } : undefined} />
+    <EpisodeBlocks episode={e.n} blocks={blocks} extras={extras}
+      next={next ? { href: episodePath(next.n), title: `Episode ${next.n}: ${next.title}` } : undefined}
+      story={matchingStory ? { href: `/stories/${matchingStory.id}`, title: matchingStory.title } : undefined} />
     {!hasFullPractice(e.n) && <p className="vc-note">Full practice for this episode (video questions, grammar, listening, reading, writing, speaking and the test) is coming soon.</p>}
 
     <section id="review" className="vc-block vc-review" aria-label="Your mistakes"><h2>Review</h2><MistakesReview episode={e.n} /></section>

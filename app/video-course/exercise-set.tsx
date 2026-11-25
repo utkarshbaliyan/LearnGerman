@@ -79,9 +79,23 @@ export function ExerciseSet({ episode, block, sections, ids }: { episode: number
       .filter(r => !['write', 'speak'].includes((r.item as ExerciseItem).type)), block);
     if (block !== 'review' && coreSections.every(({ s: x }) => next[x.id]) && total) saveBlock(episode, block, scoreOf(answers, false), total);
   }
-  function reset(id: string) {
-    setChecked(c => ({ ...c, [id]: false }));
-    setAnswers(a => Object.fromEntries(Object.entries(a).filter(([k]) => !k.startsWith(`${id}-`))));
+  function reset(si: number, missedOnly = false) {
+    const s = sections[si];
+    setChecked(c => ({ ...c, [s.id]: false }));
+    if (!missedOnly) {
+      setAnswers(a => Object.fromEntries(Object.entries(a).filter(([k]) => !k.startsWith(`${s.id}-`))));
+      return;
+    }
+    setAnswers(a => {
+      const next = { ...a };
+      s.items.forEach((item, i) => {
+        const key = keyOf(s, i);
+        if (item.type !== 'speak' && isCorrect(item, getter(key, a)) === false) {
+          for (const k of Object.keys(next)) if (k === key || k.startsWith(`${key}.`)) delete next[k];
+        }
+      });
+      return next;
+    });
   }
   function insert(ch: string) {
     const el = lastInput.current; if (!el) return;
@@ -115,7 +129,9 @@ export function ExerciseSet({ episode, block, sections, ids }: { episode: number
           const key = keyOf(section, i), get = getter(key), value = get(), result = done ? isCorrect(item, get) : null;
           const state = result === true ? 'is-right' : result === false ? 'is-wrong' : '';
           const input = (label: string, wide = false) => <input {...focusProps(key)} className={wide ? 'vc-input-wide' : ''} value={value} disabled={done} aria-label={label}
-            autoCapitalize="off" autoCorrect="off" spellCheck={false} onChange={e => set(key, e.target.value)} />;
+            autoCapitalize="off" autoCorrect="off" spellCheck={false}
+            onKeyDown={e => { if (e.key === 'Enter' && !done) { e.preventDefault(); check(si); } }}
+            onChange={e => set(key, e.target.value)} />;
           return <li key={key} className={`vc-item vc-item-${item.type} ${state}`}>
             {item.image && <img className="vc-face" src={`/video-course/img/${item.image}.webp`} alt="" width={52} height={103} loading="lazy" />}
             {item.audio && item.type !== 'speak' && <AudioButton line={item.audio} />}
@@ -143,7 +159,9 @@ export function ExerciseSet({ episode, block, sections, ids }: { episode: number
       <footer>
         {done ? <>
           {gradedHere.length > 0 && <strong>{right} / {gradedHere.length}</strong>}
-          <button type="button" className="vc-btn-ghost" onClick={() => reset(section.id)}><RotateCcw aria-hidden="true" /> Try again</button>
+          {gradedHere.length > 1 && right > 0 && right < gradedHere.length
+            ? <button type="button" className="vc-btn-ghost" onClick={() => reset(si, true)}><RotateCcw aria-hidden="true" /> Retry missed ({gradedHere.length - right})</button>
+            : <button type="button" className="vc-btn-ghost" onClick={() => reset(si, false)}><RotateCcw aria-hidden="true" /> Try again</button>}
           {hasNextCore && <button type="button" className="vc-btn vc-next-set" onClick={() => setStep(coreIdx + 1)}>Next set <ChevronRight aria-hidden="true" /></button>}
         </> : <button type="button" className="vc-btn" onClick={() => check(si)}>{gradedHere.length ? 'Check answers' : 'Done'}</button>}
       </footer>
