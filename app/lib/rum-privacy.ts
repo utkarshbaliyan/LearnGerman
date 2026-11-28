@@ -1,6 +1,11 @@
+import { VIDEO_COURSE_PUBLIC } from './feature-availability';
+
 export const RUM_CONSENT_KEY = 'leselaut:analytics-choice:v1';
 export type RumConsent = 'allow' | 'decline' | null;
-export const PUBLIC_ANALYTICS_PATH = /^(?:\/|\/(?:stories|books|grammar|vocabulary)(?:\/[a-zA-Z0-9_-]+)*|\/(?:privacy|support))$/;
+export const publicAnalyticsPattern = (videoCoursePublic: boolean) => videoCoursePublic
+  ? /^(?:\/|\/(?:stories|books|grammar|vocabulary|video-course)(?:\/[a-zA-Z0-9_-]+)*|\/(?:course|about|privacy|support))$/
+  : /^(?:\/|\/(?:stories|books|grammar|vocabulary)(?:\/[a-zA-Z0-9_-]+)*|\/(?:course|about|privacy|support))$/;
+export const PUBLIC_ANALYTICS_PATH = publicAnalyticsPattern(VIDEO_COURSE_PUBLIC);
 export function readAnalyticsConsent(storage: Pick<Storage, 'getItem'>, key: string, now = Date.now()): RumConsent {
   try {
     const data = JSON.parse(storage.getItem(key) ?? 'null');

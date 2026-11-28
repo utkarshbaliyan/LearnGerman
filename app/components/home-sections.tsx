@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, BookMarked, BookOpen, GraduationCap, Languages, PenLine } from 'lucide-react';
+import { ArrowUpRight, BookMarked, BookOpen, GraduationCap, Languages, PenLine, PlayCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CLOUD_PROGRESS_OWNER_STORAGE_KEY, PROGRESS_SYNCED_EVENT } from '@/app/lib/cloud-progress-keys';
 import { readBookBookmark, BOOK_PAGE_COUNT } from '@/app/lib/book-bookmark';
@@ -11,22 +11,26 @@ import { readCourseProgress, readGrammarProgress, VOCABULARY_LEGACY_STORAGE_KEYS
 import { grammarOverview, type HomeGrammarLesson, type VocabularyOverview } from '@/app/lib/home-progress';
 import type { ReadingSummary } from '@/app/lib/reading-path';
 import type { TranslationMemory } from '@/app/lib/translation-memory';
-import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
+import { ACTIVE_LEARNING_ENABLED, VIDEO_COURSE_PUBLIC } from '@/app/lib/feature-availability';
+import { A1_EPISODES, PUBLISHED_EPISODES, episodePath, hasFullPractice } from '@/app/video-course/course';
+import { onProgressChange, readAllEpisodes, readCourseMeta } from '@/app/video-course/progress';
 
 const number = (n: number) => n.toLocaleString('en');
 function Meter({ value, total, label }: { value: number; total: number; label: string }) {
   return <progress className="home-section-meter" value={value} max={Math.max(1, total)} aria-label={label} />;
 }
 
-export function HomeSections({ stories, completedIds, storiesReady, vocabulary, vocabularyReady, grammarLessons, memory, memoryLoading, memoryError, signedIn }: {
+export function HomeSections({ stories, completedIds, storiesReady, vocabulary, vocabularyReady, grammarLessons, memory, memoryLoading, memoryError, signedIn, showVideoCourse = VIDEO_COURSE_PUBLIC }: {
   stories: ReadingSummary[]; completedIds: Set<string>; storiesReady: boolean;
   vocabulary: VocabularyProgress; vocabularyReady: boolean; grammarLessons: HomeGrammarLesson[];
   memory: TranslationMemory | null; memoryLoading: boolean; memoryError: string; signedIn: boolean;
+  showVideoCourse?: boolean;
 }) {
   const [grammar, setGrammar] = useState<ReturnType<typeof grammarOverview> | null>(null), [grammarError, setGrammarError] = useState(false);
   const [owner, setOwner] = useState<string | null | undefined>(undefined);
   const [words, setWords] = useState<VocabularyOverview | null>(null), [wordError, setWordError] = useState(''), [retry, setRetry] = useState(0);
   const [activeBook, setActiveBook] = useState<{ book: BookCatalogEntry; page: number } | null>(null);
+  const [videoCourse, setVideoCourse] = useState<{ passed: number; nextEpisode: number; started: boolean } | null>(null);
   useEffect(() => {
     function refresh() {
       try {
@@ -38,10 +42,19 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
           .sort((a, b) => b.mark.updatedAt - a.mark.updatedAt);
         setActiveBook(bookmarks[0] ? { book: bookmarks[0].book, page: bookmarks[0].mark.page } : null);
       } catch { setGrammar(null); setGrammarError(true); }
+      try {
+        const all = readAllEpisodes(), meta = readCourseMeta();
+        const passed = A1_EPISODES.filter(e => { const t = all[e.n]?.blocks?.test; return t && t.total > 0 && t.score / t.total >= 0.8; });
+        const passedSet = new Set(passed.map(e => e.n));
+        const lastEp = meta.last?.episode;
+        const nextEpisode = lastEp && !passedSet.has(lastEp) ? lastEp : (A1_EPISODES.find(e => hasFullPractice(e.n) && !passedSet.has(e.n))?.n ?? 1);
+        setVideoCourse({ passed: passed.length, nextEpisode, started: passed.length > 0 || meta.activeDays.length > 0 || Object.keys(all).length > 0 });
+      } catch { setVideoCourse(null); }
     }
     const frame = requestAnimationFrame(refresh);
+    const stopVc = onProgressChange(refresh);
     window.addEventListener('storage', refresh); window.addEventListener(PROGRESS_SYNCED_EVENT, refresh);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener('storage', refresh); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
+    return () => { cancelAnimationFrame(frame); stopVc(); window.removeEventListener('storage', refresh); window.removeEventListener(PROGRESS_SYNCED_EVENT, refresh); };
   }, [grammarLessons]);
   // Keep the full vocabulary catalog on the server, and send only status fields.
   const vocabularyKey = useMemo(() => JSON.stringify({
@@ -70,6 +83,11 @@ export function HomeSections({ stories, completedIds, storiesReady, vocabulary, 
   return <section className="home-sections" aria-labelledby="home-sections-title">
     <header className="home-sections-heading"><div><h2 id="home-sections-title">Your German, at a glance</h2><p>Pick the kind of practice you need today.</p></div><Link href="/books">Continue a book <ArrowUpRight aria-hidden="true" /></Link></header>
     <div className="home-section-grid">
+      {showVideoCourse && <article className="home-section-card" data-area="video-course" aria-labelledby="home-video-course-title">
+        <div className="home-section-art"><img src="/video-course/img/weber.webp" alt="" width="512" height="512" loading="lazy" decoding="async" /></div>
+        <div className="home-section-copy"><span className="home-section-label"><PlayCircle aria-hidden="true" /> Animated lessons · A1</span><h3 id="home-video-course-title">A1 Video Course</h3><p>Watch short cartoon lessons in Frau Weber&apos;s class, then lock in words and grammar with exercises and worksheet PDFs.</p></div>
+        <div className="home-section-progress"><div className="home-section-stat"><strong>{videoCourse ? number(videoCourse.passed) : '0'}</strong><span>of {number(A1_EPISODES.length)} episodes passed</span></div><Meter value={videoCourse?.passed ?? 0} total={A1_EPISODES.length} label={`A1 Video Course: ${videoCourse?.passed ?? 0} of ${A1_EPISODES.length} episodes passed`} /><div className="home-section-footer"><span>{PUBLISHED_EPISODES.length} full lessons + PDFs ready.</span><Link href={videoCourse?.started ? episodePath(videoCourse.nextEpisode) : '/video-course'}>{videoCourse?.started ? `Continue Episode ${videoCourse.nextEpisode}` : 'Open A1 course'} <ArrowUpRight aria-hidden="true" /></Link></div></div>
+      </article>}
       <article className="home-section-card" data-area="stories" aria-labelledby="home-stories-title">
         <div className="home-section-art"><img src="/illustrations/reading-room.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" /></div>
         <div className="home-section-copy"><span className="home-section-label"><BookOpen aria-hidden="true" /> Read & listen · A1–B2</span><h3 id="home-stories-title">Stories</h3><p>Follow everyday life in German with narration, English translations and comprehension questions.</p></div>

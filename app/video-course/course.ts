@@ -17,6 +17,10 @@ export const episodePath = (n: number) => `/video-course/a1/episode-${n}`;
 export const youtubeIdFor = (n: number) => (youtubeIds as Record<string, string>)[String(n)] ?? '';
 export const getEpisode = (slug: string) => A1_EPISODES.find(e => e.slug === slug);
 export const hasFullPractice = (n: number) => !!CONTENT[n];
+export const PUBLISHED_EPISODES = A1_EPISODES.filter(e => hasFullPractice(e.n));
+export const isEpisodeIndexable = (n: number, isPublic: boolean) => isPublic && hasFullPractice(n);
+export const videoCourseSitemapPaths = (isPublic: boolean) =>
+  isPublic ? ['/video-course', ...PUBLISHED_EPISODES.map(e => episodePath(e.n))] : [];
 export const flashcardWords = (e: Episode) => e.vocab.filter(v => ['core', 'topic', 'sentence'].includes(v.section));
 export const bonusWords = (e: Episode) => e.vocab.filter(v => v.section === 'website');
 

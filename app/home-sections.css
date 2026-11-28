@@ -26,6 +26,7 @@
 .home-sections svg { width: 16px; height: 16px; flex-shrink: 0; }
 .home-section-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .home-section-card { --home-tint: var(--tone-sage); --home-accent: var(--tone-sage-ink); display: grid; grid-template-columns: 170px minmax(0, 1fr); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--white); }
+.home-section-card[data-area="video-course"] { --home-tint: var(--tone-butter); --home-accent: var(--tone-butter-ink); }
 .home-section-card[data-area="books"] { --home-tint: var(--tone-peach); --home-accent: var(--tone-peach-ink); }
 .home-section-card[data-area="grammar"] { --home-tint: var(--tone-lilac); --home-accent: var(--tone-lilac-ink); }
 .home-section-card[data-area="vocabulary"] { --home-tint: var(--tone-sky); --home-accent: var(--tone-sky-ink); }

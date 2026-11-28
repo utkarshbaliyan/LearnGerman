@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { createServer } from 'vite';
 import headers from '../deploy/security-headers.json' with { type: 'json' };
 
 const data = JSON.parse(readFileSync('app/video-course/data/a1-episodes.json', 'utf8'));
@@ -67,4 +70,45 @@ test('Episode practice files are internally consistent and every exercise clip h
     if (it.image) assert.ok(existsSync(`public/video-course/img/${it.image}.webp`), `${file} ${where} image`);
   }
   }
+});
+
+test('pre-launch SEO, sitemap gating, JSON-LD, and homepage video-course entry work cleanly', async () => {
+  const vite = await createServer({ configFile: false, resolve: { alias: { '@': process.cwd() } }, server: { middlewareMode: true, ws: false, watch: null } });
+  try {
+    const course = await vite.ssrLoadModule('/app/video-course/course.ts');
+    assert.deepEqual(course.videoCourseSitemapPaths(false), []);
+    const publicPaths = course.videoCourseSitemapPaths(true);
+    assert.equal(publicPaths[0], '/video-course');
+    assert.ok(publicPaths.includes('/video-course/a1/episode-1'));
+    assert.ok(publicPaths.includes('/video-course/a1/episode-6'));
+    assert.ok(!publicPaths.includes('/video-course/a1/episode-7'), 'thin coming-soon episodes stay out of sitemap.xml');
+    assert.equal(course.isEpisodeIndexable(1, false), false);
+    assert.equal(course.isEpisodeIndexable(1, true), true);
+    assert.equal(course.isEpisodeIndexable(7, true), false);
+
+    const { default: VideoCoursePage } = await vite.ssrLoadModule('/app/video-course/page.tsx');
+    const courseHtml = renderToStaticMarkup(React.createElement(VideoCoursePage));
+    assert.match(courseHtml, /"@type":"Course"/);
+    assert.match(courseHtml, /"educationalLevel":"CEFR A1"/);
+
+    const epModule = await vite.ssrLoadModule('/app/video-course/a1/[episode]/page.tsx');
+    const ep1Meta = await epModule.generateMetadata({ params: Promise.resolve({ episode: 'episode-1' }) });
+    assert.equal(ep1Meta.alternates.canonical, 'https://leselaut.com/video-course/a1/episode-1');
+    const ep7Meta = await epModule.generateMetadata({ params: Promise.resolve({ episode: 'episode-7' }) });
+    assert.equal(ep7Meta.robots?.index, false, 'coming-soon episode must stay noindex');
+    const ep1Html = renderToStaticMarkup(await epModule.default({ params: Promise.resolve({ episode: 'episode-1' }) }));
+    assert.match(ep1Html, /"@type":"LearningResource"/);
+
+    const { HomeSections } = await vite.ssrLoadModule('/app/components/home-sections.tsx');
+    const baseProps = {
+      stories: [], completedIds: new Set(), storiesReady: true,
+      vocabulary: { learnedKeys: [], reviewKeys: [], legacyMigrated: true }, vocabularyReady: true,
+      grammarLessons: [], memory: null, memoryLoading: false, memoryError: '', signedIn: false,
+    };
+    const hiddenHome = renderToStaticMarkup(React.createElement(HomeSections, { ...baseProps, showVideoCourse: false }));
+    assert.doesNotMatch(hiddenHome, /data-area="video-course"/);
+    const publicHome = renderToStaticMarkup(React.createElement(HomeSections, { ...baseProps, showVideoCourse: true }));
+    assert.match(publicHome, /data-area="video-course"/);
+    assert.match(publicHome, /href="\/video-course"/);
+  } finally { await vite.close(); }
 });

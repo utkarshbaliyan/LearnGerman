@@ -69,11 +69,23 @@ try{
   const sitemap=await fetch(base+'/sitemap.xml');assert.equal(sitemap.status,200);assert.match(sitemap.headers.get('content-type'),/xml/);
   const xml=await sitemap.text();assert.ok([...xml.matchAll(/<loc>/g)].length>700);assert.doesNotMatch(xml,/<loc>[^<]*(?:account|auth\/|cloudfront|chatgpt|\?)/);
   const robots=await fetch(base+'/robots.txt');assert.equal(robots.status,200);assert.match(await robots.text(),/Sitemap: https:\/\/leselaut.com\/sitemap.xml/);
+  for(const path of ['/video-course','/video-course/a1/episode-1','/video-course/a1/episode-7']){
+    const response=await fetch(base+path);assert.equal(response.status,200,path);
+    assert.equal(response.headers.get('x-frame-options'),'DENY',`framing protection: ${path}`);
+    assert.ok((response.headers.get('content-security-policy')??'').includes('https://www.youtube-nocookie.com'),`YouTube embed CSP: ${path}`);
+    const html=await response.text();
+    const canonicals=[...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
+    assert.deepEqual(canonicals,[`https://leselaut.com${path}`],`canonical ${path}`);
+    if(path==='/video-course/a1/episode-7') assert.match(html,/<meta name="robots" content="[^"]*noindex/,'coming-soon episode stays out of the index');
+  }
+  const pdf=await fetch(base+'/video-course/pdf/a1-episode-1.pdf',{method:'HEAD'});
+  assert.equal(pdf.status,200,'Episode 1 worksheet PDF');
+  assert.match(pdf.headers.get('content-type')??'',/application\/pdf/,'Worksheet PDF MIME type');
   for(const [path,location] of [['/course/a1/chapter-1','/stories/reading-a1-01-v1'],['/stories?level=B2','/stories/b2']]) {
     const response=await fetch(base+path,{redirect:'manual'});assert.equal(response.status,308,path);assert.equal(response.headers.get('location'),'https://leselaut.com'+location);
   }
   assert.equal((await fetch(base+'/course/a1/no-such-chapter',{redirect:'manual'})).status,404);
-  for(const path of ['/api/account','/api/progress','/api/account/export']){
+  for(const path of ['/api/account','/api/progress','/api/account/export','/api/video-course/access']){
     const response=await fetch(base+path);assert.equal(response.status,401,path);
     assert.match(response.headers.get('cache-control'),/private, no-store/);
   }
