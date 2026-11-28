@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader } from '@/app/components/site-header';
 import { StructuredData } from '@/app/components/structured-data';
-import { pageMetadata, breadcrumbs } from '@/app/lib/seo';
+import { pageMetadata, breadcrumbs, absoluteUrl, organization } from '@/app/lib/seo';
 import { A1_EPISODES, A1_MOCKS, episodePath, hasFullPractice, youtubeIdFor } from '@/app/video-course/course';
 import { EpisodeProgressBadge } from '@/app/video-course/episode-progress';
 import { CourseDashboard } from '@/app/video-course/course-dashboard';
@@ -23,8 +23,20 @@ const MODULES = [
 
 export default function VideoCoursePage() {
   const dashEpisodes = A1_EPISODES.map(e => ({ n: e.n, slug: e.slug, title: e.title, english: e.english, hasFull: hasFullPractice(e.n) }));
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'LeseLaut German A1 Video Course',
+    description: 'Watch short animated German A1 lessons, then practise vocabulary, grammar, listening, reading, writing and speaking with instant feedback and downloadable worksheet PDFs.',
+    url: absoluteUrl('/video-course'),
+    inLanguage: ['de', 'en'],
+    educationalLevel: 'CEFR A1',
+    isAccessibleForFree: true,
+    provider: { '@id': organization['@id'] },
+  };
   return <div className="site-shell"><SiteHeader active="course" /><main className="discovery-page vc-page">
     <StructuredData data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Video course', path: '/video-course' }])} />
+    <StructuredData data={courseSchema} />
     <VideoCourseGate>
     <header className="discovery-intro"><span className="reading-eyebrow">A1 · 24 episodes · 3 practice exams</span>
       <h1>German A1 video course</h1>
@@ -39,7 +51,7 @@ export default function VideoCoursePage() {
             <img className="vc-ep-avatar" src={`/video-course/img/${CAST[(e.n - 1) % CAST.length]}.webp`} alt="" width={44} height={44} loading="lazy" />
             <span className="vc-ep-num">{String(e.n).padStart(2, '0')}</span>
             <span className="vc-ep-body"><strong lang="de">{e.title}</strong><span>{e.english} · {e.location}</span></span>
-            <span className="vc-ep-meta">{hasFullPractice(e.n) && <span className="vc-tag">Full practice</span>}{youtubeIdFor(e.n) ? '▶ Video' : ''}<EpisodeProgressBadge episode={e.n} /></span>
+            <span className="vc-ep-meta">{hasFullPractice(e.n) && <span className="vc-tag">Full practice</span>}{youtubeIdFor(e.n) ? <span>▶ Video</span> : null}<EpisodeProgressBadge episode={e.n} /></span>
           </Link>
           {A1_MOCKS.filter(m => m.afterEpisode === e.n).map(m => <div key={m.id} className="vc-episode-card vc-mock">
             <span className="vc-ep-num">{m.id.toUpperCase()}</span><span className="vc-ep-body"><strong>Practice exam {m.id.slice(1)}</strong><span>Exam prep · episodes {e.n - 7}–{e.n}</span></span><span className="vc-ep-meta">Coming soon</span>

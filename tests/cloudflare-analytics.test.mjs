@@ -137,5 +137,15 @@ test('Cloudflare requires fresh provider consent, preserves old declines, and lo
     beacon.onerror(); assert.equal(elements.size, 1);
     cf.loadCloudflare(doc); assert.equal(elements.size, 2);
     assert.equal(headers['Referrer-Policy'], 'strict-origin');
+    const privatePattern = p.publicAnalyticsPattern(false), publicPattern = p.publicAnalyticsPattern(true);
+    assert.equal(privatePattern.test('/course'), true);
+    assert.equal(privatePattern.test('/about'), true);
+    assert.equal(privatePattern.test('/video-course'), false, 'owner-gated video course stays outside analytics');
+    assert.equal(publicPattern.test('/video-course'), true, 'public video course is observable');
+    assert.equal(publicPattern.test('/video-course/a1/episode-1'), true);
+    for (const priv of ['/account', '/auth/confirm', '/admin/live', '/api/account', '/active-learning', '/practice/tutor']) {
+      assert.equal(privatePattern.test(priv), false, `private ${priv}`);
+      assert.equal(publicPattern.test(priv), false, `private ${priv}`);
+    }
   } finally { await vite.close(); }
 });

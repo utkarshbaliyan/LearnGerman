@@ -3,9 +3,9 @@ import { ArrowDown, Download } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/app/components/site-header';
 import { StructuredData } from '@/app/components/structured-data';
-import { pageMetadata, breadcrumbs } from '@/app/lib/seo';
+import { pageMetadata, breadcrumbs, absoluteUrl, organization } from '@/app/lib/seo';
 import { getReadingStory } from '@/app/lib/reading-path';
-import { A1_EPISODES, blocksFor, episodePath, getEpisode, hasFullPractice, youtubeIdFor } from '@/app/video-course/course';
+import { A1_EPISODES, blocksFor, episodePath, getEpisode, hasFullPractice, isEpisodeIndexable, youtubeIdFor } from '@/app/video-course/course';
 import { courseWords } from '@/app/video-course/course-vocab';
 import { LessonWords } from '@/app/video-course/lesson-words';
 import { VideoEmbed } from '@/app/video-course/video-embed';
@@ -21,9 +21,14 @@ type Props = { params: Promise<{ episode: string }> };
 export async function generateMetadata({ params }: Props) {
   const e = getEpisode((await params).episode);
   if (!e) return {};
+  const robots = !VIDEO_COURSE_PUBLIC
+    ? { index: false, follow: false }
+    : isEpisodeIndexable(e.n, VIDEO_COURSE_PUBLIC)
+      ? undefined
+      : { index: false, follow: true };
   return {
     ...pageMetadata(`A1 Episode ${e.n}: ${e.title} — German Video Lesson`, `${e.goal} Watch the A1 German video lesson, then practise the vocabulary and grammar (${e.grammarTitle}).`.slice(0, 165), episodePath(e.n)),
-    ...(VIDEO_COURSE_PUBLIC ? {} : { robots: { index: false, follow: false } }),
+    ...(robots ? { robots } : {}),
   };
 }
 
@@ -56,8 +61,22 @@ export default async function EpisodePage({ params }: Props) {
     grammar: <GrammarCard e={e} />,
   };
 
+  const lessonSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LearningResource',
+    name: `A1 Episode ${e.n}: ${e.title}`,
+    description: `${e.english}. ${e.goal}`,
+    url: absoluteUrl(episodePath(e.n)),
+    inLanguage: ['de', 'en'],
+    educationalLevel: 'CEFR A1',
+    learningResourceType: ['Video lesson', 'Interactive exercises', 'Worksheet'],
+    isAccessibleForFree: true,
+    provider: { '@id': organization['@id'] },
+  };
+
   return <div className="site-shell"><SiteHeader active="course" /><main className="discovery-page vc-page">
     <StructuredData data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Video course', path: '/video-course' }, { name: `Episode ${e.n}`, path: episodePath(e.n) }])} />
+    <StructuredData data={lessonSchema} />
     <VideoCourseGate>
     <nav className="vc-crumbs"><Link href="/video-course">← A1 video course</Link></nav>
     <header className="vc-head vc-hero"><span className="reading-eyebrow">A1 · Episode {e.n} · {e.location}</span><h1 lang="de">{e.title}</h1>
