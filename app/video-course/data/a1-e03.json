@@ -1,0 +1,1560 @@
+{
+ "episode": 3,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which word does Frau Weber say?",
+     "at": "1:02",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "schwimmen",
+        "spielen",
+        "schlafen"
+       ],
+       "answer": "schwimmen",
+       "audio": {
+        "who": "T",
+        "text": "schwimmen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "tanzen",
+        "lachen",
+        "kochen"
+       ],
+       "answer": "tanzen",
+       "audio": {
+        "who": "T",
+        "text": "tanzen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "joggen",
+        "kochen",
+        "kennen"
+       ],
+       "answer": "joggen",
+       "audio": {
+        "who": "T",
+        "text": "joggen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "Rad fahren",
+        "reisen",
+        "fernsehen"
+       ],
+       "answer": "Rad fahren",
+       "audio": {
+        "who": "T",
+        "text": "Rad fahren"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "fotografieren",
+        "finden",
+        "fernsehen"
+       ],
+       "answer": "fotografieren",
+       "audio": {
+        "who": "T",
+        "text": "fotografieren"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "fernsehen",
+        "finden",
+        "fahren"
+       ],
+       "answer": "fernsehen",
+       "audio": {
+        "who": "T",
+        "text": "fernsehen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "reisen",
+        "lesen",
+        "lachen"
+       ],
+       "answer": "reisen",
+       "audio": {
+        "who": "T",
+        "text": "reisen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Freizeit",
+        "der Freund",
+        "die Disco"
+       ],
+       "answer": "die Freizeit",
+       "audio": {
+        "who": "T",
+        "text": "die Freizeit"
+       }
+      }
+     ]
+    },
+    {
+     "id": "hobbies",
+     "title": "What do you like doing?",
+     "instructions": "Complete the sentence with the right hobby.",
+     "at": "0:47",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You love books. Ich ___ gern.",
+       "options": [
+        "lese",
+        "koche",
+        "tanze"
+       ],
+       "answer": "lese"
+      },
+      {
+       "type": "choice",
+       "prompt": "You make pasta every evening. Ich ___ gern.",
+       "options": [
+        "koche",
+        "reise",
+        "lache"
+       ],
+       "answer": "koche"
+      },
+      {
+       "type": "choice",
+       "prompt": "You love the pool. Ich ___ gern.",
+       "options": [
+        "schwimme",
+        "spiele",
+        "schlafe"
+       ],
+       "answer": "schwimme"
+      },
+      {
+       "type": "choice",
+       "prompt": "You have a camera. Ich ___ gern.",
+       "options": [
+        "fotografiere",
+        "fahre",
+        "finde"
+       ],
+       "answer": "fotografiere"
+      },
+      {
+       "type": "choice",
+       "prompt": "You have a bike. Ich fahre gern ___.",
+       "options": [
+        "Rad",
+        "Musik",
+        "Sport"
+       ],
+       "answer": "Rad"
+      },
+      {
+       "type": "choice",
+       "prompt": "You watch Netflix. Ich sehe gern ___.",
+       "options": [
+        "fern",
+        "Rad",
+        "Lied"
+       ],
+       "answer": "fern",
+       "note": "fernsehen = to watch TV"
+      },
+      {
+       "type": "choice",
+       "prompt": "Headphones on. Ich höre gern ___.",
+       "options": [
+        "Musik",
+        "Kino",
+        "Fußball"
+       ],
+       "answer": "Musik"
+      },
+      {
+       "type": "choice",
+       "prompt": "11 players, 1 ball. Ich spiele gern ___.",
+       "options": [
+        "Fußball",
+        "Gitarre",
+        "Film"
+       ],
+       "answer": "Fußball"
+      }
+     ]
+    },
+    {
+     "id": "frequency",
+     "title": "Gern? Wie oft?",
+     "instructions": "gern · nicht gern · lieber — and how often: immer, oft, manchmal, nie.",
+     "at": "3:23",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Every day: Ich lese ___.",
+       "options": [
+        "immer",
+        "oft",
+        "nie"
+       ],
+       "answer": "immer"
+      },
+      {
+       "type": "choice",
+       "prompt": "5 days a week: Ich koche ___.",
+       "options": [
+        "oft",
+        "nie",
+        "immer"
+       ],
+       "answer": "oft"
+      },
+      {
+       "type": "choice",
+       "prompt": "Now and then: Ich tanze ___.",
+       "options": [
+        "manchmal",
+        "immer",
+        "nie"
+       ],
+       "answer": "manchmal"
+      },
+      {
+       "type": "choice",
+       "prompt": "Never in your life: Ich schwimme ___.",
+       "options": [
+        "nie",
+        "oft",
+        "manchmal"
+       ],
+       "answer": "nie"
+      },
+      {
+       "type": "choice",
+       "prompt": "You like dancing: Ich tanze ___.",
+       "options": [
+        "gern",
+        "nie",
+        "lieber"
+       ],
+       "answer": "gern"
+      },
+      {
+       "type": "choice",
+       "prompt": "Football? No. You prefer cooking: Ich koche ___.",
+       "options": [
+        "lieber",
+        "nie",
+        "oft"
+       ],
+       "answer": "lieber"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your favourite film: mein ___",
+       "options": [
+        "Lieblingsfilm",
+        "Filmliebling",
+        "Liebfilm"
+       ],
+       "answer": "Lieblingsfilm"
+      }
+     ]
+    },
+    {
+     "id": "days",
+     "title": "Montag … Sonntag",
+     "instructions": "The days of the week. Type or pick.",
+     "at": "4:13",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Monday",
+       "answer": "Montag"
+      },
+      {
+       "type": "choice",
+       "prompt": "Montag, Dienstag, ___",
+       "options": [
+        "Mittwoch",
+        "Donnerstag",
+        "Freitag"
+       ],
+       "answer": "Mittwoch"
+      },
+      {
+       "type": "type",
+       "prompt": "Thursday",
+       "answer": "Donnerstag"
+      },
+      {
+       "type": "type",
+       "prompt": "Freitag, Samstag, ___",
+       "answer": "Sonntag"
+      },
+      {
+       "type": "choice",
+       "prompt": "on Saturday",
+       "options": [
+        "am Samstag",
+        "im Samstag",
+        "in Samstag"
+       ],
+       "answer": "am Samstag"
+      },
+      {
+       "type": "choice",
+       "prompt": "das Wochenende = …",
+       "options": [
+        "Samstag und Sonntag",
+        "Freitag und Samstag",
+        "Sonntag und Montag"
+       ],
+       "answer": "Samstag und Sonntag"
+      }
+     ]
+    },
+    {
+     "id": "articles",
+     "title": "der, die or das?",
+     "instructions": "Every noun has an article. Learn them together.",
+     "at": "2:22",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "___ Hobby",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "hobby"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Sport",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "sport"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Fußball",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "football"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Freizeit",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "free time"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Wochenende",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "weekend"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Kino",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "cinema"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Film",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "film"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Disco",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "disco, club"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Museum",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "museum"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Lied",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "song"
+      }
+     ]
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "at": "1:02",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "to swim",
+       "answer": "schwimmen"
+      },
+      {
+       "type": "type",
+       "prompt": "to dance",
+       "answer": "tanzen"
+      },
+      {
+       "type": "type",
+       "prompt": "to cook",
+       "answer": "kochen"
+      },
+      {
+       "type": "type",
+       "prompt": "to travel",
+       "answer": "reisen"
+      },
+      {
+       "type": "type",
+       "prompt": "to read",
+       "answer": "lesen"
+      },
+      {
+       "type": "type",
+       "prompt": "to watch TV",
+       "answer": "fernsehen"
+      },
+      {
+       "type": "type",
+       "prompt": "to cycle",
+       "answer": "Rad fahren"
+      },
+      {
+       "type": "type",
+       "prompt": "free time (with article)",
+       "answer": "die Freizeit"
+      },
+      {
+       "type": "type",
+       "prompt": "the weekend (with article)",
+       "answer": "das Wochenende"
+      },
+      {
+       "type": "type",
+       "prompt": "funny",
+       "answer": "lustig"
+      }
+     ]
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "More free-time words for the park. Learn them with the bonus flashcards above.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You eat on a blanket in the park. Wir ___.",
+       "options": [
+        "picknicken",
+        "malen",
+        "singen"
+       ],
+       "answer": "picknicken",
+       "note": "to picnic"
+      },
+      {
+       "type": "choice",
+       "prompt": "A slow walk in the park: der ___",
+       "options": [
+        "Spaziergang",
+        "Park",
+        "Film"
+       ],
+       "answer": "Spaziergang",
+       "note": "walk"
+      },
+      {
+       "type": "choice",
+       "prompt": "You sit on a ___ in the park.",
+       "options": [
+        "Bank",
+        "Wiese",
+        "Serie"
+       ],
+       "answer": "Bank",
+       "note": "bench"
+      },
+      {
+       "type": "choice",
+       "prompt": "The green grass in the park: die ___",
+       "options": [
+        "Wiese",
+        "Bank",
+        "Serie"
+       ],
+       "answer": "Wiese",
+       "note": "meadow"
+      },
+      {
+       "type": "choice",
+       "prompt": "Black and white pieces: Ich spiele gern ___.",
+       "options": [
+        "Schach",
+        "Yoga",
+        "Serie"
+       ],
+       "answer": "Schach",
+       "note": "chess"
+      },
+      {
+       "type": "choice",
+       "prompt": "On a mat: Ich mache gern ___.",
+       "options": [
+        "Yoga",
+        "Schach",
+        "Spaziergang"
+       ],
+       "answer": "Yoga"
+      },
+      {
+       "type": "choice",
+       "prompt": "Colours and a brush: Ich ___ gern.",
+       "options": [
+        "male",
+        "singe",
+        "spiele"
+       ],
+       "answer": "male",
+       "note": "malen = to paint"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ten episodes on Netflix: die ___",
+       "options": [
+        "Serie",
+        "Wiese",
+        "Bank"
+       ],
+       "answer": "Serie",
+       "note": "TV series"
+      }
+     ],
+     "bonus": true
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "du liest · er fährt — e→i(e) and a→ä only with du and er/sie/es. Ich spiele gern Fußball: gern comes after the verb. Yes/no question: the verb comes first.",
+   "sections": [
+    {
+     "id": "vowel-change",
+     "title": "du liest, er fährt",
+     "instructions": "Write the correct form of the verb in brackets.",
+     "at": "5:37",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Du",
+       "after": "gern.",
+       "answer": "liest",
+       "hint": "lesen"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "Rad.",
+       "answer": "fährt",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "du oft fern?",
+       "answer": "Siehst",
+       "hint": "sehen"
+      },
+      {
+       "type": "gap",
+       "before": "Mateo",
+       "after": "gern.",
+       "answer": "schläft",
+       "hint": "schlafen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "du Deutsch?",
+       "answer": "Sprichst",
+       "hint": "sprechen"
+      },
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "gern.",
+       "answer": "lese",
+       "hint": "lesen"
+      },
+      {
+       "type": "gap",
+       "before": "Wir",
+       "after": "Rad.",
+       "answer": "fahren",
+       "hint": "fahren"
+      },
+      {
+       "type": "gap",
+       "before": "Yuki",
+       "after": "oft fern.",
+       "answer": "sieht",
+       "hint": "sehen"
+      },
+      {
+       "type": "gap",
+       "before": "Du",
+       "after": "am Wochenende.",
+       "answer": "schläfst",
+       "hint": "schlafen"
+      },
+      {
+       "type": "gap",
+       "before": "Amara",
+       "after": "Englisch.",
+       "answer": "spricht",
+       "hint": "sprechen"
+      }
+     ]
+    },
+    {
+     "id": "gern",
+     "title": "gern · nicht gern · lieber",
+     "instructions": "Pick the correct German sentence.",
+     "at": "6:35",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "I like dancing.",
+       "options": [
+        "Ich tanze gern.",
+        "Ich gern tanze.",
+        "Gern ich tanze."
+       ],
+       "answer": "Ich tanze gern."
+      },
+      {
+       "type": "choice",
+       "prompt": "I don't like cooking.",
+       "options": [
+        "Ich koche nicht gern.",
+        "Ich nicht koche gern.",
+        "Ich gern nicht koche."
+       ],
+       "answer": "Ich koche nicht gern."
+      },
+      {
+       "type": "choice",
+       "prompt": "I prefer reading.",
+       "options": [
+        "Ich lese lieber.",
+        "Ich lieber lese.",
+        "Ich lese gern lieber."
+       ],
+       "answer": "Ich lese lieber."
+      },
+      {
+       "type": "choice",
+       "prompt": "I like playing football.",
+       "options": [
+        "Ich spiele gern Fußball.",
+        "Ich gern spiele Fußball.",
+        "Ich spiele Fußball gern ich."
+       ],
+       "answer": "Ich spiele gern Fußball."
+      },
+      {
+       "type": "choice",
+       "prompt": "I often cook.",
+       "options": [
+        "Ich koche oft.",
+        "Ich oft koche.",
+        "Oft ich koche."
+       ],
+       "answer": "Ich koche oft."
+      },
+      {
+       "type": "choice",
+       "prompt": "My favourite film is Titanic.",
+       "options": [
+        "Mein Lieblingsfilm ist Titanic.",
+        "Mein Film Liebling ist Titanic.",
+        "Ich Lieblingsfilm Titanic."
+       ],
+       "answer": "Mein Lieblingsfilm ist Titanic."
+      }
+     ]
+    },
+    {
+     "id": "questions",
+     "title": "Ja/Nein-Fragen",
+     "instructions": "Make a yes/no question: the verb goes first.",
+     "at": "7:03",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Du spielst Fußball. → ?",
+       "answer": "Spielst du Fußball?"
+      },
+      {
+       "type": "type",
+       "prompt": "Du liest gern. → ?",
+       "answer": "Liest du gern?"
+      },
+      {
+       "type": "type",
+       "prompt": "Du fährst Rad. → ?",
+       "answer": "Fährst du Rad?"
+      },
+      {
+       "type": "type",
+       "prompt": "Du kochst oft. → ?",
+       "answer": "Kochst du oft?"
+      },
+      {
+       "type": "choice",
+       "prompt": "Kochst du gern? – …",
+       "options": [
+        "Ja, ich koche gern.",
+        "Ich koche.",
+        "Gern ja."
+       ],
+       "answer": "Ja, ich koche gern."
+      },
+      {
+       "type": "choice",
+       "prompt": "Was machst du gern? – …",
+       "options": [
+        "Ich tanze gern.",
+        "Ja, gern.",
+        "Nein."
+       ],
+       "answer": "Ich tanze gern.",
+       "note": "A W-question needs information, not ja/nein."
+      }
+     ]
+    },
+    {
+     "id": "talk",
+     "title": "Ask them",
+     "instructions": "Look at who it is, then write the question. du or Sie?",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Ask her if she likes reading.",
+       "answer": "Liest du gern?",
+       "image": "yuki"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him what he likes doing.",
+       "answer": "Was machst du gern?",
+       "image": "mateo"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she likes travelling.",
+       "answer": "Reisen Sie gern?",
+       "image": "weber"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him if he plays football.",
+       "answer": "Spielen Sie Fußball?",
+       "image": "oezdemir"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she cycles.",
+       "answer": "Fährst du Rad?",
+       "image": "amara"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her if she cycles.",
+       "answer": "Fahren Sie Rad?",
+       "image": "schulz"
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "at": "7:46",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Du lest gern.",
+       "answer": "Du liest gern."
+      },
+      {
+       "type": "fix",
+       "wrong": "Er fahrt Rad.",
+       "answer": "Er fährt Rad."
+      },
+      {
+       "type": "fix",
+       "wrong": "Spielen du Fußball?",
+       "answer": "Spielst du Fußball?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ich gern koche.",
+       "answer": "Ich koche gern."
+      },
+      {
+       "type": "fix",
+       "wrong": "Tanzt gern du?",
+       "answer": "Tanzt du gern?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Am Montag ich jogge.",
+       "answer": "Am Montag jogge ich."
+      },
+      {
+       "type": "fix",
+       "wrong": "Mateo schlaft gern.",
+       "answer": "Mateo schläft gern."
+      }
+     ]
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order. A day at the start? The verb stays second.",
+     "at": "8:29",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "gern",
+        "Ich",
+        "Fußball",
+        "spiele"
+       ],
+       "answer": "Ich spiele gern Fußball.",
+       "en": "I like playing football."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "du",
+        "gern",
+        "Liest"
+       ],
+       "answer": "Liest du gern?",
+       "en": "Do you like reading?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "ich",
+        "Am",
+        "ins",
+        "gehe",
+        "Sonntag",
+        "Kino"
+       ],
+       "answer": "Am Sonntag gehe ich ins Kino.",
+       "en": "On Sunday I go to the cinema."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "nicht",
+        "Yuki",
+        "gern",
+        "tanzt"
+       ],
+       "answer": "Yuki tanzt nicht gern.",
+       "en": "Yuki doesn't like dancing."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "jogge",
+        "Montag",
+        "ich",
+        "Am"
+       ],
+       "answer": "Am Montag jogge ich.",
+       "en": "On Monday I jog."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "oft",
+        "du",
+        "fern",
+        "Siehst"
+       ],
+       "answer": "Siehst du oft fern?",
+       "en": "Do you often watch TV?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "In the exam you read short messages and hear short clips about free time. Catch the day, the hobby and gern / nicht gern.",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "What does Yuki like doing?",
+       "options": [
+        "reading and taking photos",
+        "reading and travelling",
+        "dancing and taking photos"
+       ],
+       "answer": "reading and taking photos",
+       "audio": {
+        "who": "Y",
+        "text": "Ich lese gern. Und ich fotografiere gern."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What doesn't Arjun like doing?",
+       "options": [
+        "playing football",
+        "cooking",
+        "playing the guitar"
+       ],
+       "answer": "playing football",
+       "audio": {
+        "who": "A",
+        "text": "Nein, ich spiele nicht gern Fußball. Ich koche gern. Und ich spiele Gitarre."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "When does Amara go dancing?",
+       "options": [
+        "Friday",
+        "Wednesday",
+        "Sunday"
+       ],
+       "answer": "Friday",
+       "audio": {
+        "who": "N",
+        "text": "Am Freitag tanze ich in der Disco."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What does Amara do on Wednesday?",
+       "options": [
+        "She swims.",
+        "She jogs.",
+        "She reads."
+       ],
+       "answer": "She swims.",
+       "audio": {
+        "who": "N",
+        "text": "Am Mittwoch schwimme ich."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "How often does Amara listen to music?",
+       "options": [
+        "always",
+        "sometimes",
+        "never"
+       ],
+       "answer": "always",
+       "audio": {
+        "who": "N",
+        "text": "Super! Ich tanze gern, und ich höre immer Musik."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Where does Frau Weber go at the weekend?",
+       "options": [
+        "to the museum",
+        "to the cinema",
+        "to the park"
+       ],
+       "answer": "to the museum",
+       "audio": {
+        "who": "T",
+        "text": "Am Wochenende gehe ich ins Museum."
+       }
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type it.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Was machst du gern?",
+       "audio": {
+        "who": "T",
+        "text": "Was machst du gern?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ich koche gern.",
+       "audio": {
+        "who": "A",
+        "text": "Ich koche gern."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Spielst du Fußball?",
+       "audio": {
+        "who": "T",
+        "text": "Spielst du Fußball?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Am Sonntag gehe ich ins Kino.",
+       "audio": {
+        "who": "A",
+        "text": "Am Sonntag gehe ich ins Kino."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Liest du gern?",
+       "audio": {
+        "who": "T",
+        "text": "Liest du gern?"
+       }
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading",
+     "instructions": "Read Yuki's message. Richtig (true) or falsch (false)?",
+     "text": {
+      "title": "Nachricht von Yuki",
+      "body": "Hallo Amara! Am Wochenende habe ich Zeit. Am Samstag gehe ich ins Museum. Ich fotografiere dort gern. Am Sonntag spielt Arjun Gitarre im Park. Kommst du auch? Ich tanze nicht gern, aber ich höre gern Musik. Am Montag schwimme ich mit Mateo. Na ja … Mateo schläft lieber. Liebe Grüße, Yuki",
+      "glossary": [
+       [
+        "Zeit haben",
+        "to have time"
+       ],
+       [
+        "dort",
+        "there"
+       ],
+       [
+        "Kommst du auch?",
+        "Are you coming too?"
+       ],
+       [
+        "aber",
+        "but"
+       ],
+       [
+        "mit",
+        "with"
+       ],
+       [
+        "Liebe Grüße",
+        "love, best wishes"
+       ]
+      ],
+      "style": "chat",
+      "meta": "Yuki · WhatsApp"
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Yuki geht am Samstag ins Museum.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Arjun spielt am Sonntag Fußball.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Yuki tanzt gern.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Yuki hört gern Musik.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Am Montag schwimmt Yuki.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Mateo schwimmt lieber.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the form",
+     "instructions": "Like exam part 1: read Arjun's message, then fill in the form for him.",
+     "text": {
+      "title": "Arjuns Nachricht",
+      "body": "Hallo! Ich bin Arjun Sharma. Ich spiele nicht gern Fußball, aber ich schwimme gern. Ich habe am Dienstag und am Donnerstag Zeit. Meine Telefonnummer ist 0176 5523.",
+      "glossary": [
+       [
+        "der Schwimmkurs",
+        "swimming course"
+       ],
+       [
+        "der Kurs",
+        "course"
+       ],
+       [
+        "Zeit haben",
+        "to have time"
+       ]
+      ],
+      "style": "chat",
+      "meta": "Arjun · Kursgruppe A1"
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Anmeldung – Schwimmkurs",
+       "fields": [
+        {
+         "label": "Vorname",
+         "answer": "Arjun"
+        },
+        {
+         "label": "Familienname",
+         "answer": "Sharma"
+        },
+        {
+         "label": "Sport",
+         "answer": "Schwimmen"
+        },
+        {
+         "label": "Tag 1",
+         "answer": "Dienstag"
+        },
+        {
+         "label": "Tag 2",
+         "answer": "Donnerstag"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Write a short text",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "Write a short message to a friend: what you like doing, what you don't like doing, and what you do at the weekend. End with a yes/no question for your friend.",
+       "checks": [
+        {
+         "label": "A greeting (Hallo …)",
+         "pattern": "\\bhallo\\b|\\bhi\\b|liebe[rs]? "
+        },
+        {
+         "label": "Something you like (… gern)",
+         "pattern": "\\b\\w+e gern\\b"
+        },
+        {
+         "label": "Something you don't like (… nicht gern)",
+         "pattern": "nicht gern"
+        },
+        {
+         "label": "The weekend or a day (Am Wochenende / Am Samstag …)",
+         "pattern": "\\bam (wochenende|montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag)\\b"
+        },
+        {
+         "label": "A yes/no question (Spielst du …? / Liest du …?)",
+         "pattern": "(^|[.!?]\\s*|und\\s+)[a-zäöüß]+st du\\b[^.!?]*\\?"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "\\bdu lest\\b",
+         "message": "lesen changes: du liest."
+        },
+        {
+         "pattern": "\\b(du fahrst|er fahrt|sie fahrt)\\b",
+         "message": "fahren changes: du fährst, er fährt."
+        },
+        {
+         "pattern": "\\bdu (sehst|seht)\\b",
+         "message": "sehen changes: du siehst."
+        },
+        {
+         "pattern": "\\bich gern \\w+",
+         "message": "gern comes after the verb: Ich koche gern."
+        },
+        {
+         "pattern": "\\bam (wochenende|montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag) (ich|du|wir)\\b",
+         "message": "Day first, then the verb: Am Samstag spiele ich …"
+        },
+        {
+         "pattern": "\\bdu (spielst|liest|tanzt|kochst|fährst|siehst|hörst|schwimmst|reist|machst)\\b[^.!?]*\\?",
+         "message": "In a yes/no question the verb comes first: Spielst du …?"
+        }
+       ],
+       "model": "Hallo Yuki! Ich lese gern und ich reise gern. Ich spiele nicht gern Fußball. Am Wochenende gehe ich ins Museum. Kommst du mit?"
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "Amara asks you. Record your answer, listen back, then compare with the model.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Say what you like doing.",
+       "audio": {
+        "who": "N",
+        "text": "Was machst du gern?"
+       },
+       "modelText": "Ich lese gern. / Ich koche gern.",
+       "model": {
+        "who": "Y",
+        "text": "Ich lese gern. Und ich fotografiere gern."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Answer with ja or nein.",
+       "audio": {
+        "who": "N",
+        "text": "Spielst du Fußball?"
+       },
+       "modelText": "Nein, ich spiele nicht gern Fußball. Ich koche lieber.",
+       "model": {
+        "who": "A",
+        "text": "Nein, ich spiele nicht gern Fußball. Ich koche lieber."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say what you don't like doing.",
+       "audio": {
+        "who": "N",
+        "text": "Was machst du nicht gern?"
+       },
+       "modelText": "Ich tanze nicht gern.",
+       "model": {
+        "who": "T",
+        "text": "Ich tanze nicht gern."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say what you do at the weekend.",
+       "audio": {
+        "who": "N",
+        "text": "Was machst du am Wochenende?"
+       },
+       "modelText": "Am Wochenende gehe ich ins Kino.",
+       "model": {
+        "who": "T",
+        "text": "Am Wochenende gehe ich ins Museum."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say how often you watch TV.",
+       "audio": {
+        "who": "N",
+        "text": "Wie oft siehst du fern?"
+       },
+       "modelText": "Ich sehe manchmal fern.",
+       "model": {
+        "who": "Y",
+        "text": "Ich sehe manchmal fern."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 3.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 3 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Er ___ Rad.",
+       "options": [
+        "fährt",
+        "fahrt",
+        "fahren"
+       ],
+       "answer": "fährt"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ du oft fern?",
+       "options": [
+        "Siehst",
+        "Sehst",
+        "Seht"
+       ],
+       "answer": "Siehst"
+      },
+      {
+       "type": "type",
+       "prompt": "I like dancing.",
+       "answer": "Ich tanze gern."
+      },
+      {
+       "type": "type",
+       "prompt": "Do you play football?",
+       "answer": "Spielst du Fußball?"
+      },
+      {
+       "type": "choice",
+       "prompt": "Which one is a yes/no question?",
+       "options": [
+        "Spielst du Fußball?",
+        "Was spielst du?",
+        "Wo spielst du?"
+       ],
+       "answer": "Spielst du Fußball?"
+      },
+      {
+       "type": "choice",
+       "prompt": "Mittwoch, Donnerstag, ___",
+       "options": [
+        "Freitag",
+        "Dienstag",
+        "Samstag"
+       ],
+       "answer": "Freitag"
+      },
+      {
+       "type": "choice",
+       "prompt": "Never: Ich schwimme ___.",
+       "options": [
+        "nie",
+        "oft",
+        "immer"
+       ],
+       "answer": "nie"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Kino",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "spiele",
+        "Samstag",
+        "Fußball",
+        "Am",
+        "ich"
+       ],
+       "answer": "Am Samstag spiele ich Fußball.",
+       "en": "On Saturday I play football."
+      },
+      {
+       "type": "fix",
+       "wrong": "Ich gern lese.",
+       "answer": "Ich lese gern."
+      },
+      {
+       "type": "type",
+       "prompt": "the weekend (with article)",
+       "answer": "das Wochenende"
+      },
+      {
+       "type": "choice",
+       "prompt": "Was machst du gern? – …",
+       "options": [
+        "Ich koche gern.",
+        "Ja, gern.",
+        "Nein, ich koche."
+       ],
+       "answer": "Ich koche gern."
+      },
+      {
+       "type": "choice",
+       "prompt": "Mateo ___ gern.",
+       "options": [
+        "schläft",
+        "schlaft",
+        "schlafen"
+       ],
+       "answer": "schläft"
+      },
+      {
+       "type": "type",
+       "prompt": "I don't like dancing.",
+       "answer": "Ich tanze nicht gern."
+      },
+      {
+       "type": "choice",
+       "prompt": "How often does Frau Weber cook?",
+       "options": [
+        "often",
+        "never",
+        "always"
+       ],
+       "answer": "often",
+       "audio": {
+        "who": "T",
+        "text": "Ich koche oft."
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

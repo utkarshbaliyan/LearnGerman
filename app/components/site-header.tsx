@@ -1,8 +1,8 @@
-import { BookMarked, BookOpen, GraduationCap, Languages } from "lucide-react";
+import { BookMarked, BookOpen, GraduationCap, Languages, PlayCircle } from "lucide-react";
 import Link from "next/link";
 
 import { SiteMenu } from "@/app/components/site-menu";
-import { ACTIVE_LEARNING_ENABLED } from '@/app/lib/feature-availability';
+import { ACTIVE_LEARNING_ENABLED, VIDEO_COURSE_PUBLIC } from '@/app/lib/feature-availability';
 
 type SiteHeaderProps = {
   active: "today" | "review" | "active-learning" | "course" | "stories" | "books" | "vocabulary" | "grammar" | "account";
@@ -17,6 +17,7 @@ export function SiteHeader({ active }: SiteHeaderProps) {
       </Link>
       <nav className="topnav" aria-label="Main navigation">
         <Link href="/" prefetch={false} aria-current={active === 'today' || active === 'review' ? 'page' : undefined}><span>Home</span></Link>
+        {VIDEO_COURSE_PUBLIC && <Link href="/video-course" prefetch={false} aria-current={active === "course" ? "page" : undefined}><PlayCircle aria-hidden="true" /><span>Course</span></Link>}
         <Link href="/stories" prefetch={false} aria-current={active === "stories" ? "page" : undefined}><BookOpen aria-hidden="true" /><span>Stories</span></Link>
         <Link href="/books" prefetch={false} aria-current={active === "books" ? "page" : undefined}><BookMarked aria-hidden="true" /><span>Books</span></Link>
         {ACTIVE_LEARNING_ENABLED && <Link href="/active-learning" prefetch={false} aria-current={active === "active-learning" ? "page" : undefined}><GraduationCap aria-hidden="true" /><span>Active Learning</span></Link>}

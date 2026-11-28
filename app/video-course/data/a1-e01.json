@@ -1,0 +1,1485 @@
+{
+ "episode": 1,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "names",
+     "title": "Names and titles",
+     "instructions": "Herr / Frau + family name for Sie, first name for du.",
+     "at": "4:22",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Arjun Sharma – which is the Familienname?",
+       "options": [
+        "Arjun",
+        "Sharma"
+       ],
+       "answer": "Sharma"
+      },
+      {
+       "type": "choice",
+       "prompt": "Arjun Sharma – which is the Vorname?",
+       "options": [
+        "Arjun",
+        "Sharma"
+       ],
+       "answer": "Arjun"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your teacher is Anna Weber. You say: Guten Tag, …",
+       "options": [
+        "Frau Weber!",
+        "Frau Anna!",
+        "Anna Weber!"
+       ],
+       "answer": "Frau Weber!"
+      },
+      {
+       "type": "choice",
+       "prompt": "The café owner is Mr Özdemir. You say: Guten Tag, …",
+       "options": [
+        "Herr Özdemir!",
+        "Frau Özdemir!",
+        "Özdemir!"
+       ],
+       "answer": "Herr Özdemir!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Is “Frau” only for married women?",
+       "options": [
+        "No – for every woman",
+        "Yes"
+       ],
+       "answer": "No – for every woman"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your classmate Mateo. You say: Hallo, …",
+       "options": [
+        "Mateo!",
+        "Herr Mateo!"
+       ],
+       "answer": "Mateo!"
+      }
+     ]
+    },
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which phrase does Frau Weber say?",
+     "items": [
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Guten Abend!"
+       },
+       "prompt": "",
+       "options": [
+        "Guten Morgen!",
+        "Guten Abend!",
+        "Gute Nacht!"
+       ],
+       "answer": "Guten Abend!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Auf Wiedersehen!"
+       },
+       "prompt": "",
+       "options": [
+        "Auf Wiedersehen!",
+        "Bis morgen!",
+        "Herzlich willkommen!"
+       ],
+       "answer": "Auf Wiedersehen!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Bis morgen!"
+       },
+       "prompt": "",
+       "options": [
+        "Guten Morgen!",
+        "Bis morgen!",
+        "Bitte schön!"
+       ],
+       "answer": "Bis morgen!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Wie geht es Ihnen?"
+       },
+       "prompt": "",
+       "options": [
+        "Wie geht's?",
+        "Wie heißen Sie?",
+        "Wie geht es Ihnen?"
+       ],
+       "answer": "Wie geht es Ihnen?"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Vielen Dank!"
+       },
+       "prompt": "",
+       "options": [
+        "Vielen Dank!",
+        "Bitte schön!",
+        "Entschuldigung!"
+       ],
+       "answer": "Vielen Dank!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "der Familienname"
+       },
+       "prompt": "",
+       "options": [
+        "der Vorname",
+        "der Familienname",
+        "der Name"
+       ],
+       "answer": "der Familienname"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "Herzlich willkommen!"
+       },
+       "prompt": "",
+       "options": [
+        "Herzlich willkommen!",
+        "Auf Wiedersehen!",
+        "Freut mich!"
+       ],
+       "answer": "Herzlich willkommen!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "T",
+        "text": "nicht so gut"
+       },
+       "prompt": "",
+       "options": [
+        "sehr gut",
+        "nicht so gut",
+        "schlecht"
+       ],
+       "answer": "nicht so gut"
+      }
+     ],
+     "at": "0:51"
+    },
+    {
+     "id": "situations",
+     "title": "What do you say?",
+     "instructions": "Pick the phrase that fits the situation.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "3 p.m. You meet your neighbour, Frau Schulz.",
+       "options": [
+        "Guten Tag!",
+        "Gute Nacht!",
+        "Tschüss!"
+       ],
+       "answer": "Guten Tag!"
+      },
+      {
+       "type": "choice",
+       "prompt": "You bump into someone on the street.",
+       "options": [
+        "Bitte!",
+        "Entschuldigung!",
+        "Danke!"
+       ],
+       "answer": "Entschuldigung!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Herr Özdemir gives you a coffee.",
+       "options": [
+        "Danke!",
+        "Hallo!",
+        "Nein!"
+       ],
+       "answer": "Danke!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Someone says “Vielen Dank!” to you.",
+       "options": [
+        "Bitte schön!",
+        "Gute Nacht!",
+        "Wie geht's?"
+       ],
+       "answer": "Bitte schön!"
+      },
+      {
+       "type": "choice",
+       "prompt": "You leave class. Your friends are still there.",
+       "options": [
+        "Auf Wiedersehen, Herr Sharma!",
+        "Tschüss! Bis morgen!",
+        "Herzlich willkommen!"
+       ],
+       "answer": "Tschüss! Bis morgen!"
+      },
+      {
+       "type": "choice",
+       "prompt": "10 p.m. Your flatmate goes to bed.",
+       "options": [
+        "Guten Abend!",
+        "Gute Nacht!",
+        "Guten Morgen!"
+       ],
+       "answer": "Gute Nacht!"
+      },
+      {
+       "type": "choice",
+       "prompt": "7 p.m. You walk into a restaurant.",
+       "options": [
+        "Guten Abend!",
+        "Gute Nacht!",
+        "Bis morgen!"
+       ],
+       "answer": "Guten Abend!"
+      }
+     ],
+     "at": "1:48"
+    },
+    {
+     "id": "articles",
+     "title": "der, die or das?",
+     "instructions": "Every noun has an article. Learn them together.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "___ Name",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "name"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Vorname",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "first name"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Familienname",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "surname"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Nachname",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "surname"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Bitte",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "request"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Dank",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "thanks"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Entschuldigung",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "apology – words ending in -ung are always die"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Dame",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "lady"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Herr",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "gentleman, Mr"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Buch",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "book – es"
+      }
+     ],
+     "at": "3:19"
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Good morning!",
+       "answer": "Guten Morgen!"
+      },
+      {
+       "type": "type",
+       "prompt": "please",
+       "answer": "bitte"
+      },
+      {
+       "type": "type",
+       "prompt": "Thanks a lot!",
+       "answer": "Vielen Dank!"
+      },
+      {
+       "type": "type",
+       "prompt": "Sorry! / Excuse me!",
+       "answer": "Entschuldigung!"
+      },
+      {
+       "type": "type",
+       "prompt": "Goodbye! (polite)",
+       "answer": "Auf Wiedersehen!"
+      },
+      {
+       "type": "type",
+       "prompt": "See you tomorrow!",
+       "answer": "Bis morgen!"
+      },
+      {
+       "type": "type",
+       "prompt": "How are you? (to a friend)",
+       "answer": [
+        "Wie geht's?",
+        "Wie geht es dir?",
+        "Wie geht's dir?"
+       ]
+      },
+      {
+       "type": "type",
+       "prompt": "Nice to meet you!",
+       "answer": [
+        "Freut mich!",
+        "Freut mich sehr!"
+       ]
+      },
+      {
+       "type": "type",
+       "prompt": "the first name (with article)",
+       "answer": "der Vorname"
+      },
+      {
+       "type": "type",
+       "prompt": "the surname (with article)",
+       "answer": [
+        "der Familienname",
+        "der Nachname"
+       ]
+      },
+      {
+       "type": "type",
+       "prompt": "I'm new here.",
+       "answer": [
+        "Ich bin neu hier.",
+        "Ich bin neu hier"
+       ]
+      }
+     ],
+     "at": "0:51"
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "Extra phrases Germans use every day. Learn them with the bonus flashcards above.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You're in Munich. A shop owner greets you with …",
+       "options": [
+        "Moin!",
+        "Grüß Gott!",
+        "Gute Nacht!"
+       ],
+       "answer": "Grüß Gott!",
+       "note": "South Germany & Austria; Servus! is the casual version"
+      },
+      {
+       "type": "choice",
+       "prompt": "You're in Hamburg. People say hello with …",
+       "options": [
+        "Moin!",
+        "Servus!",
+        "Gleichfalls!"
+       ],
+       "answer": "Moin!",
+       "note": "North Germany, any time of day"
+      },
+      {
+       "type": "choice",
+       "prompt": "Friday, 5 p.m. You leave work. You say:",
+       "options": [
+        "Schönes Wochenende!",
+        "Guten Morgen!",
+        "Es geht."
+       ],
+       "answer": "Schönes Wochenende!"
+      },
+      {
+       "type": "choice",
+       "prompt": "A colleague says “Schönes Wochenende!” You answer:",
+       "options": [
+        "Bitte!",
+        "Gleichfalls!",
+        "Moin!"
+       ],
+       "answer": "Gleichfalls!",
+       "note": "Same to you"
+      },
+      {
+       "type": "choice",
+       "prompt": "“Wie geht's?” – You feel so-so. You say:",
+       "options": [
+        "Sehr gut!",
+        "Es geht.",
+        "Gute Nacht!"
+       ],
+       "answer": "Es geht."
+      },
+      {
+       "type": "choice",
+       "prompt": "You'll see your friend again later today:",
+       "options": [
+        "Bis später!",
+        "Bis morgen!",
+        "Schönes Wochenende!"
+       ],
+       "answer": "Bis später!"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your doctor is Dr. Anna Klein. You say:",
+       "options": [
+        "Hallo, Anna!",
+        "Guten Tag, Frau Doktor Klein!",
+        "Guten Tag, Doktor Anna!"
+       ],
+       "answer": "Guten Tag, Frau Doktor Klein!"
+      },
+      {
+       "type": "type",
+       "prompt": "See you soon!",
+       "answer": "Bis bald!"
+      }
+     ],
+     "bonus": true
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "ich heiße · du heißt · er/sie/es heißt · Sie heißen — ich bin · du bist · er/sie/es ist · Sie sind",
+   "sections": [
+    {
+     "id": "pronouns",
+     "title": "ich, du, er, sie, es, Sie",
+     "instructions": "Which pronoun replaces the word?",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Mateo → ___",
+       "options": [
+        "er",
+        "sie",
+        "es"
+       ],
+       "answer": "er"
+      },
+      {
+       "type": "choice",
+       "prompt": "Amara → ___",
+       "options": [
+        "er",
+        "sie",
+        "es"
+       ],
+       "answer": "sie"
+      },
+      {
+       "type": "choice",
+       "prompt": "das Buch → ___",
+       "options": [
+        "er",
+        "sie",
+        "es"
+       ],
+       "answer": "es"
+      },
+      {
+       "type": "choice",
+       "prompt": "Frau Weber → ___",
+       "options": [
+        "er",
+        "sie",
+        "es"
+       ],
+       "answer": "sie"
+      },
+      {
+       "type": "choice",
+       "prompt": "Herr Özdemir → ___",
+       "options": [
+        "er",
+        "sie",
+        "es"
+       ],
+       "answer": "er"
+      },
+      {
+       "type": "choice",
+       "prompt": "You talk to Herr Özdemir (polite) → ___",
+       "options": [
+        "du",
+        "Sie",
+        "er"
+       ],
+       "answer": "Sie"
+      }
+     ],
+     "at": "7:09"
+    },
+    {
+     "id": "verbs",
+     "title": "heißen or sein?",
+     "instructions": "Write the correct form of heißen or sein.",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "Arjun.",
+       "answer": [
+        "heiße",
+        "bin"
+       ],
+       "hint": "heißen / sein"
+      },
+      {
+       "type": "gap",
+       "before": "Wie",
+       "after": "du?",
+       "answer": "heißt",
+       "hint": "heißen"
+      },
+      {
+       "type": "gap",
+       "before": "Wie",
+       "after": "Sie?",
+       "answer": "heißen",
+       "hint": "heißen"
+      },
+      {
+       "type": "gap",
+       "before": "Das",
+       "after": "Herr Özdemir.",
+       "answer": "ist",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Du",
+       "after": "Mateo, oder?",
+       "answer": "bist",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "Sie Frau Weber?",
+       "answer": "Sind",
+       "hint": "sein"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "Mateo.",
+       "answer": [
+        "heißt",
+        "ist"
+       ],
+       "hint": "heißen / sein"
+      },
+      {
+       "type": "gap",
+       "before": "Sie",
+       "after": "Ärztin... bald!",
+       "answer": "ist",
+       "hint": "sein · Amara"
+      }
+     ],
+     "at": "7:34"
+    },
+    {
+     "id": "du-sie",
+     "title": "du or Sie?",
+     "instructions": "Who do you say du to, and who Sie?",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Yuki, your classmate",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "du"
+      },
+      {
+       "type": "choice",
+       "prompt": "Herr Özdemir in his café",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "Sie"
+      },
+      {
+       "type": "choice",
+       "prompt": "A lady at the Bürgeramt",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "Sie"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your sister",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "du"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your new boss on the first day",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "Sie"
+      },
+      {
+       "type": "choice",
+       "prompt": "A child in the park",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "du"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "N",
+        "text": "Guten Abend, Frau Weber! Wie geht es Ihnen?"
+       },
+       "prompt": "Listen. Does Amara use du or Sie?",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "Sie"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "A",
+        "text": "Hey Mateo! Wie geht's?"
+       },
+       "prompt": "Listen. Does Arjun use du or Sie?",
+       "options": [
+        "du",
+        "Sie"
+       ],
+       "answer": "du"
+      }
+     ],
+     "at": "8:39"
+    },
+    {
+     "id": "greet",
+     "title": "Talk to them",
+     "instructions": "Look at who it is, then write what you say. du or Sie?",
+     "items": [
+      {
+       "type": "type",
+       "image": "weber",
+       "prompt": "8 a.m. You arrive in class. Greet her.",
+       "answer": [
+        "Guten Morgen, Frau Weber!",
+        "Guten Morgen!"
+       ]
+      },
+      {
+       "type": "type",
+       "image": "oezdemir",
+       "prompt": "3 p.m. You walk into his café. Greet him.",
+       "answer": [
+        "Guten Tag, Herr Özdemir!",
+        "Guten Tag!"
+       ]
+      },
+      {
+       "type": "type",
+       "image": "oezdemir",
+       "prompt": "Ask him how he is.",
+       "answer": [
+        "Wie geht es Ihnen?"
+       ]
+      },
+      {
+       "type": "type",
+       "image": "amara",
+       "prompt": "Ask her how she is.",
+       "answer": [
+        "Wie geht's?",
+        "Wie geht es dir?",
+        "Wie geht's dir?"
+       ]
+      },
+      {
+       "type": "type",
+       "image": "yuki",
+       "prompt": "Ask her name.",
+       "answer": [
+        "Wie heißt du?"
+       ]
+      },
+      {
+       "type": "type",
+       "image": "mateo",
+       "prompt": "Class is over. Say bye to him.",
+       "answer": [
+        "Tschüss!",
+        "Tschüss, Mateo!",
+        "Bis morgen!",
+        "Tschüss! Bis morgen!",
+        "Tschüss, Mateo! Bis morgen!"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Ich heißt Arjun.",
+       "answer": "Ich heiße Arjun."
+      },
+      {
+       "type": "fix",
+       "wrong": "Wie heißen du?",
+       "answer": "Wie heißt du?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ich ist Yuki.",
+       "answer": "Ich bin Yuki."
+      },
+      {
+       "type": "fix",
+       "wrong": "Sie bist Frau Weber.",
+       "answer": "Sie sind Frau Weber."
+      },
+      {
+       "type": "fix",
+       "wrong": "Er heißen Mateo.",
+       "answer": "Er heißt Mateo."
+      },
+      {
+       "type": "fix",
+       "wrong": "Tschüss, Weber!",
+       "answer": [
+        "Tschüss, Frau Weber!",
+        "Auf Wiedersehen, Frau Weber!"
+       ]
+      }
+     ],
+     "at": "7:39"
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order.",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "heißt",
+        "du",
+        "Wie"
+       ],
+       "answer": "Wie heißt du?",
+       "en": "What's your name?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Arjun",
+        "Ich",
+        "heiße"
+       ],
+       "answer": "Ich heiße Arjun.",
+       "en": "My name is Arjun."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "es",
+        "Ihnen",
+        "Wie",
+        "geht"
+       ],
+       "answer": "Wie geht es Ihnen?",
+       "en": "How are you? (polite)"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "ist",
+        "Name",
+        "Yuki",
+        "Mein"
+       ],
+       "answer": "Mein Name ist Yuki.",
+       "en": "My name is Yuki."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "du",
+        "Yuki",
+        "Bist"
+       ],
+       "answer": "Bist du Yuki?",
+       "en": "Are you Yuki?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "neu",
+        "bin",
+        "hier",
+        "Ich"
+       ],
+       "answer": "Ich bin neu hier.",
+       "en": "I'm new here."
+      }
+     ],
+     "at": "7:54"
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "The A1 exam has four parts: listening, reading, writing, speaking. Practise each one with today's German.",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "items": [
+      {
+       "type": "choice",
+       "audio": {
+        "who": "O",
+        "text": "Freut mich, Herr Sharma. Mein Name ist Özdemir. Wie geht es Ihnen?"
+       },
+       "prompt": "What is the café owner's name?",
+       "options": [
+        "Sharma",
+        "Özdemir",
+        "Weber"
+       ],
+       "answer": "Özdemir"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "N",
+        "text": "Sehr gut, danke. Und dir?"
+       },
+       "prompt": "How is Amara?",
+       "options": [
+        "Very good",
+        "Not so good",
+        "Bad"
+       ],
+       "answer": "Very good"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "A",
+        "text": "Guten Tag! Ich bin Arjun Sharma. Ich bin neu hier."
+       },
+       "prompt": "What is true about Arjun?",
+       "options": [
+        "He is new here",
+        "He is the waiter",
+        "He is tired"
+       ],
+       "answer": "He is new here"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "O",
+        "text": "Bitte schön! Auf Wiedersehen, Herr Sharma. Bis morgen!"
+       },
+       "prompt": "When will they see each other again?",
+       "options": [
+        "Tonight",
+        "Tomorrow",
+        "Never"
+       ],
+       "answer": "Tomorrow"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "O",
+        "text": "Entschuldigung, wie heißen Sie?"
+       },
+       "prompt": "What does Herr Özdemir want to know?",
+       "options": [
+        "Your name",
+        "How you are",
+        "Where you are from"
+       ],
+       "answer": "Your name"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "Y",
+        "text": "Gute Nacht, Mama!"
+       },
+       "prompt": "When does Yuki say this?",
+       "options": [
+        "In the morning",
+        "At lunch",
+        "Before bed"
+       ],
+       "answer": "Before bed"
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type the full sentence.",
+     "items": [
+      {
+       "type": "type",
+       "audio": {
+        "who": "T",
+        "text": "Wie heißen Sie?"
+       },
+       "prompt": "",
+       "answer": "Wie heißen Sie?"
+      },
+      {
+       "type": "type",
+       "audio": {
+        "who": "N",
+        "text": "Hallo! Wie heißt du?"
+       },
+       "prompt": "",
+       "answer": "Hallo! Wie heißt du?"
+      },
+      {
+       "type": "type",
+       "audio": {
+        "who": "Y",
+        "text": "Ich heiße Yuki. Freut mich sehr."
+       },
+       "prompt": "",
+       "answer": "Ich heiße Yuki. Freut mich sehr."
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading",
+     "instructions": "Read Amara's text. Richtig (true) or falsch (false)?",
+     "text": {
+      "title": "Mein Deutschkurs",
+      "body": "Hallo! Ich heiße Amara. Mein Familienname ist Okafor. Das ist Arjun. Er ist neu hier. Sein Familienname ist Sharma. Mateo ist auch im Kurs. Er ist sehr nett, aber am Morgen ist er müde. Unsere Lehrerin ist Frau Weber. Wir sagen „Sie“ und „Frau Weber“. Nach dem Kurs gehen wir ins Café Özdemir. Herr Özdemir sagt: „Herzlich willkommen!“",
+      "glossary": [
+       [
+        "sein",
+        "his"
+       ],
+       [
+        "nett",
+        "nice"
+       ],
+       [
+        "aber",
+        "but"
+       ],
+       [
+        "müde",
+        "tired"
+       ],
+       [
+        "unsere Lehrerin",
+        "our teacher"
+       ],
+       [
+        "wir sagen",
+        "we say"
+       ],
+       [
+        "nach dem Kurs",
+        "after the course"
+       ],
+       [
+        "gehen wir",
+        "we go"
+       ]
+      ],
+      "style": "card",
+      "meta": "Volkshochschule · Raum 101"
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Amaras Familienname ist Okafor.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Arjun ist neu im Kurs.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Arjuns Familienname ist Özdemir.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Mateo ist am Morgen müde.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Amara sagt „du“ zu Frau Weber.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Herr Özdemir sagt: „Gute Nacht!“",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the form",
+     "instructions": "Like exam part 1: read, then fill in the form.",
+     "text": {
+      "title": "Am Empfang",
+      "body": "Guten Tag! Ich bin Arjun Sharma. Mein Vorname ist Arjun. Und das ist meine Freundin Amara Okafor.",
+      "glossary": [
+       [
+        "am Empfang",
+        "at the reception"
+       ],
+       [
+        "meine Freundin",
+        "my friend"
+       ]
+      ],
+      "style": "notice",
+      "meta": "Empfang · Sprachschule"
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Teilnehmer 1",
+       "fields": [
+        {
+         "label": "Vorname",
+         "answer": "Arjun"
+        },
+        {
+         "label": "Familienname",
+         "answer": "Sharma"
+        }
+       ]
+      },
+      {
+       "type": "form",
+       "prompt": "Teilnehmer 2",
+       "fields": [
+        {
+         "label": "Vorname",
+         "answer": "Amara"
+        },
+        {
+         "label": "Familienname",
+         "answer": "Okafor"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Write a short text",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "You walk into Café Özdemir for the first time. Write 4 short sentences to Herr Özdemir: greet him, say your name, ask how he is, say goodbye. Use Sie!",
+       "checks": [
+        {
+         "label": "A greeting (Guten Tag / Guten Morgen / Guten Abend)",
+         "pattern": "guten (morgen|tag|abend)|\\bhallo\\b"
+        },
+        {
+         "label": "Your name (Ich heiße … / Ich bin … / Mein Name ist …)",
+         "pattern": "ich hei(ß|ss)e|ich bin|mein name ist"
+        },
+        {
+         "label": "A polite question (Wie geht es Ihnen?)",
+         "pattern": "wie geht es ihnen"
+        },
+        {
+         "label": "A goodbye (Auf Wiedersehen!)",
+         "pattern": "auf wiedersehen|bis morgen"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "ich hei(ß|ss)t\\b",
+         "message": "ich heiße – not ich heißt."
+        },
+        {
+         "pattern": "\\bich ist\\b",
+         "message": "ich bin – not ich ist."
+        },
+        {
+         "pattern": "\\bdir\\b|wie geht'?s\\b",
+         "message": "Herr Özdemir is a stranger: use Ihnen, not dir. Wie geht es Ihnen?"
+        },
+        {
+         "pattern": "tsch(ü|ue)ss",
+         "message": "Tschüss is for friends. Say Auf Wiedersehen to Herr Özdemir."
+        },
+        {
+         "pattern": "\\bsie bist\\b",
+         "message": "Sie sind – not Sie bist."
+        }
+       ],
+       "model": "Guten Tag, Herr Özdemir! Ich heiße … Ich bin neu hier. Wie geht es Ihnen? … Vielen Dank! Auf Wiedersehen!"
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "Record yourself, listen back, then compare with the model. Say it out loud – this is the part most learners skip.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Exam task: greet the examiner and say your full name.",
+       "modelText": "Guten Tag! Mein Name ist … Mein Vorname ist …, mein Familienname ist …",
+       "model": {
+        "who": "N",
+        "text": "Guten Tag! Mein Name ist Amara Okafor."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Amara asks you a question. Answer her.",
+       "audio": {
+        "who": "N",
+        "text": "Hallo! Wie heißt du?"
+       },
+       "modelText": "Ich heiße … Freut mich!",
+       "model": {
+        "who": "Y",
+        "text": "Ich heiße Yuki. Freut mich sehr."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Herr Özdemir greets you. Answer politely.",
+       "audio": {
+        "who": "O",
+        "text": "Guten Tag! Wie geht es Ihnen?"
+       },
+       "modelText": "Danke, gut. Und Ihnen?",
+       "model": {
+        "who": "A",
+        "text": "Danke, gut. Und Ihnen?"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 1.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 1 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "7 p.m. You walk into a restaurant. You say:",
+       "options": [
+        "Guten Abend!",
+        "Gute Nacht!",
+        "Guten Morgen!"
+       ],
+       "answer": "Guten Abend!"
+      },
+      {
+       "type": "gap",
+       "before": "Wie",
+       "after": "es Ihnen?",
+       "answer": "geht"
+      },
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "Mateo.",
+       "answer": [
+        "bin",
+        "heiße"
+       ]
+      },
+      {
+       "type": "choice",
+       "prompt": "Herr Özdemir asks: “Wie geht es Ihnen?” You answer:",
+       "options": [
+        "Danke, gut. Und dir?",
+        "Danke, gut. Und Ihnen?",
+        "Gute Nacht!"
+       ],
+       "answer": "Danke, gut. Und Ihnen?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Du bin Yuki.",
+       "answer": "Du bist Yuki."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "sehr",
+        "Freut",
+        "mich"
+       ],
+       "answer": "Freut mich sehr.",
+       "en": "Very nice to meet you."
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Nachname",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der"
+      },
+      {
+       "type": "type",
+       "prompt": "Thanks a lot!",
+       "answer": "Vielen Dank!"
+      },
+      {
+       "type": "choice",
+       "audio": {
+        "who": "M",
+        "text": "Nicht so gut."
+       },
+       "prompt": "Listen. How is Mateo?",
+       "options": [
+        "Very good",
+        "Not so good",
+        "Bad"
+       ],
+       "answer": "Not so good"
+      },
+      {
+       "type": "choice",
+       "prompt": "Your teacher is Anna Weber. You call her:",
+       "options": [
+        "Anna",
+        "Frau Anna",
+        "Frau Weber"
+       ],
+       "answer": "Frau Weber"
+      },
+      {
+       "type": "gap",
+       "before": "Das ist Amara.",
+       "after": "ist neu hier.",
+       "answer": "Sie",
+       "hint": "she"
+      },
+      {
+       "type": "choice",
+       "prompt": "Which question is polite?",
+       "options": [
+        "Wie heißt du?",
+        "Wie heißen Sie?",
+        "Wie heißen du?"
+       ],
+       "answer": "Wie heißen Sie?"
+      },
+      {
+       "type": "type",
+       "prompt": "the first name (with article)",
+       "answer": "der Vorname"
+      },
+      {
+       "type": "choice",
+       "prompt": "When do you say “Gute Nacht!”?",
+       "options": [
+        "In the evening, at a restaurant",
+        "Only before going to bed",
+        "At 8 a.m."
+       ],
+       "answer": "Only before going to bed"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "Arjun.",
+       "answer": [
+        "heißt",
+        "ist"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

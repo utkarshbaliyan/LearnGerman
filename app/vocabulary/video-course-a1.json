@@ -1,0 +1,2024 @@
+[
+ {
+  "german": "hallo",
+  "english": "hello, hi",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "tschüss",
+  "english": "bye",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "das Wiedersehen",
+  "english": "seeing again – Auf Wiedersehen! = goodbye",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "bitte",
+  "english": "please; you're welcome",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "die Bitte",
+  "english": "request",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "bitten",
+  "english": "to ask for",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "danke",
+  "english": "thanks",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Dank",
+  "english": "thanks, gratitude",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "danken",
+  "english": "to thank",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "entschuldigen",
+  "english": "to excuse",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "die Entschuldigung",
+  "english": "apology; Entschuldigung! = sorry / excuse me",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "gut",
+  "english": "good",
+  "category": "Adjektive & Adverbien",
+  "episode": 1
+ },
+ {
+  "german": "schlecht",
+  "english": "bad",
+  "category": "Adjektive & Adverbien",
+  "episode": 1
+ },
+ {
+  "german": "heißen",
+  "english": "to be called",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "sein",
+  "english": "to be",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "ich",
+  "english": "I",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Sie",
+  "english": "you (polite)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "er",
+  "english": "he",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "sie",
+  "english": "she; they",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "es",
+  "english": "it",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Name",
+  "english": "name",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Vorname",
+  "english": "first name",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Familienname",
+  "english": "surname",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Herr",
+  "english": "Mr; gentleman",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "die Frau",
+  "english": "Mrs / Ms; woman; wife",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "die Dame",
+  "english": "lady",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "ja",
+  "english": "yes",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "nein",
+  "english": "no",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "auch",
+  "english": "also, too",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "herzlich",
+  "english": "warm, cordial",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "willkommen",
+  "english": "welcome",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "(sich) vorstellen",
+  "english": "to introduce (yourself)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "wie",
+  "english": "how",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "sehr",
+  "english": "very",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Guten Morgen!",
+  "english": "Good morning",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Guten Tag!",
+  "english": "Hello / Good afternoon",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Guten Abend!",
+  "english": "Good evening",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Gute Nacht!",
+  "english": "Good night (before bed)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Auf Wiedersehen!",
+  "english": "Goodbye (polite)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Bis morgen!",
+  "english": "See you tomorrow",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Wie geht's?",
+  "english": "How are you?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "sehr gut · nicht so gut",
+  "english": "very good · not so good",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Nachname",
+  "english": "surname",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Vielen Dank! – Bitte schön!",
+  "english": "Thanks a lot! – You're welcome!",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Wie heißt du? / Wie heißen Sie?",
+  "english": "What's your name?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Freut mich!",
+  "english": "Nice to meet you!",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Wie geht es Ihnen? / Wie geht's?",
+  "english": "How are you?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Danke, gut. Und dir? / Und Ihnen?",
+  "english": "Fine, thanks. And you?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Servus! / Grüß Gott!",
+  "english": "Hi / Hello (South Germany, Austria)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Moin!",
+  "english": "Hi (North Germany)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Bis später!",
+  "english": "See you later",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Bis bald!",
+  "english": "See you soon",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Schönes Wochenende!",
+  "english": "Have a nice weekend",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Gleichfalls!",
+  "english": "Same to you",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Spitzname",
+  "english": "nickname",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Herr / Frau Doktor",
+  "english": "Dr (address)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "das Café",
+  "english": "café",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "die Begrüßung",
+  "english": "greeting",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "der Abschied",
+  "english": "goodbye, farewell",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "Es geht.",
+  "english": "So-so.",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 1
+ },
+ {
+  "german": "kommen",
+  "english": "to come",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "wohnen",
+  "english": "to live (reside)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "sprechen",
+  "english": "to speak",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Sprache",
+  "english": "language",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Land",
+  "english": "country",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Stadt",
+  "english": "city, town",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Heimat",
+  "english": "home country",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Ausland",
+  "english": "abroad",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "der Ausländer",
+  "english": "foreigner",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "ausländisch",
+  "english": "foreign",
+  "category": "Adjektive & Adverbien",
+  "episode": 2
+ },
+ {
+  "german": "international",
+  "english": "international",
+  "category": "Adjektive & Adverbien",
+  "episode": 2
+ },
+ {
+  "german": "fremd",
+  "english": "foreign, strange",
+  "category": "Adjektive & Adverbien",
+  "episode": 2
+ },
+ {
+  "german": "woher",
+  "english": "where from",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "wo",
+  "english": "where",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "was",
+  "english": "what",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "wer",
+  "english": "who",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "aus",
+  "english": "from, out of",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "in",
+  "english": "in",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Adresse",
+  "english": "address",
+  "category": "Zuhause & Wohnen",
+  "episode": 2
+ },
+ {
+  "german": "die Nummer",
+  "english": "number",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 2
+ },
+ {
+  "german": "das Telefon",
+  "english": "telephone",
+  "category": "Medien & Digitales",
+  "episode": 2
+ },
+ {
+  "german": "die Vorwahl",
+  "english": "area / country code",
+  "category": "Medien & Digitales",
+  "episode": 2
+ },
+ {
+  "german": "buchstabieren",
+  "english": "to spell",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "der Buchstabe",
+  "english": "letter (of the alphabet)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "verstehen",
+  "english": "to understand",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "wiederholen",
+  "english": "to repeat",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "langsam",
+  "english": "slow(ly)",
+  "category": "Adjektive & Adverbien",
+  "episode": 2
+ },
+ {
+  "german": "die Welt",
+  "english": "world",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "wir",
+  "english": "we",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "leben",
+  "english": "to live",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Leben",
+  "english": "life",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "bisschen",
+  "english": "a bit (ein bisschen)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Deutschland · Österreich · die Schweiz",
+  "english": "Germany · Austria · Switzerland",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Indien · Nigeria · Japan · Brasilien",
+  "english": "India · Nigeria · Japan · Brazil",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Deutsch · Englisch · Hindi · Japanisch",
+  "english": "German · English · Hindi · Japanese",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Alphabet",
+  "english": "alphabet",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Telefonnummer",
+  "english": "phone number",
+  "category": "Medien & Digitales",
+  "episode": 2
+ },
+ {
+  "german": "die Zahl",
+  "english": "number",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 2
+ },
+ {
+  "german": "Woher kommen Sie?",
+  "english": "Where are you from?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Ich komme aus Indien.",
+  "english": "I'm from India.",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Wo wohnen Sie?",
+  "english": "Where do you live?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Ich wohne in München.",
+  "english": "I live in Munich.",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Welche Sprachen sprechen Sie?",
+  "english": "Which languages do you speak?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Können Sie das bitte buchstabieren?",
+  "english": "Can you spell that, please?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Wie ist Ihre Telefonnummer?",
+  "english": "What's your phone number?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Bürgeramt",
+  "english": "citizens' office",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "die Anmeldung",
+  "english": "registration",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "die Wartenummer",
+  "english": "queue number",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "der Wohnsitz",
+  "english": "place of residence",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "die Staatsangehörigkeit",
+  "english": "nationality",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "der Reisepass",
+  "english": "passport",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 2
+ },
+ {
+  "german": "die Hausnummer",
+  "english": "house number",
+  "category": "Zuhause & Wohnen",
+  "episode": 2
+ },
+ {
+  "german": "die Etage",
+  "english": "floor",
+  "category": "Zuhause & Wohnen",
+  "episode": 2
+ },
+ {
+  "german": "Türkisch · Arabisch · Spanisch · Französisch",
+  "english": "Turkish · Arabic · Spanish · French",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Muttersprache",
+  "english": "mother tongue",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "die Fremdsprache",
+  "english": "foreign language",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "Wie bitte?",
+  "english": "Pardon?",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 2
+ },
+ {
+  "german": "das Hobby",
+  "english": "hobby",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "schwimmen",
+  "english": "to swim",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "tanzen",
+  "english": "to dance",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "spielen",
+  "english": "to play",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Fußball",
+  "english": "football",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Sport",
+  "english": "sport",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "lesen",
+  "english": "to read",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "hören",
+  "english": "to hear, listen",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "reisen",
+  "english": "to travel",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "kochen",
+  "english": "to cook",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "die Freizeit",
+  "english": "free time",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "gern(e)",
+  "english": "gladly – ich … gern = I like …ing",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "lieber",
+  "english": "rather, prefer",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "oft",
+  "english": "often",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "immer",
+  "english": "always",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "nie",
+  "english": "never",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "die Disco",
+  "english": "disco, club",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "das Kino",
+  "english": "cinema",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Film",
+  "english": "film",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "fernsehen",
+  "english": "to watch TV",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Rad fahren",
+  "english": "to cycle",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "lachen",
+  "english": "to laugh",
+  "category": "Verben",
+  "episode": 3
+ },
+ {
+  "german": "lustig",
+  "english": "funny",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "das Lied",
+  "english": "song",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "machen",
+  "english": "to make, do",
+  "category": "Verben",
+  "episode": 3
+ },
+ {
+  "german": "finden",
+  "english": "to find; to think",
+  "category": "Verben",
+  "episode": 3
+ },
+ {
+  "german": "der Freund",
+  "english": "friend; boyfriend",
+  "category": "Familie & Menschen",
+  "episode": 3
+ },
+ {
+  "german": "kennen",
+  "english": "to know (a person/place)",
+  "category": "Verben",
+  "episode": 3
+ },
+ {
+  "german": "kennenlernen",
+  "english": "to get to know, meet",
+  "category": "Verben",
+  "episode": 3
+ },
+ {
+  "german": "so",
+  "english": "so, like this",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "nicht",
+  "english": "not",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "joggen",
+  "english": "to jog",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "fotografieren",
+  "english": "to take photos",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Musik hören",
+  "english": "to listen to music",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Gitarre spielen",
+  "english": "to play guitar",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "das Museum",
+  "english": "museum",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "das Wochenende",
+  "english": "weekend",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 3
+ },
+ {
+  "german": "manchmal",
+  "english": "sometimes",
+  "category": "Adjektive & Adverbien",
+  "episode": 3
+ },
+ {
+  "german": "Was machst du gern?",
+  "english": "What do you like doing?",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Ich koche gern.",
+  "english": "I like cooking.",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Spielst du Fußball?",
+  "english": "Do you play football?",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Nein, ich spiele nicht gern Fußball.",
+  "english": "No, I don't like playing football.",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Am Wochenende gehe ich ins Kino.",
+  "english": "At the weekend I go to the cinema.",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Was ist dein Lieblingsfilm?",
+  "english": "What's your favourite film?",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Park",
+  "english": "park",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 3
+ },
+ {
+  "german": "die Wiese",
+  "english": "meadow",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 3
+ },
+ {
+  "german": "die Bank (Parkbank)",
+  "english": "bench",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "picknicken",
+  "english": "to picnic",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Yoga machen",
+  "english": "to do yoga",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "malen",
+  "english": "to paint",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "singen",
+  "english": "to sing",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Schach spielen",
+  "english": "to play chess",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "Videospiele spielen",
+  "english": "to play video games",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Spaziergang",
+  "english": "walk",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "spazieren gehen",
+  "english": "to go for a walk",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "die Serie",
+  "english": "TV series",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 3
+ },
+ {
+  "german": "der Beruf",
+  "english": "job, profession",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "arbeiten",
+  "english": "to work",
+  "category": "Verben",
+  "episode": 4
+ },
+ {
+  "german": "die Arbeit",
+  "english": "work",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Job",
+  "english": "job",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "die Firma",
+  "english": "company",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Arbeitsplatz",
+  "english": "workplace",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "arbeitslos",
+  "english": "unemployed",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "selbstständig",
+  "english": "self-employed",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "studieren",
+  "english": "to study (at university)",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "das Studium",
+  "english": "university studies",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "der Student",
+  "english": "student",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "der Lehrer",
+  "english": "teacher",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "der Arzt",
+  "english": "doctor",
+  "category": "Gesundheit & Körper",
+  "episode": 4
+ },
+ {
+  "german": "der Schüler",
+  "english": "school pupil",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "die Schule",
+  "english": "school",
+  "category": "Schule & Lernen",
+  "episode": 4
+ },
+ {
+  "german": "haben",
+  "english": "to have",
+  "category": "Verben",
+  "episode": 4
+ },
+ {
+  "german": "alt",
+  "english": "old",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "jung",
+  "english": "young",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "das Alter",
+  "english": "age",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 4
+ },
+ {
+  "german": "das Formular",
+  "english": "form",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 4
+ },
+ {
+  "german": "ausfüllen",
+  "english": "to fill in",
+  "category": "Verben",
+  "episode": 4
+ },
+ {
+  "german": "geboren",
+  "english": "born",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "das Geburtsjahr",
+  "english": "year of birth",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 4
+ },
+ {
+  "german": "der Geburtsort",
+  "english": "place of birth",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 4
+ },
+ {
+  "german": "der Familienstand",
+  "english": "marital status",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 4
+ },
+ {
+  "german": "männlich",
+  "english": "male",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "weiblich",
+  "english": "female",
+  "category": "Adjektive & Adverbien",
+  "episode": 4
+ },
+ {
+  "german": "ankreuzen",
+  "english": "to tick, cross",
+  "category": "Verben",
+  "episode": 4
+ },
+ {
+  "german": "die Postleitzahl",
+  "english": "postcode",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 4
+ },
+ {
+  "german": "der Ort",
+  "english": "place, town",
+  "category": "Stadt & Verkehr",
+  "episode": 4
+ },
+ {
+  "german": "der, die, das",
+  "english": "the (m / f / n)",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 4
+ },
+ {
+  "german": "die Hausfrau / der Hausmann",
+  "english": "homemaker",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Ingenieur / die Ingenieurin",
+  "english": "engineer",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Programmierer",
+  "english": "programmer",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Kellner",
+  "english": "waiter",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "das Büro",
+  "english": "office",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "das Krankenhaus",
+  "english": "hospital",
+  "category": "Gesundheit & Körper",
+  "episode": 4
+ },
+ {
+  "german": "das Geburtsdatum",
+  "english": "date of birth",
+  "category": "Zeit, Zahlen & Mengen",
+  "episode": 4
+ },
+ {
+  "german": "Was sind Sie von Beruf?",
+  "english": "What's your job?",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "Ich bin Programmierer.",
+  "english": "I'm a programmer.",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "Wo arbeiten Sie?",
+  "english": "Where do you work?",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "Ich arbeite bei einer Firma in München.",
+  "english": "I work for a company in Munich.",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "Wie alt bist du? – Ich bin 27.",
+  "english": "How old are you? – I'm 27.",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "Haben Sie Kinder?",
+  "english": "Do you have children?",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "die Jobmesse",
+  "english": "job fair",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Stand",
+  "english": "stand, booth",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "die Visitenkarte",
+  "english": "business card",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Krankenpfleger / die Krankenschwester",
+  "english": "nurse",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Verkäufer / die Verkäuferin",
+  "english": "shop assistant",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Koch / die Köchin",
+  "english": "cook",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Friseur / die Friseurin",
+  "english": "hairdresser",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Polizist",
+  "english": "police officer",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Mechaniker",
+  "english": "mechanic",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "die Bewerbung",
+  "english": "application",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "die Teilzeit / die Vollzeit",
+  "english": "part-time / full-time",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Lebenslauf",
+  "english": "CV",
+  "category": "Arbeit & Beruf",
+  "episode": 4
+ },
+ {
+  "german": "der Bahnhof",
+  "english": "train station",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "die Post",
+  "english": "post office; mail",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 5
+ },
+ {
+  "german": "die Bank",
+  "english": "bank",
+  "category": "Dienstleistungen & Behörden",
+  "episode": 5
+ },
+ {
+  "german": "das Hotel",
+  "english": "hotel",
+  "category": "Reisen & Unterkunft",
+  "episode": 5
+ },
+ {
+  "german": "der Platz",
+  "english": "square; seat; space",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "die Straße",
+  "english": "street",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "das Haus",
+  "english": "house",
+  "category": "Zuhause & Wohnen",
+  "episode": 5
+ },
+ {
+  "german": "das Dorf",
+  "english": "village",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "der See",
+  "english": "lake",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "das Meer",
+  "english": "sea",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "der Baum",
+  "english": "tree",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "die Blume",
+  "english": "flower",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "der Kiosk",
+  "english": "kiosk",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "das Geschäft",
+  "english": "shop; business",
+  "category": "Einkaufen & Kleidung",
+  "episode": 5
+ },
+ {
+  "german": "groß",
+  "english": "big, tall",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "klein",
+  "english": "small",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "schön",
+  "english": "beautiful, nice",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "neu",
+  "english": "new",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "hoch",
+  "english": "high, tall",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "lang",
+  "english": "long",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "kurz",
+  "english": "short",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "bekannt",
+  "english": "well-known",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "kein",
+  "english": "no, not a",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 5
+ },
+ {
+  "german": "das Wetter",
+  "english": "weather",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "die Sonne",
+  "english": "sun",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "scheinen",
+  "english": "to shine",
+  "category": "Verben",
+  "episode": 5
+ },
+ {
+  "german": "regnen",
+  "english": "to rain",
+  "category": "Verben",
+  "episode": 5
+ },
+ {
+  "german": "der Regen",
+  "english": "rain",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "der Wind",
+  "english": "wind",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "Grad (Celsius)",
+  "english": "degrees (Celsius)",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "draußen",
+  "english": "outside",
+  "category": "Adjektive & Adverbien",
+  "episode": 5
+ },
+ {
+  "german": "der Hafen",
+  "english": "harbour",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "das Rathaus",
+  "english": "town hall",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "die Kirche",
+  "english": "church",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "die Brücke",
+  "english": "bridge",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "der Park",
+  "english": "park",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "der Supermarkt",
+  "english": "supermarket",
+  "category": "Einkaufen & Kleidung",
+  "episode": 5
+ },
+ {
+  "german": "Frühling · Sommer · Herbst · Winter",
+  "english": "spring · summer · autumn · winter",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "Das ist der Bahnhof.",
+  "english": "That's the station.",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "Ist das eine Kirche?",
+  "english": "Is that a church?",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "Nein, das ist keine Kirche, das ist das Rathaus.",
+  "english": "No, that's not a church, that's the town hall.",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "Im Sommer ist die Stadt sehr schön.",
+  "english": "In summer the city is very beautiful.",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "Wie ist das Wetter? – Die Sonne scheint.",
+  "english": "What's the weather like? – The sun is shining.",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "die Touristeninformation",
+  "english": "tourist information",
+  "category": "Reisen & Unterkunft",
+  "episode": 5
+ },
+ {
+  "german": "der Stadtplan",
+  "english": "city map",
+  "category": "Reisen & Unterkunft",
+  "episode": 5
+ },
+ {
+  "german": "die Altstadt",
+  "english": "old town",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "das Schloss",
+  "english": "castle",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "der Turm",
+  "english": "tower",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "der Markt",
+  "english": "market",
+  "category": "Einkaufen & Kleidung",
+  "episode": 5
+ },
+ {
+  "german": "der Fluss",
+  "english": "river",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "die Bibliothek",
+  "english": "library",
+  "category": "Schule & Lernen",
+  "episode": 5
+ },
+ {
+  "german": "das Stadion",
+  "english": "stadium",
+  "category": "Freizeit, Kultur & Sport",
+  "episode": 5
+ },
+ {
+  "german": "bewölkt",
+  "english": "cloudy",
+  "category": "Natur, Wetter & Umwelt",
+  "episode": 5
+ },
+ {
+  "german": "kalt · warm · heiß",
+  "english": "cold · warm · hot",
+  "category": "Stadt & Verkehr",
+  "episode": 5
+ },
+ {
+  "german": "schneien",
+  "english": "to snow",
+  "category": "Verben",
+  "episode": 5
+ },
+ {
+  "german": "der Bus",
+  "english": "bus",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die S-Bahn",
+  "english": "suburban train",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Straßenbahn",
+  "english": "tram",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Bahn",
+  "english": "railway; train",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "das Auto",
+  "english": "car",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "das Taxi",
+  "english": "taxi",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "das Fahrrad",
+  "english": "bicycle",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "fahren",
+  "english": "to drive, ride, go (by vehicle)",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "gehen",
+  "english": "to go, walk",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "nehmen",
+  "english": "to take",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "die Haltestelle",
+  "english": "stop (bus/tram)",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "einsteigen",
+  "english": "to get on",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "aussteigen",
+  "english": "to get off",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "links",
+  "english": "left",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "rechts",
+  "english": "right",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "geradeaus",
+  "english": "straight ahead",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "weit",
+  "english": "far",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "die Ecke",
+  "english": "corner",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Mitte",
+  "english": "middle",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "hier",
+  "english": "here",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "dort",
+  "english": "there",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "da",
+  "english": "there; then",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "durch",
+  "english": "through",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 6
+ },
+ {
+  "german": "über",
+  "english": "over, across, via",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 6
+ },
+ {
+  "german": "nach",
+  "english": "to (cities/countries); after",
+  "category": "Grundlagen & Kommunikation",
+  "episode": 6
+ },
+ {
+  "german": "der Lkw",
+  "english": "lorry, truck",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Autobahn",
+  "english": "motorway",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "der Fahrer",
+  "english": "driver",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "schnell",
+  "english": "fast",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "weiter",
+  "english": "further, on",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "die U-Bahn",
+  "english": "underground",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "zu Fuß",
+  "english": "on foot",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Ampel",
+  "english": "traffic lights",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Kreuzung",
+  "english": "crossroads",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "nah",
+  "english": "near",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ },
+ {
+  "german": "Entschuldigung, wo ist der Bahnhof?",
+  "english": "Excuse me, where is the station?",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "Gehen Sie geradeaus und dann links.",
+  "english": "Go straight on and then left.",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "Ist das weit?",
+  "english": "Is it far?",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "Nein, nur fünf Minuten zu Fuß.",
+  "english": "No, only five minutes on foot.",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "Nehmen Sie die U3.",
+  "english": "Take the U3.",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "Steigen Sie am Marienplatz aus!",
+  "english": "Get off at Marienplatz!",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "der Fahrplan",
+  "english": "timetable",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Linie",
+  "english": "line (bus/tram)",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Richtung",
+  "english": "direction",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Station",
+  "english": "stop, station",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "der Ausgang",
+  "english": "exit",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "der Fahrkartenautomat",
+  "english": "ticket machine",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die Tageskarte",
+  "english": "day ticket",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "entwerten",
+  "english": "to validate",
+  "category": "Verben",
+  "episode": 6
+ },
+ {
+  "german": "der Kontrolleur",
+  "english": "ticket inspector",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "der Stau",
+  "english": "traffic jam",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "die erste / zweite Straße",
+  "english": "the first / second street",
+  "category": "Stadt & Verkehr",
+  "episode": 6
+ },
+ {
+  "german": "gegenüber",
+  "english": "opposite",
+  "category": "Adjektive & Adverbien",
+  "episode": 6
+ }
+]

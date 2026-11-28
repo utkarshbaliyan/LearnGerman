@@ -16,6 +16,7 @@ import './site-menu.css';
 import './account/account-simple.css';
 import './vocabulary/word-list.css';
 import './platform-colours.css';
+import './video-course/video-course.css';
 import './responsive.css';
 import './typography.css';
 import { SITE_ORIGIN, SITE_DESCRIPTION } from './lib/seo';

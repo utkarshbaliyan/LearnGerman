@@ -1,0 +1,1489 @@
+{
+ "episode": 2,
+ "blocks": [
+  {
+   "id": "words",
+   "title": "Words",
+   "intro": "Learn the words with the flashcards, then use them. Got one wrong? Rewatch the part of the video where Frau Weber teaches it.",
+   "flashcards": true,
+   "sections": [
+    {
+     "id": "alphabet",
+     "title": "Das Alphabet",
+     "instructions": "How do you say the letter in German? You need it to spell your name.",
+     "at": "5:55",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "J",
+       "answer": "Jott"
+      },
+      {
+       "type": "type",
+       "prompt": "V",
+       "answer": "Fau"
+      },
+      {
+       "type": "type",
+       "prompt": "W",
+       "answer": "Weh"
+      },
+      {
+       "type": "type",
+       "prompt": "Z",
+       "answer": "Tsett"
+      },
+      {
+       "type": "type",
+       "prompt": "Y",
+       "answer": "Üpsilon"
+      },
+      {
+       "type": "type",
+       "prompt": "ß",
+       "answer": "Eszett"
+      },
+      {
+       "type": "choice",
+       "prompt": "You spell your name. What does Frau Schulz hear for “W”?",
+       "options": [
+        "Weh",
+        "Doppel-U",
+        "Fau"
+       ],
+       "answer": "Weh"
+      },
+      {
+       "type": "type",
+       "prompt": "Spell the city WIEN in German letters (separate with commas).",
+       "answer": [
+        "Weh, Ih, Eh, Enn",
+        "Weh Ih Eh Enn",
+        "Weh, Ih, Eh, Enn."
+       ]
+      }
+     ]
+    },
+    {
+     "id": "listen-pick",
+     "title": "Listen and pick",
+     "instructions": "Press play. Which word does Frau Weber say?",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "das Ausland",
+        "der Ausländer",
+        "das Land"
+       ],
+       "answer": "das Ausland",
+       "audio": {
+        "who": "T",
+        "text": "das Ausland"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Adresse",
+        "die Vorwahl",
+        "die Nummer"
+       ],
+       "answer": "die Vorwahl",
+       "audio": {
+        "who": "T",
+        "text": "die Vorwahl"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "wohnen",
+        "wiederholen",
+        "verstehen"
+       ],
+       "answer": "wiederholen",
+       "audio": {
+        "who": "T",
+        "text": "wiederholen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "der Buchstabe",
+        "buchstabieren",
+        "das Alphabet"
+       ],
+       "answer": "der Buchstabe",
+       "audio": {
+        "who": "T",
+        "text": "der Buchstabe"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "die Heimat",
+        "die Welt",
+        "die Stadt"
+       ],
+       "answer": "die Heimat",
+       "audio": {
+        "who": "T",
+        "text": "die Heimat"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "langsam",
+        "ein bisschen",
+        "fremd"
+       ],
+       "answer": "langsam",
+       "audio": {
+        "who": "T",
+        "text": "langsam"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "sechs",
+        "sechzehn",
+        "sechzig"
+       ],
+       "answer": "sechzehn",
+       "audio": {
+        "who": "T",
+        "text": "sechzehn"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "",
+       "options": [
+        "zwei",
+        "zwölf",
+        "zwanzig"
+       ],
+       "answer": "zwölf",
+       "audio": {
+        "who": "T",
+        "text": "zwölf"
+       }
+      }
+     ],
+     "at": "1:06"
+    },
+    {
+     "id": "numbers",
+     "title": "Zahlen 0–20",
+     "instructions": "Write the number in digits, or the German word.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "dreizehn",
+       "answer": "13"
+      },
+      {
+       "type": "type",
+       "prompt": "sechzehn",
+       "answer": "16"
+      },
+      {
+       "type": "type",
+       "prompt": "zwanzig",
+       "answer": "20"
+      },
+      {
+       "type": "type",
+       "prompt": "elf",
+       "answer": "11"
+      },
+      {
+       "type": "type",
+       "prompt": "siebzehn",
+       "answer": "17"
+      },
+      {
+       "type": "type",
+       "prompt": "zwölf",
+       "answer": "12"
+      },
+      {
+       "type": "type",
+       "prompt": "14 in German",
+       "answer": "vierzehn"
+      },
+      {
+       "type": "type",
+       "prompt": "7 in German",
+       "answer": "sieben"
+      }
+     ],
+     "at": "4:18"
+    },
+    {
+     "id": "countries",
+     "title": "Countries and languages",
+     "instructions": "Pick the right word.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Yuki kommt aus Japan. Sie spricht …",
+       "options": [
+        "Japanisch",
+        "Japaner",
+        "Japan"
+       ],
+       "answer": "Japanisch"
+      },
+      {
+       "type": "choice",
+       "prompt": "In Österreich spricht man …",
+       "options": [
+        "Deutsch",
+        "Österreichisch",
+        "Englisch"
+       ],
+       "answer": "Deutsch",
+       "note": "man = people / one"
+      },
+      {
+       "type": "choice",
+       "prompt": "Mateo kommt aus Brasilien. Er spricht …",
+       "options": [
+        "Brasilianisch",
+        "Portugiesisch",
+        "Spanisch"
+       ],
+       "answer": "Portugiesisch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Hamburg ist eine …",
+       "options": [
+        "Stadt",
+        "Land",
+        "Welt"
+       ],
+       "answer": "Stadt"
+      },
+      {
+       "type": "choice",
+       "prompt": "Österreich ist ein …",
+       "options": [
+        "Land",
+        "Stadt",
+        "Sprache"
+       ],
+       "answer": "Land"
+      },
+      {
+       "type": "choice",
+       "prompt": "Deutsch, Englisch and Hindi are …",
+       "options": [
+        "Sprachen",
+        "Länder",
+        "Städte"
+       ],
+       "answer": "Sprachen"
+      }
+     ],
+     "at": "0:50"
+    },
+    {
+     "id": "help",
+     "title": "When you don't understand",
+     "instructions": "Real life: what do you say?",
+     "at": "3:00",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Frau Schulz speaks very fast. You say:",
+       "options": [
+        "Langsam, bitte!",
+        "Bis morgen!",
+        "Gute Nacht!"
+       ],
+       "answer": "Langsam, bitte!"
+      },
+      {
+       "type": "choice",
+       "prompt": "You didn't catch the number. You say:",
+       "options": [
+        "Noch einmal, bitte!",
+        "Danke, gut!",
+        "Tschüss!"
+       ],
+       "answer": "Noch einmal, bitte!"
+      },
+      {
+       "type": "choice",
+       "prompt": "She asks you to spell your name. She says:",
+       "options": [
+        "Buchstabieren Sie bitte!",
+        "Woher kommen Sie?",
+        "Wiederholen Sie!"
+       ],
+       "answer": "Buchstabieren Sie bitte!"
+      },
+      {
+       "type": "choice",
+       "prompt": "You understand only a little German. You say: Ich spreche …",
+       "options": [
+        "ein bisschen Deutsch",
+        "langsam Deutsch",
+        "fremd Deutsch"
+       ],
+       "answer": "ein bisschen Deutsch"
+      }
+     ]
+    },
+    {
+     "id": "articles",
+     "title": "der, die or das?",
+     "instructions": "Every noun has an article. Learn them together.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "___ Land",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "country"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Stadt",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "city"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Heimat",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "home country"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Ausland",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "abroad"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Ausländer",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "foreigner"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Sprache",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "language"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Adresse",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "address"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Telefon",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "das",
+       "note": "telephone"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Vorwahl",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die",
+       "note": "area code"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Buchstabe",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "der",
+       "note": "letter"
+      }
+     ],
+     "at": "1:06"
+    },
+    {
+     "id": "recall",
+     "title": "Say it in German",
+     "instructions": "Type the German. Use the ä ö ü ß buttons if you need them.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "to come",
+       "answer": "kommen"
+      },
+      {
+       "type": "type",
+       "prompt": "to live (somewhere)",
+       "answer": "wohnen"
+      },
+      {
+       "type": "type",
+       "prompt": "where from?",
+       "answer": [
+        "woher",
+        "woher?"
+       ]
+      },
+      {
+       "type": "type",
+       "prompt": "to spell",
+       "answer": "buchstabieren"
+      },
+      {
+       "type": "type",
+       "prompt": "to understand",
+       "answer": "verstehen"
+      },
+      {
+       "type": "type",
+       "prompt": "slowly",
+       "answer": "langsam"
+      },
+      {
+       "type": "type",
+       "prompt": "the language (with article)",
+       "answer": "die Sprache"
+      },
+      {
+       "type": "type",
+       "prompt": "the address (with article)",
+       "answer": "die Adresse"
+      },
+      {
+       "type": "type",
+       "prompt": "a bit",
+       "answer": "ein bisschen"
+      },
+      {
+       "type": "type",
+       "prompt": "the phone number (with article)",
+       "answer": "die Telefonnummer"
+      }
+     ],
+     "at": "1:06"
+    },
+    {
+     "id": "bonus",
+     "title": "Bonus words · not in the video",
+     "instructions": "Words you need at the Bürgeramt. Learn them with the bonus flashcards above.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "You must register your address. You go to the …",
+       "options": [
+        "Bürgeramt",
+        "Café",
+        "Bahnhof"
+       ],
+       "answer": "Bürgeramt"
+      },
+      {
+       "type": "choice",
+       "prompt": "At the Bürgeramt you first take a …",
+       "options": [
+        "Wartenummer",
+        "Hausnummer",
+        "Vorwahl"
+       ],
+       "answer": "Wartenummer",
+       "note": "queue number"
+      },
+      {
+       "type": "choice",
+       "prompt": "The language you grew up with is your …",
+       "options": [
+        "Muttersprache",
+        "Fremdsprache",
+        "Heimat"
+       ],
+       "answer": "Muttersprache"
+      },
+      {
+       "type": "choice",
+       "prompt": "For Yuki, English is a …",
+       "options": [
+        "Fremdsprache",
+        "Muttersprache",
+        "Staatsangehörigkeit"
+       ],
+       "answer": "Fremdsprache"
+      },
+      {
+       "type": "choice",
+       "prompt": "You didn't hear what she said. You say:",
+       "options": [
+        "Wie bitte?",
+        "Bitte schön!",
+        "Gleichfalls!"
+       ],
+       "answer": "Wie bitte?"
+      },
+      {
+       "type": "choice",
+       "prompt": "Lindenstraße 12 – the 12 is the …",
+       "options": [
+        "Hausnummer",
+        "Vorwahl",
+        "Etage"
+       ],
+       "answer": "Hausnummer"
+      },
+      {
+       "type": "choice",
+       "prompt": "Which document shows your nationality?",
+       "options": [
+        "der Reisepass",
+        "die Etage",
+        "die Vorwahl"
+       ],
+       "answer": "der Reisepass"
+      },
+      {
+       "type": "type",
+       "prompt": "the registration (with article)",
+       "answer": "die Anmeldung"
+      }
+     ],
+     "bonus": true
+    }
+   ]
+  },
+  {
+   "id": "grammar",
+   "title": "Grammar",
+   "intro": "ich komme · du kommst · er/sie/es kommt · wir kommen · Sie kommen — and the verb comes second: Woher kommst du?",
+   "sections": [
+    {
+     "id": "endings",
+     "title": "Verb endings",
+     "instructions": "Write the correct form of the verb in brackets.",
+     "items": [
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "aus Indien.",
+       "answer": "komme",
+       "hint": "kommen"
+      },
+      {
+       "type": "gap",
+       "before": "Woher",
+       "after": "du?",
+       "answer": "kommst",
+       "hint": "kommen"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "in München.",
+       "answer": "wohnt",
+       "hint": "wohnen"
+      },
+      {
+       "type": "gap",
+       "before": "Wir",
+       "after": "Deutsch.",
+       "answer": "lernen",
+       "hint": "lernen"
+      },
+      {
+       "type": "gap",
+       "before": "Wo",
+       "after": "Sie?",
+       "answer": "wohnen",
+       "hint": "wohnen"
+      },
+      {
+       "type": "gap",
+       "before": "Yuki",
+       "after": "Japanisch.",
+       "answer": "spricht",
+       "hint": "sprechen"
+      },
+      {
+       "type": "gap",
+       "before": "Was",
+       "after": "du?",
+       "answer": "sprichst",
+       "hint": "sprechen"
+      },
+      {
+       "type": "gap",
+       "before": "Amara",
+       "after": "aus Nigeria.",
+       "answer": "kommt",
+       "hint": "kommen"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "du Englisch?",
+       "answer": "Verstehst",
+       "hint": "verstehen"
+      },
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "in Schwabing.",
+       "answer": "wohne",
+       "hint": "wohnen"
+      }
+     ],
+     "at": "7:24"
+    },
+    {
+     "id": "question-words",
+     "title": "Wo, woher, was, wer or wie?",
+     "instructions": "Pick the question word that fits the answer.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "___ kommst du? – Aus Japan.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Woher"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ wohnst du? – In Berlin.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Wo"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ sprichst du? – Deutsch.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Was"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ ist das? – Das ist Mateo.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Wer"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ heißen Sie? – Sharma.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Wie"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ ist Ihre Telefonnummer?",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Wie"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ wohnen Sie? – In der Lindenstraße.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Wo"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ kommen Sie? – Aus Deutschland.",
+       "options": [
+        "Wo",
+        "Woher",
+        "Was",
+        "Wer",
+        "Wie"
+       ],
+       "answer": "Woher"
+      }
+     ],
+     "at": "8:15"
+    },
+    {
+     "id": "talk",
+     "title": "Ask them",
+     "instructions": "Look at who it is, then write the question. du or Sie?",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "Ask her where she is from.",
+       "answer": "Woher kommen Sie?",
+       "image": "schulz"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her where she lives.",
+       "answer": "Wo wohnst du?",
+       "image": "yuki"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask her which languages she speaks.",
+       "answer": [
+        "Was sprichst du?",
+        "Welche Sprachen sprichst du?"
+       ],
+       "image": "amara"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him where he lives.",
+       "answer": "Wo wohnen Sie?",
+       "image": "oezdemir"
+      },
+      {
+       "type": "type",
+       "prompt": "You didn't understand her. Ask her to say it slowly again.",
+       "answer": [
+        "Langsam, bitte!",
+        "Noch einmal, bitte!",
+        "Langsam, bitte! Noch einmal, bitte!",
+        "Noch einmal, bitte! Langsam, bitte!",
+        "Noch einmal, bitte, langsam!",
+        "Wie bitte?"
+       ],
+       "image": "schulz"
+      },
+      {
+       "type": "type",
+       "prompt": "Ask him where he is from.",
+       "answer": "Woher kommst du?",
+       "image": "mateo"
+      }
+     ]
+    },
+    {
+     "id": "fix",
+     "title": "Fix the sentence",
+     "instructions": "Each sentence has one mistake. Write the correct sentence.",
+     "items": [
+      {
+       "type": "fix",
+       "wrong": "Woher du kommst?",
+       "answer": "Woher kommst du?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Ich kommen aus Indien.",
+       "answer": "Ich komme aus Indien."
+      },
+      {
+       "type": "fix",
+       "wrong": "Wo wohnst Sie?",
+       "answer": "Wo wohnen Sie?"
+      },
+      {
+       "type": "fix",
+       "wrong": "Er sprecht Deutsch.",
+       "answer": "Er spricht Deutsch."
+      },
+      {
+       "type": "fix",
+       "wrong": "Wir wohnt in Berlin.",
+       "answer": "Wir wohnen in Berlin."
+      },
+      {
+       "type": "fix",
+       "wrong": "Du sprechst Englisch.",
+       "answer": "Du sprichst Englisch."
+      }
+     ],
+     "at": "8:34"
+    },
+    {
+     "id": "order",
+     "title": "Build the sentence",
+     "instructions": "Tap the words in the right order.",
+     "items": [
+      {
+       "type": "order",
+       "tokens": [
+        "kommst",
+        "Woher",
+        "du"
+       ],
+       "answer": "Woher kommst du?",
+       "en": "Where are you from?"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "wohne",
+        "in",
+        "Ich",
+        "München"
+       ],
+       "answer": "Ich wohne in München.",
+       "en": "I live in Munich."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Sie",
+        "Wo",
+        "wohnen"
+       ],
+       "answer": "Wo wohnen Sie?",
+       "en": "Where do you live? (polite)"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "spreche",
+        "ein",
+        "Deutsch",
+        "Ich",
+        "bisschen"
+       ],
+       "answer": "Ich spreche ein bisschen Deutsch.",
+       "en": "I speak a bit of German."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Ihre",
+        "Wie",
+        "Telefonnummer",
+        "ist"
+       ],
+       "answer": "Wie ist Ihre Telefonnummer?",
+       "en": "What's your phone number? (polite)"
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "Sprachen",
+        "Sie",
+        "sprechen",
+        "Welche"
+       ],
+       "answer": "Welche Sprachen sprechen Sie?",
+       "en": "Which languages do you speak?"
+      }
+     ],
+     "at": "8:34"
+    }
+   ]
+  },
+  {
+   "id": "skills",
+   "title": "Exam skills",
+   "intro": "In the listening test you often have to catch a number or a spelled name. Practise all four exam parts here.",
+   "sections": [
+    {
+     "id": "hoeren",
+     "title": "Hören · Listening",
+     "instructions": "Read the question first, then play the clip. You can play it twice, like in the exam.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "What is the phone number?",
+       "options": [
+        "089427",
+        "089472",
+        "098427"
+       ],
+       "answer": "089427",
+       "audio": {
+        "who": "S",
+        "text": "Meine Telefonnummer ist null, acht, neun, vier, zwei, sieben."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "How is the name spelled?",
+       "options": [
+        "OKAFOR",
+        "OCAFOR",
+        "OKAVOR"
+       ],
+       "answer": "OKAFOR",
+       "audio": {
+        "who": "N",
+        "text": "Ich heiße Okafor. Oh, Kah, Ah, Eff, Oh, Err."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "What is the house number of the café?",
+       "options": [
+        "6",
+        "16",
+        "60"
+       ],
+       "answer": "16",
+       "audio": {
+        "who": "O",
+        "text": "Mein Café ist in der Lindenstraße sechzehn."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Which number is called?",
+       "options": [
+        "7",
+        "17",
+        "70"
+       ],
+       "answer": "17",
+       "audio": {
+        "who": "S",
+        "text": "Nummer siebzehn, bitte!"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Which city is Yuki from?",
+       "options": [
+        "Osaka",
+        "Tokio",
+        "Kyoto"
+       ],
+       "answer": "Osaka",
+       "audio": {
+        "who": "Y",
+        "text": "Ich komme aus Japan, aus Osaka."
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "Which language does Arjun speak only a bit?",
+       "options": [
+        "Deutsch",
+        "Englisch",
+        "Hindi"
+       ],
+       "answer": "Deutsch",
+       "audio": {
+        "who": "A",
+        "text": "Ich spreche Hindi, Englisch und ein bisschen Deutsch."
+       }
+      }
+     ]
+    },
+    {
+     "id": "diktat",
+     "title": "Diktat · Write what you hear",
+     "instructions": "Play the clip and type it.",
+     "items": [
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Woher kommst du?",
+       "audio": {
+        "who": "T",
+        "text": "Woher kommst du?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Wie ist Ihre Telefonnummer?",
+       "audio": {
+        "who": "S",
+        "text": "Wie ist Ihre Telefonnummer?"
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "",
+       "answer": "Ich wohne in Schwabing.",
+       "audio": {
+        "who": "Y",
+        "text": "Ich wohne in Schwabing."
+       }
+      },
+      {
+       "type": "type",
+       "prompt": "Arjun spells his name. Write it.",
+       "answer": [
+        "Sharma",
+        "S-H-A-R-M-A",
+        "S H A R M A"
+       ],
+       "audio": {
+        "who": "A",
+        "text": "Ess, Hah, Ah, Err, Emm, Ah."
+       }
+      }
+     ]
+    },
+    {
+     "id": "lesen",
+     "title": "Lesen · Reading",
+     "instructions": "Read the registration form. Richtig (true) or falsch (false)?",
+     "text": {
+      "title": "Anmeldung – Bürgeramt München",
+      "body": "Familienname: Okafor · Vorname: Amara · Land: Nigeria · Stadt: Lagos · Adresse in München: Lindenstraße 16 · Telefon: 0176 248 913 · Sprachen: Englisch, Yoruba, ein bisschen Deutsch",
+      "glossary": [
+       [
+        "die Anmeldung",
+        "registration"
+       ],
+       [
+        "Lagos",
+        "a city in Nigeria"
+       ],
+       [
+        "Yoruba",
+        "a language in Nigeria"
+       ]
+      ],
+      "style": "card",
+      "meta": "Landeshauptstadt München · Bürgeramt"
+     },
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Amara kommt aus Nigeria.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Amara wohnt in Lagos.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ihre Hausnummer ist sechzehn.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Amara spricht sehr gut Deutsch.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ihre Telefonnummer beginnt mit null, eins, sieben, sechs.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Richtig"
+      },
+      {
+       "type": "choice",
+       "prompt": "Ihr Vorname ist Okafor.",
+       "options": [
+        "Richtig",
+        "Falsch"
+       ],
+       "answer": "Falsch"
+      }
+     ]
+    },
+    {
+     "id": "schreiben-1",
+     "title": "Schreiben 1 · Fill in the form",
+     "instructions": "Like exam part 1: read Yuki's message, then fill in the form for her.",
+     "text": {
+      "title": "Yukis Nachricht",
+      "body": "Hallo! Ich heiße Yuki Tanaka. Ich komme aus Japan, aus Osaka. Ich wohne jetzt in München, in der Schillerstraße 5. Ich spreche Japanisch und Englisch.",
+      "glossary": [
+       [
+        "die Nachricht",
+        "message"
+       ],
+       [
+        "jetzt",
+        "now"
+       ]
+      ],
+      "style": "chat",
+      "meta": "Yuki · 09:10"
+     },
+     "items": [
+      {
+       "type": "form",
+       "prompt": "Anmeldung",
+       "fields": [
+        {
+         "label": "Vorname",
+         "answer": "Yuki"
+        },
+        {
+         "label": "Familienname",
+         "answer": "Tanaka"
+        },
+        {
+         "label": "Land",
+         "answer": "Japan"
+        },
+        {
+         "label": "Wohnort",
+         "answer": "München"
+        },
+        {
+         "label": "Hausnummer",
+         "answer": "5"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "schreiben-2",
+     "title": "Schreiben 2 · Write a short text",
+     "instructions": "The checklist ticks itself while you write.",
+     "items": [
+      {
+       "type": "write",
+       "prompt": "Write to a new classmate (use du!): greet them, say your name, where you come from, where you live and which languages you speak. End with a question for them.",
+       "checks": [
+        {
+         "label": "A greeting (Hallo / Guten Tag …)",
+         "pattern": "\\bhallo\\b|guten (morgen|tag|abend)"
+        },
+        {
+         "label": "Your name (Ich heiße … / Ich bin …)",
+         "pattern": "ich hei(ß|ss)e|ich bin|mein name ist"
+        },
+        {
+         "label": "Where you come from (Ich komme aus …)",
+         "pattern": "ich komme aus"
+        },
+        {
+         "label": "Where you live (Ich wohne in …)",
+         "pattern": "ich wohne in"
+        },
+        {
+         "label": "Your languages (Ich spreche …)",
+         "pattern": "ich spreche"
+        },
+        {
+         "label": "A question with du (Woher kommst du? / Wo wohnst du? …)",
+         "pattern": "woher kommst du|wo wohnst du|was sprichst du|welche sprachen sprichst du|und du\\?"
+        }
+       ],
+       "warnings": [
+        {
+         "pattern": "\\bich (kommen|kommt|wohnen|wohnt|sprechen|sprecht|spricht)\\b",
+         "message": "ich + -e: ich komme, ich wohne, ich spreche."
+        },
+        {
+         "pattern": "woher du kommst|wo du wohnst|was du sprichst",
+         "message": "In a question the verb comes second: Woher kommst du?"
+        },
+        {
+         "pattern": "\\bdu sprechst\\b|\\bdu sprecht\\b",
+         "message": "du sprichst – sprechen changes e to i."
+        },
+        {
+         "pattern": "\\b(woher kommen|wo wohnen) sie\\b",
+         "message": "A classmate is a friend: use du – Woher kommst du?"
+        }
+       ],
+       "model": "Hallo! Ich heiße Arjun. Ich komme aus Indien, aus Bangalore. Ich wohne jetzt in München. Ich spreche Hindi, Englisch und ein bisschen Deutsch. Und du? Woher kommst du?"
+      }
+     ]
+    },
+    {
+     "id": "sprechen",
+     "title": "Sprechen · Speaking",
+     "instructions": "You're at the Bürgeramt. Record your answer, listen back, then compare with the model.",
+     "items": [
+      {
+       "type": "speak",
+       "prompt": "Frau Schulz calls you. Say your name.",
+       "audio": {
+        "who": "S",
+        "text": "Der Nächste, bitte! Wie heißen Sie?"
+       },
+       "modelText": "Ich heiße … / Mein Name ist …",
+       "model": {
+        "who": "A",
+        "text": "Ich heiße Arjun Sharma."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Spell your family name, letter by letter.",
+       "audio": {
+        "who": "S",
+        "text": "Buchstabieren Sie bitte."
+       },
+       "modelText": "Ess, Hah, Ah, Err, Emm, Ah.",
+       "model": {
+        "who": "A",
+        "text": "Ess, Hah, Ah, Err, Emm, Ah."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say where you are from.",
+       "audio": {
+        "who": "S",
+        "text": "Woher kommen Sie?"
+       },
+       "modelText": "Ich komme aus … , aus …",
+       "model": {
+        "who": "A",
+        "text": "Ich komme aus Indien, aus Bangalore."
+       }
+      },
+      {
+       "type": "speak",
+       "prompt": "Say your phone number slowly, in groups.",
+       "audio": {
+        "who": "S",
+        "text": "Wie ist Ihre Telefonnummer?"
+       },
+       "modelText": "Null, eins, sieben, sechs … drei, acht, neun …",
+       "model": {
+        "who": "A",
+        "text": "Null, eins, sieben, sechs ... drei, acht, neun ... zwei, eins, fünf."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "title": "Test",
+   "intro": "15 questions on the whole episode. 80 % passes Episode 2.",
+   "sections": [
+    {
+     "id": "checkpoint",
+     "title": "Episode 2 test",
+     "instructions": "No hints this time.",
+     "items": [
+      {
+       "type": "choice",
+       "prompt": "Ich komme ___ Indien.",
+       "options": [
+        "aus",
+        "in",
+        "wo"
+       ],
+       "answer": "aus"
+      },
+      {
+       "type": "gap",
+       "before": "Wo",
+       "after": "du?",
+       "answer": "wohnst"
+      },
+      {
+       "type": "gap",
+       "before": "Er",
+       "after": "Deutsch und Englisch.",
+       "answer": "spricht"
+      },
+      {
+       "type": "choice",
+       "prompt": "“Woher kommen Sie?” – Which answer fits?",
+       "options": [
+        "Aus Japan.",
+        "In München.",
+        "Japanisch."
+       ],
+       "answer": "Aus Japan."
+      },
+      {
+       "type": "fix",
+       "wrong": "Wir kommt aus Brasilien.",
+       "answer": "Wir kommen aus Brasilien."
+      },
+      {
+       "type": "order",
+       "tokens": [
+        "kommen",
+        "Woher",
+        "Sie"
+       ],
+       "answer": "Woher kommen Sie?",
+       "en": "Where are you from? (polite)"
+      },
+      {
+       "type": "type",
+       "prompt": "16 in German",
+       "answer": "sechzehn"
+      },
+      {
+       "type": "choice",
+       "prompt": "___ Adresse",
+       "options": [
+        "der",
+        "die",
+        "das"
+       ],
+       "answer": "die"
+      },
+      {
+       "type": "choice",
+       "prompt": "Listen. Which word is it?",
+       "options": [
+        "verstehen",
+        "wiederholen",
+        "wohnen"
+       ],
+       "answer": "verstehen",
+       "audio": {
+        "who": "T",
+        "text": "verstehen"
+       }
+      },
+      {
+       "type": "choice",
+       "prompt": "You didn't understand Frau Schulz. You say:",
+       "options": [
+        "Langsam, bitte!",
+        "Gute Nacht!",
+        "Tschüss!"
+       ],
+       "answer": "Langsam, bitte!"
+      },
+      {
+       "type": "type",
+       "prompt": "How do you say the letter J in German?",
+       "answer": "Jott"
+      },
+      {
+       "type": "gap",
+       "before": "",
+       "after": "ist das? – Das ist Frau Schulz.",
+       "answer": "Wer"
+      },
+      {
+       "type": "gap",
+       "before": "Ich",
+       "after": "ein bisschen Deutsch.",
+       "answer": "spreche"
+      },
+      {
+       "type": "type",
+       "prompt": "the phone number (with article)",
+       "answer": "die Telefonnummer"
+      },
+      {
+       "type": "gap",
+       "before": "Was",
+       "after": "du? – Ich spreche Hindi.",
+       "answer": "sprichst"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

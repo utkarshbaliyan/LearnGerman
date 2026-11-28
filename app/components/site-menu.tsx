@@ -1,10 +1,11 @@
 "use client";
 
-import { Activity, CircleUserRound, Menu } from "lucide-react";
+import { Activity, CircleUserRound, Menu, PlayCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/app/components/theme-toggle";
 import { browserSession } from "@/app/lib/browser-session";
+import { VIDEO_COURSE_PUBLIC } from "@/app/lib/feature-availability";
 import { isSiteOwnerEmail } from "@/app/lib/site-owner";
 
 export function SiteMenu({ accountActive }: { accountActive: boolean }) {
@@ -49,6 +50,9 @@ export function SiteMenu({ accountActive }: { accountActive: boolean }) {
       <Link href="/account" prefetch={false} aria-current={accountActive ? "page" : undefined} onClick={() => setOpen(false)}>
         <CircleUserRound aria-hidden="true" /><span>Account</span>
       </Link>
+      {owner && !VIDEO_COURSE_PUBLIC && <Link href="/video-course" prefetch={false} onClick={() => setOpen(false)}>
+        <PlayCircle aria-hidden="true" /><span>Video course (preview)</span>
+      </Link>}
       {owner && <Link href="/admin/live" prefetch={false} onClick={() => setOpen(false)}>
         <Activity aria-hidden="true" /><span>Live traffic</span>
       </Link>}

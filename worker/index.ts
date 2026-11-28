@@ -54,6 +54,6 @@ const worker = {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    return secureResponse(await worker.fetch(request, env, ctx), process.env.LESELAUT_STAGING === '1');
+    return secureResponse(await worker.fetch(request, env, ctx), process.env.LESELAUT_STAGING === '1', request.url);
   },
 };

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 import { SiteHeader } from "@/app/components/site-header";
+import { playVocabularyWord, stopVocabularyAudio } from "@/app/lib/vocabulary-audio";
 import { TopicArt } from "@/app/components/topic-art";
 import { useVocabularyProgress } from "@/app/hooks/use-vocabulary-progress";
 import {
@@ -101,9 +102,7 @@ export default function VocabularyPage() {
   const renderedWords = visibleWords.slice(0, visibleLimit);
   const practiceWords = useMemo(() => sourceWords.filter((word) => category === "all" || word.category === category), [category, sourceWords]);
 
-  useEffect(() => () => {
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-  }, []);
+  useEffect(() => () => stopVocabularyAudio(), []);
 
   function chooseLevel(next: LevelFilter) {
     setLevel(next);
@@ -151,25 +150,13 @@ export default function VocabularyPage() {
   }
 
   function pronounceWord(word: VocabularyWord) {
-    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
-      setPronunciationUnavailable(true);
-      return;
-    }
-
-    const speech = window.speechSynthesis;
-    speech.cancel();
-    const utterance = new SpeechSynthesisUtterance(word.german);
-    const voices = speech.getVoices();
-    utterance.lang = "de-DE";
-    utterance.rate = 0.82;
-    utterance.voice = voices.find((voice) => voice.lang.toLocaleLowerCase() === "de-de")
-      ?? voices.find((voice) => voice.lang.toLocaleLowerCase().startsWith("de"))
-      ?? null;
-    utterance.onend = () => setSpeakingWordId((current) => current === word.id ? null : current);
-    utterance.onerror = () => setSpeakingWordId((current) => current === word.id ? null : current);
     setPronunciationUnavailable(false);
     setSpeakingWordId(word.id);
-    speech.speak(utterance);
+    // Recorded voice first (public/audio/vocabulary), browser voice as fallback.
+    void playVocabularyWord(word).then((ok) => {
+      if (!ok) setPronunciationUnavailable(true);
+      setSpeakingWordId((current) => current === word.id ? null : current);
+    });
   }
 
   const levelLabel = level === "all" ? "A1–C1" : level;
