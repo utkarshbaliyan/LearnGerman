@@ -14,6 +14,7 @@ test('AWS standalone server registers audio content types so Safari plays book a
   assert.equal(patched.match(/leselaut: media content types/g)?.length, 1);
   assert.match(patched, /"\.webm": "audio\/webm"/);
   assert.match(patched, /"\.m4a": "audio\/mp4"/);
+  assert.match(patched, /"\.pdf": "application\/pdf"/);
   assert.ok(patched.indexOf('Object.assign(CONTENT_TYPES') < patched.indexOf('startProdServer({'));
   const vinextTable = readFileSync('node_modules/vinext/dist/server/static-file-cache.js', 'utf8');
   assert.match(vinextTable, /const CONTENT_TYPES = \{/);
